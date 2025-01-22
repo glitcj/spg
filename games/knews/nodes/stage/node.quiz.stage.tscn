@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfwswhontylxl"]
+[gd_scene load_steps=18 format=3 uid="uid://cfwswhontylxl"]
 
 [ext_resource type="Script" path="res://games/quiz/nodes/stage/Camera2D.gd" id="1_lv7j7"]
 [ext_resource type="Texture2D" uid="uid://dg0o2pwqjou08" path="res://assets/quiz/sprites/stage/stage.png" id="2_02sfi"]
@@ -456,6 +456,8 @@ _data = {
 "RESET": SubResource("Animation_aeuyb")
 }
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_qceps"]
+
 [node name="GlobalScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -466,7 +468,7 @@ script = ExtResource("1_lv7j7")
 
 [node name="StageNode" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(100, -70)
+position = Vector2(109, -136)
 scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="StageNode"]
@@ -548,8 +550,17 @@ libraries = {
 }
 autoplay = "IdleCamera"
 
-[node name="Player3D" type="Sprite2D" parent="."]
-z_index = 99
-position = Vector2(-222, 188)
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Player3D" type="Sprite2D" parent="Node2D"]
+z_index = 90
+position = Vector2(-214, 189)
 scale = Vector2(0.224913, 0.186833)
 texture = ExtResource("9_1my0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.192556, 0.192556, 0.192556, 1)
+z_index = 80
+position = Vector2(1, 188)
+scale = Vector2(600, 120)
+texture = SubResource("CanvasTexture_qceps")

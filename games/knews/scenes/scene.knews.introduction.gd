@@ -112,7 +112,7 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 
 func introduce_the_quiz_show():
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
-	Queue.queue.append(Event.add_node().initialise("res://games/quiz/nodes/stage/node.quiz.stage.tscn", [], STAGE))
+	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], STAGE))
 	utilities.setup_monitor()
 	
 	Queue.queue.append(Event.fade_in().initialise())
