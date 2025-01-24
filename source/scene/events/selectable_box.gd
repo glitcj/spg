@@ -14,7 +14,8 @@ func initialise(message_: String, options_: Array) -> SelectableBoxEvent:
 	return self
 
 func run():
-	selectable_box.position = SceneSettings.message_box_position
+	# selectable_box.position = MessageBoxSettings.  # SceneSettings.message_box_position
+	# var O_O_ = MessageBoxSettings.new()  # SceneSettings.message_box_position
 	selectable_box.initialise(message, options)
 	selectable_box.selectable.connect("option_selection_completed", selectable_box.queue_free)
 	selectable_box.selectable.connect("option_selection_completed", _clean_up)

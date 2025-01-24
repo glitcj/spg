@@ -6,7 +6,9 @@ signal selectable_is_ready
 
 var message_box_template = preload("res://source/messages/message_box.tscn")
 var message_box: MessageBox = message_box_template.instantiate()
-var message_box_position: Vector2
+# var message_box_position: Vector2
+var message_box_settings: MessageBoxSettings = MessageBoxSettings.new()
+
 
 # Life cycle: Base definitions > .initialise(.) > add_child() > "ready" signal > @onready > _ready()
 var selectable: Selectable = Selectable.new()
@@ -16,15 +18,14 @@ var selectable_position: Vector2
 # This should be called after instantiating/creating a node and before
 # adding it to the scene. _ready() runs AFTER add_child(). This is called BEFORE add_child().
 func initialise(message: String, options: Array) -> void:
-	selectable_position = message_box_position + Vector2(-120, -10)
+	selectable_position = message_box_settings.position + Vector2(-120, -10)
 	_instantiate_message_box(message)
 	selectable_options = options
 	
 func _instantiate_message_box(message: String):
 	message_box.fill_queue([message])
-	var _O_O: MessageBoxSettings = MessageBoxSettings.new()
-	_O_O.is_autoplay = false
-	message_box.initialise(message_box_position, null, false, _O_O)
+	message_box_settings.is_autoplay = false
+	message_box.initialise(message_box_settings.position, null, false, message_box_settings)
 	add_child(message_box)
 
 # Called when the node enters the scene tree for the first time.

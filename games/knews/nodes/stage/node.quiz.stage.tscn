@@ -550,17 +550,19 @@ libraries = {
 }
 autoplay = "IdleCamera"
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Player2D" type="Node2D" parent="."]
 
-[node name="Player3D" type="Sprite2D" parent="Node2D"]
+[node name="Player3DFace" type="Sprite2D" parent="Player2D"]
 z_index = 90
 position = Vector2(-214, 189)
 scale = Vector2(0.224913, 0.186833)
 texture = ExtResource("9_1my0i")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="PlayerMessagesBG" type="Sprite2D" parent="Player2D"]
 modulate = Color(0.192556, 0.192556, 0.192556, 1)
 z_index = 80
 position = Vector2(1, 188)
 scale = Vector2(600, 120)
 texture = SubResource("CanvasTexture_qceps")
+
+[node name="SubViewport" type="SubViewport" parent="."]

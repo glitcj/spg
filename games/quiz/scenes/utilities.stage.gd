@@ -51,6 +51,7 @@ static func setup_monitor():
 	# Queue.queue.append(Event.settings().initialise({"message_box_is_autoplay": false}))
 	
 	var _O_O = MessageBoxSettings.new()
+	_O_O.position = Vector2(0, 50)
 	_O_O.is_autoplay = false
 	Queue.queue.append(Event.message_box().initialise(["   "], true, "MONITOR", _O_O))
 	
@@ -66,7 +67,7 @@ static func setup_monitor():
 	# Queue.queue.append(Event.settings().initialise({"message_box_is_autoplay": true}))
 	
 	
-static func display_question_and_options(Presenter, question_: String, options_: Array):
+static func display_question_and_options(Presenter, question_: String, options_: Array, monitor_id):
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
 	Queue.queue.append(Event.selectable_box().initialise(question_, options_))
 	
@@ -75,7 +76,6 @@ static func display_question_and_options(Presenter, question_: String, options_:
 		Event.lambda().initialise(lambda_play_monitor_animation, ["Exclaim"]),
 		Event.message_box().initialise(["That's correct !"]),
 		Event.play_portrait_animation().initialise(Presenter, "ResetIdleFrame", false),
-		# Event.play_portrait_animation().initialise(Presenter, "Idle", false)
 		]
 	var wrong_answer_events = [Event.message_box().initialise(["Aww that was a missed chance.", "Better luck next time."])]
 	Queue.queue.append(Event.conditional().initialise([Variables.Retriever.new("last_selected_selectable_index"), 1], ConditionalEventQueue.Lambdas.equals, correct_answer_events))

@@ -52,11 +52,12 @@ static var top = Vector2(0, -150)
 
 func initialise(position_, scale_, borderless_: bool = false, settings_: MessageBoxSettings = MessageBoxSettings.new()):
 	if position_ != null:
-		$GFX.position = position_
+		$GFX.position = settings_.position
 	if scale_ != null:
 		$GFX.scale = scale_
 	borderless = borderless_
 	settings = settings_
+	detached = settings_.is_detached
 
 func _ready():
 	visible = false
@@ -162,6 +163,9 @@ func display_message_immediately(message_to_display: String):
 	show_next_message()
 
 
+# --------------------------------------
+# Move to new utils script
+# --------------------------------------
 
 func _process_autoplay_timer():
 	if settings.is_autoplay:

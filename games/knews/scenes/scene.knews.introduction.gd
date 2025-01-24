@@ -2,6 +2,8 @@ extends EventQueue
 
 # Common tags/names
 
+
+# TODO: Fix detached message boxes event
 # TODO: Add 3D cortex player who streams the game
 # TODO: This is a self playing game that produces a 247 stream to watch
 # TODO: Ultimately this will evolve into a Self Playing Horror stream
@@ -24,7 +26,7 @@ extends EventQueue
 # TODO: Add sound effects
 # TODO: Replace Variables strings/keys with ints, pulled from the enum Scene.Tags
 # TODO: Add CommonGameEvents class and load all utilities into it
-enum lTags {presenter_introduction, presenter, stage, scene,  Stage, Presenter, Contestant_A, Contestant_B, Contestant_C}
+enum lTags {presenter_introduction, presenter, stage, scene,  Stage, Presenter, Contestant_A, Contestant_B, Contestant_C, lMonitor}
 
 enum lCharacters {A, B, Presenter, lMonitor, lStage}
 
@@ -44,23 +46,22 @@ var lPortraits = {
 	lCharacters.Presenter: "res://games/quiz/portraits/pallet.contestant.presenter.tscn"
 	}
 	
+var lID = {lTags.lMonitor: OS.get_unique_id()}
 
 var lPositions = {
-	lCharacters.A: Vector2(192, -50),
-	lCharacters.B: Vector2(192, -50),
-	lCharacters.Presenter: Vector2(-192, -50), # Vector2(0, -15),
+	lCharacters.A: Vector2(192, -90),
+	lCharacters.B: Vector2(192, -90),
+	lCharacters.Presenter: Vector2(-192, -90), # Vector2(0, -15),
 	}
 
 var DEBUG = true
 
-var utilities = preload("res://games/quiz/scenes/utilities.stage.gd")
-var common_events_1 = preload("res://games/quiz/scenes/common.stage.gd")
+var utilities = preload("res://games/knews/scenes/utilities.knews.gd")
+var common_events_1 = preload("res://games/knews/scenes/common.knews.gd")
 
 
 func add_contestant_portraits():
-	
 	common_events_1.add_contestant(lCharacters.Presenter, lPortraits[lCharacters.Presenter], lPositions[lCharacters.Presenter])
-	
 	Queue.queue.append(Event.message_box().initialise(["Ladies and gentlemen.{newline}{newline}{newline}               {image,res://assets/images/default.png}", "Welcome to the Knews.", "Let's welcome our guest{newline}to the stage."]))
 	common_events_1.add_contestant(lCharacters.A, lPortraits[lCharacters.A], lPositions[lCharacters.A])
 	
@@ -107,13 +108,13 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 		# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
 
 	# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
-	utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"])
+	utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"], lID[lTags.lMonitor])
 
 
 func introduce_the_quiz_show():
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
 	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], STAGE))
-	utilities.setup_monitor()
+	utilities.setup_monitor(lID[lTags.lMonitor])
 	
 	Queue.queue.append(Event.fade_in().initialise())
 	
@@ -131,6 +132,7 @@ func introduce_the_quiz_show():
 	
 	Queue.queue.append(Event.wait().initialise(1))
 	Queue.queue.append(Event.message_box().initialise(["Is everyone ready ?"]))
+	common_events_1.player_message("This game is great, Crash.[SFX]")
 	Queue.queue.append(Event.message_box().initialise(["Bring the board in !"]))
 	
 	# TODO: Fix lambda interrupting quit_game, waiting for input ?
