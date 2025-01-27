@@ -8,12 +8,12 @@ var message_box_template = preload("res://source/messages/message_box.tscn")
 var messages: Array
 var detached: bool
 
-var messages_name: String
+var messages_uuid: String
 
-func initialise(messages_: Array, detached_: bool = false, messages_name_: String = "", message_box_settings_: MessageBoxSettings = MessageBoxSettings.new()) -> Message:
+func initialise(messages_: Array, detached_: bool = false, messages_uuid_: String = "", message_box_settings_: MessageBoxSettings = MessageBoxSettings.new()) -> Message:
 	messages = messages_
-	detached = detached_
-	messages_name = messages_name_
+	# detached = message_box_settings_.is_detached
+	messages_uuid = messages_uuid_
 	message_box_settings = message_box_settings_
 	return self
 
@@ -25,12 +25,14 @@ func run():
 	# message_box.initialise(SceneSettings.message_box_position, null, false)
 	# TODO: Move SceneSettings.message_box_position to MessageBoxSettings
 	message_box.initialise(SceneSettings.message_box_position, null, false, message_box_settings)
-	message_box.detached = detached
+	# message_box.detached = detached
 	
-	if detached:
-		assert(messages_name != "")
-		Variables.messages[messages_name] = message_box
-		get_parent().add_child(Variables.messages[messages_name])
+	# if detached:
+	# TODO: Move this to MessageBox
+	if message_box_settings.is_detached:
+		assert(messages_uuid != "")
+		Variables.messages[messages_uuid] = message_box
+		get_parent().add_child(Variables.messages[messages_uuid])
 		_clean_up()
 	else:
 		add_child(message_box)

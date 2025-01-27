@@ -49,7 +49,8 @@ static func setup_monitor(uuid):
 	
 	var _O_O = MessageBoxSettings.new()
 	_O_O.is_autoplay = false
-	_O_O.position = Vector2(0, 50)
+	_O_O.is_detached = true
+	_O_O.position = Vector2(0, 150)
 	Queue.queue.append(Event.message_box().initialise(["   "], true, uuid, _O_O))
 	
 	Queue.queue.append(Event.add_node().initialise("res://games/quiz/portraits/pallet.monitor.animator.tscn", [], "monitor_animator"))

@@ -2,20 +2,23 @@ extends EventQueue
 
 # Common tags/names
 
-
-# TODO: Fix detached message boxes event
-# TODO: Add 3D cortex player who streams the game
+# TODO: Include uuid in message_box_settings and refactor all events
+# TODO: Finish Presenter and Guest sprites
+# TODO: Add 3D cortex player to viewport who streams the game
 # TODO: This is a self playing game that produces a 247 stream to watch
 # TODO: Ultimately this will evolve into a Self Playing Horror stream
 # TODO: Game is a simple freddies
 # TODO: Game can have interventions (down the link, e.g., player switches the freddie screen)
 
-# TODO: Finish Presenter and Guest sprites
+
+# TODO: Add stage in a viewport ?
 # TODO: Add loop
 # TODO: Add O / X in monitor images
 # TODO: Add API auto loop
 # TODO: Stream with API
 
+
+# TODO: Fix detached message boxes event
 # TODO: Finish _parse_popped_message()
 # TODO: Add to CharacterBlueprint: WAIT characters + IMAGE characters + SOUND characters
 # TODO: Replace remaining with local tags
@@ -41,9 +44,11 @@ var Presenter = "Presenter"
 
 var lPortraits = {
 	# lCharacters.A: "res://games/quiz/portraits/pallet.contestant.jones.tscn" , 
-	lCharacters.A: "res://games/quiz/portraits/pallet.contestant.jones.tscn",
-	lCharacters.B: "res://games/quiz/portraits/pallet.contestant.jones.tscn",
-	lCharacters.Presenter: "res://games/quiz/portraits/pallet.contestant.presenter.tscn"
+	lCharacters.A: "res://games/knews/portraits/pallet.contestant.A.animated.tscn",
+	lCharacters.B: "res://games/knews/portraits/pallet.contestant.A.animated.tscn",
+	# lCharacters.Presenter: "res://games/quiz/portraits/pallet.contestant.presenter.tscn"
+	lCharacters.Presenter: "res://games/knews/portraits/pallet.presenter.animated.tscn"
+	
 	}
 	
 var lID = {lTags.lMonitor: OS.get_unique_id()}
@@ -51,7 +56,7 @@ var lID = {lTags.lMonitor: OS.get_unique_id()}
 var lPositions = {
 	lCharacters.A: Vector2(192, -90),
 	lCharacters.B: Vector2(192, -90),
-	lCharacters.Presenter: Vector2(-192, -90), # Vector2(0, -15),
+	lCharacters.Presenter: Vector2(-182, -100), # Vector2(0, -15),
 	}
 
 var DEBUG = true
@@ -132,7 +137,7 @@ func introduce_the_quiz_show():
 	
 	Queue.queue.append(Event.wait().initialise(1))
 	Queue.queue.append(Event.message_box().initialise(["Is everyone ready ?"]))
-	common_events_1.player_message("This game is great, Crash.[SFX]")
+	common_events_1.player_message("This game is great, Crash.[SFX]") # , OS.get_unique_id(), 2)
 	Queue.queue.append(Event.message_box().initialise(["Bring the board in !"]))
 	
 	# TODO: Fix lambda interrupting quit_game, waiting for input ?

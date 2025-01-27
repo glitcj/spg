@@ -72,7 +72,6 @@ func _process(delta):
 
 func _update():
 	
-	# SceneSettings override initialise settings
 	if SceneSettings.message_box_is_visible:
 		visible = not all_messages_shown()
 	else:
@@ -172,12 +171,10 @@ func _process_autoplay_timer():
 		autoplay_ready_to_action = true
 		var wait_timer = get_tree().create_timer(settings.autoplay_wait_seconds)
 		await wait_timer.timeout
-		# wait_timer.queue_free()
 		if autoplay_ready_to_action:
 			show_next_message()
 
 # Change this to uuided portrait, uuid is added to Variables	
-# func _add_image_to_message_box(image_path_: String):
 func _add_image_to_message_box(c: CharacterBlueprint):
 	# Check if the image path is valid
 	if ResourceLoader.exists(c.image_to_show):
@@ -195,19 +192,6 @@ func _add_image_to_message_box(c: CharacterBlueprint):
 	else:
 		print("Failed to find MessageBox image asset.")
 		return Label.new()
-
-func _parse_message_commands(): # message_: String):
-	var processed_message = []
-	for word in message_to_display.split(" "):
-		if "#image" in word:
-			var start_index = word.find("[")
-			var end_index = word.find("]")
-			if start_index != -1 and end_index != -1:
-				var image_path = word.substr(start_index + 1, end_index - start_index - 1)
-				_add_image_to_message_box(image_path)
-		else:
-			processed_message.append(word)
-	message_to_display = " ".join(processed_message)
 
 # TODO: Change the following to update character queue
 func _parse_popped_message(): # message_: String):
@@ -241,6 +225,9 @@ func _parse_popped_message(): # message_: String):
 			elif embedded_command_parameters[0] == "newline":
 				line_counter = line_counter + 1
 				character_position = character_delta_y * line_counter
+			elif embedded_command_parameters[0] == "wait":
+				# TODO
+				pass
 				
 			i = i + end_index + 1
 		else:

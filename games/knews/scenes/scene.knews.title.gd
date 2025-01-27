@@ -43,8 +43,6 @@ func initialise_global_queue():
 	Queue.queue.append(Event.fade_out().initialise())
 	Queue.queue.append(Event.remove_portrait().initialise(Tags.TitlePortrait))
 	
-	
-	# Queue.queue.append(Event.message_box().initialise(["Options selected.", "Starting Quiz"]))
 	Queue.queue.append(Event.lambda().initialise(process_title_selectable_index, [Variables.CommonVariables.LastSelectableIndex]))
 
 func _comments_and_todos():
