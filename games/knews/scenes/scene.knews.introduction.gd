@@ -1,6 +1,14 @@
 extends EventQueue
 
 # Common tags/names
+# TODO: Replace Variables "active_scenes" with .global and lTags
+# TODO: Add Variables.local for local scenes, and .global for global scene settings and mechanics etc
+# TODO: Fix setup_monitor IDs passing, pass all lID and lNodes
+
+# TODO: Add game local "global" Variables UUIDs script, this should 
+# be loaded as a huge dictionary with all the variables used by
+# the game, regardless of how long it is.
+
 
 # TODO: Include uuid in message_box_settings and refactor all events
 # TODO: Finish Presenter and Guest sprites
@@ -29,7 +37,7 @@ extends EventQueue
 # TODO: Add sound effects
 # TODO: Replace Variables strings/keys with ints, pulled from the enum Scene.Tags
 # TODO: Add CommonGameEvents class and load all utilities into it
-enum lTags {presenter_introduction, presenter, stage, scene,  Stage, Presenter, Contestant_A, Contestant_B, Contestant_C, lMonitor}
+enum lTags {presenter_introduction, presenter, scene,  Stage, Presenter, Contestant_A, Contestant_B, Contestant_C, lMonitor, lMonitorAnimator, AutoPlayer}
 
 enum lCharacters {A, B, Presenter, lMonitor, lStage}
 
@@ -51,7 +59,7 @@ var lPortraits = {
 	
 	}
 	
-var lID = {lTags.lMonitor: OS.get_unique_id()}
+var lID = {lTags.Stage: Variables.generate_uuid(), lTags.AutoPlayer: Variables.generate_uuid(), lTags.lMonitor: "monitor_%s" % Variables.generate_uuid(), lTags.lMonitorAnimator: Variables.generate_uuid()} #OS.get_unique_id()}
 
 var lPositions = {
 	lCharacters.A: Vector2(192, -90),
@@ -93,33 +101,38 @@ func autoplay_quiz():
 """
 
 func present_next_question(question: String, answers: Array, autoplay: bool = true):
-	
-
 	Queue.queue.append(Event.wait().initialise(0.5))
-	Queue.queue.append(Event.lambda().initialise(utilities.lambda_play_monitor_animation, ["Enter"]))
+	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
+	Queue.queue.append(Event.lambda().initialise(utilities.lambda_play_monitor_animation, [lID, lTags, "Enter"]))
 	Queue.queue.append(Event.wait().initialise(0.5))
+	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.message_box().initialise(["And the next question is:"]))
+	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.wait().initialise(0.5))
-	Queue.queue.append(Event.lambda().initialise(utilities.lambda_update_monitor_messages, [question]))
+	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
+	Queue.queue.append(Event.lambda().initialise(utilities.lambda_update_monitor_messages, [question, lID[lTags.lMonitor]]))
 	Queue.queue.append(Event.wait().initialise(1))
+	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.message_box().initialise(["That's quite a question."]))
+	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.message_box().initialise(["So contestant, what will be{newline}your answer ?"]))
 	Queue.queue.append(Event.wait().initialise(0.25))
 	
 		
 	if autoplay:
 		Queue.queue.append(Event.wait().initialise(1.00))
-		Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/autoplay/autoplay_quiz_answer.tscn", [], "Tags.Autplayer"))
+		Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/autoplay/autoplay_quiz_answer.tscn", [], lID[lTags.AutoPlayer]))
 		# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
 
 	# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
-	utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"], lID[lTags.lMonitor])
+	utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"], lTags, lID)
 
 
 func introduce_the_quiz_show():
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
-	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], STAGE))
-	utilities.setup_monitor(lID[lTags.lMonitor])
+	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], lID[lTags.Stage]))
+	# utilities.setup_monitor(lID[lTags.lMonitor])
+	utilities.setup_monitor(lTags, lID)
 	
 	Queue.queue.append(Event.fade_in().initialise())
 	
@@ -145,7 +158,7 @@ func introduce_the_quiz_show():
 	present_next_question("When did Rome fall ?", ["1920 AD", "20 AD", "1 AD", "200 BC"])
 	
 	Queue.queue.append(Event.wait().initialise(1))
-	Queue.add(Event.lambda().initialise(utilities.lambda_play_monitor_animation, ["Exit"]))
+	Queue.add(Event.lambda().initialise(utilities.lambda_play_monitor_animation, [lID, lTags, "Exit"]))
 	Queue.queue.append(Event.message_box().initialise(["That does it for the first
 	round."]))
 	Queue.queue.append(Event.message_box().initialise(["See you in the next one !"]))

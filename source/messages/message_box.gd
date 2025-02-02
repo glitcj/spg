@@ -58,6 +58,9 @@ func initialise(position_, scale_, borderless_: bool = false, settings_: Message
 	borderless = borderless_
 	settings = settings_
 	detached = settings_.is_detached
+	
+	
+	# name = ""
 
 func _ready():
 	visible = false
@@ -158,7 +161,7 @@ func fill_queue(messages):
 # TODO: Add more message box functs and testers in the RunEverything game
 func display_message_immediately(message_to_display: String):
 	queue = [message_to_display]
-	queue_was_filled = false
+	queue_was_filled = false # Keep this ?
 	show_next_message()
 
 

@@ -47,10 +47,15 @@ static func enum_to_animation(animation_enum: int):
 func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
 	var scale_x = float(desired_width) / $GFX/Sprite2D.texture.get_width()
 	var scale_y = float(desired_height) / $GFX/Sprite2D.texture.get_height()
-	if keep_ratio:
-		pass
+	if not keep_ratio:
+		$GFX.scale = Vector2(scale_x, scale_y)
+	else:
+		$GFX.scale = Vector2(scale_x, scale_x)
 	
 	# Absolute scale is applied to GFX, not Sprite2D to enable relative 
 	# animation in the Godot editor.
-	$GFX.scale = Vector2(scale_x, scale_y)
+	
+
+func change_animation_state(state: int) -> void:
+	pass
 	

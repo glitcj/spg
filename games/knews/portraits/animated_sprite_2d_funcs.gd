@@ -17,6 +17,7 @@ func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: b
 	
 	if keep_ratio:
 		pass
+	
 	# Absolute scale is applied to GFX, not Sprite2D to enable relative 
 	# animation in the Godot editor.
 	# $GFX.scale = Vector2(scale_x, scale_y)

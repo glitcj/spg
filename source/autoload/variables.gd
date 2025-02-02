@@ -5,6 +5,8 @@ extends Node
 
 # TODO: Replace with -> int signal ?
 var last_selected_selectable_index
+enum GlobalVariables {last_selected_selectable_index}
+var GlobalPointers: Dictionary =  {GlobalVariables.last_selected_selectable_index: "aaa"}
 
 var global: Dictionary
 var portraits: Dictionary # Dictionary[Any: Portrait]
@@ -20,10 +22,14 @@ enum KEY {GENERATED_TEXT, GENERATED_VAIN, GENERATED_IMAGE}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reset()
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_update_last_answer_selected_is_correct()
+	
+static func generate_uuid():
+	var rng = RandomNumberGenerator.new()
+	return str(rng.randi()) + str(rng.randi())
 	
 func _update_last_answer_selected_is_correct():
 	global["last_answer_selected_is_correct"] = global["last_correct_answer_index"] == global["last_selected_selectable_index"] 

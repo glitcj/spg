@@ -618,13 +618,13 @@ z_index = 5
 [node name="Sprite2D" type="Sprite2D" parent="GFX"]
 z_as_relative = false
 texture_filter = 1
-position = Vector2(0, 150)
 texture = SubResource("CanvasTexture_8kk7l")
 script = ExtResource("4_6dfn4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GFX/Sprite2D"]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_u06xw")
+frame = 16
 flip_h = true
 script = ExtResource("7_mjw1i")
 

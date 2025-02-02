@@ -8,8 +8,8 @@ func initialise(node_name_) -> RemoveNodeEvent:
 	return self
 
 func run():
-	Variables.global["active_scenes"][node_name].queue_free()
-	Variables.global["active_scenes"].erase(node_name)
+	Variables.global[node_name].queue_free()
+	Variables.global.erase(node_name)
 	_clean_up()
 
 func _event_type():

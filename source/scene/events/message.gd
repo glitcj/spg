@@ -25,14 +25,15 @@ func run():
 	# message_box.initialise(SceneSettings.message_box_position, null, false)
 	# TODO: Move SceneSettings.message_box_position to MessageBoxSettings
 	message_box.initialise(SceneSettings.message_box_position, null, false, message_box_settings)
-	# message_box.detached = detached
+	message_box.name = "%s" % [messages_uuid]
 	
 	# if detached:
 	# TODO: Move this to MessageBox
 	if message_box_settings.is_detached:
-		assert(messages_uuid != "")
-		Variables.messages[messages_uuid] = message_box
-		get_parent().add_child(Variables.messages[messages_uuid])
+		# assert(messages_uuid != "")
+		# Variables.messages[messages_uuid] = message_box
+		Variables.global[messages_uuid] = message_box
+		get_parent().add_child(Variables.global[messages_uuid])
 		_clean_up()
 	else:
 		add_child(message_box)
