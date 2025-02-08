@@ -328,7 +328,7 @@ z_index = 5
 z_as_relative = false
 texture_filter = 1
 position = Vector2(0, 150)
-texture = ExtResource("3_dnebe")
+scale = Vector2(1.5, 1.5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_3pr50")

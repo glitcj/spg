@@ -4,10 +4,7 @@ extends GDScript
 
 # static func lambda_attach_monitor_to_animator(uuid):
 static func lambda_attach_monitor_to_animator(lID, lTags):
-	# var monitor_animator: PortraitPallet = Variables.global["active_scenes"]["monitor_animator"]
-	# var monitor: MessageBox = Variables.messages[lID[lTags.lMonitorAnimator]]
 	var monitor_animator: PortraitPallet = Variables.global[lID[lTags.lMonitorAnimator]]
-	# var monitor: MessageBox = Variables.messages[lID[lTags.lMonitor]]
 	var monitor: MessageBox = Variables.global[lID[lTags.lMonitor]]
 	
 	monitor.get_parent().remove_child(monitor)
@@ -15,13 +12,21 @@ static func lambda_attach_monitor_to_animator(lID, lTags):
 	
 static func lambda_play_monitor_animation(lID, lTags, animation_name: String = "Exclaim"):
 	# TODO: Replace with signal sent to animator node
-	# TODO: Replace with enumed UUIDs
-	# var animation_player = Variables.global[lID[lTags.lMonitorAnimator]].get_node("AnimationPlayerA").play(animation_name)
+	# TODO: Replace with enumed UUIDs	
 	var animation_player: AnimationPlayer = Variables.global[lID[lTags.lMonitorAnimator]].get_node("AnimationPlayerA")
+	# var animation_player: AnimationPlayer = Variables.global[lID[lTags.lMonitorAnimator]].find_child("AnimationPlayerA", true, false)
+	assert(animation_name in animation_player.get_animation_list())
+	
+	# animation_player.assigned_animation = animation_name
+	animation_player.stop()
+	
+	# print("PPP", animation_player.get_path())
+	# await animation_player.get_tree().process_frame
 	animation_player.play(animation_name)
-
+	
+	var x = 0
 	# TODO: This is probably not safe, double check threads/cycles
-	Queue.insert(Event.wait().initialise(5))
+	# Queue.insert(Event.wait().initialise(5))
 
 # TODO: Add background looping audience ambience
 static func load_and_generate_assets(DEBUG, PRESENTER_INTRODUCTION):
@@ -74,7 +79,7 @@ static func setup_monitor(lTags, lID):
 	# TODO
 	Queue.queue.append(Event.lambda().initialise(lambda_attach_monitor_to_animator, [lID, lTags]))
 	
-	Queue.queue.append(Event.lambda().initialise(lambda_play_monitor_animation, [lID, lTags, "RESET"]))
+	# Queue.queue.append(Event.lambda().initialise(lambda_play_monitor_animation, [lID, lTags, "RESET"]))
 	
 	Queue.queue.append(Event.wait().initialise(0.5))
 	Queue.queue.append(Event.settings().initialise({"message_box_is_visible": true}))

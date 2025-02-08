@@ -1,6 +1,11 @@
 extends EventQueue
 
 # Common tags/names
+
+# TODO: Fix scene tree, with Scene node as parent of all non global nodes
+# TODO: Add script to include all variable defs and uuids, read by local scenes and utils
+
+
 # TODO: Replace Variables "active_scenes" with .global and lTags
 # TODO: Add Variables.local for local scenes, and .global for global scene settings and mechanics etc
 # TODO: Fix setup_monitor IDs passing, pass all lID and lNodes
@@ -59,7 +64,11 @@ var lPortraits = {
 	
 	}
 	
-var lID = {lTags.Stage: Variables.generate_uuid(), lTags.AutoPlayer: Variables.generate_uuid(), lTags.lMonitor: "monitor_%s" % Variables.generate_uuid(), lTags.lMonitorAnimator: Variables.generate_uuid()} #OS.get_unique_id()}
+var lID = {
+	lTags.Stage: Variables.generate_uuid(), lTags.AutoPlayer: Variables.generate_uuid(), 
+	lTags.lMonitor: "monitor_%s" % Variables.generate_uuid(), 
+	lTags.lMonitorAnimator: "monitor_animator_%s" % Variables.generate_uuid()
+	}
 
 var lPositions = {
 	lCharacters.A: Vector2(192, -90),
@@ -89,16 +98,7 @@ func contestant_introductions():
 	Queue.queue.append(Event.play_portrait_animation().initialise(lCharacters.A, "Laugh", true))
 	Queue.queue.append(Event.play_portrait_animation().initialise(lCharacters.A, "Idle", false))
 	Queue.queue.append(Event.wait().initialise(2))
-"""
-func autoplay_quiz():
-	print("333")
-	var autoplay_node = _Knews_AutoQuizAnswers.new()
-	add_child(autoplay_node)
-	print("444")
 
-	return autoplay_node
-	# await autoplay_node.autoplay_finished
-"""
 
 func present_next_question(question: String, answers: Array, autoplay: bool = true):
 	Queue.queue.append(Event.wait().initialise(0.5))

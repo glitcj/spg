@@ -24,15 +24,20 @@ func run():
 		node_to_add = scene_template.new()
 	elif scene_template is PackedScene:
 		node_to_add = scene_template.instantiate()
-		node_to_add.name = uuid
+		if "uuid" in node_to_add:
+			node_to_add.uuid = uuid
+		
+		# node_to_add.notification(NOTIFICATION_PATH_CHANGED) 
 		
 	if node_to_add.has_method("initialise"):
 		node_to_add.initialise.callv(initialise_parameters)
 	node_to_add.connect(name_of_signal_to_wait_for, _on_signal_to_wait_for_emitted)
 	
 	# Variables.global["active_scenes"][uuid] = node_to_add
+	get_parent().add_child(node_to_add)
 	Variables.global[uuid] = node_to_add
-	get_parent().add_child(Variables.global[uuid])
+	
+	# get_parent().add_child(Variables.global[uuid])
 	
 	if not name_of_signal_to_wait_for == "":
 		await signal_to_wait_for

@@ -480,7 +480,9 @@ offset_bottom = 537.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="ViewportsControl/SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(128, 128)
+render_target_update_mode = 4
 script = ExtResource("10_mmuu4")
 
 [node name="Camera2D" type="Camera2D" parent="ViewportsControl/SubViewportContainer/SubViewport"]

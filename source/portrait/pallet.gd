@@ -5,6 +5,8 @@ enum Emotion {Default, Happy, Sad}
 enum Animations {Default, Happy, Sad, SlideIn, SlideOut, Enter, Exit}
 enum AnimationPlayerPointer {A, B}
 
+var uuid: String
+
 var available_animation_players
 
 var default_face: String = "res://assets/images/default.png"
@@ -25,6 +27,7 @@ func _init():
 
 func _ready():
 	available_animation_players = {AnimationPlayerPointer.A: $AnimationPlayerA, AnimationPlayerPointer.B: $AnimationPlayerB}
+	# $AnimationPlayerA.stop()
 
 # TODO: Add asserts to check AnimationPlayer has all needed animations
 func _check_animations():

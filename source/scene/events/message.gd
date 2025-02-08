@@ -25,7 +25,7 @@ func run():
 	# message_box.initialise(SceneSettings.message_box_position, null, false)
 	# TODO: Move SceneSettings.message_box_position to MessageBoxSettings
 	message_box.initialise(SceneSettings.message_box_position, null, false, message_box_settings)
-	message_box.name = "%s" % [messages_uuid]
+	message_box.uuid = "%s" % [messages_uuid]
 	
 	# if detached:
 	# TODO: Move this to MessageBox

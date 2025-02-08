@@ -5,10 +5,14 @@ class_name MessageBox
 signal all_messages_shown_signal
 signal ready_to_allow_message_clear_signal
 
+
+
 @onready var message_to_display := ""
 @onready var message_displayed := ""
 @onready var message = get_node("GFX/MessageNode/Message")
 @onready var character_timer = get_node("CharacterTimer")
+
+var uuid: String
 
 # TODO: Characters are drawn as a text object for each
 # character, positions determines by message parameters
