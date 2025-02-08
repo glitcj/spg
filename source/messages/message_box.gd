@@ -5,8 +5,6 @@ class_name MessageBox
 signal all_messages_shown_signal
 signal ready_to_allow_message_clear_signal
 
-
-
 @onready var message_to_display := ""
 @onready var message_displayed := ""
 @onready var message = get_node("GFX/MessageNode/Message")

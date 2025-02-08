@@ -12,6 +12,10 @@ var scene_selectable_position = Constants.ScreenPositions.TopLeft
 var _UUIDs = {Tags.GameSelectSelectable: Variables.generate_uuid()}
 
 func initialise_global_queue():
+	
+	# Set game running speed
+	Engine.time_scale = 1.0
+	
 	Queue.queue.append(Event.add_node().initialise(Templates.Selectable, [event_queue_names.values(), scene_selectable_position], _UUIDs[Tags.GameSelectSelectable], "option_selection_completed"))
 	Queue.queue.append(Event.remove_node().initialise(_UUIDs[Tags.GameSelectSelectable]))
 	

@@ -55,8 +55,8 @@ func clear():
 	global["buffered_event_queues"] = {}
 	global["active_scenes"] = {}
 	global[KEY.GENERATED_TEXT] = {}
-	portraits = {}
-	messages = {}
+	# portraits = {}
+	# messages = {}
 
 class CommonVariables:
 	# Static variables are MUTABLE and can be passed dynamically during RUNTIME

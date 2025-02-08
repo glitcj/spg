@@ -1,8 +1,6 @@
 extends GDScript
 
 # TODO: Change this to a class _Knews_Utilities/_Knews_Common_Events, loading lID, lTags and any other recurring vars
-
-# static func lambda_attach_monitor_to_animator(uuid):
 static func lambda_attach_monitor_to_animator(lID, lTags):
 	var monitor_animator: PortraitPallet = Variables.global[lID[lTags.lMonitorAnimator]]
 	var monitor: MessageBox = Variables.global[lID[lTags.lMonitor]]
@@ -11,22 +9,14 @@ static func lambda_attach_monitor_to_animator(lID, lTags):
 	monitor_animator.get_node("GFX/Sprite2D").add_child(monitor)
 	
 static func lambda_play_monitor_animation(lID, lTags, animation_name: String = "Exclaim"):
-	# TODO: Replace with signal sent to animator node
-	# TODO: Replace with enumed UUIDs	
 	var animation_player: AnimationPlayer = Variables.global[lID[lTags.lMonitorAnimator]].get_node("AnimationPlayerA")
-	# var animation_player: AnimationPlayer = Variables.global[lID[lTags.lMonitorAnimator]].find_child("AnimationPlayerA", true, false)
 	assert(animation_name in animation_player.get_animation_list())
 	
-	# animation_player.assigned_animation = animation_name
-	animation_player.stop()
-	
-	# print("PPP", animation_player.get_path())
-	# await animation_player.get_tree().process_frame
+	# When an animation reaches it's last frame, it stays there
+	# If the animation is stopped after it settles, the animation is reset ?
+	if false:
+		animation_player.stop()
 	animation_player.play(animation_name)
-	
-	var x = 0
-	# TODO: This is probably not safe, double check threads/cycles
-	# Queue.insert(Event.wait().initialise(5))
 
 # TODO: Add background looping audience ambience
 static func load_and_generate_assets(DEBUG, PRESENTER_INTRODUCTION):
@@ -34,11 +24,9 @@ static func load_and_generate_assets(DEBUG, PRESENTER_INTRODUCTION):
 	Queue.queue.append(Event.wait().initialise(0.5))
 	Queue.queue.append(Event.make_portrait().initialise("loading", "res://games/tv/portraits/pallet.loading.tscn"))
 	
-	
 	# TODO: Replace animation enums with strings
 	Queue.queue.append(Event.play_portrait_animation().initialise("loading", "Default", false))
 	Queue.queue.append(Event.fade_in().initialise(true))
-	
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,-150]}))
 	
 	Queue.queue.append(Event.message_box().initialise(["...Loading Vain..."]))
@@ -73,14 +61,8 @@ static func setup_monitor(lTags, lID):
 	# Queue.queue.append(Event.add_node().initialise("res://games/quiz/portraits/pallet.monitor.animator.tscn", [], "monitor_animator_%s" % lID))
 	Queue.queue.append(Event.add_node().initialise("res://games/quiz/portraits/pallet.monitor.animator.tscn", [], lID[lTags.lMonitorAnimator]))
 	Queue.queue.append(Event.wait().initialise(1))
-	if false:
-		Queue.queue.append(Event.message_box().initialise(["Attaching Monitor"]))
-	
-	# TODO
 	Queue.queue.append(Event.lambda().initialise(lambda_attach_monitor_to_animator, [lID, lTags]))
-	
-	# Queue.queue.append(Event.lambda().initialise(lambda_play_monitor_animation, [lID, lTags, "RESET"]))
-	
+		
 	Queue.queue.append(Event.wait().initialise(0.5))
 	Queue.queue.append(Event.settings().initialise({"message_box_is_visible": true}))
 	
@@ -99,12 +81,6 @@ static func display_question_and_options(Presenter, question_: String, options_:
 	Queue.queue.append(Event.conditional().initialise([Variables.Retriever.new("last_selected_selectable_index"), 1], ConditionalEventQueue.Lambdas.equals, correct_answer_events))
 	Queue.queue.append(Event.conditional().initialise([Variables.Retriever.new("last_selected_selectable_index"), 1], ConditionalEventQueue.Lambdas.not_equals, wrong_answer_events))
 
-	var erase_monitor_message = func(a):
-		
-		
-		Variables.global[lID[lTags.lMonitor]].queue_free()
-		Variables.global.erase(lID[lTags.lMonitor])
-		
-		# Variables.messages[uuid].queue_free()
-		# Variables.messages.erase(uuid)
-	Queue.queue.append(Event.lambda().initialise(erase_monitor_message, []))
+static func erase_monitor_message(lTags, lID):
+	Variables.global[lID[lTags.lMonitor]].queue_free()
+	Variables.global.erase(lID[lTags.lMonitor])

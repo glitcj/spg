@@ -2,8 +2,10 @@ extends EventQueue
 
 # Common tags/names
 
-# TODO: Fix scene tree, with Scene node as parent of all non global nodes
 # TODO: Add script to include all variable defs and uuids, read by local scenes and utils
+# TODO: Add 10 formatted questions / answers
+# TODO: Fix scene tree, with Scene node as parent of all non global nodes
+# TODO: Add neo cortex sound effects
 
 
 # TODO: Replace Variables "active_scenes" with .global and lTags
@@ -46,6 +48,8 @@ enum lTags {presenter_introduction, presenter, scene,  Stage, Presenter, Contest
 
 enum lCharacters {A, B, Presenter, lMonitor, lStage}
 
+
+
 # var SCENE = "SCENE"
 var PRESENTER_INTRODUCTION = "PRESENTER_INTRODUCTION"
 var PRESENTER = "PRESENTER"
@@ -77,6 +81,7 @@ var lPositions = {
 	}
 
 var DEBUG = true
+var ENABLE_LOOP = true
 
 var utilities = preload("res://games/knews/scenes/utilities.knews.gd")
 var common_events_1 = preload("res://games/knews/scenes/common.knews.gd")
@@ -126,12 +131,21 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 
 	# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
 	utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"], lTags, lID)
+	
+	
+	
+	Queue.queue.append(Event.wait().initialise(1))
+	Queue.add(Event.lambda().initialise(utilities.lambda_play_monitor_animation, [lID, lTags, "Exit"]))
+	Queue.queue.append(Event.wait().initialise(1))
+	Queue.queue.append(Event.lambda().initialise(utilities.lambda_update_monitor_messages, [" ", lID[lTags.lMonitor]]))
 
-
+	Queue.queue.append(Event.message_box().initialise(["That does it for the this{newline}round."]))
+	Queue.queue.append(Event.message_box().initialise(["Let's go to the next one !"]))
+	Queue.add(Event.wait().initialise(1))
+	
 func introduce_the_quiz_show():
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
 	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], lID[lTags.Stage]))
-	# utilities.setup_monitor(lID[lTags.lMonitor])
 	utilities.setup_monitor(lTags, lID)
 	
 	Queue.queue.append(Event.fade_in().initialise())
@@ -140,33 +154,34 @@ func introduce_the_quiz_show():
 		Queue.queue.append(Event.play_event_queue().initialise(lTags.presenter_introduction))
 	else:
 		pass
-		# Queue.queue.append(Event.message_box().initialise(["Skipping VAIN.."]))
 
 	add_contestant_portraits()
 	Queue.queue.append(Event.wait().initialise(1))
 	
 	if DEBUG:
-		contestant_introductions()
+		pass
+	contestant_introductions()
+	Queue.queue.append(Event.label().initialise("Start Question"))
 	
 	Queue.queue.append(Event.wait().initialise(1))
+	
+	
 	Queue.queue.append(Event.message_box().initialise(["Is everyone ready ?"]))
-	common_events_1.player_message("This game is great, Crash.[SFX]") # , OS.get_unique_id(), 2)
+	Queue.queue.append(Event.wait().initialise(1))
+	common_events_1.player_message("This game is great, Crash.{SFX,res://assets/games/knews/neocortex/yes.wav}") # , OS.get_unique_id(), 2)
 	Queue.queue.append(Event.message_box().initialise(["Bring the board in !"]))
 	
 	# TODO: Fix lambda interrupting quit_game, waiting for input ?
 	# TODO: Update RunEverythingReference game
 	present_next_question("When did Rome fall ?", ["1920 AD", "20 AD", "1 AD", "200 BC"])
+
 	
-	Queue.queue.append(Event.wait().initialise(1))
-	Queue.add(Event.lambda().initialise(utilities.lambda_play_monitor_animation, [lID, lTags, "Exit"]))
-	Queue.queue.append(Event.message_box().initialise(["That does it for the first
-	round."]))
-	Queue.queue.append(Event.message_box().initialise(["See you in the next one !"]))
-	Queue.add(Event.wait().initialise(1))
-	Queue.add(Event.play_portrait_animation().initialise(lCharacters.Presenter, "Exit", false))
-	
-	Queue.queue.append(Event.wait().initialise(1))
-	Queue.queue.append(Event.quit_game().initialise())
+	if ENABLE_LOOP:
+		Queue.queue.append(Event.reset_variables().initialise())
+		Queue.queue.append(Event.jump_to_label().initialise("Start Question"))
+	else:
+		Queue.queue.append(Event.lambda().initialise(utilities.erase_monitor_message, [lID, lTags]))
+		Queue.queue.append(Event.quit_game().initialise())
 
 
 func initialise_global_queue():
