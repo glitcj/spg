@@ -9,6 +9,8 @@ var scene_size = Vector2(288 * 2, 256 * 2)
 var enable_message_box_character_se = false
 # var current_active_scene
 
+
+var currently_occupying_signal: String
 # TODO: Move the following to queue.gd
 var cell_width := 8
 
@@ -51,6 +53,7 @@ func _process(delta):
 
 func occupy_global_queue(signal_to_wait_for: Signal):
 	global_queue_is_busy = true
+	currently_occupying_signal = signal_to_wait_for.get_name()
 	await signal_to_wait_for
 	global_queue_is_busy = false
 	queue_is_available_again_short.emit()

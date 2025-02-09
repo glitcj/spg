@@ -21,7 +21,8 @@ func run():
 			unpacked_variables.append(v.get_variable())
 		else:
 			unpacked_variables.append(v)
-	callable.callv(unpacked_variables)
+	# callable.callv(unpacked_variables)
+	await callable.callv(unpacked_variables)
 	
 	"""
 	var call_return: Node = callable.callv(unpacked_variables)

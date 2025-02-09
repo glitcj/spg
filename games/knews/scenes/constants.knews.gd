@@ -1,13 +1,10 @@
 extends GDScript
-# TODO
+class_name _Knews_Common_Variables
 
 
 enum lTags {presenter_introduction, presenter, scene,  Stage, Presenter, Contestant_A, Contestant_B, Contestant_C, lMonitor, lMonitorAnimator, AutoPlayer}
+
 enum lCharacters {A, B, Presenter, lMonitor, lStage}
-
-var ENABLE_LOOP = true
-
-# var SCENE = "SCENE"
 var PRESENTER_INTRODUCTION = "PRESENTER_INTRODUCTION"
 var PRESENTER = "PRESENTER"
 var STAGE = "STAGE"
@@ -30,12 +27,10 @@ var lID = {
 	}
 
 var lPositions = {
-	lCharacters.A: Vector2(192, -90),
-	lCharacters.B: Vector2(192, -90),
-	lCharacters.Presenter: Vector2(-182, -100), # Vector2(0, -15),
+	lCharacters.A: Vector2(182, -130),
+	lCharacters.B: Vector2(192, -130),
+	lCharacters.Presenter: Vector2(-182, -130),
 	}
 
 var DEBUG = true
-
-var utilities = preload("res://games/knews/scenes/utilities.knews.gd")
-var common_events_1 = preload("res://games/knews/scenes/common.knews.gd")
+var ENABLE_LOOP = true

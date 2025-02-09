@@ -199,7 +199,7 @@ func _add_image_to_message_box(c: CharacterBlueprint):
 		return Label.new()
 
 # TODO: Change the following to update character queue
-func _parse_popped_message(): # message_: String):
+func _parse_popped_message():
 	var processed_message = []
 	var character_to_add: CharacterBlueprint
 	var character_position = Vector2(0, 0)
