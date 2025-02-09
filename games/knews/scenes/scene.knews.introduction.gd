@@ -60,10 +60,8 @@ var Contestant_B = "Contestant_B"
 var Presenter = "Presenter"
 
 var lPortraits = {
-	# lCharacters.A: "res://games/quiz/portraits/pallet.contestant.jones.tscn" , 
 	lCharacters.A: "res://games/knews/portraits/pallet.contestant.A.animated.tscn",
 	lCharacters.B: "res://games/knews/portraits/pallet.contestant.A.animated.tscn",
-	# lCharacters.Presenter: "res://games/quiz/portraits/pallet.contestant.presenter.tscn"
 	lCharacters.Presenter: "res://games/knews/portraits/pallet.presenter.animated.tscn"
 	
 	}
@@ -75,16 +73,21 @@ var lID = {
 	}
 
 var lPositions = {
-	lCharacters.A: Vector2(192, -90),
-	lCharacters.B: Vector2(192, -90),
-	lCharacters.Presenter: Vector2(-182, -100), # Vector2(0, -15),
+	lCharacters.A: Vector2(182, -120),
+	lCharacters.B: Vector2(192, -120),
+	lCharacters.Presenter: Vector2(-182, -120), # Vector2(0, -15),
 	}
 
 var DEBUG = true
 var ENABLE_LOOP = true
 
-var utilities = preload("res://games/knews/scenes/utilities.knews.gd")
+# var utilities = preload("res://games/knews/scenes/utilities.knews.gd")
 var common_events_1 = preload("res://games/knews/scenes/common.knews.gd")
+
+
+
+# var utilities_as_a_class: _Knews_Utilities_2 = _Knews_Utilities_2.new(lID, lTags)
+var utilities: _Knews_Utilities_2 = _Knews_Utilities_2.new(lID, lTags)
 
 
 func add_contestant_portraits():
@@ -108,14 +111,16 @@ func contestant_introductions():
 func present_next_question(question: String, answers: Array, autoplay: bool = true):
 	Queue.queue.append(Event.wait().initialise(0.5))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
-	Queue.queue.append(Event.lambda().initialise(utilities.lambda_play_monitor_animation, [lID, lTags, "Enter"]))
+	# Queue.queue.append(Event.lambda().initialise(utilities.lambda_play_monitor_animation, [lID, lTags, "Enter"]))
+	Queue.queue.append(Event.lambda().initialise(utilities.lambda_play_monitor_animation, ["Enter"]))
 	Queue.queue.append(Event.wait().initialise(0.5))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.message_box().initialise(["And the next question is:"]))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.wait().initialise(0.5))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
-	Queue.queue.append(Event.lambda().initialise(utilities.lambda_update_monitor_messages, [question, lID[lTags.lMonitor]]))
+	# Queue.queue.append(Event.lambda().initialise(utilities.lambda_update_monitor_messages, [question, lID[lTags.lMonitor]]))
+	Queue.queue.append(Event.lambda().initialise(utilities.lambda_update_monitor_messages, [question]))
 	Queue.queue.append(Event.wait().initialise(1))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.message_box().initialise(["That's quite a question."]))
@@ -130,7 +135,8 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 		# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
 
 	# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
-	utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"], lTags, lID)
+	# utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"], lTags, lID)
+	utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"])
 	
 	
 	
@@ -146,7 +152,8 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 func introduce_the_quiz_show():
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
 	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], lID[lTags.Stage]))
-	utilities.setup_monitor(lTags, lID)
+	# utilities.setup_monitor(lTags, lID)
+	utilities.setup_monitor()
 	
 	Queue.queue.append(Event.fade_in().initialise())
 	

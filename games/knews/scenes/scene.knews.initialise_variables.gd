@@ -1,6 +1,7 @@
 extends GDScript
 # TODO
 
+
 enum lTags {presenter_introduction, presenter, scene,  Stage, Presenter, Contestant_A, Contestant_B, Contestant_C, lMonitor, lMonitorAnimator, AutoPlayer}
 enum lCharacters {A, B, Presenter, lMonitor, lStage}
 
