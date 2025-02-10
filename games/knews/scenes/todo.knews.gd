@@ -1,6 +1,8 @@
 
 # Common tags/names
 
+# TODO: Finish portrait parenting
+
 # TODO: Add script to include all variable defs and uuids, read by local scenes and utils
 # TODO: Add 10 formatted questions / answers
 # TODO: Fix scene tree, with Scene node as parent of all non global nodes

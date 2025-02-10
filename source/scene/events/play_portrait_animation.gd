@@ -8,7 +8,7 @@ var animation_player_pointer # PortraitPallet.AnimationPlayerPointer
 
 func initialise(portrait_name_, animation_: String, wait_for_animation_: bool = false, animation_player_pointer_: int = 0) -> PortraitAnimationEvent:
 	animation = animation_
-	portrait_name = portrait_name_
+	portrait_name = str(portrait_name_)
 	wait_for_animation = wait_for_animation_
 	animation_player_pointer = animation_player_pointer_
 	return self

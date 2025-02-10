@@ -30,7 +30,15 @@ func lambda_play_monitor_animation(animation_name: String = "Exclaim"):
 func load_and_generate_assets(DEBUG, PRESENTER_INTRODUCTION):
 	Queue.queue.append(Event.add_node().initialise("res://games/tv/loading/loading.tscn", [], "loading_screen"))
 	Queue.queue.append(Event.wait().initialise(0.5))
-	Queue.queue.append(Event.make_portrait().initialise("loading", "res://games/tv/portraits/pallet.loading.tscn"))
+	
+	
+	var O_O_: PortraitSettings = PortraitSettings.new()
+	O_O_.uuid = "loading"
+	# O_O_.position = contestant_position
+	O_O_.pallet_path = "res://games/tv/portraits/pallet.loading.tscn"
+	
+	# Queue.queue.append(Event.make_portrait().initialise("loading", "res://games/tv/portraits/pallet.loading.tscn"))
+	Queue.queue.append(Event.make_portrait().initialise(O_O_))
 	
 	Queue.queue.append(Event.play_portrait_animation().initialise("loading", "Default", false))
 	Queue.queue.append(Event.fade_in().initialise(true))
