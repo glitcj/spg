@@ -27,9 +27,9 @@ var lID = {
 	}
 
 var lPositions = {
-	lCharacters.A: Vector2(182, -130),
-	lCharacters.B: Vector2(192, -130),
-	lCharacters.Presenter: Vector2(-182, -130),
+	lCharacters.A: Vector2(182, -125),
+	lCharacters.B: Vector2(192, -125),
+	lCharacters.Presenter: Vector2(-182, -125),
 	}
 
 var DEBUG = true

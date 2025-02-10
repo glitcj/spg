@@ -27,10 +27,12 @@ func contestant_introductions():
 
 func present_next_question(question: String, answers: Array, autoplay: bool = true):
 	Queue.queue.append(Event.wait().initialise(0.5))
+	Queue.queue.append(Event.message_box().initialise(["And the next question is.."]))
+	Queue.queue.append(Event.wait().initialise(0.5))
 	Queue.queue.append(Event.lambda().initialise(utilities.lambda_play_monitor_animation, ["Enter"]))
 	Queue.queue.append(Event.wait().initialise(0.5))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
-	Queue.queue.append(Event.message_box().initialise(["And the next question is:"]))
+	
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.wait().initialise(0.5))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
@@ -62,6 +64,7 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 
 	Queue.queue.append(Event.message_box().initialise(["That does it for the this{newline}round."]))
 	Queue.queue.append(Event.message_box().initialise(["Let's go to the next one !"]))
+	Queue.queue.append(Event.play_portrait_animation().initialise(_constants.lCharacters.Presenter, "Idle"))
 	Queue.add(Event.wait().initialise(1))
 	
 func introduce_the_quiz_show():
@@ -97,7 +100,6 @@ func introduce_the_quiz_show():
 	# TODO: Update RunEverythingReference game
 	present_next_question("When did Rome fall ?", ["1920 AD", "20 AD", "1 AD", "200 BC"])
 
-	
 	if _constants.ENABLE_LOOP:
 		Queue.queue.append(Event.reset_variables().initialise())
 		Queue.queue.append(Event.jump_to_label().initialise("Start Question"))
