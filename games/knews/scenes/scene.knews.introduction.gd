@@ -70,9 +70,7 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 func introduce_the_quiz_show():
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
 	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], _constants.lID[_constants.lTags.Stage]))
-	# utilities.setup_monitor(lTags, lID)
 	utilities.setup_monitor()
-	
 	Queue.queue.append(Event.fade_in().initialise())
 	
 	if not _constants.DEBUG:
@@ -87,12 +85,10 @@ func introduce_the_quiz_show():
 		pass
 	contestant_introductions()
 	Queue.queue.append(Event.label().initialise("Start Question"))
-	
 	Queue.queue.append(Event.wait().initialise(1))
 	
 	
 	Queue.queue.append(Event.message_box().initialise(["Is everyone ready ?"]))
-	# Queue.queue.append(Event.wait().initialise(1))
 	common_events_1.player_message("This game is great, Crash.{SFX,res://assets/games/knews/neocortex/yes.wav}") # , OS.get_unique_id(), 2)
 	Queue.queue.append(Event.message_box().initialise(["Bring the board in !"]))
 	
