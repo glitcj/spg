@@ -9,5 +9,10 @@ var is_borderless: bool = false
 var autoplay_wait_seconds: int = 0.2
 var position: Vector2 = Vector2(0,50)
 
+var parent: Node = null
+
+# To avoid lambdising many queues, include a parent uuid option
+var parent_uuid: String = ""
+
 # TODO
 # var uuid: String = Variables.generate_uuid()

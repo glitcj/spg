@@ -12,7 +12,6 @@ var messages_uuid: String
 
 func initialise(messages_: Array, detached_: bool = false, messages_uuid_: String = "", message_box_settings_: MessageBoxSettings = MessageBoxSettings.new()) -> Message:
 	messages = messages_
-	# detached = message_box_settings_.is_detached
 	messages_uuid = messages_uuid_
 	message_box_settings = message_box_settings_
 	return self
@@ -33,7 +32,10 @@ func run():
 		# assert(messages_uuid != "")
 		# Variables.messages[messages_uuid] = message_box
 		Variables.global[messages_uuid] = message_box
-		get_parent().add_child(Variables.global[messages_uuid])
+		if message_box_settings.parent_uuid != "":
+			Variables.global[message_box_settings.parent_uuid].add_child(Variables.global[messages_uuid])
+		else:
+			get_parent().add_child(Variables.global[messages_uuid])
 		_clean_up()
 	else:
 		add_child(message_box)

@@ -8,5 +8,7 @@ var uuid: String = Variables.generate_uuid()
 
 var parent: Node = null
 
+var animation_timer_synced: bool = false
+
 # TODO
 # var uuid: String = Variables.generate_uuid()

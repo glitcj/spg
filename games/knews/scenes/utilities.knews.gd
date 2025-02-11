@@ -9,6 +9,28 @@ func _init(_lID, _lTags):
 	lID = _lID
 	lTags = _lTags
 
+
+func lambda_add_contestant(contestant_tag, contestant_node, contestant_position):
+	
+	var O_O_: PortraitSettings = PortraitSettings.new()
+	O_O_.uuid = str(contestant_tag)
+	O_O_.position = contestant_position
+	O_O_.pallet_path = contestant_node
+	var _O_O: Node = Variables.global[lID[lTags.Stage]]
+	O_O_.parent = _O_O.get_node("ViewportsControl/SubViewportContainerStage/SubViewport/Stage")
+	
+	# Queue.insert(Event.play_portrait_animation().initialise(contestant_tag, "Idle"))
+	# Queue.insert(Event.play_portrait_animation().initialise(contestant_tag, "Enter", true))
+	# Queue.insert(Event.make_portrait().initialise(O_O_))
+	
+	Queue.insert([
+		Event.make_portrait().initialise(O_O_),
+		Event.play_portrait_animation().initialise(contestant_tag, "Enter", true),
+		Event.play_portrait_animation().initialise(contestant_tag, "Idle")
+		])
+
+	
+	
 # Function to attach monitor to animator
 func lambda_attach_monitor_to_animator():
 	var monitor_animator: PortraitPallet = Variables.global[lID[lTags.lMonitorAnimator]]
@@ -34,10 +56,8 @@ func load_and_generate_assets(DEBUG, PRESENTER_INTRODUCTION):
 	
 	var O_O_: PortraitSettings = PortraitSettings.new()
 	O_O_.uuid = "loading"
-	# O_O_.position = contestant_position
 	O_O_.pallet_path = "res://games/tv/portraits/pallet.loading.tscn"
 	
-	# Queue.queue.append(Event.make_portrait().initialise("loading", "res://games/tv/portraits/pallet.loading.tscn"))
 	Queue.queue.append(Event.make_portrait().initialise(O_O_))
 	
 	Queue.queue.append(Event.play_portrait_animation().initialise("loading", "Default", false))

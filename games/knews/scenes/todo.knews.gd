@@ -1,8 +1,19 @@
 
 # Common tags/names
 
-# TODO: Finish portrait parenting
+# TODO: Add autoloaded _Knews_Constants and update all lambdas
+# TODO: Changes to include all stage_message as common queues
+# TODO: Sync animations with Animation start timer + Node animation states
 
+# TODO: Make MushMash grid with initial SFX
+# TODO: Add MushMash to viewport
+# TODO: Add handlers to switch control activeness \
+# between nodes
+
+
+
+
+# TODO: Finish portrait parenting
 # TODO: Add script to include all variable defs and uuids, read by local scenes and utils
 # TODO: Add 10 formatted questions / answers
 # TODO: Fix scene tree, with Scene node as parent of all non global nodes

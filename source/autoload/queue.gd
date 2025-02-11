@@ -90,6 +90,13 @@ func print_processed_queue():
 func add(event: EventBase):
 	queue.append(event)
 	
-func insert(event: EventBase, index: int = 0):
+func insert(events, index: int = 0):
 	# queue = [event] + queue
-	queue.insert(index, event)
+	if events is EventBase:
+		queue.insert(index, events)
+	elif events is Array:
+		while true:
+			if events == []:
+				break
+			var event = events.pop_back()
+			queue.insert(index, event)

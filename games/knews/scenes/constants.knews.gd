@@ -34,3 +34,6 @@ var lPositions = {
 
 var DEBUG = true
 var ENABLE_LOOP = true
+
+
+var stage_message_box_settings: MessageBoxSettings

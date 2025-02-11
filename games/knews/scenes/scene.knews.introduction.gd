@@ -7,9 +7,9 @@ var utilities: _Knews_Common_Events_1 = _Knews_Common_Events_1.new(_constants.lI
 
 
 func add_contestant_portraits():
-	common_events_1.add_contestant(_constants.lCharacters.Presenter, _constants.lPortraits[_constants.lCharacters.Presenter], _constants.lPositions[_constants.lCharacters.Presenter])
+	Queue.queue.append(Event.lambda().initialise(utilities.lambda_add_contestant, [_constants.lCharacters.Presenter, _constants.lPortraits[_constants.lCharacters.Presenter], _constants.lPositions[_constants.lCharacters.Presenter]]))
 	Queue.queue.append(Event.message_box().initialise(["Ladies and gentlemen.{newline}{newline}{newline}               {image,res://assets/images/default.png}", "Welcome to the Knews.", "Let's welcome our guest{newline}to the stage."]))
-	common_events_1.add_contestant(_constants.lCharacters.A, _constants.lPortraits[_constants.lCharacters.A], _constants.lPositions[_constants.lCharacters.A])
+	Queue.queue.append(Event.lambda().initialise(utilities.lambda_add_contestant, [_constants.lCharacters.A, _constants.lPortraits[_constants.lCharacters.A], _constants.lPositions[_constants.lCharacters.A]]))
 	
 func contestant_introductions():
 	# Contestant A
@@ -31,9 +31,6 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 	Queue.queue.append(Event.wait().initialise(0.5))
 	Queue.queue.append(Event.lambda().initialise(utilities.lambda_play_monitor_animation, ["Enter"]))
 	Queue.queue.append(Event.wait().initialise(0.5))
-	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
-	
-	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	Queue.queue.append(Event.wait().initialise(0.5))
 	# Queue.queue.append(Event.lambda().initialise(common_events_1.lambda_debug_break, []))
 	# Queue.queue.append(Event.lambda().initialise(utilities.lambda_update_monitor_messages, [question, lID[lTags.lMonitor]]))
@@ -49,10 +46,7 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 	if autoplay:
 		Queue.queue.append(Event.wait().initialise(1.00))
 		Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/autoplay/autoplay_quiz_answer.tscn", [], _constants.lID[_constants.lTags.AutoPlayer]))
-		# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
 
-	# Queue.queue.append(Event.lambda().initialise(autoplay_quiz, []))
-	# utilities.display_question_and_options(lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"], lTags, lID)
 	utilities.display_question_and_options(_constants.lCharacters.Presenter, "Select the correct answer:", ["1920 AD", "20 AD", "1 AD", "200 BC"])
 	
 	
