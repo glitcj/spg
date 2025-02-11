@@ -1,14 +1,15 @@
 extends GDScript
 class_name _Knews_Common_Events_1  # Utility class to manage lID, lTags, and other recurring variables
 
-var lID: Dictionary
-var lTags: Dictionary
+var lID: Dictionary = _Knews_Constants.lID
+var lTags: Dictionary = _Knews_Constants.lTags
 
+"""
 # Constructor to initialize lID and lTags
 func _init(_lID, _lTags):
 	lID = _lID
 	lTags = _lTags
-
+"""
 
 func lambda_add_contestant(contestant_tag, contestant_node, contestant_position):
 	

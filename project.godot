@@ -25,6 +25,7 @@ Constants="*res://source/autoload/constants.gd"
 Templates="*res://source/autoload/templates.gd"
 Queue="*res://source/autoload/queue.gd"
 SceneSettings="*res://source/autoload/scene_settings.gd"
+_Knews_Constants="*res://games/knews/scenes/constants.knews.gd"
 
 [display]
 

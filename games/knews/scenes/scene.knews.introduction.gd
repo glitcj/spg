@@ -1,14 +1,26 @@
 extends EventQueue
 
 
-var common_events_1 = preload("res://games/knews/scenes/common.knews.gd")
-var _constants: _Knews_Common_Variables = _Knews_Common_Variables.new()
-var utilities: _Knews_Common_Events_1 = _Knews_Common_Events_1.new(_constants.lID, _constants.lTags)
+var common = preload("res://games/knews/scenes/common.knews.gd").new()
 
+# var common = preload("res://games/knews/scenes/common.knews.gd")
+# var _constants: _Knews_Common_Variables = _Knews_Common_Variables.new()
+
+var _constants = _Knews_Constants
+# var lTags: Dictionary = _Knews_Constants.lTags
+
+# var utilities: _Knews_Common_Events_1 = _Knews_Common_Events_1.new(_constants.lID, _constants.lTags)
+var utilities: _Knews_Common_Events_1 = _Knews_Common_Events_1.new()
+
+
+
+var lID: Dictionary = _Knews_Constants.lID
+var lTags: Dictionary = _Knews_Constants.lTags
 
 func add_contestant_portraits():
 	Queue.queue.append(Event.lambda().initialise(utilities.lambda_add_contestant, [_constants.lCharacters.Presenter, _constants.lPortraits[_constants.lCharacters.Presenter], _constants.lPositions[_constants.lCharacters.Presenter]]))
-	Queue.queue.append(Event.message_box().initialise(["Ladies and gentlemen.{newline}{newline}{newline}               {image,res://assets/images/default.png}", "Welcome to the Knews.", "Let's welcome our guest{newline}to the stage."]))
+	# Queue.queue.append(Event.message_box().initialise(["Ladies and gentlemen.{newline}{newline}{newline}               {image,res://assets/images/default.png}", "Welcome to the Knews.", "Let's welcome our guest{newline}to the stage."]))
+	common.stage_message(["Ladies and gentlemen.{newline}{newline}{newline}               {image,res://assets/images/default.png}", "Welcome to the Knews.", "Let's welcome our guest{newline}to the stage."])
 	Queue.queue.append(Event.lambda().initialise(utilities.lambda_add_contestant, [_constants.lCharacters.A, _constants.lPortraits[_constants.lCharacters.A], _constants.lPositions[_constants.lCharacters.A]]))
 	
 func contestant_introductions():
@@ -63,7 +75,8 @@ func present_next_question(question: String, answers: Array, autoplay: bool = tr
 	
 func introduce_the_quiz_show():
 	Queue.queue.append(Event.settings().initialise({"message_box_position": [0,150]}))
-	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], _constants.lID[_constants.lTags.Stage]))
+	# Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], _constants.lID[_constants.lTags.Stage]))
+	Queue.queue.append(Event.add_node().initialise("res://games/knews/nodes/stage/node.quiz.stage.tscn", [], lID[lTags.Stage]))
 	utilities.setup_monitor()
 	Queue.queue.append(Event.fade_in().initialise())
 	
@@ -83,7 +96,7 @@ func introduce_the_quiz_show():
 	
 	
 	Queue.queue.append(Event.message_box().initialise(["Is everyone ready ?"]))
-	common_events_1.player_message("This game is great, Crash.{SFX,res://assets/games/knews/neocortex/yes.wav}") # , OS.get_unique_id(), 2)
+	common.player_message("This game is great, Crash.{SFX,res://assets/games/knews/neocortex/yes.wav}") # , OS.get_unique_id(), 2)
 	Queue.queue.append(Event.message_box().initialise(["Bring the board in !"]))
 	
 	# TODO: Fix lambda interrupting quit_game, waiting for input ?
