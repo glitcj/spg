@@ -618,7 +618,8 @@ z_index = 5
 [node name="Sprite2D" type="Sprite2D" parent="GFX"]
 z_as_relative = false
 texture_filter = 1
-texture = SubResource("CanvasTexture_8kk7l")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_uary6")
 script = ExtResource("4_6dfn4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GFX/Sprite2D"]
