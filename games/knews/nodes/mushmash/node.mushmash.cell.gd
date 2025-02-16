@@ -28,6 +28,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	$Label.text = "(%s,%s) \n %s" % [settings.x, settings.y, settings.uuid.substr(0,8)]
 	# animation_player.play("RESET")
 	pass
 

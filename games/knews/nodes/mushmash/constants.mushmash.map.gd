@@ -19,16 +19,14 @@ var status_message_box_settings: MessageBoxSettings =  MessageBoxSettings.new()
 var DEBUG = true
 var ENABLE_LOOP = true
 
-
-
 func _ready():
 	_initialise_map_cell_uuids()
 	_set_statush_message_box()
 
 func _initialise_map_cell_uuids():
-	for i in range(max_nodes):
-		for j in range(max_nodes):
-			lID_Map_Cells[i * max_nodes + j] = Variables.generate_uuid()
+	for j in range(max_nodes):
+		for i in range(max_nodes):
+			lID_Map_Cells[j * max_nodes + i] = Variables.generate_uuid()
 			
 func get_cell_uuid(i, j):
 	return lID_Map_Cells[j * max_nodes + i]

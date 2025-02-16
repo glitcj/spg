@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds1qpb6papn1s"]
+[gd_scene load_steps=7 format=3 uid="uid://ds1qpb6papn1s"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/node.mushmash.cell.gd" id="1_ie0st"]
 [ext_resource type="Texture2D" uid="uid://dgyj3yvjiwcq5" path="res://assets/knews/dba9d1k-a82d3ba0-d75c-4072-b63e-0eb80f7dcb45.png" id="1_jup24"]
@@ -54,6 +54,10 @@ _data = {
 "RESET": SubResource("Animation_k4u8h")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_4kypm"]
+font_size = 18
+font_color = Color(0.499953, 0.581607, 1, 1)
+
 [node name="MushMashCell" type="Node2D"]
 script = ExtResource("1_ie0st")
 
@@ -67,3 +71,11 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_jup24")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -85.0
+offset_right = 18.0
+offset_bottom = -62.0
+scale = Vector2(0.944766, 1)
+label_settings = SubResource("LabelSettings_4kypm")
