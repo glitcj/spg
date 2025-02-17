@@ -49,22 +49,22 @@ func _get_uuid(x, y):
 func _input(event):
 	if event.is_action_pressed("ui_right"):
 		_update_new_positions(Direction.Right)
-		_update_map()
+		_update_cells_map()
 	elif event.is_action_pressed("ui_left"):
 		_update_new_positions(Direction.Left)
-		_update_map()
+		_update_cells_map()
 	elif event.is_action_pressed("ui_down"):
 		_update_new_positions(Direction.Down)
-		_update_map()
+		_update_cells_map()
 	elif event.is_action_pressed("ui_up"):
 		_update_new_positions(Direction.Up)
-		_update_map()
+		_update_cells_map()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	# _update_inputs()
+	_update_map()
+
 	
 func initialise_random_map():
 	cells_array = []
@@ -113,17 +113,13 @@ func draw_cells():
 
 func _update_map():
 	var all_cells = _get_all_cells()
+	var destination
+	var direction
 	for cell: MushMashCell in all_cells:
-		if cell.settings.new_x != cell.settings.x:
-			cell.settings.x = cell.settings.new_x
-		if cell.settings.new_y != cell.settings.y:
-			cell.settings.y = cell.settings.new_y
-		cell.position = Vector2(150 * cell.settings.x, 150 * cell.settings.y)
-			
-	print("\n\n----- New Maps ------")
-	print_cells_map()
-	print_uuid_map()	
-			
+		destination = Vector2(150 * cell.settings.x, 150 * cell.settings.y)
+		if destination != cell.position:
+			direction = (destination - cell.position).normalized()
+			cell.position = cell.position + 5 * direction
 
 func _update_new_positions(direction: int):
 	print("\n\n----- Old Maps ------")
@@ -148,10 +144,13 @@ func _update_new_positions(direction: int):
 				_update_single_cell(i, j, i + 1, j)
 
 	_resolve_cell_collisions()
-	_update_cells_map()
 	
-
-
+	# cell_position_changed.emit()
+	# _update_cells_map()
+	
+func _on_cell_positions_changed():
+	pass
+	# _update_cells_map()
 
 func _update_single_cell(old_x, old_y, new_x, new_y):
 	var cell: MushMashCell = cells_map[old_y][old_x]
@@ -162,14 +161,24 @@ func _update_single_cell(old_x, old_y, new_x, new_y):
 
 	
 func _update_cells_map():
+	
+	var all_cells = _get_all_cells()
+	for cell: MushMashCell in all_cells:
+		if cell.settings.new_x != cell.settings.x:
+			cell.settings.x = cell.settings.new_x
+		if cell.settings.new_y != cell.settings.y:
+			cell.settings.y = cell.settings.new_y
+
+	
+	
 	var new_cells_map: Dictionary = CommonFunctions.nulls_2D_map(settings.height, settings.width)
 	for cell in _get_all_cells():
-		# new_cells_map[cell.settings.new_y][cell.settings.new_x] = cell
-		
-		cell.settings.x = cell.settings.new_x
-		cell.settings.y = cell.settings.new_y
 		new_cells_map[cell.settings.new_y][cell.settings.new_x] = cell
 	cells_map = new_cells_map
+	
+	print("\n\n----- New Maps ------")
+	print_cells_map()
+	print_uuid_map()	
 
 func _get_all_cells():
 	var all_cells = []
@@ -243,7 +252,7 @@ func _resolve_cell_collisions():
 
 func _on_animation_player_is_ready(cell):
 	push_error(cell)
-	print(cell) # .animation_player.play("Idle")
+	print(cell)
 	
 func print_cells_map():
 	print("Cells Map")
