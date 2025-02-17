@@ -8,4 +8,4 @@ script = ExtResource("1_2w2ai")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="GridOrigin" type="Node2D" parent="."]
-position = Vector2(-250, -250)
+position = Vector2(-300, -300)

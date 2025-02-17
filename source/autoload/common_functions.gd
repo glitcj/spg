@@ -27,3 +27,11 @@ static func nulls_2D_map(n: int, m: int):
 			row[i] = null
 		map[j] = row
 	return map
+
+
+static func sum_array(a):
+	var sum = 0
+	for i in a:
+		sum = sum + i
+
+	return sum

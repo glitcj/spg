@@ -13,7 +13,7 @@ enum Direction {Up, Down, Left, Right}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	cells_array = sample_map_2()
+	cells_array = sample_map_1()
 	
 	_initialise_cells_map()
 	draw_cells()
@@ -79,9 +79,9 @@ func initialise_random_map():
 func sample_map_1():
 	var sample: Array = [
 		[0,1,1,1,0],
-		[0,0,0,0,0],
-		[0,1,1,1,0],
-		[0,0,0,0,0],
+		[1,0,0,0,1],
+		[0,1,0,1,0],
+		[1,0,0,0,1],
 		[0,1,1,1,0]
 		]
 	return sample
@@ -164,6 +164,10 @@ func _update_single_cell(old_x, old_y, new_x, new_y):
 func _update_cells_map():
 	var new_cells_map: Dictionary = CommonFunctions.nulls_2D_map(settings.height, settings.width)
 	for cell in _get_all_cells():
+		# new_cells_map[cell.settings.new_y][cell.settings.new_x] = cell
+		
+		cell.settings.x = cell.settings.new_x
+		cell.settings.y = cell.settings.new_y
 		new_cells_map[cell.settings.new_y][cell.settings.new_x] = cell
 	cells_map = new_cells_map
 
@@ -175,44 +179,66 @@ func _get_all_cells():
 				all_cells.append(cells_map[j][i])
 	return all_cells
 
+
+
+
+
 func _resolve_cell_collisions():
-	var all_cells = _get_all_cells()
+		# 0 - Build first collusion map, where a cell colludes if
+		# it tries to move to the new or old position of any other cell
+		# 1 - Look for a cell A that has no collisions
+		# 2 - Resolve A and allow it to move
+		# 3 - If another cell was trying to move to the old
+		# position of A, it now has no collisions with A
+		# 4 - Repeat
+		
+	var all_cells_1 = _get_all_cells()
+	var collisions = CommonFunctions.zeros_2D_array(len(all_cells_1), len(all_cells_1))
 	
-	# var resolved_cells: Array = []
-	var remaining_cells: Array
-	var collision_detected: bool
-	var current_cell: MushMashCell
-	var other_cell: MushMashCell
+	var current_cell
+	var other_cell
+	for j in range(len(all_cells_1)):
+		for i in range(len(all_cells_1)):
+			current_cell = all_cells_1[j]
+			other_cell = all_cells_1[i]
+			if i == j:
+				collisions[j][i] = 0
+				
+			# Collision if a cell moves into the new position of another cell
+			elif [current_cell.settings.new_x, current_cell.settings.new_y] == [other_cell.settings.new_x, other_cell.settings.new_y]:
+				collisions[j][i] = 1
+			
+			# Collision if a cell moves into the old position of another cell
+			elif [current_cell.settings.new_x, current_cell.settings.new_y] == [other_cell.settings.x, other_cell.settings.y]:
+				collisions[j][i] = 1
+	
+	var detected_zero_collisions_row
+	var resolved_cells = []
 	while true:
-		if all_cells == []:
+		detected_zero_collisions_row = false
+		for j in len(collisions):
+			current_cell = all_cells_1[j]
+			if CommonFunctions.sum_array(collisions[j]) == 0 and (j not in resolved_cells):
+				detected_zero_collisions_row = true
+
+				for k in len(all_cells_1):
+					if [current_cell.settings.x, current_cell.settings.y] == [all_cells_1[k].settings.new_x, all_cells_1[k].settings.new_y]:
+						collisions[j][k] = 0
+						collisions[k][j] = 0
+
+				resolved_cells.append(j)
+				break
+
+		if not detected_zero_collisions_row:
 			break
 			
-		current_cell = all_cells.pop_front()
-		collision_detected = false
-		
-		remaining_cells = []
-		while true:
-			if all_cells == []:
-				break
-				
-			other_cell = all_cells.pop_front()
-			if [current_cell.settings.new_x, current_cell.settings.new_y] == [other_cell.settings.new_x, other_cell.settings.new_y]:
-				collision_detected = true
-				# other_cell.settings.new_x = other_cell.settings.x
-				# other_cell.settings.new_y = other_cell.settings.y
-				
-			else:
-				remaining_cells.append(other_cell)
-		
-		
-		
-		if collision_detected:
-			current_cell.settings.new_x = current_cell.settings.x
-			current_cell.settings.new_y = current_cell.settings.y
-		# resolved_cells.append(current_cell)
-				
-		all_cells = remaining_cells
-		
+	# Remove move attempt of all unresolved cell
+	for j in len(all_cells_1):
+		if j not in resolved_cells:
+			var cell = all_cells_1[j]
+			cell.settings.new_x = cell.settings.x
+			cell.settings.new_y = cell.settings.y
+
 
 
 func _on_animation_player_is_ready(cell):
