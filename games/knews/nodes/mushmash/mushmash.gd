@@ -5,7 +5,7 @@ extends Node2D
 var cells_array: Array
 
 
-var settings = MushMashMapSettings.new()
+var settings: MushMashMapSettings = MushMashMapSettings.new()
 var uuid_map := {}
 
 var cells_map: Dictionary
@@ -110,16 +110,19 @@ func draw_cells():
 				cell.animation_player.play("Idle")
 
 
-
 func _update_map():
 	var all_cells = _get_all_cells()
 	var destination
 	var direction
 	for cell: MushMashCell in all_cells:
 		destination = Vector2(150 * cell.settings.x, 150 * cell.settings.y)
-		if destination != cell.position:
-			direction = (destination - cell.position).normalized()
-			cell.position = cell.position + 5 * direction
+		if settings.cell_movement_type == MushMashMapSettings.CellMovementType.Instant:
+			cell.position = destination
+
+		elif settings.cell_movement_type == MushMashMapSettings.CellMovementType.Linear:
+			if destination != cell.position:
+				direction = (destination - cell.position).normalized()
+				cell.position = cell.position + 5 * direction
 
 func _update_new_positions(direction: int):
 	print("\n\n----- Old Maps ------")

@@ -6,6 +6,8 @@ var height: int = 5
 var width: int = 5
 
 
+enum CellMovementType {Instant, Linear}
+var cell_movement_type = CellMovementType.Instant
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
