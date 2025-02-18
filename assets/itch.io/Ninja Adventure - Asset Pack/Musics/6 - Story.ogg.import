@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ds4p6s761mugh"
+path="res://.godot/imported/6 - Story.ogg-2e21312fcc2a27b07b45ebe4bbd7debd.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Musics/6 - Story.ogg"
+dest_files=["res://.godot/imported/6 - Story.ogg-2e21312fcc2a27b07b45ebe4bbd7debd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

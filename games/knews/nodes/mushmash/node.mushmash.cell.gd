@@ -42,6 +42,27 @@ func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: b
 	# Absolute scale is applied to GFX, not Sprite2D to enable relative 
 	# animation in the Godot editor.
 	$Body.scale = Vector2(scale_x, scale_y)
+
+
+
+	
+func absolute_rescale_framed(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
+	
+	var animated_sprite_2D: AnimatedSprite2D = $Body/AnimatedSprite2D
+	var texture: Texture2D = animated_sprite_2D.sprite_frames.get_frame_texture(animated_sprite_2D.animation, animated_sprite_2D.frame)
+	var scale_x = float(desired_width) / texture.get_width()
+	var scale_y = float(desired_height) / texture.get_height()
+	
+	if keep_ratio:
+		pass
+	
+	# Absolute scale is applied to GFX, not Sprite2D to enable relative 
+	# animation in the Godot editor.
+	# $GFX.scale = Vector2(scale_x, scale_y)
+	animated_sprite_2D.scale = Vector2(scale_x, scale_y)
+	
+
+
 	
 
 

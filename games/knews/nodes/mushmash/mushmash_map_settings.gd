@@ -9,6 +9,12 @@ var width: int = 5
 enum CellMovementType {Instant, Linear}
 var cell_movement_type = CellMovementType.Instant
 
+
+var mushroom_template = preload("res://games/knews/nodes/mushmash/node.mushmash.mushroom.tscn")
+var flower_template = preload("res://games/knews/nodes/mushmash/node.mushmash.flower.tscn")
+var wall_template = preload("res://games/knews/nodes/mushmash/node.mushmash.wall.tscn")
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

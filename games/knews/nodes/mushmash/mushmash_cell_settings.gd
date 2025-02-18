@@ -13,3 +13,6 @@ var y
 var new_x
 var new_y
 var new_position: Vector2
+
+
+var is_movable: bool = false

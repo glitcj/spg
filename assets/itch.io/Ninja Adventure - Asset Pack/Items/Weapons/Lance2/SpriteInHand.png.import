@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://4hlk5qq8e54m"
+path="res://.godot/imported/SpriteInHand.png-0839d5e970db9cbfc65573e75a4876ce.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Items/Weapons/Lance2/SpriteInHand.png"
+dest_files=["res://.godot/imported/SpriteInHand.png-0839d5e970db9cbfc65573e75a4876ce.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

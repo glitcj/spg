@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=3 uid="uid://n7kxhpl8gowg"]
+
+[ext_resource type="Script" path="res://games/knews/nodes/mushmash/node.mushmash.cell.gd" id="1_6o5hq"]
+[ext_resource type="Texture2D" uid="uid://dgyj3yvjiwcq5" path="res://assets/knews/dba9d1k-a82d3ba0-d75c-4072-b63e-0eb80f7dcb45.png" id="2_n0d15"]
+[ext_resource type="Texture2D" uid="uid://cu78vrvb81a60" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="3_rb0kq"]
+
+[sub_resource type="Animation" id="Animation_h6fw3"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_k4u8h"]
+resource_name = "RESET"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [100, 80, false],
+"method": &"absolute_rescale_framed"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81fts"]
+_data = {
+"Idle": SubResource("Animation_h6fw3"),
+"RESET": SubResource("Animation_k4u8h")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqpuw"]
+atlas = ExtResource("3_rb0kq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a353"]
+atlas = ExtResource("3_rb0kq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkdbs"]
+atlas = ExtResource("3_rb0kq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt41t"]
+atlas = ExtResource("3_rb0kq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kgp6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqpuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a353")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkdbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt41t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4kypm"]
+font_size = 18
+font_color = Color(0.499953, 0.581607, 1, 1)
+
+[node name="MushMashCellWall" type="Node2D"]
+script = ExtResource("1_6o5hq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_81fts")
+}
+autoplay = "RESET"
+
+[node name="Body" type="Node2D" parent="."]
+z_index = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_n0d15")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kgp6y")
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+offset_left = -22.0
+offset_top = -85.0
+offset_right = 18.0
+offset_bottom = -59.0
+scale = Vector2(0.944766, 1)
+label_settings = SubResource("LabelSettings_4kypm")

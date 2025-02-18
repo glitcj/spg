@@ -67,15 +67,17 @@ libraries = {
 }
 
 [node name="Body" type="Node2D" parent="."]
+z_index = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_jup24")
 
 [node name="Label" type="Label" parent="."]
+z_index = 5
 offset_left = -22.0
 offset_top = -85.0
 offset_right = 18.0
-offset_bottom = -62.0
+offset_bottom = -59.0
 scale = Vector2(0.944766, 1)
 label_settings = SubResource("LabelSettings_4kypm")

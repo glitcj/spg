@@ -30,7 +30,7 @@ func _initialise_cells_map():
 	cells_map = CommonFunctions.nulls_2D_map(settings.width, settings.height)
 	for j in range(settings.height):
 		for i in range(settings.width):
-			if cells_array[j][i] == 1:
+			if cells_array[j][i] > 0:
 				uuid = _MushMash_Constants.get_cell_uuid(i, j)
 				var cell_settings: MushMashCellSettings = MushMashCellSettings.new()
 				cell_settings.uuid = uuid
@@ -38,7 +38,18 @@ func _initialise_cells_map():
 				cell_settings.y = j
 				cell_settings.new_x = i
 				cell_settings.new_y = j
-				var cell = preload("res://games/knews/nodes/mushmash/node.mushmash.cell.tscn").instantiate()
+				
+				var cell: MushMashCell
+				if cells_array[j][i] == 1:
+					cell_settings.is_movable = true
+					cell = settings.mushroom_template.instantiate()
+				elif cells_array[j][i] == 2:
+					cell_settings.is_movable = false
+					cell = settings.wall_template.instantiate()
+				elif cells_array[j][i] == 3:
+					cell_settings.is_movable = false
+					cell = settings.flower_template.instantiate()
+
 				cell.settings = cell_settings
 				cells_map[j][i] = cell
 
@@ -79,9 +90,9 @@ func initialise_random_map():
 func sample_map_1():
 	var sample: Array = [
 		[0,1,1,1,0],
-		[1,0,0,0,1],
-		[0,1,0,1,0],
-		[1,0,0,0,1],
+		[1,0,2,0,1],
+		[0,1,2,1,0],
+		[1,0,2,0,1],
 		[0,1,1,1,0]
 		]
 	return sample
@@ -157,6 +168,8 @@ func _on_cell_positions_changed():
 
 func _update_single_cell(old_x, old_y, new_x, new_y):
 	var cell: MushMashCell = cells_map[old_y][old_x]
+	if not cell.settings.is_movable:
+		return
 	cell.settings.new_x = new_x
 	cell.settings.new_y = new_y
 	
