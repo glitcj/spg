@@ -20,6 +20,5 @@ var new_position: Vector2
 
 var is_enemy: bool = false
 var is_player: bool = false
-
 var is_movable: bool = false
 var can_move_now: bool = false

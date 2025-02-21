@@ -1,37 +1,20 @@
 extends Node2D
 class_name MushMashCell
 
-# enum AnimationState {Idle, Excited}
-# var animation
-# var state
 var settings: MushMashCellSettings
+var sprite_sheets: Dictionary
+
+enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-signal animation_player_is_ready
-
-
-# TODO: This messes with the children being added etc
-"""
-func _init(settings_: MushMashCellSettings = MushMashCellSettings.new()):
-	settings = settings_
-	# super()
-"""
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-	# animation_player = $AnimationPlayer # get_node("AnimationPlayer")
-	animation_player_is_ready.emit
-	
+	_preload_animation_sprites()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	$Label.text = "(%s,%s) \n %s" % [settings.x, settings.y, settings.uuid.substr(0,8)]
-	# animation_player.play("RESET")
-	pass
 
 # TODO: Add animated sprite texture resize option
 func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
@@ -39,44 +22,44 @@ func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: b
 	var scale_y = float(desired_height) / $Body/Sprite2D.texture.get_height()
 	if keep_ratio:
 		pass
-	# Absolute scale is applied to GFX, not Sprite2D to enable relative 
-	# animation in the Godot editor.
 	$Body.scale = Vector2(scale_x, scale_y)
 
 
-
-	
 func absolute_rescale_framed(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
-	
 	var animated_sprite_2D: AnimatedSprite2D = $Body/AnimatedSprite2D
 	var texture: Texture2D = animated_sprite_2D.sprite_frames.get_frame_texture(animated_sprite_2D.animation, animated_sprite_2D.frame)
 	var scale_x = float(desired_width) / texture.get_width()
 	var scale_y = float(desired_height) / texture.get_height()
-	
 	if keep_ratio:
 		pass
-	
-	# Absolute scale is applied to GFX, not Sprite2D to enable relative 
-	# animation in the Godot editor.
-	# $GFX.scale = Vector2(scale_x, scale_y)
 	animated_sprite_2D.scale = Vector2(scale_x, scale_y)
-	
 
 
-	
+func _preload_animation_sprites():
+	sprite_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/SpriteSheet.png")
+	sprite_sheets[AvailableSprites.HeartRed] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/HeartRed/SpriteSheet.png")
+	sprite_sheets[AvailableSprites.Mole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Mole2/Mole2.png")
+	sprite_sheets[AvailableSprites.HatMole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Characters/CamouflageGreen/SpriteSheet.png")
+	sprite_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
 
+
+# func set_sprite_sheet():
 
 """
-func framed_absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
-	var scale_x = float(desired_width) / sprite_frames.get_frame_texture(animation, frame).get_width()
-	var scale_y = float(desired_height) / sprite_frames.get_frame_texture(animation, frame).get_height()
+extends Node2D
+
+@onready var animated_sprite = $AnimatedSprite2D
+
+func _ready():
+	var new_texture = load("res://path/to/new_spritesheet.png")
+	var sprite_frames = animated_sprite.sprite_frames
 	
-	if keep_ratio:
-		pass
+	# Update the texture of all frames without changing frame configuration
+	for animation_name in sprite_frames.get_animation_names():
+		var frame_count = sprite_frames.get_frame_count(animation_name)
+		for i in range(frame_count):
+			sprite_frames.set_frame_texture(animation_name, i, new_texture)
 	
-	# Absolute scale is applied to GFX, not Sprite2D to enable relative 
-	# animation in the Godot editor.
-	# $GFX.scale = Vector2(scale_x, scale_y)
-	scale = Vector2(scale_x, scale_y)
-	
+	# If you want to restart the animation
+	animated_sprite.play()
 """

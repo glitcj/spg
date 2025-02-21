@@ -5,11 +5,8 @@ extends Node2D
 # TODO: Refactor Mushmash into many composite nodes
 # TODO: Add ninja sprite parsing
 
-
 # TODO: This should be used only once to initialise map
 var cells_map_initialiser: Array
-var cells_turn_queue: Array
-var current_active_cell: MushMashCell
 
 var settings: MushMashMapSettings = MushMashMapSettings.new()
 var uuid_map := {}
@@ -17,11 +14,6 @@ var uuid_map := {}
 var cells_map: Dictionary
 enum Direction {Up, Down, Left, Right}
 
-enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, EnemyTurn}
-
-var player_cell_is_active := false
-var current_turn_state := TurnStates.IdleBeforePlayer
-var current_turn_actioned := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,16 +23,7 @@ func _ready() -> void:
 	draw_cells()
 	
 	# _start_next_turn()
-	$Turner.turn_timer_timeout.connect(_on_turn_timer_timeout)
 
-
-func _on_turn_timer_timeout():
-	if current_turn_state == TurnStates.IdleBeforePlayer:
-		current_turn_state = TurnStates.PlayerTurn
-		_start_next_turn()
-	elif current_turn_state == TurnStates.PlayerTurn:
-		current_turn_state = TurnStates.IdleBeforePlayer
-		_end_current_turn()
 
 func _initialise_uuid_map():
 	for j in settings.height:
@@ -81,38 +64,15 @@ func _initialise_cells_map():
 				cell.settings = cell_settings
 				cells_map[j][i] = cell
 	
-	_initialise_cells_turn_queue()
-	
-func _update_cells_turn_queue():
-	cells_turn_queue = _get_all_cells()
-
-func _initialise_cells_turn_queue():
-	# cells_turn_queue = _get_all_cells()
-	cells_turn_queue = _get_all_typed_cells([MushMashCellSettings.CellTypes.Player])
-	
-func _start_next_turn():
-	current_active_cell = cells_turn_queue.pop_front()
-	current_active_cell.animation_player.play("ReadyForAction")
-	current_active_cell.settings.is_movable = true
-	current_turn_actioned = false
-
-	
-func _end_current_turn():
-	current_active_cell.settings.is_movable = false
-	current_active_cell.animation_player.play("RESET")
-	await current_active_cell.animation_player.animation_finished
-	current_active_cell.animation_player.play("Idle")
-	cells_turn_queue.append(current_active_cell)
-	current_active_cell = null
-	current_turn_actioned = true
+	$Turner._initialise_cells_turn_queue()
 
 func _get_uuid(x, y):
 	return uuid_map[y * settings.height + x]
 
 func _input(event):
-	if not current_turn_state == TurnStates.PlayerTurn:
+	if not $Turner.current_turn_state == $Turner.TurnStates.PlayerTurn:
 		return
-	if current_turn_actioned:
+	if $Turner.current_turn_actioned:
 		return
 	if event.is_action_pressed("ui_right"):
 		_update_new_positions(Direction.Right)
@@ -139,7 +99,7 @@ func _process(delta: float) -> void:
 
 func _update_console():
 	var O_O_ = ""
-	for cell: MushMashCell in cells_turn_queue:
+	for cell: MushMashCell in $Turner.cells_turn_queue:
 		O_O_ = O_O_ + "%s\t" % cell.settings.uuid.substr(0,6)
 	
 	$Console.text = ""	
