@@ -1,7 +1,9 @@
 extends Node2D
 
 
-# TODO: Add MushMash Ready for action animations
+# TODO: Move TurnController funcs to a separate node TurnController
+# TODO: Refactor Mushmash into many composite nodes
+# TODO: Add ninja sprite parsing
 
 
 # TODO: This should be used only once to initialise map
@@ -19,21 +21,26 @@ enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, EnemyTurn}
 
 var player_cell_is_active := false
 var current_turn_state := TurnStates.IdleBeforePlayer
-
+var current_turn_actioned := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	cells_map_initialiser = sample_map_1()
+	cells_map_initialiser = $Funcs.sample_map_1()
 	
 	_initialise_cells_map()
 	draw_cells()
 	
 	# _start_next_turn()
-	$ActionTimerNode2D.turn_timer_timeout.connect()
+	$Turner.turn_timer_timeout.connect(_on_turn_timer_timeout)
 
 
 func _on_turn_timer_timeout():
-	pass
+	if current_turn_state == TurnStates.IdleBeforePlayer:
+		current_turn_state = TurnStates.PlayerTurn
+		_start_next_turn()
+	elif current_turn_state == TurnStates.PlayerTurn:
+		current_turn_state = TurnStates.IdleBeforePlayer
+		_end_current_turn()
 
 func _initialise_uuid_map():
 	for j in settings.height:
@@ -58,13 +65,18 @@ func _initialise_cells_map():
 				var cell: MushMashCell
 				if cells_map_initialiser[j][i] == 1:
 					cell_settings.is_movable = false
+					cell_settings.type = MushMashCellSettings.CellTypes.Player
 					cell = settings.mushroom_template.instantiate()
 				elif cells_map_initialiser[j][i] == 2:
 					cell_settings.is_movable = false
+					cell_settings.type = MushMashCellSettings.CellTypes.Immovable
+					cell = settings.flower_template.instantiate()					
+
 					cell = settings.wall_template.instantiate()
 				elif cells_map_initialiser[j][i] == 3:
 					cell_settings.is_movable = false
-					cell = settings.flower_template.instantiate()
+					cell_settings.type = MushMashCellSettings.CellTypes.Immovable
+					cell = settings.flower_template.instantiate()					
 
 				cell.settings = cell_settings
 				cells_map[j][i] = cell
@@ -75,18 +87,15 @@ func _update_cells_turn_queue():
 	cells_turn_queue = _get_all_cells()
 
 func _initialise_cells_turn_queue():
-	cells_turn_queue = _get_all_cells()
+	# cells_turn_queue = _get_all_cells()
+	cells_turn_queue = _get_all_typed_cells([MushMashCellSettings.CellTypes.Player])
 	
 func _start_next_turn():
 	current_active_cell = cells_turn_queue.pop_front()
 	current_active_cell.animation_player.play("ReadyForAction")
 	current_active_cell.settings.is_movable = true
-	player_cell_is_active = true
-	
-	$ActionTimerNode2D/ActionTimer.start()
-	await $ActionTimerNode2D.turn_timer_timeout
-	if player_cell_is_active:
-		_end_current_turn()
+	current_turn_actioned = false
+
 	
 func _end_current_turn():
 	current_active_cell.settings.is_movable = false
@@ -94,38 +103,46 @@ func _end_current_turn():
 	await current_active_cell.animation_player.animation_finished
 	current_active_cell.animation_player.play("Idle")
 	cells_turn_queue.append(current_active_cell)
-	player_cell_is_active = false
-
-	await $ActionTimerNode2D.turn_timer_timeout
-	_start_next_turn()
-	
+	current_active_cell = null
+	current_turn_actioned = true
 
 func _get_uuid(x, y):
 	return uuid_map[y * settings.height + x]
 
 func _input(event):
+	if not current_turn_state == TurnStates.PlayerTurn:
+		return
+	if current_turn_actioned:
+		return
 	if event.is_action_pressed("ui_right"):
 		_update_new_positions(Direction.Right)
 		_update_cells_map()
-		_end_current_turn()
+		# _end_current_turn()
 	elif event.is_action_pressed("ui_left"):
 		_update_new_positions(Direction.Left)
 		_update_cells_map()
-		_end_current_turn()
+		# _end_current_turn()
 	elif event.is_action_pressed("ui_down"):
 		_update_new_positions(Direction.Down)
 		_update_cells_map()
-		_end_current_turn()
+		# _end_current_turn()
 	elif event.is_action_pressed("ui_up"):
 		_update_new_positions(Direction.Up)
 		_update_cells_map()
-		_end_current_turn()
-
+		# _end_current_turn()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_update_map()
+	_update_console()
 
+
+func _update_console():
+	var O_O_ = ""
+	for cell: MushMashCell in cells_turn_queue:
+		O_O_ = O_O_ + "%s\t" % cell.settings.uuid.substr(0,6)
+	
+	$Console.text = ""	
 	
 func initialise_random_map():
 	cells_map_initialiser = []
@@ -137,26 +154,7 @@ func initialise_random_map():
 		cells_map_initialiser.append(row)
 	return cells_map_initialiser
 
-func sample_map_1():
-	var sample: Array = [
-		[0,1,1,1,0],
-		[1,0,2,0,1],
-		[0,1,2,1,0],
-		[1,0,2,0,1],
-		[0,1,1,1,0]
-		]
-	return sample
 
-
-func sample_map_2():
-	var sample: Array = [
-		[0,1,1,1,1],
-		[0,0,0,0,0],
-		[0,1,1,1,1],
-		[0,0,0,0,0],
-		[0,1,1,1,1]
-		]
-	return sample
 
 
 func draw_cells():
@@ -246,6 +244,19 @@ func _get_all_cells():
 				all_cells.append(cells_map[j][i])
 	return all_cells
 
+
+
+
+
+func _get_all_typed_cells(types: Array = [MushMashCellSettings.CellTypes.Player]):
+	var all_cells = []
+	for j in range(settings.height):
+		for i in range(settings.width):
+			var cell: MushMashCell = cells_map[j][i]
+			if cell != null and cell.settings.type in types:
+			# if cells_map[j][i] != null and cells_map[j][i].is_movable:
+				all_cells.append(cells_map[j][i])
+	return all_cells
 
 
 
