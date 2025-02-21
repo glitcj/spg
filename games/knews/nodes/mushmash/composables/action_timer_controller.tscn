@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://sfxyhloygidk"]
+
+[ext_resource type="Script" path="res://games/knews/nodes/mushmash/action_timer_controller.gd" id="1_xm8sr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v8juv"]
+
+[node name="ActionTimerNode" type="Node2D"]
+script = ExtResource("1_xm8sr")
+
+[node name="ActionTimer" type="Timer" parent="."]
+
+[node name="Sprite2DActionIndicator" type="Sprite2D" parent="."]
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_v8juv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -14.0
+offset_top = 14.0
+offset_right = 26.0
+offset_bottom = 37.0
+text = "Timer:"
+
+[connection signal="timeout" from="ActionTimer" to="." method="_on_timer_timeout"]

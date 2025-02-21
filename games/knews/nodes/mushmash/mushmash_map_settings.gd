@@ -7,7 +7,7 @@ var width: int = 5
 
 
 enum CellMovementType {Instant, Linear}
-var cell_movement_type = CellMovementType.Instant
+var cell_movement_type = CellMovementType.Linear
 
 
 var mushroom_template = preload("res://games/knews/nodes/mushmash/node.mushmash.mushroom.tscn")

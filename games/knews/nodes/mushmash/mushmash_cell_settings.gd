@@ -2,7 +2,7 @@ extends Node
 class_name MushMashCellSettings
 
 
-enum AvailableStates {Idle, Excited}
+enum AvailableStates {Idle, Excited, ReadyForAction}
 var height: int = 100
 var width: int = 100
 var state: int = AvailableStates.Idle

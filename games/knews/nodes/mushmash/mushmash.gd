@@ -1,9 +1,13 @@
 extends Node2D
 
 
-# TODO: This should be used only once to initialise map
-var cells_array: Array
+# TODO: Add MushMash Ready for action animations
 
+
+# TODO: This should be used only once to initialise map
+var cells_map_initialiser: Array
+var cells_turn_queue: Array
+var current_active_cell: MushMashCell
 
 var settings: MushMashMapSettings = MushMashMapSettings.new()
 var uuid_map := {}
@@ -11,12 +15,25 @@ var uuid_map := {}
 var cells_map: Dictionary
 enum Direction {Up, Down, Left, Right}
 
+enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, EnemyTurn}
+
+var player_cell_is_active := false
+var current_turn_state := TurnStates.IdleBeforePlayer
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	cells_array = sample_map_1()
+	cells_map_initialiser = sample_map_1()
 	
 	_initialise_cells_map()
 	draw_cells()
+	
+	# _start_next_turn()
+	$ActionTimerNode2D.turn_timer_timeout.connect()
+
+
+func _on_turn_timer_timeout():
+	pass
 
 func _initialise_uuid_map():
 	for j in settings.height:
@@ -26,11 +43,10 @@ func _initialise_uuid_map():
 
 func _initialise_cells_map():
 	var uuid: String
-		
 	cells_map = CommonFunctions.nulls_2D_map(settings.width, settings.height)
 	for j in range(settings.height):
 		for i in range(settings.width):
-			if cells_array[j][i] > 0:
+			if cells_map_initialiser[j][i] > 0:
 				uuid = _MushMash_Constants.get_cell_uuid(i, j)
 				var cell_settings: MushMashCellSettings = MushMashCellSettings.new()
 				cell_settings.uuid = uuid
@@ -40,36 +56,70 @@ func _initialise_cells_map():
 				cell_settings.new_y = j
 				
 				var cell: MushMashCell
-				if cells_array[j][i] == 1:
-					cell_settings.is_movable = true
+				if cells_map_initialiser[j][i] == 1:
+					cell_settings.is_movable = false
 					cell = settings.mushroom_template.instantiate()
-				elif cells_array[j][i] == 2:
+				elif cells_map_initialiser[j][i] == 2:
 					cell_settings.is_movable = false
 					cell = settings.wall_template.instantiate()
-				elif cells_array[j][i] == 3:
+				elif cells_map_initialiser[j][i] == 3:
 					cell_settings.is_movable = false
 					cell = settings.flower_template.instantiate()
 
 				cell.settings = cell_settings
 				cells_map[j][i] = cell
+	
+	_initialise_cells_turn_queue()
+	
+func _update_cells_turn_queue():
+	cells_turn_queue = _get_all_cells()
+
+func _initialise_cells_turn_queue():
+	cells_turn_queue = _get_all_cells()
+	
+func _start_next_turn():
+	current_active_cell = cells_turn_queue.pop_front()
+	current_active_cell.animation_player.play("ReadyForAction")
+	current_active_cell.settings.is_movable = true
+	player_cell_is_active = true
+	
+	$ActionTimerNode2D/ActionTimer.start()
+	await $ActionTimerNode2D.turn_timer_timeout
+	if player_cell_is_active:
+		_end_current_turn()
+	
+func _end_current_turn():
+	current_active_cell.settings.is_movable = false
+	current_active_cell.animation_player.play("RESET")
+	await current_active_cell.animation_player.animation_finished
+	current_active_cell.animation_player.play("Idle")
+	cells_turn_queue.append(current_active_cell)
+	player_cell_is_active = false
+
+	await $ActionTimerNode2D.turn_timer_timeout
+	_start_next_turn()
+	
 
 func _get_uuid(x, y):
 	return uuid_map[y * settings.height + x]
-	
 
 func _input(event):
 	if event.is_action_pressed("ui_right"):
 		_update_new_positions(Direction.Right)
 		_update_cells_map()
+		_end_current_turn()
 	elif event.is_action_pressed("ui_left"):
 		_update_new_positions(Direction.Left)
 		_update_cells_map()
+		_end_current_turn()
 	elif event.is_action_pressed("ui_down"):
 		_update_new_positions(Direction.Down)
 		_update_cells_map()
+		_end_current_turn()
 	elif event.is_action_pressed("ui_up"):
 		_update_new_positions(Direction.Up)
 		_update_cells_map()
+		_end_current_turn()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,14 +128,14 @@ func _process(delta: float) -> void:
 
 	
 func initialise_random_map():
-	cells_array = []
+	cells_map_initialiser = []
 	var row
 	for i in range(settings.height):
 		row = []
 		for j in range(settings.width):
 			row.append(0)
-		cells_array.append(row)
-	return cells_array
+		cells_map_initialiser.append(row)
+	return cells_map_initialiser
 
 func sample_map_1():
 	var sample: Array = [
@@ -113,7 +163,7 @@ func draw_cells():
 	var uuid	
 	for i in range(settings.height):
 		for j in range(settings.width):
-			if cells_array[j][i] > 0:
+			if cells_map_initialiser[j][i] > 0:
 				var cell: MushMashCell = cells_map[j][i]
 				cell.position = Vector2(150 * i, 150 * j)
 				push_error(get_parent().name)
@@ -158,13 +208,9 @@ func _update_new_positions(direction: int):
 				_update_single_cell(i, j, i + 1, j)
 
 	_resolve_cell_collisions()
-	
-	# cell_position_changed.emit()
-	# _update_cells_map()
-	
+
 func _on_cell_positions_changed():
 	pass
-	# _update_cells_map()
 
 func _update_single_cell(old_x, old_y, new_x, new_y):
 	var cell: MushMashCell = cells_map[old_y][old_x]
@@ -172,12 +218,8 @@ func _update_single_cell(old_x, old_y, new_x, new_y):
 		return
 	cell.settings.new_x = new_x
 	cell.settings.new_y = new_y
-	
 
-
-	
 func _update_cells_map():
-	
 	var all_cells = _get_all_cells()
 	for cell: MushMashCell in all_cells:
 		if cell.settings.new_x != cell.settings.x:
