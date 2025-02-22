@@ -4,13 +4,14 @@ class_name MushMashCell
 var settings: MushMashCellSettings
 var sprite_sheets: Dictionary
 
-enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_preload_animation_sprites()
+	assert(settings != null)
+	settings._preload_animation_sprites()
+	change_sprite_sheet(settings.cell_sprite)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,31 +36,27 @@ func absolute_rescale_framed(desired_width := 150, desired_height := 150, keep_r
 	animated_sprite_2D.scale = Vector2(scale_x, scale_y)
 
 
-func _preload_animation_sprites():
-	sprite_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/SpriteSheet.png")
-	sprite_sheets[AvailableSprites.HeartRed] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/HeartRed/SpriteSheet.png")
-	sprite_sheets[AvailableSprites.Mole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Mole2/Mole2.png")
-	sprite_sheets[AvailableSprites.HatMole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Characters/CamouflageGreen/SpriteSheet.png")
-	sprite_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
 
 
-# func set_sprite_sheet():
+func change_sprite_sheet(sprite_id: int):
+	var new_texture = settings.sprite_sheets[sprite_id]
+	var sprite_frames: SpriteFrames = $Body/AnimatedSprite2D.sprite_frames
 
-"""
-extends Node2D
-
-@onready var animated_sprite = $AnimatedSprite2D
-
-func _ready():
-	var new_texture = load("res://path/to/new_spritesheet.png")
-	var sprite_frames = animated_sprite.sprite_frames
 	
 	# Update the texture of all frames without changing frame configuration
 	for animation_name in sprite_frames.get_animation_names():
 		var frame_count = sprite_frames.get_frame_count(animation_name)
 		for i in range(frame_count):
-			sprite_frames.set_frame_texture(animation_name, i, new_texture)
+			# Get the old texture for this frame
+			var old_texture = sprite_frames.get_frame_texture(animation_name, i)
+			# Create a new AtlasTexture using the new sprite sheet but keep the same region
+			var atlas_texture = AtlasTexture.new()
+			atlas_texture.atlas = new_texture
+			atlas_texture.region = old_texture.region
+			atlas_texture.region = old_texture.region
+			atlas_texture.filter_clip = old_texture.filter_clip
+			
+			sprite_frames.set_frame(animation_name, i, atlas_texture)
 	
 	# If you want to restart the animation
-	animated_sprite.play()
-"""
+	$Body/AnimatedSprite2D.play()

@@ -53,12 +53,14 @@ func _initialise_cells_map():
 				elif cells_map_initialiser[j][i] == 2:
 					cell_settings.is_movable = false
 					cell_settings.type = MushMashCellSettings.CellTypes.Immovable
+					cell_settings.cell_sprite = MushMashCellSettings.AvailableSprites.HatMole
 					cell = settings.flower_template.instantiate()					
 
 					cell = settings.wall_template.instantiate()
 				elif cells_map_initialiser[j][i] == 3:
 					cell_settings.is_movable = false
 					cell_settings.type = MushMashCellSettings.CellTypes.Immovable
+					cell_settings.cell_sprite = MushMashCellSettings.AvailableSprites.Wall
 					cell = settings.flower_template.instantiate()					
 
 				cell.settings = cell_settings
@@ -77,19 +79,19 @@ func _input(event):
 	if event.is_action_pressed("ui_right"):
 		_update_new_positions(Direction.Right)
 		_update_cells_map()
-		# _end_current_turn()
+		$Turner._update_turn_state()
 	elif event.is_action_pressed("ui_left"):
 		_update_new_positions(Direction.Left)
 		_update_cells_map()
-		# _end_current_turn()
+		$Turner._update_turn_state()
 	elif event.is_action_pressed("ui_down"):
 		_update_new_positions(Direction.Down)
 		_update_cells_map()
-		# _end_current_turn()
+		$Turner._update_turn_state()
 	elif event.is_action_pressed("ui_up"):
 		_update_new_positions(Direction.Up)
 		_update_cells_map()
-		# _end_current_turn()
+		$Turner._update_turn_state()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,7 +1,6 @@
 extends Node
 class_name MushMashMapSettings
 
-
 var height: int = 5
 var width: int = 5
 
