@@ -7,17 +7,20 @@ signal turn_timer_timeout
 
 enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn}
 var turn_state_time_durations := {
-	TurnStates.IdleBeforePlayer: 1,
+	TurnStates.IdleBeforePlayer: .05,
 	TurnStates.PlayerTurn: 3,
-	TurnStates.IdleBeforeOpponent: 0.5,
-	TurnStates.OponnentTurn: 0.5,
+	TurnStates.IdleBeforeOpponent: 0.05,
+	TurnStates.OponnentTurn: 1,
 	
 }
 
 var player_cell_is_active := false
 var current_turn_state := TurnStates.IdleBeforePlayer
 var current_turn_actioned := false
-var cells_turn_queue: Array
+
+var player_cells_turn_queue: Array
+var opponent_cells_turn_queue: Array
+
 var current_active_cell: MushMashCell
 
 # Called when the node enters the scene tree for the first time.
@@ -44,14 +47,30 @@ func _update_turn_indicator():
 		
 	if current_turn_state == TurnStates.PlayerTurn:
 		$Sprite2DActionIndicator.modulate = Color(1,0,0)
+		
+	if current_turn_state == TurnStates.IdleBeforeOpponent:
+		$Sprite2DActionIndicator.modulate = Color(0,0,1)
+		
+	if current_turn_state == TurnStates.OponnentTurn:
+		$Sprite2DActionIndicator.modulate = Color(0,1,1)
 
 func _update_turn_state():
 	if current_turn_state == TurnStates.IdleBeforePlayer:
+		_on_idle_turn_end()
 		current_turn_state = TurnStates.PlayerTurn
-		_start_next_turn()
+		_on_player_turn_start()
 	elif current_turn_state == TurnStates.PlayerTurn:
+		_on_player_turn_end()
+		current_turn_state = TurnStates.IdleBeforeOpponent
+		_on_idle_turn_start()
+	elif current_turn_state == TurnStates.IdleBeforeOpponent:
+		_on_idle_turn_end()
+		current_turn_state = TurnStates.OponnentTurn
+		_on_opponent_turn_start()
+	elif current_turn_state == TurnStates.OponnentTurn:
+		_on_opponent_turn_end()
 		current_turn_state = TurnStates.IdleBeforePlayer
-		_end_current_turn()
+		_on_idle_turn_start()
 	
 	# Restart Timer
 	$ActionTimer.wait_time = turn_state_time_durations[current_turn_state]
@@ -60,26 +79,71 @@ func _update_turn_state():
 	_update_turn_indicator()
 
 	
-func _update_cells_turn_queue():
-	cells_turn_queue = get_parent()._get_all_cells()
+func _initialise_player_cells_turn_queue():
+	player_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCellSettings.CellTypes.Player])
 
-func _initialise_cells_turn_queue():
-	# cells_turn_queue = _get_all_cells()
-	cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCellSettings.CellTypes.Player])
+func _initialise_opponent_cells_turn_queue():
+	opponent_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCellSettings.CellTypes.Oponnent])
 	
-func _start_next_turn():
-	current_active_cell = cells_turn_queue.pop_front()
+
+func _on_player_turn_start():
+	current_active_cell = player_cells_turn_queue.pop_front()
 	current_active_cell.animation_player.play("ReadyForAction")
 	current_active_cell.settings.is_movable = true
-	# current_turn_actioned = false
 
-	
-func _end_current_turn():
+func _on_player_turn_end():
 	current_active_cell.settings.is_movable = false
 	current_active_cell.animation_player.play("RESET")
 	await current_active_cell.animation_player.animation_finished
 	current_active_cell.animation_player.play("Idle")
-	cells_turn_queue.append(current_active_cell)
+	player_cells_turn_queue.append(current_active_cell)
 	current_active_cell = null
-	# current_turn_actioned = true
-	# _update_turn_state()
+	
+func _on_opponent_turn_start():
+	current_active_cell = opponent_cells_turn_queue.pop_front()
+	current_active_cell.animation_player.play("ReadyForAction")
+	current_active_cell.settings.is_movable = true
+	
+	
+	# var O_O_: Timer = Timer.new()
+	# O_O_.wait_time = turn_state_time_durations[TurnStates.OponnentTurn]/2
+	# O_O_.start()
+	# await O_O_.timeout
+	
+
+	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
+	await wait_timer.timeout
+	
+	push_error(current_active_cell)
+
+	get_parent()._update_new_positions(0)
+	get_parent()._update_cells_map()
+	# $Turner._update_turn_state()
+	
+	push_error(current_active_cell)
+	pass
+
+	
+	
+	
+func _on_opponent_turn_end():
+	current_active_cell.settings.is_movable = false
+	current_active_cell.animation_player.play("RESET")
+	await current_active_cell.animation_player.animation_finished
+	
+
+	current_active_cell.animation_player.play("Idle")
+	
+	opponent_cells_turn_queue.append(current_active_cell)
+	current_active_cell = null
+
+
+
+
+func _on_idle_turn_start():
+	pass
+
+
+
+func _on_idle_turn_end():
+	pass

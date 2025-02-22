@@ -59,4 +59,4 @@ func change_sprite_sheet(sprite_id: int):
 			sprite_frames.set_frame(animation_name, i, atlas_texture)
 	
 	# If you want to restart the animation
-	$Body/AnimatedSprite2D.play()
+	# $Body/AnimatedSprite2D.play()

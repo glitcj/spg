@@ -20,6 +20,8 @@ func _ready() -> void:
 	cells_map_initialiser = $Funcs.sample_map_1()
 	
 	_initialise_cells_map()
+	$Turner._initialise_player_cells_turn_queue()
+	$Turner._initialise_opponent_cells_turn_queue()
 	draw_cells()
 	
 	# _start_next_turn()
@@ -52,7 +54,7 @@ func _initialise_cells_map():
 					cell = settings.mushroom_template.instantiate()
 				elif cells_map_initialiser[j][i] == 2:
 					cell_settings.is_movable = false
-					cell_settings.type = MushMashCellSettings.CellTypes.Immovable
+					cell_settings.type = MushMashCellSettings.CellTypes.Oponnent
 					cell_settings.cell_sprite = MushMashCellSettings.AvailableSprites.HatMole
 					cell = settings.flower_template.instantiate()					
 
@@ -66,7 +68,7 @@ func _initialise_cells_map():
 				cell.settings = cell_settings
 				cells_map[j][i] = cell
 	
-	$Turner._initialise_cells_turn_queue()
+	
 
 func _get_uuid(x, y):
 	return uuid_map[y * settings.height + x]
@@ -92,6 +94,9 @@ func _input(event):
 		_update_new_positions(Direction.Up)
 		_update_cells_map()
 		$Turner._update_turn_state()
+	elif event.is_action_pressed("ui_accept"):
+		_update_cells_map()
+		$Turner._update_turn_state()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -101,7 +106,7 @@ func _process(delta: float) -> void:
 
 func _update_console():
 	var O_O_ = ""
-	for cell: MushMashCell in $Turner.cells_turn_queue:
+	for cell: MushMashCell in $Turner.player_cells_turn_queue:
 		O_O_ = O_O_ + "%s\t" % cell.settings.uuid.substr(0,6)
 	
 	$Console.text = ""	
