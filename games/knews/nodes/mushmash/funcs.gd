@@ -31,3 +31,7 @@ func sample_map_2():
 		[0,1,1,1,1]
 		]
 	return sample
+
+
+func random_opponent_action():
+	return randi() % _MushMashMap.Direction.size()

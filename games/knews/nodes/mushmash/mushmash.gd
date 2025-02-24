@@ -1,5 +1,11 @@
 extends Node2D
+class_name _MushMashMap
 
+
+# TODO: Add Birds
+# TODO: Add fat birds (Fat chickens that block movement)
+# TODO: Add Sky Parallex background
+# TODO: Add cell selection in player turn
 
 # TODO: Move TurnController funcs to a separate node TurnController
 # TODO: Refactor Mushmash into many composite nodes
@@ -9,11 +15,15 @@ extends Node2D
 var cells_map_initialiser: Array
 
 var settings: MushMashMapSettings = MushMashMapSettings.new()
+var cells_map: Dictionary
 var uuid_map := {}
 
-var cells_map: Dictionary
 enum Direction {Up, Down, Left, Right}
 
+# Set references so all components can talk to each other
+@onready var turner = $Turner
+@onready var funcs = $Funcs
+@onready var input_handles = $InputHandles
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -78,25 +88,9 @@ func _input(event):
 		return
 	if $Turner.current_turn_actioned:
 		return
-	if event.is_action_pressed("ui_right"):
-		_update_new_positions(Direction.Right)
-		_update_cells_map()
-		$Turner._update_turn_state()
-	elif event.is_action_pressed("ui_left"):
-		_update_new_positions(Direction.Left)
-		_update_cells_map()
-		$Turner._update_turn_state()
-	elif event.is_action_pressed("ui_down"):
-		_update_new_positions(Direction.Down)
-		_update_cells_map()
-		$Turner._update_turn_state()
-	elif event.is_action_pressed("ui_up"):
-		_update_new_positions(Direction.Up)
-		_update_cells_map()
-		$Turner._update_turn_state()
-	elif event.is_action_pressed("ui_accept"):
-		_update_cells_map()
-		$Turner._update_turn_state()
+		
+	if $Turner.current_turn_state == $Turner.TurnStates.PlayerTurn:
+		$InputHandles.input_player_turn_cells_selected(event)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

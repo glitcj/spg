@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://c4d7thv2x41wt"]
+[gd_scene load_steps=17 format=4 uid="uid://c4d7thv2x41wt"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/mushmash.gd" id="1_2w2ai"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="2_xggdo"]
+[ext_resource type="Script" path="res://games/knews/nodes/mushmash/funcs.mushmash.map_input_handles.gd" id="3_k8mon"]
 [ext_resource type="Texture2D" uid="uid://cklccjgem4vvs" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="3_lh0cx"]
 [ext_resource type="Texture2D" uid="uid://buaxeege7mdhv" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetVillageAbandoned.png" id="4_3na5u"]
 [ext_resource type="Texture2D" uid="uid://cirssha3hmqrj" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="5_lk148"]
@@ -1176,6 +1177,12 @@ font_size = 30
 [node name="Mushmash" type="Node2D"]
 script = ExtResource("1_2w2ai")
 
+[node name="Funcs" type="Node" parent="."]
+script = ExtResource("7_7l565")
+
+[node name="InputHandles" type="Node" parent="."]
+script = ExtResource("3_k8mon")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="GridOrigin" type="Node2D" parent="."]
@@ -1198,9 +1205,6 @@ offset_top = -210.0
 offset_right = -338.0
 offset_bottom = -187.0
 label_settings = SubResource("LabelSettings_ws37t")
-
-[node name="Funcs" type="Node" parent="."]
-script = ExtResource("7_7l565")
 
 [node name="Hud" type="Node2D" parent="."]
 z_index = 10
