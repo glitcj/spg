@@ -23,6 +23,8 @@ var is_player: bool = false
 var is_movable: bool = false
 var can_move_now: bool = false
 
+
+var is_highlighted: bool = false
 enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
 
 var sprite_sheets: Dictionary

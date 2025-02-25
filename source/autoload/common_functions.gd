@@ -35,3 +35,13 @@ static func sum_array(a):
 		sum = sum + i
 
 	return sum
+	
+static func ranged_array(start: int, end: int, increment: int):
+	var array := []
+	var counter := start
+	assert(end>start)
+	while true:
+		array.append(counter)
+		counter = counter + increment
+		if counter >= end:
+			break

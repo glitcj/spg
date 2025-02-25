@@ -1197,7 +1197,7 @@ tile_set = SubResource("TileSet_0kld7")
 
 [node name="Turner" parent="." instance=ExtResource("6_307ur")]
 z_index = 99
-position = Vector2(359, -405)
+position = Vector2(366, -488)
 
 [node name="Console" type="Label" parent="."]
 offset_left = -378.0

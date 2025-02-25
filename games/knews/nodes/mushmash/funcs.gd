@@ -1,5 +1,7 @@
 extends Node
+class_name _MushMash_Funcs
 
+var mushmash: _MushMashMap = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,3 +37,15 @@ func sample_map_2():
 
 func random_opponent_action():
 	return randi() % _MushMashMap.Direction.size()
+
+
+func make_all_cells_immovable():
+	for cell: MushMashCell in get_parent()._get_all_cells():
+		cell.settings.is_movable = false
+
+
+func reset_idle_animation_of_all_cells():
+	for cell: MushMashCell in get_parent()._get_all_cells():
+		cell.animation_player.play("RESET")
+		await cell.animation_player.animation_finished
+		cell.animation_player.play("Idle")

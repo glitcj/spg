@@ -8,7 +8,7 @@ signal turn_timer_timeout
 enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn}
 var turn_state_time_durations := {
 	TurnStates.IdleBeforePlayer: 0.25,
-	TurnStates.PlayerTurn: 1,
+	TurnStates.PlayerTurn: 10,
 	TurnStates.IdleBeforeOpponent: 0.25,
 	TurnStates.OponnentTurn: 1,
 	
@@ -16,7 +16,7 @@ var turn_state_time_durations := {
 
 var player_cell_is_active := false
 var current_turn_state := TurnStates.IdleBeforePlayer
-var current_turn_actioned := false
+# var current_turn_actioned := false
 
 var player_cells_turn_queue: Array
 var opponent_cells_turn_queue: Array
@@ -31,6 +31,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
+	$TurnLabel.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
+	
 
 func _on_timer_timeout() -> void:
 	_update_turn_state()
@@ -82,14 +84,16 @@ func _initialise_opponent_cells_turn_queue():
 
 func _on_player_turn_start():
 	current_active_cell = player_cells_turn_queue.pop_front()
-	current_active_cell.animation_player.play("ReadyForAction")
-	current_active_cell.settings.is_movable = true
+	if false:
+		current_active_cell.animation_player.play("ReadyForAction")
+		current_active_cell.settings.is_movable = true
 
 func _on_player_turn_end():
-	current_active_cell.settings.is_movable = false
-	current_active_cell.animation_player.play("RESET")
-	await current_active_cell.animation_player.animation_finished
-	current_active_cell.animation_player.play("Idle")
+	if false:
+		current_active_cell.settings.is_movable = false
+		current_active_cell.animation_player.play("RESET")
+		await current_active_cell.animation_player.animation_finished
+		current_active_cell.animation_player.play("Idle")
 	player_cells_turn_queue.append(current_active_cell)
 	current_active_cell = null
 	
@@ -101,16 +105,10 @@ func _on_opponent_turn_start():
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
 	await wait_timer.timeout
 	
-	push_error(current_active_cell)
-
-	# get_parent()._update_new_positions(_MushMashMap.Direction.Right)
 	get_parent()._update_new_positions(_get_opponent_action())
 	get_parent()._update_cells_map()
-	# $Turner._update_turn_state()
 	
-	push_error(current_active_cell)
-	pass
-	
+
 func _on_opponent_turn_end():
 	current_active_cell.settings.is_movable = false
 	current_active_cell.animation_player.play("RESET")	

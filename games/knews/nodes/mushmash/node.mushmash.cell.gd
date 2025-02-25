@@ -12,6 +12,9 @@ func _ready() -> void:
 	assert(settings != null)
 	settings._preload_animation_sprites()
 	change_sprite_sheet(settings.cell_sprite)
+	
+func _proc() -> void:
+	_update_state_animations()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -57,6 +60,10 @@ func change_sprite_sheet(sprite_id: int):
 			atlas_texture.filter_clip = old_texture.filter_clip
 			
 			sprite_frames.set_frame(animation_name, i, atlas_texture)
-	
-	# If you want to restart the animation
-	# $Body/AnimatedSprite2D.play()
+
+
+func _update_state_animations():
+	if settings.is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "Highlighted":
+		$CellSelectionAnimationPlayer.play("Highlighted")
+	elif not settings.is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "RESET":
+		$CellSelectionAnimationPlayer.play("RESET")

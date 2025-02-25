@@ -22,21 +22,17 @@ enum Direction {Up, Down, Left, Right}
 
 # Set references so all components can talk to each other
 @onready var turner = $Turner
-@onready var funcs = $Funcs
+@onready var funcs : _MushMash_Funcs = $Funcs
 @onready var input_handles = $InputHandles
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	cells_map_initialiser = $Funcs.sample_map_1()
-	
 	_initialise_cells_map()
 	$Turner._initialise_player_cells_turn_queue()
 	$Turner._initialise_opponent_cells_turn_queue()
 	draw_cells()
 	
-	# _start_next_turn()
-
-
 func _initialise_uuid_map():
 	for j in settings.height:
 		for i in settings.width:
@@ -84,13 +80,16 @@ func _get_uuid(x, y):
 	return uuid_map[y * settings.height + x]
 
 func _input(event):
+	"""
 	if not $Turner.current_turn_state == $Turner.TurnStates.PlayerTurn:
 		return
 	if $Turner.current_turn_actioned:
 		return
+	"""
 		
 	if $Turner.current_turn_state == $Turner.TurnStates.PlayerTurn:
-		$InputHandles.input_player_turn_cells_selected(event)
+		# $InputHandles.input_player_turn_cells_selected(event)
+		$InputHandles.handle_inputs_player_turn(event)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -145,9 +144,10 @@ func _update_map():
 				cell.position = cell.position + 5 * direction
 
 func _update_new_positions(direction: int):
-	print("\n\n----- Old Maps ------")
-	print_cells_map()
-	print_uuid_map()	
+	if false:
+		print("\n\n----- Old Maps ------")
+		print_cells_map()
+		print_uuid_map()	
 	
 	# var new_cells_map = CommonFunctions.nulls_2D_map(settings.height, settings.width)
 	for j in range(settings.height):
@@ -193,9 +193,10 @@ func _update_cells_map():
 		new_cells_map[cell.settings.new_y][cell.settings.new_x] = cell
 	cells_map = new_cells_map
 	
-	print("\n\n----- New Maps ------")
-	print_cells_map()
-	print_uuid_map()	
+	if false:
+		print("\n\n----- New Maps ------")
+		print_cells_map()
+		print_uuid_map()	
 
 func _get_all_cells():
 	var all_cells = []

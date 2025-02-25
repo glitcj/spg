@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds1qpb6papn1s"]
+[gd_scene load_steps=10 format=3 uid="uid://ds1qpb6papn1s"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/node.mushmash.cell.gd" id="1_ie0st"]
 [ext_resource type="Texture2D" uid="uid://dgyj3yvjiwcq5" path="res://assets/knews/dba9d1k-a82d3ba0-d75c-4072-b63e-0eb80f7dcb45.png" id="1_jup24"]
@@ -58,6 +58,43 @@ _data = {
 font_size = 18
 font_color = Color(0.499953, 0.581607, 1, 1)
 
+[sub_resource type="Animation" id="Animation_n0qle"]
+resource_name = "Highlighted"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.1, 0.1, 0.1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pn8w3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76vuj"]
+_data = {
+"Highlighted": SubResource("Animation_n0qle"),
+"RESET": SubResource("Animation_pn8w3")
+}
+
 [node name="MushMashCell" type="Node2D"]
 script = ExtResource("1_ie0st")
 
@@ -81,3 +118,9 @@ offset_right = 18.0
 offset_bottom = -59.0
 scale = Vector2(0.944766, 1)
 label_settings = SubResource("LabelSettings_4kypm")
+
+[node name="CellSelectionAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_76vuj")
+}
+autoplay = "RESET"
