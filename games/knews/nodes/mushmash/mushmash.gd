@@ -57,19 +57,20 @@ func _initialise_cells_map():
 				if cells_map_initialiser[j][i] == 1:
 					cell_settings.is_movable = false
 					cell_settings.type = MushMashCellSettings.CellTypes.Player
-					cell = settings.mushroom_template.instantiate()
+					# cell = settings.mushroom_template.instantiate()
+					cell = settings.base_cell_template.instantiate()
 				elif cells_map_initialiser[j][i] == 2:
 					cell_settings.is_movable = false
 					cell_settings.type = MushMashCellSettings.CellTypes.Oponnent
 					cell_settings.cell_sprite = MushMashCellSettings.AvailableSprites.HatMole
-					cell = settings.flower_template.instantiate()					
+					cell = settings.base_cell_template.instantiate()
 
 					cell = settings.wall_template.instantiate()
 				elif cells_map_initialiser[j][i] == 3:
 					cell_settings.is_movable = false
 					cell_settings.type = MushMashCellSettings.CellTypes.Immovable
 					cell_settings.cell_sprite = MushMashCellSettings.AvailableSprites.Wall
-					cell = settings.flower_template.instantiate()					
+					cell = settings.base_cell_template.instantiate()
 
 				cell.settings = cell_settings
 				cells_map[j][i] = cell

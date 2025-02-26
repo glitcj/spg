@@ -47,5 +47,4 @@ func make_all_cells_immovable():
 func reset_idle_animation_of_all_cells():
 	for cell: MushMashCell in get_parent()._get_all_cells():
 		cell.animation_player.play("RESET")
-		await cell.animation_player.animation_finished
-		cell.animation_player.play("Idle")
+		cell.animation_player.queue("Idle")

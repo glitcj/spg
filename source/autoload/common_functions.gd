@@ -45,3 +45,9 @@ static func ranged_array(start: int, end: int, increment: int):
 		counter = counter + increment
 		if counter >= end:
 			break
+
+# This function is a special case where CommonFunctions needs
+# to get instantiated CommonFunctions.waiter(self, time)
+static func waiter(timer_parent: Node, time: float = 1):
+		var wait_timer = timer_parent.get_tree().create_timer(time)
+		await wait_timer.timeout
