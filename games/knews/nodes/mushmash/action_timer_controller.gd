@@ -105,7 +105,7 @@ func _on_opponent_turn_start():
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
 	await wait_timer.timeout
 	
-	get_parent()._update_new_positions(_get_opponent_action())
+	get_parent()._update_new_positions(_get_opponent_action(current_active_cell))
 	get_parent()._update_cells_map()
 	
 
@@ -122,5 +122,9 @@ func _on_idle_turn_start():
 func _on_idle_turn_end():
 	pass
 	
-func _get_opponent_action():
-	return randi() % _MushMashMap.Direction.size() # _MushMashMap.Direction.Right # 0 # 
+func _get_opponent_action(cell: MushMashCell):
+	var movable_directions : Array = get_parent().ai.movable_directions_from_cell_map(cell.settings.x, cell.settings.y)
+	print(movable_directions)
+	if movable_directions == []:
+		return 0
+	return movable_directions[randi() % movable_directions.size()]

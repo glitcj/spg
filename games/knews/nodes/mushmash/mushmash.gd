@@ -14,7 +14,7 @@ class_name _MushMashMap
 # TODO: This should be used only once to initialise map
 var cells_map_initialiser: Array
 
-var settings: MushMashMapSettings = MushMashMapSettings.new()
+var settings: MushMashMapSettings
 var cells_map: Dictionary
 var uuid_map := {}
 
@@ -23,12 +23,16 @@ enum Direction {Up, Down, Left, Right}
 # Set references so all components can talk to each other
 @onready var turner = $Turner
 @onready var funcs : _MushMash_Funcs = $Funcs
-@onready var input_handles = $InputHandles
+@onready var input_handles : _MushMash_InputHandles = $InputHandles
+@onready var ai : _MushMash_AI  = $AI
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	cells_map_initialiser = $Funcs.sample_map_1()
+	settings = MushMashMapSettings.new()
+	cells_map_initialiser = $Funcs.sample_map_3()
 	_initialise_cells_map()
+	print(settings.height)
+	print(settings.width)
 	$Turner._initialise_player_cells_turn_queue()
 	$Turner._initialise_opponent_cells_turn_queue()
 	draw_cells()
@@ -41,9 +45,14 @@ func _initialise_uuid_map():
 
 func _initialise_cells_map():
 	var uuid: String
+	
+	settings.height = len(cells_map_initialiser)
+	settings.width = len(cells_map_initialiser[0])
 	cells_map = CommonFunctions.nulls_2D_map(settings.width, settings.height)
+
 	for j in range(settings.height):
 		for i in range(settings.width):
+			cells_map[j][i] = null
 			if cells_map_initialiser[j][i] > 0:
 				uuid = _MushMash_Constants.get_cell_uuid(i, j)
 				var cell_settings: MushMashCellSettings = MushMashCellSettings.new()
@@ -120,8 +129,8 @@ func initialise_random_map():
 
 func draw_cells():
 	var uuid	
-	for i in range(settings.height):
-		for j in range(settings.width):
+	for j in range(settings.height):
+		for i in range(settings.width):
 			if cells_map_initialiser[j][i] > 0:
 				var cell: MushMashCell = cells_map[j][i]
 				cell.position = Vector2(150 * i, 150 * j)
@@ -217,7 +226,6 @@ func _get_all_typed_cells(types: Array = [MushMashCellSettings.CellTypes.Player]
 		for i in range(settings.width):
 			var cell: MushMashCell = cells_map[j][i]
 			if cell != null and cell.settings.type in types:
-			# if cells_map[j][i] != null and cells_map[j][i].is_movable:
 				all_cells.append(cells_map[j][i])
 	return all_cells
 

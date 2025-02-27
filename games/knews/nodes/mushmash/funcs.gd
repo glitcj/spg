@@ -24,6 +24,19 @@ func sample_map_1():
 	return sample
 
 
+
+func sample_map_3():
+	var sample: Array = [
+		[0,1,1,1,0,0,0,0],
+		[1,0,2,0,1,0,0,0],
+		[0,1,2,1,0,0,0,0],
+		[1,0,2,0,1,0,0,0],
+		[0,1,1,1,0,0,0,0]
+		]
+	return sample
+
+
+
 func sample_map_2():
 	var sample: Array = [
 		[0,1,1,1,1],

@@ -9,3 +9,29 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func movable_directions_from_cell_map(x, y):
+	var movable_directions = []
+	var considered_position_y
+	var considered_position_x
+	var considered_cell
+	for k in get_parent().Direction.keys():
+		considered_position_y = y # min(get_parent().settings.height, max(0, y))
+		considered_position_x = x # min(get_parent().settings.width, max(0, x+1))
+		if get_parent().Direction[k] == get_parent().Direction.Right:
+			considered_position_x = min(get_parent().settings.width, max(0, x+1))
+		elif get_parent().Direction[k] == get_parent().Direction.Left:
+			considered_position_x = min(get_parent().settings.width, max(0, x-1))
+		elif get_parent().Direction[k] == get_parent().Direction.Up:
+			considered_position_y = min(get_parent().settings.height, max(0, y-1))
+		elif get_parent().Direction[k] == get_parent().Direction.Down:
+			considered_position_y = min(get_parent().settings.height, max(0, y+1))
+			
+		if considered_position_x == x and considered_position_y == y:
+			continue
+		considered_cell =  get_parent().cells_map[considered_position_y][considered_position_x]
+		if considered_cell == null:
+			movable_directions.append(get_parent().Direction[k])
+			
+	return movable_directions
