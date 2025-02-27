@@ -8,7 +8,7 @@ signal turn_timer_timeout
 enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn}
 var turn_state_time_durations := {
 	TurnStates.IdleBeforePlayer: 0.25,
-	TurnStates.PlayerTurn: 10,
+	TurnStates.PlayerTurn: .5,
 	TurnStates.IdleBeforeOpponent: 0.25,
 	TurnStates.OponnentTurn: 1,
 	
