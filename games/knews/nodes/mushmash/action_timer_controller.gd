@@ -7,16 +7,18 @@ signal turn_timer_timeout
 
 enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn}
 var turn_state_time_durations := {
-	TurnStates.IdleBeforePlayer: 0.25,
-	TurnStates.PlayerTurn: .5,
-	TurnStates.IdleBeforeOpponent: 0.25,
+	TurnStates.IdleBeforePlayer: 1,
+	TurnStates.PlayerTurn: 5,
+	TurnStates.IdleBeforeOpponent: 1,
 	TurnStates.OponnentTurn: 1,
 	
 }
 
 var player_cell_is_active := false
-var current_turn_state := TurnStates.IdleBeforePlayer
-# var current_turn_actioned := false
+var current_turn_state
+var next_turn_state
+
+var turn_state_queue = [TurnStates.IdleBeforePlayer, TurnStates.PlayerTurn, TurnStates.IdleBeforeOpponent, TurnStates.OponnentTurn]
 
 var player_cells_turn_queue: Array
 var opponent_cells_turn_queue: Array
@@ -30,6 +32,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if current_turn_state == null:
+		return
 	$Label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
 	$TurnLabel.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
 	
@@ -49,7 +53,7 @@ func _update_turn_indicator():
 		
 	if current_turn_state == TurnStates.OponnentTurn:
 		$Sprite2DActionIndicator.modulate = Color(0,1,1)
-
+"""
 func _update_turn_state():
 	if current_turn_state == TurnStates.IdleBeforePlayer:
 		await _on_idle_turn_end()
@@ -73,8 +77,45 @@ func _update_turn_state():
 	$ActionTimer.start()
 	
 	_update_turn_indicator()
-
+"""
 	
+
+func _update_turn_state():
+	if current_turn_state != null:
+		turn_state_queue.append(current_turn_state)
+	current_turn_state = turn_state_queue.pop_front()
+	next_turn_state = turn_state_queue[0]
+	_update_turn_indicator()
+	
+	if current_turn_state == TurnStates.IdleBeforePlayer:
+		await _on_opponent_turn_end()
+		await _on_idle_turn_start()
+		
+
+	elif current_turn_state == TurnStates.PlayerTurn:
+		await _on_idle_turn_end()
+		_on_player_turn_start()
+
+
+	elif current_turn_state == TurnStates.IdleBeforeOpponent:
+		_on_player_turn_end()
+		await _on_idle_turn_start()
+		
+		
+
+	elif current_turn_state == TurnStates.OponnentTurn:
+		await _on_idle_turn_end()
+		await _on_opponent_turn_start()
+
+	# Restart Timer
+	print(current_turn_state)
+	print(next_turn_state)
+	print(turn_state_time_durations[next_turn_state])
+	$ActionTimer.wait_time = turn_state_time_durations[current_turn_state]
+	$ActionTimer.start()
+	
+
+
 func _initialise_player_cells_turn_queue():
 	player_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCellSettings.CellTypes.Player])
 
@@ -84,11 +125,25 @@ func _initialise_opponent_cells_turn_queue():
 
 func _on_player_turn_start():
 	current_active_cell = player_cells_turn_queue.pop_front()
+	var input_handler : _MushMash_InputHandles = get_parent().input_handles
+	input_handler.get_from_input_mode(input_handler.InputModes.SelectCell)
+	
+	await input_handler.finished_input_mode
+	var selected_cells: Array = input_handler.tray
+	
+	input_handler.get_from_input_mode(input_handler.InputModes.MoveMovableCells)
+	await input_handler.finished_input_mode
+
+	
 	if false:
 		current_active_cell.animation_player.play("ReadyForAction")
 		current_active_cell.settings.is_movable = true
 
 func _on_player_turn_end():
+	var input_handler : _MushMash_InputHandles = get_parent().input_handles
+	input_handler.get_from_input_mode(input_handler.InputModes.Inactive)
+	
+	
 	if false:
 		current_active_cell.settings.is_movable = false
 		current_active_cell.animation_player.play("RESET")
@@ -110,11 +165,12 @@ func _on_opponent_turn_start():
 	
 
 func _on_opponent_turn_end():
-	current_active_cell.settings.is_movable = false
-	current_active_cell.animation_player.play("RESET")	
-	current_active_cell.animation_player.play("Idle")
-	opponent_cells_turn_queue.append(current_active_cell)
-	current_active_cell = null
+	if current_active_cell != null:
+		current_active_cell.settings.is_movable = false
+		current_active_cell.animation_player.play("RESET")	
+		current_active_cell.animation_player.play("Idle")
+		opponent_cells_turn_queue.append(current_active_cell)
+		current_active_cell = null
 
 func _on_idle_turn_start():
 	pass

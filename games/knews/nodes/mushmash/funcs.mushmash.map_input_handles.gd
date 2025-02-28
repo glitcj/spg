@@ -5,7 +5,17 @@ var cells_selector_position_x = 0
 var cells_selector_position_y = 0
 var cells_selected = false
 
-# var last_cursor_movement = "horizontal"
+
+enum InputModes {Inactive, SelectCell, MoveMovableCells}
+
+
+signal finished_input_mode
+
+var mode = InputModes.Inactive
+var tray = null
+
+
+var last_selected_cells
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,11 +28,28 @@ func _process(delta: float) -> void:
 	pass
 
 
-func handle_inputs_player_turn(event):
+func handle_inputs(event):
+	pass
+	if mode == InputModes.Inactive:
+		return
+	elif mode == InputModes.SelectCell:
+		input_player_turn_cells_to_select(event)
+	elif mode == InputModes.MoveMovableCells:
+		input_player_turn_cells_selected(event)
+
+
+func handle_inputs_player_turn_v1(event):
+	if mode == InputModes.Inactive:
+		return
 	if not cells_selected:
 		input_player_turn_cells_to_select(event)
 	elif cells_selected:
 		input_player_turn_cells_selected(event)
+
+
+
+func get_from_input_mode(mode_):
+	mode = mode_
 
 
 func input_player_turn_cells_selected(event):
@@ -55,11 +82,14 @@ func input_player_turn_cells_selected(event):
 func input_player_turn_cells_to_select(event):
 	assert(!cells_selected)
 	
-	
-	
 	if event.is_action_pressed("ui_accept"):
 		cells_selected = true
 		print(cells_selector_position_x, cells_selector_position_y, range(get_parent().settings.width), cells_selected)
+		mode = InputModes.Inactive
+		tray = last_selected_cells
+		finished_input_mode.emit()
+		
+
 	else:
 		if event.is_action_pressed("ui_right"):
 			cells_selector_position_x += 1
@@ -81,9 +111,9 @@ func input_player_turn_cells_to_select(event):
 				
 				
 				if action in ["ui_up", "ui_down"]:
-					_update_cell_selection_indicator(range(get_parent().settings.width), [cells_selector_position_y])
+					last_selected_cells = _update_cell_selection_indicator(range(get_parent().settings.width), [cells_selector_position_y])
 				if action in ["ui_left", "ui_right"]:
-					_update_cell_selection_indicator([cells_selector_position_x], range(get_parent().settings.height))
+					last_selected_cells = _update_cell_selection_indicator([cells_selector_position_x], range(get_parent().settings.height))
 
 func _update_cell_selection_indicator(selected_x_indices: Array, selected_y_indices: Array):
 	
@@ -109,4 +139,9 @@ func _reset_selector_control_variables():
 	cells_selector_position_x = 0
 	cells_selector_position_y = 0
 	cells_selected = false
+
+func reset():
+	_reset_selector_control_variables
+	get_parent().funcs.make_all_cells_immovable()
+	get_parent().funcs.reset_idle_animation_of_all_cells()
 	

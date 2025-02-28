@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c4d7thv2x41wt"]
+[gd_scene load_steps=19 format=4 uid="uid://c4d7thv2x41wt"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/mushmash.gd" id="1_2w2ai"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="2_xggdo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://buaxeege7mdhv" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetVillageAbandoned.png" id="4_3na5u"]
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/funcs.mushmash.ai.gd" id="4_jtph6"]
 [ext_resource type="Texture2D" uid="uid://cirssha3hmqrj" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="5_lk148"]
+[ext_resource type="Script" path="res://games/knews/nodes/mushmash/mushmash_map_settings.gd" id="5_qn5x2"]
 [ext_resource type="PackedScene" uid="uid://sfxyhloygidk" path="res://games/knews/nodes/mushmash/composables/action_timer_controller.tscn" id="6_307ur"]
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/funcs.gd" id="7_7l565"]
 
@@ -1186,6 +1187,9 @@ script = ExtResource("3_k8mon")
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource("4_jtph6")
+
+[node name="Settings" type="Node" parent="."]
+script = ExtResource("5_qn5x2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)

@@ -14,7 +14,7 @@ class_name _MushMashMap
 # TODO: This should be used only once to initialise map
 var cells_map_initialiser: Array
 
-var settings: MushMashMapSettings
+# var settings: MushMashMapSettings
 var cells_map: Dictionary
 var uuid_map := {}
 
@@ -25,10 +25,10 @@ enum Direction {Up, Down, Left, Right}
 @onready var funcs : _MushMash_Funcs = $Funcs
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
-
+@onready var settings: MushMashMapSettings = $Settings
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	settings = MushMashMapSettings.new()
+	# settings = MushMashMapSettings.new()
 	cells_map_initialiser = $Funcs.sample_map_3()
 	_initialise_cells_map()
 	print(settings.height)
@@ -96,10 +96,15 @@ func _input(event):
 	if $Turner.current_turn_actioned:
 		return
 	"""
-		
+	
+	$InputHandles.handle_inputs(event)
+	"""
 	if $Turner.current_turn_state == $Turner.TurnStates.PlayerTurn:
 		# $InputHandles.input_player_turn_cells_selected(event)
 		$InputHandles.handle_inputs_player_turn(event)
+	"""
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
