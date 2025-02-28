@@ -53,32 +53,6 @@ func _update_turn_indicator():
 		
 	if current_turn_state == TurnStates.OponnentTurn:
 		$Sprite2DActionIndicator.modulate = Color(0,1,1)
-"""
-func _update_turn_state():
-	if current_turn_state == TurnStates.IdleBeforePlayer:
-		await _on_idle_turn_end()
-		current_turn_state = TurnStates.PlayerTurn
-		await _on_player_turn_start()
-	elif current_turn_state == TurnStates.PlayerTurn:
-		await _on_player_turn_end()
-		current_turn_state = TurnStates.IdleBeforeOpponent
-		await _on_idle_turn_start()
-	elif current_turn_state == TurnStates.IdleBeforeOpponent:
-		await _on_idle_turn_end()
-		current_turn_state = TurnStates.OponnentTurn
-		await _on_opponent_turn_start()
-	elif current_turn_state == TurnStates.OponnentTurn:
-		await _on_opponent_turn_end()
-		current_turn_state = TurnStates.IdleBeforePlayer
-		await _on_idle_turn_start()
-	
-	# Restart Timer
-	$ActionTimer.wait_time = turn_state_time_durations[current_turn_state]
-	$ActionTimer.start()
-	
-	_update_turn_indicator()
-"""
-	
 
 func _update_turn_state():
 	if current_turn_state != null:
@@ -142,6 +116,7 @@ func _on_player_turn_start():
 func _on_player_turn_end():
 	var input_handler : _MushMash_InputHandles = get_parent().input_handles
 	input_handler.get_from_input_mode(input_handler.InputModes.Inactive)
+	input_handler.reset()
 	
 	
 	if false:

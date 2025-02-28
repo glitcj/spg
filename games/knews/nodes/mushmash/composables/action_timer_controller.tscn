@@ -10,6 +10,7 @@ script = ExtResource("1_xm8sr")
 
 [node name="ActionTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [node name="Sprite2DActionIndicator" type="Sprite2D" parent="."]
 scale = Vector2(20, 20)
