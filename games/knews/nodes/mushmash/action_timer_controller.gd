@@ -5,6 +5,8 @@ class_name _MushMash_ActionTimerController
 signal turn_timer_timeout
 @onready var turn_timer = $ActionTimer
 
+var cells_to_move_are_selectable = false
+
 enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn}
 var turn_state_time_durations := {
 	TurnStates.IdleBeforePlayer: 1,
@@ -17,6 +19,9 @@ var turn_state_time_durations := {
 var player_cell_is_active := false
 var current_turn_state
 var next_turn_state
+
+
+
 
 var turn_state_queue = [TurnStates.IdleBeforePlayer, TurnStates.PlayerTurn, TurnStates.IdleBeforeOpponent, TurnStates.OponnentTurn]
 
@@ -98,20 +103,26 @@ func _initialise_opponent_cells_turn_queue():
 	
 
 func _on_player_turn_start():
-	current_active_cell = player_cells_turn_queue.pop_front()
-	var input_handler : _MushMash_InputHandles = get_parent().input_handles
-	input_handler.get_from_input_mode(input_handler.InputModes.SelectCell)
 	
-	await input_handler.finished_input_mode
-	var selected_cells: Array = input_handler.tray
-	
-	input_handler.get_from_input_mode(input_handler.InputModes.MoveMovableCells)
-	await input_handler.finished_input_mode
+	if cells_to_move_are_selectable:
+		var input_handler : _MushMash_InputHandles = get_parent().input_handles
+		current_active_cell = player_cells_turn_queue.pop_front()
+		input_handler.get_from_input_mode(input_handler.InputModes.SelectCell)
+		
+		await input_handler.finished_input_mode
+		var selected_cells: Array = input_handler.tray
+		
+		input_handler.get_from_input_mode(input_handler.InputModes.MoveMovableCells)
+		await input_handler.finished_input_mode
 
-	
-	if false:
+	else:
+		var input_handler : _MushMash_InputHandles = get_parent().input_handles
+		current_active_cell = player_cells_turn_queue.pop_front()
 		current_active_cell.animation_player.play("ReadyForAction")
 		current_active_cell.settings.is_movable = true
+		input_handler.get_from_input_mode(input_handler.InputModes.MoveMovableCells)
+		await input_handler.finished_input_mode
+
 
 func _on_player_turn_end():
 	var input_handler : _MushMash_InputHandles = get_parent().input_handles

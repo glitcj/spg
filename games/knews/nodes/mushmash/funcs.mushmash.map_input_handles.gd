@@ -53,7 +53,7 @@ func get_from_input_mode(mode_):
 
 
 func input_player_turn_cells_selected(event):
-	assert(cells_selected)
+	# assert(cells_selected)
 	if event.is_action_pressed("ui_right"):
 		get_parent()._update_new_positions(get_parent().Direction.Right)
 
