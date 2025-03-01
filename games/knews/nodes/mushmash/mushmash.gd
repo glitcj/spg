@@ -90,21 +90,7 @@ func _get_uuid(x, y):
 	return uuid_map[y * settings.height + x]
 
 func _input(event):
-	"""
-	if not $Turner.current_turn_state == $Turner.TurnStates.PlayerTurn:
-		return
-	if $Turner.current_turn_actioned:
-		return
-	"""
-	
 	$InputHandles.handle_inputs(event)
-	"""
-	if $Turner.current_turn_state == $Turner.TurnStates.PlayerTurn:
-		# $InputHandles.input_player_turn_cells_selected(event)
-		$InputHandles.handle_inputs_player_turn(event)
-	"""
-	
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

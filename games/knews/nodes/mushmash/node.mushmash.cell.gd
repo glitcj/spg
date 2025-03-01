@@ -6,6 +6,7 @@ var sprite_sheets: Dictionary
 
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var highlighter_animation_player: AnimationPlayer = $HighlighterAnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

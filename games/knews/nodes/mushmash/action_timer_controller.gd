@@ -9,10 +9,10 @@ var cells_to_move_are_selectable = false
 
 enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn}
 var turn_state_time_durations := {
-	TurnStates.IdleBeforePlayer: 1,
+	TurnStates.IdleBeforePlayer: .05,
 	TurnStates.PlayerTurn: 5,
-	TurnStates.IdleBeforeOpponent: 1,
-	TurnStates.OponnentTurn: 1,
+	TurnStates.IdleBeforeOpponent: .05,
+	TurnStates.OponnentTurn: .1,
 	
 }
 
@@ -118,7 +118,9 @@ func _on_player_turn_start():
 	else:
 		var input_handler : _MushMash_InputHandles = get_parent().input_handles
 		current_active_cell = player_cells_turn_queue.pop_front()
-		current_active_cell.animation_player.play("ReadyForAction")
+		# current_active_cell.animation_player.play("ReadyForAction")
+		current_active_cell.highlighter_animation_player.play("RESET")
+		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
 		current_active_cell.settings.is_movable = true
 		input_handler.get_from_input_mode(input_handler.InputModes.MoveMovableCells)
 		await input_handler.finished_input_mode
@@ -128,6 +130,12 @@ func _on_player_turn_end():
 	var input_handler : _MushMash_InputHandles = get_parent().input_handles
 	input_handler.get_from_input_mode(input_handler.InputModes.Inactive)
 	input_handler.reset()
+	
+	
+	current_active_cell.highlighter_animation_player.play("RESET")
+	var next_active_player_cell: MushMashCell = player_cells_turn_queue[0]
+	next_active_player_cell.highlighter_animation_player.play("NextCellHighlight")
+	
 	
 	
 	if false:
