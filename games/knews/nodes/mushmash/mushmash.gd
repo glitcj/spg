@@ -37,6 +37,9 @@ func _ready() -> void:
 	$Turner._initialise_opponent_cells_turn_queue()
 	draw_cells()
 	
+	
+	absolute_resize_tilemap()
+	
 func _initialise_uuid_map():
 	for j in settings.height:
 		for i in settings.width:
@@ -308,3 +311,13 @@ func print_uuid_map(max_uuid_digits: int = 4):
 			else:
 				line = line + "null" + "   "
 		print(line)
+
+
+
+func absolute_resize_tilemap(resize_width = 80, resize_height = 80):
+	var tileset: TileSet = $TileMapsNode/TileMapLayer.tile_set
+	var scaler = resize_width/tileset.tile_size.x
+	$TileMapsNode.scale = Vector2(scaler, scaler)
+	
+func place_cells_on_tile_map():
+	pass
