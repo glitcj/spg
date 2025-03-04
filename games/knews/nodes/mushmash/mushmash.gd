@@ -75,7 +75,6 @@ func _initialise_cells_map():
 					cell.is_movable = false
 					cell.type = MushMashCell.CellTypes.Oponnent
 					cell.cell_sprite = MushMashCell.AvailableSprites.HatMole
-					# cell.change_sprite_sheet(cell.cell_sprite)
 
 				elif cells_map_initialiser[j][i] == 3:
 					cell.is_movable = false
@@ -125,9 +124,10 @@ func draw_cells():
 				cell.position = Vector2(150 * i, 150 * j)
 				push_error(get_parent().name)
 				$GridOrigin.add_child(cell)
-				cell.change_sprite_sheet(cell.cell_sprite)
 				
-				print(cell.cell_sprite)
+				# cell.change_sprite_sheet(cell.cell_sprite)
+				
+				# print(cell.cell_sprite)
 				cell.animation_player.play("Idle")
 
 

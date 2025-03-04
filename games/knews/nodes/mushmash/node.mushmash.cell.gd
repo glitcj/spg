@@ -41,7 +41,7 @@ enum BodyAnimatorStates {Idle, RESET}
 enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
 
 var sprite_sheets: Dictionary
-var cell_sprite := AvailableSprites.Mole
+var cell_sprite := AvailableSprites.Eye
 
 	
 func _preload_animation_sprites():
@@ -59,12 +59,15 @@ func _ready() -> void:
 	_preload_animation_sprites()
 	print(cell_sprite)
 	change_sprite_sheet(cell_sprite)
-	ready.connect(_on_ready_sprite_change)
+
+	# ready.connect(_on_ready_sprite_change)
 	# absolute_rescale(150,120)
 	
 	
 func _on_ready_sprite_change():
-	change_sprite_sheet(cell_sprite)
+	# change_sprite_sheet(cell_sprite)
+	pass
+	
 
 """
 	
@@ -79,6 +82,8 @@ func _process(delta: float) -> void:
 	# _update_state_animations()
 
 	$Label.text = "(%s,%s) \n %s" % [x, y, uuid.substr(0,8)]
+	# change_sprite_sheet(cell_sprite)
+	# print(cell_sprite)
 	# change_sprite_sheet(cell_sprite)
 	# absolute_rescale(200,200)
 
@@ -103,9 +108,12 @@ func absolute_rescale_framed(desired_width := 150, desired_height := 150, keep_r
 
 func change_sprite_sheet(sprite_id: int):
 	# var new_texture = settings.sprite_sheets[sprite_id]
-	var new_texture = sprite_sheets[cell_sprite]
+	
+	print(sprite_id)
+	print(sprite_sheets)
+	var new_texture = sprite_sheets[sprite_id]
 	print(new_texture)
-	var sprite_frames: SpriteFrames = $Body/AnimatedSprite2D.sprite_frames
+	var sprite_frames: SpriteFrames = $Body/AnimatedSprite2D.sprite_frames.duplicate()
 	
 	# Update the texture of all frames without changing frame configuration
 	for animation_name in sprite_frames.get_animation_names():
@@ -121,6 +129,7 @@ func change_sprite_sheet(sprite_id: int):
 			atlas_texture.filter_clip = old_texture.filter_clip
 			
 			sprite_frames.set_frame(animation_name, i, atlas_texture)
+			$Body/AnimatedSprite2D.sprite_frames = sprite_frames
 
 
 func _update_state_animations():

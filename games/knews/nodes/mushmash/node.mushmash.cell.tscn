@@ -64,7 +64,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Body/AnimatedSprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -289,7 +289,7 @@ animations = [{
 font_size = 18
 font_color = Color(0.499953, 0.581607, 1, 1)
 
-[node name="MushMashCellBase" type="Node2D"]
+[node name="MushMashCell" type="Node2D"]
 script = ExtResource("1_ie0st")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
