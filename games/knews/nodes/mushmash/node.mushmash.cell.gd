@@ -1,25 +1,86 @@
 extends Node2D
 class_name MushMashCell
 
-var settings: MushMashCellSettings
-var sprite_sheets: Dictionary
+
+# TODO: Change Settings to Initialiser
+# var settings: MushMashCell
 
 
+# @onready var settings: MushMashCell = $Settings
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var highlighter_animation_player: AnimationPlayer = $HighlighterAnimationPlayer
 
+
+enum AvailableStates {Idle, Excited, ReadyForAction}
+enum CellTypes {Player, Oponnent, Immovable}
+
+var height: int = 100
+var width: int = 100
+var state: int = AvailableStates.Idle
+var uuid: String
+
+var type: int = CellTypes.Immovable
+
+var x
+var y
+var new_x
+var new_y
+var new_position: Vector2
+
+var is_enemy: bool = false
+var is_player: bool = false
+var is_movable: bool = false
+var can_move_now: bool = false
+
+
+var is_highlighted: bool = false
+
+enum HighlightAnimatorStates {IsHighlighted, NotHighlighted, RESET}
+enum BodyAnimatorStates {Idle, RESET}
+
+enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
+
+var sprite_sheets: Dictionary
+var cell_sprite := AvailableSprites.Mole
+
+	
+func _preload_animation_sprites():
+	sprite_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/SpriteSheet.png")
+	sprite_sheets[AvailableSprites.HeartRed] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/HeartRed/SpriteSheet.png")
+	sprite_sheets[AvailableSprites.Mole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Mole2/Mole2.png")
+	sprite_sheets[AvailableSprites.HatMole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Characters/CamouflageGreen/SpriteSheet.png")
+	sprite_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	assert(settings != null)
-	settings._preload_animation_sprites()
-	change_sprite_sheet(settings.cell_sprite)
+	_preload_animation_sprites()
+	print(cell_sprite)
+	change_sprite_sheet(cell_sprite)
+	ready.connect(_on_ready_sprite_change)
+	# absolute_rescale(150,120)
+	
+	
+func _on_ready_sprite_change():
+	change_sprite_sheet(cell_sprite)
+
+"""
 	
 func _proc() -> void:
 	_update_state_animations()
+	change_sprite_sheet(cell_sprite)
+	
+"""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Label.text = "(%s,%s) \n %s" % [settings.x, settings.y, settings.uuid.substr(0,8)]
+	# _update_state_animations()
+
+	$Label.text = "(%s,%s) \n %s" % [x, y, uuid.substr(0,8)]
+	# change_sprite_sheet(cell_sprite)
+	# absolute_rescale(200,200)
 
 # TODO: Add animated sprite texture resize option
 func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
@@ -40,12 +101,11 @@ func absolute_rescale_framed(desired_width := 150, desired_height := 150, keep_r
 	animated_sprite_2D.scale = Vector2(scale_x, scale_y)
 
 
-
-
 func change_sprite_sheet(sprite_id: int):
-	var new_texture = settings.sprite_sheets[sprite_id]
+	# var new_texture = settings.sprite_sheets[sprite_id]
+	var new_texture = sprite_sheets[cell_sprite]
+	print(new_texture)
 	var sprite_frames: SpriteFrames = $Body/AnimatedSprite2D.sprite_frames
-
 	
 	# Update the texture of all frames without changing frame configuration
 	for animation_name in sprite_frames.get_animation_names():
@@ -64,7 +124,9 @@ func change_sprite_sheet(sprite_id: int):
 
 
 func _update_state_animations():
-	if settings.is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "Highlighted":
+	if is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "Highlighted":
+		# $CellSelectionAnimationPlayer.play("RESET")
+		# $CellSelectionAnimationPlayer.queue("Highlighted")
 		$CellSelectionAnimationPlayer.play("Highlighted")
-	elif not settings.is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "RESET":
+	elif not is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "RESET":
 		$CellSelectionAnimationPlayer.play("RESET")

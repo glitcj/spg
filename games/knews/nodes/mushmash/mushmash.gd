@@ -26,17 +26,18 @@ enum Direction {Up, Down, Left, Right}
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
 @onready var settings: MushMashMapSettings = $Settings
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# settings = MushMashMapSettings.new()
 	cells_map_initialiser = $Funcs.sample_map_3()
 	_initialise_cells_map()
+	draw_cells()
 	print(settings.height)
 	print(settings.width)
 	$Turner._initialise_player_cells_turn_queue()
-	$Turner._initialise_opponent_cells_turn_queue()
-	draw_cells()
-	
+	$Turner._initialise_opponent_cells_turn_queue()	
 	
 	absolute_resize_tilemap()
 	
@@ -57,37 +58,31 @@ func _initialise_cells_map():
 		for i in range(settings.width):
 			cells_map[j][i] = null
 			if cells_map_initialiser[j][i] > 0:
+				var cell: MushMashCell = settings.base_cell_template.instantiate()
 				uuid = _MushMash_Constants.get_cell_uuid(i, j)
-				var cell_settings: MushMashCellSettings = MushMashCellSettings.new()
-				cell_settings.uuid = uuid
-				cell_settings.x = i
-				cell_settings.y = j
-				cell_settings.new_x = i
-				cell_settings.new_y = j
+				cell.uuid = uuid
+				cell.x = i
+				cell.y = j
+				cell.new_x = i
+				cell.new_y = j
 				
-				var cell: MushMashCell
 				if cells_map_initialiser[j][i] == 1:
-					cell_settings.is_movable = false
-					cell_settings.type = MushMashCellSettings.CellTypes.Player
-					# cell = settings.mushroom_template.instantiate()
-					cell = settings.base_cell_template.instantiate()
+					cell.is_movable = false
+					cell.type = MushMashCell.CellTypes.Player
+					cell.cell_sprite = MushMashCell.AvailableSprites.Mushroom
+					
 				elif cells_map_initialiser[j][i] == 2:
-					cell_settings.is_movable = false
-					cell_settings.type = MushMashCellSettings.CellTypes.Oponnent
-					cell_settings.cell_sprite = MushMashCellSettings.AvailableSprites.HatMole
-					cell = settings.base_cell_template.instantiate()
+					cell.is_movable = false
+					cell.type = MushMashCell.CellTypes.Oponnent
+					cell.cell_sprite = MushMashCell.AvailableSprites.HatMole
+					# cell.change_sprite_sheet(cell.cell_sprite)
 
-					cell = settings.wall_template.instantiate()
 				elif cells_map_initialiser[j][i] == 3:
-					cell_settings.is_movable = false
-					cell_settings.type = MushMashCellSettings.CellTypes.Immovable
-					cell_settings.cell_sprite = MushMashCellSettings.AvailableSprites.Wall
-					cell = settings.base_cell_template.instantiate()
-
-				cell.settings = cell_settings
+					cell.is_movable = false
+					cell.type = MushMashCell.CellTypes.Immovable
+					cell.cell_sprite = MushMashCell.AvailableSprites.Wall
+					
 				cells_map[j][i] = cell
-	
-	
 
 func _get_uuid(x, y):
 	return uuid_map[y * settings.height + x]
@@ -104,7 +99,7 @@ func _process(delta: float) -> void:
 func _update_console():
 	var O_O_ = ""
 	for cell: MushMashCell in $Turner.player_cells_turn_queue:
-		O_O_ = O_O_ + "%s\t" % cell.settings.uuid.substr(0,6)
+		O_O_ = O_O_ + "%s\t" % cell.uuid.substr(0,6)
 	
 	$Console.text = ""	
 	
@@ -130,6 +125,9 @@ func draw_cells():
 				cell.position = Vector2(150 * i, 150 * j)
 				push_error(get_parent().name)
 				$GridOrigin.add_child(cell)
+				cell.change_sprite_sheet(cell.cell_sprite)
+				
+				print(cell.cell_sprite)
 				cell.animation_player.play("Idle")
 
 
@@ -138,7 +136,7 @@ func _update_map():
 	var destination
 	var direction
 	for cell: MushMashCell in all_cells:
-		destination = Vector2(150 * cell.settings.x, 150 * cell.settings.y)
+		destination = Vector2(150 * cell.x, 150 * cell.y)
 		if settings.cell_movement_type == MushMashMapSettings.CellMovementType.Instant:
 			cell.position = destination
 
@@ -177,24 +175,24 @@ func _on_cell_positions_changed():
 
 func _update_single_cell(old_x, old_y, new_x, new_y):
 	var cell: MushMashCell = cells_map[old_y][old_x]
-	if not cell.settings.is_movable:
+	if not cell.is_movable:
 		return
-	cell.settings.new_x = new_x
-	cell.settings.new_y = new_y
+	cell.new_x = new_x
+	cell.new_y = new_y
 
 func _update_cells_map():
 	var all_cells = _get_all_cells()
 	for cell: MushMashCell in all_cells:
-		if cell.settings.new_x != cell.settings.x:
-			cell.settings.x = cell.settings.new_x
-		if cell.settings.new_y != cell.settings.y:
-			cell.settings.y = cell.settings.new_y
+		if cell.new_x != cell.x:
+			cell.x = cell.new_x
+		if cell.new_y != cell.y:
+			cell.y = cell.new_y
 
 	
 	
 	var new_cells_map: Dictionary = CommonFunctions.nulls_2D_map(settings.height, settings.width)
 	for cell in _get_all_cells():
-		new_cells_map[cell.settings.new_y][cell.settings.new_x] = cell
+		new_cells_map[cell.new_y][cell.new_x] = cell
 	cells_map = new_cells_map
 	
 	if false:
@@ -214,12 +212,12 @@ func _get_all_cells():
 
 
 
-func _get_all_typed_cells(types: Array = [MushMashCellSettings.CellTypes.Player]):
+func _get_all_typed_cells(types: Array = [MushMashCell.CellTypes.Player]):
 	var all_cells = []
 	for j in range(settings.height):
 		for i in range(settings.width):
 			var cell: MushMashCell = cells_map[j][i]
-			if cell != null and cell.settings.type in types:
+			if cell != null and cell.type in types:
 				all_cells.append(cells_map[j][i])
 	return all_cells
 
@@ -248,11 +246,11 @@ func _resolve_cell_collisions():
 				collisions[j][i] = 0
 				
 			# Collision if a cell moves into the new position of another cell
-			elif [current_cell.settings.new_x, current_cell.settings.new_y] == [other_cell.settings.new_x, other_cell.settings.new_y]:
+			elif [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]:
 				collisions[j][i] = 1
 			
 			# Collision if a cell moves into the old position of another cell
-			elif [current_cell.settings.new_x, current_cell.settings.new_y] == [other_cell.settings.x, other_cell.settings.y]:
+			elif [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]:
 				collisions[j][i] = 1
 	
 	var detected_zero_collisions_row
@@ -265,7 +263,7 @@ func _resolve_cell_collisions():
 				detected_zero_collisions_row = true
 
 				for k in len(all_cells_1):
-					if [current_cell.settings.x, current_cell.settings.y] == [all_cells_1[k].settings.new_x, all_cells_1[k].settings.new_y]:
+					if [current_cell.x, current_cell.y] == [all_cells_1[k].new_x, all_cells_1[k].new_y]:
 						collisions[j][k] = 0
 						collisions[k][j] = 0
 
@@ -279,8 +277,8 @@ func _resolve_cell_collisions():
 	for j in len(all_cells_1):
 		if j not in resolved_cells:
 			var cell = all_cells_1[j]
-			cell.settings.new_x = cell.settings.x
-			cell.settings.new_y = cell.settings.y
+			cell.new_x = cell.x
+			cell.new_y = cell.y
 
 
 
@@ -295,7 +293,7 @@ func print_cells_map():
 		for i in range(settings.height):
 			var cell: MushMashCell = cells_map[j][i]
 			if cell != null:
-				line = line + str(cell.settings.x) + "," + str(cell.settings.y) + "   "
+				line = line + str(cell.x) + "," + str(cell.y) + "   "
 			else:
 				line = line + "null" + "   "
 		print(line)
@@ -307,7 +305,7 @@ func print_uuid_map(max_uuid_digits: int = 4):
 		var line = ""
 		for i in range(settings.height):
 			if cells_map[j][i]:
-				line = line + cells_map[j][i].settings.uuid.substr(0,max_uuid_digits) + "   "
+				line = line + cells_map[j][i].uuid.substr(0,max_uuid_digits) + "   "
 			else:
 				line = line + "null" + "   "
 		print(line)

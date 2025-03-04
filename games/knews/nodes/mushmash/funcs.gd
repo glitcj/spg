@@ -54,7 +54,7 @@ func random_opponent_action():
 
 func make_all_cells_immovable():
 	for cell: MushMashCell in get_parent()._get_all_cells():
-		cell.settings.is_movable = false
+		cell.is_movable = false
 
 
 func reset_idle_animation_of_all_cells():

@@ -1,6 +1,10 @@
 extends Node
-class_name MushMashCellSettings
+class_name MushMashCellInitialiser
 
+func _ready():
+	# _preload_animation_sprites()
+	# ready.connect(get_parent().change_sprite_sheet)
+	pass
 
 enum AvailableStates {Idle, Excited, ReadyForAction}
 enum CellTypes {Player, Oponnent, Immovable}

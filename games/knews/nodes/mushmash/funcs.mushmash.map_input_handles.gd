@@ -117,20 +117,20 @@ func input_player_turn_cells_to_select(event):
 
 func _update_cell_selection_indicator(selected_x_indices: Array, selected_y_indices: Array):
 	
-	var playable_cells : Array = get_parent()._get_all_typed_cells([MushMashCellSettings.CellTypes.Player])
+	var playable_cells : Array = get_parent()._get_all_typed_cells([MushMashCell.CellTypes.Player])
 	var selected_cells := []
 	for cell in playable_cells:
-		if cell.settings.x in selected_x_indices and cell.settings.y in selected_y_indices:
+		if cell.x in selected_x_indices and cell.y in selected_y_indices:
 			selected_cells.append(cell)
 	
 	for cell: MushMashCell in playable_cells:
 		if cell in selected_cells:
 			cell.animation_player.play("ReadyForAction")
-			cell.settings.is_movable = true
+			cell.is_movable = true
 		else:
 			cell.animation_player.play("RESET")
 			cell.animation_player.queue("Idle")
-			cell.settings.is_movable = false
+			cell.is_movable = false
 
 	return selected_cells
 

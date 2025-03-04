@@ -96,10 +96,10 @@ func _update_turn_state():
 
 
 func _initialise_player_cells_turn_queue():
-	player_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCellSettings.CellTypes.Player])
+	player_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCell.CellTypes.Player])
 
 func _initialise_opponent_cells_turn_queue():
-	opponent_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCellSettings.CellTypes.Oponnent])
+	opponent_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCell.CellTypes.Oponnent])
 	
 
 func _on_player_turn_start():
@@ -118,10 +118,14 @@ func _on_player_turn_start():
 	else:
 		var input_handler : _MushMash_InputHandles = get_parent().input_handles
 		current_active_cell = player_cells_turn_queue.pop_front()
+
 		# current_active_cell.animation_player.play("ReadyForAction")
+		get_parent().print_cells_map()
+		get_parent().print_uuid_map()	
+		
 		current_active_cell.highlighter_animation_player.play("RESET")
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
-		current_active_cell.settings.is_movable = true
+		current_active_cell.is_movable = true
 		input_handler.get_from_input_mode(input_handler.InputModes.MoveMovableCells)
 		await input_handler.finished_input_mode
 
@@ -139,7 +143,7 @@ func _on_player_turn_end():
 	
 	
 	if false:
-		current_active_cell.settings.is_movable = false
+		current_active_cell.is_movable = false
 		current_active_cell.animation_player.play("RESET")
 		await current_active_cell.animation_player.animation_finished
 		current_active_cell.animation_player.play("Idle")
@@ -148,8 +152,8 @@ func _on_player_turn_end():
 	
 func _on_opponent_turn_start():
 	current_active_cell = opponent_cells_turn_queue.pop_front()
-	current_active_cell.animation_player.play("ReadyForAction")
-	current_active_cell.settings.is_movable = true
+	current_active_cell.highlighter_animation_player.play("ActiveCellHighlight")
+	current_active_cell.is_movable = true
 	
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
 	await wait_timer.timeout
@@ -160,9 +164,10 @@ func _on_opponent_turn_start():
 
 func _on_opponent_turn_end():
 	if current_active_cell != null:
-		current_active_cell.settings.is_movable = false
+		current_active_cell.is_movable = false
 		current_active_cell.animation_player.play("RESET")	
-		current_active_cell.animation_player.play("Idle")
+		current_active_cell.animation_player.queue("Idle")
+		current_active_cell.highlighter_animation_player.play("RESET")
 		opponent_cells_turn_queue.append(current_active_cell)
 		current_active_cell = null
 
@@ -173,7 +178,7 @@ func _on_idle_turn_end():
 	pass
 	
 func _get_opponent_action(cell: MushMashCell):
-	var movable_directions : Array = get_parent().ai.movable_directions_from_cell_map(cell.settings.x, cell.settings.y)
+	var movable_directions : Array = get_parent().ai.movable_directions_from_cell_map(cell.x, cell.y)
 	print(movable_directions)
 	if movable_directions == []:
 		return 0
