@@ -28,6 +28,10 @@ enum Direction {Up, Down, Left, Right}
 @onready var settings: MushMashMapSettings = $Settings
 
 
+@onready var tilemap: TileMapLayer = $TileMapsNode/TileMapLayerMain
+
+@onready var on_map_cells: Array = $TileMapsNode/OnMapNodes.get_children()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# settings = MushMashMapSettings.new()
@@ -188,8 +192,6 @@ func _update_cells_map():
 		if cell.new_y != cell.y:
 			cell.y = cell.new_y
 
-	
-	
 	var new_cells_map: Dictionary = CommonFunctions.nulls_2D_map(settings.height, settings.width)
 	for cell in _get_all_cells():
 		new_cells_map[cell.new_y][cell.new_x] = cell
@@ -313,8 +315,9 @@ func print_uuid_map(max_uuid_digits: int = 4):
 
 
 func absolute_resize_tilemap(resize_width = 80, resize_height = 80):
-	var tileset: TileSet = $TileMapsNode/TileMapLayer.tile_set
+	var tileset: TileSet = $TileMapsNode/TileMapLayerMain.tile_set
 	var scaler = resize_width/tileset.tile_size.x
+	
 	$TileMapsNode.scale = Vector2(scaler, scaler)
 	
 func place_cells_on_tile_map():

@@ -116,18 +116,17 @@ func _on_player_turn_start():
 		await input_handler.finished_input_mode
 
 	else:
-		var input_handler : _MushMash_InputHandles = get_parent().input_handles
 		current_active_cell = player_cells_turn_queue.pop_front()
-
-		# current_active_cell.animation_player.play("ReadyForAction")
-		get_parent().print_cells_map()
-		get_parent().print_uuid_map()	
-		
 		current_active_cell.highlighter_animation_player.play("RESET")
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
+		
+		get_parent().funcs.get_cells_in_tilemap()
 		current_active_cell.is_movable = true
-		input_handler.get_from_input_mode(input_handler.InputModes.MoveMovableCells)
-		await input_handler.finished_input_mode
+		# var input_handler : _MushMash_InputHandles = get_parent().input_handles
+
+		get_parent().input_handles.get_from_input_mode(get_parent().input_handles.InputModes.MoveMovableCells)
+		# await input_handler.finished_input_mode
+		await get_parent().input_handles.finished_input_mode
 
 
 func _on_player_turn_end():
@@ -141,12 +140,6 @@ func _on_player_turn_end():
 	next_active_player_cell.highlighter_animation_player.play("NextCellHighlight")
 	
 	
-	
-	if false:
-		current_active_cell.is_movable = false
-		current_active_cell.animation_player.play("RESET")
-		await current_active_cell.animation_player.animation_finished
-		current_active_cell.animation_player.play("Idle")
 	player_cells_turn_queue.append(current_active_cell)
 	current_active_cell = null
 	
