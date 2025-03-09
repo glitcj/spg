@@ -120,9 +120,9 @@ func _on_player_turn_start():
 		current_active_cell.highlighter_animation_player.play("RESET")
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
 		
-		get_parent().funcs.get_cells_in_tilemap()
+		# get_parent().funcs.get_cells_in_tilemap()
 		current_active_cell.is_movable = true
-		# var input_handler : _MushMash_InputHandles = get_parent().input_handles
+		
 
 		get_parent().input_handles.get_from_input_mode(get_parent().input_handles.InputModes.MoveMovableCells)
 		# await input_handler.finished_input_mode

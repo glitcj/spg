@@ -35,9 +35,11 @@ enum Direction {Up, Down, Left, Right}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# settings = MushMashMapSettings.new()
-	cells_map_initialiser = $Funcs.sample_map_3()
+	cells_map_initialiser = $Funcs.sample_map_4()
 	_initialise_cells_map()
 	draw_cells()
+	
+	funcs.get_cells_in_tilemap()
 	print(settings.height)
 	print(settings.width)
 	$Turner._initialise_player_cells_turn_queue()

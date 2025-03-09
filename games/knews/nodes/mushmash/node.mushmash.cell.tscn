@@ -286,8 +286,9 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4kypm"]
-font_size = 18
-font_color = Color(0.499953, 0.581607, 1, 1)
+font_size = 22
+font_color = Color(0.0899187, 9.00045e-05, 0.457539, 1)
+outline_size = 6
 
 [node name="MushMashCell" type="Node2D"]
 script = ExtResource("1_ie0st")
