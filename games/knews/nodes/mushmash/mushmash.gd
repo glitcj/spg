@@ -162,16 +162,16 @@ func _update_new_positions(direction: int):
 		for i in range(settings.width):
 			if cells_map[j][i] == null:
 				continue
-			if direction == Direction.Down and j + 1 < settings.height:
+			if direction == Direction.Down:# and j + 1 < settings.height:
 				_update_single_cell(i, j, i, j + 1)
 
-			elif direction == Direction.Up and j - 1 >= 0:
+			elif direction == Direction.Up:# and j - 1 >= 0:
 				_update_single_cell(i, j, i, j - 1)
 				
-			elif direction == Direction.Left and i - 1 >= 0:
+			elif direction == Direction.Left:# and i - 1 >= 0:
 				_update_single_cell(i, j, i - 1, j)
 				
-			elif direction == Direction.Right and i + 1 < settings.width:
+			elif direction == Direction.Right:# and i + 1 < settings.width:
 				_update_single_cell(i, j, i + 1, j)
 
 	_resolve_cell_collisions()
@@ -194,8 +194,11 @@ func _update_cells_map():
 		if cell.new_y != cell.y:
 			cell.y = cell.new_y
 
-	var new_cells_map: Dictionary = CommonFunctions.nulls_2D_map(settings.height, settings.width)
+	# var new_cells_map: Dictionary = CommonFunctions.nulls_2D_map(settings.height, settings.width)
+	var new_cells_map: Dictionary = {}
 	for cell in _get_all_cells():
+		if cell.new_y not in new_cells_map.keys():
+			new_cells_map[cell.new_y] = {}
 		new_cells_map[cell.new_y][cell.new_x] = cell
 	cells_map = new_cells_map
 	
@@ -206,8 +209,13 @@ func _update_cells_map():
 
 func _get_all_cells():
 	var all_cells = []
+	
+	"""
 	for j in range(settings.height):
 		for i in range(settings.width):
+	"""
+	for j in cells_map.keys():
+		for i in cells_map[j].keys():
 			if cells_map[j][i] != null:
 				all_cells.append(cells_map[j][i])
 	return all_cells

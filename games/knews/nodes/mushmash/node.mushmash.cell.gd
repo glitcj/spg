@@ -19,7 +19,7 @@ var width: int = 100
 var state: int = AvailableStates.Idle
 var uuid: String
 
-var type: int = CellTypes.Immovable
+@export var type: int = CellTypes.Immovable
 
 var x
 var y
@@ -41,7 +41,7 @@ enum BodyAnimatorStates {Idle, RESET}
 enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
 
 var sprite_sheets: Dictionary
-var cell_sprite := AvailableSprites.Eye
+@export var cell_sprite := AvailableSprites.Eye
 
 	
 func _preload_animation_sprites():
@@ -82,10 +82,6 @@ func _process(delta: float) -> void:
 	# _update_state_animations()
 
 	$Label.text = "(%s,%s) \n %s" % [x, y, uuid.substr(0,8)]
-	# change_sprite_sheet(cell_sprite)
-	# print(cell_sprite)
-	# change_sprite_sheet(cell_sprite)
-	# absolute_rescale(200,200)
 
 # TODO: Add animated sprite texture resize option
 func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:

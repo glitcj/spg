@@ -116,6 +116,10 @@ func get_cells_in_tilemap():
 		cell.global_position = lowest_distance_world_position
 		cell.x = lowest_distance_tilemap_position[0]
 		cell.y = lowest_distance_tilemap_position[1]
+		cell.new_x = cell.x
+		cell.new_y = cell.y
+		
+		cell.uuid = Variables.generate_uuid()
 		
 		if cell.y not in cells_map.keys():
 			cells_map[cell.y] = {}
