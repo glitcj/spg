@@ -291,6 +291,7 @@ font_color = Color(0.0899187, 9.00045e-05, 0.457539, 1)
 outline_size = 6
 
 [node name="MushMashCell" type="Node2D"]
+z_index = 10
 script = ExtResource("1_ie0st")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
