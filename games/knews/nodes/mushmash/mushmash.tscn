@@ -1267,6 +1267,7 @@ position = Vector2(22, 49)
 
 [node name="MushOpponent" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(-191, -33)
+type = 0
 cell_sprite = 5
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent"]
@@ -1283,14 +1284,23 @@ position = Vector2(-358, -524)
 [node name="MushOpponent2" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(-368, -48)
 scale = Vector2(1, 1)
+type = 0
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent2"]
 
 [node name="MushOpponent3" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(197, -359)
 scale = Vector2(1, 1)
+type = 1
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent3"]
+
+[node name="MushOpponent4" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
+position = Vector2(197, -359)
+scale = Vector2(1, 1)
+type = 1
+
+[node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent4"]
 
 [node name="Hud" type="Node2D" parent="."]
 z_index = 10

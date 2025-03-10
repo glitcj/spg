@@ -92,9 +92,7 @@ func get_cells_in_tilemap():
 		
 
 	print(tilemap_hash_world_to_map)
-	for cell: MushMashCell in get_parent().on_map_cells:
-	# for cell: MushMashCell in get_parent()._get_all_cells():
-	
+	for cell: MushMashCell in get_parent().on_map_cells:	
 		var lowest_distance_found = 100000000
 		var lowest_distance_world_position: Vector2
 		var lowest_distance_tilemap_position: Vector2
@@ -139,3 +137,23 @@ func get_tilemap_as_array():
 	
 func get_tilemap_uuid_map():
 	pass
+	
+func get_tilemap_cell_position(x, y):
+
+	
+	var tilemap_layer: TileMapLayer = get_parent().tilemap
+	# var tilemap_hash_map_to_world: Dictionary = {}  # Dictionary to store tile mappings
+	# var tilemap_hash_world_to_map: Dictionary = {}  # Dictionary to store tile mappings
+	
+	var local_pos = Vector2i(x,y)
+	var world_pos: Vector2 = tilemap_layer.to_global(tilemap_layer.map_to_local(local_pos))
+	return world_pos
+	
+	"""
+	for local_pos: Vector2i in tilemap_layer.get_used_cells():
+		world_pos = tilemap_layer.to_global(tilemap_layer.map_to_local(local_pos))
+	
+		print(local_pos, world_pos, tilemap_layer.local_to_map(world_pos))
+		tilemap_hash_map_to_world[local_pos] = world_pos  # Store mapping in dictionary
+		tilemap_hash_world_to_map[world_pos] = local_pos
+	"""
