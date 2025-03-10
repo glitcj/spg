@@ -1,10 +1,7 @@
 extends Node2D
 class_name MushMashCell
 
-
 # TODO: Change Settings to Initialiser
-# var settings: MushMashCell
-
 
 # @onready var settings: MushMashCell = $Settings
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -19,7 +16,6 @@ var width: int = 100
 var state: int = AvailableStates.Idle
 var uuid: String
 
-@export var type: int = CellTypes.Immovable
 
 var x
 var y
@@ -32,16 +28,16 @@ var is_player: bool = false
 var is_movable: bool = false
 var can_move_now: bool = false
 
-
 var is_highlighted: bool = false
 
 enum HighlightAnimatorStates {IsHighlighted, NotHighlighted, RESET}
 enum BodyAnimatorStates {Idle, RESET}
 
 enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
-
 var sprite_sheets: Dictionary
+
 @export var cell_sprite := AvailableSprites.Eye
+@export var type := CellTypes.Immovable
 
 	
 func _preload_animation_sprites():
@@ -50,6 +46,7 @@ func _preload_animation_sprites():
 	sprite_sheets[AvailableSprites.Mole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Mole2/Mole2.png")
 	sprite_sheets[AvailableSprites.HatMole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Characters/CamouflageGreen/SpriteSheet.png")
 	sprite_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
+	sprite_sheets[AvailableSprites.Flower] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
 
 
 
@@ -60,27 +57,13 @@ func _ready() -> void:
 	print(cell_sprite)
 	change_sprite_sheet(cell_sprite)
 
-	# ready.connect(_on_ready_sprite_change)
-	# absolute_rescale(150,120)
-	
-	
+
 func _on_ready_sprite_change():
 	# change_sprite_sheet(cell_sprite)
 	pass
 	
-
-"""
-	
-func _proc() -> void:
-	_update_state_animations()
-	change_sprite_sheet(cell_sprite)
-	
-"""
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# _update_state_animations()
-
 	$Label.text = "(%s,%s) \n %s" % [x, y, uuid.substr(0,8)]
 
 # TODO: Add animated sprite texture resize option
@@ -130,8 +113,6 @@ func change_sprite_sheet(sprite_id: int):
 
 func _update_state_animations():
 	if is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "Highlighted":
-		# $CellSelectionAnimationPlayer.play("RESET")
-		# $CellSelectionAnimationPlayer.queue("Highlighted")
 		$CellSelectionAnimationPlayer.play("Highlighted")
 	elif not is_highlighted and $CellSelectionAnimationPlayer.assigned_animation != "RESET":
 		$CellSelectionAnimationPlayer.play("RESET")

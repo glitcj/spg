@@ -273,15 +273,23 @@ func _resolve_cell_collisions():
 		for i in range(len(all_cells_1)):
 			current_cell = all_cells_1[j]
 			other_cell = all_cells_1[i]
+			
+			var is_future_future_collision = [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]
+			var is_future_past_collision = [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]
+			var is_tilemap_collision = _is_tilemap_collision(current_cell.new_x, current_cell.new_y)
+			
 			if i == j:
 				collisions[j][i] = 0
 				
 			# Collision if a cell moves into the new position of another cell
-			elif [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]:
+			# elif [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]:
+			elif is_future_future_collision:
 				collisions[j][i] = 1
-			
+			elif is_tilemap_collision:
+				collisions[j][i] = 1			
 			# Collision if a cell moves into the old position of another cell
-			elif [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]:
+			# elif [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]:
+			elif is_future_past_collision:
 				collisions[j][i] = 1
 	
 	var detected_zero_collisions_row
@@ -311,7 +319,22 @@ func _resolve_cell_collisions():
 			cell.new_x = cell.x
 			cell.new_y = cell.y
 
+func _is_tilemap_collision(x, y):
+	# Get the tile data from the layer (assuming layer 0, adjust if necessary)
+	# var tile_data: TileData = tilemap_layer.get_cell_tile_data(0, tile_pos)  # Use correct layer index
+	var tile_data: TileData
+	var is_collision
+	for tilemap_layer in $TileMapsNode.get_children():
+		if tilemap_layer is not TileMapLayer:
+			continue
+		tile_data = tilemap_layer.get_cell_tile_data(Vector2i(x,y))  # Use correct layer index
+		is_collision = (tile_data != null) and (tile_data.get_collision_polygons_count(0) > 0)
+		
+		if is_collision:
+			return true
 
+		# Check if the tile has any collision polygons
+	return false
 
 func _on_animation_player_is_ready(cell):
 	push_error(cell)

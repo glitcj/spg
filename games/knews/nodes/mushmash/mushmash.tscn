@@ -1242,13 +1242,11 @@ tile_set = SubResource("TileSet_0kld7")
 
 [node name="TileMapLayerL2" type="TileMapLayer" parent="TileMapsNode"]
 texture_filter = 3
-position = Vector2(58.8, -57)
 tile_map_data = PackedByteArray("AAAAAAQAAAABAAsAAAABAAQAAAABAAsAAAACAAQAAAACAAsAAAACAAMAAAACAAoAAAACAAIAAAACAAoAAAACAAEAAAACAAkAAAABAAEAAAABAAkAAAAAAAEAAAABAAkAAAD//wEAAAABAAkAAAD+/wEAAAABAAkAAAD9/wIAAAAAAAoAAAD9/wMAAAAAAAsAAAD+/wMAAAABAAsAAAD//wMAAAAEAAkAAAD//wQAAAAAAAsAAAD+/wIAAAABAAoAAAD//wIAAAABAAoAAAAAAAIAAAABAAoAAAABAAIAAAABAAoAAAABAAMAAAABAAoAAAAAAAMAAAABAAoAAAD9/wEAAAAAAAkAAAA=")
 tile_set = SubResource("TileSet_0kld7")
 
 [node name="TileMapLayerL3" type="TileMapLayer" parent="TileMapsNode"]
 texture_filter = 3
-position = Vector2(58.8, -57)
 tile_map_data = PackedByteArray("AAADAAIAAwAEAA4AAAACAAsAAwABAAsAAAACAAkAAwABAAsAAAADAAoAAwABAAsAAAADAAkAAwAEAA0AAAA=")
 tile_set = SubResource("TileSet_0kld7")
 
@@ -1264,40 +1262,44 @@ scale = Vector2(0.2, 0.2)
 
 [node name="MushPlayer" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(22, 49)
+cell_sprite = 1
 
 [node name="MushOpponent" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(-191, -33)
+cell_sprite = 3
 type = 0
-cell_sprite = 5
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent"]
 
 [node name="MushWall" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
-position = Vector2(202, -446)
+position = Vector2(164, -16)
 
 [node name="MushWall2" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(-202, 56)
 
 [node name="MushWall3" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
-position = Vector2(-358, -524)
+position = Vector2(-443, -201)
 
 [node name="MushOpponent2" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(-368, -48)
 scale = Vector2(1, 1)
+cell_sprite = 3
 type = 0
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent2"]
 
 [node name="MushOpponent3" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
-position = Vector2(197, -359)
+position = Vector2(231, -176)
 scale = Vector2(1, 1)
+cell_sprite = 4
 type = 1
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent3"]
 
 [node name="MushOpponent4" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
-position = Vector2(197, -359)
+position = Vector2(-43, -132)
 scale = Vector2(1, 1)
+cell_sprite = 5
 type = 1
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent4"]
