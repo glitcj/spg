@@ -125,7 +125,6 @@ func _on_player_turn_start():
 		
 
 		get_parent().input_handles.get_from_input_mode(get_parent().input_handles.InputModes.MoveMovableCells)
-		# await input_handler.finished_input_mode
 		await get_parent().input_handles.finished_input_mode
 
 

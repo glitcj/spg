@@ -2,6 +2,7 @@ extends Node2D
 class_name MushMashCell
 
 # TODO: Change Settings to Initialiser
+@export var handler: Node = null
 
 # @onready var settings: MushMashCell = $Settings
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

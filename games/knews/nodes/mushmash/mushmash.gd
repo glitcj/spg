@@ -36,11 +36,7 @@ enum Direction {Up, Down, Left, Right}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# settings = MushMashMapSettings.new()
 	cells_map_initialiser = $Funcs.sample_map_4()
-	# _initialise_cells_map()
-	# _initialise_cells_map_v1()
-	# draw_cells()
 	
 	cells_map = funcs.get_cells_in_tilemap()
 	print(constants.height)
@@ -59,42 +55,6 @@ func _initialise_cells_map():
 	pass
 
 
-
-func _initialise_cells_map_v1():
-	var uuid: String
-	
-	constants.height = len(cells_map_initialiser)
-	constants.width = len(cells_map_initialiser[0])
-	cells_map = CommonFunctions.nulls_2D_map(constants.width, constants.height)
-
-	for j in range(constants.height):
-		for i in range(constants.width):
-			cells_map[j][i] = null
-			if cells_map_initialiser[j][i] > 0:
-				var cell: MushMashCell = constants.base_cell_template.instantiate()
-				uuid = _MushMash_Constants.get_cell_uuid(i, j)
-				cell.uuid = uuid
-				cell.x = i
-				cell.y = j
-				cell.new_x = i
-				cell.new_y = j
-				
-				if cells_map_initialiser[j][i] == 1:
-					cell.is_movable = false
-					cell.type = MushMashCell.CellTypes.Player
-					cell.cell_sprite = MushMashCell.AvailableSprites.Mushroom
-					
-				elif cells_map_initialiser[j][i] == 2:
-					cell.is_movable = false
-					cell.type = MushMashCell.CellTypes.Oponnent
-					cell.cell_sprite = MushMashCell.AvailableSprites.HatMole
-
-				elif cells_map_initialiser[j][i] == 3:
-					cell.is_movable = false
-					cell.type = MushMashCell.CellTypes.Immovable
-					cell.cell_sprite = MushMashCell.AvailableSprites.Wall
-					
-				cells_map[j][i] = cell
 
 func _get_uuid(x, y):
 	return uuid_map[y * constants.height + x]

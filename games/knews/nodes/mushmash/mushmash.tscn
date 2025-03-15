@@ -1289,15 +1289,13 @@ tile_set = SubResource("TileSet_0kld7")
 [node name="OnMapNodes" type="Node2D" parent="TileMapsNode"]
 scale = Vector2(0.2, 0.2)
 
-[node name="MushPlayer" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
+[node name="MushPlayer" parent="TileMapsNode/OnMapNodes" node_paths=PackedStringArray("handler") instance=ExtResource("11_3uppv")]
 position = Vector2(-130, -33)
+handler = NodePath("Player")
 cell_sprite = 3
 type = 0
 
-[node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushPlayer"]
-script = ExtResource("12_w0o85")
-
-[node name="Node" type="Node" parent="TileMapsNode/OnMapNodes/MushPlayer"]
+[node name="Player" type="Node" parent="TileMapsNode/OnMapNodes/MushPlayer"]
 script = ExtResource("13_xy7q2")
 
 [node name="MushPlayer2" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
@@ -1305,7 +1303,8 @@ position = Vector2(-120, 116)
 cell_sprite = 3
 type = 0
 
-[node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushPlayer2"]
+[node name="Player" type="Node" parent="TileMapsNode/OnMapNodes/MushPlayer2"]
+script = ExtResource("13_xy7q2")
 
 [node name="MushOpponent3" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(-43, 42)
@@ -1313,6 +1312,7 @@ cell_sprite = 4
 type = 1
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent3"]
+script = ExtResource("12_w0o85")
 
 [node name="MushOpponent4" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(-216, 45)
@@ -1320,6 +1320,7 @@ cell_sprite = 5
 type = 1
 
 [node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/MushOpponent4"]
+script = ExtResource("12_w0o85")
 
 [node name="MushWall" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(245, 226)
