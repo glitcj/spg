@@ -10,9 +10,6 @@ enum CellMovementType {Instant, Linear}
 var cell_movement_type = CellMovementType.Linear
 
 
-# var mushroom_template = preload("res://games/knews/nodes/mushmash/node.mushmash.mushroom.tscn")
-# var flower_template = preload("res://games/knews/nodes/mushmash/node.mushmash.flower.tscn")
-# var wall_template = preload("res://games/knews/nodes/mushmash/node.mushmash.wall.tscn")
 var base_cell_template = preload("res://games/knews/nodes/mushmash/node.mushmash.cell.tscn")
 
 
