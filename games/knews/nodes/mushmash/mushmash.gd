@@ -25,11 +25,14 @@ enum Direction {Up, Down, Left, Right}
 @onready var funcs : _MushMash_Funcs = $Funcs
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
-@onready var settings: MushMashMapSettings = $Settings
+
 
 @onready var hud_face: Sprite2D = $Hud/Face
 @onready var tilemap: TileMapLayer = $TileMapsNode/TileMapLayerMain
 @onready var on_map_cells: Array = $TileMapsNode/OnMapNodes.get_children()
+
+@onready var constants = $Constants
+@onready var settings: MushMashMapSettings = $Constants # Deprecate
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,17 +43,17 @@ func _ready() -> void:
 	# draw_cells()
 	
 	cells_map = funcs.get_cells_in_tilemap()
-	print(settings.height)
-	print(settings.width)
+	print(constants.height)
+	print(constants.width)
 	$Turner._initialise_player_cells_turn_queue()
 	$Turner._initialise_opponent_cells_turn_queue()	
 	
 	absolute_resize_tilemap()
 	
 func _initialise_uuid_map():
-	for j in settings.height:
-		for i in settings.width:
-			uuid_map[j * settings.height + i] = _MushMash_Constants.get_cell_uuid(i, j)
+	for j in constants.height:
+		for i in constants.width:
+			uuid_map[j * constants.height + i] = _MushMash_Constants.get_cell_uuid(i, j)
 
 func _initialise_cells_map():
 	pass
@@ -60,15 +63,15 @@ func _initialise_cells_map():
 func _initialise_cells_map_v1():
 	var uuid: String
 	
-	settings.height = len(cells_map_initialiser)
-	settings.width = len(cells_map_initialiser[0])
-	cells_map = CommonFunctions.nulls_2D_map(settings.width, settings.height)
+	constants.height = len(cells_map_initialiser)
+	constants.width = len(cells_map_initialiser[0])
+	cells_map = CommonFunctions.nulls_2D_map(constants.width, constants.height)
 
-	for j in range(settings.height):
-		for i in range(settings.width):
+	for j in range(constants.height):
+		for i in range(constants.width):
 			cells_map[j][i] = null
 			if cells_map_initialiser[j][i] > 0:
-				var cell: MushMashCell = settings.base_cell_template.instantiate()
+				var cell: MushMashCell = constants.base_cell_template.instantiate()
 				uuid = _MushMash_Constants.get_cell_uuid(i, j)
 				cell.uuid = uuid
 				cell.x = i
@@ -94,7 +97,7 @@ func _initialise_cells_map_v1():
 				cells_map[j][i] = cell
 
 func _get_uuid(x, y):
-	return uuid_map[y * settings.height + x]
+	return uuid_map[y * constants.height + x]
 
 func _input(event):
 	$InputHandles.handle_inputs(event)
@@ -115,9 +118,9 @@ func _update_console():
 func initialise_random_map():
 	cells_map_initialiser = []
 	var row
-	for i in range(settings.height):
+	for i in range(constants.height):
 		row = []
-		for j in range(settings.width):
+		for j in range(constants.width):
 			row.append(0)
 		cells_map_initialiser.append(row)
 	return cells_map_initialiser
@@ -127,8 +130,8 @@ func initialise_random_map():
 
 func draw_cells():
 	var uuid	
-	for j in range(settings.height):
-		for i in range(settings.width):
+	for j in range(constants.height):
+		for i in range(constants.width):
 			if cells_map_initialiser[j][i] > 0:
 				var cell: MushMashCell = cells_map[j][i]
 				cell.position = Vector2(150 * i, 150 * j)
@@ -148,10 +151,12 @@ func _update_map():
 	for cell: MushMashCell in all_cells:
 		# destination = Vector2(150 * cell.x, 150 * cell.y)
 		destination = funcs.get_tilemap_cell_position(cell.x, cell.y)
-		if settings.cell_movement_type == MushMashMapSettings.CellMovementType.Instant:
+		# if settings.cell_movement_type == MushMashMapSettings.CellMovementType.Instant:
+		if constants.cell_movement_type == constants.CellMovementType.Instant:
 			cell.position = destination
 
-		elif settings.cell_movement_type == MushMashMapSettings.CellMovementType.Linear:
+		# elif settings.cell_movement_type == MushMashMapSettings.CellMovementType.Linear:
+		elif constants.cell_movement_type == constants.CellMovementType.Linear:
 			if destination != cell.position:
 				direction = (destination - cell.position).normalized()
 				cell.position = cell.position + 5 * direction
@@ -341,9 +346,9 @@ func _on_animation_player_is_ready(cell):
 	
 func print_cells_map():
 	print("Cells Map")
-	for j in range(settings.height):
+	for j in range(constants.height):
 		var line = ""
-		for i in range(settings.height):
+		for i in range(constants.height):
 			var cell: MushMashCell = cells_map[j][i]
 			if cell != null:
 				line = line + str(cell.x) + "," + str(cell.y) + "   "
@@ -354,9 +359,9 @@ func print_cells_map():
 		
 func print_uuid_map(max_uuid_digits: int = 4):
 	print("UUID Map")
-	for j in range(settings.height):
+	for j in range(constants.height):
 		var line = ""
-		for i in range(settings.height):
+		for i in range(constants.height):
 			if cells_map[j][i]:
 				line = line + cells_map[j][i].uuid.substr(0,max_uuid_digits) + "   "
 			else:

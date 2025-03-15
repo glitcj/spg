@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://sfxyhloygidk"]
 
-[ext_resource type="Script" path="res://games/knews/nodes/mushmash/action_timer_controller.gd" id="1_xm8sr"]
+[ext_resource type="Script" path="res://games/knews/nodes/mushmash/node.turner.gd" id="1_xm8sr"]
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/mushmash_map_settings.gd" id="2_qm2fn"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_v8juv"]

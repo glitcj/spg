@@ -7,6 +7,16 @@ var lID: Dictionary = {
 	lTags.Node_Status_MB: Variables.generate_uuid(),
 }
 
+
+
+
+enum CellMovementType {Instant, Linear}
+var cell_movement_type = CellMovementType.Linear
+
+
+var base_cell_template = preload("res://games/knews/nodes/mushmash/node.mushmash.cell.tscn")
+
+
 var max_nodes = 1000
 var cell_step_x = 200
 var cell_step_y = 200
