@@ -47,7 +47,7 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [80, 80, false],
-"method": &"absolute_rescale_framed"
+"method": &"absolute_rescale_body_frames"
 }]
 }
 tracks/1/type = "value"

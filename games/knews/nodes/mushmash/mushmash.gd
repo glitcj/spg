@@ -27,9 +27,8 @@ enum Direction {Up, Down, Left, Right}
 @onready var ai : _MushMash_AI  = $AI
 @onready var settings: MushMashMapSettings = $Settings
 
-
+@onready var hud_face: Sprite2D = $Hud/Face
 @onready var tilemap: TileMapLayer = $TileMapsNode/TileMapLayerMain
-
 @onready var on_map_cells: Array = $TileMapsNode/OnMapNodes.get_children()
 
 # Called when the node enters the scene tree for the first time.

@@ -11,17 +11,13 @@ class_name MushMashCell
 enum AvailableStates {Idle, Excited, ReadyForAction}
 enum CellTypes {Player, Oponnent, Immovable}
 
-var height: int = 100
-var width: int = 100
 var state: int = AvailableStates.Idle
 var uuid: String
-
 
 var x
 var y
 var new_x
 var new_y
-var new_position: Vector2
 
 var is_enemy: bool = false
 var is_player: bool = false
@@ -35,6 +31,7 @@ enum BodyAnimatorStates {Idle, RESET}
 
 enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye}
 var sprite_sheets: Dictionary
+var face_sheets: Dictionary
 
 @export var cell_sprite := AvailableSprites.Eye
 @export var type := CellTypes.Immovable
@@ -48,18 +45,25 @@ func _preload_animation_sprites():
 	sprite_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
 	sprite_sheets[AvailableSprites.Flower] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
 
+func _preload_face_sprites():
+	face_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/Faceset.png")
+	face_sheets[AvailableSprites.HeartRed] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/HeartRed/Faceset.png")
+	face_sheets[AvailableSprites.Mole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Mole2/Faceset.png")
+	face_sheets[AvailableSprites.HatMole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Characters/CamouflageGreen/Faceset.png")
+	face_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Faceset.png")
+	face_sheets[AvailableSprites.Flower] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Faceset.png")
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_preload_animation_sprites()
+	_preload_face_sprites()
 	print(cell_sprite)
 	change_sprite_sheet(cell_sprite)
 
 
 func _on_ready_sprite_change():
-	# change_sprite_sheet(cell_sprite)
 	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,7 +79,7 @@ func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: b
 	$Body.scale = Vector2(scale_x, scale_y)
 
 
-func absolute_rescale_framed(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
+func absolute_rescale_body_frames(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:
 	var animated_sprite_2D: AnimatedSprite2D = $Body/AnimatedSprite2D
 	var texture: Texture2D = animated_sprite_2D.sprite_frames.get_frame_texture(animated_sprite_2D.animation, animated_sprite_2D.frame)
 	var scale_x = float(desired_width) / texture.get_width()
@@ -86,12 +90,7 @@ func absolute_rescale_framed(desired_width := 150, desired_height := 150, keep_r
 
 
 func change_sprite_sheet(sprite_id: int):
-	# var new_texture = settings.sprite_sheets[sprite_id]
-	
-	print(sprite_id)
-	print(sprite_sheets)
 	var new_texture = sprite_sheets[sprite_id]
-	print(new_texture)
 	var sprite_frames: SpriteFrames = $Body/AnimatedSprite2D.sprite_frames.duplicate()
 	
 	# Update the texture of all frames without changing frame configuration

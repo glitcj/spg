@@ -131,19 +131,17 @@ func get_cells_in_tilemap():
 
 func get_tilemap_as_array():
 	pass
-
-
-
 	
 func get_tilemap_uuid_map():
 	pass
 	
 func get_tilemap_cell_position(x, y):
-
-	
 	var tilemap_layer: TileMapLayer = get_parent().tilemap
-
 	var local_pos = Vector2i(x,y)
 	var world_pos: Vector2 = tilemap_layer.to_global(tilemap_layer.map_to_local(local_pos))
 	return world_pos
-	
+
+
+func update_hud_face(texture_: Texture2D):
+	get_parent().hud_face.texture = texture_
+	get_parent().hud_face.scale = Vector2(3,3)
