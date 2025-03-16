@@ -108,8 +108,6 @@ func input_player_turn_cells_to_select(event):
 				cells_selector_position_x = range(get_parent().settings.width)[cells_selector_position_x % get_parent().settings.width]
 				cells_selector_position_y = range(get_parent().settings.height)[cells_selector_position_y % get_parent().settings.height]
 				
-				
-				
 				if action in ["ui_up", "ui_down"]:
 					last_selected_cells = _update_cell_selection_indicator(range(get_parent().settings.width), [cells_selector_position_y])
 				if action in ["ui_left", "ui_right"]:

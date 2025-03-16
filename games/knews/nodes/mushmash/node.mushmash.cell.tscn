@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cs3b4rgs31y4p"]
+[gd_scene load_steps=33 format=3 uid="uid://cs3b4rgs31y4p"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/mushmash/node.mushmash.cell.gd" id="1_ie0st"]
 [ext_resource type="Texture2D" uid="uid://dgyj3yvjiwcq5" path="res://assets/knews/dba9d1k-a82d3ba0-d75c-4072-b63e-0eb80f7dcb45.png" id="1_jup24"]
@@ -111,9 +111,8 @@ _data = {
 "ReadyForAction": SubResource("Animation_w0d3d")
 }
 
-[sub_resource type="Animation" id="Animation_e4jjm"]
-resource_name = "ActiveCellHighlight"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_j2kj0"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -121,10 +120,10 @@ tracks/0/path = NodePath("Body:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(5, 5, 5, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_udc3k"]
@@ -143,8 +142,9 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0.94902, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_j2kj0"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_e4jjm"]
+resource_name = "ActiveCellHighlight"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -152,10 +152,10 @@ tracks/0/path = NodePath("Body:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(5, 5, 5, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jckef"]
@@ -163,6 +163,67 @@ _data = {
 "ActiveCellHighlight": SubResource("Animation_e4jjm"),
 "NextCellHighlight": SubResource("Animation_udc3k"),
 "RESET": SubResource("Animation_j2kj0")
+}
+
+[sub_resource type="Animation" id="Animation_4x7b4"]
+resource_name = "Rotator"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, -0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.29, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8049e-06, 0.540633, 9.62615e-08, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gca8o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2atu3"]
+_data = {
+"RESET": SubResource("Animation_gca8o"),
+"Rotator": SubResource("Animation_4x7b4")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ytdk"]
@@ -303,6 +364,11 @@ autoplay = "RESET"
 [node name="HighlighterAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_jckef")
+}
+
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2atu3")
 }
 
 [node name="Body" type="Node2D" parent="."]

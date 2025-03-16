@@ -21,11 +21,10 @@ var uuid_map := {}
 enum Direction {Up, Down, Left, Right}
 
 # Set references so all components can talk to each other
-@onready var turner = $Turner
+@onready var turner: _MushMash_Turner = $Turner
 @onready var funcs : _MushMash_Funcs = $Funcs
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
-
 
 @onready var hud_face: Sprite2D = $Hud/Face
 @onready var tilemap: TileMapLayer = $TileMapsNode/TileMapLayerMain

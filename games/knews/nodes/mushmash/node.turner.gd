@@ -1,5 +1,5 @@
 extends Node2D
-class_name _MushMash_ActionTimerController
+class_name _MushMash_Turner
 
 
 signal turn_timer_timeout
@@ -109,6 +109,8 @@ func _on_player_turn_start():
 		current_active_cell = player_cells_turn_queue.pop_front()
 		input_handler.get_from_input_mode(input_handler.InputModes.SelectCell)
 		
+		# var input_handler : _MushMash_InputHandles = current_active_cell.
+		
 		await input_handler.finished_input_mode
 		var selected_cells: Array = input_handler.tray
 		
@@ -124,8 +126,11 @@ func _on_player_turn_start():
 		current_active_cell.is_movable = true
 		
 
-		get_parent().input_handles.get_from_input_mode(get_parent().input_handles.InputModes.MoveMovableCells)
-		await get_parent().input_handles.finished_input_mode
+		# get_parent().input_handles.get_from_input_mode(get_parent().input_handles.InputModes.MoveMovableCells)
+		current_active_cell.handler.change_input_mode(_MushMash_CellInputHandler.InputModes.Move)
+		
+		# await get_parent().input_handles.finished_input_mode
+		await current_active_cell.handler.finished_input_mode
 
 
 func _on_player_turn_end():
@@ -148,9 +153,12 @@ func _on_opponent_turn_start():
 	current_active_cell.is_movable = true
 	get_parent().funcs.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 	
+	print("AAA", current_active_cell)
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
 	await wait_timer.timeout
 	
+	print("BBB", current_active_cell)
+	print(current_active_cell.type)
 	get_parent()._update_new_positions(_get_opponent_action(current_active_cell))
 	get_parent()._update_cells_map()
 	

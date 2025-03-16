@@ -2,12 +2,12 @@ extends Node2D
 class_name MushMashCell
 
 # TODO: Change Settings to Initialiser
-@export var handler: Node = null
+@export var handler: _MushMash_CellInputHandler = null
 
 # @onready var settings: MushMashCell = $Settings
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var highlighter_animation_player: AnimationPlayer = $HighlighterAnimationPlayer
-
+@onready var action_animation_player: AnimationPlayer = $ActionAnimationPlayer
 
 enum AvailableStates {Idle, Excited, ReadyForAction}
 enum CellTypes {Player, Oponnent, Immovable}
