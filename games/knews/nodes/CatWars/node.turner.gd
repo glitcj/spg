@@ -20,9 +20,6 @@ var player_cell_is_active := false
 var current_turn_state
 var next_turn_state
 
-
-
-
 var turn_state_queue = [TurnStates.IdleBeforePlayer, TurnStates.PlayerTurn, TurnStates.IdleBeforeOpponent, TurnStates.OponnentTurn]
 
 var player_cells_turn_queue: Array
@@ -134,9 +131,14 @@ func _on_player_turn_start():
 
 
 func _on_player_turn_end():
-	var input_handler : _MushMash_InputHandles = get_parent().input_handles
-	input_handler.get_from_input_mode(input_handler.InputModes.Inactive)
-	input_handler.reset()
+	# var input_handler : _MushMash_InputHandles = get_parent().input_handles
+	# input_handler.get_from_input_mode(input_handler.InputModes.Inactive)
+	# input_handler.reset()
+	
+	# var input_handler : _MushMash_InputHandles = get_parent().input_handles
+	# current_active_cell.handler.change_input_mode(_MushMash_CellInputHandler.InputModes.Inactive)
+	current_active_cell.handler._reset_handler()
+	
 	
 	
 	current_active_cell.highlighter_animation_player.play("RESET")

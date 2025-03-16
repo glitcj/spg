@@ -4,13 +4,10 @@ class_name MushMashMapSettings
 var height: int = 5
 var width: int = 5
 
-# var turn_cell_selection_type = 
-
 enum CellMovementType {Instant, Linear}
 var cell_movement_type = CellMovementType.Linear
 
-
-var base_cell_template = preload("res://games/knews/nodes/mushmash/node.mushmash.cell.tscn")
+var base_cell_template = preload("res://games/knews/nodes/CatWars/node.mushmash.cell.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

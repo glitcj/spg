@@ -145,3 +145,7 @@ func get_tilemap_cell_position(x, y):
 func update_hud_face(texture_: Texture2D):
 	get_parent().hud_face.texture = texture_
 	get_parent().hud_face.scale = Vector2(3,3)
+
+
+func resolve_damage_and_cell_placement():
+	pass

@@ -34,24 +34,11 @@ func handle_inputs(event):
 		return
 	elif mode == InputModes.SelectCell:
 		input_player_turn_cells_to_select(event)
-	elif mode == InputModes.MoveMovableCells:
-		input_player_turn_cells_selected(event)
-
-
-func handle_inputs_player_turn_v1(event):
-	if mode == InputModes.Inactive:
-		return
-	if not cells_selected:
-		input_player_turn_cells_to_select(event)
-	elif cells_selected:
-		input_player_turn_cells_selected(event)
-
-
 
 func get_from_input_mode(mode_):
 	mode = mode_
 
-
+"""
 func input_player_turn_cells_selected(event):
 	# assert(cells_selected)
 	if event.is_action_pressed("ui_right"):
@@ -77,7 +64,7 @@ func input_player_turn_cells_selected(event):
 			get_parent().funcs.make_all_cells_immovable()
 			get_parent().funcs.reset_idle_animation_of_all_cells()
 			_reset_selector_control_variables()
-
+"""
 
 func input_player_turn_cells_to_select(event):
 	assert(!cells_selected)
