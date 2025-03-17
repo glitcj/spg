@@ -1,7 +1,7 @@
 extends Node
-class_name _MushMash_Funcs
+class_name _MushMash_Map
 
-var mushmash: _MushMashMap = get_parent()
+var mushmash: _MushMash = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,7 +56,7 @@ func sample_map_2():
 
 
 func random_opponent_action():
-	return randi() % _MushMashMap.Direction.size()
+	return randi() % _MushMash.Direction.size()
 
 
 func make_all_cells_immovable():
@@ -70,9 +70,7 @@ func reset_idle_animation_of_all_cells():
 		cell.animation_player.queue("Idle")
 
 
-func get_cells_in_tilemap():
-	
-	# var cells_map = CommonFunctions.nulls_2D_map(settings.width, settings.height)
+func get_cells_in_tilemap():	
 	var cells_map := {}
 	
 	var tilemap_layer: TileMapLayer = get_parent().tilemap
@@ -146,6 +144,11 @@ func update_hud_face(texture_: Texture2D):
 	get_parent().hud_face.texture = texture_
 	get_parent().hud_face.scale = Vector2(3,3)
 
-
 func resolve_damage_and_cell_placement():
 	pass
+
+func tilemap_cell_is_occupied(x, y):
+	if y in mushmash.cells_map.keys():
+		if x in mushmash.cells_map[y].keys():
+			return true
+	return false

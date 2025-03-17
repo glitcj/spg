@@ -1,6 +1,5 @@
 extends Node2D
-class_name _MushMashMap
-
+class_name _MushMash
 
 # TODO: Add Birds
 # TODO: Add fat birds (Fat chickens that block movement)
@@ -19,25 +18,32 @@ var cells_map: Dictionary
 var uuid_map := {}
 
 enum Direction {Up, Down, Left, Right}
+var DirectionVector := {
+	Direction.Up: Vector2i(0, 1),
+	Direction.Down: Vector2i(0, -1),
+	Direction.Left: Vector2i(1, 0),
+	Direction.Right: Vector2i(-1, 0),
+	
+}
 
 # Set references so all components can talk to each other
 @onready var turner: _MushMash_Turner = $Turner
-@onready var funcs : _MushMash_Funcs = $Funcs
+@onready var map : _MushMash_Map = $Funcs
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
 
 @onready var hud_face: Sprite2D = $Hud/Face
-@onready var tilemap: TileMapLayer = $TileMapsNode/TileMapLayerMain
-@onready var on_map_cells: Array = $TileMapsNode/OnMapNodes.get_children()
+@onready var tilemap: TileMapLayer = $Map/TileMapLayerMain
+@onready var on_map_cells: Array = $Map/OnMapNodes.get_children()
 
 @onready var constants = $Constants
 @onready var settings: MushMashMapSettings = $Constants # Deprecate
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	cells_map_initialiser = $Funcs.sample_map_4()
+	cells_map_initialiser = map.sample_map_4()
 	
-	cells_map = funcs.get_cells_in_tilemap()
+	cells_map = map.get_cells_in_tilemap()
 	print(constants.height)
 	print(constants.width)
 	$Turner._initialise_player_cells_turn_queue()
@@ -52,8 +58,6 @@ func _initialise_uuid_map():
 
 func _initialise_cells_map():
 	pass
-
-
 
 func _get_uuid(x, y):
 	return uuid_map[y * constants.height + x]
@@ -84,9 +88,6 @@ func initialise_random_map():
 		cells_map_initialiser.append(row)
 	return cells_map_initialiser
 
-
-
-
 func draw_cells():
 	var uuid	
 	for j in range(constants.height):
@@ -97,9 +98,6 @@ func draw_cells():
 				push_error(get_parent().name)
 				$GridOrigin.add_child(cell)
 				
-				# cell.change_sprite_sheet(cell.cell_sprite)
-				
-				# print(cell.cell_sprite)
 				cell.animation_player.play("Idle")
 
 
@@ -109,7 +107,7 @@ func _update_map():
 	var direction
 	for cell: MushMashCell in all_cells:
 		# destination = Vector2(150 * cell.x, 150 * cell.y)
-		destination = funcs.get_tilemap_cell_position(cell.x, cell.y)
+		destination = map.get_tilemap_cell_position(cell.x, cell.y)
 		# if settings.cell_movement_type == MushMashMapSettings.CellMovementType.Instant:
 		if constants.cell_movement_type == constants.CellMovementType.Instant:
 			cell.position = destination
@@ -138,19 +136,15 @@ func _update_new_positions(direction: int):
 		
 
 		if direction == Direction.Down:
-			# _update_single_cell(i, j, i, j + 1)
 			_update_single_cell(cell, i, j + 1)
 
 		elif direction == Direction.Up:
-			# _update_single_cell(i, j, i, j - 1)
 			_update_single_cell(cell, i, j - 1)
 			
 		elif direction == Direction.Left:
-			# _update_single_cell(i, j, i - 1, j)
 			_update_single_cell(cell, i - 1, j)
 			
 		elif direction == Direction.Right:
-			# _update_single_cell(i, j, i + 1, j)
 			_update_single_cell(cell, i + 1, j)
 
 	_resolve_cell_collisions()
@@ -290,7 +284,7 @@ func _is_tilemap_collision(x, y):
 	# var tile_data: TileData = tilemap_layer.get_cell_tile_data(0, tile_pos)  # Use correct layer index
 	var tile_data: TileData
 	var is_collision
-	for tilemap_layer in $TileMapsNode.get_children():
+	for tilemap_layer in $Map.get_children():
 		if tilemap_layer is not TileMapLayer:
 			continue
 		tile_data = tilemap_layer.get_cell_tile_data(Vector2i(x,y))  # Use correct layer index
@@ -333,10 +327,10 @@ func print_uuid_map(max_uuid_digits: int = 4):
 
 
 func absolute_resize_tilemap(resize_width = 80, resize_height = 80):
-	var tileset: TileSet = $TileMapsNode/TileMapLayerMain.tile_set
+	var tileset: TileSet = $Map/TileMapLayerMain.tile_set
 	var scaler = resize_width/tileset.tile_size.x
 	
-	$TileMapsNode.scale = Vector2(scaler, scaler)
+	$Map.scale = Vector2(scaler, scaler)
 	
 func place_cells_on_tile_map():
 	pass

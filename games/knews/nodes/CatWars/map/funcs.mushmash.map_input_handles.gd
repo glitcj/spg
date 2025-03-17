@@ -61,8 +61,8 @@ func input_player_turn_cells_selected(event):
 		if event.is_action_pressed(action):
 			get_parent()._update_cells_map()
 			get_parent().turner._update_turn_state()
-			get_parent().funcs.make_all_cells_immovable()
-			get_parent().funcs.reset_idle_animation_of_all_cells()
+			get_parent().map.make_all_cells_immovable()
+			get_parent().map.reset_idle_animation_of_all_cells()
 			_reset_selector_control_variables()
 """
 
@@ -127,6 +127,6 @@ func _reset_selector_control_variables():
 
 func reset():
 	_reset_selector_control_variables
-	get_parent().funcs.make_all_cells_immovable()
-	get_parent().funcs.reset_idle_animation_of_all_cells()
+	get_parent().map.make_all_cells_immovable()
+	get_parent().map.reset_idle_animation_of_all_cells()
 	

@@ -1,7 +1,7 @@
 extends Node
-class_name _MushMash_CellHandler_Mover_Base
+class_name _MushMash_CellHandler_Actioner_Base
 
-@onready var mushmash: _MushMashMap = get_parent().get_parent().get_parent().get_parent()
+@onready var mushmash: _MushMash = get_parent().get_parent().get_parent().get_parent()
 @onready var cell: MushMashCell = get_parent()
 
 enum InputModes {Inactive, Action, Move}
@@ -24,8 +24,8 @@ func change_input_mode(input_mode_: InputModes):
 
 func _reset_handler():
 	input_mode = InputModes.Inactive
-	mushmash.funcs.make_all_cells_immovable()
-	mushmash.funcs.reset_idle_animation_of_all_cells()	
+	mushmash.map.make_all_cells_immovable()
+	mushmash.map.reset_idle_animation_of_all_cells()	
 func _on_action_input(event):
 	pass
 func _on_move_input(event):

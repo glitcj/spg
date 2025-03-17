@@ -26,7 +26,7 @@ Templates="*res://source/autoload/templates.gd"
 Queue="*res://source/autoload/queue.gd"
 SceneSettings="*res://source/autoload/scene_settings.gd"
 _Knews_Constants="*res://games/knews/scenes/constants.knews.gd"
-_MushMash_Constants="*res://games/knews/nodes/CatWars/constants.mushmash.map.gd"
+_MushMash_Constants="*res://games/knews/nodes/CatWars/map/constants.mushmash.map.gd"
 
 [display]
 

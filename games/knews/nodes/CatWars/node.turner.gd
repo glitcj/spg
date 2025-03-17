@@ -113,7 +113,7 @@ func _on_player_turn_start():
 		current_active_cell = player_cells_turn_queue.pop_front()
 		current_active_cell.highlighter_animation_player.play("RESET")
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
-		get_parent().funcs.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
+		get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 		
 		current_active_cell.is_movable = true
 		current_active_cell.mover.change_input_mode(_MushMash_CellHandler_Mover_Base.InputModes.Move)
@@ -135,7 +135,7 @@ func _on_opponent_turn_start():
 	current_active_cell = opponent_cells_turn_queue.pop_front()
 	current_active_cell.highlighter_animation_player.play("ActiveCellHighlight")
 	current_active_cell.is_movable = true
-	get_parent().funcs.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
+	get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 	
 	print("AAA", current_active_cell)
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
