@@ -1,5 +1,5 @@
 extends Node
-class_name _MushMash_CellInputHandler
+class_name _MushMash_CellHandler_Actioner_Base
 
 @onready var mushmash: _MushMashMap = get_parent().get_parent().get_parent().get_parent()
 @onready var cell: MushMashCell = get_parent()

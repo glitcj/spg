@@ -1,5 +1,6 @@
-extends _MushMash_CellInputHandler
-class_name _MushMash_CellInputHandler_Mole
+extends _MushMash_CellHandler_Mover_Base
+# class_name _MushMash_CellHandler_Mover_Base_Mole
+class_name _MushMash_CellHandler_Mover_Mole
 
 func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):

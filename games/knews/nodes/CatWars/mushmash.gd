@@ -121,43 +121,47 @@ func _update_map():
 				cell.position = cell.position + 5 * direction
 
 func _update_new_positions(direction: int):
-	if false:
+	if true:
 		print("\n\n----- Old Maps ------")
 		print_cells_map()
 		print_uuid_map()	
+		pass
+		
+		var x = 0
 	
-	
-	"""
-	for j in range(settings.height):
-		for i in range(settings.width):
-	"""
 	for cell in _get_all_cells():
+		if not cell.is_movable:
+			continue
+			
 		var i = cell.x
 		var j = cell.y
 		
-		# if cells_map[j][i] == null:
-		# 	continue
-		if direction == Direction.Down:# and j + 1 < settings.height:
-			_update_single_cell(i, j, i, j + 1)
 
-		elif direction == Direction.Up:# and j - 1 >= 0:
-			_update_single_cell(i, j, i, j - 1)
+		if direction == Direction.Down:
+			# _update_single_cell(i, j, i, j + 1)
+			_update_single_cell(cell, i, j + 1)
+
+		elif direction == Direction.Up:
+			# _update_single_cell(i, j, i, j - 1)
+			_update_single_cell(cell, i, j - 1)
 			
-		elif direction == Direction.Left:# and i - 1 >= 0:
-			_update_single_cell(i, j, i - 1, j)
+		elif direction == Direction.Left:
+			# _update_single_cell(i, j, i - 1, j)
+			_update_single_cell(cell, i - 1, j)
 			
-		elif direction == Direction.Right:# and i + 1 < settings.width:
-			_update_single_cell(i, j, i + 1, j)
+		elif direction == Direction.Right:
+			# _update_single_cell(i, j, i + 1, j)
+			_update_single_cell(cell, i + 1, j)
 
 	_resolve_cell_collisions()
 
 func _on_cell_positions_changed():
 	pass
 
-func _update_single_cell(old_x, old_y, new_x, new_y):
-	var cell: MushMashCell = cells_map[old_y][old_x]
-	if not cell.is_movable:
-		return
+func _update_single_cell(cell, new_x, new_y):
+	# var cell: MushMashCell = cells_map[old_y][old_x]
+	# if not cell.is_movable:
+	# 	return
 	cell.new_x = new_x
 	cell.new_y = new_y
 
@@ -169,7 +173,6 @@ func _update_cells_map():
 		if cell.new_y != cell.y:
 			cell.y = cell.new_y
 
-	# var new_cells_map: Dictionary = CommonFunctions.nulls_2D_map(settings.height, settings.width)
 	var new_cells_map: Dictionary = {}
 	for cell in _get_all_cells():
 		if cell.new_y not in new_cells_map.keys():
@@ -305,9 +308,9 @@ func _on_animation_player_is_ready(cell):
 	
 func print_cells_map():
 	print("Cells Map")
-	for j in range(constants.height):
+	for j in cells_map.keys(): # range(constants.height):
 		var line = ""
-		for i in range(constants.height):
+		for i in cells_map[j].keys(): # range(constants.height):
 			var cell: MushMashCell = cells_map[j][i]
 			if cell != null:
 				line = line + str(cell.x) + "," + str(cell.y) + "   "
@@ -318,9 +321,9 @@ func print_cells_map():
 		
 func print_uuid_map(max_uuid_digits: int = 4):
 	print("UUID Map")
-	for j in range(constants.height):
+	for j in cells_map.keys(): # range(constants.height):
 		var line = ""
-		for i in range(constants.height):
+		for i in cells_map[j].keys(): # range(constants.height):
 			if cells_map[j][i]:
 				line = line + cells_map[j][i].uuid.substr(0,max_uuid_digits) + "   "
 			else:

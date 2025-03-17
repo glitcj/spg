@@ -124,27 +124,18 @@ func _on_player_turn_start():
 		
 
 		# get_parent().input_handles.get_from_input_mode(get_parent().input_handles.InputModes.MoveMovableCells)
-		current_active_cell.handler.change_input_mode(_MushMash_CellInputHandler.InputModes.Move)
+		current_active_cell.mover.change_input_mode(_MushMash_CellHandler_Mover_Base.InputModes.Move)
 		
 		# await get_parent().input_handles.finished_input_mode
-		await current_active_cell.handler.finished_input_mode
+		await current_active_cell.mover.finished_input_mode
 
 
 func _on_player_turn_end():
-	# var input_handler : _MushMash_InputHandles = get_parent().input_handles
-	# input_handler.get_from_input_mode(input_handler.InputModes.Inactive)
-	# input_handler.reset()
-	
-	# var input_handler : _MushMash_InputHandles = get_parent().input_handles
-	# current_active_cell.handler.change_input_mode(_MushMash_CellInputHandler.InputModes.Inactive)
-	current_active_cell.handler._reset_handler()
-	
-	
-	
+	current_active_cell.mover._reset_handler()
 	current_active_cell.highlighter_animation_player.play("RESET")
+	
 	var next_active_player_cell: MushMashCell = player_cells_turn_queue[0]
 	next_active_player_cell.highlighter_animation_player.play("NextCellHighlight")
-	
 	
 	player_cells_turn_queue.append(current_active_cell)
 	current_active_cell = null

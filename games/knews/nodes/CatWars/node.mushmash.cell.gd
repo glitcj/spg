@@ -2,7 +2,9 @@ extends Node2D
 class_name MushMashCell
 
 # TODO: Change Settings to Initialiser
-@export var handler: _MushMash_CellInputHandler = null
+@export var mover: _MushMash_CellHandler_Mover_Base = null
+@export var damager: _MushMash_CellHandler_Damager_Base = null
+@export var actioner: _MushMash_CellHandler_Actioner_Base = null
 
 # @onready var settings: MushMashCell = $Settings
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -49,8 +51,7 @@ func _preload_animation_sprites():
 	sprite_sheets[AvailableSprites.Cat] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/GoldRacoon/SpriteSheet.png")
 	sprite_sheets[AvailableSprites.CatCyclops] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/AxolotBlue/SpriteSheet.png")
 	sprite_sheets[AvailableSprites.Nyacence] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Cyclope2/SpriteSheet.png")
-	
-	# 
+
 
 func _preload_face_sprites():
 	face_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/Faceset.png")

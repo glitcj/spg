@@ -1283,22 +1283,22 @@ tile_set = SubResource("TileSet_0kld7")
 [node name="OnMapNodes" type="Node2D" parent="TileMapsNode"]
 scale = Vector2(0.2, 0.2)
 
-[node name="P1" parent="TileMapsNode/OnMapNodes" node_paths=PackedStringArray("handler") instance=ExtResource("11_3uppv")]
+[node name="P1" parent="TileMapsNode/OnMapNodes" node_paths=PackedStringArray("mover") instance=ExtResource("11_3uppv")]
 position = Vector2(-130, -33)
-handler = NodePath("PlayerHandler")
+mover = NodePath("CatMover")
 cell_sprite = 7
 type = 0
 
-[node name="PlayerHandler" type="Node" parent="TileMapsNode/OnMapNodes/P1"]
+[node name="CatMover" type="Node" parent="TileMapsNode/OnMapNodes/P1"]
 script = ExtResource("12_bby4i")
 
-[node name="P2" parent="TileMapsNode/OnMapNodes" node_paths=PackedStringArray("handler") instance=ExtResource("11_3uppv")]
+[node name="P2" parent="TileMapsNode/OnMapNodes" node_paths=PackedStringArray("mover") instance=ExtResource("11_3uppv")]
 position = Vector2(-120, 116)
-handler = NodePath("PlayerHandler")
+mover = NodePath("CatMover")
 cell_sprite = 8
 type = 0
 
-[node name="PlayerHandler" type="Node" parent="TileMapsNode/OnMapNodes/P2"]
+[node name="CatMover" type="Node" parent="TileMapsNode/OnMapNodes/P2"]
 script = ExtResource("12_bby4i")
 
 [node name="O1" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
@@ -1306,7 +1306,7 @@ position = Vector2(-43, 42)
 cell_sprite = 9
 type = 1
 
-[node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/O1"]
+[node name="OpponentMover" type="Node" parent="TileMapsNode/OnMapNodes/O1"]
 script = ExtResource("12_w0o85")
 
 [node name="O2" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
@@ -1314,7 +1314,7 @@ position = Vector2(-216, 45)
 cell_sprite = 5
 type = 1
 
-[node name="Opponent" type="Node" parent="TileMapsNode/OnMapNodes/O2"]
+[node name="OpponentMover" type="Node" parent="TileMapsNode/OnMapNodes/O2"]
 script = ExtResource("12_w0o85")
 
 [node name="MushWall" parent="TileMapsNode/OnMapNodes" instance=ExtResource("11_3uppv")]
