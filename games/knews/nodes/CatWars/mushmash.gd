@@ -28,7 +28,7 @@ var DirectionVector := {
 
 # Set references so all components can talk to each other
 @onready var turner: _MushMash_Turner = $Turner
-@onready var map : _MushMash_Map = $Funcs
+@onready var map : _MushMash_Map = $Map
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
 
