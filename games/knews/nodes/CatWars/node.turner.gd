@@ -132,6 +132,8 @@ func _on_player_turn_end():
 	current_active_cell = null
 	
 func _on_opponent_turn_start():
+	if opponent_cells_turn_queue == []:
+		return
 	current_active_cell = opponent_cells_turn_queue.pop_front()
 	current_active_cell.highlighter_animation_player.play("ActiveCellHighlight")
 	current_active_cell.is_movable = true
@@ -148,13 +150,14 @@ func _on_opponent_turn_start():
 	
 
 func _on_opponent_turn_end():
-	if current_active_cell != null:
-		current_active_cell.is_movable = false
-		current_active_cell.animation_player.play("RESET")	
-		current_active_cell.animation_player.queue("Idle")
-		current_active_cell.highlighter_animation_player.play("RESET")
-		opponent_cells_turn_queue.append(current_active_cell)
-		current_active_cell = null
+	if current_active_cell == null:
+		return
+	current_active_cell.is_movable = false
+	current_active_cell.animation_player.play("RESET")	
+	current_active_cell.animation_player.queue("Idle")
+	current_active_cell.highlighter_animation_player.play("RESET")
+	opponent_cells_turn_queue.append(current_active_cell)
+	current_active_cell = null
 
 func _on_idle_turn_start():
 	pass
