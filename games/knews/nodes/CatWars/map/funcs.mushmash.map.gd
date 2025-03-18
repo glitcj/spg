@@ -147,8 +147,8 @@ func update_hud_face(texture_: Texture2D):
 func resolve_damage_and_cell_placement():
 	pass
 
-func tilemap_cell_is_occupied(x, y):
+func get_on_map_cell(x, y):
 	if y in mushmash.cells_map.keys():
 		if x in mushmash.cells_map[y].keys():
-			return true
-	return false
+			return mushmash.cells_map[y][x]
+	return null

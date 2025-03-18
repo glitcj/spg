@@ -18,6 +18,11 @@ func _on_action_input(event):
 	elif event.is_action_pressed("ui_up"):
 		mushmash.map.resolve_damage_and_cell_placement()
 		mushmash._update_new_positions(mushmash.Direction.Up)
+		
+		var target_cell = mushmash.map.get_on_map_cell(cell.x, cell.y + 1)
+		if target_cell is MushMashCell:
+			apply_damage(target_cell)
+		
 
 	elif event.is_action_pressed("ui_accept"):
 		pass
@@ -66,4 +71,44 @@ func _on_move_input(event):
 			cell.highlighter_animation_player.play("ReadyForActionHighlight")
 
 
-# func _tilemap_cell_is_occupied()
+
+func apply_damage(target_cell_: MushMashCell):
+	if target_cell_.damager is _MushMash_CellHandler_Damager_Base:
+		pass
+	pass
+
+
+
+# Replace _Mushmash position updater, move resolve collisions
+"""
+func _update_cell_position(direction: int):
+	if true:
+		print("\n\n----- Old Maps ------")
+		print_cells_map()
+		print_uuid_map()	
+		pass
+		
+		var x = 0
+	
+	for cell in _get_all_cells():
+		if not cell.is_movable:
+			continue
+			
+		var i = cell.x
+		var j = cell.y
+		
+
+		if direction == Direction.Down:
+			_update_single_cell(cell, i, j + 1)
+
+		elif direction == Direction.Up:
+			_update_single_cell(cell, i, j - 1)
+			
+		elif direction == Direction.Left:
+			_update_single_cell(cell, i - 1, j)
+			
+		elif direction == Direction.Right:
+			_update_single_cell(cell, i + 1, j)
+
+	_resolve_cell_collisions()
+"""
