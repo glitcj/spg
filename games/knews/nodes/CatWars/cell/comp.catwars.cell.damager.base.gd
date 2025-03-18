@@ -15,7 +15,19 @@ func _kill_cell():
 func apply_damage(damage_amount: int):
 	health = health - damage_amount
 	if health <= 0:
+		cell.queue_free()
 		mushmash.cells_map[cell.y].erase(cell.x)
-		queue_free()
-	# mushmash._update_cells_map()
+		
+		var O_O_opponent_cells_turn_queue = []
+		for c in mushmash.turner.opponent_cells_turn_queue:
+			if c == cell:
+				continue
+			O_O_opponent_cells_turn_queue.append(c)
+		mushmash.turner.opponent_cells_turn_queue = O_O_opponent_cells_turn_queue
+				
+		print("AFTER QUEUEFREE")
+		
+
+		pass
+	
 	

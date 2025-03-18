@@ -4,24 +4,27 @@ class_name _MushMash_CellHandler_Mover_Mole
 
 func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):
+		_get_on_map_cell_and_apply_damage(cell.x+1, cell.y)
 		mushmash.map.resolve_damage_and_cell_placement()
 		mushmash._update_new_positions(mushmash.Direction.Right)
 
 	elif event.is_action_pressed("ui_left"):
+		_get_on_map_cell_and_apply_damage(cell.x - 1, cell.y)
 		mushmash.map.resolve_damage_and_cell_placement()
 		mushmash._update_new_positions(mushmash.Direction.Left)
-
+		
 	elif event.is_action_pressed("ui_down"):
+		_get_on_map_cell_and_apply_damage(cell.x, cell.y+1)
 		mushmash.map.resolve_damage_and_cell_placement()
 		mushmash._update_new_positions(mushmash.Direction.Down)
-
+		
 	elif event.is_action_pressed("ui_up"):
+		_get_on_map_cell_and_apply_damage(cell.x, cell.y-1)
 		mushmash.map.resolve_damage_and_cell_placement()
 		mushmash._update_new_positions(mushmash.Direction.Up)
 		
-		var target_cell = mushmash.map.get_on_map_cell(cell.x, cell.y + 1)
-		if target_cell is MushMashCell:
-			apply_damage(target_cell)
+		
+
 		
 
 	elif event.is_action_pressed("ui_accept"):
@@ -71,12 +74,15 @@ func _on_move_input(event):
 			cell.highlighter_animation_player.play("ReadyForActionHighlight")
 
 
-
-func apply_damage(target_cell_: MushMashCell):
-	if target_cell_.damager is _MushMash_CellHandler_Damager_Base:
-		pass
-	pass
-
+func _get_on_map_cell_and_apply_damage(x, y, damage=10):
+	var target_cell = mushmash.map.get_on_map_cell(x, y)
+	
+	print(mushmash.cells_map)
+	print("POSITION", x, y)
+	print(target_cell)
+	if target_cell is MushMashCell:
+		if target_cell.damager is _MushMash_CellHandler_Damager_Base:
+			target_cell.damager.apply_damage(damage)
 
 
 # Replace _Mushmash position updater, move resolve collisions

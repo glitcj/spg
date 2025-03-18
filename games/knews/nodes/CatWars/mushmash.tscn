@@ -1287,7 +1287,7 @@ tile_set = SubResource("TileSet_0kld7")
 scale = Vector2(0.2, 0.2)
 
 [node name="P1" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover") instance=ExtResource("11_3uppv")]
-position = Vector2(-130, -33)
+position = Vector2(-45, 94)
 mover = NodePath("CatMover")
 cell_sprite = 7
 type = 0
@@ -1296,7 +1296,7 @@ type = 0
 script = ExtResource("12_bby4i")
 
 [node name="P2" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover") instance=ExtResource("11_3uppv")]
-position = Vector2(-120, 116)
+position = Vector2(-212, 105)
 mover = NodePath("CatMover")
 cell_sprite = 8
 type = 0
@@ -1326,6 +1326,18 @@ type = 1
 script = ExtResource("12_w0o85")
 
 [node name="BaseDamager" type="Node" parent="Map/OnMapNodes/O2"]
+script = ExtResource("14_87abt")
+
+[node name="O3" parent="Map/OnMapNodes" node_paths=PackedStringArray("damager") instance=ExtResource("11_3uppv")]
+position = Vector2(-213, 161)
+damager = NodePath("BaseDamager")
+cell_sprite = 5
+type = 1
+
+[node name="OpponentMover" type="Node" parent="Map/OnMapNodes/O3"]
+script = ExtResource("12_w0o85")
+
+[node name="BaseDamager" type="Node" parent="Map/OnMapNodes/O3"]
 script = ExtResource("14_87abt")
 
 [node name="MushWall" parent="Map/OnMapNodes" instance=ExtResource("11_3uppv")]

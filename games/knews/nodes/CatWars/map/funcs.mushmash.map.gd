@@ -1,7 +1,7 @@
 extends Node
 class_name _MushMash_Map
 
-var mushmash: _MushMash = get_parent()
+@onready var mushmash: _MushMash = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
