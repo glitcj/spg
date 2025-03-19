@@ -4,6 +4,8 @@ class_name _MushMash_Turner
 signal turn_timer_timeout
 @onready var turn_timer = $ActionTimer
 
+@onready var mushmash: _MushMash = get_parent()
+
 var cells_to_move_are_selectable = false
 
 enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn}
@@ -96,6 +98,7 @@ func _initialise_opponent_cells_turn_queue():
 
 func _on_player_turn_start():
 	
+	# mushmash.constants
 	if cells_to_move_are_selectable:
 		var input_handler : _MushMash_InputHandles = get_parent().input_handles
 		current_active_cell = player_cells_turn_queue.pop_front()
@@ -109,6 +112,7 @@ func _on_player_turn_start():
 
 	else:
 		current_active_cell = player_cells_turn_queue.pop_front()
+		mushmash.camera.position = current_active_cell.position
 		current_active_cell.highlighter_animation_player.play("RESET")
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
 		get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])

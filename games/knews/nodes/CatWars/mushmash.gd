@@ -27,6 +27,7 @@ var DirectionVector := {
 }
 
 # Set references so all components can talk to each other
+@onready var camera: Camera2D = $Camera2D
 @onready var turner: _MushMash_Turner = $Turner
 @onready var map : _MushMash_Map = $Map
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
