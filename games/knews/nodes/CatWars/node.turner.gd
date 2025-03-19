@@ -74,8 +74,6 @@ func _update_turn_state():
 	elif current_turn_state == TurnStates.IdleBeforeOpponent:
 		_on_player_turn_end()
 		await _on_idle_turn_start()
-		
-		
 
 	elif current_turn_state == TurnStates.OponnentTurn:
 		await _on_idle_turn_end()

@@ -469,7 +469,9 @@ scale = Vector2(0.944766, 1)
 label_settings = SubResource("LabelSettings_4kypm")
 
 [node name="CatPaw" type="Node2D" parent="."]
+visible = false
 position = Vector2(-150, 1000)
 
 [node name="Sprite2D" type="Sprite2D" parent="CatPaw"]
+visible = false
 texture = ExtResource("4_cr4dt")
