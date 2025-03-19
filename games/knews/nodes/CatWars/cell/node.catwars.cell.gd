@@ -5,6 +5,8 @@ class_name MushMashCell
 @export var mover: _MushMash_CellHandler_Mover_Base = null
 @export var damager: _MushMash_CellHandler_Damager_Base = null
 @export var actioner: _MushMash_CellHandler_Actioner_Base = null
+@export var brainer: _MushMash_CellHandler_Brainer_Base = null
+
 
 # @onready var settings: MushMashCell = $Settings
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

@@ -147,7 +147,9 @@ func _on_opponent_turn_start():
 	
 	print("BBB", current_active_cell)
 	print(current_active_cell.type)
-	get_parent()._update_new_positions(_get_opponent_action(current_active_cell))
+	get_parent()._update_new_positions(mushmash._get_all_cells(), _get_opponent_action(current_active_cell))
+	# get_parent()._update_new_positions(_get_opponent_action(current_active_cell))
+	
 	get_parent()._update_cells_map()
 	
 

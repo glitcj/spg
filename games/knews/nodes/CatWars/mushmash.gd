@@ -107,19 +107,48 @@ func _update_map():
 	var destination
 	var direction
 	for cell: MushMashCell in all_cells:
-		# destination = Vector2(150 * cell.x, 150 * cell.y)
 		destination = map.get_tilemap_cell_position(cell.x, cell.y)
-		# if settings.cell_movement_type == MushMashMapSettings.CellMovementType.Instant:
 		if constants.cell_movement_type == constants.CellMovementType.Instant:
 			cell.position = destination
 
-		# elif settings.cell_movement_type == MushMashMapSettings.CellMovementType.Linear:
 		elif constants.cell_movement_type == constants.CellMovementType.Linear:
 			if destination != cell.position:
 				direction = (destination - cell.position).normalized()
 				cell.position = cell.position + 5 * direction
 
-func _update_new_positions(direction: int):
+func _update_new_positions(cells, direction: int):
+	if true:
+		print("\n\n----- Old Maps ------")
+		print_cells_map()
+		print_uuid_map()	
+		pass
+		
+		var x = 0
+	
+	for cell in cells:
+		if not cell.is_movable:
+			continue
+			
+		var i = cell.x
+		var j = cell.y
+		
+
+		if direction == Direction.Down:
+			_update_single_cell(cell, i, j + 1)
+
+		elif direction == Direction.Up:
+			_update_single_cell(cell, i, j - 1)
+			
+		elif direction == Direction.Left:
+			_update_single_cell(cell, i - 1, j)
+			
+		elif direction == Direction.Right:
+			_update_single_cell(cell, i + 1, j)
+
+	_resolve_cell_collisions()
+
+
+func _update_new_positions_v1(direction: int):
 	if true:
 		print("\n\n----- Old Maps ------")
 		print_cells_map()
@@ -149,6 +178,9 @@ func _update_new_positions(direction: int):
 			_update_single_cell(cell, i + 1, j)
 
 	_resolve_cell_collisions()
+
+
+
 
 func _on_cell_positions_changed():
 	pass

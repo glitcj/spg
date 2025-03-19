@@ -6,22 +6,22 @@ func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):
 		_get_on_map_cell_and_apply_damage(cell.x+1, cell.y)
 		mushmash.map.resolve_damage_and_cell_placement()
-		mushmash._update_new_positions(mushmash.Direction.Right)
+		move_cell(mushmash.Direction.Right)
 
 	elif event.is_action_pressed("ui_left"):
 		_get_on_map_cell_and_apply_damage(cell.x - 1, cell.y)
 		mushmash.map.resolve_damage_and_cell_placement()
-		mushmash._update_new_positions(mushmash.Direction.Left)
+		move_cell(mushmash.Direction.Left)
 		
 	elif event.is_action_pressed("ui_down"):
 		_get_on_map_cell_and_apply_damage(cell.x, cell.y+1)
 		mushmash.map.resolve_damage_and_cell_placement()
-		mushmash._update_new_positions(mushmash.Direction.Down)
+		move_cell(mushmash.Direction.Down)
 		
 	elif event.is_action_pressed("ui_up"):
 		_get_on_map_cell_and_apply_damage(cell.x, cell.y-1)
 		mushmash.map.resolve_damage_and_cell_placement()
-		mushmash._update_new_positions(mushmash.Direction.Up)
+		move_cell(mushmash.Direction.Up)
 		
 		
 
@@ -45,16 +45,16 @@ func _on_action_input(event):
 
 func _on_move_input(event):
 	if event.is_action_pressed("ui_right"):
-		mushmash._update_new_positions(mushmash.Direction.Right)
+		move_cell(mushmash.Direction.Right)
 
 	elif event.is_action_pressed("ui_left"):
-		mushmash._update_new_positions(mushmash.Direction.Left)
+		move_cell(mushmash.Direction.Left)
 
 	elif event.is_action_pressed("ui_down"):
-		mushmash._update_new_positions(mushmash.Direction.Down)
+		move_cell(mushmash.Direction.Down)
 
 	elif event.is_action_pressed("ui_up"):
-		mushmash._update_new_positions(mushmash.Direction.Up)
+		move_cell(mushmash.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):
 		change_input_mode(InputModes.Action)
@@ -84,6 +84,9 @@ func _get_on_map_cell_and_apply_damage(x, y, damage=10):
 		if target_cell.damager is _MushMash_CellHandler_Damager_Base:
 			target_cell.damager.apply_damage(damage)
 
+
+func move_cell(direction_: _MushMash.Direction):
+	mushmash._update_new_positions(mushmash._get_all_cells(), direction_)
 
 # Replace _Mushmash position updater, move resolve collisions
 """

@@ -20,16 +20,12 @@ func movable_directions_from_cell_map(x, y):
 		considered_position_y = y
 		considered_position_x = x
 		if get_parent().Direction[k] == get_parent().Direction.Right:
-			# considered_position_x = min(get_parent().settings.width - 1, max(0, x+1))
 			considered_position_x = x + 1
 		elif get_parent().Direction[k] == get_parent().Direction.Left:
-			# considered_position_x = min(get_parent().settings.width - 1, max(0, x-1))
 			considered_position_x = x - 1
 		elif get_parent().Direction[k] == get_parent().Direction.Up:
-			# considered_position_y = min(get_parent().settings.height - 1, max(0, y-1))
 			considered_position_y = y - 1
 		elif get_parent().Direction[k] == get_parent().Direction.Down:
-			# considered_position_y = min(get_parent().settings.height - 1, max(0, y+1))
 			considered_position_y = y + 1
 			
 		if considered_position_x == x and considered_position_y == y:

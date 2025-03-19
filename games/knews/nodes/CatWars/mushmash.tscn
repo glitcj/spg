@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c4d7thv2x41wt"]
+[gd_scene load_steps=28 format=4 uid="uid://c4d7thv2x41wt"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/mushmash.gd" id="1_2w2ai"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="2_xggdo"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cs3b4rgs31y4p" path="res://games/knews/nodes/CatWars/cell/node.catwars.cell.tscn" id="11_3uppv"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.mover.cat.gd" id="12_bby4i"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.opponent.gd" id="12_w0o85"]
+[ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.brainer.base.gd" id="13_kkavj"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.damager.base.gd" id="14_87abt"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/hud/node.catwars.hud.gd" id="14_yjrrl"]
 
@@ -1303,11 +1304,19 @@ type = 0
 [node name="CatMover" type="Node" parent="Map/OnMapNodes/P2"]
 script = ExtResource("12_bby4i")
 
-[node name="O1" parent="Map/OnMapNodes" node_paths=PackedStringArray("damager") instance=ExtResource("11_3uppv")]
+[node name="O1" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "damager", "brainer") instance=ExtResource("11_3uppv")]
 position = Vector2(-43, 42)
+mover = NodePath("CatMover")
 damager = NodePath("BaseDamager")
+brainer = NodePath("CatBrainer")
 cell_sprite = 9
 type = 1
+
+[node name="CatBrainer" type="Node" parent="Map/OnMapNodes/O1"]
+script = ExtResource("13_kkavj")
+
+[node name="CatMover" type="Node" parent="Map/OnMapNodes/O1"]
+script = ExtResource("12_bby4i")
 
 [node name="OpponentMover" type="Node" parent="Map/OnMapNodes/O1"]
 script = ExtResource("12_w0o85")
@@ -1315,11 +1324,16 @@ script = ExtResource("12_w0o85")
 [node name="BaseDamager" type="Node" parent="Map/OnMapNodes/O1"]
 script = ExtResource("14_87abt")
 
-[node name="O2" parent="Map/OnMapNodes" node_paths=PackedStringArray("damager") instance=ExtResource("11_3uppv")]
+[node name="O2" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "damager", "brainer") instance=ExtResource("11_3uppv")]
 position = Vector2(-216, 45)
+mover = NodePath("CatMover")
 damager = NodePath("BaseDamager")
+brainer = NodePath("CatBrainer")
 cell_sprite = 5
 type = 1
+
+[node name="CatMover" type="Node" parent="Map/OnMapNodes/O2"]
+script = ExtResource("12_bby4i")
 
 [node name="OpponentMover" type="Node" parent="Map/OnMapNodes/O2"]
 script = ExtResource("12_w0o85")
@@ -1327,17 +1341,27 @@ script = ExtResource("12_w0o85")
 [node name="BaseDamager" type="Node" parent="Map/OnMapNodes/O2"]
 script = ExtResource("14_87abt")
 
-[node name="O3" parent="Map/OnMapNodes" node_paths=PackedStringArray("damager") instance=ExtResource("11_3uppv")]
+[node name="CatBrainer" type="Node" parent="Map/OnMapNodes/O2"]
+script = ExtResource("13_kkavj")
+
+[node name="O3" parent="Map/OnMapNodes" node_paths=PackedStringArray("damager", "brainer") instance=ExtResource("11_3uppv")]
 position = Vector2(-213, 161)
 damager = NodePath("BaseDamager")
+brainer = NodePath("CatBrainer")
 cell_sprite = 5
 type = 1
+
+[node name="CatMover" type="Node" parent="Map/OnMapNodes/O3"]
+script = ExtResource("12_bby4i")
 
 [node name="OpponentMover" type="Node" parent="Map/OnMapNodes/O3"]
 script = ExtResource("12_w0o85")
 
 [node name="BaseDamager" type="Node" parent="Map/OnMapNodes/O3"]
 script = ExtResource("14_87abt")
+
+[node name="CatBrainer" type="Node" parent="Map/OnMapNodes/O3"]
+script = ExtResource("13_kkavj")
 
 [node name="MushWall" parent="Map/OnMapNodes" instance=ExtResource("11_3uppv")]
 position = Vector2(245, 226)
