@@ -33,7 +33,8 @@ var DirectionVector := {
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
 
-@onready var hud_face: Sprite2D = $Hud/Face
+@onready var hud_face: Sprite2D = $HudCanvasLayer/Hud/Face
+@onready var hud: Node2D = $HudCanvasLayer/Hud
 @onready var tilemap: TileMapLayer = $Map/TileMapLayerMain
 @onready var on_map_cells: Array = $Map/OnMapNodes.get_children()
 
@@ -70,7 +71,10 @@ func _input(event):
 func _process(delta: float) -> void:
 	_update_map()
 	_update_console()
+	_update_camera()
 
+func _update_camera():
+	$Camera2D.position = $Map/OnMapNodes/Player.position
 
 func _update_console():
 	var O_O_ = ""

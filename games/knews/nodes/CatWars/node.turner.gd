@@ -37,9 +37,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if current_turn_state == null:
 		return
-	$Label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
-	$TurnLabel.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
-	
+	# $Label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
+	# $TurnLabel.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
+	mushmash.hud.turn_label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
+	mushmash.hud.turn_label.text += "\nTurn: %s" % [TurnStates.keys()[current_turn_state]]
 
 func _on_timer_timeout() -> void:
 	_update_turn_state()
@@ -112,7 +113,7 @@ func _on_player_turn_start():
 
 	else:
 		current_active_cell = player_cells_turn_queue.pop_front()
-		mushmash.camera.position = current_active_cell.position
+		# mushmash.camera.position = current_active_cell.position
 		current_active_cell.highlighter_animation_player.play("RESET")
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
 		get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
@@ -127,8 +128,9 @@ func _on_player_turn_end():
 	current_active_cell.mover._reset_handler()
 	current_active_cell.highlighter_animation_player.play("RESET")
 	
-	var next_active_player_cell: MushMashCell = player_cells_turn_queue[0]
-	next_active_player_cell.highlighter_animation_player.play("NextCellHighlight")
+	if player_cells_turn_queue != []:
+		var next_active_player_cell: MushMashCell = player_cells_turn_queue[0]
+		next_active_player_cell.highlighter_animation_player.play("NextCellHighlight")
 	
 	player_cells_turn_queue.append(current_active_cell)
 	current_active_cell = null
