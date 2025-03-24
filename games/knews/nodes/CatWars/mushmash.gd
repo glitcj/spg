@@ -34,7 +34,8 @@ var DirectionVector := {
 @onready var ai : _MushMash_AI  = $AI
 
 @onready var hud_face: Sprite2D = $HudCanvasLayer/Hud/Face
-@onready var hud: Node2D = $HudCanvasLayer/Hud
+@onready var hud: _Mushmash_HUD = $HudCanvasLayer/Hud
+@onready var log := hud.log
 @onready var tilemap: TileMapLayer = $Map/TileMapLayerMain
 @onready var on_map_cells: Array = $Map/OnMapNodes.get_children()
 

@@ -43,7 +43,7 @@ func _on_action_input(event):
 			_reset_handler()
 			finished_input_mode.emit()
 
-func _on_move_input(event):
+func _on_move_input(event: InputEvent):
 	if event.is_action_pressed("ui_right"):
 		move_cell(mushmash.Direction.Right)
 
@@ -60,12 +60,13 @@ func _on_move_input(event):
 		change_input_mode(InputModes.Action)
 		
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right"]:
-		if event.is_action_pressed(action):
+		if event.is_action_pressed(action, true):
 			mushmash._update_cells_map()
 			mushmash.turner._update_turn_state()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
 			mushmash.input_handles._reset_selector_control_variables()
+			mushmash.log.insert(0, "Cat has maved to %s" % action)
 			_reset_handler()
 			finished_input_mode.emit()
 
