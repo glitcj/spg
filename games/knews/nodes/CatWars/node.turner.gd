@@ -30,7 +30,7 @@ var current_active_cell: MushMashCell
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Sprite2DActionIndicator.modulate = Color(1,0,0)
+	# mushmash.hud.turn_indicator.modulate = Color(1,0,0)
 	$ActionTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -116,7 +116,6 @@ func _on_player_turn_start():
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
 		get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 		
-		current_active_cell.is_movable = true
 		current_active_cell.mover.change_input_mode(_MushMash_CellHandler_Mover_Base.InputModes.Move)
 		
 		await current_active_cell.mover.finished_input_mode
@@ -138,14 +137,13 @@ func _on_opponent_turn_start():
 		return
 	current_active_cell = opponent_cells_turn_queue.pop_front()
 	current_active_cell.highlighter_animation_player.play("ActiveCellHighlight")
-	current_active_cell.is_movable = true
 	get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 	
 
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
 	await wait_timer.timeout
 	
-	get_parent()._update_new_positions(mushmash._get_all_cells(), _get_opponent_action(current_active_cell))
+	current_active_cell.brainer.perform_opponent_action()
 	
 	get_parent()._update_cells_map()
 	
@@ -153,7 +151,6 @@ func _on_opponent_turn_start():
 func _on_opponent_turn_end():
 	if current_active_cell == null:
 		return
-	current_active_cell.is_movable = false
 	current_active_cell.animation_player.play("RESET")	
 	current_active_cell.animation_player.queue("Idle")
 	current_active_cell.highlighter_animation_player.play("RESET")

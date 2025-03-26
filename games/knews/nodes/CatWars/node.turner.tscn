@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://sfxyhloygidk"]
+[gd_scene load_steps=3 format=3 uid="uid://sfxyhloygidk"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/node.turner.gd" id="1_xm8sr"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/mushmash_map_settings.gd" id="2_qm2fn"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_v8juv"]
 
 [node name="ActionTimerNode" type="Node2D"]
 script = ExtResource("1_xm8sr")
@@ -11,10 +9,6 @@ script = ExtResource("1_xm8sr")
 [node name="ActionTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="Sprite2DActionIndicator" type="Sprite2D" parent="."]
-scale = Vector2(20, 20)
-texture = SubResource("CanvasTexture_v8juv")
 
 [node name="MushMashMapSettings" type="Node" parent="."]
 script = ExtResource("2_qm2fn")

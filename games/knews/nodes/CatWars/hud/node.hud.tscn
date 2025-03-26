@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://c53btno4y6072"]
+
+[ext_resource type="Script" path="res://games/knews/nodes/CatWars/hud/node.catwars.hud.gd" id="1_5tlk5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wwdyu"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_enyeb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6tftr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tgdje"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3ny1"]
+line_spacing = 5.0
+
+[node name="Hud" type="Node2D"]
+z_index = 100
+position = Vector2(550, 60)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_5tlk5")
+
+[node name="HudBackground" type="Sprite2D" parent="."]
+modulate = Color(0.3588, 0.40092, 0.78, 1)
+position = Vector2(-3, 0)
+scale = Vector2(1000, 100)
+texture = SubResource("CanvasTexture_wwdyu")
+
+[node name="Face" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.654902, 1)
+texture_filter = 1
+scale = Vector2(130, 130)
+texture = SubResource("CanvasTexture_enyeb")
+
+[node name="TurnIndicatorSprite" type="Sprite2D" parent="."]
+position = Vector2(350, 0)
+scale = Vector2(50, 50)
+texture = SubResource("CanvasTexture_6tftr")
+
+[node name="Log" type="Node2D" parent="."]
+position = Vector2(-415.385, 131.538)
+scale = Vector2(1.53846, 1.53846)
+
+[node name="PanelContainer" type="PanelContainer" parent="Log"]
+offset_left = -6.0
+offset_top = 292.0
+offset_right = 294.0
+offset_bottom = 393.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Log/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Log/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text "
+label_settings = SubResource("LabelSettings_tgdje")
+autowrap_mode = 2
+
+[node name="Mission" type="Node2D" parent="."]
+visible = false
+position = Vector2(-200, 100)
+
+[node name="PanelContainer" type="PanelContainer" parent="Mission"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Mission/PanelContainer"]
+layout_mode = 2
+
+[node name="MissionLabel" type="Label" parent="Mission/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Remainin Turns: 5
+Mission: Hide in grass, 
+and catch 3 mice in one swipe.
+Status: Catatrophy
+
+Procedural, Shiren style, multiple cats allowed up to 3."
+label_settings = SubResource("LabelSettings_m3ny1")
+
+[node name="Status" type="Node2D" parent="."]
+position = Vector2(-300, -40)
+
+[node name="PanelContainer" type="PanelContainer" parent="Status"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Status/PanelContainer"]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "HP:"
+
+[node name="MPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "MP:"
+
+[node name="Turn" type="Node2D" parent="."]
+position = Vector2(80, -40)
+
+[node name="PanelContainer" type="PanelContainer" parent="Turn"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Turn/PanelContainer"]
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="Turn/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Turn: "
+label_settings = SubResource("LabelSettings_m3ny1")

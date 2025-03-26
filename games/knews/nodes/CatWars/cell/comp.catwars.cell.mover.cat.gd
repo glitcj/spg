@@ -22,10 +22,6 @@ func _on_action_input(event):
 		_get_on_map_cell_and_apply_damage(cell.x, cell.y-1)
 		mushmash.map.resolve_damage_and_cell_placement()
 		move_cell(mushmash.Direction.Up)
-		
-		
-
-		
 
 	elif event.is_action_pressed("ui_accept"):
 		pass
@@ -87,7 +83,9 @@ func _get_on_map_cell_and_apply_damage(x, y, damage=10):
 
 
 func move_cell(direction_: _MushMash.Direction):
+	cell.is_movable = true
 	mushmash._update_new_positions(mushmash._get_all_cells(), direction_)
+	cell.is_movable = false
 
 # Replace _Mushmash position updater, move resolve collisions
 """
