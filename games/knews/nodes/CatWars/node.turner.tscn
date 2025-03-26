@@ -16,21 +16,7 @@ one_shot = true
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_v8juv")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -14.0
-offset_top = 14.0
-offset_right = 26.0
-offset_bottom = 37.0
-text = "Timer:"
-
 [node name="MushMashMapSettings" type="Node" parent="."]
 script = ExtResource("2_qm2fn")
-
-[node name="TurnLabel" type="Label" parent="."]
-offset_left = -252.0
-offset_top = -9.0
-offset_right = -207.0
-offset_bottom = 14.0
-text = "Turn: "
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_timer_timeout"]

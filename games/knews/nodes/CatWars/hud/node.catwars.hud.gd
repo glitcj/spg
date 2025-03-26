@@ -1,8 +1,11 @@
 extends Node
 class_name _Mushmash_HUD
 
-@onready var turn_label := $TurnLabel
-@onready var mission_label := $MissionLabel
+@onready var turn_label := $Turn/PanelContainer/VBoxContainer/TurnLabel
+@onready var hp_label := $Status/PanelContainer/VBoxContainer/HPLabel
+@onready var mission_label := $Mission/PanelContainer/VBoxContainer/MissionLabel
+@onready var turn_indicator := $TurnIndicatorSprite
+
 var log := ["This is a sample.", "This is a sample.", "This is a sample.", "This is a sample."]
 
 # Called when the node enters the scene tree for the first time.

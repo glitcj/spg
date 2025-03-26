@@ -37,8 +37,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if current_turn_state == null:
 		return
-	# $Label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
-	# $TurnLabel.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
+	
 	mushmash.hud.turn_label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
 	mushmash.hud.turn_label.text += "\nTurn: %s" % [TurnStates.keys()[current_turn_state]]
 
@@ -47,16 +46,16 @@ func _on_timer_timeout() -> void:
 	
 func _update_turn_indicator():
 	if current_turn_state == TurnStates.IdleBeforePlayer:
-		$Sprite2DActionIndicator.modulate = Color(0,1,0)
+		mushmash.hud.turn_indicator.modulate = Color(0,1,0)
 		
 	if current_turn_state == TurnStates.PlayerTurn:
-		$Sprite2DActionIndicator.modulate = Color(1,0,0)
+		mushmash.hud.turn_indicator.modulate = Color(1,0,0)
 		
 	if current_turn_state == TurnStates.IdleBeforeOpponent:
-		$Sprite2DActionIndicator.modulate = Color(0,0,1)
+		mushmash.hud.turn_indicator.modulate = Color(0,0,1)
 		
 	if current_turn_state == TurnStates.OponnentTurn:
-		$Sprite2DActionIndicator.modulate = Color(0,1,1)
+		mushmash.hud.turn_indicator.modulate = Color(0,1,1)
 
 func _update_turn_state():
 	if current_turn_state != null:
@@ -113,7 +112,6 @@ func _on_player_turn_start():
 
 	else:
 		current_active_cell = player_cells_turn_queue.pop_front()
-		# mushmash.camera.position = current_active_cell.position
 		current_active_cell.highlighter_animation_player.play("RESET")
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
 		get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
@@ -143,14 +141,11 @@ func _on_opponent_turn_start():
 	current_active_cell.is_movable = true
 	get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 	
-	print("AAA", current_active_cell)
+
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
 	await wait_timer.timeout
 	
-	print("BBB", current_active_cell)
-	print(current_active_cell.type)
 	get_parent()._update_new_positions(mushmash._get_all_cells(), _get_opponent_action(current_active_cell))
-	# get_parent()._update_new_positions(_get_opponent_action(current_active_cell))
 	
 	get_parent()._update_cells_map()
 	
@@ -173,7 +168,6 @@ func _on_idle_turn_end():
 	
 func _get_opponent_action(cell: MushMashCell):
 	var movable_directions : Array = get_parent().ai.movable_directions_from_cell_map(cell.x, cell.y)
-	print(movable_directions)
 	if movable_directions == []:
 		return 0
 	return movable_directions[randi() % movable_directions.size()]

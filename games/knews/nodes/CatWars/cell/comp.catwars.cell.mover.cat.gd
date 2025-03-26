@@ -44,16 +44,16 @@ func _on_action_input(event):
 			finished_input_mode.emit()
 
 func _on_move_input(event: InputEvent):
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("ui_right", true):
 		move_cell(mushmash.Direction.Right)
 
-	elif event.is_action_pressed("ui_left"):
+	elif event.is_action_pressed("ui_left", true):
 		move_cell(mushmash.Direction.Left)
 
-	elif event.is_action_pressed("ui_down"):
+	elif event.is_action_pressed("ui_down", true):
 		move_cell(mushmash.Direction.Down)
 
-	elif event.is_action_pressed("ui_up"):
+	elif event.is_action_pressed("ui_up", true):
 		move_cell(mushmash.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):
