@@ -43,3 +43,14 @@ folder_colors={
 "res://games/standup/": "green",
 "res://source/": "red"
 }
+
+[input]
+
+_mushmash_accept={
+"deadzone": 0.5,
+"events": []
+}
+_mushmash_cancel={
+"deadzone": 0.5,
+"events": []
+}

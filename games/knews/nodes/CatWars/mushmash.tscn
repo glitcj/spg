@@ -1566,6 +1566,7 @@ type = 0
 script = ExtResource("12_bby4i")
 
 [node name="Minion" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "brainer") instance=ExtResource("11_3uppv")]
+z_index = 1
 position = Vector2(-212, 105)
 mover = NodePath("CatMover")
 brainer = NodePath("CatBrainer")
@@ -1579,6 +1580,7 @@ script = ExtResource("12_bby4i")
 script = ExtResource("13_kkavj")
 
 [node name="O1" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "damager", "brainer") instance=ExtResource("11_3uppv")]
+z_index = 1
 position = Vector2(-43, 42)
 mover = NodePath("CatMover")
 damager = NodePath("BaseDamager")
@@ -1596,6 +1598,7 @@ script = ExtResource("12_bby4i")
 script = ExtResource("14_87abt")
 
 [node name="O2" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "damager", "brainer") instance=ExtResource("11_3uppv")]
+z_index = 1
 position = Vector2(-216, 45)
 mover = NodePath("CatMover")
 damager = NodePath("BaseDamager")
@@ -1613,6 +1616,7 @@ script = ExtResource("12_bby4i")
 script = ExtResource("14_87abt")
 
 [node name="O3" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "damager", "brainer") instance=ExtResource("11_3uppv")]
+z_index = 1
 position = Vector2(-213, 161)
 mover = NodePath("CatMover")
 damager = NodePath("BaseDamager")
@@ -1630,6 +1634,7 @@ script = ExtResource("12_bby4i")
 script = ExtResource("14_87abt")
 
 [node name="MushWall" parent="Map/OnMapNodes" instance=ExtResource("11_3uppv")]
+z_index = 1
 position = Vector2(-442, -189)
 
 [node name="HudCanvasLayer" type="CanvasLayer" parent="."]

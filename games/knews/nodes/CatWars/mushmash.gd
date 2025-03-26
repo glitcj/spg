@@ -191,9 +191,6 @@ func _on_cell_positions_changed():
 	pass
 
 func _update_single_cell(cell, new_x, new_y):
-	# var cell: MushMashCell = cells_map[old_y][old_x]
-	# if not cell.is_movable:
-	# 	return
 	cell.new_x = new_x
 	cell.new_y = new_y
 

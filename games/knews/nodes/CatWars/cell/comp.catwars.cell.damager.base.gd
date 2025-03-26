@@ -25,4 +25,4 @@ func apply_damage(damage_amount: int):
 				continue
 			O_O_opponent_cells_turn_queue.append(c)
 		mushmash.turner.opponent_cells_turn_queue = O_O_opponent_cells_turn_queue
-		mushmash.log.insert(0, "%s vanquished" % [cell.name, damage_amount])
+		mushmash.log.insert(0, "%s vanquished" % [cell.name])

@@ -19,5 +19,5 @@ func get_opponent_action():
 
 func perform_opponent_action():
 	var action = get_opponent_action()
-	cell.mover.move_cell(action)
+	cell.mover.move_cell_to_direction(action)
 	mushmash.log.insert(0, "%s has moved to %s" % [cell.name, action])

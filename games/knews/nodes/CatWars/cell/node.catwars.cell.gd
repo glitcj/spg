@@ -40,7 +40,6 @@ var face_sheets: Dictionary
 @export var cell_sprite := AvailableSprites.Eye
 @export var type := CellTypes.Immovable
 
-	
 func _preload_animation_sprites():
 	sprite_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/SpriteSheet.png")
 	sprite_sheets[AvailableSprites.HeartRed] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/HeartRed/SpriteSheet.png")
@@ -48,26 +47,20 @@ func _preload_animation_sprites():
 	sprite_sheets[AvailableSprites.HatMole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Characters/CamouflageGreen/SpriteSheet.png")
 	sprite_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
 	sprite_sheets[AvailableSprites.Flower] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Eye.png")
-	
 	sprite_sheets[AvailableSprites.Cat] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/GoldRacoon/SpriteSheet.png")
 	sprite_sheets[AvailableSprites.CatCyclops] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/AxolotBlue/SpriteSheet.png")
 	sprite_sheets[AvailableSprites.Nyacence] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Cyclope2/SpriteSheet.png")
-
 
 func _preload_face_sprites():
 	face_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/Faceset.png")
 	face_sheets[AvailableSprites.HeartRed] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/HeartRed/Faceset.png")
 	face_sheets[AvailableSprites.Mole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Animals/Cat/Faceset.png")
-	# face_sheets[AvailableSprites.Mole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Mole2/Faceset.png")
 	face_sheets[AvailableSprites.HatMole] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Characters/CamouflageGreen/Faceset.png")
 	face_sheets[AvailableSprites.Eye] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Faceset.png")
 	face_sheets[AvailableSprites.Flower] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Eye/Faceset.png")
-	
 	face_sheets[AvailableSprites.Cat] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Animals/Cat/Faceset.png")
 	face_sheets[AvailableSprites.CatCyclops] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Animals/CatCyclop/Faceset.png")
 	face_sheets[AvailableSprites.Nyacence] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Cyclope2/Faceset.png")
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

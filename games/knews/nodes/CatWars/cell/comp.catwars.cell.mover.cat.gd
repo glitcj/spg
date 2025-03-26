@@ -1,27 +1,22 @@
 extends _MushMash_CellHandler_Mover_Base
-# class_name _MushMash_CellHandler_Mover_Base_Mole
 class_name _MushMash_CellHandler_Mover_Mole
 
 func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):
-		_get_on_map_cell_and_apply_damage(cell.x+1, cell.y)
-		mushmash.map.resolve_damage_and_cell_placement()
-		move_cell(mushmash.Direction.Right)
+		attack_normal(cell.x+1, cell.y)
+		move_cell_to_direction(mushmash.Direction.Right)
 
 	elif event.is_action_pressed("ui_left"):
-		_get_on_map_cell_and_apply_damage(cell.x - 1, cell.y)
-		mushmash.map.resolve_damage_and_cell_placement()
-		move_cell(mushmash.Direction.Left)
+		attack_normal(cell.x - 1, cell.y)
+		move_cell_to_direction(mushmash.Direction.Left)
 		
 	elif event.is_action_pressed("ui_down"):
-		_get_on_map_cell_and_apply_damage(cell.x, cell.y+1)
-		mushmash.map.resolve_damage_and_cell_placement()
-		move_cell(mushmash.Direction.Down)
+		attack_normal(cell.x, cell.y+1)
+		move_cell_to_direction(mushmash.Direction.Down)
 		
 	elif event.is_action_pressed("ui_up"):
-		_get_on_map_cell_and_apply_damage(cell.x, cell.y-1)
-		mushmash.map.resolve_damage_and_cell_placement()
-		move_cell(mushmash.Direction.Up)
+		attack_normal(cell.x, cell.y-1)
+		move_cell_to_direction(mushmash.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):
 		pass
@@ -41,16 +36,16 @@ func _on_action_input(event):
 
 func _on_move_input(event: InputEvent):
 	if event.is_action_pressed("ui_right", true):
-		move_cell(mushmash.Direction.Right)
+		move_cell_to_direction(mushmash.Direction.Right)
 
 	elif event.is_action_pressed("ui_left", true):
-		move_cell(mushmash.Direction.Left)
+		move_cell_to_direction(mushmash.Direction.Left)
 
 	elif event.is_action_pressed("ui_down", true):
-		move_cell(mushmash.Direction.Down)
+		move_cell_to_direction(mushmash.Direction.Down)
 
 	elif event.is_action_pressed("ui_up", true):
-		move_cell(mushmash.Direction.Up)
+		move_cell_to_direction(mushmash.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):
 		change_input_mode(InputModes.Action)
@@ -79,10 +74,20 @@ func _get_on_map_cell_and_apply_damage(x, y, damage=10):
 			target_cell.damager.apply_damage(damage)
 
 
+func move_cell_to_direction(direction_: _MushMash.Direction):
+	cell.is_movable = true
+	mushmash._update_new_positions(mushmash._get_all_cells(), direction_)
+	cell.is_movable = false
+
 func move_cell(direction_: _MushMash.Direction):
 	cell.is_movable = true
 	mushmash._update_new_positions(mushmash._get_all_cells(), direction_)
 	cell.is_movable = false
+
+
+func attack_normal(x, y):
+	_get_on_map_cell_and_apply_damage(x, y)
+	mushmash.map.resolve_damage_and_cell_placement()
 
 # Replace _Mushmash position updater, move resolve collisions
 """
