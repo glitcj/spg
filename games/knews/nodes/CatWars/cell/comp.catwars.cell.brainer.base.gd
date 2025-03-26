@@ -18,4 +18,6 @@ func get_opponent_action():
 	return movable_directions[randi() % movable_directions.size()]
 
 func perform_opponent_action():
-	cell.mover.move_cell(get_opponent_action())
+	var action = get_opponent_action()
+	cell.mover.move_cell(action)
+	mushmash.log.insert(0, "%s has moved to %s" % [cell.name, action])

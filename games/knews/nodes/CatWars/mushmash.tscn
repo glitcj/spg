@@ -1635,4 +1635,3 @@ position = Vector2(-442, -189)
 [node name="HudCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="HudCanvasLayer" instance=ExtResource("16_qmgh1")]
-visible = false

@@ -14,6 +14,7 @@ func _kill_cell():
 
 func apply_damage(damage_amount: int):
 	health = health - damage_amount
+	mushmash.log.insert(0, "%s received %s damage" % [cell.name, damage_amount])
 	if health <= 0:
 		cell.queue_free()
 		mushmash.cells_map[cell.y].erase(cell.x)
@@ -24,10 +25,4 @@ func apply_damage(damage_amount: int):
 				continue
 			O_O_opponent_cells_turn_queue.append(c)
 		mushmash.turner.opponent_cells_turn_queue = O_O_opponent_cells_turn_queue
-				
-		print("AFTER QUEUEFREE")
-		
-
-		pass
-	
-	
+		mushmash.log.insert(0, "%s vanquished" % [cell.name, damage_amount])

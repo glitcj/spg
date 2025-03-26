@@ -62,7 +62,7 @@ func _on_move_input(event: InputEvent):
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
 			mushmash.input_handles._reset_selector_control_variables()
-			mushmash.log.insert(0, "Cat has maved to %s" % action)
+			mushmash.log.insert(0, "Cat has moved to %s" % action)
 			_reset_handler()
 			finished_input_mode.emit()
 
@@ -73,10 +73,7 @@ func _on_move_input(event: InputEvent):
 
 func _get_on_map_cell_and_apply_damage(x, y, damage=10):
 	var target_cell = mushmash.map.get_on_map_cell(x, y)
-	
-	print(mushmash.cells_map)
-	print("POSITION", x, y)
-	print(target_cell)
+
 	if target_cell is MushMashCell:
 		if target_cell.damager is _MushMash_CellHandler_Damager_Base:
 			target_cell.damager.apply_damage(damage)

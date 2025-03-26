@@ -7,7 +7,6 @@ class_name MushMashCell
 @export var actioner: _MushMash_CellHandler_Actioner_Base = null
 @export var brainer: _MushMash_CellHandler_Brainer_Base = null
 
-
 # @onready var settings: MushMashCell = $Settings
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var highlighter_animation_player: AnimationPlayer = $HighlighterAnimationPlayer
