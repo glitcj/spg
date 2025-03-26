@@ -24,6 +24,7 @@ func _on_action_input(event):
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept"]:
 		if event.is_action_pressed(action):
 			cell.action_animation_player.play("Rotator")
+			cell.action_animation_player.queue("RESET")
 			mushmash._update_cells_map()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()

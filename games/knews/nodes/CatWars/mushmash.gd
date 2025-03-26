@@ -150,7 +150,7 @@ func _update_new_positions(cells, direction: int):
 		elif direction == Direction.Right:
 			_update_single_cell(cell, i + 1, j)
 
-	_resolve_cell_collisions()
+	map._resolve_cell_collisions()
 
 
 func _update_new_positions_v1(direction: int):
@@ -182,7 +182,7 @@ func _update_new_positions_v1(direction: int):
 		elif direction == Direction.Right:
 			_update_single_cell(cell, i + 1, j)
 
-	_resolve_cell_collisions()
+	map._resolve_cell_collisions()
 
 
 
@@ -249,7 +249,7 @@ func _get_all_typed_cells(types: Array = [MushMashCell.CellTypes.Player]):
 
 
 
-
+"""
 func _resolve_cell_collisions():
 		# 0 - Build first collusion map, where a cell colludes if
 		# it tries to move to the new or old position of any other cell
@@ -313,23 +313,8 @@ func _resolve_cell_collisions():
 			var cell = all_cells_1[j]
 			cell.new_x = cell.x
 			cell.new_y = cell.y
+"""
 
-func _is_tilemap_collision(x, y):
-	# Get the tile data from the layer (assuming layer 0, adjust if necessary)
-	# var tile_data: TileData = tilemap_layer.get_cell_tile_data(0, tile_pos)  # Use correct layer index
-	var tile_data: TileData
-	var is_collision
-	for tilemap_layer in $Map.get_children():
-		if tilemap_layer is not TileMapLayer:
-			continue
-		tile_data = tilemap_layer.get_cell_tile_data(Vector2i(x,y))  # Use correct layer index
-		is_collision = (tile_data != null) and (tile_data.get_collision_polygons_count(0) > 0)
-		
-		if is_collision:
-			return true
-
-		# Check if the tile has any collision polygons
-	return false
 
 func _on_animation_player_is_ready(cell):
 	push_error(cell)

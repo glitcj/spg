@@ -1,6 +1,8 @@
 extends Node
 class_name _MushMash_AI
 
+@onready var mushmash: _MushMash = get_parent()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -33,7 +35,7 @@ func movable_directions_from_cell_map(x, y):
 		considered_cell = null
 		if considered_position_y in get_parent().cells_map.keys() && considered_position_x in get_parent().cells_map[considered_position_y].keys():
 			considered_cell =  get_parent().cells_map[considered_position_y][considered_position_x]
-		if considered_cell == null and not get_parent()._is_tilemap_collision(considered_position_x, considered_position_y):
+		if considered_cell == null and not mushmash.map._is_tilemap_collision(considered_position_x, considered_position_y):
 			movable_directions.append(get_parent().Direction[k])
 			
 	return movable_directions
