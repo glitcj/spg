@@ -1555,15 +1555,19 @@ tile_set = SubResource("TileSet_0kld7")
 [node name="OnMapNodes" type="Node2D" parent="Map"]
 scale = Vector2(0.2, 0.2)
 
-[node name="Player" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover") instance=ExtResource("11_3uppv")]
+[node name="Player" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "damager") instance=ExtResource("11_3uppv")]
 z_index = 1
 position = Vector2(-45, 94)
 mover = NodePath("CatMover")
+damager = NodePath("BaseDamager")
 cell_sprite = 7
 type = 0
 
 [node name="CatMover" type="Node" parent="Map/OnMapNodes/Player"]
 script = ExtResource("12_bby4i")
+
+[node name="BaseDamager" type="Node" parent="Map/OnMapNodes/Player"]
+script = ExtResource("14_87abt")
 
 [node name="Minion" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "brainer") instance=ExtResource("11_3uppv")]
 z_index = 1

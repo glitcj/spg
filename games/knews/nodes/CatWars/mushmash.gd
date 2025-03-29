@@ -38,6 +38,7 @@ var DirectionVector := {
 @onready var log := hud.log
 @onready var tilemap: TileMapLayer = $Map/TileMapLayerMain
 @onready var on_map_cells: Array = $Map/OnMapNodes.get_children()
+@onready var player: MushMashCell = $Map/OnMapNodes/Player
 
 @onready var constants = $Constants
 @onready var settings: MushMashMapSettings = $Constants # Deprecate
@@ -233,13 +234,6 @@ func _get_all_cells():
 
 func _get_all_typed_cells(types: Array = [MushMashCell.CellTypes.Player]):
 	var all_cells = []
-	
-	"""
-	for j in range(settings.height):
-		for i in range(settings.width):
-	"""
-			
-			
 	for j in cells_map.keys():
 		for i in cells_map[j].keys():
 			var cell: MushMashCell = cells_map[j][i]

@@ -50,7 +50,10 @@ func _on_move_input(event: InputEvent):
 
 	elif event.is_action_pressed("ui_accept"):
 		change_input_mode(InputModes.Action)
-		
+
+	elif event.is_action_pressed("mushmash_z"):
+		change_input_mode(InputModes.Action)
+				
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right"]:
 		if event.is_action_pressed(action, true):
 			mushmash._update_cells_map()
@@ -62,7 +65,7 @@ func _on_move_input(event: InputEvent):
 			_reset_handler()
 			finished_input_mode.emit()
 
-	for action in ["ui_accept"]:
+	for action in ["ui_accept", "mushmash_z"]:
 		if event.is_action_pressed(action):
 			cell.highlighter_animation_player.play("ReadyForActionHighlight")
 
