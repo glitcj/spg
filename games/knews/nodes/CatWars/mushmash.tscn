@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c4d7thv2x41wt"]
+[gd_scene load_steps=26 format=4 uid="uid://c4d7thv2x41wt"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/mushmash.gd" id="1_2w2ai"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="2_xggdo"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cs3b4rgs31y4p" path="res://games/knews/nodes/CatWars/cell/node.catwars.cell.tscn" id="11_3uppv"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.mover.cat.gd" id="12_bby4i"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.brainer.base.gd" id="13_kkavj"]
+[ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.actioner.normal_attack.gd" id="14_64wvh"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.damager.base.gd" id="14_87abt"]
+[ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.handler.base.gd" id="15_htxqm"]
 [ext_resource type="PackedScene" uid="uid://c53btno4y6072" path="res://games/knews/nodes/CatWars/hud/node.hud.tscn" id="16_qmgh1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ws37t"]
@@ -1555,19 +1557,27 @@ tile_set = SubResource("TileSet_0kld7")
 [node name="OnMapNodes" type="Node2D" parent="Map"]
 scale = Vector2(0.2, 0.2)
 
-[node name="Player" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "damager") instance=ExtResource("11_3uppv")]
+[node name="Player" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "handler", "damager", "actioner_a") instance=ExtResource("11_3uppv")]
 z_index = 1
 position = Vector2(-45, 94)
-mover = NodePath("CatMover")
-damager = NodePath("BaseDamager")
+mover = NodePath("Mover_Cat")
+handler = NodePath("Handler")
+damager = NodePath("Damager")
+actioner_a = NodePath("Actioner_NormalAttack")
 cell_sprite = 7
 type = 0
 
-[node name="CatMover" type="Node" parent="Map/OnMapNodes/Player"]
+[node name="Mover_Cat" type="Node" parent="Map/OnMapNodes/Player"]
 script = ExtResource("12_bby4i")
 
-[node name="BaseDamager" type="Node" parent="Map/OnMapNodes/Player"]
+[node name="Damager" type="Node" parent="Map/OnMapNodes/Player"]
 script = ExtResource("14_87abt")
+
+[node name="Actioner_NormalAttack" type="Node" parent="Map/OnMapNodes/Player"]
+script = ExtResource("14_64wvh")
+
+[node name="Handler" type="Node" parent="Map/OnMapNodes/Player"]
+script = ExtResource("15_htxqm")
 
 [node name="Minion" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "brainer") instance=ExtResource("11_3uppv")]
 z_index = 1

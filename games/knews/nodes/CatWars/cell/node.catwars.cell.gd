@@ -3,8 +3,10 @@ class_name MushMashCell
 
 # TODO: Change Settings to Initialiser
 @export var mover: _MushMash_CellHandler_Mover_Base = null
+@export var handler: _MushMash_CellHandler_Handler_Base = null
 @export var damager: _MushMash_CellHandler_Damager_Base = null
-@export var actioner: _MushMash_CellHandler_Actioner_Base = null
+@export var actioner_a: _MushMash_CellHandler_Actioner_Base = null
+@export var actioner_b: _MushMash_CellHandler_Actioner_Base = null
 @export var brainer: _MushMash_CellHandler_Brainer_Base = null
 
 # @onready var settings: MushMashCell = $Settings
@@ -22,6 +24,8 @@ var x
 var y
 var new_x
 var new_y
+var map_position: Vector2i = Vector2i(0,0)
+var new_map_position: Vector2i = Vector2i(0,0)
 
 var is_enemy: bool = false
 var is_player: bool = false

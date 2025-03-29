@@ -116,13 +116,14 @@ func _on_player_turn_start():
 		current_active_cell.highlighter_animation_player.queue("ActiveCellHighlight")
 		get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 		
-		current_active_cell.mover.change_input_mode(_MushMash_CellHandler_Mover_Base.InputModes.Move)
+		current_active_cell.handler.change_input_mode(_MushMash_CellHandler_Handler_Base.InputModes.Move)
+		# current_active_cell.mover.change_input_mode(_MushMash_CellHandler_Mover_Base.InputModes.Move)
 		
-		await current_active_cell.mover.finished_input_mode
+		await current_active_cell.handler.finished_input_mode
 
 
 func _on_player_turn_end():
-	current_active_cell.mover._reset_handler()
+	current_active_cell.handler._reset_handler()
 	current_active_cell.highlighter_animation_player.play("RESET")
 	
 	if player_cells_turn_queue != []:

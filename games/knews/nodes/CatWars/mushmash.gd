@@ -107,7 +107,6 @@ func draw_cells():
 				
 				cell.animation_player.play("Idle")
 
-
 func _update_map():
 	var all_cells = _get_all_cells()
 	var destination
@@ -192,6 +191,7 @@ func _on_cell_positions_changed():
 	pass
 
 func _update_single_cell(cell, new_x, new_y):
+	cell.new_map_position = Vector2i(new_x, new_y)
 	cell.new_x = new_x
 	cell.new_y = new_y
 
@@ -218,17 +218,11 @@ func _update_cells_map():
 func _get_all_cells():
 	var all_cells = []
 	
-	"""
-	for j in range(settings.height):
-		for i in range(settings.width):
-	"""
 	for j in cells_map.keys():
 		for i in cells_map[j].keys():
 			if cells_map[j][i] != null:
 				all_cells.append(cells_map[j][i])
 	return all_cells
-
-
 
 
 
@@ -240,74 +234,6 @@ func _get_all_typed_cells(types: Array = [MushMashCell.CellTypes.Player]):
 			if cell != null and cell.type in types:
 				all_cells.append(cells_map[j][i])
 	return all_cells
-
-
-
-"""
-func _resolve_cell_collisions():
-		# 0 - Build first collusion map, where a cell colludes if
-		# it tries to move to the new or old position of any other cell
-		# 1 - Look for a cell A that has no collisions
-		# 2 - Resolve A and allow it to move
-		# 3 - If another cell was trying to move to the old
-		# position of A, it now has no collisions with A
-		# 4 - Repeat
-		
-	var all_cells_1 = _get_all_cells()
-	var collisions = CommonFunctions.zeros_2D_array(len(all_cells_1), len(all_cells_1))
-	
-	var current_cell
-	var other_cell
-	for j in range(len(all_cells_1)):
-		for i in range(len(all_cells_1)):
-			current_cell = all_cells_1[j]
-			other_cell = all_cells_1[i]
-			
-			var is_future_future_collision = [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]
-			var is_future_past_collision = [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]
-			var is_tilemap_collision = _is_tilemap_collision(current_cell.new_x, current_cell.new_y)
-			
-			if i == j:
-				collisions[j][i] = 0
-				
-			# Collision if a cell moves into the new position of another cell
-			# elif [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]:
-			elif is_future_future_collision:
-				collisions[j][i] = 1
-			elif is_tilemap_collision:
-				collisions[j][i] = 1			
-			# Collision if a cell moves into the old position of another cell
-			# elif [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]:
-			elif is_future_past_collision:
-				collisions[j][i] = 1
-	
-	var detected_zero_collisions_row
-	var resolved_cells = []
-	while true:
-		detected_zero_collisions_row = false
-		for j in len(collisions):
-			current_cell = all_cells_1[j]
-			if CommonFunctions.sum_array(collisions[j]) == 0 and (j not in resolved_cells):
-				detected_zero_collisions_row = true
-
-				for k in len(all_cells_1):
-					if [current_cell.x, current_cell.y] == [all_cells_1[k].new_x, all_cells_1[k].new_y]:
-						collisions[j][k] = 0
-						collisions[k][j] = 0
-
-				resolved_cells.append(j)
-				break
-
-		if not detected_zero_collisions_row:
-			break
-			
-	# Remove move attempt of all unresolved cell
-	for j in len(all_cells_1):
-		if j not in resolved_cells:
-			var cell = all_cells_1[j]
-			cell.new_x = cell.x
-			cell.new_y = cell.y
-"""
 
 
 func _on_animation_player_is_ready(cell):
