@@ -18,7 +18,7 @@ var cells_map: Dictionary
 var uuid_map := {}
 
 enum Direction {Up, Down, Left, Right}
-var DirectionVector := {
+static var DirectionVector := {
 	Direction.Up: Vector2i(0, 1),
 	Direction.Down: Vector2i(0, -1),
 	Direction.Left: Vector2i(1, 0),
@@ -30,6 +30,7 @@ var DirectionVector := {
 @onready var camera: Camera2D = $Camera2D
 @onready var turner: _MushMash_Turner = $Turner
 @onready var map : _MushMash_Map = $Map
+@onready var map_main : TileMapLayer = $Map/TileMapLayerMain
 @onready var input_handles : _MushMash_InputHandles = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
 

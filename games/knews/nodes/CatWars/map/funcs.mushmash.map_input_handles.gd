@@ -7,14 +7,10 @@ var cells_selected = false
 
 
 enum InputModes {Inactive, SelectCell, MoveMovableCells}
-
-
 signal finished_input_mode
 
 var mode = InputModes.Inactive
 var tray = null
-
-
 var last_selected_cells
 
 

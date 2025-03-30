@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c4d7thv2x41wt"]
+[gd_scene load_steps=27 format=4 uid="uid://c4d7thv2x41wt"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/mushmash.gd" id="1_2w2ai"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="2_xggdo"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.actioner.normal_attack.gd" id="14_64wvh"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.damager.base.gd" id="14_87abt"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.handler.base.gd" id="15_htxqm"]
+[ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.actioner.vector_attack.gd" id="16_k8osx"]
 [ext_resource type="PackedScene" uid="uid://c53btno4y6072" path="res://games/knews/nodes/CatWars/hud/node.hud.tscn" id="16_qmgh1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ws37t"]
@@ -1543,6 +1544,7 @@ tile_map_data = PackedByteArray("AAACAAEAAAAAAAkAAAACAAIAAAAAAAoAAAACAAMAAAAAAAo
 tile_set = SubResource("TileSet_0kld7")
 
 [node name="TileMapLayerL3" type="TileMapLayer" parent="Map"]
+visible = false
 texture_filter = 3
 tile_map_data = PackedByteArray("AAADAAAAAwAPABAAAAADAAEAAwAPABEAAAAEAAAAAwAQABAAAAAEAAEAAwAQABEAAAAGAAIAAwAEAA4AAAD5//z/AwALAAgAAAD5//3/AwALAAkAAAD5//7/AwALAAoAAAD7//z/AwALAAgAAAD7//3/AwALAAkAAAD7//7/AwALAAoAAAADAAIAAwALAAgAAAADAAQAAwALAAoAAAAGAP//AwALAAgAAAAGAAAAAwALAAkAAAAGAAEAAwALAAoAAAADAAMAAwALAAkAAAAFAAUAAwAAABIAAAAFAAYAAwAAABMAAAAFAAcAAwAAABQAAAAGAAUAAwABABIAAAAGAAYAAwABABMAAAAGAAcAAwABABQAAAAHAAUAAwACABIAAAAHAAYAAwACABMAAAAHAAcAAwACABQAAAAEAPz/AwARAA4AAAAEAP3/AwARAA8AAAAEAP7/AwARABAAAAAFAPz/AwASAA4AAAAFAP3/AwASAA8AAAAFAP7/AwASABAAAAAGAPz/AwATAA4AAAAGAP3/AwATAA8AAAAGAP7/AwATABAAAAAHAP3/AwAUAA8AAAAHAP7/AwAUABAAAAA=")
 tile_set = SubResource("TileSet_0kld7")
@@ -1557,13 +1559,14 @@ tile_set = SubResource("TileSet_0kld7")
 [node name="OnMapNodes" type="Node2D" parent="Map"]
 scale = Vector2(0.2, 0.2)
 
-[node name="Player" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "handler", "damager", "actioner_a") instance=ExtResource("11_3uppv")]
+[node name="Player" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "handler", "damager", "actioner_a", "actioner_b") instance=ExtResource("11_3uppv")]
 z_index = 1
 position = Vector2(-45, 94)
 mover = NodePath("Mover_Cat")
 handler = NodePath("Handler")
 damager = NodePath("Damager")
 actioner_a = NodePath("Actioner_NormalAttack")
+actioner_b = NodePath("Actioner_VectorAttack")
 cell_sprite = 7
 type = 0
 
@@ -1573,11 +1576,14 @@ script = ExtResource("12_bby4i")
 [node name="Damager" type="Node" parent="Map/OnMapNodes/Player"]
 script = ExtResource("14_87abt")
 
+[node name="Handler" type="Node" parent="Map/OnMapNodes/Player"]
+script = ExtResource("15_htxqm")
+
 [node name="Actioner_NormalAttack" type="Node" parent="Map/OnMapNodes/Player"]
 script = ExtResource("14_64wvh")
 
-[node name="Handler" type="Node" parent="Map/OnMapNodes/Player"]
-script = ExtResource("15_htxqm")
+[node name="Actioner_VectorAttack" type="Node" parent="Map/OnMapNodes/Player"]
+script = ExtResource("16_k8osx")
 
 [node name="Minion" parent="Map/OnMapNodes" node_paths=PackedStringArray("mover", "brainer") instance=ExtResource("11_3uppv")]
 z_index = 1

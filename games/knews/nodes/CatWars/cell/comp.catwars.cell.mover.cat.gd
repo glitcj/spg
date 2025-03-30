@@ -15,11 +15,14 @@ func _on_move_input(event: InputEvent):
 		move_cell_to_direction(mushmash.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):
-		cell.handler.change_input_mode(cell.handler.InputModes.Action)
+		cell.handler.change_input_mode(cell.handler.InputModes.ActionA)
 
 	elif event.is_action_pressed("mushmash_z"):
-		cell.handler.change_input_mode(cell.handler.InputModes.Action)
-				
+		cell.handler.change_input_mode(cell.handler.InputModes.ActionA)
+		
+	elif event.is_action_pressed("mushmash_x"):
+		cell.handler.change_input_mode(cell.handler.InputModes.ActionB)
+		
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right"]:
 		if event.is_action_pressed(action, true):
 			mushmash._update_cells_map()
@@ -31,7 +34,7 @@ func _on_move_input(event: InputEvent):
 			cell.handler._reset_handler()
 			cell.handler.finished_input_mode.emit()
 
-	for action in ["ui_accept", "mushmash_z"]:
+	for action in ["ui_accept", "mushmash_z", "mushmash_x"]:
 		if event.is_action_pressed(action):
 			cell.highlighter_animation_player.play("ReadyForActionHighlight")
 

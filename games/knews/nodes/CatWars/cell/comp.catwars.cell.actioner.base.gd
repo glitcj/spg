@@ -6,3 +6,6 @@ class_name _MushMash_CellHandler_Actioner_Base
 
 func _on_action_input(event):
 	pass
+
+func setup():
+	pass

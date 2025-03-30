@@ -2,6 +2,17 @@ extends Node
 class_name _MushMash_Map
 
 @onready var mushmash: _MushMash = get_parent()
+var tile_x_positions
+var tile_y_positions
+
+@onready var main: TileMapLayer = $TileMapLayerMain
+@onready var tile_layers: Array = [$TileMapLayerL1, $TileMapLayerL2, $TileMapLayerL3]
+
+
+var tile_highlighting_cells := []
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,7 +20,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	_update_highlighted_tiles(delta)
 	pass
+
+func _update_highlighted_tiles(delta):
+	for s: Sprite2D in tile_highlighting_cells:
+		pass
+	"""
+	for tile : TileData in highlighted_tiles:
+		# tile.modulate.r = float(int(tile.modulate.r) + 10  % 255)
+		tile.modulate = Color(50,50,50)
+	"""
 
 func sample_map_1():
 	var sample: Array = [
@@ -223,9 +244,10 @@ func _is_tilemap_collision(x, y):
 	# var tile_data: TileData = tilemap_layer.get_cell_tile_data(0, tile_pos)  # Use correct layer index
 	var tile_data: TileData
 	var is_collision
-	for tilemap_layer in get_children():
-		if tilemap_layer is not TileMapLayer:
+	for c in get_children():
+		if c is not TileMapLayer:
 			continue
+		var tilemap_layer: TileMapLayer = c
 		tile_data = tilemap_layer.get_cell_tile_data(Vector2i(x,y))  # Use correct layer index
 		is_collision = (tile_data != null) and (tile_data.get_collision_polygons_count(0) > 0)
 		
@@ -234,3 +256,43 @@ func _is_tilemap_collision(x, y):
 
 		# Check if the tile has any collision polygons
 	return false
+
+
+func get_movable_vector(position: Vector2i, direction: _MushMash.Direction):
+	var max_x_vector_length = 5
+	var max_y_vector_length = 5
+	var movable_positions = []
+	
+	for i in range(max_x_vector_length):
+		var candidate = position + _MushMash.DirectionVector[direction] * i
+		if not _is_tilemap_collision(candidate.x, candidate.y):
+			movable_positions.append(candidate)
+			
+	return movable_positions
+
+
+
+func change_highlighted_tiles(positions_):
+	for s : Sprite2D in tile_highlighting_cells:
+		s.queue_free()
+	
+	tile_highlighting_cells = []
+	for p : Vector2i in positions_:
+		var highlighting_sprite = Sprite2D.new()
+		highlighting_sprite.position = main.map_to_local(p)
+		highlighting_sprite.texture = CanvasTexture.new()
+		highlighting_sprite.scale = Vector2(5, 5)
+		highlighting_sprite.z_index = 100
+		tile_highlighting_cells.append(highlighting_sprite)
+		add_child(highlighting_sprite)
+	
+		
+	
+	"""
+	print(highlighted_tiles, tiles_)
+	for tile : TileData in highlighted_tiles:
+		tile.modulate = Color(1,1,1)
+	highlighted_tiles = tiles_
+	"""
+
+# tilemap_layer.get_cell_tile_data(Vector2i(x,y))  # Use correct layer index

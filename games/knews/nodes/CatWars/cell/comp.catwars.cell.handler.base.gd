@@ -4,7 +4,7 @@ class_name _MushMash_CellHandler_Handler_Base
 @onready var mushmash: _MushMash = get_parent().get_parent().get_parent().get_parent()
 @onready var cell: MushMashCell = get_parent()
 
-enum InputModes {Inactive, Action, Move}
+enum InputModes {Inactive, Action, Move, ActionA, ActionB}
 var input_mode: InputModes = InputModes.Inactive
 
 signal input_mode_goes_to_inactive
@@ -14,13 +14,20 @@ signal finished_input_mode
 func _input(event: InputEvent) -> void:
 	if input_mode == InputModes.Inactive:
 		return
-	elif input_mode == InputModes.Action:
+	elif input_mode == InputModes.ActionA:
 		cell.actioner_a._on_action_input(event)
+	elif input_mode == InputModes.ActionB:
+		cell.actioner_b._on_action_input(event)
 	elif input_mode == InputModes.Move:
 		cell.mover._on_move_input(event)
 
 func change_input_mode(input_mode_: InputModes):
+	if input_mode_ == InputModes.ActionA:
+		cell.actioner_a.setup()	
+	elif input_mode_ == InputModes.ActionB:
+		cell.actioner_b.setup()
 	input_mode = input_mode_
+	
 
 func _reset_handler():
 	input_mode = InputModes.Inactive
