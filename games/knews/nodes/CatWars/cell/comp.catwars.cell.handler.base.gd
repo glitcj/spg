@@ -23,9 +23,9 @@ func _input(event: InputEvent) -> void:
 
 func change_input_mode(input_mode_: InputModes):
 	if input_mode_ == InputModes.ActionA:
-		cell.actioner_a.setup()	
+		cell.actioner_a.on_action_start()	
 	elif input_mode_ == InputModes.ActionB:
-		cell.actioner_b.setup()
+		cell.actioner_b.on_action_start()
 	input_mode = input_mode_
 	
 

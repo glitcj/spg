@@ -286,13 +286,7 @@ func change_highlighted_tiles(positions_):
 		tile_highlighting_cells.append(highlighting_sprite)
 		add_child(highlighting_sprite)
 	
-		
-	
-	"""
-	print(highlighted_tiles, tiles_)
-	for tile : TileData in highlighted_tiles:
-		tile.modulate = Color(1,1,1)
-	highlighted_tiles = tiles_
-	"""
-
-# tilemap_layer.get_cell_tile_data(Vector2i(x,y))  # Use correct layer index
+func clear_highlighted_tiles():
+	for s : Sprite2D in tile_highlighting_cells:
+		s.queue_free()
+	tile_highlighting_cells = []

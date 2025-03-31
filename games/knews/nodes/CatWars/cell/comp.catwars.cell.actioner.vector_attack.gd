@@ -37,7 +37,7 @@ func _on_action_input(event):
 			cell.handler.finished_input_mode.emit()
 
 
-func setup():
+func on_action_start():
 	var all_movable_cells = []
 	for direction in _MushMash.Direction:
 		print(direction, _MushMash.Direction[direction])
@@ -46,18 +46,9 @@ func setup():
 	
 	var tiles_to_highlight = []
 	var tile
-	"""
-	for p: Vector2i in all_movable_cells:
-		for layer: TileMapLayer in mushmash.map.tile_layers:
-			print(mushmash.map.tile_layers)
-			tile = layer.get_cell_tile_data(p)
-			if tile == null:
-				continue
-			tiles_to_highlight.append(tile)
-	"""
-	# mushmash.map.change_highlighted_tiles(tiles_to_highlight)
 	mushmash.map.change_highlighted_tiles(all_movable_cells)
 	
 func attack_normal(x, y):
 	cell.mover._get_on_map_cell_and_apply_damage(x, y)
 	mushmash.map.resolve_damage_and_cell_placement()
+	mushmash.map.clear_highlighted_tiles()
