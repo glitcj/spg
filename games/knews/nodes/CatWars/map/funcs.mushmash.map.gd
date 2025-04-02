@@ -2,6 +2,8 @@ extends Node
 class_name _MushMash_Map
 
 @onready var mushmash: _MushMash = get_parent()
+@onready var mover: _MushMash_Map_Mover = $Mover
+
 var tile_x_positions
 var tile_y_positions
 
@@ -98,8 +100,6 @@ func get_cells_in_tilemap():
 	var tilemap_hash_map_to_world: Dictionary = {}  # Dictionary to store tile mappings
 	var tilemap_hash_world_to_map: Dictionary = {}  # Dictionary to store tile mappings
 	
-
-
 	var world_pos
 	for local_pos: Vector2i in tilemap_layer.get_used_cells():
 		world_pos = tilemap_layer.to_global(tilemap_layer.map_to_local(local_pos))
@@ -130,12 +130,7 @@ func get_cells_in_tilemap():
 		cell.map_position.x = lowest_distance_tilemap_position[0]
 		cell.map_position.y = lowest_distance_tilemap_position[1]
 
-		# cell.new_map_position.x = cell.x
-		# cell.new_y = cell.y
-		
-		# refactor
 		cell.new_map_position = cell.map_position
-		
 		cell.uuid = Variables.generate_uuid()
 		
 		if cell.map_position.y not in cells_map.keys():
@@ -143,7 +138,6 @@ func get_cells_in_tilemap():
 			
 		cells_map[cell.map_position.y][cell.map_position.x] = cell
 		
-	# print(cells_map)		
 	return cells_map
 
 

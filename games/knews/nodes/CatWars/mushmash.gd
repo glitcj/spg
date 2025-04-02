@@ -153,41 +153,6 @@ func _update_new_positions(cells, direction: int):
 
 	map._resolve_cell_collisions()
 
-
-func _update_new_positions_v1(direction: int):
-	if true:
-		print("\n\n----- Old Maps ------")
-		print_cells_map()
-		print_uuid_map()	
-		pass
-		
-		var x = 0
-	
-	for cell in _get_all_cells():
-		if not cell.is_movable:
-			continue
-			
-		var i = cell.map_position.x
-		var j = cell.map_position.y
-		
-
-		if direction == Direction.Down:
-			_update_single_cell(cell, i, j + 1)
-
-		elif direction == Direction.Up:
-			_update_single_cell(cell, i, j - 1)
-			
-		elif direction == Direction.Left:
-			_update_single_cell(cell, i - 1, j)
-			
-		elif direction == Direction.Right:
-			_update_single_cell(cell, i + 1, j)
-
-	map._resolve_cell_collisions()
-
-
-
-
 func _on_cell_positions_changed():
 	pass
 

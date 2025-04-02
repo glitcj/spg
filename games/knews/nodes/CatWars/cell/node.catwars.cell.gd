@@ -20,10 +20,6 @@ enum CellTypes {Player, Oponnent, Immovable}
 var state: int = AvailableStates.Idle
 var uuid: String
 
-# var x
-# var y
-# var new_x
-# var new_y
 var map_position: Vector2i = Vector2i(0,0)
 var new_map_position: Vector2i = Vector2i(0,0)
 
