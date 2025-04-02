@@ -124,24 +124,24 @@ func get_cells_in_tilemap():
 				pass
 		
 		cell.global_position = lowest_distance_world_position
-		cell.x = lowest_distance_tilemap_position[0]
-		cell.y = lowest_distance_tilemap_position[1]
+		cell.map_position.x = lowest_distance_tilemap_position[0]
+		cell.map_position.y = lowest_distance_tilemap_position[1]
 		
 		cell.map_position.x = lowest_distance_tilemap_position[0]
 		cell.map_position.y = lowest_distance_tilemap_position[1]
 
-		cell.new_x = cell.x
-		cell.new_y = cell.y
+		# cell.new_map_position.x = cell.x
+		# cell.new_y = cell.y
 		
 		# refactor
 		cell.new_map_position = cell.map_position
 		
 		cell.uuid = Variables.generate_uuid()
 		
-		if cell.y not in cells_map.keys():
-			cells_map[cell.y] = {}
+		if cell.map_position.y not in cells_map.keys():
+			cells_map[cell.map_position.y] = {}
 			
-		cells_map[cell.y][cell.x] = cell
+		cells_map[cell.map_position.y][cell.map_position.x] = cell
 		
 	# print(cells_map)		
 	return cells_map
@@ -194,21 +194,21 @@ func _resolve_cell_collisions():
 			current_cell = all_cells_1[j]
 			other_cell = all_cells_1[i]
 			
-			var is_future_future_collision = [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]
-			var is_future_past_collision = [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]
-			var is_tilemap_collision = _is_tilemap_collision(current_cell.new_x, current_cell.new_y)
+			var is_future_future_collision = [current_cell.new_map_position.x, current_cell.new_map_position.y] == [other_cell.new_map_position.x, other_cell.new_map_position.y]
+			var is_future_past_collision = [current_cell.new_map_position.x, current_cell.new_map_position.y] == [other_cell.map_position.x, other_cell.map_position.y]
+			var is_tilemap_collision = _is_tilemap_collision(current_cell.new_map_position.x, current_cell.new_map_position.y)
 			
 			if i == j:
 				collisions[j][i] = 0
 				
 			# Collision if a cell moves into the new position of another cell
-			# elif [current_cell.new_x, current_cell.new_y] == [other_cell.new_x, other_cell.new_y]:
+			# elif [current_cell.new_map_position.x, current_cell.new_y] == [other_cell.new_map_position.x, other_cell.new_y]:
 			elif is_future_future_collision:
 				collisions[j][i] = 1
 			elif is_tilemap_collision:
 				collisions[j][i] = 1			
 			# Collision if a cell moves into the old position of another cell
-			# elif [current_cell.new_x, current_cell.new_y] == [other_cell.x, other_cell.y]:
+			# elif [current_cell.new_map_position.x, current_cell.new_y] == [other_cell.x, other_cell.y]:
 			elif is_future_past_collision:
 				collisions[j][i] = 1
 	
@@ -222,7 +222,7 @@ func _resolve_cell_collisions():
 				detected_zero_collisions_row = true
 
 				for k in len(all_cells_1):
-					if [current_cell.x, current_cell.y] == [all_cells_1[k].new_x, all_cells_1[k].new_y]:
+					if [current_cell.map_position.x, current_cell.map_position.y] == [all_cells_1[k].new_map_position.x, all_cells_1[k].new_map_position.y]:
 						collisions[j][k] = 0
 						collisions[k][j] = 0
 
@@ -236,8 +236,8 @@ func _resolve_cell_collisions():
 	for j in len(all_cells_1):
 		if j not in resolved_cells:
 			var cell = all_cells_1[j]
-			cell.new_x = cell.x
-			cell.new_y = cell.y
+			cell.new_map_position.x = cell.map_position.x
+			cell.new_map_position.y = cell.map_position.y
 
 func _is_tilemap_collision(x, y):
 	# Get the tile data from the layer (assuming layer 0, adjust if necessary)
@@ -265,7 +265,7 @@ func get_movable_vector(position: Vector2i, direction: _MushMash.Direction):
 	
 	for i in range(max_x_vector_length):
 		var candidate = position + _MushMash.DirectionVector[direction] * i
-		if not _is_tilemap_collision(candidate.x, candidate.y):
+		if not _is_tilemap_collision(candidate.map_position.x, candidate.map_position.y):
 			movable_positions.append(candidate)
 			
 	return movable_positions

@@ -101,7 +101,7 @@ func _update_cell_selection_indicator(selected_x_indices: Array, selected_y_indi
 	var playable_cells : Array = get_parent()._get_all_typed_cells([MushMashCell.CellTypes.Player])
 	var selected_cells := []
 	for cell in playable_cells:
-		if cell.x in selected_x_indices and cell.y in selected_y_indices:
+		if cell.map_position.x in selected_x_indices and cell.map_position.y in selected_y_indices:
 			selected_cells.append(cell)
 	
 	for cell: MushMashCell in playable_cells:

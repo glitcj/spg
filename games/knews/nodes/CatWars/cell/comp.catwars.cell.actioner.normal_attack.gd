@@ -4,19 +4,19 @@ class_name _MushMash_CellHandler_Actioner_NormalAttack
 
 func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):
-		attack_normal(cell.x+1, cell.y)
+		attack_normal(cell.map_position.x+1, cell.map_position.y)
 		cell.mover.move_cell_to_direction(mushmash.Direction.Right)
 
 	elif event.is_action_pressed("ui_left"):
-		attack_normal(cell.x - 1, cell.y)
+		attack_normal(cell.map_position.x - 1, cell.map_position.y)
 		cell.mover.move_cell_to_direction(mushmash.Direction.Left)
 		
 	elif event.is_action_pressed("ui_down"):
-		attack_normal(cell.x, cell.y+1)
+		attack_normal(cell.map_position.x, cell.map_position.y+1)
 		cell.mover.move_cell_to_direction(mushmash.Direction.Down)
 		
 	elif event.is_action_pressed("ui_up"):
-		attack_normal(cell.x, cell.y-1)
+		attack_normal(cell.map_position.x, cell.map_position.y-1)
 		cell.mover.move_cell_to_direction(mushmash.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):

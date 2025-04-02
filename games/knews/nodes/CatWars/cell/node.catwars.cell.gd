@@ -20,10 +20,10 @@ enum CellTypes {Player, Oponnent, Immovable}
 var state: int = AvailableStates.Idle
 var uuid: String
 
-var x
-var y
-var new_x
-var new_y
+# var x
+# var y
+# var new_x
+# var new_y
 var map_position: Vector2i = Vector2i(0,0)
 var new_map_position: Vector2i = Vector2i(0,0)
 
@@ -79,7 +79,7 @@ func _on_ready_sprite_change():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Label.text = "(%s,%s) \n %s" % [x, y, uuid.substr(0,8)]
+	$Label.text = "(%s,%s) \n %s" % [map_position.x, map_position.y, uuid.substr(0,8)]
 
 # TODO: Add animated sprite texture resize option
 func absolute_rescale(desired_width := 150, desired_height := 150, keep_ratio: bool = false) -> void:

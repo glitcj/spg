@@ -11,7 +11,7 @@ func _kill_cell():
 	cell.queue_free()
 
 func get_opponent_action():
-	var movable_directions : Array = mushmash.ai.movable_directions_from_cell_map(cell.x, cell.y)
+	var movable_directions : Array = mushmash.ai.movable_directions_from_cell_map(cell.map_position.x, cell.map_position.y)
 	print(movable_directions)
 	if movable_directions == []:
 		return 0

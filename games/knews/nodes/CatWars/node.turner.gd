@@ -165,7 +165,7 @@ func _on_idle_turn_end():
 	pass
 	
 func _get_opponent_action(cell: MushMashCell):
-	var movable_directions : Array = get_parent().ai.movable_directions_from_cell_map(cell.x, cell.y)
+	var movable_directions : Array = get_parent().ai.movable_directions_from_cell_map(cell.map_position.x, cell.map_position.y)
 	if movable_directions == []:
 		return 0
 	return movable_directions[randi() % movable_directions.size()]

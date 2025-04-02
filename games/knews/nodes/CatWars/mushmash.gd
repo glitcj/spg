@@ -113,7 +113,7 @@ func _update_map():
 	var destination
 	var direction
 	for cell: MushMashCell in all_cells:
-		destination = map.get_tilemap_cell_position(cell.x, cell.y)
+		destination = map.get_tilemap_cell_position(cell.map_position.x, cell.map_position.y)
 		if constants.cell_movement_type == constants.CellMovementType.Instant:
 			cell.position = destination
 
@@ -135,8 +135,8 @@ func _update_new_positions(cells, direction: int):
 		if not cell.is_movable:
 			continue
 			
-		var i = cell.x
-		var j = cell.y
+		var i = cell.map_position.x
+		var j = cell.map_position.y
 		
 
 		if direction == Direction.Down:
@@ -167,8 +167,8 @@ func _update_new_positions_v1(direction: int):
 		if not cell.is_movable:
 			continue
 			
-		var i = cell.x
-		var j = cell.y
+		var i = cell.map_position.x
+		var j = cell.map_position.y
 		
 
 		if direction == Direction.Down:
@@ -193,22 +193,22 @@ func _on_cell_positions_changed():
 
 func _update_single_cell(cell, new_x, new_y):
 	cell.new_map_position = Vector2i(new_x, new_y)
-	cell.new_x = new_x
-	cell.new_y = new_y
+	cell.new_map_position.x = new_x
+	cell.new_map_position.y = new_y
 
 func _update_cells_map():
 	var all_cells = _get_all_cells()
 	for cell: MushMashCell in all_cells:
-		if cell.new_x != cell.x:
-			cell.x = cell.new_x
-		if cell.new_y != cell.y:
-			cell.y = cell.new_y
+		if cell.new_map_position.x != cell.map_position.x:
+			cell.map_position.x = cell.new_map_position.x
+		if cell.new_map_position.y != cell.map_position.y:
+			cell.map_position.y = cell.new_map_position.y
 
 	var new_cells_map: Dictionary = {}
 	for cell in _get_all_cells():
-		if cell.new_y not in new_cells_map.keys():
-			new_cells_map[cell.new_y] = {}
-		new_cells_map[cell.new_y][cell.new_x] = cell
+		if cell.new_map_position.y not in new_cells_map.keys():
+			new_cells_map[cell.new_map_position.y] = {}
+		new_cells_map[cell.new_map_position.y][cell.new_map_position.x] = cell
 	cells_map = new_cells_map
 	
 	if false:
@@ -248,7 +248,7 @@ func print_cells_map():
 		for i in cells_map[j].keys(): # range(constants.height):
 			var cell: MushMashCell = cells_map[j][i]
 			if cell != null:
-				line = line + str(cell.x) + "," + str(cell.y) + "   "
+				line = line + str(cell.map_position.x) + "," + str(cell.map_position.y) + "   "
 			else:
 				line = line + "null" + "   "
 		print(line)
