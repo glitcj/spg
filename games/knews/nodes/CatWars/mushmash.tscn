@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c4d7thv2x41wt"]
+[gd_scene load_steps=29 format=4 uid="uid://c4d7thv2x41wt"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/mushmash.gd" id="1_2w2ai"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="2_xggdo"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://sfxyhloygidk" path="res://games/knews/nodes/CatWars/node.turner.tscn" id="6_307ur"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/map/funcs.mushmash.map.gd" id="7_7l565"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/map/funcs.mushmash.map.mover.gd" id="7_hohnq"]
+[ext_resource type="Script" path="res://games/knews/nodes/CatWars/map/funcs.mushmash.map.generator.gd" id="8_6jhvb"]
 [ext_resource type="PackedScene" uid="uid://cs3b4rgs31y4p" path="res://games/knews/nodes/CatWars/cell/node.catwars.cell.tscn" id="11_3uppv"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.mover.cat.gd" id="12_bby4i"]
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/comp.catwars.cell.brainer.base.gd" id="13_kkavj"]
@@ -1538,6 +1539,7 @@ script = ExtResource("7_7l565")
 script = ExtResource("7_hohnq")
 
 [node name="Generator" type="Node" parent="Map"]
+script = ExtResource("8_6jhvb")
 
 [node name="TileMapLayerL1" type="TileMapLayer" parent="Map"]
 texture_filter = 3

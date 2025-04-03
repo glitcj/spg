@@ -3,6 +3,7 @@ class_name _MushMash_Map
 
 @onready var mushmash: _MushMash = get_parent()
 @onready var mover: _MushMash_Map_Mover = $Mover
+@onready var generator: _MushMash_Map_Generator = $Generator
 
 var tile_x_positions
 var tile_y_positions
@@ -46,50 +47,6 @@ func _update_highlighted_tiles(delta):
 		# tile.modulate.r = float(int(tile.modulate.r) + 10  % 255)
 		tile.modulate = Color(50,50,50)
 	"""
-
-func sample_map_1():
-	var sample: Array = [
-		[0,1,1,1,0],
-		[1,0,2,0,1],
-		[0,1,2,1,0],
-		[1,0,2,0,1],
-		[0,1,1,1,0]
-		]
-	return sample
-
-
-
-func sample_map_3():
-	var sample: Array = [
-		[0,1,1,1,0,0,0,0],
-		[1,0,2,0,1,0,0,0],
-		[0,1,2,1,0,0,0,0],
-		[1,0,2,0,1,0,0,0],
-		[0,1,1,1,0,0,0,0]
-		]
-	return sample
-
-
-func sample_map_4():
-	var sample: Array = [
-		[0,0,1,0,0,0,0,0],
-		[1,0,0,0,0,0,0,0],
-		[0,1,2,0,0,0,0,0],
-		[1,0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0,0]
-		]
-	return sample
-
-func sample_map_2():
-	var sample: Array = [
-		[0,1,1,1,1],
-		[0,0,0,0,0],
-		[0,1,1,1,1],
-		[0,0,0,0,0],
-		[0,1,1,1,1]
-		]
-	return sample
-
 
 func random_opponent_action():
 	return randi() % Direction.size()
@@ -146,10 +103,14 @@ func get_cells_in_tilemap():
 		cell.new_map_position = cell.map_position
 		cell.uuid = Variables.generate_uuid()
 		
+		
+		cells_map[cell.map_position] = cell
+		"""
 		if cell.map_position.y not in cells_map.keys():
 			cells_map[cell.map_position.y] = {}
 			
 		cells_map[cell.map_position.y][cell.map_position.x] = cell
+		"""
 		
 	return cells_map
 
