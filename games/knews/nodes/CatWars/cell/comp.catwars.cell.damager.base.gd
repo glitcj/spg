@@ -17,7 +17,7 @@ func apply_damage(damage_amount: int):
 	mushmash.log.insert(0, "%s received %s damage" % [cell.name, damage_amount])
 	if health <= 0:
 		cell.queue_free()
-		mushmash.cells_map[cell.map_position.y].erase(cell.map_position.x)
+		mushmash.map.cells_map[cell.map_position.y].erase(cell.map_position.x)
 		
 		var O_O_opponent_cells_turn_queue = []
 		for c in mushmash.turner.opponent_cells_turn_queue:

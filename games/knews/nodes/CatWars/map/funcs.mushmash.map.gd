@@ -14,6 +14,19 @@ var tile_y_positions
 var tile_highlighting_cells := []
 
 
+# var settings: MushMashMapSettings
+var cells_map: Dictionary
+var uuid_map := {}
+
+enum Direction {Up, Down, Left, Right}
+static var DirectionVector := {
+	Direction.Up: Vector2i(0, 1),
+	Direction.Down: Vector2i(0, -1),
+	Direction.Left: Vector2i(1, 0),
+	Direction.Right: Vector2i(-1, 0),
+	
+}
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -79,7 +92,7 @@ func sample_map_2():
 
 
 func random_opponent_action():
-	return randi() % _MushMash.Direction.size()
+	return randi() % Direction.size()
 
 
 func make_all_cells_immovable():
@@ -140,8 +153,6 @@ func get_cells_in_tilemap():
 		
 	return cells_map
 
-
-
 func get_tilemap_as_array():
 	pass
 	
@@ -163,107 +174,10 @@ func resolve_damage_and_cell_placement():
 	pass
 
 func get_on_map_cell(x, y):
-	if y in mushmash.cells_map.keys():
-		if x in mushmash.cells_map[y].keys():
-			return mushmash.cells_map[y][x]
+	if y in mushmash.map.cells_map.keys():
+		if x in mushmash.map.cells_map[y].keys():
+			return mushmash.map.cells_map[y][x]
 	return null
-
-
-func _resolve_cell_collisions():
-		# 0 - Build first collusion map, where a cell colludes if
-		# it tries to move to the new or old position of any other cell
-		# 1 - Look for a cell A that has no collisions
-		# 2 - Resolve A and allow it to move
-		# 3 - If another cell was trying to move to the old
-		# position of A, it now has no collisions with A
-		# 4 - Repeat
-		
-	var all_cells_1 = mushmash._get_all_cells()
-	var collisions = CommonFunctions.zeros_2D_array(len(all_cells_1), len(all_cells_1))
-	
-	var current_cell
-	var other_cell
-	for j in range(len(all_cells_1)):
-		for i in range(len(all_cells_1)):
-			current_cell = all_cells_1[j]
-			other_cell = all_cells_1[i]
-			
-			var is_future_future_collision = [current_cell.new_map_position.x, current_cell.new_map_position.y] == [other_cell.new_map_position.x, other_cell.new_map_position.y]
-			var is_future_past_collision = [current_cell.new_map_position.x, current_cell.new_map_position.y] == [other_cell.map_position.x, other_cell.map_position.y]
-			var is_tilemap_collision = _is_tilemap_collision(current_cell.new_map_position.x, current_cell.new_map_position.y)
-			
-			if i == j:
-				collisions[j][i] = 0
-				
-			# Collision if a cell moves into the new position of another cell
-			# elif [current_cell.new_map_position.x, current_cell.new_y] == [other_cell.new_map_position.x, other_cell.new_y]:
-			elif is_future_future_collision:
-				collisions[j][i] = 1
-			elif is_tilemap_collision:
-				collisions[j][i] = 1			
-			# Collision if a cell moves into the old position of another cell
-			# elif [current_cell.new_map_position.x, current_cell.new_y] == [other_cell.x, other_cell.y]:
-			elif is_future_past_collision:
-				collisions[j][i] = 1
-	
-	var detected_zero_collisions_row
-	var resolved_cells = []
-	while true:
-		detected_zero_collisions_row = false
-		for j in len(collisions):
-			current_cell = all_cells_1[j]
-			if CommonFunctions.sum_array(collisions[j]) == 0 and (j not in resolved_cells):
-				detected_zero_collisions_row = true
-
-				for k in len(all_cells_1):
-					if [current_cell.map_position.x, current_cell.map_position.y] == [all_cells_1[k].new_map_position.x, all_cells_1[k].new_map_position.y]:
-						collisions[j][k] = 0
-						collisions[k][j] = 0
-
-				resolved_cells.append(j)
-				break
-
-		if not detected_zero_collisions_row:
-			break
-			
-	# Remove move attempt of all unresolved cell
-	for j in len(all_cells_1):
-		if j not in resolved_cells:
-			var cell = all_cells_1[j]
-			cell.new_map_position.x = cell.map_position.x
-			cell.new_map_position.y = cell.map_position.y
-
-func _is_tilemap_collision(x, y):
-	# Get the tile data from the layer (assuming layer 0, adjust if necessary)
-	# var tile_data: TileData = tilemap_layer.get_cell_tile_data(0, tile_pos)  # Use correct layer index
-	var tile_data: TileData
-	var is_collision
-	for c in get_children():
-		if c is not TileMapLayer:
-			continue
-		var tilemap_layer: TileMapLayer = c
-		tile_data = tilemap_layer.get_cell_tile_data(Vector2i(x,y))  # Use correct layer index
-		is_collision = (tile_data != null) and (tile_data.get_collision_polygons_count(0) > 0)
-		
-		if is_collision:
-			return true
-
-		# Check if the tile has any collision polygons
-	return false
-
-
-func get_movable_vector(position: Vector2i, direction: _MushMash.Direction):
-	var max_x_vector_length = 5
-	var max_y_vector_length = 5
-	var movable_positions = []
-	
-	for i in range(max_x_vector_length):
-		var candidate = position + _MushMash.DirectionVector[direction] * i
-		if not _is_tilemap_collision(candidate.map_position.x, candidate.map_position.y):
-			movable_positions.append(candidate)
-			
-	return movable_positions
-
 
 
 func change_highlighted_tiles(positions_):

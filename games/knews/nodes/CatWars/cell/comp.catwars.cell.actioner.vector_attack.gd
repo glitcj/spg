@@ -39,9 +39,9 @@ func _on_action_input(event):
 
 func on_action_start():
 	var all_movable_cells = []
-	for direction in _MushMash.Direction:
-		print(direction, _MushMash.Direction[direction])
-		for p in mushmash.map.get_movable_vector(Vector2i(cell.map_position.x, cell.map_position.y), _MushMash.Direction[direction]):
+	for direction in _MushMash_Map.Direction:
+		print(direction, _MushMash_Map.Direction[direction])
+		for p in mushmash.map.get_movable_vector(Vector2i(cell.map_position.x, cell.map_position.y), _MushMash_Map.Direction[direction]):
 			all_movable_cells.append(p)
 	
 	var tiles_to_highlight = []

@@ -146,7 +146,7 @@ func _on_opponent_turn_start():
 	
 	current_active_cell.brainer.perform_opponent_action()
 	
-	get_parent()._update_cells_map()
+	mushmash.map.mover._update_cells_map()
 	
 
 func _on_opponent_turn_end():

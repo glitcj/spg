@@ -5,19 +5,19 @@ class_name _MushMash_CellHandler_Actioner_NormalAttack
 func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):
 		attack_normal(cell.map_position.x+1, cell.map_position.y)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Right)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Right)
 
 	elif event.is_action_pressed("ui_left"):
 		attack_normal(cell.map_position.x - 1, cell.map_position.y)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Left)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Left)
 		
 	elif event.is_action_pressed("ui_down"):
 		attack_normal(cell.map_position.x, cell.map_position.y+1)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Down)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Down)
 		
 	elif event.is_action_pressed("ui_up"):
 		attack_normal(cell.map_position.x, cell.map_position.y-1)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Up)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):
 		pass
@@ -26,7 +26,7 @@ func _on_action_input(event):
 		if event.is_action_pressed(action):
 			cell.action_animation_player.play("Rotator")
 			cell.action_animation_player.queue("RESET")
-			mushmash._update_cells_map()
+			mushmash.map.mover._update_cells_map()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
 			mushmash.input_handles._reset_selector_control_variables()
