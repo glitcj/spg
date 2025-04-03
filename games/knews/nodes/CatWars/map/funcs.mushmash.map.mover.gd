@@ -121,7 +121,7 @@ func _is_tilemap_collision(x, y):
 	# var tile_data: TileData = tilemap_layer.get_cell_tile_data(0, tile_pos)  # Use correct layer index
 	var tile_data: TileData
 	var is_collision
-	for c in get_children():
+	for c in mushmash.map.get_children():
 		if c is not TileMapLayer:
 			continue
 		var tilemap_layer: TileMapLayer = c

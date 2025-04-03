@@ -5,19 +5,16 @@ class_name _MushMash_Map
 @onready var mover: _MushMash_Map_Mover = $Mover
 @onready var generator: _MushMash_Map_Generator = $Generator
 
-var tile_x_positions
-var tile_y_positions
-
 @onready var main: TileMapLayer = $TileMapLayerMain
 @onready var tile_layers: Array = [$TileMapLayerL1, $TileMapLayerL2, $TileMapLayerL3]
 
 
 var tile_highlighting_cells := []
+var on_map_cells = []
 
 var position_indexed_cells_map: Dictionary
 var uuid_map := {}
 
-var on_map_cells = []
 
 enum Direction {Up, Down, Left, Right}
 static var DirectionVector := {
@@ -45,17 +42,14 @@ func _update_highlighted_tiles(delta):
 func random_opponent_action():
 	return randi() % Direction.size()
 
-
 func make_all_cells_immovable():
 	for cell: MushMashCell in get_parent()._get_all_cells():
 		cell.is_movable = false
-
 
 func reset_idle_animation_of_all_cells():
 	for cell: MushMashCell in get_parent()._get_all_cells():
 		cell.animation_player.play("RESET")
 		cell.animation_player.queue("Idle")
-
 
 func get_cells_in_tilemap():	
 	var position_indexed_cells_map := {}
@@ -93,10 +87,7 @@ func get_cells_in_tilemap():
 
 		cell.new_map_position = cell.map_position
 		cell.uuid = Variables.generate_uuid()
-		
 		on_map_cells.append(cell)
-		
-		
 		
 		if cell.map_position.y not in position_indexed_cells_map.keys():
 			position_indexed_cells_map[cell.map_position.y] = {}
