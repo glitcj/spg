@@ -100,7 +100,7 @@ func _on_player_turn_start():
 	
 	# mushmash.constants
 	if cells_to_move_are_selectable:
-		var input_handler : _MushMash_InputHandles = get_parent().input_handles
+		var input_handler : _MushMash_Map_Handler = get_parent().input_handles
 		current_active_cell = player_cells_turn_queue.pop_front()
 		input_handler.get_from_input_mode(input_handler.InputModes.SelectCell)
 		
@@ -146,7 +146,7 @@ func _on_opponent_turn_start():
 	
 	current_active_cell.brainer.perform_opponent_action()
 	
-	mushmash.map.mover._update_cells_map()
+	mushmash.map.mover._update_cell_map_positions()
 	
 
 func _on_opponent_turn_end():

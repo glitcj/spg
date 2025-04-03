@@ -25,7 +25,7 @@ func _on_move_input(event: InputEvent):
 		
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right"]:
 		if event.is_action_pressed(action, true):
-			mushmash.map.mover._update_cells_map()
+			mushmash.map.mover._update_cell_map_positions()
 			mushmash.turner._update_turn_state()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
@@ -49,46 +49,10 @@ func _get_on_map_cell_and_apply_damage(x, y, damage=10):
 
 func move_cell_to_direction(direction_: _MushMash_Map.Direction):
 	cell.is_movable = true
-	mushmash.map.mover._update_new_positions(mushmash._get_all_cells(), direction_)
+	mushmash.map.mover._update_cell_new_positions(mushmash._get_all_cells(), direction_)
 	cell.is_movable = false
 
 func move_cell(direction_: _MushMash_Map.Direction):
 	cell.is_movable = true
-	mushmash.map.mover._update_new_positions(mushmash._get_all_cells(), direction_)
+	mushmash.map.mover._update_cell_new_positions(mushmash._get_all_cells(), direction_)
 	cell.is_movable = false
-
-
-
-# Replace _Mushmash position updater, move resolve collisions
-"""
-func _update_cell_position(direction: int):
-	if true:
-		print("\n\n----- Old Maps ------")
-		print_cells_map()
-		print_uuid_map()	
-		pass
-		
-		var x = 0
-	
-	for cell in _get_all_cells():
-		if not cell.is_movable:
-			continue
-			
-		var i = cell.x
-		var j = cell.y
-		
-
-		if direction == Direction.Down:
-			_update_single_cell(cell, i, j + 1)
-
-		elif direction == Direction.Up:
-			_update_single_cell(cell, i, j - 1)
-			
-		elif direction == Direction.Left:
-			_update_single_cell(cell, i - 1, j)
-			
-		elif direction == Direction.Right:
-			_update_single_cell(cell, i + 1, j)
-
-	_resolve_cell_collisions()
-"""

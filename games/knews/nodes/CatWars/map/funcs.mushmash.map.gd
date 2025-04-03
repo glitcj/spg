@@ -14,8 +14,6 @@ var tile_y_positions
 
 var tile_highlighting_cells := []
 
-
-# var settings: MushMashMapSettings
 var cells_map: Dictionary
 var uuid_map := {}
 
@@ -42,11 +40,6 @@ func _process(delta: float) -> void:
 func _update_highlighted_tiles(delta):
 	for s: Sprite2D in tile_highlighting_cells:
 		pass
-	"""
-	for tile : TileData in highlighted_tiles:
-		# tile.modulate.r = float(int(tile.modulate.r) + 10  % 255)
-		tile.modulate = Color(50,50,50)
-	"""
 
 func random_opponent_action():
 	return randi() % Direction.size()
@@ -104,13 +97,12 @@ func get_cells_in_tilemap():
 		cell.uuid = Variables.generate_uuid()
 		
 		
-		cells_map[cell.map_position] = cell
-		"""
+		# cells_map[cell.map_position] = cell
+		
 		if cell.map_position.y not in cells_map.keys():
 			cells_map[cell.map_position.y] = {}
 			
 		cells_map[cell.map_position.y][cell.map_position.x] = cell
-		"""
 		
 	return cells_map
 

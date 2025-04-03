@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _update_map():
+func _update_cell_world_positions():
 	var all_cells = mushmash._get_all_cells()
 	var destination
 	var direction
@@ -22,21 +22,12 @@ func _update_map():
 		destination = map.get_tilemap_cell_position(cell.map_position.x, cell.map_position.y)
 		if mushmash.constants.cell_movement_type == mushmash.constants.CellMovementType.Instant:
 			cell.position = destination
-
 		elif mushmash.constants.cell_movement_type == mushmash.constants.CellMovementType.Linear:
 			if destination != cell.position:
 				direction = (destination - cell.position).normalized()
 				cell.position = cell.position + 5 * direction
 
-func _update_new_positions(cells, direction: int):
-	if true:
-		print("\n\n----- Old Maps ------")
-		print_cells_map()
-		print_uuid_map()	
-		pass
-		
-		var x = 0
-	
+func _update_cell_new_positions(cells, direction: int):
 	for cell in cells:
 		if not cell.is_movable:
 			continue
@@ -63,41 +54,25 @@ func _on_cell_positions_changed():
 
 func _update_single_cell(cell, new_x, new_y):
 	cell.new_map_position = Vector2i(new_x, new_y)
-	cell.new_map_position.x = new_x
-	cell.new_map_position.y = new_y
 
-func _update_cells_map():
+func _update_cell_map_positions():
 	var all_cells = mushmash._get_all_cells()
 	for cell: MushMashCell in all_cells:
-		if cell.new_map_position.x != cell.map_position.x:
-			cell.map_position.x = cell.new_map_position.x
-		if cell.new_map_position.y != cell.map_position.y:
-			cell.map_position.y = cell.new_map_position.y
-
-	var new_cells_map: Dictionary = {}
-	for cell in mushmash._get_all_cells():
-		if cell.new_map_position.y not in new_cells_map.keys():
-			new_cells_map[cell.new_map_position.y] = {}
-		new_cells_map[cell.new_map_position.y][cell.new_map_position.x] = cell
-	mushmash.map.cells_map = new_cells_map
-	
-	if false:
-		print("\n\n----- New Maps ------")
-		print_cells_map()
-		print_uuid_map()	
-
+		if cell.new_map_position != cell.map_position:
+			cell.map_position = cell.new_map_position
+	mushmash.map.generator._update_position_indexed_cells_map()
 
 
 
 func _resolve_cell_collisions():
-		# 0 - Build first collusion map, where a cell colludes if
-		# it tries to move to the new or old position of any other cell
-		# 1 - Look for a cell A that has no collisions
-		# 2 - Resolve A and allow it to move
-		# 3 - If another cell was trying to move to the old
-		# position of A, it now has no collisions with A
-		# 4 - Repeat
-		
+	# 0 - Build first collusion map, where a cell colludes if
+	# it tries to move to the new or old position of any other cell
+	# 1 - Look for a cell A that has no collisions
+	# 2 - Resolve A and allow it to move
+	# 3 - If another cell was trying to move to the old
+	# position of A, it now has no collisions with A
+	# 4 - Repeat
+	
 	var all_cells_1 = mushmash._get_all_cells()
 	var collisions = CommonFunctions.zeros_2D_array(len(all_cells_1), len(all_cells_1))
 	
@@ -183,29 +158,3 @@ func get_movable_vector(position: Vector2i, direction: _MushMash_Map.Direction):
 			movable_positions.append(candidate)
 			
 	return movable_positions
-
-
-
-func print_cells_map():
-	print("Cells Map")
-	for j in map.cells_map.keys(): # range(constants.height):
-		var line = ""
-		for i in map.cells_map[j].keys(): # range(constants.height):
-			var cell: MushMashCell = map.cells_map[j][i]
-			if cell != null:
-				line = line + str(cell.map_position.x) + "," + str(cell.map_position.y) + "   "
-			else:
-				line = line + "null" + "   "
-		print(line)
-
-		
-func print_uuid_map(max_uuid_digits: int = 4):
-	print("UUID Map")
-	for j in map.cells_map.keys(): # range(constants.height):
-		var line = ""
-		for i in map.cells_map[j].keys(): # range(constants.height):
-			if map.cells_map[j][i]:
-				line = line + map.cells_map[j][i].uuid.substr(0,max_uuid_digits) + "   "
-			else:
-				line = line + "null" + "   "
-		print(line)

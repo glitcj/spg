@@ -19,7 +19,7 @@ var cells_map_initialiser: Array
 @onready var turner: _MushMash_Turner = $Turner
 @onready var map : _MushMash_Map = $Map
 @onready var map_main : TileMapLayer = $Map/TileMapLayerMain
-@onready var input_handles : _MushMash_InputHandles = $InputHandles
+@onready var input_handles : _MushMash_Map_Handler = $InputHandles
 @onready var ai : _MushMash_AI  = $AI
 
 @onready var hud_face: Sprite2D = $HudCanvasLayer/Hud/Face
@@ -34,7 +34,6 @@ var cells_map_initialiser: Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	cells_map_initialiser = map.sample_map_4()
 	
 	# refactor
 	map.cells_map = map.get_cells_in_tilemap()
@@ -61,7 +60,7 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	map.mover._update_map()
+	map.mover._update_cell_world_positions()
 	_update_console()
 	_update_camera()
 
@@ -84,18 +83,6 @@ func initialise_random_map():
 			row.append(0)
 		cells_map_initialiser.append(row)
 	return cells_map_initialiser
-
-func draw_cells():
-	var uuid	
-	for j in range(constants.height):
-		for i in range(constants.width):
-			if cells_map_initialiser[j][i] > 0:
-				var cell: MushMashCell = map.cells_map[j][i]
-				cell.position = Vector2(150 * i, 150 * j)
-				push_error(get_parent().name)
-				$GridOrigin.add_child(cell)
-				
-				cell.animation_player.play("Idle")
 
 func _get_all_cells():
 	var all_cells = []
