@@ -87,7 +87,7 @@ func print_uuid_map(max_uuid_digits: int = 4):
 		print(line)
 
 
-func _update_position_indexed_position_indexed_cells_map():
+func _update_position_indexed_cells_map():
 	var new_position_indexed_cells_map: Dictionary = {}
 	for cell in mushmash._get_all_cells():
 		if cell.new_map_position.y not in new_position_indexed_cells_map.keys():

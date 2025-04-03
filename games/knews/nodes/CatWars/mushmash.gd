@@ -84,7 +84,14 @@ func initialise_random_map():
 		position_indexed_cells_map_initialiser.append(row)
 	return position_indexed_cells_map_initialiser
 
+
+
+
 func _get_all_cells():
+	return map.on_map_cells
+	
+	
+func _get_all_cells_v1():
 	var all_cells = []
 	
 	for j in map.position_indexed_cells_map.keys():

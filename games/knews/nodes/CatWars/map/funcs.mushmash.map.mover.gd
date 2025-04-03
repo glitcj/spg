@@ -48,7 +48,7 @@ func _update_cell_to_next_position():
 	for cell: MushMashCell in all_cells:
 		if cell.new_map_position != cell.map_position:
 			cell.map_position = cell.new_map_position
-	mushmash.map.generator._update_position_indexed_position_indexed_cells_map()
+	mushmash.map.generator._update_position_indexed_cells_map()
 
 
 

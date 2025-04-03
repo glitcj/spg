@@ -17,6 +17,8 @@ var tile_highlighting_cells := []
 var position_indexed_cells_map: Dictionary
 var uuid_map := {}
 
+var on_map_cells = []
+
 enum Direction {Up, Down, Left, Right}
 static var DirectionVector := {
 	Direction.Up: Vector2i(0, 1),
@@ -25,7 +27,6 @@ static var DirectionVector := {
 	Direction.Right: Vector2i(-1, 0),
 	
 }
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -92,6 +93,10 @@ func get_cells_in_tilemap():
 
 		cell.new_map_position = cell.map_position
 		cell.uuid = Variables.generate_uuid()
+		
+		on_map_cells.append(cell)
+		
+		
 		
 		if cell.map_position.y not in position_indexed_cells_map.keys():
 			position_indexed_cells_map[cell.map_position.y] = {}
