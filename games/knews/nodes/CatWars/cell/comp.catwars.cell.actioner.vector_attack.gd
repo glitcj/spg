@@ -26,7 +26,7 @@ func _on_action_input(event):
 		if event.is_action_pressed(action):
 			cell.action_animation_player.play("Rotator")
 			cell.action_animation_player.queue("RESET")
-			mushmash._update_cell_map_positions()
+			mushmash._update_cell_to_next_position()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
 			mushmash.input_handles._reset_selector_control_variables()

@@ -25,7 +25,7 @@ func _on_move_input(event: InputEvent):
 		
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right"]:
 		if event.is_action_pressed(action, true):
-			mushmash.map.mover._update_cell_map_positions()
+			mushmash.map.mover._update_cell_to_next_position()
 			mushmash.turner._update_turn_state()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
@@ -48,11 +48,7 @@ func _get_on_map_cell_and_apply_damage(x, y, damage=10):
 
 
 func move_cell_to_direction(direction_: _MushMash_Map.Direction):
-	cell.is_movable = true
-	mushmash.map.mover._update_cell_new_positions(mushmash._get_all_cells(), direction_)
-	cell.is_movable = false
-
-func move_cell(direction_: _MushMash_Map.Direction):
-	cell.is_movable = true
-	mushmash.map.mover._update_cell_new_positions(mushmash._get_all_cells(), direction_)
-	cell.is_movable = false
+	# cell.is_movable = true
+	# mushmash.map.mover._shift_cells_next_position(mushmash._get_all_cells(), _MushMash_Map.DirectionVector[direction_])
+	# cell.is_movable = false
+	mushmash.map.mover._shift_cells_next_position([cell], _MushMash_Map.DirectionVector[direction_])

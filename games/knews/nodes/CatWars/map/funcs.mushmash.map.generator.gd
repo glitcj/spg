@@ -62,14 +62,12 @@ func sample_map_2():
 	return sample
 
 
-
-
-func print_cells_map():
+func print_position_indexed_cells_map():
 	print("Cells Map")
-	for j in map.cells_map.keys(): # range(constants.height):
+	for j in map.position_indexed_cells_map.keys(): # range(constants.height):
 		var line = ""
-		for i in map.cells_map[j].keys(): # range(constants.height):
-			var cell: MushMashCell = map.cells_map[j][i]
+		for i in map.position_indexed_cells_map[j].keys(): # range(constants.height):
+			var cell: MushMashCell = map.position_indexed_cells_map[j][i]
 			if cell != null:
 				line = line + str(cell.map_position.x) + "," + str(cell.map_position.y) + "   "
 			else:
@@ -79,20 +77,20 @@ func print_cells_map():
 		
 func print_uuid_map(max_uuid_digits: int = 4):
 	print("UUID Map")
-	for j in map.cells_map.keys(): # range(constants.height):
+	for j in map.position_indexed_cells_map.keys(): # range(constants.height):
 		var line = ""
-		for i in map.cells_map[j].keys(): # range(constants.height):
-			if map.cells_map[j][i]:
-				line = line + map.cells_map[j][i].uuid.substr(0,max_uuid_digits) + "   "
+		for i in map.position_indexed_cells_map[j].keys(): # range(constants.height):
+			if map.position_indexed_cells_map[j][i]:
+				line = line + map.position_indexed_cells_map[j][i].uuid.substr(0,max_uuid_digits) + "   "
 			else:
 				line = line + "null" + "   "
 		print(line)
 
 
-func _update_position_indexed_cells_map():
-	var new_cells_map: Dictionary = {}
+func _update_position_indexed_position_indexed_cells_map():
+	var new_position_indexed_cells_map: Dictionary = {}
 	for cell in mushmash._get_all_cells():
-		if cell.new_map_position.y not in new_cells_map.keys():
-			new_cells_map[cell.new_map_position.y] = {}
-		new_cells_map[cell.new_map_position.y][cell.new_map_position.x] = cell
-	mushmash.map.cells_map = new_cells_map
+		if cell.new_map_position.y not in new_position_indexed_cells_map.keys():
+			new_position_indexed_cells_map[cell.new_map_position.y] = {}
+		new_position_indexed_cells_map[cell.new_map_position.y][cell.new_map_position.x] = cell
+	mushmash.map.position_indexed_cells_map = new_position_indexed_cells_map

@@ -11,7 +11,7 @@ class_name _MushMash
 # TODO: Add ninja sprite parsing
 
 # TODO: This should be used only once to initialise map
-var cells_map_initialiser: Array
+var position_indexed_cells_map_initialiser: Array
 
 
 # Set references so all components can talk to each other
@@ -36,7 +36,7 @@ var cells_map_initialiser: Array
 func _ready() -> void:
 	
 	# refactor
-	map.cells_map = map.get_cells_in_tilemap()
+	map.position_indexed_cells_map = map.get_cells_in_tilemap()
 	print(constants.height)
 	print(constants.width)
 	$Turner._initialise_player_cells_turn_queue()
@@ -49,7 +49,7 @@ func _initialise_uuid_map():
 		for i in constants.width:
 			map.uuid_map[j * constants.height + i] = _MushMash_Constants.get_cell_uuid(i, j)
 
-func _initialise_cells_map():
+func _initialise_position_indexed_cells_map():
 	pass
 
 func _get_uuid(x, y):
@@ -75,33 +75,33 @@ func _update_console():
 	$Console.text = ""
 	
 func initialise_random_map():
-	cells_map_initialiser = []
+	position_indexed_cells_map_initialiser = []
 	var row
 	for i in range(constants.height):
 		row = []
 		for j in range(constants.width):
 			row.append(0)
-		cells_map_initialiser.append(row)
-	return cells_map_initialiser
+		position_indexed_cells_map_initialiser.append(row)
+	return position_indexed_cells_map_initialiser
 
 func _get_all_cells():
 	var all_cells = []
 	
-	for j in map.cells_map.keys():
-		for i in map.cells_map[j].keys():
-			if map.cells_map[j][i] != null:
-				all_cells.append(map.cells_map[j][i])
+	for j in map.position_indexed_cells_map.keys():
+		for i in map.position_indexed_cells_map[j].keys():
+			if map.position_indexed_cells_map[j][i] != null:
+				all_cells.append(map.position_indexed_cells_map[j][i])
 	return all_cells
 
 
 
 func _get_all_typed_cells(types: Array = [MushMashCell.CellTypes.Player]):
 	var all_cells = []
-	for j in map.cells_map.keys():
-		for i in map.cells_map[j].keys():
-			var cell: MushMashCell = map.cells_map[j][i]
+	for j in map.position_indexed_cells_map.keys():
+		for i in map.position_indexed_cells_map[j].keys():
+			var cell: MushMashCell = map.position_indexed_cells_map[j][i]
 			if cell != null and cell.type in types:
-				all_cells.append(map.cells_map[j][i])
+				all_cells.append(map.position_indexed_cells_map[j][i])
 	return all_cells
 
 

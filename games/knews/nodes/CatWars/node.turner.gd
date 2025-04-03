@@ -97,8 +97,6 @@ func _initialise_opponent_cells_turn_queue():
 	
 
 func _on_player_turn_start():
-	
-	# mushmash.constants
 	if cells_to_move_are_selectable:
 		var input_handler : _MushMash_Map_Handler = get_parent().input_handles
 		current_active_cell = player_cells_turn_queue.pop_front()
@@ -117,7 +115,6 @@ func _on_player_turn_start():
 		get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 		
 		current_active_cell.handler.change_input_mode(_MushMash_CellHandler_Handler_Base.InputModes.Move)
-		# current_active_cell.mover.change_input_mode(_MushMash_CellHandler_Mover_Base.InputModes.Move)
 		
 		await current_active_cell.handler.finished_input_mode
 
@@ -146,7 +143,7 @@ func _on_opponent_turn_start():
 	
 	current_active_cell.brainer.perform_opponent_action()
 	
-	mushmash.map.mover._update_cell_map_positions()
+	mushmash.map.mover._update_cell_to_next_position()
 	
 
 func _on_opponent_turn_end():

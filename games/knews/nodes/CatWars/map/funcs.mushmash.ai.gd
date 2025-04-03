@@ -33,8 +33,8 @@ func movable_directions_from_cell_map(x, y):
 		if considered_position_x == x and considered_position_y == y:
 			continue
 		considered_cell = null
-		if considered_position_y in mushmash.map.cells_map.keys() && considered_position_x in mushmash.map.cells_map[considered_position_y].keys():
-			considered_cell =  mushmash.map.cells_map[considered_position_y][considered_position_x]
+		if considered_position_y in mushmash.map.position_indexed_cells_map.keys() && considered_position_x in mushmash.map.position_indexed_cells_map[considered_position_y].keys():
+			considered_cell =  mushmash.map.position_indexed_cells_map[considered_position_y][considered_position_x]
 		if considered_cell == null and not mushmash.map.mover._is_tilemap_collision(considered_position_x, considered_position_y):
 			movable_directions.append(_MushMash_Map.Direction[k])
 			

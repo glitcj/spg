@@ -27,26 +27,14 @@ func _update_cell_world_positions():
 				direction = (destination - cell.position).normalized()
 				cell.position = cell.position + 5 * direction
 
-func _update_cell_new_positions(cells, direction: int):
+func _shift_cells_next_position(cells, new_position: Vector2i): # direction: int):
 	for cell in cells:
-		if not cell.is_movable:
-			continue
-			
-		var i = cell.map_position.x
-		var j = cell.map_position.y
+		cell.new_map_position = cell.new_map_position - new_position
+	map.mover._resolve_cell_collisions()
 
-		if direction == _MushMash_Map.Direction.Down:
-			_update_single_cell(cell, i, j + 1)
-
-		elif direction == _MushMash_Map.Direction.Up:
-			_update_single_cell(cell, i, j - 1)
-			
-		elif direction == _MushMash_Map.Direction.Left:
-			_update_single_cell(cell, i - 1, j)
-			
-		elif direction == _MushMash_Map.Direction.Right:
-			_update_single_cell(cell, i + 1, j)
-
+func _change_cells_next_position(cells, new_position: Vector2i): # direction: int):
+	for cell in cells:
+		cell.new_map_position = new_position
 	map.mover._resolve_cell_collisions()
 
 func _on_cell_positions_changed():
@@ -55,12 +43,12 @@ func _on_cell_positions_changed():
 func _update_single_cell(cell, new_x, new_y):
 	cell.new_map_position = Vector2i(new_x, new_y)
 
-func _update_cell_map_positions():
+func _update_cell_to_next_position():
 	var all_cells = mushmash._get_all_cells()
 	for cell: MushMashCell in all_cells:
 		if cell.new_map_position != cell.map_position:
 			cell.map_position = cell.new_map_position
-	mushmash.map.generator._update_position_indexed_cells_map()
+	mushmash.map.generator._update_position_indexed_position_indexed_cells_map()
 
 
 
@@ -142,7 +130,6 @@ func _is_tilemap_collision(x, y):
 		
 		if is_collision:
 			return true
-
 		# Check if the tile has any collision polygons
 	return false
 

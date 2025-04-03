@@ -14,7 +14,7 @@ var tile_y_positions
 
 var tile_highlighting_cells := []
 
-var cells_map: Dictionary
+var position_indexed_cells_map: Dictionary
 var uuid_map := {}
 
 enum Direction {Up, Down, Left, Right}
@@ -57,7 +57,7 @@ func reset_idle_animation_of_all_cells():
 
 
 func get_cells_in_tilemap():	
-	var cells_map := {}
+	var position_indexed_cells_map := {}
 	
 	var tilemap_layer: TileMapLayer = get_parent().tilemap
 	var tilemap_hash_map_to_world: Dictionary = {}  # Dictionary to store tile mappings
@@ -89,22 +89,15 @@ func get_cells_in_tilemap():
 		cell.global_position = lowest_distance_world_position
 		cell.map_position.x = lowest_distance_tilemap_position[0]
 		cell.map_position.y = lowest_distance_tilemap_position[1]
-		
-		cell.map_position.x = lowest_distance_tilemap_position[0]
-		cell.map_position.y = lowest_distance_tilemap_position[1]
 
 		cell.new_map_position = cell.map_position
 		cell.uuid = Variables.generate_uuid()
 		
+		if cell.map_position.y not in position_indexed_cells_map.keys():
+			position_indexed_cells_map[cell.map_position.y] = {}
+		position_indexed_cells_map[cell.map_position.y][cell.map_position.x] = cell
 		
-		# cells_map[cell.map_position] = cell
-		
-		if cell.map_position.y not in cells_map.keys():
-			cells_map[cell.map_position.y] = {}
-			
-		cells_map[cell.map_position.y][cell.map_position.x] = cell
-		
-	return cells_map
+	return position_indexed_cells_map
 
 func get_tilemap_as_array():
 	pass
@@ -127,9 +120,9 @@ func resolve_damage_and_cell_placement():
 	pass
 
 func get_on_map_cell(x, y):
-	if y in mushmash.map.cells_map.keys():
-		if x in mushmash.map.cells_map[y].keys():
-			return mushmash.map.cells_map[y][x]
+	if y in mushmash.map.position_indexed_cells_map.keys():
+		if x in mushmash.map.position_indexed_cells_map[y].keys():
+			return mushmash.map.position_indexed_cells_map[y][x]
 	return null
 
 
