@@ -87,8 +87,6 @@ func _update_turn_state():
 	$ActionTimer.wait_time = turn_state_time_durations[current_turn_state]
 	$ActionTimer.start()
 	
-
-
 func _initialise_player_cells_turn_queue():
 	player_cells_turn_queue = get_parent()._get_all_typed_cells([MushMashCell.CellTypes.Player])
 
@@ -141,7 +139,6 @@ func _on_opponent_turn_start():
 	await wait_timer.timeout
 	
 	current_active_cell.brainer.perform_opponent_action()
-	
 	mushmash.map.mover._update_all_cells_to_next_position()
 	
 

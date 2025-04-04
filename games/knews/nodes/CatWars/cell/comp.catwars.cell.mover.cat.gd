@@ -27,7 +27,7 @@ func _on_move_input(event: InputEvent):
 		if event.is_action_pressed(action, true):
 			mushmash.map.mover._update_all_cells_to_next_position()
 			mushmash.turner._update_turn_state()
-			mushmash.map.make_all_cells_immovable()
+			# mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
 			mushmash.input_handles._reset_selector_control_variables()
 			mushmash.log.insert(0, "Cat has moved to %s" % action)

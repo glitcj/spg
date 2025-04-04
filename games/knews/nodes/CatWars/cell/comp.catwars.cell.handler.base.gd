@@ -31,7 +31,7 @@ func change_input_mode(input_mode_: InputModes):
 
 func _reset_handler():
 	input_mode = InputModes.Inactive
-	mushmash.map.make_all_cells_immovable()
+	# mushmash.map.make_all_cells_immovable()
 	mushmash.map.reset_idle_animation_of_all_cells()
 	
 func _on_action_input(event):

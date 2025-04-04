@@ -43,6 +43,7 @@ func random_opponent_action():
 	return randi() % Direction.size()
 
 func make_all_cells_immovable():
+	return
 	for cell: MushMashCell in get_parent()._get_all_cells():
 		cell.is_movable = false
 

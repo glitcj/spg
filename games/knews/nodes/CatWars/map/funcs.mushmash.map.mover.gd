@@ -133,15 +133,21 @@ func _is_tilemap_collision(x, y):
 		# Check if the tile has any collision polygons
 	return false
 
+func _is_cell_collision(x, y):
+	for cell: MushMashCell in mushmash.map.on_map_cells:
+		print(mushmash.map.on_map_cells)
+		print("Cell Position", cell.map_position)
+		if cell.map_position == Vector2i(x, y):
+			return true
+	return false
 
-func get_movable_vector(position: Vector2i, direction: _MushMash_Map.Direction):
-	var max_x_vector_length = 5
-	var max_y_vector_length = 5
+func get_movable_vector(position: Vector2i, direction: _MushMash_Map.Direction, max_vector_length: int = 5):
 	var movable_positions = []
-	
-	for i in range(max_x_vector_length):
+	for i in range(1, max_vector_length):
 		var candidate = position + _MushMash_Map.DirectionVector[direction] * i
-		if not _is_tilemap_collision(candidate.x, candidate.y):
+		if not _is_tilemap_collision(candidate.x, candidate.y) and not _is_cell_collision(candidate.x, candidate.y):
 			movable_positions.append(candidate)
+		else:
+			break
 			
 	return movable_positions

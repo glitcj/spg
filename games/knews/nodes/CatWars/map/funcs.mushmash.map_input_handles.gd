@@ -95,6 +95,6 @@ func _reset_selector_control_variables():
 
 func reset():
 	_reset_selector_control_variables
-	get_parent().map.make_all_cells_immovable()
+	# get_parent().map.make_all_cells_immovable()
 	get_parent().map.reset_idle_animation_of_all_cells()
 	
