@@ -25,7 +25,7 @@ func _on_move_input(event: InputEvent):
 		
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right"]:
 		if event.is_action_pressed(action, true):
-			mushmash.map.mover._update_cell_to_next_position()
+			mushmash.map.mover._update_all_cells_to_next_position()
 			mushmash.turner._update_turn_state()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()

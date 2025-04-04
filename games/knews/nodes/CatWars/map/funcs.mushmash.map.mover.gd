@@ -43,7 +43,7 @@ func _on_cell_positions_changed():
 func _update_single_cell(cell, new_x, new_y):
 	cell.new_map_position = Vector2i(new_x, new_y)
 
-func _update_cell_to_next_position():
+func _update_all_cells_to_next_position():
 	var all_cells = mushmash._get_all_cells()
 	for cell: MushMashCell in all_cells:
 		if cell.new_map_position != cell.map_position:
@@ -141,7 +141,7 @@ func get_movable_vector(position: Vector2i, direction: _MushMash_Map.Direction):
 	
 	for i in range(max_x_vector_length):
 		var candidate = position + _MushMash_Map.DirectionVector[direction] * i
-		if not _is_tilemap_collision(candidate.map_position.x, candidate.map_position.y):
+		if not _is_tilemap_collision(candidate.x, candidate.y):
 			movable_positions.append(candidate)
 			
 	return movable_positions

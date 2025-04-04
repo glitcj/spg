@@ -137,13 +137,12 @@ func _on_opponent_turn_start():
 	current_active_cell.highlighter_animation_player.play("ActiveCellHighlight")
 	get_parent().map.update_hud_face(current_active_cell.face_sheets[current_active_cell.cell_sprite])
 	
-
 	var wait_timer = get_tree().create_timer(turn_state_time_durations[TurnStates.OponnentTurn]/2)
 	await wait_timer.timeout
 	
 	current_active_cell.brainer.perform_opponent_action()
 	
-	mushmash.map.mover._update_cell_to_next_position()
+	mushmash.map.mover._update_all_cells_to_next_position()
 	
 
 func _on_opponent_turn_end():

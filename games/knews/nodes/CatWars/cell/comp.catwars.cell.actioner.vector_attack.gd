@@ -4,20 +4,20 @@ class_name _MushMash_CellHandler_Actioner_VectorAttack
 
 func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):
-		attack_normal(cell.map_position.x+1, cell.y)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Right)
+		attack_normal(cell.map_position.x+1, cell.map_position.y)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Right)
 
 	elif event.is_action_pressed("ui_left"):
-		attack_normal(cell.map_position.x - 1, cell.y)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Left)
+		attack_normal(cell.map_position.x - 1, cell.map_position.y)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Left)
 		
 	elif event.is_action_pressed("ui_down"):
-		attack_normal(cell.map_position.x, cell.y+1)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Down)
+		attack_normal(cell.map_position.x, cell.map_position.y+1)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Down)
 		
 	elif event.is_action_pressed("ui_up"):
-		attack_normal(cell.map_position.x, cell.y-1)
-		cell.mover.move_cell_to_direction(mushmash.Direction.Up)
+		attack_normal(cell.map_position.x, cell.map_position.y-1)
+		cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Up)
 
 	elif event.is_action_pressed("ui_accept"):
 		pass
@@ -26,7 +26,7 @@ func _on_action_input(event):
 		if event.is_action_pressed(action):
 			cell.action_animation_player.play("Rotator")
 			cell.action_animation_player.queue("RESET")
-			mushmash._update_cell_to_next_position()
+			mushmash.map.mover._update_all_cells_to_next_position()
 			mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
 			mushmash.input_handles._reset_selector_control_variables()
@@ -41,7 +41,7 @@ func on_action_start():
 	var all_movable_cells = []
 	for direction in _MushMash_Map.Direction:
 		print(direction, _MushMash_Map.Direction[direction])
-		for p in mushmash.map.get_movable_vector(Vector2i(cell.map_position.x, cell.map_position.y), _MushMash_Map.Direction[direction]):
+		for p in mushmash.map.mover.get_movable_vector(Vector2i(cell.map_position.x, cell.map_position.y), _MushMash_Map.Direction[direction]):
 			all_movable_cells.append(p)
 	
 	var tiles_to_highlight = []
