@@ -1,28 +1,28 @@
 extends _MushMash_CellHandler_Actioner_Base
 class_name _MushMash_CellHandler_Actioner_VectorAttack
 
-var directional_button_to_position
+var directional_button_to_position: Dictionary
+var vector_tray: Dictionary
 
 func _on_action_input(event):
 	if event.is_action_pressed("ui_right"):
-		attack_normal(cell.map_position.x+1, cell.map_position.y)
-		# cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Right)
+		for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Right]:
+			attack_normal(position_)
 		mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Right])
 
 	elif event.is_action_pressed("ui_left"):
-		attack_normal(cell.map_position.x - 1, cell.map_position.y)
-		# cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Left)
+		for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Left]:
+			attack_normal(position_)
 		mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Left])
 		
-		
 	elif event.is_action_pressed("ui_down"):
-		attack_normal(cell.map_position.x, cell.map_position.y+1)
-		# cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Down)
+		for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Down]:
+			attack_normal(position_)
 		mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Down])
 		
 	elif event.is_action_pressed("ui_up"):
-		attack_normal(cell.map_position.x, cell.map_position.y-1)
-		# cell.mover.move_cell_to_direction(_MushMash_Map.Direction.Up)
+		for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Up]:
+			attack_normal(position_)
 		mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Up])
 
 	elif event.is_action_pressed("ui_accept"):
@@ -33,8 +33,8 @@ func _on_action_input(event):
 			cell.action_animation_player.play("Rotator")
 			cell.action_animation_player.queue("RESET")
 			mushmash.map.mover._update_all_cells_to_next_position()
-			# mushmash.map.make_all_cells_immovable()
 			mushmash.map.reset_idle_animation_of_all_cells()
+			mushmash.map.clear_highlighted_tiles()
 			mushmash.input_handles._reset_selector_control_variables()
 			await cell.action_animation_player.animation_finished
 			
@@ -42,18 +42,28 @@ func _on_action_input(event):
 			cell.handler._reset_handler()
 			cell.handler.finished_input_mode.emit()
 
-
 func on_action_start():
 	var all_movable_tiles = []
+	vector_tray = {}
+	
 	for direction in _MushMash_Map.Direction:
+		vector_tray[_MushMash_Map.Direction[direction]] = []
 		print(direction, _MushMash_Map.Direction[direction])
-		for p in mushmash.map.mover.get_movable_vector(cell.map_position, _MushMash_Map.Direction[direction]):
+		for p: Vector2i in mushmash.map.mover.get_movable_vector(cell.map_position, _MushMash_Map.Direction[direction]):
 			all_movable_tiles.append(p)
+			vector_tray[_MushMash_Map.Direction[direction]].append(p)
 	
-	var tiles_to_highlight = []
-	var tile
-	mushmash.map.change_highlighted_tiles(all_movable_tiles)
-	
+	mushmash.map.clear_highlighted_tiles()
+	for direction in vector_tray.keys():
+		
+		
+		var vector_positions = vector_tray[direction]
+		print(vector_tray, vector_positions)
+		if _vector_is_movable(vector_positions):
+			mushmash.map.change_highlighted_tiles(vector_positions, Color.AZURE)
+		else:
+			mushmash.map.change_highlighted_tiles(vector_positions, Color.RED)
+		
 	directional_button_to_position = {
 		_MushMash_Map.Direction.Up: cell.map_position,
 		_MushMash_Map.Direction.Down: cell.map_position,
@@ -70,8 +80,13 @@ func on_action_start():
 			directional_button_to_position[_MushMash_Map.Direction.Left] = v
 		if v.x > directional_button_to_position[_MushMash_Map.Direction.Right].x:
 			directional_button_to_position[_MushMash_Map.Direction.Right] = v
+	
 			
-func attack_normal(x, y):
-	cell.mover._get_on_map_cell_and_apply_damage(x, y)
+func attack_normal(position_: Vector2i):
+	cell.mover._get_on_map_cell_and_apply_damage(position_.x, position_.y)
 	mushmash.map.resolve_damage_and_cell_placement()
-	mushmash.map.clear_highlighted_tiles()
+	# mushmash.map.clear_highlighted_tiles()
+
+
+func _vector_is_movable(movement_vector_: Array):
+	return movement_vector_ != [] && not mushmash.map.mover._is_cell_collision(movement_vector_[-1])

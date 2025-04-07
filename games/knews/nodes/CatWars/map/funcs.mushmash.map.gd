@@ -17,6 +17,9 @@ var uuid_map := {}
 
 
 enum Direction {Up, Down, Left, Right}
+
+
+# Refactor: Fix these directions as opposite
 static var DirectionVector := {
 	Direction.Up: Vector2i(0, 1),
 	Direction.Down: Vector2i(0, -1),
@@ -24,6 +27,15 @@ static var DirectionVector := {
 	Direction.Right: Vector2i(-1, 0),
 	
 }
+
+
+static var InputToDirection := {
+	"ui_up": Direction.Up,
+	"ui_down": Direction.Down,
+	"ui_left": Direction.Left,
+	"ui_right": Direction.Right,
+}
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -123,9 +135,9 @@ func get_on_map_cell(x, y):
 	return null
 
 
-func change_highlighted_tiles(positions_):
-	for s : Sprite2D in tile_highlighting_cells:
-		s.queue_free()
+func change_highlighted_tiles(positions_, colour=Color.RED):
+	# for s : Sprite2D in tile_highlighting_cells:
+	# 	s.queue_free()
 	
 	tile_highlighting_cells = []
 	for p : Vector2i in positions_:
@@ -134,6 +146,7 @@ func change_highlighted_tiles(positions_):
 		highlighting_sprite.texture = CanvasTexture.new()
 		highlighting_sprite.scale = Vector2(5, 5)
 		highlighting_sprite.z_index = 100
+		highlighting_sprite.modulate = colour
 		tile_highlighting_cells.append(highlighting_sprite)
 		add_child(highlighting_sprite)
 	
