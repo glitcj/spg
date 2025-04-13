@@ -55,8 +55,6 @@ func on_action_start():
 	
 	mushmash.map.clear_highlighted_tiles()
 	for direction in vector_tray.keys():
-		
-		
 		var vector_positions = vector_tray[direction]
 		print(vector_tray, vector_positions)
 		if _vector_is_movable(vector_positions):

@@ -136,10 +136,7 @@ func get_on_map_cell(x, y):
 
 
 func change_highlighted_tiles(positions_, colour=Color.RED):
-	# for s : Sprite2D in tile_highlighting_cells:
-	# 	s.queue_free()
-	
-	tile_highlighting_cells = []
+	# tile_highlighting_cells = []
 	for p : Vector2i in positions_:
 		var highlighting_sprite = Sprite2D.new()
 		highlighting_sprite.position = main.map_to_local(p)
