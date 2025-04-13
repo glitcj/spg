@@ -27,7 +27,6 @@ var is_enemy: bool = false
 var is_player: bool = false
 var is_movable: bool = false
 var can_move_now: bool = false
-
 var is_highlighted: bool = false
 
 enum HighlightAnimatorStates {IsHighlighted, NotHighlighted, RESET}
@@ -36,9 +35,11 @@ enum BodyAnimatorStates {Idle, RESET}
 enum AvailableSprites {Mushroom, Flower, Wall, Mole, HatMole, HeartRed, Eye, Cat, CatCyclops, Nyacence}
 var sprite_sheets: Dictionary
 var face_sheets: Dictionary
+# @onready var main_sprite: Sprite2D = $Body/AnimatedSprite2D
 
 @export var cell_sprite := AvailableSprites.Eye
 @export var type := CellTypes.Immovable
+
 
 func _preload_animation_sprites():
 	sprite_sheets[AvailableSprites.Mushroom] = preload("res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/SpriteSheet.png")

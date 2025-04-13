@@ -49,6 +49,6 @@ func _get_on_map_cell_and_apply_damage(x, y, damage=10):
 
 func move_cell_to_direction(direction_: _MushMash_Map.Direction):
 	# cell.is_movable = true
-	# mushmash.map.mover._shift_cells_next_position(mushmash._get_all_cells(), _MushMash_Map.DirectionVector[direction_])
+	# mushmash.map.mover._shift_cells_next_position(mushmash._get_all_cells(), _MushMash_Map.DirectionUnitVector[direction_])
 	# cell.is_movable = false
-	mushmash.map.mover._shift_cells_next_position([cell], _MushMash_Map.DirectionVector[direction_])
+	mushmash.map.mover._shift_cells_next_position([cell], _MushMash_Map.DirectionUnitVector[direction_])

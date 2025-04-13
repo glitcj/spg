@@ -5,7 +5,7 @@ class_name _MushMash_Map
 @onready var mover: _MushMash_Map_Mover = $Mover
 @onready var generator: _MushMash_Map_Generator = $Generator
 
-@onready var main: TileMapLayer = $TileMapLayerMain
+@onready var main_layer: TileMapLayer = $TileMapLayerMain
 @onready var tile_layers: Array = [$TileMapLayerL1, $TileMapLayerL2, $TileMapLayerL3]
 
 
@@ -20,11 +20,11 @@ enum Direction {Up, Down, Left, Right}
 
 
 # Refactor: Fix these directions as opposite
-static var DirectionVector := {
-	Direction.Up: Vector2i(0, 1),
-	Direction.Down: Vector2i(0, -1),
-	Direction.Left: Vector2i(1, 0),
-	Direction.Right: Vector2i(-1, 0),
+static var DirectionUnitVector := {
+	Direction.Up: Vector2i(0, -1),
+	Direction.Down: Vector2i(0, 1),
+	Direction.Left: Vector2i(-1, 0),
+	Direction.Right: Vector2i(1, 0),
 	
 }
 
@@ -64,7 +64,7 @@ func reset_idle_animation_of_all_cells():
 		cell.animation_player.play("RESET")
 		cell.animation_player.queue("Idle")
 
-func get_cells_in_tilemap():	
+func place_and_correct_on_map_cells():	
 	var position_indexed_cells_map := {}
 	
 	var tilemap_layer: TileMapLayer = get_parent().tilemap
@@ -85,7 +85,6 @@ func get_cells_in_tilemap():
 			var tilemap_cell_world_position_x = world_position[0]
 			var tilemap_cell_world_position_y = world_position[1]
 			var distance = world_position.distance_to(cell.global_position)# abs(cell.position.x - tilemap_cell_world_position_x) + abs(cell.position.y - tilemap_cell_world_position_y)
-			pass
 			
 			if distance < lowest_distance_found:
 				lowest_distance_found = distance
@@ -102,6 +101,8 @@ func get_cells_in_tilemap():
 		cell.uuid = Variables.generate_uuid()
 		on_map_cells.append(cell)
 		
+		
+		# TODO: Separate building picm (position indexed cells map)
 		if cell.map_position.y not in position_indexed_cells_map.keys():
 			position_indexed_cells_map[cell.map_position.y] = {}
 		position_indexed_cells_map[cell.map_position.y][cell.map_position.x] = cell
@@ -136,17 +137,28 @@ func get_on_map_cell(x, y):
 
 
 func change_highlighted_tiles(positions_, colour=Color.RED):
-	# tile_highlighting_cells = []
+	
+	# TODO: 0-0-0-
 	for p : Vector2i in positions_:
 		var highlighting_sprite = Sprite2D.new()
-		highlighting_sprite.position = main.map_to_local(p)
+		highlighting_sprite.position = main_layer.map_to_local(p)
 		highlighting_sprite.texture = CanvasTexture.new()
-		highlighting_sprite.scale = Vector2(5, 5)
+		# highlighting_sprite.scale = Vector2(5, 5)
+		
+		rescale_sprite_to_tile_scale(highlighting_sprite)
 		highlighting_sprite.z_index = 100
 		highlighting_sprite.modulate = colour
 		tile_highlighting_cells.append(highlighting_sprite)
 		add_child(highlighting_sprite)
 	
+	
+	
+func rescale_sprite_to_tile_scale(sprite_ : Sprite2D):
+	var tileset: TileSet = main_layer.tile_set
+	var desired_width = tileset.tile_size.x
+	var desired_height = tileset.tile_size.y
+	sprite_.scale = Vector2(desired_width/sprite_.texture.get_width(), desired_height/sprite_.texture.get_height())
+
 func clear_highlighted_tiles():
 	for s : Sprite2D in tile_highlighting_cells:
 		s.queue_free()

@@ -29,10 +29,10 @@ func _update_cell_world_positions():
 
 func _shift_cells_next_position(cells, new_position: Vector2i): # direction: int):
 	for cell in cells:
-		cell.new_map_position = cell.new_map_position - new_position
+		cell.new_map_position = cell.new_map_position + new_position
 	map.mover._resolve_cell_collisions()
 
-func _change_cells_next_position(cells, new_position: Vector2i): # direction: int):
+func _change_cells_next_position(cells, new_position: Vector2i):
 	for cell in cells:
 		cell.new_map_position = new_position
 	map.mover._resolve_cell_collisions()
@@ -144,7 +144,7 @@ func _is_cell_collision(position_):
 func get_movable_vector(position: Vector2i, direction: _MushMash_Map.Direction, max_vector_length: int = 5):
 	var movable_positions = []
 	for i in range(1, max_vector_length):
-		var candidate = position + _MushMash_Map.DirectionVector[direction] * i
+		var candidate = position + _MushMash_Map.DirectionUnitVector[direction] * i
 		if not _is_tilemap_collision(candidate.x, candidate.y):
 			movable_positions.append(candidate)
 		else:

@@ -36,7 +36,7 @@ var position_indexed_cells_map_initialiser: Array
 func _ready() -> void:
 	
 	# refactor
-	map.position_indexed_cells_map = map.get_cells_in_tilemap()
+	map.position_indexed_cells_map = map.place_and_correct_on_map_cells()
 	print(constants.height)
 	print(constants.width)
 	$Turner._initialise_player_cells_turn_queue()

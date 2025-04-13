@@ -1,8 +1,6 @@
 extends Node
 class_name _MushMash_Map_Generator
 
-
-
 @onready var mushmash = get_parent().get_parent()
 
 @onready var map = get_parent()
