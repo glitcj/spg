@@ -38,8 +38,9 @@ func _process(delta: float) -> void:
 	if current_turn_state == null:
 		return
 	
-	mushmash.hud.turn_label.text = "Timer: %s\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
-	mushmash.hud.turn_label.text += "\nTurn: %s" % [TurnStates.keys()[current_turn_state]]
+	# mushmash.hud.turn_label.text = "Timer: %0.2f\nState: %s\nWait: %s" % [$ActionTimer.time_left, current_turn_state, $ActionTimer.wait_time]
+	mushmash.hud.timer_label.text = "Timer: %0.2f" % $ActionTimer.time_left # \nState: %s" % [$ActionTimer.time_left, current_turn_state]
+	mushmash.hud.turn_label.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
 
 func _on_timer_timeout() -> void:
 	_update_turn_state()

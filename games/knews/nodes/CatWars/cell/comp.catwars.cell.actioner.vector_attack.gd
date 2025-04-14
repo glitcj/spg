@@ -17,9 +17,7 @@ func _on_action_input(event: InputEvent):
 			for position_: Vector2i in attack_vector:
 				attack_normal(position_)
 			mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[pressed_direction])
-			
-	# for action in ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept"]:
-	# 	if event.is_action_pressed(action):
+
 	if CommonFunctions.get_first_input_event_name(event) in ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept"]:
 		cell.action_animation_player.play("Rotator")
 		cell.action_animation_player.queue("RESET")
@@ -77,27 +75,3 @@ func attack_normal(position_: Vector2i):
 
 func _vector_is_movable(movement_vector_: Array):
 	return movement_vector_ != [] && not mushmash.map.mover.is_cell_collision(movement_vector_[-1])
-
-
-"""
-if event.is_action_pressed("ui_right"):
-	for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Right]:
-		attack_normal(position_)
-	mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Right])
-
-elif event.is_action_pressed("ui_left"):
-	for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Left]:
-		attack_normal(position_)
-	mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Left])
-	
-elif event.is_action_pressed("ui_down"):
-	for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Down]:
-		attack_normal(position_)
-	mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Down])
-	
-elif event.is_action_pressed("ui_up"):
-	for position_: Vector2i in vector_tray[_MushMash_Map.Direction.Up]:
-		attack_normal(position_)
-	mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[_MushMash_Map.Direction.Up])
-	
-"""

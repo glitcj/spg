@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c53btno4y6072"]
+[gd_scene load_steps=12 format=3 uid="uid://c53btno4y6072"]
 
 [ext_resource type="Script" path="res://games/knews/nodes/CatWars/hud/node.catwars.hud.gd" id="1_5tlk5"]
 
@@ -6,12 +6,28 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_enyeb"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_6tftr"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_tgdje"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m3ny1"]
-line_spacing = 5.0
+line_spacing = 10.0
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_tgs2v"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_tv814"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ivyir"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_4k122"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_donbb"]
+font_size = 24
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6tftr"]
 
 [node name="Hud" type="Node2D"]
 z_index = 100
@@ -30,11 +46,6 @@ modulate = Color(1, 1, 0.654902, 1)
 texture_filter = 1
 scale = Vector2(130, 130)
 texture = SubResource("CanvasTexture_enyeb")
-
-[node name="TurnIndicatorSprite" type="Sprite2D" parent="."]
-position = Vector2(350, 0)
-scale = Vector2(50, 50)
-texture = SubResource("CanvasTexture_6tftr")
 
 [node name="Log" type="Node2D" parent="."]
 position = Vector2(-415.385, 131.538)
@@ -87,25 +98,69 @@ offset_bottom = 40.0
 [node name="VBoxContainer" type="VBoxContainer" parent="Status/PanelContainer"]
 layout_mode = 2
 
-[node name="HPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer"]
+[node name="HPBoxContainer" type="HBoxContainer" parent="Status/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer/HPBoxContainer"]
 layout_mode = 2
 text = "HP:"
+label_settings = SubResource("LabelSettings_tgs2v")
 
-[node name="MPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer"]
+[node name="HPValue" type="Label" parent="Status/PanelContainer/VBoxContainer/HPBoxContainer"]
+layout_mode = 2
+text = "0000"
+label_settings = SubResource("LabelSettings_tv814")
+
+[node name="MPBoxContainer" type="HBoxContainer" parent="Status/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer/MPBoxContainer"]
 layout_mode = 2
 text = "MP:"
+label_settings = SubResource("LabelSettings_ivyir")
+
+[node name="MPValue" type="Label" parent="Status/PanelContainer/VBoxContainer/MPBoxContainer"]
+layout_mode = 2
+text = "0000"
+label_settings = SubResource("LabelSettings_4k122")
 
 [node name="Turn" type="Node2D" parent="."]
 position = Vector2(80, -40)
 
 [node name="PanelContainer" type="PanelContainer" parent="Turn"]
-offset_right = 40.0
+offset_right = 49.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Turn/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Turn/PanelContainer"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 
-[node name="TurnLabel" type="Label" parent="Turn/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Turn/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Turn/PanelContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="Turn/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Turn: "
 label_settings = SubResource("LabelSettings_m3ny1")
+
+[node name="TimeLabel" type="Label" parent="Turn/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Time:"
+label_settings = SubResource("LabelSettings_donbb")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Turn/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Turn/PanelContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TurnIndicatorSprite" type="Sprite2D" parent="Turn/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer2"]
+scale = Vector2(50, 50)
+texture = SubResource("CanvasTexture_6tftr")
