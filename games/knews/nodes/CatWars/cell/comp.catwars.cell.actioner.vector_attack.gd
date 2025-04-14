@@ -13,24 +13,25 @@ func _on_action_input(event: InputEvent):
 		var pressed_direction = _MushMash_Map.InputToDirection[CommonFunctions.get_first_input_event_name(event)]
 		var attack_vector = vector_tray[pressed_direction]
 		print(pressed_direction, attack_vector)
-		for position_: Vector2i in attack_vector:
-			attack_normal(position_)
-		mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[pressed_direction])
-		
-
-	for action in ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept"]:
-		if event.is_action_pressed(action):
-			cell.action_animation_player.play("Rotator")
-			cell.action_animation_player.queue("RESET")
-			mushmash.map.mover._update_all_cells_to_next_position()
-			mushmash.map.reset_idle_animation_of_all_cells()
-			mushmash.map.clear_highlighted_tiles()
-			mushmash.input_handles._reset_selector_control_variables()
-			await cell.action_animation_player.animation_finished
+		if not mushmash.map.mover.is_cell_collision(attack_vector[-1]):
+			for position_: Vector2i in attack_vector:
+				attack_normal(position_)
+			mushmash.map.mover._change_cells_next_position([cell], directional_button_to_position[pressed_direction])
 			
-			mushmash.turner._update_turn_state()
-			cell.handler._reset_handler()
-			cell.handler.finished_input_mode.emit()
+	# for action in ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept"]:
+	# 	if event.is_action_pressed(action):
+	if CommonFunctions.get_first_input_event_name(event) in ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept"]:
+		cell.action_animation_player.play("Rotator")
+		cell.action_animation_player.queue("RESET")
+		mushmash.map.mover._update_all_cells_to_next_position()
+		mushmash.map.reset_idle_animation_of_all_cells()
+		mushmash.map.clear_highlighted_tiles()
+		mushmash.input_handles._reset_selector_control_variables()
+		await cell.action_animation_player.animation_finished
+		
+		mushmash.turner._update_turn_state()
+		cell.handler._reset_handler()
+		cell.handler.finished_input_mode.emit()
 
 func on_action_start():
 	var all_movable_tiles = []
@@ -75,7 +76,7 @@ func attack_normal(position_: Vector2i):
 	mushmash.map.resolve_damage_and_cell_placement()
 
 func _vector_is_movable(movement_vector_: Array):
-	return movement_vector_ != [] && not mushmash.map.mover._is_cell_collision(movement_vector_[-1])
+	return movement_vector_ != [] && not mushmash.map.mover.is_cell_collision(movement_vector_[-1])
 
 
 """

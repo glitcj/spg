@@ -133,7 +133,7 @@ func _is_tilemap_collision(x, y):
 		# Check if the tile has any collision polygons
 	return false
 
-func _is_cell_collision(position_):
+func is_cell_collision(position_):
 	for cell: MushMashCell in mushmash.map.on_map_cells:
 		print(mushmash.map.on_map_cells)
 		print("Cell Position", cell.map_position)
