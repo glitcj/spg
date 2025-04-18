@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpdqupnudty53"]
+
+[ext_resource type="Script" path="res://games/knews/nodes/PokerStories/node.turner.gd" id="1_axhyf"]
+[ext_resource type="Script" path="res://games/knews/nodes/PokerStories/constants.poke.settings.gd" id="2_xyx5m"]
+
+[node name="ActionTimerNode" type="Node2D"]
+script = ExtResource("1_axhyf")
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PokeSettings" type="Node" parent="."]
+script = ExtResource("2_xyx5m")
+
+[connection signal="timeout" from="ActionTimer" to="." method="_on_timer_timeout"]
