@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://cfwswhontylxl"]
 
-[ext_resource type="Script" path="res://games/knews/nodes/stage/node.quiz.stage.gd" id="1_7xm0l"]
+[ext_resource type="Script" path="res://games/Knews/nodes/stage/node.quiz.stage.gd" id="1_7xm0l"]
 [ext_resource type="Script" path="res://games/quiz/nodes/stage/Camera2D.gd" id="1_lv7j7"]
 [ext_resource type="Texture2D" uid="uid://dg0o2pwqjou08" path="res://assets/quiz/sprites/stage/stage.png" id="2_02sfi"]
 [ext_resource type="Texture2D" uid="uid://b4n5wwj2r6tlu" path="res://assets/quiz/sprites/stage/panel_foreground.png" id="3_xr3md"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dr6ok45rfoeo4" path="res://assets/itch.io/parallex/desktop-wallpaper-green-polka-dots-background-for-your-mobile-tablet-explore-polka-dot-pink-polka-dot-gold-polka-dot.jpg" id="8_sbmwd"]
 [ext_resource type="Texture2D" uid="uid://dd2h2n64yuqtb" path="res://assets/knews/3d_cortex.png" id="9_1my0i"]
 [ext_resource type="Texture2D" uid="uid://bbjqogv07eipo" path="res://assets/images/image_6e93b63b-a1d0-4611-afdc-47e21fd7d03f.png" id="10_c07au"]
-[ext_resource type="Script" path="res://games/knews/nodes/stage/sub_viewport.gd" id="10_mmuu4"]
+[ext_resource type="Script" path="res://games/Knews/nodes/stage/sub_viewport.gd" id="10_mmuu4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_c30w2"]
 normal_texture = ExtResource("4_nbtfk")

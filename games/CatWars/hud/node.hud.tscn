@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c53btno4y6072"]
 
-[ext_resource type="Script" path="res://games/knews/nodes/CatWars/hud/node.catwars.hud.gd" id="1_5tlk5"]
+[ext_resource type="Script" path="res://games/CatWars/hud/node.catwars.hud.gd" id="1_5tlk5"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wwdyu"]
 

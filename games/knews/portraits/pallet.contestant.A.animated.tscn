@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://source/portrait/pallet.gd" id="1_r7hgg"]
 [ext_resource type="Texture2D" uid="uid://bxc8i0jcfrgbg" path="res://ignore/deprecated/sprites/1.webp" id="2_uary6"]
 [ext_resource type="Texture2D" uid="uid://5htjfyqusjk6" path="res://ignore/deprecated/sprites/3.jpg" id="3_e78b2"]
-[ext_resource type="Script" path="res://games/knews/portraits/sprite_2d_funcs.gd" id="4_6dfn4"]
+[ext_resource type="Script" path="res://games/Knews/portraits/sprite_2d_funcs.gd" id="4_6dfn4"]
 [ext_resource type="Texture2D" uid="uid://7s4dissoy32f" path="res://assets/quiz/sprites/contestants/character_reference.png" id="5_k78yb"]
 [ext_resource type="Texture2D" uid="uid://hxmoskbk06v6" path="res://assets/knews/knews-contestants.png" id="6_40e2s"]
-[ext_resource type="Script" path="res://games/knews/portraits/animated_sprite_2d_funcs.gd" id="7_mjw1i"]
+[ext_resource type="Script" path="res://games/Knews/portraits/animated_sprite_2d_funcs.gd" id="7_mjw1i"]
 [ext_resource type="AudioStream" uid="uid://b4s8hrh5evkqh" path="res://ignore/deprecated/sprites/jump_10.wav" id="8_p7hps"]
 
 [sub_resource type="Animation" id="Animation_iwrx0"]

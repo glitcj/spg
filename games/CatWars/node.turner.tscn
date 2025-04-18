@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://sfxyhloygidk"]
 
-[ext_resource type="Script" path="res://games/knews/nodes/CatWars/node.turner.gd" id="1_xm8sr"]
-[ext_resource type="Script" path="res://games/knews/nodes/CatWars/mushmash_map_settings.gd" id="2_qm2fn"]
+[ext_resource type="Script" path="res://games/CatWars/node.turner.gd" id="1_xm8sr"]
+[ext_resource type="Script" path="res://games/CatWars/mushmash_map_settings.gd" id="2_qm2fn"]
 
 [node name="ActionTimerNode" type="Node2D"]
 script = ExtResource("1_xm8sr")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=13 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/poker-stories/doom-poker-cards-Sheet.png" id="1_rgbvn"]
-[ext_resource type="Script" path="res://games/knews/nodes/PokerStories/poke.gd" id="1_ucker"]
+[ext_resource type="Script" path="res://games/Poke/poke.gd" id="1_ucker"]
 [ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/poker-stories/doom-poker-face-Sheet.png" id="2_vbdwa"]
+[ext_resource type="PackedScene" uid="uid://cwci02b0iy20o" path="res://games/Poke/nodes/node.poke.face.tscn" id="4_mfd68"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q11y8"]
 atlas = ExtResource("1_rgbvn")
@@ -114,9 +115,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="FaceSprite" type="AnimatedSprite2D" parent="Board/PanelContainer/VBoxContainer/Top/FaceMarginContainer/Control"]
-sprite_frames = SubResource("SpriteFrames_w773w")
-animation = &"faces"
+[node name="Face" parent="Board/PanelContainer/VBoxContainer/Top/FaceMarginContainer/Control" instance=ExtResource("4_mfd68")]
 
 [node name="Field" type="HBoxContainer" parent="Board/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -162,9 +161,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="FaceSprite" type="AnimatedSprite2D" parent="Board/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/Control"]
-sprite_frames = SubResource("SpriteFrames_w773w")
-animation = &"faces"
+[node name="Face" parent="Board/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/Control" instance=ExtResource("4_mfd68")]
 
 [node name="CardsMarginContainer" type="MarginContainer" parent="Board/PanelContainer/VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(50, 50)

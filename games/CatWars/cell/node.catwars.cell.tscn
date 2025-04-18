@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://cs3b4rgs31y4p"]
 
-[ext_resource type="Script" path="res://games/knews/nodes/CatWars/cell/node.catwars.cell.gd" id="1_e4v0u"]
+[ext_resource type="Script" path="res://games/CatWars/cell/node.catwars.cell.gd" id="1_e4v0u"]
 [ext_resource type="Texture2D" uid="uid://dgyj3yvjiwcq5" path="res://assets/knews/dba9d1k-a82d3ba0-d75c-4072-b63e-0eb80f7dcb45.png" id="2_ucgry"]
 [ext_resource type="Texture2D" uid="uid://dxvg4uvldnoil" path="res://assets/itch.io/Ninja Adventure - Asset Pack/Actor/Monsters/Octopus/SpriteSheet.png" id="3_6s0f4"]
 [ext_resource type="Texture2D" uid="uid://d4h3a4b43p1tc" path="res://assets/catwars/スクリーンショット 2025-03-16 16.12.42.png" id="4_cr4dt"]

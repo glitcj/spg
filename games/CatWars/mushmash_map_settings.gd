@@ -7,7 +7,7 @@ var width: int = 5000
 enum CellMovementType {Instant, Linear}
 var cell_movement_type = CellMovementType.Linear
 
-var base_cell_template = preload("res://games/knews/nodes/CatWars/cell/node.catwars.cell.tscn")
+var base_cell_template = preload("res://games/CatWars/cell/node.catwars.cell.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
