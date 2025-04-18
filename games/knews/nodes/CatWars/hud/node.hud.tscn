@@ -31,7 +31,7 @@ font_size = 24
 
 [node name="Hud" type="Node2D"]
 z_index = 100
-position = Vector2(550, 60)
+position = Vector2(550, 65)
 scale = Vector2(1.3, 1.3)
 script = ExtResource("1_5tlk5")
 
@@ -89,37 +89,42 @@ Procedural, Shiren style, multiple cats allowed up to 3."
 label_settings = SubResource("LabelSettings_m3ny1")
 
 [node name="Status" type="Node2D" parent="."]
-position = Vector2(-300, -40)
+position = Vector2(-390, -40)
 
 [node name="PanelContainer" type="PanelContainer" parent="Status"]
+custom_minimum_size = Vector2(300, 80)
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Status/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Status/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Status/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HPBoxContainer" type="HBoxContainer" parent="Status/PanelContainer/VBoxContainer"]
+[node name="HPBoxContainer" type="HBoxContainer" parent="Status/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer/HPBoxContainer"]
+[node name="HPLabel" type="Label" parent="Status/PanelContainer/MarginContainer/VBoxContainer/HPBoxContainer"]
 layout_mode = 2
 text = "HP:"
 label_settings = SubResource("LabelSettings_tgs2v")
 
-[node name="HPValue" type="Label" parent="Status/PanelContainer/VBoxContainer/HPBoxContainer"]
+[node name="HPValue" type="Label" parent="Status/PanelContainer/MarginContainer/VBoxContainer/HPBoxContainer"]
 layout_mode = 2
 text = "0000"
 label_settings = SubResource("LabelSettings_tv814")
 
-[node name="MPBoxContainer" type="HBoxContainer" parent="Status/PanelContainer/VBoxContainer"]
+[node name="MPBoxContainer" type="HBoxContainer" parent="Status/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MPLabel" type="Label" parent="Status/PanelContainer/VBoxContainer/MPBoxContainer"]
+[node name="MPLabel" type="Label" parent="Status/PanelContainer/MarginContainer/VBoxContainer/MPBoxContainer"]
 layout_mode = 2
 text = "MP:"
 label_settings = SubResource("LabelSettings_ivyir")
 
-[node name="MPValue" type="Label" parent="Status/PanelContainer/VBoxContainer/MPBoxContainer"]
+[node name="MPValue" type="Label" parent="Status/PanelContainer/MarginContainer/VBoxContainer/MPBoxContainer"]
 layout_mode = 2
 text = "0000"
 label_settings = SubResource("LabelSettings_4k122")
@@ -137,6 +142,7 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Turn/PanelContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Turn/PanelContainer/HBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(200, 80)

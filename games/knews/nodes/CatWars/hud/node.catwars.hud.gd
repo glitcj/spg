@@ -3,7 +3,7 @@ class_name _Mushmash_HUD
 
 @onready var turn_label := $Turn/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/TurnLabel
 @onready var timer_label := $Turn/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/TimeLabel
-@onready var hp_value_label := $Status/PanelContainer/VBoxContainer/HPBoxContainer/HPValue
+@onready var hp_value_label := $Status/PanelContainer/MarginContainer/VBoxContainer/HPBoxContainer/HPValue
 @onready var mission_label := $Mission/PanelContainer/VBoxContainer/MissionLabel
 @onready var turn_indicator := $Turn/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer2/TurnIndicatorSprite
 @onready var mushmash: _MushMash = get_parent().get_parent()

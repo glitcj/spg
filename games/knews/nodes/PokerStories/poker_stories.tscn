@@ -1,4 +1,62 @@
-[gd_scene format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=10 format=3 uid="uid://bv3klgr035oac"]
+
+[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/poker-stories/doom-poker-cards-Sheet.png" id="1_jqha4"]
+[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/poker-stories/doom-poker-face-Sheet.png" id="2_0pvxg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q11y8"]
+atlas = ExtResource("1_jqha4")
+region = Rect2(0, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jqjd"]
+atlas = ExtResource("1_jqha4")
+region = Rect2(35, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sodam"]
+atlas = ExtResource("1_jqha4")
+region = Rect2(70, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvsqw"]
+atlas = ExtResource("1_jqha4")
+region = Rect2(105, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hma62"]
+atlas = ExtResource("2_0pvxg")
+region = Rect2(0, 0, 58, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aa0u"]
+atlas = ExtResource("2_0pvxg")
+region = Rect2(58, 0, 58, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w773w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q11y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jqjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sodam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvsqw")
+}],
+"loop": true,
+"name": &"cards",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hma62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aa0u")
+}],
+"loop": true,
+"name": &"faces",
+"speed": 5.0
+}]
 
 [node name="PokerStories" type="Node2D"]
 
@@ -25,6 +83,40 @@ layout_mode = 2
 [node name="Hud" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
 layout_mode = 2
 text = "Hud"
+
+[node name="PanelContainer" type="PanelContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer2/CenterContainer"]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"faces"
+
+[node name="MarginContainer" type="MarginContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer/Control"]
+position = Vector2(0.25, 0)
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
 
 [node name="Cards" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
 layout_mode = 2
@@ -65,3 +157,5 @@ layout_mode = 2
 text = "Hud"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(245, 150)
+zoom = Vector2(2, 2)
