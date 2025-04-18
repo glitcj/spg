@@ -61,101 +61,132 @@ animations = [{
 [node name="PokerStories" type="Node2D"]
 
 [node name="Screen" type="Node2D" parent="."]
-scale = Vector2(4, 4)
+position = Vector2(-355, -355)
+scale = Vector2(4.5, 4.5)
 
-[node name="Control" type="Control" parent="Screen"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PanelContainer" type="PanelContainer" parent="Screen"]
+offset_right = 158.0
+offset_bottom = 158.0
 
-[node name="PanelContainer" type="PanelContainer" parent="Screen/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Screen/Control/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen/PanelContainer"]
 layout_mode = 2
 
-[node name="Top" type="HBoxContainer" parent="Screen/Control/PanelContainer/VBoxContainer"]
+[node name="Top" type="HBoxContainer" parent="Screen/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Hud" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
-layout_mode = 2
-text = "Hud"
-
-[node name="PanelContainer" type="PanelContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="MarginContainer2" type="MarginContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
+[node name="CoinsMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="Screen/PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CardSprite" type="AnimatedSprite2D" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer2/CenterContainer"]
-position = Vector2(0, 1)
+[node name="CoinsSprite" type="AnimatedSprite2D" parent="Screen/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer"]
 sprite_frames = SubResource("SpriteFrames_w773w")
-animation = &"faces"
+animation = &"cards"
+frame = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
+[node name="CardsMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Screen/PanelContainer/VBoxContainer/Top/CardsMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CardSprite" type="AnimatedSprite2D" parent="Screen/Control/PanelContainer/VBoxContainer/Top/MarginContainer/Control"]
-position = Vector2(0.25, 0)
+[node name="CardSprite" type="AnimatedSprite2D" parent="Screen/PanelContainer/VBoxContainer/Top/CardsMarginContainer/CenterContainer"]
 sprite_frames = SubResource("SpriteFrames_w773w")
 animation = &"cards"
 
-[node name="Cards" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
-layout_mode = 2
-text = "Cards"
-
-[node name="Face" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Top"]
-layout_mode = 2
-text = "Face"
-
-[node name="Middle" type="HBoxContainer" parent="Screen/Control/PanelContainer/VBoxContainer"]
+[node name="FaceMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Top"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="None" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Middle"]
+[node name="Control" type="Control" parent="Screen/PanelContainer/VBoxContainer/Top/FaceMarginContainer"]
 layout_mode = 2
-text = "        "
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Field" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Middle"]
-layout_mode = 2
-text = "Field"
+[node name="FaceSprite" type="AnimatedSprite2D" parent="Screen/PanelContainer/VBoxContainer/Top/FaceMarginContainer/Control"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"faces"
 
-[node name="None2" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Middle"]
-layout_mode = 2
-text = "        "
-
-[node name="Bottom" type="HBoxContainer" parent="Screen/Control/PanelContainer/VBoxContainer"]
+[node name="Field" type="HBoxContainer" parent="Screen/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Face" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Bottom"]
+[node name="BlankMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Field"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Face"
 
-[node name="Cards" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Bottom"]
+[node name="CenterContainer" type="CenterContainer" parent="Screen/PanelContainer/VBoxContainer/Field/BlankMarginContainer"]
 layout_mode = 2
-text = "Cards"
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Hud" type="Label" parent="Screen/Control/PanelContainer/VBoxContainer/Bottom"]
+[node name="CardsMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Field"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Hud"
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/PanelContainer/VBoxContainer/Field/CardsMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="Screen/PanelContainer/VBoxContainer/Field/CardsMarginContainer/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+
+[node name="BlankMarginContainer2" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Field"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/PanelContainer/VBoxContainer/Field/BlankMarginContainer2"]
+layout_mode = 2
+
+[node name="Bottom" type="HBoxContainer" parent="Screen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FaceMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Screen/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="FaceSprite" type="AnimatedSprite2D" parent="Screen/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/Control"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"faces"
+
+[node name="CardsMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="Screen/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+
+[node name="CoinsMarginContainer" type="MarginContainer" parent="Screen/PanelContainer/VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CoinsSprite" type="AnimatedSprite2D" parent="Screen/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(245, 150)
-zoom = Vector2(2, 2)
