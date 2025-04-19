@@ -5,7 +5,6 @@ var cells_selector_position_x = 0
 var cells_selector_position_y = 0
 var cells_selected = false
 
-
 enum InputModes {Inactive, SelectCell, MoveMovableCells}
 signal finished_input_mode
 
@@ -25,7 +24,6 @@ func _process(delta: float) -> void:
 
 
 func handle_inputs(event):
-	pass
 	if mode == InputModes.Inactive:
 		return
 	elif mode == InputModes.SelectCell:

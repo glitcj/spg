@@ -56,7 +56,7 @@ func _get_uuid(x, y):
 	return map.uuid_map[y * constants.height + x]
 
 func _input(event):
-	$InputHandles.handle_inputs(event)
+	input_handles.handle_inputs(event)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
