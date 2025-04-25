@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bj4gwlna6b7q8"]
+[gd_scene load_steps=12 format=3 uid="uid://bj4gwlna6b7q8"]
 
 [ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/poker-stories/doom-poker-cards-Sheet.png" id="1_4a8ih"]
+[ext_resource type="Script" path="res://games/Poke/nodes/board/node.doomer.board.gd" id="1_n8eav"]
 [ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/poker-stories/doom-poker-face-Sheet.png" id="2_p8typ"]
 [ext_resource type="PackedScene" uid="uid://cwci02b0iy20o" path="res://games/Poke/nodes/portrait/node.poke.face.tscn" id="3_vly01"]
 
@@ -62,6 +63,7 @@ animations = [{
 [node name="Board" type="Node2D"]
 position = Vector2(-355, -400)
 scale = Vector2(4.5, 4.5)
+script = ExtResource("1_n8eav")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 158.0
@@ -100,28 +102,33 @@ size_flags_vertical = 4
 sprite_frames = SubResource("SpriteFrames_w773w")
 animation = &"cards"
 
+[node name="CardsMarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer2/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+
 [node name="FaceMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/Top/FaceMarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/FaceMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="OpponentPortrait" parent="PanelContainer/VBoxContainer/Top/FaceMarginContainer/Control" instance=ExtResource("3_vly01")]
+[node name="OpponentPortrait" parent="PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer" instance=ExtResource("3_vly01")]
 
 [node name="Field" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="BlankMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field/BlankMarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="CardsMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
 custom_minimum_size = Vector2(50, 50)
@@ -136,12 +143,57 @@ size_flags_vertical = 4
 sprite_frames = SubResource("SpriteFrames_w773w")
 animation = &"cards"
 
-[node name="BlankMarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
+[node name="CardsMarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field/BlankMarginContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer2"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer2/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+
+[node name="CardsMarginContainer3" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer3/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+
+[node name="CardsMarginContainer4" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer4/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+
+[node name="CardsMarginContainer5" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer5/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
 
 [node name="Bottom" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -149,13 +201,14 @@ layout_mode = 2
 [node name="FaceMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/Bottom/FaceMarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Bottom/FaceMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PlayerPortrait" parent="PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/Control" instance=ExtResource("3_vly01")]
+[node name="PlayerPortrait" parent="PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer" instance=ExtResource("3_vly01")]
 
 [node name="CardsMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(50, 50)
@@ -167,6 +220,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="CardSprite" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+
+[node name="CardsMarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardSprite" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer2/CenterContainer"]
 sprite_frames = SubResource("SpriteFrames_w773w")
 animation = &"cards"
 

@@ -48,8 +48,8 @@ func _handle_betting_action(event):
 	finished_input_mode.emit()
 
 func _on_call_action():
-	poke.player_portrait.animation_player.play("Happy")
-	poke.player_portrait.animation_player.queue("RESET")
+	poke.board.player_portrait.animation_player.play("Happy")
+	poke.board.player_portrait.animation_player.queue("RESET")
 	
 
 func _on_fold_action():

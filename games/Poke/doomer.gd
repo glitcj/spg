@@ -2,10 +2,12 @@ extends Node
 class_name _Poke
 
 
-@onready var player_portrait : _Poke_Portrait = $Board/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/Control/PlayerPortrait
-@onready var opponent_portrait : _Poke_Portrait = $Board/PanelContainer/VBoxContainer/Top/FaceMarginContainer/Control/OpponentPortrait
-@onready var handler : _Poke_Handler = $Handler
 
+@onready var handler : _Poke_Handler = $Handler
+@onready var hud : _Doomer_HUD = $HUD
+@onready var board : _Doomer_Board = $Board
+@onready var player_portrait : _Poke_Portrait = board.player_portrait
+@onready var opponent_portrait : _Poke_Portrait = board.opponent_portrait
 
 func _input(event):
 	handler.handle_inputs(event)
