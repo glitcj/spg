@@ -1,20 +1,7 @@
 extends Node2D
-class_name _Doomer_Card
+class_name _Poke_Portrait
 
 @onready var animation_player := $AnimationPlayer
-
-enum CardType {Ace, Two, Three, Queen, King}
-static var CardTypeValue := {
-	CardType.Ace: 1,
-	CardType.Two: 2,
-	CardType.Three: 3
-} 
-
-func flip_down():
-	pass
-
-func flip_up():
-	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
