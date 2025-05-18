@@ -2,6 +2,7 @@ extends Scene
 
 # The option "Debug" redirects to CurrentlyDebugging
 # var CurrentlyDebugging: String = "res://games/quiz/scenes/scene.quiz.title.gd"
+# res://games/CatWars/mushmash.tscn
 var CurrentlyDebugging: String = "res://games/knews/scenes/scene.knews.introduction.gd"
 
 enum Tags {DebugGame, Knews, QuizShow, StandUp, Reference, MainSelectable, GameSelectSelectable}

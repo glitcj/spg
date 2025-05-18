@@ -1,0 +1,187 @@
+[gd_scene load_steps=15 format=3 uid="uid://cwci02b0iy20o"]
+
+[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="1_10c85"]
+[ext_resource type="Script" path="res://games/Doomer/nodes/portrait/node.poke.portrait.gd" id="1_whm2p"]
+[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="2_7lsag"]
+
+[sub_resource type="Animation" id="Animation_e5n3e"]
+resource_name = "Happy"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"faces"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FaceSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FaceSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xtpg3"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FaceSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"faces"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FaceSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c4p61"]
+resource_name = "Shocked"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FaceSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"faces"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eiu11"]
+_data = {
+"Happy": SubResource("Animation_e5n3e"),
+"RESET": SubResource("Animation_xtpg3"),
+"Shocked": SubResource("Animation_c4p61")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q11y8"]
+atlas = ExtResource("1_10c85")
+region = Rect2(0, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jqjd"]
+atlas = ExtResource("1_10c85")
+region = Rect2(35, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sodam"]
+atlas = ExtResource("1_10c85")
+region = Rect2(70, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvsqw"]
+atlas = ExtResource("1_10c85")
+region = Rect2(105, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hma62"]
+atlas = ExtResource("2_7lsag")
+region = Rect2(0, 0, 58, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aa0u"]
+atlas = ExtResource("2_7lsag")
+region = Rect2(58, 0, 58, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djf6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q11y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jqjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sodam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvsqw")
+}],
+"loop": true,
+"name": &"cards",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hma62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aa0u")
+}],
+"loop": true,
+"name": &"faces",
+"speed": 5.0
+}]
+
+[node name="Portrait" type="Node2D"]
+script = ExtResource("1_whm2p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eiu11")
+}
+autoplay = "RESET"
+
+[node name="FaceSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_djf6f")
+animation = &"faces"

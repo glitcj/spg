@@ -1,9 +1,14 @@
 extends Node2D
+# extends Resource
 class_name EventBase
 
 signal finished_running_event_short
 
 var is_generated: bool = false
+
+
+enum EventType {MessageBox, FadeIn, FadeOut, Lambda, EventQueue}
+var type: EventType
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
