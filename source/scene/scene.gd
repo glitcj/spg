@@ -72,6 +72,7 @@ func _pop_global_queue():
 		print("Popped event: %s" % item._event_type())
 		if item is EventBase:
 			add_child(item)
+			# add_child(item.new())
 			item.run_and_emit_for_await()
 
 func _update_console():

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="_Doomer_Character" load_steps=3 format=3 uid="uid://cnqx0dcxacpkx"]
+
+[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.gd" id="1_08sal"]
+[ext_resource type="Script" path="res://games/Doomer/resources/resource.doomer.character.gd" id="1_w4jvp"]
+
+[resource]
+script = ExtResource("1_w4jvp")
+face_sprite_sheet = ""
+character_name = ""
+description = ""
+game_start_one_liners = Array[String](["Yes"])
+game_start_event_queue = Array[ExtResource("1_08sal")]([null])

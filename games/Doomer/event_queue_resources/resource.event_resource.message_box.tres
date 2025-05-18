@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="_Doomer_EventResource_MessageBox" load_steps=2 format=3 uid="uid://bex4lgd7h0yrh"]
+
+[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.message_box.gd" id="1_b2o60"]
+
+[resource]
+script = ExtResource("1_b2o60")
+Messages = Array[String](["said msg1", "msg2"])
+function_to_call = Callable()
+type = 0

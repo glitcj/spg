@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameOfLife"
-run/main_scene="res://games/CatWars/mushmash.tscn"
+run/main_scene="res://games/Doomer/doomer.tscn"
 config/features=PackedStringArray("4.3")
 
 [autoload]
@@ -37,6 +37,7 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://games/Doomer/": "blue",
 "res://games/Knews/": "green",
 "res://games/quiz/": "orange",
 "res://games/reference/": "yellow",
