@@ -69,5 +69,8 @@ size_flags_vertical = 4
 [node name="TurnLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "Turner"
+text = "Turner Turner Turner Turner "
 label_settings = SubResource("LabelSettings_68c6q")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2

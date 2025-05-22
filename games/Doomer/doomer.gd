@@ -8,8 +8,6 @@ class_name _Doomer
 @onready var board : _Doomer_Board = $Board
 @onready var logic : _Doomer_Logic = $Logic
 @onready var actions : _Doomer_Actions = $Actions
-# @onready var player_portrait : _Doomer_Portrait = board.player_portrait
-# @onready var opponent_portrait : _Doomer_Portrait = board.opponent_portrait
 
 @onready var player : _Doomer_Opponent = $Opponents/Player
 @onready var opponents : Array[_Doomer_Opponent] = [$Opponents/Player, $"Opponents/Opponent-A"]
