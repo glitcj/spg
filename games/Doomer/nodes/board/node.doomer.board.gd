@@ -4,8 +4,20 @@ class_name _Doomer_Board
 @export var player : _Doomer_Opponent
 @export var opponent_A : _Doomer_Opponent
 
-@onready var player_portrait : _Doomer_Portrait = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer/PlayerPortrait
-@onready var opponent_portrait : _Doomer_Portrait = $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer/OpponentPortrait
+
+@onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
+@onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
+
+
+@onready var player_hand_containers  =  [
+	$"PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer",
+	$"PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer"
+]
+@onready var opponent_hand_containers = [
+	$"PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer",
+	$"PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer"
+]
+
 
 @onready var field_cards : Array[_Doomer_Card] = [
 	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer/Card-1",
@@ -17,17 +29,20 @@ class_name _Doomer_Board
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# player_portrait = player.portrait
-	# opponent_portrait = opponent_A.portrait
-	
-	
 	$PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer.add_child(player.portrait)
 	$PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer.add_child(opponent_A.portrait)
-	# $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer/PlayerPortrait = player.portrait
-	# $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer/OpponentPortrait = opponent_A.portrait
-
 	
+	
+	for i in range(len(player.hand)):
+		player_hand_containers[i].add_child(player.hand[i])
+		opponent_hand_containers[i].add_child(opponent_A.hand[i])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+		pass
+
+func flip_next_field_card():
+	for card : _Doomer_Card in field_cards:
+		if card.state == _Doomer_Card.CardState.FacingDown:
+			card.flip_up()
+			break

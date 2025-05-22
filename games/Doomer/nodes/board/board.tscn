@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bj4gwlna6b7q8"]
+[gd_scene load_steps=14 format=3 uid="uid://bj4gwlna6b7q8"]
 
 [ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="1_4a8ih"]
 [ext_resource type="Script" path="res://games/Doomer/nodes/board/node.doomer.board.gd" id="1_n8eav"]
@@ -62,6 +62,8 @@ animations = [{
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6gxjy"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_x5hh2"]
+
 [node name="Board" type="Node2D"]
 position = Vector2(-355, -400)
 scale = Vector2(4.5, 4.5)
@@ -101,6 +103,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer" instance=ExtResource("5_6bncd")]
+visible = false
 
 [node name="CardsMarginContainer-2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)
@@ -112,6 +115,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer" instance=ExtResource("5_6bncd")]
+visible = false
 
 [node name="FaceMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)
@@ -211,7 +215,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Dummy" type="Sprite2D" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer"]
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_6gxjy")
 
 [node name="CardsMarginContainer-2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(50, 50)
@@ -222,7 +228,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Dummy" type="Sprite2D" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer"]
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_x5hh2")
 
 [node name="CoinsMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(50, 50)
