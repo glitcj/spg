@@ -85,6 +85,10 @@ func _update_hud():
 		doomer.hud.turn_label.text = "Turn: Idle" # % [TurnStates.keys()[current_turn_state]]
 	elif current_turn_state in [TurnStates.OponnentTurn]:
 		doomer.hud.turn_label.text = "Turn: %s" % [next_opponent._name]
+	else:
+		doomer.hud.turn_label.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
+	
+
 	
 func _on_player_turn_start():
 	doomer.handler.mode = doomer.handler.InputMode.FoldOrCall

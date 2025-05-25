@@ -1,32 +1,32 @@
-[gd_scene load_steps=14 format=3 uid="uid://bj4gwlna6b7q8"]
+[gd_scene load_steps=14 format=3 uid="uid://d1jedffaf2njn"]
 
-[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="1_4a8ih"]
-[ext_resource type="Script" path="res://games/Doomer/nodes/board/node.doomer.board.gd" id="1_n8eav"]
-[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="2_p8typ"]
-[ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="5_6bncd"]
+[ext_resource type="Script" path="res://games/Doomer/nodes/board/node.doomer.board.gd" id="1_0xtq7"]
+[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="2_v1rll"]
+[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="3_mcru7"]
+[ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="4_ckroy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q11y8"]
-atlas = ExtResource("1_4a8ih")
+atlas = ExtResource("2_v1rll")
 region = Rect2(0, 0, 35, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jqjd"]
-atlas = ExtResource("1_4a8ih")
+atlas = ExtResource("2_v1rll")
 region = Rect2(35, 0, 35, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sodam"]
-atlas = ExtResource("1_4a8ih")
+atlas = ExtResource("2_v1rll")
 region = Rect2(70, 0, 35, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvsqw"]
-atlas = ExtResource("1_4a8ih")
+atlas = ExtResource("2_v1rll")
 region = Rect2(105, 0, 35, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hma62"]
-atlas = ExtResource("2_p8typ")
+atlas = ExtResource("3_mcru7")
 region = Rect2(0, 0, 58, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3aa0u"]
-atlas = ExtResource("2_p8typ")
+atlas = ExtResource("3_mcru7")
 region = Rect2(58, 0, 58, 69)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w773w"]
@@ -67,7 +67,7 @@ animations = [{
 [node name="Board" type="Node2D"]
 position = Vector2(-355, -400)
 scale = Vector2(4.5, 4.5)
-script = ExtResource("1_n8eav")
+script = ExtResource("1_0xtq7")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 158.0
@@ -82,14 +82,91 @@ layout_mode = 2
 [node name="CoinsMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CoinsSprite4" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 2.0
+columns = 2
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="CoinsSprite2" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/Control"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+frame = 3
+
+[node name="Control2" type="Control" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="CoinsSprite3" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/Control2"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+frame = 3
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+color = Color(1, 0.227451, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/ColorRect3"]
+layout_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CoinsSprite4" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/ColorRect3/CenterContainer2"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+frame = 3
+
+[node name="ColorRect4" type="ColorRect" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CoinsSprite4" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/MarginContainer/CenterContainer"]
+sprite_frames = SubResource("SpriteFrames_w773w")
+animation = &"cards"
+frame = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CoinsSprite4" type="AnimatedSprite2D" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer/GridContainer/MarginContainer2/CenterContainer"]
 sprite_frames = SubResource("SpriteFrames_w773w")
 animation = &"cards"
 frame = 3
@@ -103,7 +180,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer" instance=ExtResource("4_ckroy")]
 visible = false
 
 [node name="CardsMarginContainer-2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
@@ -115,7 +192,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer" instance=ExtResource("4_ckroy")]
 visible = false
 
 [node name="FaceMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
@@ -144,7 +221,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card-1" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Card-1" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer" instance=ExtResource("4_ckroy")]
 
 [node name="CardsMarginContainer-2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
 custom_minimum_size = Vector2(50, 50)
@@ -155,7 +232,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card-2" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-2/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Card-2" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-2/CenterContainer" instance=ExtResource("4_ckroy")]
 
 [node name="CardsMarginContainer-3" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
 custom_minimum_size = Vector2(50, 50)
@@ -166,7 +243,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card-3" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-3/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Card-3" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-3/CenterContainer" instance=ExtResource("4_ckroy")]
 
 [node name="CardsMarginContainer-4" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
 custom_minimum_size = Vector2(50, 50)
@@ -177,7 +254,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card-4" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-4/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Card-4" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-4/CenterContainer" instance=ExtResource("4_ckroy")]
 
 [node name="CardsMarginContainer-5" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field"]
 custom_minimum_size = Vector2(50, 50)
@@ -188,7 +265,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card-5" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer" instance=ExtResource("5_6bncd")]
+[node name="Card-5" parent="PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer" instance=ExtResource("4_ckroy")]
 
 [node name="Bottom" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -236,7 +313,6 @@ texture = SubResource("CanvasTexture_x5hh2")
 [node name="CoinsMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer"]
 layout_mode = 2

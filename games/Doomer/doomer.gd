@@ -2,10 +2,10 @@ extends Node
 class_name _Doomer
 
 @onready var handler : _Doomer_Handler = $Handler
-@onready var hud : _Doomer_HUD = $HUD
+@onready var hud : _Doomer_HUD = $Control/VBoxContainer/HUD
 @onready var turner : _Doomer_Turner = $Turner
 
-@onready var board : _Doomer_Board = $Board
+@onready var board : _Doomer_Board = $Control/VBoxContainer/Board
 @onready var logic : _Doomer_Logic = $Logic
 @onready var actions : _Doomer_Actions = $Actions
 

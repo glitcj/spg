@@ -29,14 +29,14 @@ class_name _Doomer_Board
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer.add_child(player.portrait)
-	$PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer.add_child(opponent_A.portrait)
+	player_portrait_container.add_child(player.portrait)
+	opponent_portrait_container.add_child(opponent_A.portrait)
 	
 	
 	for i in range(len(player.hand)):
 		player_hand_containers[i].add_child(player.hand[i])
 		opponent_hand_containers[i].add_child(opponent_A.hand[i])
-
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 		pass

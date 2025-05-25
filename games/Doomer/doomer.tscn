@@ -38,17 +38,29 @@ _name = "Opponent A"
 script = ExtResource("5_rb180")
 _name = "Opponent B"
 
-[node name="Board" parent="." node_paths=PackedStringArray("player", "opponent_A") instance=ExtResource("3_cp4er")]
-position = Vector2(-539, -443)
-scale = Vector2(4, 4)
-player = NodePath("../Opponents/Player")
-opponent_A = NodePath("../Opponents/Opponent-A")
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -217.0
+offset_top = -103.0
+offset_right = -217.0
+offset_bottom = -103.0
+scale = Vector2(0.9, 0.9)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Board" parent="Control/VBoxContainer" node_paths=PackedStringArray("player", "opponent_A") instance=ExtResource("3_cp4er")]
+player = NodePath("../../../Opponents/Player")
+opponent_A = NodePath("../../../Opponents/Opponent-A")
+
+[node name="HUD" parent="Control/VBoxContainer" instance=ExtResource("5_e5fcw")]
+position = Vector2(-350, 350)
+scale = Vector2(6, 6)
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
-
-[node name="HUD" parent="." instance=ExtResource("5_e5fcw")]
-position = Vector2(-269, 226)
-scale = Vector2(6, 6)
 
 [node name="BGSprite" type="Sprite2D" parent="."]
 visible = false
