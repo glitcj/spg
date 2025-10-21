@@ -1,8 +1,8 @@
 extends Node2D
 class_name _Doomer_HUD
 
-@onready var turn_indicator = $PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer/CenterContainer/TurnIndicatorSprite
-@onready var turn_label = $PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer/TurnLabel
+@onready var turn_indicator = $PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer4/CenterContainer/TurnIndicatorSprite
+@onready var turn_label = $PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer/Panel/MarginContainer/TurnLabel
 
 @onready var tug_of_doom_indicator = $PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/CenterContainer/TugIndicatorSprite
 var tug_of_doom_max_position = Vector2(20, 0)

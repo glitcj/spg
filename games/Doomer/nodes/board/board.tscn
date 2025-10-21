@@ -103,8 +103,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer" instance=ExtResource("5_6bncd")]
-visible = false
+[node name="Dummy" type="Sprite2D" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer"]
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_6gxjy")
 
 [node name="CardsMarginContainer-2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)
@@ -115,8 +116,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer" instance=ExtResource("5_6bncd")]
-visible = false
+[node name="Dummy" type="Sprite2D" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer"]
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_6gxjy")
 
 [node name="FaceMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
 custom_minimum_size = Vector2(50, 50)

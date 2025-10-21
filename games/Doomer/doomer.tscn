@@ -58,7 +58,7 @@ opponent_A = NodePath("../../../Opponents/Opponent-A")
 
 [node name="HUD" parent="Control/VBoxContainer" instance=ExtResource("5_e5fcw")]
 position = Vector2(-350, 350)
-scale = Vector2(6, 6)
+scale = Vector2(5, 5)
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
 
