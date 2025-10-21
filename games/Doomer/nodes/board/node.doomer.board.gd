@@ -4,10 +4,8 @@ class_name _Doomer_Board
 @export var player : _Doomer_Opponent
 @export var opponent_A : _Doomer_Opponent
 
-
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
-
 
 @onready var player_hand_containers  =  [
 	$"PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer",
@@ -17,7 +15,6 @@ class_name _Doomer_Board
 	$"PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer",
 	$"PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer"
 ]
-
 
 @onready var field_cards : Array[_Doomer_Card] = [
 	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer/Card-1",

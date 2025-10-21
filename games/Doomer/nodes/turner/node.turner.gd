@@ -48,7 +48,6 @@ func initialise_turn_queue():
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_timer_timeout() -> void:
 	_update_turn_state()
 
