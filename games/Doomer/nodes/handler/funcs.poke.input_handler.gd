@@ -49,13 +49,16 @@ func _handle_betting_action(event):
 
 func _on_call_action():
 	doomer.player.call_hand()
-	doomer.turner._update_turn_state()
-	pass
+	
+	var wait_time = doomer.turner.turner_timer.wait_time/8
+	print(wait_time)
+	if wait_time < doomer.turner.turner_timer.time_left:
+		await get_tree().create_timer(wait_time).timeout
+		doomer.turner._update_turn_state()
 	
 
 func _on_fold_action():
 	doomer.player.call_hand()
-	# doomer.turner._update_turn_state()
 	pass
 
 

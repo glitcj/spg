@@ -2,7 +2,7 @@ extends Node2D
 class_name _Doomer_Turner
 
 signal turner_timer_timeout
-@onready var turner_timer = $ActionTimer
+@onready var turner_timer: Timer = $ActionTimer
 @onready var doomer: _Doomer = get_parent()
 
 var cells_to_move_are_selectable = false
@@ -11,7 +11,7 @@ enum TurnStates {IdleBeforeOpponent, OponnentTurn, StartGame, EndGame}
 var one_off_turn_states = [TurnStates.StartGame, TurnStates.EndGame]
 
 var turn_state_time_durations := {
-	TurnStates.IdleBeforeOpponent: 5,
+	TurnStates.IdleBeforeOpponent: 2,
 	TurnStates.OponnentTurn: 5,
 	TurnStates.StartGame: 2,
 	TurnStates.EndGame: 2,

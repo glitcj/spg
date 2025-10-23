@@ -26,7 +26,7 @@ func call_hand():
 
 func show_cards_in_hand():
 	for card : _Doomer_Card in hand:
-		card.flip_up()
+		await card.flip_up()
 	
 func fold_hand():
 	pass

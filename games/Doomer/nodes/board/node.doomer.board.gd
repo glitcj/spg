@@ -40,5 +40,5 @@ func _process(delta: float) -> void:
 func flip_next_field_card():
 	for card : _Doomer_Card in field_cards:
 		if card.state == _Doomer_Card.CardState.FacingDown:
-			card.flip_up()
+			await card.flip_up()
 			break

@@ -37,10 +37,24 @@ var suite: CardSuite = CardSuite.Diamond
 var state: CardState = CardState.FacingDown
 
 func flip_down():
-	state = CardState.FacingDown
+	# state = CardState.FacingDown
+	animation_player.play("FlipDown")
+	await animation_player.animation_finished
 
 func flip_up():
+	"""
+	animation_player.play("FlipOut")
+	await animation_player.animation_finished
 	state = CardState.FacingUp
+	animation_player.play("FlipIn")
+	await animation_player.animation_finished
+	"""
+	animation_player.play("FlipUp")
+	await animation_player.animation_finished
+	
+func _change_card_state(state_: CardState):
+	state = state_
+	
 
 func change_state(state_ : CardState):
 	state = state_
