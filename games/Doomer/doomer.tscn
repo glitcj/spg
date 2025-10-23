@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://bv3klgr035oac"]
 
-[ext_resource type="Script" path="res://games/Doomer/doomer.gd" id="1_dj6c1"]
-[ext_resource type="Script" path="res://games/Doomer/nodes/handler/funcs.poke.input_handler.gd" id="2_yud1a"]
-[ext_resource type="Script" path="res://games/Doomer/funcs/funcs.logic.doomer.gd" id="3_0kyin"]
+[ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_dj6c1"]
+[ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://games/Doomer/nodes/handler/funcs.poke.input_handler.gd" id="2_yud1a"]
+[ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://games/Doomer/funcs/funcs.logic.doomer.gd" id="3_0kyin"]
 [ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://games/Doomer/nodes/board/board.tscn" id="3_cp4er"]
-[ext_resource type="Script" path="res://games/Doomer/funcs/funcs.actions.doomer.gd" id="4_m0ft8"]
+[ext_resource type="Script" uid="uid://btjrv4k5gnbdf" path="res://games/Doomer/funcs/funcs.actions.doomer.gd" id="4_m0ft8"]
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://games/Doomer/nodes/turner/node.turner.tscn" id="4_w1tet"]
 [ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/board/node.doomer.hud.tscn" id="5_e5fcw"]
-[ext_resource type="Script" path="res://games/Doomer/nodes/opponent/node.doomer.opponent.gd" id="5_rb180"]
+[ext_resource type="Script" uid="uid://beqqp67u4n3by" path="res://games/Doomer/nodes/opponent/node.doomer.opponent.gd" id="5_rb180"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_sekkk"]
 
@@ -30,13 +30,8 @@ script = ExtResource("5_rb180")
 _name = "Player"
 is_playable = true
 
-[node name="Opponent-A" type="Node" parent="Opponents"]
+[node name="Enemy" type="Node" parent="Opponents"]
 script = ExtResource("5_rb180")
-_name = "Opponent A"
-
-[node name="Opponent-B" type="Node" parent="Opponents"]
-script = ExtResource("5_rb180")
-_name = "Opponent B"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -52,12 +47,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Board" parent="Control/VBoxContainer" node_paths=PackedStringArray("player", "opponent_A") instance=ExtResource("3_cp4er")]
+[node name="Board" parent="Control/VBoxContainer" node_paths=PackedStringArray("player", "opponent") instance=ExtResource("3_cp4er")]
 player = NodePath("../../../Opponents/Player")
-opponent_A = NodePath("../../../Opponents/Opponent-A")
+opponent = NodePath("../../../Opponents/Enemy")
 
 [node name="HUD" parent="Control/VBoxContainer" instance=ExtResource("5_e5fcw")]
-position = Vector2(-350, 350)
+position = Vector2(-450, 350)
 scale = Vector2(5, 5)
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
@@ -70,3 +65,4 @@ scale = Vector2(2000, 2000)
 texture = SubResource("CanvasTexture_sekkk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 1)

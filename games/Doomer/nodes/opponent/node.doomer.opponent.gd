@@ -1,5 +1,5 @@
 extends Node
-class_name _Doomer_Opponent
+class_name _Doomer_Enemy
 
 var portrait_tscn = preload("res://games/Doomer/nodes/portrait/node.poke.face.tscn")
 var card_tscn = preload("res://games/Doomer/nodes/card/node.doomer.card.tscn")

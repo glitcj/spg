@@ -48,16 +48,15 @@ func _handle_betting_action(event):
 	finished_input_mode.emit()
 
 func _on_call_action():
-	# doomer.board.player_portrait.animation_player.play("Happy")
-	# doomer.board.player_portrait.animation_player.queue("RESET")
 	doomer.player.call_hand()
 	doomer.turner._update_turn_state()
+	pass
 	
 
 func _on_fold_action():
-	# doomer.opponent_portrait.animation_player.play("Happy")
-	# doomer.opponent_portrait.animation_player.queue("RESET")
-	doomer.turner._update_turn_state()
+	doomer.player.call_hand()
+	# doomer.turner._update_turn_state()
+	pass
 
 
 func _reset():
