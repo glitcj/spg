@@ -9,9 +9,8 @@ class_name _Doomer
 @onready var logic : _Doomer_Logic = $Logic
 @onready var actions : _Doomer_Actions = $Actions
 
-@onready var player : _Doomer_Opponent = $Opponents/Player
-@onready var opponents : Array[_Doomer_Opponent] = [$Opponents/Player, $"Opponents/Opponent-A"]
-# @onready var enemies : Array[_Doomer_Opponent] = [$"Opponents/Opponent-A"]
+@onready var player : _Doomer_Enemy = $Opponents/Player
+@onready var opponents : Array[_Doomer_Enemy] = [$Opponents/Player, $"Opponents/Enemy"]
 
 
 func _input(event):

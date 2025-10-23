@@ -7,13 +7,11 @@ signal turner_timer_timeout
 
 var cells_to_move_are_selectable = false
 
-enum TurnStates {IdleBeforePlayer, PlayerTurn, IdleBeforeOpponent, OponnentTurn, StartGame, EndGame}
+enum TurnStates {IdleBeforeOpponent, OponnentTurn, StartGame, EndGame}
 var one_off_turn_states = [TurnStates.StartGame, TurnStates.EndGame]
 
 var turn_state_time_durations := {
-	TurnStates.IdleBeforePlayer: .05,
-	TurnStates.PlayerTurn: 5,
-	TurnStates.IdleBeforeOpponent: 1,
+	TurnStates.IdleBeforeOpponent: 5,
 	TurnStates.OponnentTurn: 5,
 	TurnStates.StartGame: 2,
 	TurnStates.EndGame: 2,
@@ -22,8 +20,6 @@ var turn_state_time_durations := {
 var turn_state_colours := {
 	TurnStates.IdleBeforeOpponent: Color(1,0,0),
 	TurnStates.OponnentTurn: Color(0,1,0),
-	TurnStates.IdleBeforePlayer: Color(0,1,1),
-	TurnStates.PlayerTurn: Color(0,0,1),
 	TurnStates.StartGame: Color(0,0,1),
 	TurnStates.EndGame: Color(0,0,1),
 }
@@ -32,9 +28,9 @@ var current_turn_state
 var next_turn_state
 var turn_state_queue = [TurnStates.StartGame, TurnStates.IdleBeforeOpponent, TurnStates.OponnentTurn]
 
-var turn_queue: Array[_Doomer_Opponent] # = doomer.opponents # [doomer.player]
-var current_opponent : _Doomer_Opponent
-var next_opponent : _Doomer_Opponent
+var turn_queue: Array[_Doomer_Enemy] # = doomer.opponents # [doomer.player]
+var current_opponent : _Doomer_Enemy
+var next_opponent : _Doomer_Enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,8 +42,10 @@ func initialise_turn_queue():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	doomer.hud.hourglass.gauge = (turner_timer.time_left/turner_timer.wait_time)/ 0.2
 
+	# if abs(turner_timer.time_left/turner_timer.wait_time - doomer.hud.hourglass.gauge) > 0.2:
+	# 	doomer.hud.hourglass.gauge = (turner_timer.time_left/turner_timer.wait_time)/ 0.2
 func _on_timer_timeout() -> void:
 	_update_turn_state()
 
@@ -63,6 +61,9 @@ func _update_turn_state():
 	
 	_update_turn_indicator()
 	_update_hud()
+	
+	$ActionTimer.wait_time = turn_state_time_durations[current_turn_state]
+	$ActionTimer.start()
 
 	if current_turn_state == TurnStates.OponnentTurn:
 		await _on_idle_turn_end()
@@ -75,8 +76,9 @@ func _update_turn_state():
 	elif current_turn_state == TurnStates.StartGame:
 		await _on_start_game()
 
-	$ActionTimer.wait_time = turn_state_time_durations[current_turn_state]
-	$ActionTimer.start()
+
+
+	
 
 func _update_hud():
 	next_opponent = turn_queue[0]
@@ -86,7 +88,7 @@ func _update_hud():
 		doomer.hud.turn_label.text = "Turn: %s" % [next_opponent._name]
 	else:
 		doomer.hud.turn_label.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
-	
+
 
 	
 func _on_player_turn_start():
@@ -97,9 +99,9 @@ func _on_player_turn_end():
 
 
 func _on_enemy_turn_start():
-	await get_tree().create_timer(turner_timer.time_left/2).timeout
+	await get_tree().create_timer(turner_timer.wait_time/8).timeout
 	current_opponent.call_hand()
-	await get_tree().create_timer(turner_timer.time_left/4).timeout
+	await get_tree().create_timer(turner_timer.wait_time/8).timeout
 	_update_turn_state()
 
 func _on_enemy_turn_end():

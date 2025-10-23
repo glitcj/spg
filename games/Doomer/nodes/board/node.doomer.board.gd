@@ -1,9 +1,8 @@
 extends Node2D
 class_name _Doomer_Board
 
-@export var player : _Doomer_Opponent
-@export var opponent_A : _Doomer_Opponent
-
+@export var player : _Doomer_Enemy
+@export var opponent : _Doomer_Enemy
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
 
@@ -27,12 +26,12 @@ class_name _Doomer_Board
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_portrait_container.add_child(player.portrait)
-	opponent_portrait_container.add_child(opponent_A.portrait)
+	opponent_portrait_container.add_child(opponent.portrait)
 	
 	
 	for i in range(len(player.hand)):
 		player_hand_containers[i].add_child(player.hand[i])
-		opponent_hand_containers[i].add_child(opponent_A.hand[i])
+		opponent_hand_containers[i].add_child(opponent.hand[i])
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
