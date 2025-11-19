@@ -1,5 +1,5 @@
 extends Node
-class_name _Doomer_Enemy
+class_name _Doomer_Opponent
 
 var portrait_tscn = preload("res://games/Doomer/nodes/portrait/node.poke.face.tscn")
 var card_tscn = preload("res://games/Doomer/nodes/card/node.doomer.card.tscn")
@@ -33,3 +33,10 @@ func fold_hand():
 	
 func draw_next_hand():
 	hand = [card_tscn.instantiate(), card_tscn.instantiate()]
+
+
+func randomise_hand():
+	for card : _Doomer_Card in hand:
+		card.suite = _Doomer_Card.CardSuite.values()[randi() % _Doomer_Card.CardSuite.size()]
+		card.value = _Doomer_Card.CardValue.values()[randi() % _Doomer_Card.CardValue.size()]
+		

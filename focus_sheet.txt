@@ -1,0 +1,2 @@
+insert field cards when less than 3
+create _Doomer_Turn abstraction

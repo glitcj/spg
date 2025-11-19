@@ -37,18 +37,10 @@ var suite: CardSuite = CardSuite.Diamond
 var state: CardState = CardState.FacingDown
 
 func flip_down():
-	# state = CardState.FacingDown
 	animation_player.play("FlipDown")
 	await animation_player.animation_finished
 
 func flip_up():
-	"""
-	animation_player.play("FlipOut")
-	await animation_player.animation_finished
-	state = CardState.FacingUp
-	animation_player.play("FlipIn")
-	await animation_player.animation_finished
-	"""
 	animation_player.play("FlipUp")
 	await animation_player.animation_finished
 	
@@ -73,7 +65,8 @@ func set_absolute_size(desired_width := 50, desired_height := 50, keep_ratio := 
 	var scale_x = float(desired_width) / texture.get_width()
 	var scale_y = float(desired_height) / texture.get_height()
 	
-	sprite.scale = Vector2(scale_x, scale_y)
+	# sprite.scale = Vector2(scale_x, scale_y)
+	scale = Vector2(scale_x, scale_y)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -97,3 +90,7 @@ func _while_card_is_facing_down():
 func _while_card_is_facing_up():
 	if not sprite.animation == CardSuiteToSpriteSheetName[suite] or not sprite.frame == CardValueToInt[value] - 1:
 		show_card_face_up_sprite()
+
+func set_random_card_value_and_suite():
+	value = CardValue.values()[randi()%CardValue.size()]
+	suite = CardSuite.values()[randi()%CardSuite.size()]

@@ -1,8 +1,8 @@
 extends Node2D
 class_name _Doomer_Board
 
-@export var player : _Doomer_Enemy
-@export var opponent : _Doomer_Enemy
+@export var player : _Doomer_Opponent
+@export var opponent : _Doomer_Opponent
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
 
@@ -42,3 +42,21 @@ func flip_next_field_card():
 		if card.state == _Doomer_Card.CardState.FacingDown:
 			await card.flip_up()
 			break
+
+func all_cards_are_up():
+	for card : _Doomer_Card in field_cards:
+		if card.state == _Doomer_Card.CardState.FacingDown:
+			return false
+	return true
+
+
+func flip_all_field_cards():
+	for card : _Doomer_Card in field_cards:
+		if card.state == _Doomer_Card.CardState.FacingDown:
+			return false
+	return true
+	
+func randomise_all_field_cards():
+	for card : _Doomer_Card in field_cards:
+		card.set_random_card_value_and_suite()
+	return true
