@@ -7,7 +7,7 @@ signal turner_timer_timeout
 
 var cells_to_move_are_selectable = false
 
-enum TurnStates {IdleBeforeOpponent, OponnentTurn, StartGame, EndGame}
+enum TurnStates {IdleBeforeOpponent, OponnentTurn, StartGame, EndGame, StartRound, EndRound}
 var one_off_turn_states = [TurnStates.StartGame, TurnStates.EndGame]
 
 var turn_state_time_durations := {
@@ -22,15 +22,19 @@ var turn_state_colours := {
 	TurnStates.OponnentTurn: Color(0,1,0),
 	TurnStates.StartGame: Color(0,0,1),
 	TurnStates.EndGame: Color(0,0,1),
+	TurnStates.EndRound: Color(1,0,1),
+	TurnStates.StartRound: Color(1,1,1),
+	
 }
 
 var current_turn_state
 var next_turn_state
 var turn_state_queue = [TurnStates.StartGame, TurnStates.IdleBeforeOpponent, TurnStates.OponnentTurn]
+var fresh_queue = [TurnStates.StartGame, TurnStates.IdleBeforeOpponent, TurnStates.OponnentTurn]
 
-var turn_queue: Array[_Doomer_Enemy] # = doomer.opponents # [doomer.player]
-var current_opponent : _Doomer_Enemy
-var next_opponent : _Doomer_Enemy
+var turn_queue: Array[_Doomer_Opponent] # = doomer.opponents # [doomer.player]
+var current_opponent : _Doomer_Opponent
+var next_opponent : _Doomer_Opponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -75,10 +79,12 @@ func _update_turn_state():
 		
 	elif current_turn_state == TurnStates.StartGame:
 		await _on_start_game()
-
-
-
-	
+		
+	elif current_turn_state == TurnStates.StartRound:
+		await _on_start_round()
+		
+	elif current_turn_state == TurnStates.EndRound:
+		await _on_end_round()
 
 func _update_hud():
 	next_opponent = turn_queue[0]
@@ -88,8 +94,7 @@ func _update_hud():
 		doomer.hud.turn_label.text = "Turn: %s" % [next_opponent._name]
 	else:
 		doomer.hud.turn_label.text = "Turn: %s" % [TurnStates.keys()[current_turn_state]]
-
-
+		
 	
 func _on_player_turn_start():
 	doomer.handler.mode = doomer.handler.InputMode.FoldOrCall
@@ -132,8 +137,16 @@ func _on_opponent_turn_end():
 	turn_queue.append(current_opponent)
 
 func _on_idle_turn_start():
+	
+	if doomer.board.all_cards_are_up():
+		turn_state_queue.insert(0, TurnStates.EndRound)
+
 	await get_tree().create_timer(turner_timer.time_left/2).timeout
 	doomer.board.flip_next_field_card()
+	
+	# TODO: _Doomer_Turn abstraction needed this will break turner loop
+	# if doomer.logic.face_up_field_cards().size() < 3:
+	#	turn_state_queue.insert(0, TurnStates.IdleBeforeOpponent)
 
 func _on_idle_turn_end():
 	pass
@@ -141,12 +154,21 @@ func _on_idle_turn_end():
 func _on_start_game():
 	for opponent in doomer.opponents:
 		opponent.show_cards_in_hand()
+	doomer.board.randomise_all_field_cards()
+	doomer.player.randomise_hand()
+	doomer.enemy.randomise_hand()
 
 func _on_start_game_end():
 	pass
 
-func _on_end_game_start():
+func _on_end_round_start():
 	pass
 
-func _on_end_game_end():
+func _on_end_round_end():
+	pass
+
+func _on_end_round():
+	pass
+
+func _on_start_round():
 	pass

@@ -59,8 +59,6 @@ func _on_call_action():
 
 func _on_fold_action():
 	doomer.player.call_hand()
-	pass
-
 
 func _reset():
 	tray = null

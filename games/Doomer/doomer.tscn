@@ -33,7 +33,7 @@ is_playable = true
 [node name="Enemy" type="Node" parent="Opponents"]
 script = ExtResource("5_rb180")
 
-[node name="Control" type="Control" parent="."]
+[node name="Containers" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -217.0
@@ -42,22 +42,22 @@ offset_right = -217.0
 offset_bottom = -103.0
 scale = Vector2(0.9, 0.9)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Containers"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Board" parent="Control/VBoxContainer" node_paths=PackedStringArray("player", "opponent") instance=ExtResource("3_cp4er")]
+[node name="Board" parent="Containers/VBoxContainer" node_paths=PackedStringArray("player", "opponent") instance=ExtResource("3_cp4er")]
 player = NodePath("../../../Opponents/Player")
 opponent = NodePath("../../../Opponents/Enemy")
 
-[node name="HUD" parent="Control/VBoxContainer" instance=ExtResource("5_e5fcw")]
+[node name="HUD" parent="Containers/VBoxContainer" instance=ExtResource("5_e5fcw")]
 position = Vector2(-450, 350)
 scale = Vector2(5, 5)
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
 
-[node name="BGSprite" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0, 1.8049e-08, 0.203307, 1)
 z_index = -10
