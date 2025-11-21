@@ -1,7 +1,7 @@
 extends Node
 class_name _Doomer_Logic
 
-var doomer : _Doomer = get_parent()
+@onready var doomer : _Doomer = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

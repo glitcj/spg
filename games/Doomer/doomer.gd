@@ -21,4 +21,4 @@ func _input(event):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	handler.mode = handler.InputMode.Inactive
-	turner.initialise_turn_queue()
+	# turner.initialise_turn_queue()

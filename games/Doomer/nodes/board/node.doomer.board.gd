@@ -50,10 +50,13 @@ func all_cards_are_up():
 	return true
 
 
-func flip_all_field_cards():
+func flip_all_field_cards(state_ : _Doomer_Card.CardState):
 	for card : _Doomer_Card in field_cards:
-		if card.state == _Doomer_Card.CardState.FacingDown:
-			return false
+		# card.state = state_
+		if state_ == _Doomer_Card.CardState.FacingUp:
+			await card.flip_up()
+		else:
+			await card.flip_down()
 	return true
 	
 func randomise_all_field_cards():
