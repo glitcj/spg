@@ -13,7 +13,14 @@ class_name _Doomer
 @onready var enemy : _Doomer_Opponent = $Opponents/Enemy
 
 @onready var opponents : Array[_Doomer_Opponent] = [$Opponents/Player, $"Opponents/Enemy"]
+@onready var pointers : _Doomer_Pointers = $Pointers
 
+
+func get_player_and_opponent_cards():
+	var __cards = []
+	__cards.append_array(player.hand)
+	__cards.append_array(enemy.hand)	
+	return __cards
 
 func _input(event):
 	handler.handle_inputs(event)
