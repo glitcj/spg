@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=11 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_dj6c1"]
+[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/_doomer_pointers.gd" id="2_bflh3"]
 [ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://games/Doomer/nodes/handler/funcs.poke.input_handler.gd" id="2_yud1a"]
 [ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://games/Doomer/funcs/funcs.logic.doomer.gd" id="3_0kyin"]
 [ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://games/Doomer/nodes/board/board.tscn" id="3_cp4er"]
@@ -13,6 +14,9 @@
 
 [node name="Doomer" type="Node2D"]
 script = ExtResource("1_dj6c1")
+
+[node name="Pointers" type="Node" parent="."]
+script = ExtResource("2_bflh3")
 
 [node name="Handler" type="Node" parent="."]
 script = ExtResource("2_yud1a")

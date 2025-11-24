@@ -49,16 +49,32 @@ func all_cards_are_up():
 			return false
 	return true
 
-
 func flip_all_field_cards(state_ : _Doomer_Card.CardState):
-	for card : _Doomer_Card in field_cards:
-		# card.state = state_
+	for i  in range(field_cards.size()):
+		var card : _Doomer_Card = field_cards[i]
+		var is_last_card = i == field_cards.size() - 1
+		card.state = state_
+		
 		if state_ == _Doomer_Card.CardState.FacingUp:
+			if is_last_card:
+				await card.flip_up()
+			else:
+				card.flip_up()
+		else:
+			if is_last_card:
+				await card.flip_down()
+			else:
+				card.flip_down()
+				
+	return true
+	
+func flip_cards(cards_):
+	for card : _Doomer_Card in cards_:
+		if card.state == _Doomer_Card.CardState.FacingDown:
 			await card.flip_up()
 		else:
 			await card.flip_down()
-	return true
-	
+			
 func randomise_all_field_cards():
 	for card : _Doomer_Card in field_cards:
 		card.set_random_card_value_and_suite()

@@ -4,6 +4,8 @@ class_name _Doomer_Turn_Start_Game
 func _init() -> void:
 	turn_name = "StartGame"
 	turn_colour = Color(1,1,1)
+	turn_wait_time = 2
+
 
 func on_turn_start():
 
