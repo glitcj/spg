@@ -2,6 +2,7 @@ extends Node
 class_name _Doomer_Turn
 
 @onready var doomer : _Doomer = get_parent().get_parent()
+
 var turn_name : String
 var turn_colour : Color
 var turn_wait_time : float = 5.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=12 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_dj6c1"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/_doomer_pointers.gd" id="2_bflh3"]
@@ -9,13 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://games/Doomer/nodes/turner/node.turner.tscn" id="4_w1tet"]
 [ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/board/node.doomer.hud.tscn" id="5_e5fcw"]
 [ext_resource type="Script" uid="uid://beqqp67u4n3by" path="res://games/Doomer/nodes/opponent/node.doomer.opponent.gd" id="5_rb180"]
+[ext_resource type="Script" uid="uid://dl78wbdaiprqq" path="res://games/Doomer/notes.gd" id="10_3vrde"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_sekkk"]
 
 [node name="Doomer" type="Node2D"]
 script = ExtResource("1_dj6c1")
 
-[node name="Pointers" type="Node" parent="."]
+[node name="Pointer" type="Node" parent="."]
 script = ExtResource("2_bflh3")
 
 [node name="Handler" type="Node" parent="."]
@@ -70,3 +71,6 @@ texture = SubResource("CanvasTexture_sekkk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 1)
+
+[node name="Notes" type="Node" parent="."]
+script = ExtResource("10_3vrde")
