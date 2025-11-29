@@ -13,14 +13,9 @@ class_name _Doomer
 @onready var enemy : _Doomer_Opponent = $Opponents/Enemy
 
 @onready var opponents : Array[_Doomer_Opponent] = [$Opponents/Player, $"Opponents/Enemy"]
-@onready var pointers : _Doomer_Pointers = $Pointers
+@onready var pointer : _Doomer_Pointer = $Pointer
 
-
-func get_player_and_opponent_cards():
-	var __cards = []
-	__cards.append_array(player.hand)
-	__cards.append_array(enemy.hand)	
-	return __cards
+@onready var next_field_card : _Doomer_Card
 
 func _input(event):
 	handler.handle_inputs(event)
@@ -29,3 +24,8 @@ func _input(event):
 func _ready() -> void:
 	handler.mode = handler.InputMode.Inactive
 	# turner.initialise_turn_queue()
+
+func make_pointer(key : _Doomer_Pointer.Keys):
+	var pointer_ = _Doomer_Pointer.new(key)
+	add_child(pointer_)
+	return pointer_

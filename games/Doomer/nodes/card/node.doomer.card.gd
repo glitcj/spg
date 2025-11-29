@@ -36,6 +36,34 @@ var value: CardValue = CardValue.Ace
 var suite: CardSuite = CardSuite.Diamond
 var state: CardState = CardState.FacingDown
 
+func flip(direction_ : Variant, wait_for_flip : bool = false):
+	assert(direction_ is _Doomer_Card.CardState or  direction_ == null)
+	
+	if direction_ == null:
+		if direction_ == _Doomer_Card.CardState.FacingUp:
+			direction_ = _Doomer_Card.CardState.FacingDown
+		else:
+			direction_ = _Doomer_Card.CardState.FacingUp
+		
+	if direction_ == state and wait_for_flip:
+		await buzz()
+	elif direction_ == state and not wait_for_flip:	
+		buzz()
+	elif direction_ == _Doomer_Card.CardState.FacingUp and wait_for_flip:
+		await flip_up()
+	elif direction_ == _Doomer_Card.CardState.FacingUp and not wait_for_flip:
+		flip_up()
+	elif direction_ == _Doomer_Card.CardState.FacingDown and wait_for_flip:
+		await flip_down()
+	elif direction_ == _Doomer_Card.CardState.FacingDown and not wait_for_flip:
+		flip_down()
+
+
+
+func buzz():
+	animation_player.play("Buzz")
+	await animation_player.animation_finished
+
 func flip_down():
 	animation_player.play("FlipDown")
 	await animation_player.animation_finished
@@ -47,7 +75,6 @@ func flip_up():
 func _change_card_state(state_: CardState):
 	state = state_
 	
-
 func change_state(state_ : CardState):
 	state = state_
 
@@ -61,12 +88,14 @@ func show_card_face_down_sprite():
 
 
 func set_absolute_size(desired_width := 50, desired_height := 50, keep_ratio := false) -> void:
-	var texture: Texture2D = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
+	var texture : Texture2D = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
 	var scale_x = float(desired_width) / texture.get_width()
 	var scale_y = float(desired_height) / texture.get_height()
 	
-	# sprite.scale = Vector2(scale_x, scale_y)
-	scale = Vector2(scale_x, scale_y)
+	if keep_ratio:
+		scale = Vector2(scale_x, scale_x)
+	else:
+		scale = Vector2(scale_x, scale_y)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
