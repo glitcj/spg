@@ -15,62 +15,66 @@ func on_turn_start():
 	
 	if doomer.logic.face_up_field_cards().size() < 3:
 		_log()
-		update_turns_to_show_field_starter_cards()
+		show_flop_cards_turns()
 
 	elif doomer.logic.face_up_field_cards().size() < 5:
-		update_turns_to_flip_next_card()
+		flip_next_card_turns()
 		
 	elif doomer.logic.face_up_field_cards().size() == 5:
-		flip_all_cards_down()
+		flip_all_cards_down_turns()
 
 	return
 	
 
-func update_turns_to_show_field_starter_cards():
-	
-	var to_prepend = []
-	for i in range(3):
-		turn_ = _Doomer_Turn_Flip_Cards.new([doomer.board.get_field_cards()[i]], _Doomer_Card.CardState.FacingUp)
-		to_prepend.append(turn_)
-	
-	while to_prepend.size() > 0:
-		doomer.turner.turn_state_queue.insert(0, to_prepend.pop_back())
 
-func update_turns_to_flip_next_card():
+func start_round_turns():
+	var wait_for_each_card = false
+	turn_ = _Doomer_Turn_Flip_Cards.new([doomer.board.get_flop_cards()], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+	doomer.turner.turn_state_queue.insert(0, turn_)
+
+
+
+func show_flop_cards_turns():
+	var wait_for_each_card = false
+	turn_ = _Doomer_Turn_Flip_Cards.new([pointer_to_flop_cards()], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+	doomer.turner.turn_state_queue.insert(0, turn_)
+
+func flip_next_card_turns():
 	var pointer : _Doomer_Pointer = doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
 	
 	doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Flip_Cards.new([pointer]))
 
 
-func flip_all_cards_down():
+func flip_all_cards_down_turns():
 	var pointer 
 	var wait_for_each_card = false
-	
-	pointer = pointer_to_player_and_opponent_cards()
-	turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingDown, wait_for_each_card)
-	doomer.turner.turn_state_queue.insert(0, turn_)
-	
-	pointer = pointer_to_field_cards()
-	turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingDown, wait_for_each_card)
-	doomer.turner.turn_state_queue.insert(0, turn_)
+
 	
 	pointer = pointer_to_field_cards()
 	turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingDown, wait_for_each_card)
 	doomer.turner.turn_state_queue.insert(0, turn_)
 
-
+	
+	pointer = pointer_to_player_and_enemy_cards()
+	turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingDown, wait_for_each_card)
+	doomer.turner.turn_state_queue.insert(0, turn_)
+	
 func pointer_to_next_field_card():
 	return doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
 
-func pointer_to_player_and_opponent_cards():
-	return doomer.make_pointer(_Doomer_Pointer.Keys.player_and_opponent_cards)
 
 func pointer_to_field_cards():
 	return doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
 
+func pointer_to_flop_cards():
+	return doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
+	
+func pointer_to_player_and_enemy_cards():
+	return doomer.make_pointer(_Doomer_Pointer.Keys.player_and_enemy_cards)
+	
 func on_turn_end():
 	pass
-
+	
 func _log():
 	print("doomer.logic.face_up_field_cards().size() ", doomer.logic.face_up_field_cards().size())
 	

@@ -64,3 +64,7 @@ static func ranged_array(start: int, end: int, increment: int):
 static func waiter(timer_parent: Node, time: float = 1):
 		var wait_timer = timer_parent.get_tree().create_timer(time)
 		await wait_timer.timeout
+
+static func prepend(prepended_from: Array, prepended_to: Array):
+		while prepended_from.size() > 0:
+			prepended_to.insert(0, prepended_from.pop_back())

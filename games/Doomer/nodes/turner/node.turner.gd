@@ -11,7 +11,8 @@ var next_turn_state : _Doomer_Turn
 
 
 var processed_turns : Array[_Doomer_Turn] = []
-var turn_state_queue = [_Doomer_Turn_Start_Game.new()] # , _Doomer_Turn_Field.new(), _Doomer_Turn_End_Game.new()]
+# var turn_state_queue = [_Doomer_Turn_Start_Game.new()] # , _Doomer_Turn_Field.new(), _Doomer_Turn_End_Game.new()]
+var turn_state_queue = [_Doomer_Turn_Field.new()] # , _Doomer_Turn_Field.new(), _Doomer_Turn_End_Game.new()]
 
 
 # Called when the node enters the scene tree for the first time.

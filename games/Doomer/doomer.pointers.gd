@@ -4,8 +4,8 @@ class_name _Doomer_Pointer
 # _Doomer_Parent is created only by the orchestrator _Doomer instance
 @onready var doomer : _Doomer = get_parent()
 enum Keys {nothing, next_field_card, last_field_card, 
-player_and_opponent_cards, field_cards, player_cards, 
-enemy_cards, highest_player_or_enemy_card}
+player_and_enemy_cards, field_cards, player_cards, 
+enemy_cards, highest_player_or_enemy_card, flop_cards}
 
 var key : Keys
 
@@ -23,8 +23,11 @@ func grab():
 	elif key == Keys.field_cards:
 		return doomer.board.get_field_cards()
 		
-	elif key == Keys.player_and_opponent_cards:
-		return doomer.board.get_player_and_opponent_cards()
+	elif key == Keys.flop_cards:
+		return doomer.board.get_flop_cards()
+		
+	elif key == Keys.player_and_enemy_cards:
+		return doomer.board.get_player_and_enemy_cards()
 		
 	elif key == Keys.player_cards:
 		return doomer.board.get_player_cards()
