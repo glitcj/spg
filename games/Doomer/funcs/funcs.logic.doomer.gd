@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func face_up_field_cards() -> Array:
 	var cards = []
-	for card : _Doomer_Card in doomer.board.field_cards:
+	for card : _Doomer_Card in doomer.field_cards:
 		if card.state == _Doomer_Card.CardState.FacingUp:
 			cards.append(card)
 	return cards

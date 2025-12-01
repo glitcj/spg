@@ -1,5 +1,5 @@
 extends Node2D
-class_name _Doomer_Board
+class_name _Doomer_Board_Container
 
 @onready var doomer : _Doomer = get_parent().get_parent().get_parent()
 
