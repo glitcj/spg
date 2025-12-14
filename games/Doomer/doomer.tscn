@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=16 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_dj6c1"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointers.gd" id="2_bflh3"]
@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://games/Doomer/nodes/turner/node.turner.tscn" id="4_w1tet"]
 [ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/board/node.doomer.hud.tscn" id="5_e5fcw"]
 [ext_resource type="Script" uid="uid://beqqp67u4n3by" path="res://games/Doomer/nodes/opponent/node.doomer.opponent.gd" id="5_rb180"]
+[ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="8_tiri3"]
 [ext_resource type="Script" uid="uid://dl78wbdaiprqq" path="res://games/Doomer/notes.gd" id="10_3vrde"]
+[ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://games/Doomer/docs.gd" id="13_ayhyn"]
+[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn" id="14_5a2ym"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_sekkk"]
 
@@ -36,11 +39,51 @@ script = ExtResource("4_m0ft8")
 
 [node name="Player" type="Node" parent="Opponents"]
 script = ExtResource("5_rb180")
-_name = "Player"
+coins = null
 is_playable = true
+
+[node name="Player Card 1" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../../..")
+container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer")
+
+[node name="Player Card 2" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../../..")
+container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer")
 
 [node name="Enemy" type="Node" parent="Opponents"]
 script = ExtResource("5_rb180")
+coins = null
+is_playable = null
+
+[node name="Enemy Card 1" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../../..")
+container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer")
+
+[node name="Enemy Card 2" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../../..")
+container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer")
+
+[node name="Field" type="Node" parent="."]
+
+[node name="Field Card 1" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../..")
+container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer")
+
+[node name="Field Card 2" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../..")
+container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-2/CenterContainer")
+
+[node name="Field Card 3" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../..")
+container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-3/CenterContainer")
+
+[node name="Field Card 4" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../..")
+container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-4/CenterContainer")
+
+[node name="Field Card 5" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+doomer = NodePath("../..")
+container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer")
 
 [node name="Containers" type="Control" parent="."]
 layout_mode = 3
@@ -78,3 +121,30 @@ zoom = Vector2(0.9, 1)
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("10_3vrde")
+
+[node name="Documentation" type="Node" parent="."]
+script = ExtResource("13_ayhyn")
+
+[node name="Portraits" type="Node" parent="."]
+
+[node name="Player Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+position = Vector2(-1000, 0)
+container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer")
+
+[node name="Enemy Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+position = Vector2(-1000, 0)
+container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
+
+[node name="Coins" type="Node" parent="Portraits"]
+
+[node name="Coin 1" parent="Portraits/Coins" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+position = Vector2(-1000, 0)
+portrait = 1
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
+
+[node name="Coin 2" parent="Portraits/Coins" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+position = Vector2(-1000, 0)
+portrait = 1
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer")
+
+[editable path="Containers/VBoxContainer/BoardContainer"]

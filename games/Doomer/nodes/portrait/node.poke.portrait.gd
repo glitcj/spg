@@ -1,7 +1,8 @@
 extends Node2D
-class_name _Doomer_Portrait
+class_name _Doomer_Portrait_Legacy
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@export var target_of_animations : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

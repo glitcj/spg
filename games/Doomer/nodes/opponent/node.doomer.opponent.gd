@@ -4,17 +4,20 @@ class_name _Doomer_Opponent
 var portrait_tscn = preload("res://games/Doomer/nodes/portrait/node.poke.face.tscn")
 var card_tscn = preload("res://games/Doomer/nodes/card/node.doomer.card.tscn")
 
-@export var _name : String = "Opponent"
 @export var coins = 10
 @export var hand : Array[_Doomer_Card]
 @export var is_playable = false
 
-var portrait : _Doomer_Portrait
+var portrait : _Doomer_Portrait_Legacy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	portrait = portrait_tscn.instantiate()
-	draw_next_hand()
+	if false:
+		draw_next_hand()
+	
+func on_orchestrator_is_ready():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
