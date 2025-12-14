@@ -1,8 +1,12 @@
 extends Node2D
 class_name _Doomer_Card
 
+@export var doomer : _Doomer
+
 @onready var animation_player := $AnimationPlayer
 @onready var sprite := $CardSprite
+
+@export var container_box : CanvasItem
 
 enum CardValue {Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Prince, Queen, King}
 enum CardSuite {Diamond, Club, Heart, Spade}
@@ -35,6 +39,7 @@ static var CardSuiteToSpriteSheetName := {
 var value: CardValue = CardValue.Ace
 var suite: CardSuite = CardSuite.Diamond
 var state: CardState = CardState.FacingDown
+
 
 func flip(direction_ : Variant, wait_for_flip : bool = false):
 	assert(direction_ is _Doomer_Card.CardState or  direction_ == null)
@@ -71,11 +76,9 @@ func flip_down():
 func flip_up():
 	animation_player.play("FlipUp")
 	await animation_player.animation_finished
-	
+
+# Used by animation player	
 func _change_card_state(state_: CardState):
-	state = state_
-	
-func change_state(state_ : CardState):
 	state = state_
 
 func show_card_face_up_sprite():
@@ -99,11 +102,20 @@ func set_absolute_size(desired_width := 50, desired_height := 50, keep_ratio := 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	container_box.item_rect_changed.connect(_update_position)
+	doomer.ready.connect(_on_orchestrator_ready)
+	
+func _update_position():
+	var rect = container_box.get_global_rect()
+	global_position = rect.get_center() + Vector2.ZERO
+	
+func _on_orchestrator_ready():
 	pass
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_update_state_machine()
+	
 	
 func _update_state_machine():
 	if state == CardState.FacingUp:

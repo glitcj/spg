@@ -15,9 +15,34 @@ class_name _Doomer
 @onready var logic : _Doomer_Logic = $Logic
 @onready var actions : _Doomer_Actions = $Actions
 
-@onready var field_cards = board_container.field_cards
+# @onready var field_cards = board_container.field_cards
+@onready var field_cards : Array[_Doomer_Card] = [
+	$"Field/Field Card 1",
+	$"Field/Field Card 2",
+	$"Field/Field Card 3",
+	$"Field/Field Card 4",
+	$"Field/Field Card 5",
+]
+
+
+@onready var enemy_cards : Array[_Doomer_Card] = [
+$"Opponents/Enemy/Enemy Card 1",
+$"Opponents/Enemy/Enemy Card 2",
+]
+
+@onready var player_cards : Array[_Doomer_Card] = [
+$"Opponents/Player/Player Card 1",
+$"Opponents/Player/Player Card 2",
+]
+
+
+
+
+
 @onready var player : _Doomer_Opponent = $Opponents/Player
 @onready var enemy : _Doomer_Opponent = $Opponents/Enemy
+
+
 
 @onready var opponents : Array[_Doomer_Opponent] = [$Opponents/Player, $"Opponents/Enemy"]
 @onready var pointer : _Doomer_Pointer = $Pointer

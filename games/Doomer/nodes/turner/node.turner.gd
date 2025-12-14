@@ -37,8 +37,8 @@ func _update_turn_state():
 		remove_child(last_turn_state)
 		
 	if turn_state_queue == []:
-		turn_state_queue.append(_Doomer_Turn_End_Game.new())
-	
+		pass
+		
 	current_turn_state = turn_state_queue.pop_front()
 	add_child(current_turn_state)
 	

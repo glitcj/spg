@@ -5,7 +5,8 @@ class_name _Doomer_Pointer
 @onready var doomer : _Doomer = get_parent()
 enum Keys {nothing, next_field_card, last_field_card, 
 player_and_enemy_cards, field_cards, player_cards, 
-enemy_cards, highest_player_or_enemy_card, flop_cards}
+enemy_cards, highest_player_or_enemy_card, flop_cards,
+all_cards}
 
 var key : Keys
 
@@ -35,9 +36,12 @@ func grab():
 	elif key == Keys.enemy_cards:
 		return doomer.board.get_enemy_cards()
 		
-				
+	elif key == Keys.all_cards:
+		return doomer.board.get_all_cards()
+		# return doomer.board.get_player_cards()
+		
 	elif key == Keys.highest_player_or_enemy_card:
-		return doomer.get_highest_player_or_enemy_card()	
+		return doomer.board.get_highest_player_or_enemy_card()	
 		
 	else:
 		assert(false)

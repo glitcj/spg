@@ -1,8 +1,6 @@
 extends Node
 class_name CommonFunctions
 
-
-
 static func get_first_input_event_name(event: InputEvent):
 	if event.is_action_pressed("ui_up"):
 		return "ui_up"
@@ -68,3 +66,6 @@ static func waiter(timer_parent: Node, time: float = 1):
 static func prepend(prepended_from: Array, prepended_to: Array):
 		while prepended_from.size() > 0:
 			prepended_to.insert(0, prepended_from.pop_back())
+
+static func wait_one_frame(thing):
+	await thing.get_tree().process_frame
