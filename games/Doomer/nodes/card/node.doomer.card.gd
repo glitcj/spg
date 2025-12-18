@@ -12,6 +12,7 @@ enum CardValue {Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Princ
 enum CardSuite {Diamond, Club, Heart, Spade}
 
 enum CardState {FacingUp, FacingDown}
+enum Enumation {AttackUp, AttackDown, Buzz, FlipUp, FlipDown, FlipIn, FlipOut}
 
 static var CardValueToInt := {
 	CardValue.Ace: 1,
@@ -51,32 +52,28 @@ func flip(direction_ : Variant, wait_for_flip : bool = false):
 			direction_ = _Doomer_Card.CardState.FacingUp
 		
 	if direction_ == state and wait_for_flip:
-		await buzz()
+		await play_enumation(Enumation.Buzz)
 	elif direction_ == state and not wait_for_flip:	
-		buzz()
+		play_enumation(Enumation.Buzz)
 	elif direction_ == _Doomer_Card.CardState.FacingUp and wait_for_flip:
-		await flip_up()
+		await play_enumation(Enumation.FlipUp)
 	elif direction_ == _Doomer_Card.CardState.FacingUp and not wait_for_flip:
-		flip_up()
+		play_enumation(Enumation.FlipUp)
 	elif direction_ == _Doomer_Card.CardState.FacingDown and wait_for_flip:
-		await flip_down()
+		await play_enumation(Enumation.FlipDown) # flip_down()
 	elif direction_ == _Doomer_Card.CardState.FacingDown and not wait_for_flip:
-		flip_down()
+		play_enumation(Enumation.FlipDown)
 
+func play_enumation(enumation : _Doomer_Card.Enumation, wait : bool = true):
+	animation_player.play(Enumation.keys()[enumation])
+	if wait:
+		await animation_player.animation_finished
 
-
-func buzz():
-	animation_player.play("Buzz")
-	await animation_player.animation_finished
-
-func flip_down():
-	animation_player.play("FlipDown")
-	await animation_player.animation_finished
-
-func flip_up():
-	animation_player.play("FlipUp")
-	await animation_player.animation_finished
-
+func queue_enumation(enumation : _Doomer_Card.Enumation, wait : bool = true):
+	animation_player.queue(Enumation.keys()[enumation])
+	if wait:
+		await animation_player.animation_finished
+	
 # Used by animation player	
 func _change_card_state(state_: CardState):
 	state = state_
