@@ -46,6 +46,36 @@ script = ExtResource("8_cp6uo")
 script = ExtResource("7_xkyh8")
 metadata/_custom_type_script = "uid://mkdbmh21w7is"
 
+[node name="Portraits" type="Node" parent="."]
+
+[node name="Player Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+position = Vector2(-1000, 0)
+container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer")
+
+[node name="Enemy Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+position = Vector2(-1000, 0)
+container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
+
+[node name="Coins" type="Node" parent="Portraits"]
+
+[node name="Coin Player" parent="Portraits/Coins" instance=ExtResource("14_5a2ym")]
+position = Vector2(-1000, 0)
+portrait = 1
+
+[node name="Player CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
+position = Vector2(-1000, 0)
+scale = Vector2(0.5, 0.5)
+doomer = NodePath("../../..")
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
+viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/SubViewportContainer/SubViewport")
+
+[node name="Enemy CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
+position = Vector2(-1000, 0)
+scale = Vector2(0.5, 0.5)
+doomer = NodePath("../../..")
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer")
+viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer/SubViewport")
+
 [node name="Opponents" type="Node" parent="."]
 
 [node name="Player" type="Node" parent="Opponents"]
@@ -132,37 +162,7 @@ zoom = Vector2(0.9, 1)
 [node name="Documentation" type="Node" parent="."]
 script = ExtResource("13_ayhyn")
 
-[node name="Portraits" type="Node" parent="."]
-
-[node name="Player Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
-position = Vector2(-1000, 0)
-container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer")
-
-[node name="Enemy Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
-position = Vector2(-1000, 0)
-container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
-
-[node name="Coins" type="Node" parent="Portraits"]
-
-[node name="Coin Player" parent="Portraits/Coins" instance=ExtResource("14_5a2ym")]
-position = Vector2(-1000, 0)
-portrait = 1
-
-[node name="Player CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
-position = Vector2(-1000, 0)
-scale = Vector2(0.5, 0.5)
-doomer = NodePath("../../..")
-container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
-viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/SubViewportContainer/SubViewport")
-
-[node name="Enemy CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
-position = Vector2(-1000, 0)
-scale = Vector2(0.5, 0.5)
-doomer = NodePath("../../..")
-container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer")
-viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer/SubViewport")
-
-[node name="Notes" type="Node" parent="Portraits"]
+[node name="Notes" type="Node" parent="."]
 script = ExtResource("10_3vrde")
 
 [editable path="Containers/VBoxContainer/BoardContainer"]

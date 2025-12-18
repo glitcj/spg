@@ -79,3 +79,16 @@ static func flatten(things : Array):
 static func unpack_and_flatten(things : Array):
 	return flatten(unpack(things))
 	
+
+
+func pointer_to_next_field_card():
+	return doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
+
+func pointer_to_field_cards():
+	return doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
+
+func pointer_to_flop_cards():
+	return doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
+	
+func pointer_to_player_and_enemy_cards():
+	return doomer.make_pointer(_Doomer_Pointer.Keys.player_and_enemy_cards)

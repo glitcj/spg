@@ -39,6 +39,7 @@ extends Node
 # The player learns abilities to help him detect traits the more traits he learns
 # For example, when the player detects the high caller ability, he will learn the ability Shape Shifter that allows him to increase the value of a card to Ace
 
+# The game will show the players own traits over time, probability of playing ace cards etc
 
 # ---- Concept ----
 # Each enemy has TELLS and TRAITS
