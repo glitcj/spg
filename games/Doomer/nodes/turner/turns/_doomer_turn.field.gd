@@ -81,6 +81,10 @@ class Turns:
 	func show_enemy_hand_and_winner_decision():
 		self.flip_all_cards_down_turns()
 		
+		_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.winner_coin_box)
+		_turn = _Doomer_Turn_Change_Coins.new(100, _pointer)
+		doomer.turner.turn_state_queue.insert(0, _turn)
+		
 		var wait_for_each_card = false
 		_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.enemy_cards)
 		_turn = _Doomer_Turn_Flip_Cards.new([_pointer], _Doomer_Card.CardState.FacingUp, wait_for_each_card)

@@ -1,11 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj4gwlna6b7q8"]
+[gd_scene load_steps=3 format=3 uid="uid://bj4gwlna6b7q8"]
 
 [ext_resource type="Script" uid="uid://bfv6k2vgcm5vy" path="res://games/Doomer/nodes/board/doomer.container.board.gd" id="1_n8eav"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kc1k1"]
 
 [node name="Board" type="Node2D"]
 position = Vector2(-355, -400)
 scale = Vector2(4.5, 4.5)
 script = ExtResource("1_n8eav")
+
+[node name="PanelContainerBG" type="PanelContainer" parent="."]
+offset_right = 266.0
+offset_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainerBG"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_kc1k1")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 266.0
@@ -21,6 +33,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
+texture_filter = 1
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(77, 50)
+render_target_update_mode = 4
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
 layout_mode = 2
@@ -138,6 +160,16 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer"]
+texture_filter = 1
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(77, 50)
+render_target_update_mode = 4
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer"]
 layout_mode = 2

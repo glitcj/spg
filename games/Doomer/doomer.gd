@@ -6,6 +6,8 @@ class_name _Doomer
 # This include nodes, and things inside nodes.
 # Static here means that the object does not change throughout the game, and a Pointer is not needed (for example containers)
 
+enum Opponents {Player, Enemy}
+
 @onready var handler : _Doomer_Handler = $Handler
 @onready var hud : _Doomer_HUD = $Containers/VBoxContainer/HUDContainer
 @onready var turner : _Doomer_Turner = $Turner
@@ -36,18 +38,16 @@ $"Opponents/Player/Player Card 2",
 ]
 
 
-
-
-
 @onready var player : _Doomer_Opponent = $Opponents/Player
 @onready var enemy : _Doomer_Opponent = $Opponents/Enemy
-
-
 
 @onready var opponents : Array[_Doomer_Opponent] = [$Opponents/Player, $"Opponents/Enemy"]
 @onready var pointer : _Doomer_Pointer = $Pointer
 
 @onready var next_field_card : _Doomer_Card
+
+@onready var player_coin_box : _Doomer_Coin_Box = $"Portraits/Coins/Player CoinBox"
+@onready var enemy_coin_box : _Doomer_Coin_Box = $"Portraits/Coins/Enemy CoinBox"
 
 func _input(event):
 	handler.handle_inputs(event)
@@ -55,7 +55,7 @@ func _input(event):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	handler.mode = handler.InputMode.Inactive
-
+	
 func make_pointer(key : _Doomer_Pointer.Keys):
 	var pointer_ = _Doomer_Pointer.new(key)
 	add_child(pointer_)

@@ -35,7 +35,8 @@ func _ready() -> void:
 	# set_absolute_size(150, 150)
 	
 	portrait_changed.connect(_on_portrait_changed)
-	container.item_rect_changed.connect(_update_position)
+	if container:
+		container.item_rect_changed.connect(_update_position)
 	
 func _update_position():
 	var rect = container.get_global_rect()

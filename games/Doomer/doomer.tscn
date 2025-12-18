@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=20 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_dj6c1"]
-[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointers.gd" id="2_bflh3"]
+[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_bflh3"]
 [ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://games/Doomer/nodes/handler/funcs.poke.input_handler.gd" id="2_yud1a"]
 [ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://games/Doomer/funcs/funcs.logic.doomer.gd" id="3_0kyin"]
 [ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://games/Doomer/nodes/board/board.tscn" id="3_cp4er"]
@@ -10,12 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://games/Doomer/nodes/turner/node.turner.tscn" id="4_w1tet"]
 [ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/board/node.doomer.hud.tscn" id="5_e5fcw"]
 [ext_resource type="Script" uid="uid://beqqp67u4n3by" path="res://games/Doomer/nodes/opponent/node.doomer.opponent.gd" id="5_rb180"]
+[ext_resource type="Script" uid="uid://mkdbmh21w7is" path="res://source/autoload/common_functions.gd" id="7_xkyh8"]
+[ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://games/Doomer/doomer.templates.gd" id="8_cp6uo"]
 [ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="8_tiri3"]
 [ext_resource type="Script" uid="uid://dl78wbdaiprqq" path="res://games/Doomer/notes.gd" id="10_3vrde"]
+[ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://games/Doomer/nodes/doomer.board_background.tscn" id="11_jh38i"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://games/Doomer/docs.gd" id="13_ayhyn"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn" id="14_5a2ym"]
+[ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="15_kvjod"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_sekkk"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cp6uo"]
 
 [node name="Doomer" type="Node2D"]
 script = ExtResource("1_dj6c1")
@@ -34,6 +38,13 @@ script = ExtResource("3_0kyin")
 
 [node name="Actions" type="Node" parent="."]
 script = ExtResource("4_m0ft8")
+
+[node name="Templates" type="Node" parent="."]
+script = ExtResource("8_cp6uo")
+
+[node name="CommonFunctions" type="Node" parent="."]
+script = ExtResource("7_xkyh8")
+metadata/_custom_type_script = "uid://mkdbmh21w7is"
 
 [node name="Opponents" type="Node" parent="."]
 
@@ -94,6 +105,9 @@ offset_right = -217.0
 offset_bottom = -103.0
 scale = Vector2(0.9, 0.9)
 
+[node name="Board BG" parent="Containers" instance=ExtResource("11_jh38i")]
+position = Vector2(-750, -750)
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Containers"]
 layout_mode = 0
 offset_right = 40.0
@@ -103,24 +117,17 @@ offset_bottom = 40.0
 player = NodePath("../../../Opponents/Player")
 opponent = NodePath("../../../Opponents/Enemy")
 
+[node name="TextureRect" parent="Containers/VBoxContainer/BoardContainer/PanelContainerBG" index="0"]
+texture = SubResource("ViewportTexture_cp6uo")
+
 [node name="HUDContainer" parent="Containers/VBoxContainer" instance=ExtResource("5_e5fcw")]
 position = Vector2(-450, 350)
 scale = Vector2(5, 5)
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
 
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0, 1.8049e-08, 0.203307, 1)
-z_index = -10
-scale = Vector2(2000, 2000)
-texture = SubResource("CanvasTexture_sekkk")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 1)
-
-[node name="Notes" type="Node" parent="."]
-script = ExtResource("10_3vrde")
 
 [node name="Documentation" type="Node" parent="."]
 script = ExtResource("13_ayhyn")
@@ -137,14 +144,25 @@ container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContain
 
 [node name="Coins" type="Node" parent="Portraits"]
 
-[node name="Coin 1" parent="Portraits/Coins" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+[node name="Coin Player" parent="Portraits/Coins" instance=ExtResource("14_5a2ym")]
 position = Vector2(-1000, 0)
 portrait = 1
-container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
 
-[node name="Coin 2" parent="Portraits/Coins" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+[node name="Player CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
 position = Vector2(-1000, 0)
-portrait = 1
+scale = Vector2(0.5, 0.5)
+doomer = NodePath("../../..")
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
+viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/SubViewportContainer/SubViewport")
+
+[node name="Enemy CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
+position = Vector2(-1000, 0)
+scale = Vector2(0.5, 0.5)
+doomer = NodePath("../../..")
 container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer")
+viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer/SubViewport")
+
+[node name="Notes" type="Node" parent="Portraits"]
+script = ExtResource("10_3vrde")
 
 [editable path="Containers/VBoxContainer/BoardContainer"]
