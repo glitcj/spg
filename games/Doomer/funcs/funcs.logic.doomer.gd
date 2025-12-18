@@ -30,6 +30,14 @@ func calculate_winner() -> _Doomer.Opponents:
 		return _Doomer.Opponents.Enemy
 		
 
+func calculate_loser() -> _Doomer.Opponents:
+	if calculate_winner() == _Doomer.Opponents.Player:
+		return _Doomer.Opponents.Enemy
+	else:
+		return _Doomer.Opponents.Player
+		
+
+
 func get_winner_coin_box():
 	if calculate_winner() == _Doomer.Opponents.Player:
 		return doomer.player_coin_box

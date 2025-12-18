@@ -2,6 +2,7 @@ extends _Doomer_Turn
 class_name _Doomer_Turn_Card_Attack
 
 var cards_pointer : _Doomer_Pointer
+# Loser pointer
 var opponent_pointer : _Doomer_Pointer
 var coin_amount : int
 var wait_amount : float = .2
@@ -25,17 +26,19 @@ func on_turn_start():
 	var coin_box : _Doomer_Coin_Box
 	var enumation : _Doomer_Card.Enumation
 	if opponent == _Doomer.Opponents.Enemy:
-		coin_box = doomer.make_pointer(_Doomer_Pointer.Keys.enemy_coin_box).grab()
+		coin_box = doomer.make_pointer(_Doomer_Pointer.Keys.player_coin_box).grab()
 		enumation = _Doomer_Card.Enumation.AttackUp
 	else:
-		coin_box = doomer.make_pointer(_Doomer_Pointer.Keys.player_coin_box).grab()
+		coin_box = doomer.make_pointer(_Doomer_Pointer.Keys.enemy_coin_box).grab()
 		enumation = _Doomer_Card.Enumation.AttackDown
 		
 	var cards : Array = cards_pointer.grab()
 	for card : _Doomer_Card in cards:
+		coin_box.add_coins(coin_amount)
 		await card.play_enumation(enumation, true)
+		
+
 	
-	await coin_box.add_coins(coin_amount)
 	await CommonFunctions.waiter(self, wait_amount)
 	doomer.turner.turner_timer.paused = false
 	
