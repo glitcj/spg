@@ -83,6 +83,12 @@ class Turns:
 		_turn = _Doomer_Turn_Change_Coins.new(100, _pointer)
 		doomer.turner.turn_state_queue.insert(0, _turn)
 		
+		
+		var loser_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.loser_opponent)
+		var cards_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
+		_turn = _Doomer_Turn_Card_Attack.new(cards_pointer, loser_pointer, 10)
+		doomer.turner.turn_state_queue.insert(0, _turn)
+		
 		var wait_for_each_card = false
 		_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.enemy_cards)
 		_turn = _Doomer_Turn_Flip_Cards.new(_pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)

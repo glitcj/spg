@@ -6,7 +6,8 @@ class_name _Doomer_Pointer
 enum Keys {nothing, next_field_card, last_field_card, 
 player_and_enemy_cards, field_cards, player_cards, 
 enemy_cards, highest_player_or_enemy_card, flop_cards,
-all_cards, player_coin_box, enemy_coin_box, winner_coin_box}
+all_cards, player_coin_box, enemy_coin_box, winner_coin_box,
+winner_opponent, loser_opponent}
 
 var key : Keys
 
@@ -52,6 +53,12 @@ func grab():
 		
 	elif key == Keys.winner_coin_box:
 		return doomer.logic.get_winner_coin_box()
+
+	elif key == Keys.winner_opponent:
+		return doomer.logic.calculate_winner()
+		
+	elif key == Keys.loser_opponent:
+		return doomer.logic.calculate_loser()
 		
 	else:
 		assert(false)
