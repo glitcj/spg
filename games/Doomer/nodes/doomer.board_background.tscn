@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgpq25ikdeulv"]
+
+[ext_resource type="Script" uid="uid://bkcjqu72q6l72" path="res://games/Doomer/nodes/doomer.board_background.gd" id="1_vkjba"]
+[ext_resource type="Texture2D" uid="uid://bj7wm1aamse3v" path="res://assets/doomer/parallax/balatro_bg_1.png" id="2_vkjba"]
+[ext_resource type="Texture2D" uid="uid://dmhvdujosyk5" path="res://assets/doomer/parallax/free-pixel-art-cloud-and-sky-backgrounds/4. NEW CLOUDS/3.png" id="3_62mhy"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sekkk"]
+
+[node name="Board BG" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_vkjba")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(1000, 1000)
+offset_right = 40.0
+offset_bottom = 40.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1000, 1000)
+render_target_update_mode = 4
+
+[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+visible = false
+modulate = Color(0, 1.8049e-08, 0.203307, 1)
+z_index = -10
+position = Vector2(3.0517578e-05, 0)
+scale = Vector2(2000.0001, 2000.0001)
+texture = SubResource("CanvasTexture_sekkk")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(517.5, 326)
+scale = Vector2(2000.0001, 2000.0001)
+
+[node name="Parallax2D" type="Parallax2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="SubViewportContainer/SubViewport"]
+
+[node name="ParallaxLayer 1" type="ParallaxLayer" parent="SubViewportContainer/SubViewport/ParallaxBackground"]
+position = Vector2(0, -71.5)
+motion_scale = Vector2(100, 1)
+motion_mirroring = Vector2(2900, 1500)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 1"]
+position = Vector2(502, 457)
+texture = ExtResource("2_vkjba")
+
+[node name="ParallaxLayer 2" type="ParallaxLayer" parent="SubViewportContainer/SubViewport/ParallaxBackground"]
+visible = false
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 2"]
+position = Vector2(152.5, 464)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_62mhy")
+
+[node name="ParallaxLayer 3" type="ParallaxLayer" parent="SubViewportContainer/SubViewport/ParallaxBackground"]
+visible = false
+motion_scale = Vector2(6, 1)
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 3"]
+position = Vector2(651.5, 223.5)
+texture = ExtResource("3_62mhy")

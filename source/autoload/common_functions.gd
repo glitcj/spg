@@ -69,3 +69,32 @@ static func prepend(prepended_from: Array, prepended_to: Array):
 
 static func wait_one_frame(thing):
 	await thing.get_tree().process_frame
+	
+	
+static func move_node_to_container(node : Node2D, container : CanvasItem):
+	var rect = container.get_global_rect()
+	node.global_position = rect.get_center() + Vector2.ZERO
+	
+
+
+static func set_node_absolute_size_from_sprite_reference(sprite, node : Node2D, desired_width := 50, desired_height := 50, keep_ratio := false) -> void:
+	var texture : Texture2D
+	
+	if sprite is Sprite2D:
+		texture = sprite.texture
+	elif sprite is AnimatedSprite2D:
+		texture = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
+	else:
+		assert(false)
+	
+	
+	var twidth = texture.get_width()
+	var theight = texture.get_height()
+	
+	var scale_x = float(desired_width) / texture.get_width()
+	var scale_y = float(desired_height) / texture.get_height()
+	
+	if keep_ratio:
+		node.scale = Vector2(scale_x, scale_x)
+	else:
+		node.scale = Vector2(scale_x, scale_y)
