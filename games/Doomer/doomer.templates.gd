@@ -14,3 +14,6 @@ var turn_player = "res://games/Doomer/nodes/turner/turns/_doomer_turn.player.gd"
 var turn_randomise_cards = "res://games/Doomer/nodes/turner/turns/_doomer_turn.randomise_cards.gd"
 var turn_card_attack = "res://games/Doomer/nodes/turner/turns/_doomer_turn.card_attack.gd"
 var turn_mark_card = "res://games/Doomer/nodes/turner/turns/_doomer_turn.mark_card.gd"
+
+
+var card = "res://games/Doomer/nodes/card/node.doomer.card.gd"

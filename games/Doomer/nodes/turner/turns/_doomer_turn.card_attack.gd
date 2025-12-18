@@ -1,27 +1,42 @@
 extends _Doomer_Turn
 class_name _Doomer_Turn_Card_Attack
 
+var cards_pointer : _Doomer_Pointer
+var opponent_pointer : _Doomer_Pointer
 var coin_amount : int
-var coin_box_pointer : _Doomer_Pointer
 var wait_amount : float = .2
 
-func _init(coin_amount_: int, coin_box_pointer_ : _Doomer_Pointer) -> void:
+func _init(cards_pointer_ : _Doomer_Pointer, opponent_pointer_ : _Doomer_Pointer, coin_amount_ : int) -> void:
 	turn_name = "Flip"
 	turn_colour = Color(0.5,.3,.5)
-	name = "_Doomer_Turn_Change_Coins"
+	name = "_Doomer_Turn_Cards_Attack"
 	turn_wait_time = 1
 	coin_amount = coin_amount_
-	coin_box_pointer = coin_box_pointer_
+	opponent_pointer = opponent_pointer_
+	cards_pointer = cards_pointer_
 	
 func on_turn_start():
 	await get_tree().create_timer(doomer.turner.turner_timer.time_left/2).timeout
 	doomer.turner.turner_timer.paused = true
 	
-	# var coin_box : _Doomer_Coin_Box = _Doomer_Pointer.unpack_and_flatten([coin_box_pointer])
-	var coin_boxes : Array = _Doomer_Pointer.unpack([coin_box_pointer])
-	for coin_box : _Doomer_Coin_Box in coin_boxes:
-		await coin_box.add_coins(coin_amount)
-		await CommonFunctions.waiter(self, wait_amount)
+	var opponent : _Doomer.Opponents
+	opponent = opponent_pointer.grab()
+	
+	var coin_box : _Doomer_Coin_Box
+	var enumation : _Doomer_Card.Enumation
+	if opponent == _Doomer.Opponents.Enemy:
+		coin_box = doomer.make_pointer(_Doomer_Pointer.Keys.enemy_coin_box).grab()
+		enumation = _Doomer_Card.Enumation.AttackUp
+	else:
+		coin_box = doomer.make_pointer(_Doomer_Pointer.Keys.player_coin_box).grab()
+		enumation = _Doomer_Card.Enumation.AttackDown
+		
+	var cards : Array = cards_pointer.grab()
+	for card : _Doomer_Card in cards:
+		await card.play_enumation(enumation, true)
+	
+	await coin_box.add_coins(coin_amount)
+	await CommonFunctions.waiter(self, wait_amount)
 	doomer.turner.turner_timer.paused = false
 	
 	return

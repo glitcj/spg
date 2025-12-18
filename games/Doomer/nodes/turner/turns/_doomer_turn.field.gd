@@ -1,8 +1,6 @@
 extends _Doomer_Turn
 class_name _Doomer_Turn_Field
 
-# var turn_ : _Doomer_Turn 
-
 @onready var turns : Turns = Turns.new(doomer)
 
 func _init() -> void:
@@ -45,11 +43,11 @@ class Turns:
 		var wait_for_each_card = false
 
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
-		turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.player_cards)
-		turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 
 		self.randomise_all_cards()
@@ -58,23 +56,23 @@ class Turns:
 		var wait_for_each_card = false
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
 		# turn_ = _Doomer_Turn_Flip_Cards.new([pointer_to_flop_cards()], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
-		turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 
 	func flip_next_card_turns():
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
-		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Flip_Cards.new([pointer]))
+		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Flip_Cards.new(pointer))
 
 
 	func flip_all_cards_down_turns():
 		var wait_for_each_card = false
 		
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.player_and_enemy_cards) # pointer_to_player_and_enemy_cards()
-		turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingDown, wait_for_each_card)
+		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 		
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.field_cards) # pointer_to_field_cards()
-		turn_ = _Doomer_Turn_Flip_Cards.new([pointer], _Doomer_Card.CardState.FacingDown, wait_for_each_card)
+		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 		
 		
@@ -87,12 +85,12 @@ class Turns:
 		
 		var wait_for_each_card = false
 		_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.enemy_cards)
-		_turn = _Doomer_Turn_Flip_Cards.new([_pointer], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		_turn = _Doomer_Turn_Flip_Cards.new(_pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 		doomer.turner.turn_state_queue.insert(0, _turn)
 		
 	func randomise_all_cards():
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.all_cards)
-		turn_ = _Doomer_Turn_Randomise_Cards.new([pointer])
+		turn_ = _Doomer_Turn_Randomise_Cards.new(pointer)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 
 	func on_turn_end():

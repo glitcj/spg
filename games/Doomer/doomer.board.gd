@@ -83,7 +83,7 @@ func get_enemy_cards():
 func get_next_field_card():
 	for card : _Doomer_Card in doomer.field_cards:
 		if card.state == _Doomer_Card.CardState.FacingDown:
-			return card
+			return [card]
 	return null
 	
 func get_field_cards():
