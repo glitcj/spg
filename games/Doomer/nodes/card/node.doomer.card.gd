@@ -3,10 +3,17 @@ class_name _Doomer_Card
 
 @export var doomer : _Doomer
 
-@onready var animation_player := $AnimationPlayer
-@onready var sprite := $CardSprite
+@onready var animation_player := $Card/AnimationPlayer
+@onready var sprite := $Card/CardSprite
+@onready var card : Node2D = $Card
 
-@export var container_box : CanvasItem
+
+@export var position_container : CanvasItem
+
+@export var card_container : CanvasItem
+var player_marks_container : CanvasItem
+var enemy_marks_container : CanvasItem
+
 
 enum CardValue {Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Prince, Queen, King}
 enum CardSuite {Diamond, Club, Heart, Spade}
@@ -99,11 +106,29 @@ func set_absolute_size(desired_width := 50, desired_height := 50, keep_ratio := 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	container_box.item_rect_changed.connect(_update_position)
-	doomer.ready.connect(_on_orchestrator_ready)
+	position_container.item_rect_changed.connect(_update_position)
+	# doomer.ready.connect(_on_orchestrator_ready)
+	doomer.ready.connect(_reparent_card_to_position_container)
 	
+	# ready.connect(_reparent_nodes_to_containers)
+	
+	
+	# _reparent_nodes_to_containers()
+	# _reparent_card_to_position_container()
+	# ready.connect(_reparent_nodes_to_containers)
+
+func _reparent_card_to_position_container():
+	reparent(position_container)
+	# set_absolute_size(10,10)
+
+	
+	
+
+func _reparent_nodes_to_containers():
+	card.reparent(card_container)
+
 func _update_position():
-	var rect = container_box.get_global_rect()
+	var rect = position_container.get_global_rect()
 	global_position = rect.get_center() + Vector2.ZERO
 	
 func _on_orchestrator_ready():
