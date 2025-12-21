@@ -2,18 +2,23 @@ extends Node2D
 class_name _Doomer_Card
 
 @export var doomer : _Doomer
-
-@onready var animation_player := $Card/AnimationPlayer
-@onready var sprite := $Card/CardSprite
-@onready var card : Node2D = $Card
-
-
+@export var card : AnimatedSprite2D
 @export var position_container : CanvasItem
 
-@export var card_container : CanvasItem
+# card_scale cannot be set with @onready, must be @exported so that 
+# animation players can see it
+@export var card_scale : Vector2 = Vector2.ONE:
+	set(value):
+		card_scale = value
+		if is_instance_valid(card):
+			card.scale = value
+
+@onready var animation_player := $AnimationPlayers/Card
+@onready var sprite := $Sprites/Card
+@onready var card_container : CanvasItem = $"Containers/HBoxContainer/Middle Container/Card Container"
+
 var player_marks_container : CanvasItem
 var enemy_marks_container : CanvasItem
-
 
 enum CardValue {Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Prince, Queen, King}
 enum CardSuite {Diamond, Club, Heart, Spade}
@@ -81,56 +86,24 @@ func queue_enumation(enumation : _Doomer_Card.Enumation, wait : bool = true):
 	if wait:
 		await animation_player.animation_finished
 	
-# Used by animation player	
-func _change_card_state(state_: CardState):
-	state = state_
 
-func show_card_face_up_sprite():
-	sprite.animation = CardSuiteToSpriteSheetName[suite]
-	sprite.frame = CardValueToInt[value] - 1
-
-func show_card_face_down_sprite():
-	sprite.animation = "cards_other"
-	sprite.frame = 0
-
-
-func set_absolute_size(desired_width := 50, desired_height := 50, keep_ratio := false) -> void:
-	var texture : Texture2D = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
-	var scale_x = float(desired_width) / texture.get_width()
-	var scale_y = float(desired_height) / texture.get_height()
-	
-	if keep_ratio:
-		scale = Vector2(scale_x, scale_x)
-	else:
-		scale = Vector2(scale_x, scale_y)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position_container.item_rect_changed.connect(_update_position)
-	# doomer.ready.connect(_on_orchestrator_ready)
 	doomer.ready.connect(_reparent_card_to_position_container)
-	
-	# ready.connect(_reparent_nodes_to_containers)
-	
-	
-	# _reparent_nodes_to_containers()
-	# _reparent_card_to_position_container()
-	# ready.connect(_reparent_nodes_to_containers)
+	ready.connect(_reparent_nodes_to_containers)
 
 func _reparent_card_to_position_container():
-	reparent(position_container)
-	# set_absolute_size(10,10)
-
-	
-	
+	reparent(position_container)	
+	# Must reset position after reparenting
+	position = Vector2.ZERO
 
 func _reparent_nodes_to_containers():
 	card.reparent(card_container)
+	position = Vector2.ZERO
+	# animation_player.root_node = animation_player.get_path_to(self)
 
-func _update_position():
-	var rect = position_container.get_global_rect()
-	global_position = rect.get_center() + Vector2.ZERO
-	
+
 func _on_orchestrator_ready():
 	pass
 	
@@ -157,3 +130,32 @@ func _while_card_is_facing_up():
 func set_random_card_value_and_suite():
 	value = CardValue.values()[randi()%CardValue.size()]
 	suite = CardSuite.values()[randi()%CardSuite.size()]
+
+
+# Used by animation player	
+func _change_card_state(state_: CardState):
+	state = state_
+
+func show_card_face_up_sprite():
+	sprite.animation = CardSuiteToSpriteSheetName[suite]
+	sprite.frame = CardValueToInt[value] - 1
+
+func show_card_face_down_sprite():
+	sprite.animation = "cards_other"
+	sprite.frame = 0
+
+func _fix_call_method_tracks():
+	for anim_name in animation_player.get_animation_list():
+		var animation = animation_player.get_animation(anim_name)
+		
+		for track_idx in range(animation.get_track_count()):
+			if animation.track_get_type(track_idx) == Animation.TYPE_METHOD:
+				var current_path = animation.track_get_path(track_idx)
+				print("Current path: ", current_path)
+				
+				# Get the path to _Doomer_Card
+				var new_path = animation_player.get_path_to(self)
+				print("New path: ", new_path)
+				print("Does _Doomer_Card exist at that path? ", animation_player.get_node_or_null(new_path) != null)
+				
+				animation.track_set_path(track_idx, new_path)
