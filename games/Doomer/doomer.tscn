@@ -86,48 +86,48 @@ script = ExtResource("5_rb180")
 coins = null
 is_playable = true
 
-[node name="Player Card 1" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Player Card 1" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer")
 
-[node name="Player Card 2" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Player Card 2" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer")
 
 [node name="Enemy" type="Node" parent="Opponents"]
 script = ExtResource("5_rb180")
 coins = null
 is_playable = null
 
-[node name="Enemy Card 1" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Enemy Card 1" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer")
 
-[node name="Enemy Card 2" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Enemy Card 2" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-container_box = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer")
 
 [node name="Field" type="Node" parent="."]
 
-[node name="Field Card 1" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Field Card 1" parent="Field" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../..")
-container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer")
+position_container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer")
 
-[node name="Field Card 2" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Field Card 2" parent="Field" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../..")
-container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-2/CenterContainer")
+position_container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-2/CenterContainer")
 
-[node name="Field Card 3" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Field Card 3" parent="Field" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../..")
-container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-3/CenterContainer")
+position_container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-3/CenterContainer")
 
-[node name="Field Card 4" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Field Card 4" parent="Field" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../..")
-container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-4/CenterContainer")
+position_container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-4/CenterContainer")
 
-[node name="Field Card 5" parent="Field" node_paths=PackedStringArray("doomer", "container_box") instance=ExtResource("8_tiri3")]
+[node name="Field Card 5" parent="Field" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../..")
-container_box = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer")
+position_container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer")
 
 [node name="Containers" type="Control" parent="."]
 layout_mode = 3
