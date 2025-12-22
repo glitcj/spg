@@ -4,18 +4,38 @@ class_name _Doomer_Card
 @export var doomer : _Doomer
 @export var card : AnimatedSprite2D
 @export var position_container : CanvasItem
+@export var card_viewport : SubViewportContainer
+
+@export var containers_node : CanvasItem
+
 
 # card_scale cannot be set with @onready, must be @exported so that 
 # animation players can see it
 @export var card_scale : Vector2 = Vector2.ONE:
 	set(value):
 		card_scale = value
+		# if is_instance_valid(card):
+		if is_instance_valid(card_viewport):
+			card_viewport.scale = value
+
+
+# Animation players cannot handle reparented nodes.
+# Instead, the root node exports proxy animation tracks.
+@export var card_position : Vector2 = Vector2.ZERO:
+	set(value):
+		card_position = value
 		if is_instance_valid(card):
-			card.scale = value
+			containers_node.position = value
+
+
 
 @onready var animation_player := $AnimationPlayers/Card
 @onready var sprite := $Sprites/Card
-@onready var card_container : CanvasItem = $"Containers/HBoxContainer/Middle Container/Card Container"
+
+@onready var card_container : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Card Container/CenterContainer"
+@onready var enemy_marks_continaer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer"
+@onready var player_marks_continaer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin/CenterContainer"
+
 
 var player_marks_container : CanvasItem
 var enemy_marks_container : CanvasItem
@@ -100,10 +120,8 @@ func _reparent_card_to_position_container():
 
 func _reparent_nodes_to_containers():
 	card.reparent(card_container)
-	position = Vector2.ZERO
-	# animation_player.root_node = animation_player.get_path_to(self)
-
-
+	card.position = Vector2.ZERO
+	
 func _on_orchestrator_ready():
 	pass
 	
@@ -143,19 +161,3 @@ func show_card_face_up_sprite():
 func show_card_face_down_sprite():
 	sprite.animation = "cards_other"
 	sprite.frame = 0
-
-func _fix_call_method_tracks():
-	for anim_name in animation_player.get_animation_list():
-		var animation = animation_player.get_animation(anim_name)
-		
-		for track_idx in range(animation.get_track_count()):
-			if animation.track_get_type(track_idx) == Animation.TYPE_METHOD:
-				var current_path = animation.track_get_path(track_idx)
-				print("Current path: ", current_path)
-				
-				# Get the path to _Doomer_Card
-				var new_path = animation_player.get_path_to(self)
-				print("New path: ", new_path)
-				print("Does _Doomer_Card exist at that path? ", animation_player.get_node_or_null(new_path) != null)
-				
-				animation.track_set_path(track_idx, new_path)

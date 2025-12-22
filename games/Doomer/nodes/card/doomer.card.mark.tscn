@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4muq3ort3bx0"]
+
+[ext_resource type="Script" uid="uid://cqcotrms8s8go" path="res://games/Doomer/nodes/card/doomer.card.mark.gd" id="1_2dkbg"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cy2l4"]
+
+[node name="Mark" type="Node2D"]
+script = ExtResource("1_2dkbg")
+
+[node name="Animators" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animators"]
+root_node = NodePath("../..")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+scale = Vector2(50, 10)
+texture = SubResource("CanvasTexture_cy2l4")
+
+[node name="MarkSprite" type="AnimatedSprite2D" parent="Sprites"]
