@@ -12,7 +12,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Card:scale")
+tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Card:position")
+tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -40,7 +40,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Card:scale")
+tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +52,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Card:position")
+tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -274,26 +274,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/Card:position")
+tracks/3/path = NodePath(".:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.4, 0.4)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprites:scale")
+tracks/4/path = NodePath("Sprites/Card:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1.75, 1.75)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eiu11"]
@@ -864,9 +864,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("card")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("card", "card_viewport", "containers_node")]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_kt143")
 card = NodePath("Sprites/Card")
+card_viewport = NodePath("Containers Node/Containers/SubViewportContainer")
+containers_node = NodePath("Containers Node")
 
 [node name="AnimationPlayers" type="Node" parent="."]
 
@@ -878,54 +881,92 @@ libraries = {
 autoplay = "RESET"
 
 [node name="Sprites" type="Node2D" parent="."]
-scale = Vector2(1.75, 1.75)
 
 [node name="Card" type="AnimatedSprite2D" parent="Sprites"]
+scale = Vector2(0.99999976, 0.99999976)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
 
-[node name="Mark" type="Node2D" parent="."]
-visible = false
+[node name="Marks" type="Node2D" parent="."]
 script = ExtResource("5_glmm8")
 
-[node name="MarkSprite" type="AnimatedSprite2D" parent="Mark"]
+[node name="Mark 1" type="Node2D" parent="Marks"]
+
+[node name="MarkSprite" type="AnimatedSprite2D" parent="Marks/Mark 1"]
+visible = false
+scale = Vector2(0.99999994, 0.19999999)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
+frame = 2
 
-[node name="Containers" type="Control" parent="."]
+[node name="Containers Node" type="Node2D" parent="."]
+position = Vector2(-50, -75)
+
+[node name="Containers" type="Control" parent="Containers Node"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Containers"]
-custom_minimum_size = Vector2(100, 150)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Containers Node/Containers"]
+custom_minimum_size = Vector2(100, 140)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 100.0
+offset_bottom = 140.0
+pivot_offset = Vector2(50, 70)
 
-[node name="Left Margin" type="VBoxContainer" parent="Containers/HBoxContainer"]
+[node name="SubViewport" type="SubViewport" parent="Containers Node/Containers/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(100, 140)
+render_target_update_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Containers Node/Containers/SubViewportContainer"]
+custom_minimum_size = Vector2(100, 140)
+layout_mode = 2
+
+[node name="Left Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Middle Container" type="VBoxContainer" parent="Containers/HBoxContainer"]
-custom_minimum_size = Vector2(70, 0)
+[node name="Middle Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Top Margin" type="VBoxContainer" parent="Containers/HBoxContainer/Middle Container"]
+[node name="Top Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Card Container" type="VBoxContainer" parent="Containers/HBoxContainer/Middle Container"]
-custom_minimum_size = Vector2(0, 100)
+[node name="CenterContainer" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="MarkSprite2" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer"]
+scale = Vector2(0.9999998, 0.19999997)
+sprite_frames = SubResource("SpriteFrames_djf6f")
+animation = &"cards_other"
+frame = 2
+
+[node name="Card Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
+custom_minimum_size = Vector2(70, 100)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Bottom Margin" type="VBoxContainer" parent="Containers/HBoxContainer/Middle Container"]
+[node name="CenterContainer" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Card Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Bottom Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Right Margin" type="VBoxContainer" parent="Containers/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Right Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
