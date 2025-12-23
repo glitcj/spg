@@ -16,4 +16,6 @@ var turn_card_attack = "res://games/Doomer/nodes/turner/turns/_doomer_turn.card_
 var turn_mark_card = "res://games/Doomer/nodes/turner/turns/_doomer_turn.mark_card.gd"
 
 
-var card = "res://games/Doomer/nodes/card/node.doomer.card.gd"
+# Nodes:
+var card = "res://games/Doomer/nodes/card/node.doomer.card.tscn"
+var card_mark = "res://games/Doomer/nodes/card/doomer.card.mark.tscn"
