@@ -1,10 +1,11 @@
-[gd_scene load_steps=90 format=3 uid="uid://bh76i8vm1ftt2"]
+[gd_scene load_steps=91 format=3 uid="uid://bh76i8vm1ftt2"]
 
 [ext_resource type="Script" uid="uid://b1ojkok8uy3g3" path="res://games/Doomer/nodes/card/node.doomer.card.gd" id="1_kt143"]
 [ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="2_2wj50"]
 [ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="3_sweri"]
 [ext_resource type="Texture2D" uid="uid://d3fj0b8gjif82" path="res://assets/doomer/cards_7.png" id="3_tgwkm"]
 [ext_resource type="Script" uid="uid://bkw8348o3aaxi" path="res://games/Doomer/nodes/card/doomer.card_mark.gd" id="5_glmm8"]
+[ext_resource type="PackedScene" uid="uid://b4muq3ort3bx0" path="res://games/Doomer/nodes/card/doomer.card.mark.tscn" id="6_u1m8c"]
 
 [sub_resource type="Animation" id="Animation_1urid"]
 resource_name = "AttackDown"
@@ -890,14 +891,7 @@ animation = &"cards_other"
 [node name="Marks" type="Node2D" parent="."]
 script = ExtResource("5_glmm8")
 
-[node name="Mark 1" type="Node2D" parent="Marks"]
-
-[node name="MarkSprite" type="AnimatedSprite2D" parent="Marks/Mark 1"]
-visible = false
-scale = Vector2(0.99999994, 0.19999999)
-sprite_frames = SubResource("SpriteFrames_djf6f")
-animation = &"cards_other"
-frame = 2
+[node name="Mark 2" parent="Marks" instance=ExtResource("6_u1m8c")]
 
 [node name="Containers Node" type="Node2D" parent="."]
 position = Vector2(-50, -75)
@@ -909,7 +903,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Containers Node/Containers"]
-custom_minimum_size = Vector2(100, 140)
+custom_minimum_size = Vector2(100, 150)
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 140.0
@@ -922,12 +916,57 @@ size = Vector2i(100, 140)
 render_target_update_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Containers Node/Containers/SubViewportContainer"]
-custom_minimum_size = Vector2(100, 140)
+custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 
-[node name="Left Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
+[node name="Left Marks Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Margin 1" type="MarginContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Player Mark Container 1" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Mark" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_djf6f")
+animation = &"cards_other"
+frame = 2
+
+[node name="Player Mark Container 2" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Mark" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_djf6f")
+animation = &"cards_other"
+frame = 3
+
+[node name="Player Mark Container 3" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Mark" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_djf6f")
+animation = &"cards_other"
+frame = 5
+
+[node name="Margin 2" type="MarginContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
 
 [node name="Middle Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
 layout_mode = 2
@@ -942,14 +981,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="MarkSprite2" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer"]
-scale = Vector2(0.9999998, 0.19999997)
-sprite_frames = SubResource("SpriteFrames_djf6f")
-animation = &"cards_other"
-frame = 2
+[node name="Mark 1" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer" instance=ExtResource("6_u1m8c")]
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Card Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
-custom_minimum_size = Vector2(70, 100)
+custom_minimum_size = Vector2(80, 85)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -967,6 +1003,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="Right Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
+[node name="Mark 2" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin/CenterContainer" instance=ExtResource("6_u1m8c")]
+position = Vector2(0, 0.99999905)
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="Right Marks Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
