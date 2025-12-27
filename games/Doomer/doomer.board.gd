@@ -30,7 +30,6 @@ func flip_cards(cards_ : Array, direction : Variant = null, wait_for_each_flip :
 		
 	for i in range(cards_.size()):
 		var card : _Doomer_Card = cards_[i]
-		print("aaaaa ", i, " ", cards_.size() - 1)
 		if not wait_for_each_flip and i < cards_.size() - 1:
 			card.flip(direction, false)
 		else:
@@ -46,39 +45,17 @@ func randomise_all_field_cards():
 		card.set_random_card_value_and_suite()
 	return true
 
-"""
-
-func get_player_and_enemy_cards():
-	var __cards = []
-	__cards.append_array(doomer.player.hand)
-	__cards.append_array(doomer.enemy.hand)	
-	return __cards
-
-func get_player_cards():
-	var __cards = []
-	__cards.append_array(doomer.player.hand)
-	return __cards
-
-func get_enemy_cards():
-	var __cards = []
-	__cards.append_array(doomer.enemy.hand)
-	return __cards
-"""
-
-
 func get_player_and_enemy_cards():
 	var __cards = []
 	__cards.append_array(doomer.player_cards)
 	__cards.append_array(doomer.enemy_cards)	
 	return __cards
 
-
 func get_player_cards():
 	return doomer.player_cards
 
 func get_enemy_cards():
 	return doomer.enemy_cards
-
 
 func get_next_field_card():
 	for card : _Doomer_Card in doomer.field_cards:
@@ -101,3 +78,10 @@ func get_all_cards():
 	all_cards.append_array(get_player_cards())
 	all_cards.append_array(get_enemy_cards())
 	return all_cards
+
+func mark_cards(cards : Array, mark_type : _Doomer_Card_Mark, wait_for_each_mark : bool):
+	for card : _Doomer_Card in cards:
+		if wait_for_each_mark:
+			await card.add_mark(mark_type)
+		else:
+			card.add_mark(mark_type)

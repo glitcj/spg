@@ -2,7 +2,7 @@ extends _Doomer_Turn
 class_name _Doomer_Turn_Enemy
 
 func _init() -> void:
-	turn_name = "Opponent"
+	turn_name = "Enemy"
 	turn_colour = Color(1,1,1)
 
 func on_turn_start():

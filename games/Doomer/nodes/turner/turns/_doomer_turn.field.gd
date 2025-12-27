@@ -7,8 +7,7 @@ func _init() -> void:
 	turn_name = "Field"
 	turn_colour = Color(1,1,1)
 	turn_wait_time = .2
-	# name = "_Doomer_Turn_Field"
-
+	
 func on_turn_start():
 	doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Field.new())
 	await get_tree().create_timer(doomer.turner.turner_timer.time_left/2).timeout

@@ -2,6 +2,31 @@ extends Node
 
 
 # TODO:
+# TOP PRIORITY:  Each Card hit makes both faces animate a random 
+# happiness hitting and sadness getting hit in a random direction
+#  face
+
+# TOP PRIORITY: Characters are parodies of existing popular personalities
+# Eg., Alex Jones, Joe Rogan, Nick Fuentes, Winston Churchil
+# A la the alex jones game
+
+
+
+# TOP PRIORITY: Add opponent inscryption like map, showing
+# Opponents and their traits
+# Each time opponent an opponent is FOKED they get a PFOKED 
+# Stamp on their face
+
+
+
+
+# Gun duel: On direction tap pushes a flying cursor in the riection then trigger to shoot
+# Opponent gets an evade chance by also pushing a flying cursor, 
+# if they reach within an errored area of the opponents aim shot
+# They can parry and reduce damage
+# This duel happens at the end for a chance to a second wind ?
+
+
 # Check taps/flops the gun, call loads the gun, then a duel with minions
 # Gun shots head shot 2D highly detailed kojimaesque mechanics
 #　https://www.google.com/search?q=godot+can+i+speed+up+gameplay&oq=godot+can+i+speed+up+gameplay&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigAdIBCDQ4MDhqMGo3qAIIsAIB8QXkRqlx1t96SfEF5Eapcdbfekk&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:197e56f7,vid:wWq0u-0O-lU,st:39

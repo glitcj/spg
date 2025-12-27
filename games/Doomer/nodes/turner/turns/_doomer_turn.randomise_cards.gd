@@ -5,7 +5,7 @@ var cards_pointer : _Doomer_Pointer
 
 
 func _init(cards_pointer_: _Doomer_Pointer) -> void:
-	turn_name = "Randomise"
+	turn_name = "Rand"
 	turn_colour = Color(0.5,.3,.5)
 	name = "_Doomer_Turn_Flip_Next_Field_Card"
 	turn_wait_time = .2

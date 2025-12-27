@@ -19,6 +19,46 @@ size_flags_vertical = 3
 layout_mode = 2
 texture = SubResource("ViewportTexture_kc1k1")
 
+[node name="MessageBoxContainer" type="PanelContainer" parent="."]
+offset_right = 266.0
+offset_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MessageBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="MessageBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Enemy Message Container" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Enemy Face Container" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MessageBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MessageBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Player Face Container" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="Player Message Container" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 266.0
 offset_bottom = 158.0
@@ -175,3 +215,30 @@ render_target_update_mode = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="HudContainer" type="PanelContainer" parent="."]
+visible = false
+offset_top = 170.88889
+offset_right = 266.0
+offset_bottom = 220.88889
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HudContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HudContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HudContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Board Messages Container" type="MarginContainer" parent="HudContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="HudContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

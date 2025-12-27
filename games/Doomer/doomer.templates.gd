@@ -3,7 +3,7 @@ class_name _Doomer_Templates
 
 static var portrait = preload("res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn")
 static var coin_box_coin = preload("res://games/Doomer/nodes/coin_box/doomer.coin_box.coin.tscn")
-
+static var card_mark = preload("res://games/Doomer/nodes/card/doomer.card.mark.tscn")
 
 # References:
 var turn_change_coins = "res://games/Doomer/nodes/turner/turns/_doomer_turn.change_coins.gd"
@@ -15,7 +15,7 @@ var turn_randomise_cards = "res://games/Doomer/nodes/turner/turns/_doomer_turn.r
 var turn_card_attack = "res://games/Doomer/nodes/turner/turns/_doomer_turn.card_attack.gd"
 var turn_mark_card = "res://games/Doomer/nodes/turner/turns/_doomer_turn.mark_card.gd"
 
-
 # Nodes:
 var card = "res://games/Doomer/nodes/card/node.doomer.card.tscn"
-var card_mark = "res://games/Doomer/nodes/card/doomer.card.mark.tscn"
+var card_mark_tscn = "res://games/Doomer/nodes/card/doomer.card.mark.tscn"
+var portrait_tscn = "res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn"

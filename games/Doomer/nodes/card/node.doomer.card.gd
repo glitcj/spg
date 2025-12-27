@@ -35,7 +35,11 @@ class_name _Doomer_Card
 @onready var card_container : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Card Container/CenterContainer"
 @onready var enemy_marks_continaer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer"
 @onready var player_marks_continaer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin/CenterContainer"
-
+@onready var player_mark_containers : Array = [
+	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1",
+	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2",
+	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"	
+	]
 
 var player_marks_container : CanvasItem
 var enemy_marks_container : CanvasItem
@@ -110,7 +114,8 @@ func queue_enumation(enumation : _Doomer_Card.Enumation, wait : bool = true):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	doomer.ready.connect(_reparent_card_to_position_container)
+	if doomer:
+		doomer.ready.connect(_reparent_card_to_position_container)
 	ready.connect(_reparent_nodes_to_containers)
 
 func _reparent_card_to_position_container():
@@ -121,7 +126,18 @@ func _reparent_card_to_position_container():
 func _reparent_nodes_to_containers():
 	card.reparent(card_container)
 	card.position = Vector2.ZERO
-	
+
+
+func _reparent_marks_to_containers():
+	for mark in $Marks.get_children():
+		if mark:
+			assert(mark is _Doomer_Card_Mark)
+		for container in player_mark_containers:
+			if container.get_children == []:
+				mark.reparent(container)
+				return
+		assert(false)
+
 func _on_orchestrator_ready():
 	pass
 	
@@ -161,3 +177,9 @@ func show_card_face_up_sprite():
 func show_card_face_down_sprite():
 	sprite.animation = "cards_other"
 	sprite.frame = 0
+
+
+func add_mark(mark_type : _Doomer_Card_Mark, wait_for_mark : bool = false):
+	var mark = _Doomer_Templates.card_mark.instantiate()
+	$Marks.add_child(mark)
+	mark.ready.connect(_reparent_marks_to_containers)
