@@ -51,12 +51,14 @@ metadata/_custom_type_script = "uid://mkdbmh21w7is"
 
 [node name="Portraits" type="Node" parent="."]
 
-[node name="Player Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+[node name="Player Head" parent="Portraits" node_paths=PackedStringArray("doomer", "container") instance=ExtResource("14_5a2ym")]
 position = Vector2(-1000, 0)
+doomer = NodePath("../..")
 container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer")
 
-[node name="Enemy Head" parent="Portraits" node_paths=PackedStringArray("container") instance=ExtResource("14_5a2ym")]
+[node name="Enemy Head" parent="Portraits" node_paths=PackedStringArray("doomer", "container") instance=ExtResource("14_5a2ym")]
 position = Vector2(-1000, 0)
+doomer = NodePath("../..")
 container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
 
 [node name="Coins" type="Node" parent="Portraits"]
@@ -155,7 +157,7 @@ texture = SubResource("ViewportTexture_cp6uo")
 
 [node name="HUDContainer" parent="Containers/VBoxContainer" instance=ExtResource("5_e5fcw")]
 position = Vector2(-450, 350)
-scale = Vector2(5, 5)
+scale = Vector2(5.5, 5.5)
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
 

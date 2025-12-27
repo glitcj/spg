@@ -7,7 +7,8 @@ enum Keys {nothing, next_field_card, last_field_card,
 player_and_enemy_cards, field_cards, player_cards, 
 enemy_cards, highest_player_or_enemy_card, flop_cards,
 all_cards, player_coin_box, enemy_coin_box, winner_coin_box,
-winner_opponent, loser_opponent}
+winner_opponent, loser_opponent, player_portrait,
+enemy_portrait}
 
 var key : Keys
 
@@ -59,6 +60,12 @@ func grab():
 		
 	elif key == Keys.loser_opponent:
 		return doomer.logic.calculate_loser()
+		
+	elif key == Keys.player_portrait:
+		return doomer.player_portrait
+		
+	elif key == Keys.enemy_portrait:
+		return doomer.enemy_portrait
 		
 	else:
 		assert(false)

@@ -906,7 +906,7 @@ offset_bottom = 40.0
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 0
 offset_right = 100.0
-offset_bottom = 140.0
+offset_bottom = 150.0
 pivot_offset = Vector2(50, 70)
 
 [node name="SubViewport" type="SubViewport" parent="Containers Node/Containers/SubViewportContainer"]

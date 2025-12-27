@@ -6,7 +6,7 @@ var coin_box_pointer : _Doomer_Pointer
 var wait_amount : float = .2
 
 func _init(coin_amount_: int, coin_box_pointer_ : _Doomer_Pointer) -> void:
-	turn_name = "Flip"
+	turn_name = "Coins !"
 	turn_colour = Color(0.5,.3,.5)
 	name = "_Doomer_Turn_Change_Coins"
 	turn_wait_time = 1

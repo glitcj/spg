@@ -49,6 +49,9 @@ $"Opponents/Player/Player Card 2",
 @onready var player_coin_box : _Doomer_Coin_Box = $"Portraits/Coins/Player CoinBox"
 @onready var enemy_coin_box : _Doomer_Coin_Box = $"Portraits/Coins/Enemy CoinBox"
 
+@onready var player_portrait : _Doomer_Portrait = $"Portraits/Player Head"
+@onready var enemy_portrait : _Doomer_Portrait = $"Portraits/Enemy Head"
+
 func _input(event):
 	handler.handle_inputs(event)
 

@@ -28,7 +28,8 @@ func _on_timer_timeout() -> void:
 	_update_turn_state()
 
 func _update_turn_indicator():
-	doomer.hud.turn_indicator.modulate = current_turn_state.turn_colour
+	# doomer.hud.turn_indicator.modulate = current_turn_state.turn_colour
+	pass
 
 func _update_turn_state():
 	if current_turn_state != null:
@@ -57,5 +58,8 @@ func _update_turn_state():
 	await current_turn_state.on_turn_start()
 
 func _update_hud():
-	_update_turn_indicator()
-	doomer.hud.turn_label.text = "Turn: %s" % [current_turn_state.turn_name]
+	pass
+	# _update_turn_indicator()
+	# doomer.hud.turn_label.text = "Turn: %s" % [current_turn_state.turn_name]
+	doomer.hud.turnboard.turnboard_turn_name = "%s" % [current_turn_state.turn_name]
+	doomer.hud.turnboard.play_enumation(_Doomer_Portrait.Animations.UpdateTurn)

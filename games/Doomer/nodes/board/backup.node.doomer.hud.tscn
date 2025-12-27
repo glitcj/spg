@@ -1,0 +1,220 @@
+[gd_scene load_steps=14 format=3 uid="uid://db8lwhtppiweo"]
+
+[ext_resource type="Script" uid="uid://daro5njcpdub7" path="res://games/Doomer/nodes/board/doomer.container.hud.gd" id="1_fi6xr"]
+[ext_resource type="PackedScene" uid="uid://cm76nn6o61eiq" path="res://games/Doomer/nodes/board/hourglass.tscn" id="2_i30e6"]
+[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="3_mttle"]
+[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="4_1trb4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_68c6q"]
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q11y8"]
+atlas = ExtResource("3_mttle")
+region = Rect2(0, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jqjd"]
+atlas = ExtResource("3_mttle")
+region = Rect2(35, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sodam"]
+atlas = ExtResource("3_mttle")
+region = Rect2(70, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvsqw"]
+atlas = ExtResource("3_mttle")
+region = Rect2(105, 0, 35, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hma62"]
+atlas = ExtResource("4_1trb4")
+region = Rect2(0, 0, 58, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aa0u"]
+atlas = ExtResource("4_1trb4")
+region = Rect2(58, 0, 58, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmq22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q11y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jqjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sodam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvsqw")
+}],
+"loop": true,
+"name": &"cards",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hma62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aa0u")
+}],
+"loop": true,
+"name": &"faces",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_msdvt"]
+
+[node name="HUD" type="Node2D"]
+position = Vector2(-285, 309)
+scale = Vector2(7, 7)
+script = ExtResource("1_fi6xr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(15, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Hourglass" parent="HBoxContainer/VBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_i30e6")]
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer-1" type="GridContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+columns = 3
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer/GridContainer-1"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer/GridContainer-1"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer/GridContainer-1"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer/GridContainer-1"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer/GridContainer-1"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 28)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 0
+
+[node name="TurnLabel" type="Label" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer/Panel/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Turner (Initialising)  
+Dome is considering his next position."
+label_settings = SubResource("LabelSettings_68c6q")
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer-2" type="GridContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+columns = 3
+
+[node name="ColorRect7" type="ColorRect" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2/GridContainer-2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2/GridContainer-2"]
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2/GridContainer-2/MarginContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2/GridContainer-2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CoinsSprite4" type="AnimatedSprite2D" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2/GridContainer-2/MarginContainer/CenterContainer"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_kmq22")
+animation = &"cards"
+frame = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(15, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer2/MarginContainer2/CenterContainer"]
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_msdvt")
