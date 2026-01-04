@@ -69,6 +69,10 @@ class Turns:
 
 
 	func flip_next_card_turns():	
+		
+		_turn = _Doomer_Turn_Player.new()
+		doomer.turner.turn_state_queue.insert(0, _turn)
+		
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.last_flipped_field_card)
 		var mark_type = _Doomer_Card_Mark.MarkType.ATK
 		var opponent = _Doomer.Opponents.Enemy
