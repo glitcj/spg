@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bv3klgr035oac"]
 
-[ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_dj6c1"]
-[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_bflh3"]
+[ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_cp6uo"]
+[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_jh38i"]
 [ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://games/Doomer/nodes/handler/funcs.poke.input_handler.gd" id="2_yud1a"]
 [ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://games/Doomer/funcs/funcs.logic.doomer.gd" id="3_0kyin"]
 [ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://games/Doomer/nodes/board/board.tscn" id="3_cp4er"]
@@ -22,13 +22,13 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_cp6uo"]
 
 [node name="Doomer" type="Node2D"]
-script = ExtResource("1_dj6c1")
+script = ExtResource("1_cp6uo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 1)
 
 [node name="Pointer" type="Node" parent="."]
-script = ExtResource("2_bflh3")
+script = ExtResource("2_jh38i")
 
 [node name="Board" type="Node" parent="."]
 script = ExtResource("3_cw5lf")
@@ -54,12 +54,12 @@ metadata/_custom_type_script = "uid://mkdbmh21w7is"
 [node name="Player Head" parent="Portraits" node_paths=PackedStringArray("doomer", "container") instance=ExtResource("14_5a2ym")]
 position = Vector2(-1000, 0)
 doomer = NodePath("../..")
-container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer")
+container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
 
 [node name="Enemy Head" parent="Portraits" node_paths=PackedStringArray("doomer", "container") instance=ExtResource("14_5a2ym")]
 position = Vector2(-1000, 0)
 doomer = NodePath("../..")
-container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
+container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer")
 
 [node name="Coins" type="Node" parent="Portraits"]
 
@@ -71,14 +71,14 @@ portrait = 1
 position = Vector2(-1000, 0)
 scale = Vector2(0.5, 0.5)
 doomer = NodePath("../../..")
-container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer")
 viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/SubViewportContainer/SubViewport")
 
 [node name="Enemy CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
 position = Vector2(-1000, 0)
 scale = Vector2(0.5, 0.5)
 doomer = NodePath("../../..")
-container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer")
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
 viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer/SubViewport")
 
 [node name="Opponents" type="Node" parent="."]
@@ -152,11 +152,17 @@ offset_bottom = 40.0
 player = NodePath("../../../Opponents/Player")
 opponent = NodePath("../../../Opponents/Enemy")
 
-[node name="TextureRect" parent="Containers/VBoxContainer/BoardContainer/PanelContainerBG" index="0"]
+[node name="TextureRect" parent="Containers/VBoxContainer/BoardContainer/PanelContainerBG" index="1"]
 texture = SubResource("ViewportTexture_cp6uo")
 
+[node name="SubViewport" parent="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer" index="0"]
+size = Vector2i(2, 2)
+
+[node name="SubViewport" parent="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/SubViewportContainer" index="0"]
+size = Vector2i(2, 2)
+
 [node name="HUDContainer" parent="Containers/VBoxContainer" instance=ExtResource("5_e5fcw")]
-position = Vector2(-450, 350)
+position = Vector2(-453, 375)
 scale = Vector2(5.5, 5.5)
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
@@ -168,3 +174,4 @@ script = ExtResource("13_ayhyn")
 script = ExtResource("10_3vrde")
 
 [editable path="Containers/VBoxContainer/BoardContainer"]
+[editable path="Containers/VBoxContainer/HUDContainer"]

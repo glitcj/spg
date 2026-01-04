@@ -6,6 +6,7 @@ class_name _Doomer_Turn
 var turn_name : String
 var turn_colour : Color
 var turn_wait_time : float = 5.0
+var show_in_turnboard : bool = true
 
 func _init() -> void:
 	turn_name = "Turn"
