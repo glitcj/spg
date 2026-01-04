@@ -11,7 +11,13 @@ static func get_first_input_event_name(event: InputEvent):
 	elif event.is_action_pressed("ui_right"):
 		return "ui_right"
 	return null
-	
+
+
+static func get_first_input_event_keycode(event: InputEvent):
+	if event is InputEventKey and event.pressed and not event.echo:
+		return event.keycode  # Returns KEY_UP, KEY_DOWN, etc.
+	return null
+		
 
 static func zeros_row(n: int):
 	var array := []
