@@ -15,10 +15,8 @@ func on_turn_start():
 	if doomer.logic.face_up_field_cards().size() == 0:
 		turns.start_betting_round_turns()
 		
-	elif doomer.logic.face_up_field_cards().size() < 3:
-		turns._log()
-		turns.show_flop_cards_turns()
 
+	
 	elif doomer.logic.face_up_field_cards().size() < 5:
 		turns.flip_next_card_turns()
 		
@@ -34,6 +32,8 @@ class Turns:
 	var pointer # TODO: deprecate
 	var _pointer
 	var _turn
+	var message
+	var message_type
 	
 	func _init(doomer_):
 		doomer = doomer_
@@ -41,26 +41,56 @@ class Turns:
 	func start_betting_round_turns():
 		var wait_for_each_card = false
 
+
+		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
+		var mark_type = _Doomer_Card_Mark.MarkType.ATK
+		var opponent = _Doomer.Opponents.Enemy
+		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Mark_Cards.new(pointer, mark_type, opponent))
+		
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
 		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		doomer.turner.turn_state_queue.insert(0, turn_)
+		
+		message = "Turning flop cards."
+		message_type = _Doomer_Turn_Show_Message.MessageType.Log
+		turn_ = _Doomer_Turn_Show_Message.new(message, false, message_type, null)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.player_cards)
 		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 		doomer.turner.turn_state_queue.insert(0, turn_)
+		
+		message = "Lets see the hand.."
+		message_type = _Doomer_Turn_Show_Message.MessageType.Log
+		turn_ = _Doomer_Turn_Show_Message.new(message, false, message_type, null)
+		doomer.turner.turn_state_queue.insert(0, turn_)
 
 		self.randomise_all_cards()
 
-	func show_flop_cards_turns():
-		var wait_for_each_card = false
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
-		# turn_ = _Doomer_Turn_Flip_Cards.new([pointer_to_flop_cards()], _Doomer_Card.CardState.FacingUp, wait_for_each_card)
-		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
-		doomer.turner.turn_state_queue.insert(0, turn_)
 
-	func flip_next_card_turns():
+	func flip_next_card_turns():	
+		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.last_flipped_field_card)
+		var mark_type = _Doomer_Card_Mark.MarkType.ATK
+		var opponent = _Doomer.Opponents.Enemy
+		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Mark_Cards.new(pointer, mark_type, opponent))
+		
+		
+		message = "Dealbring marks card ATK."
+		message_type = _Doomer_Turn_Show_Message.MessageType.Log
+		turn_ = _Doomer_Turn_Show_Message.new(message, false, message_type, null)
+		doomer.turner.turn_state_queue.insert(0, turn_)
+		
+		
+		
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
 		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Flip_Cards.new(pointer))
+		
+		message = "Flipping next card."
+		message_type = _Doomer_Turn_Show_Message.MessageType.Log
+		turn_ = _Doomer_Turn_Show_Message.new(message, false, message_type, null)
+		doomer.turner.turn_state_queue.insert(0, turn_)
+		
+		
 
 
 	func flip_all_cards_down_turns():
@@ -78,13 +108,21 @@ class Turns:
 	func show_enemy_hand_and_winner_decision():
 		self.flip_all_cards_down_turns()
 		
+		
+		var cards_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.all_cards)
+		var marks_pointer = _Doomer_Card.MarkPointers.all_marks
+		_turn = _Doomer_Turn_Demark_Cards.new(cards_pointer, marks_pointer, false)
+		doomer.turner.turn_state_queue.insert(0, _turn)
+		
+		
+		
 		_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.winner_coin_box)
 		_turn = _Doomer_Turn_Change_Coins.new(100, _pointer)
 		doomer.turner.turn_state_queue.insert(0, _turn)
 		
 		
 		var loser_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.loser_opponent)
-		var cards_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
+		cards_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
 		_turn = _Doomer_Turn_Card_Attack.new(cards_pointer, loser_pointer, 10)
 		doomer.turner.turn_state_queue.insert(0, _turn)
 		

@@ -6,9 +6,11 @@ class_name _Doomer_Pointer
 enum Keys {nothing, next_field_card, last_field_card, 
 player_and_enemy_cards, field_cards, player_cards, 
 enemy_cards, highest_player_or_enemy_card, flop_cards,
-all_cards, player_coin_box, enemy_coin_box, winner_coin_box,
+all_cards, last_flipped_field_card,
+
+player_coin_box, enemy_coin_box, winner_coin_box,
 winner_opponent, loser_opponent, player_portrait,
-enemy_portrait}
+enemy_portrait, message_box}
 
 var key : Keys
 
@@ -44,6 +46,9 @@ func grab():
 	elif key == Keys.highest_player_or_enemy_card:
 		return doomer.board.get_highest_player_or_enemy_card()	
 		
+	elif key == Keys.last_flipped_field_card:
+		return doomer.board.get_last_flipped_field_card()	
+		
 	elif key == Keys.player_coin_box:
 		print(doomer.player_coin_box)
 		return doomer.player_coin_box
@@ -66,6 +71,9 @@ func grab():
 		
 	elif key == Keys.enemy_portrait:
 		return doomer.enemy_portrait
+		
+	elif key == Keys.message_box:
+		return doomer.hud.message_box
 		
 	else:
 		assert(false)

@@ -13,9 +13,13 @@ var turn_flip_cards = "res://games/Doomer/nodes/turner/turns/_doomer_turn.flip_c
 var turn_player = "res://games/Doomer/nodes/turner/turns/_doomer_turn.player.gd"
 var turn_randomise_cards = "res://games/Doomer/nodes/turner/turns/_doomer_turn.randomise_cards.gd"
 var turn_card_attack = "res://games/Doomer/nodes/turner/turns/_doomer_turn.card_attack.gd"
-var turn_mark_card = "res://games/Doomer/nodes/turner/turns/_doomer_turn.mark_card.gd"
+var turn_show_message = "res://games/Doomer/nodes/turner/turns/_doomer_turn.show_message.gd"
+var turn_mark_cards  = "res://games/Doomer/nodes/turner/turns/_doomer_turn.mark_cards.gd"
 
-# Nodes:
-var card = "res://games/Doomer/nodes/card/node.doomer.card.tscn"
-var card_mark_tscn = "res://games/Doomer/nodes/card/doomer.card.mark.tscn"
-var portrait_tscn = "res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn"
+# TSCN:
+var tscn_doomer = "res://games/Doomer/doomer.tscn"
+var tscn_doomer_pointer = "res://games/Doomer/doomer.pointer.gd"
+var tscn_card = "res://games/Doomer/nodes/card/node.doomer.card.tscn"
+var tscn_card_mark = "res://games/Doomer/nodes/card/doomer.card.mark.tscn"
+var tscn_portrait = "res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn"
+var tscn_message_box = "res://games/Doomer/nodes/board/doomer.message_box.tscn"

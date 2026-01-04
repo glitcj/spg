@@ -1,12 +1,11 @@
 extends _Doomer_Turn
-class_name _Doomer_Turn_Mark_Cards
+class_name _Doomer_Turn_Demark_Cards
 
 var cards_pointer : _Doomer_Pointer
-var mark_type : _Doomer_Card_Mark.MarkType
+var marks_pointer : _Doomer_Card.MarkPointers
 var wait_for_each_mark : bool = false
-var opponent : _Doomer.Opponents
 
-func _init(cards_pointer_: _Doomer_Pointer, mark_type_ : _Doomer_Card_Mark.MarkType, opponent_ : Variant = null, wait_for_each_mark_ : bool = false) -> void:
+func _init(cards_pointer_: _Doomer_Pointer, marks_pointer_ : _Doomer_Card.MarkPointers, wait_for_each_mark_ : bool = false) -> void:
 	turn_name = "Mark"
 	turn_colour = Color(0.5,.3,.5)
 	name = "_Doomer_Turn_Mark_Cards"
@@ -15,8 +14,7 @@ func _init(cards_pointer_: _Doomer_Pointer, mark_type_ : _Doomer_Card_Mark.MarkT
 	
 	cards_pointer = cards_pointer_
 	wait_for_each_mark = wait_for_each_mark_
-	mark_type = mark_type_
-	opponent = opponent_
+	marks_pointer = marks_pointer_
 	
 
 func on_turn_start():
@@ -26,9 +24,9 @@ func on_turn_start():
 	var cards : Array = cards_pointer.grab()
 	for card : _Doomer_Card in cards:
 		if wait_for_each_mark:
-			await card.add_mark(mark_type, opponent,  false)
+			await card.remove_marks(marks_pointer,  false)
 		else:
-			card.add_mark(mark_type, opponent, false)
+			card.remove_marks(marks_pointer, false)
 	
 	# await doomer.board.mark_cards(cards, mark, wait_for_each_mark)
 	doomer.turner.turner_timer.paused = false

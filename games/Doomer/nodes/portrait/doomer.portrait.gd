@@ -2,8 +2,8 @@ extends Node2D
 class_name _Doomer_Portrait
 
 # signal portrait_changed
-
 @export var doomer : _Doomer
+# @onready var doomer : _Doomer = get_parent().doomer
 
 enum Portraits {Face, Coin, TurnBoard}
 enum Animations {RESET, Idle, Damage, Attack, UpdateTurn}

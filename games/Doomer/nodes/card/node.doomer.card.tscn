@@ -1,10 +1,9 @@
-[gd_scene load_steps=91 format=3 uid="uid://bh76i8vm1ftt2"]
+[gd_scene load_steps=90 format=3 uid="uid://bh76i8vm1ftt2"]
 
 [ext_resource type="Script" uid="uid://b1ojkok8uy3g3" path="res://games/Doomer/nodes/card/node.doomer.card.gd" id="1_kt143"]
 [ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="2_2wj50"]
 [ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="3_sweri"]
 [ext_resource type="Texture2D" uid="uid://d3fj0b8gjif82" path="res://assets/doomer/cards_7.png" id="3_tgwkm"]
-[ext_resource type="Script" uid="uid://bkw8348o3aaxi" path="res://games/Doomer/nodes/card/doomer.card_mark.gd" id="5_glmm8"]
 [ext_resource type="PackedScene" uid="uid://b4muq3ort3bx0" path="res://games/Doomer/nodes/card/doomer.card.mark.tscn" id="6_u1m8c"]
 
 [sub_resource type="Animation" id="Animation_1urid"]
@@ -888,11 +887,6 @@ scale = Vector2(0.99999976, 0.99999976)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
 
-[node name="Marks" type="Node2D" parent="."]
-script = ExtResource("5_glmm8")
-
-[node name="Mark 2" parent="Marks" instance=ExtResource("6_u1m8c")]
-
 [node name="Containers Node" type="Node2D" parent="."]
 position = Vector2(-50, -75)
 
@@ -980,9 +974,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-
-[node name="Mark 1" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer" instance=ExtResource("6_u1m8c")]
-scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Card Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
 custom_minimum_size = Vector2(80, 85)

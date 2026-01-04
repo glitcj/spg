@@ -1,13 +1,16 @@
 extends Node2D
 class_name _Doomer_Card
 
+enum MarkPointers {all_marks, last_added_mark}
+
 @export var doomer : _Doomer
 @export var card : AnimatedSprite2D
 @export var position_container : CanvasItem
 @export var card_viewport : SubViewportContainer
-
 @export var containers_node : CanvasItem
 
+
+var marks : Array
 
 # card_scale cannot be set with @onready, must be @exported so that 
 # animation players can see it
@@ -27,28 +30,27 @@ class_name _Doomer_Card
 		if is_instance_valid(card):
 			containers_node.position = value
 
-
-
 @onready var animation_player := $AnimationPlayers/Card
 @onready var sprite := $Sprites/Card
 
 @onready var card_container : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Card Container/CenterContainer"
-@onready var enemy_marks_continaer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer"
-@onready var player_marks_continaer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin/CenterContainer"
+
+# Mark containers
+@onready var enemy_bet_continer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer"
+@onready var player_bet_continer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin/CenterContainer"
 @onready var player_mark_containers : Array = [
 	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1",
 	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2",
 	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"	
 	]
 
-var player_marks_container : CanvasItem
-var enemy_marks_container : CanvasItem
-
 enum CardValue {Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Prince, Queen, King}
 enum CardSuite {Diamond, Club, Heart, Spade}
 
 enum CardState {FacingUp, FacingDown}
 enum Enumation {AttackUp, AttackDown, Buzz, FlipUp, FlipDown, FlipIn, FlipOut}
+
+enum MarkPositions {Top, Bottom, Left_1, Right_1}
 
 static var CardValueToInt := {
 	CardValue.Ace: 1,
@@ -120,6 +122,7 @@ func _ready() -> void:
 
 func _reparent_card_to_position_container():
 	reparent(position_container)	
+	
 	# Must reset position after reparenting
 	position = Vector2.ZERO
 
@@ -127,20 +130,6 @@ func _reparent_nodes_to_containers():
 	card.reparent(card_container)
 	card.position = Vector2.ZERO
 
-
-func _reparent_marks_to_containers():
-	for mark in $Marks.get_children():
-		if mark:
-			assert(mark is _Doomer_Card_Mark)
-		for container in player_mark_containers:
-			if container.get_children == []:
-				mark.reparent(container)
-				return
-		assert(false)
-
-func _on_orchestrator_ready():
-	pass
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_update_state_machine()
@@ -178,8 +167,23 @@ func show_card_face_down_sprite():
 	sprite.animation = "cards_other"
 	sprite.frame = 0
 
+func next_available_mark_container(opponent : _Doomer.Opponents):
+	return enemy_bet_continer
 
-func add_mark(mark_type : _Doomer_Card_Mark, wait_for_mark : bool = false):
-	var mark = _Doomer_Templates.card_mark.instantiate()
-	$Marks.add_child(mark)
-	mark.ready.connect(_reparent_marks_to_containers)
+func add_mark(mark_type : _Doomer_Card_Mark.MarkType, opponent: _Doomer.Opponents , wait_for_mark : bool = false):
+	var mark : _Doomer_Card_Mark = _Doomer_Templates.card_mark.instantiate()
+	mark.mark_type = mark_type
+	var container = next_available_mark_container(opponent)
+	container.add_child(mark)
+	if wait_for_mark:
+		await mark.ready
+	marks.append(mark)
+	
+
+func remove_marks(pointer : _Doomer_Card.MarkPointers, wait_for_each_mark : bool = false):
+	if pointer == _Doomer_Card.MarkPointers.all_marks:
+		for mark : _Doomer_Card_Mark in marks:
+			if wait_for_each_mark:
+				await mark.remove()
+			else:
+				mark.remove()

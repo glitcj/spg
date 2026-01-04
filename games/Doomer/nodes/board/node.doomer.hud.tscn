@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn8lu6wp47k2k"]
+[gd_scene load_steps=5 format=3 uid="uid://dn8lu6wp47k2k"]
 
 [ext_resource type="Script" uid="uid://daro5njcpdub7" path="res://games/Doomer/nodes/board/doomer.container.hud.gd" id="1_dldit"]
 [ext_resource type="PackedScene" uid="uid://cm76nn6o61eiq" path="res://games/Doomer/nodes/board/hourglass.tscn" id="2_mevwo"]
-[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn" id="3_msdvt"]
 [ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="3_y5io2"]
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://games/Doomer/nodes/board/doomer.message_box.tscn" id="4_mevwo"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_msdvt"]
 
 [node name="HUD" type="Node2D"]
 position = Vector2(-285, 309)
@@ -17,52 +14,7 @@ script = ExtResource("1_dldit")
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(15, 50)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Hourglass" parent="HBoxContainer/VBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_mevwo")]
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(60, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 0
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Portrait" parent="HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer" instance=ExtResource("3_msdvt")]
-portrait = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 5
@@ -70,13 +22,10 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Panel" type="Panel" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="LogAndDialogue" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer" instance=ExtResource("4_mevwo")]
+[node name="MessageBox" parent="HBoxContainer/MarginContainer" instance=ExtResource("4_mevwo")]
 position = Vector2(5, 5)
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -86,26 +35,32 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="HBoxContainer/PanelContainer/HBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("3_y5io2")]
+[node name="Card" parent="HBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("3_y5io2")]
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+offset_right = 15.0
+offset_bottom = 50.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(15, 50)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer2/MarginContainer2/CenterContainer"]
-scale = Vector2(10, 10)
-texture = SubResource("CanvasTexture_msdvt")
+[node name="Hourglass2" parent="VBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_mevwo")]
+
+[node name="Hourglass" parent="." instance=ExtResource("2_mevwo")]
+z_index = 10
+position = Vector2(194.71428, 12.428573)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)

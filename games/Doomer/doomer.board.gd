@@ -62,6 +62,24 @@ func get_next_field_card():
 		if card.state == _Doomer_Card.CardState.FacingDown:
 			return [card]
 	return null
+
+func get_last_flipped_field_card():
+	var first_card : _Doomer_Card = doomer.field_cards[0]
+	if first_card.state == _Doomer_Card.CardState.FacingDown:
+		return null
+	
+	var counter = 1
+	var last_inspected_card = doomer.field_cards[0]
+	for card : _Doomer_Card in doomer.field_cards.slice(1, doomer.field_cards.size()):
+		if card.state == _Doomer_Card.CardState.FacingDown:
+			return [last_inspected_card]
+		
+		# If this is the last card on the field.
+		if counter == doomer.field_cards.size() - 1:
+			return [card]
+			
+		last_inspected_card = card
+		counter += 1
 	
 func get_field_cards():
 	return doomer.field_cards
@@ -78,10 +96,3 @@ func get_all_cards():
 	all_cards.append_array(get_player_cards())
 	all_cards.append_array(get_enemy_cards())
 	return all_cards
-
-func mark_cards(cards : Array, mark_type : _Doomer_Card_Mark, wait_for_each_mark : bool):
-	for card : _Doomer_Card in cards:
-		if wait_for_each_mark:
-			await card.add_mark(mark_type)
-		else:
-			card.add_mark(mark_type)
