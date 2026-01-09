@@ -8,7 +8,7 @@ signal text_is_fully_displayed
 @onready var label : Label = $"Control/HBoxContainer/Message Box Control/Label"
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var message_box
-@onready var message_portrait = $Control/HBoxContainer/CenterContainer/Control/Portrait
+@onready var message_portrait : _Doomer_Portrait = $Control/HBoxContainer/CenterContainer/Control/Portrait
 
 enum Enumations {ShowNewMessage, ShowLogMessage, ShowDialogueMessage}
 

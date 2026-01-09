@@ -40,12 +40,13 @@ class Turns:
 		
 	func start_betting_round_turns():
 		var wait_for_each_card = false
+		
 
-
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
-		var mark_type = _Doomer_Card_Mark.MarkType.ATK
-		var opponent = _Doomer.Opponents.Enemy
-		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Mark_Cards.new(pointer, mark_type, opponent))
+		_turn = _Doomer_Turn_Enemy.new()
+		doomer.turner.turn_state_queue.insert(0, _turn)
+		
+		_turn = _Doomer_Turn_Player.new()
+		doomer.turner.turn_state_queue.insert(0, _turn)
 		
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
 		turn_ = _Doomer_Turn_Flip_Cards.new(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
@@ -69,15 +70,11 @@ class Turns:
 
 
 	func flip_next_card_turns():	
-		
+		_turn = _Doomer_Turn_Enemy.new()
+		doomer.turner.turn_state_queue.insert(0, _turn)
+
 		_turn = _Doomer_Turn_Player.new()
 		doomer.turner.turn_state_queue.insert(0, _turn)
-		
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.last_flipped_field_card)
-		var mark_type = _Doomer_Card_Mark.MarkType.ATK
-		var opponent = _Doomer.Opponents.Enemy
-		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Mark_Cards.new(pointer, mark_type, opponent))
-		
 		
 		message = "Dealbring marks card ATK."
 		message_type = _Doomer_Turn_Show_Message.MessageType.Log

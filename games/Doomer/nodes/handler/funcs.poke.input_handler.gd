@@ -35,7 +35,7 @@ func handle_inputs(event):
 func _process_input(event):
 	var event_keycode = CommonFunctions.get_first_input_event_keycode(event)
 	
-	if event_keycode not in _Doomer_Turn_Player.accepted_inputs: # InputToAction.keys():
+	if event_keycode not in _Doomer_Turn_Player.accepted_inputs:
 		return
 		
 	input_tray = event_keycode
@@ -43,7 +43,6 @@ func _process_input(event):
 
 
 func _reset():
-	# input_tray =
 	mode = InputMode.Inactive
 
 

@@ -12,10 +12,10 @@ var portrait : _Doomer_Portrait_Legacy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	portrait = portrait_tscn.instantiate()
-	if false:
-		draw_next_hand()
-	
+	pass
+	# portrait = portrait_tscn.instantiate()
+
+"""
 func on_orchestrator_is_ready():
 	pass
 
@@ -30,7 +30,10 @@ func call_hand():
 func show_cards_in_hand():
 	for card : _Doomer_Card in hand:
 		await card.flip_up()
-	
+
+"""	
+
+""" 
 func fold_hand():
 	pass
 	
@@ -42,4 +45,4 @@ func randomise_hand():
 	for card : _Doomer_Card in hand:
 		card.suite = _Doomer_Card.CardSuite.values()[randi() % _Doomer_Card.CardSuite.size()]
 		card.value = _Doomer_Card.CardValue.values()[randi() % _Doomer_Card.CardValue.size()]
-		
+"""

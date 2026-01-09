@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://j04p8d2crqxd"]
 
-[ext_resource type="Texture2D" uid="uid://b6pq22kfp7up1" path="res://assets/doomer/coin-Sheet.png" id="1_63a5p"]
+[ext_resource type="Texture2D" uid="uid://b6pq22kfp7up1" path="res://assets/doomer/coins/coin-Sheet.png" id="1_63a5p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63a5p"]
 bounce = 0.1

@@ -1,9 +1,101 @@
-[gd_scene load_steps=32 format=3 uid="uid://bitmrxv27slgf"]
+[gd_scene load_steps=39 format=3 uid="uid://bitmrxv27slgf"]
 
 [ext_resource type="Script" uid="uid://d31mpyjqcekrp" path="res://games/Doomer/nodes/portrait/doomer.portrait.gd" id="1_vapn4"]
-[ext_resource type="Texture2D" uid="uid://dbl56wxrpbw15" path="res://assets/doomer/head-plain.png" id="2_btet8"]
-[ext_resource type="Texture2D" uid="uid://b6pq22kfp7up1" path="res://assets/doomer/coin-Sheet.png" id="3_30mbu"]
+[ext_resource type="Texture2D" uid="uid://cos76y0bnn1t2" path="res://assets/doomer/heads/head-plain.png" id="2_btet8"]
+[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/heads/doom-poker-face-Sheet.png" id="3_0fbao"]
+[ext_resource type="Texture2D" uid="uid://b6pq22kfp7up1" path="res://assets/doomer/coins/coin-Sheet.png" id="3_30mbu"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="4_pxrbc"]
+
+[sub_resource type="Animation" id="Animation_cuuju"]
+resource_name = "Attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(0.75, 0.75), Vector2(0.7, 0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 3), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/AnimatedSprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5152487, 1.4627174, 1.217571, 1), Color(1.1357135, 1.1357135, 1.1357135, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jqtas"]
+resource_name = "AttackRallyEnd"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 3), Vector2(0, 0), Vector2(0, 3), Vector2(0, 0), Vector2(0, 3), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5152487, 1.4627174, 1.217571, 1), Color(1.1357135, 1.1357135, 1.1357135, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_wj1uh"]
 resource_name = "Damage"
@@ -121,9 +213,24 @@ tracks/3/keys = {
 "update": 0,
 "values": []
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_emit_animation_loop_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_77sru"]
 resource_name = "RESET"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -175,6 +282,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pxrbc"]
 _data = {
+&"Attack": SubResource("Animation_cuuju"),
+&"AttackRallyEnd": SubResource("Animation_jqtas"),
 &"Damage": SubResource("Animation_wj1uh"),
 &"Idle": SubResource("Animation_30mbu"),
 &"RESET": SubResource("Animation_77sru")
@@ -196,6 +305,14 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_btet8")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ymqg"]
+atlas = ExtResource("3_0fbao")
+region = Rect2(0, 0, 58, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2atfj"]
+atlas = ExtResource("3_0fbao")
+region = Rect2(58, 0, 58, 69)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7h6i"]
 animations = [{
 "frames": [{
@@ -210,6 +327,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s7x7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ymqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2atfj")
 }],
 "loop": true,
 "name": &"default",
@@ -373,6 +496,74 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_gnr3s"]
+resource_name = "BoardIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turn Board Control/Label Node:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_update_turnboard_label"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jgygw"]
+resource_name = "BoardOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turn Board Control/Label Node:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.251),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, -10)]
+}
+
 [sub_resource type="Animation" id="Animation_22uii"]
 resource_name = "RESET"
 tracks/0/type = "value"
@@ -443,6 +634,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cg2dv"]
 _data = {
+&"BoardIn": SubResource("Animation_gnr3s"),
+&"BoardOut": SubResource("Animation_jgygw"),
 &"RESET": SubResource("Animation_22uii"),
 &"UpdateTurn": SubResource("Animation_cg2dv")
 }
@@ -686,6 +879,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_4ymqg")
 
 [node name="TurnBoard" type="Node2D" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TurnBoard"]
 libraries = {
