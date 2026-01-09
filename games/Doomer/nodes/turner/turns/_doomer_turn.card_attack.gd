@@ -41,15 +41,24 @@ func on_turn_start():
 		defender_portrait = doomer.make_pointer(_Doomer_Pointer.Keys.player_portrait).grab()
 		
 	var cards : Array = cards_pointer.grab()
+	var counter = 0
 	for card : _Doomer_Card in cards:
+		var is_last_attack = counter == cards.size() - 1
+		
 		coin_box.add_coins(coin_amount)
-		# defender_portrait
+		
 		defender_portrait.play_enumation(_Doomer_Portrait.Animations.Damage, false)
+		attacker_portrait.play_enumation(_Doomer_Portrait.Animations.Attack, false)	
 		await card.play_enumation(enumation, true)
 		
-
+		if is_last_attack:
+			await attacker_portrait.play_enumation(_Doomer_Portrait.Animations.AttackRallyEnd, true)
+		counter += 1
+		
 	
 	defender_portrait.play_enumation(_Doomer_Portrait.Animations.Idle, false)
+	attacker_portrait.play_enumation(_Doomer_Portrait.Animations.Idle, false)
+	
 	await CommonFunctions.waiter(self, wait_amount)
 	doomer.turner.turner_timer.paused = false
 	

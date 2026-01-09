@@ -15,7 +15,7 @@ enum Opponents {Player, Enemy}
 @onready var board_container : _Doomer_Board_Container = $Containers/VBoxContainer/BoardContainer
 @onready var board : _Doomer_Board = $Board
 @onready var logic : _Doomer_Logic = $Logic
-@onready var actions : _Doomer_Actions = $Actions
+
 
 # @onready var field_cards = board_container.field_cards
 @onready var field_cards : Array[_Doomer_Card] = [

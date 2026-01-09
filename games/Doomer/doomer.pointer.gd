@@ -3,6 +3,9 @@ class_name _Doomer_Pointer
 
 # _Doomer_Parent is created only by the orchestrator _Doomer instance
 @onready var doomer : _Doomer = get_parent()
+
+
+# TODO: Replace Pointer keys with getter functions
 enum Keys {nothing, next_field_card, last_field_card, 
 player_and_enemy_cards, field_cards, player_cards, 
 enemy_cards, highest_player_or_enemy_card, flop_cards,
@@ -114,3 +117,33 @@ func pointer_to_flop_cards():
 	
 func pointer_to_player_and_enemy_cards():
 	return doomer.make_pointer(_Doomer_Pointer.Keys.player_and_enemy_cards)
+
+func get_filtered_field_cards(filters : Array):
+	var filtered_cards = []
+	for card : _Doomer_Card in doomer.board.get_field_cards():
+		if card.is_complying_with_any_filter(filters):
+			filtered_cards.append(card)
+	return filtered_cards
+	
+func cards_ready_to_bet_by_enemy():
+	var filtered_cards = []
+	for card : _Doomer_Card in doomer.board.get_field_cards():
+		if card.is_ready_to_bet_by_enemy():
+			filtered_cards.append(card)
+	return filtered_cards
+	
+func cards_ready_to_bet_by_player():
+	var filtered_cards = []
+	for card : _Doomer_Card in doomer.board.get_field_cards():
+		if card.is_ready_to_bet_by_player():
+			filtered_cards.append(card)
+	return filtered_cards
+
+func next_field_card():
+	doomer.board.get_next_field_card()
+	
+func player_portrait() -> _Doomer_Portrait:
+	return doomer.player_portrait
+	
+func enemy_portrait() -> _Doomer_Portrait:
+	return doomer.enemy_portrait

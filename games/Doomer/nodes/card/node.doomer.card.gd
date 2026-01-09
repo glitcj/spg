@@ -1,15 +1,52 @@
 extends Node2D
 class_name _Doomer_Card
 
+
+enum CardActions {RemoveAllMarks, Randomise, FlipUp, FlipDown}
+
 enum MarkPointers {all_marks, last_added_mark}
+enum CardFilters {is_facing_up, is_ready_to_mark_by_player}
+enum MarkPositions {Top, Bottom, Left_1, Right_1}
+
+enum CardValue {Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Prince, Queen, King}
+enum CardSuite {Diamond, Club, Heart, Spade}
+
+enum CardState {FacingUp, FacingDown}
+enum Enumation {AttackUp, AttackDown, Buzz, FlipUp, FlipDown, FlipIn, FlipOut}
+
+static var CardValueToInt := {
+	CardValue.Ace: 1,
+	CardValue.Two: 2,
+	CardValue.Three: 3,
+	CardValue.Four: 4,
+	CardValue.Five: 5,
+	CardValue.Six: 6,
+	CardValue.Seven: 7,
+	CardValue.Eight: 8,
+	CardValue.Nine: 9,
+	CardValue.Ten: 10,
+	CardValue.Prince: 11,
+	CardValue.Queen: 12,
+	CardValue.King: 13,
+}
+
+static var CardSuiteToSpriteSheetName := {
+	CardSuite.Diamond: "cards_diamond",
+	CardSuite.Spade: "cards_spade",
+	CardSuite.Club: "cards_club",
+	CardSuite.Heart: "cards_heart",
+} 
+
+var enumation_speeds : Dictionary = {
+	Enumation.FlipUp : 2,
+	Enumation.FlipDown : 2,
+}
 
 @export var doomer : _Doomer
 @export var card : AnimatedSprite2D
 @export var position_container : CanvasItem
 @export var card_viewport : SubViewportContainer
 @export var containers_node : CanvasItem
-
-
 var marks : Array
 
 # card_scale cannot be set with @onready, must be @exported so that 
@@ -44,36 +81,6 @@ var marks : Array
 	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"	
 	]
 
-enum CardValue {Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Prince, Queen, King}
-enum CardSuite {Diamond, Club, Heart, Spade}
-
-enum CardState {FacingUp, FacingDown}
-enum Enumation {AttackUp, AttackDown, Buzz, FlipUp, FlipDown, FlipIn, FlipOut}
-
-enum MarkPositions {Top, Bottom, Left_1, Right_1}
-
-static var CardValueToInt := {
-	CardValue.Ace: 1,
-	CardValue.Two: 2,
-	CardValue.Three: 3,
-	CardValue.Four: 4,
-	CardValue.Five: 5,
-	CardValue.Six: 6,
-	CardValue.Seven: 7,
-	CardValue.Eight: 8,
-	CardValue.Nine: 9,
-	CardValue.Ten: 10,
-	CardValue.Prince: 11,
-	CardValue.Queen: 12,
-	CardValue.King: 13,
-}
-
-static var CardSuiteToSpriteSheetName := {
-	CardSuite.Diamond: "cards_diamond",
-	CardSuite.Spade: "cards_spade",
-	CardSuite.Club: "cards_club",
-	CardSuite.Heart: "cards_heart",
-} 
 
 var value: CardValue = CardValue.Ace
 var suite: CardSuite = CardSuite.Diamond
@@ -103,7 +110,11 @@ func flip(direction_ : Variant, wait_for_flip : bool = false):
 		play_enumation(Enumation.FlipDown)
 
 func play_enumation(enumation : _Doomer_Card.Enumation, wait : bool = true):
-	animation_player.play(Enumation.keys()[enumation])
+	var _speed = 1
+	if enumation in enumation_speeds.keys():
+		_speed = enumation_speeds[enumation]
+	
+	animation_player.play(Enumation.keys()[enumation], -1, _speed)
 	if wait:
 		await animation_player.animation_finished
 
@@ -112,8 +123,6 @@ func queue_enumation(enumation : _Doomer_Card.Enumation, wait : bool = true):
 	if wait:
 		await animation_player.animation_finished
 	
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if doomer:
@@ -134,7 +143,6 @@ func _reparent_nodes_to_containers():
 func _process(delta: float) -> void:
 	_update_state_machine()
 	
-	
 func _update_state_machine():
 	if state == CardState.FacingUp:
 		_while_card_is_facing_up()
@@ -153,8 +161,7 @@ func _while_card_is_facing_up():
 func set_random_card_value_and_suite():
 	value = CardValue.values()[randi()%CardValue.size()]
 	suite = CardSuite.values()[randi()%CardSuite.size()]
-
-
+	
 # Used by animation player	
 func _change_card_state(state_: CardState):
 	state = state_
@@ -168,22 +175,38 @@ func show_card_face_down_sprite():
 	sprite.frame = 0
 
 func next_available_mark_container(opponent : _Doomer.Opponents):
-	return enemy_bet_continer
+	if opponent == _Doomer.Opponents.Enemy:
+		return enemy_bet_continer
+	elif opponent == _Doomer.Opponents.Player:
+		return player_bet_continer
+		
 
 func add_mark(mark_type : _Doomer_Card_Mark.MarkType, opponent: _Doomer.Opponents , wait_for_mark : bool = false):
 	var mark : _Doomer_Card_Mark = _Doomer_Templates.card_mark.instantiate()
 	mark.mark_type = mark_type
+	# mark._update_mark_type()
+	
 	var container = next_available_mark_container(opponent)
 	container.add_child(mark)
 	if wait_for_mark:
 		await mark.ready
+		
 	marks.append(mark)
 	
-
 func remove_marks(pointer : _Doomer_Card.MarkPointers, wait_for_each_mark : bool = false):
 	if pointer == _Doomer_Card.MarkPointers.all_marks:
-		for mark : _Doomer_Card_Mark in marks:
+		while marks.size() > 0:
+			var mark = marks.pop_back()
 			if wait_for_each_mark:
 				await mark.remove()
 			else:
 				mark.remove()
+
+func is_ready_to_bet_by_enemy():
+	return state == CardState.FacingUp and enemy_bet_continer.get_children().size() < 1
+
+func is_ready_to_bet_by_player():
+	return state == CardState.FacingUp and player_bet_continer.get_children().size() < 1
+
+func is_complying_with_any_filter(filters : Array):
+	return

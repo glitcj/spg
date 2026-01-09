@@ -1,10 +1,9 @@
-[gd_scene load_steps=90 format=3 uid="uid://bh76i8vm1ftt2"]
+[gd_scene load_steps=89 format=3 uid="uid://bh76i8vm1ftt2"]
 
 [ext_resource type="Script" uid="uid://b1ojkok8uy3g3" path="res://games/Doomer/nodes/card/node.doomer.card.gd" id="1_kt143"]
-[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="2_2wj50"]
-[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="3_sweri"]
-[ext_resource type="Texture2D" uid="uid://d3fj0b8gjif82" path="res://assets/doomer/cards_7.png" id="3_tgwkm"]
-[ext_resource type="PackedScene" uid="uid://b4muq3ort3bx0" path="res://games/Doomer/nodes/card/doomer.card.mark.tscn" id="6_u1m8c"]
+[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/cards/doom-poker-cards-Sheet.png" id="2_2wj50"]
+[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/heads/doom-poker-face-Sheet.png" id="3_sweri"]
+[ext_resource type="Texture2D" uid="uid://d3fj0b8gjif82" path="res://assets/doomer/cards/cards_7.png" id="3_tgwkm"]
 
 [sub_resource type="Animation" id="Animation_1urid"]
 resource_name = "AttackDown"
@@ -993,10 +992,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-
-[node name="Mark 2" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin/CenterContainer" instance=ExtResource("6_u1m8c")]
-position = Vector2(0, 0.99999905)
-scale = Vector2(0.9999998, 0.9999998)
 
 [node name="Right Marks Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
 layout_mode = 2

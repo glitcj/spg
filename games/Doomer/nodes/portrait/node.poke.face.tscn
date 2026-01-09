@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://cwci02b0iy20o"]
 
-[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/doom-poker-cards-Sheet.png" id="1_10c85"]
-[ext_resource type="Script" path="res://games/Doomer/nodes/portrait/node.poke.portrait.gd" id="1_whm2p"]
-[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/doom-poker-face-Sheet.png" id="2_7lsag"]
+[ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/cards/doom-poker-cards-Sheet.png" id="1_10c85"]
+[ext_resource type="Script" uid="uid://c3olcs7x2fieg" path="res://games/Doomer/nodes/portrait/node.poke.portrait.gd" id="1_whm2p"]
+[ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/heads/doom-poker-face-Sheet.png" id="2_7lsag"]
 
 [sub_resource type="Animation" id="Animation_e5n3e"]
 resource_name = "Happy"

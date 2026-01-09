@@ -6,6 +6,8 @@ static var accepted_inputs = [KEY_UP, KEY_DOWN]
 enum Action {Call, Check, Fold, Null}
 var action : Action
 
+var action_placed_and_performed : bool = false
+
 var InputToAction := {
 	KEY_UP: Action.Call,
 	KEY_DOWN: Action.Fold,
@@ -15,36 +17,59 @@ var InputToAction := {
 func _init() -> void:
 	turn_name = "PLY"
 	turn_colour = Color(1,1,1)
-	turn_wait_time = 5
+	turn_wait_time = 2
 
 func on_turn_start():
 	doomer.handler.mode = doomer.handler.InputMode.Active
 	
 	await doomer.handler.finished_input_mode
-	action = InputToAction[doomer.handler.input_tray]
 	
-	_process_action()
+	doomer.turner.turner_timer.paused = true
+	
+	action = InputToAction[doomer.handler.input_tray]
+	await _process_action()
+	_interrupt_and_end_turn()
 
 func on_turn_end():
 	doomer.handler.mode = doomer.handler.InputMode.Inactive
+	if not action_placed_and_performed:
+		await _on_fold_action()
+	queue_free()
 
 func _process_action():
 	if action == Action.Call:
-		_on_call_action()
-	if action == Action.Fold:
-		_on_fold_action()
-		
+		await _on_call_action()
+	elif action == Action.Fold:
+		await _on_fold_action()
+	action_placed_and_performed = true
+
 
 func _on_call_action():
-	doomer.player.call_hand()
-	_interrupt_and_end_turn()
+	var _portrait : _Doomer_Portrait = doomer.pointer.player_portrait()
+	await _portrait.play_enumation_queue([_Doomer_Portrait.Animations.Attack, _Doomer_Portrait.Animations.RESET, _Doomer_Portrait.Animations.Idle], true)
+	
+	var cards = doomer.pointer.cards_ready_to_bet_by_player()
+	var mark_type = _Doomer_Card_Mark.MarkType.ATK
+	
+	for card : _Doomer_Card in cards:
+		card.add_mark(mark_type, _Doomer.Opponents.Player)
+	
 
 func _on_fold_action():
-	doomer.player.call_hand()
+	var _portrait : _Doomer_Portrait = doomer.pointer.player_portrait()
+	await _portrait.play_enumation_queue([_Doomer_Portrait.Animations.Damage, _Doomer_Portrait.Animations.RESET,  _Doomer_Portrait.Animations.Idle], true)
+	
+	var cards = doomer.pointer.cards_ready_to_bet_by_player()
+	var mark_type = _Doomer_Card_Mark.MarkType.DEF
+	
+	for card : _Doomer_Card in cards:
+		card.add_mark(mark_type, _Doomer.Opponents.Player)
+	
 
 func _interrupt_and_end_turn():
-	var wait_time = doomer.turner.turner_timer.wait_time/8
-	if wait_time < doomer.turner.turner_timer.time_left:
-		await get_tree().create_timer(wait_time).timeout
-		doomer.turner._update_turn_state()
+	var interrupt_buffer_wait_time = doomer.turner.turner_timer.wait_time/8
+	await get_tree().create_timer(interrupt_buffer_wait_time).timeout
 	
+	# Reset timer which is paused while processing action
+	doomer.turner.turner_timer.paused = false
+	doomer.turner._update_turn_state()
