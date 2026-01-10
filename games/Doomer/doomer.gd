@@ -17,25 +17,36 @@ enum Opponents {Player, Enemy}
 @onready var logic : _Doomer_Logic = $Logic
 
 
-# @onready var field_cards = board_container.field_cards
-@onready var field_cards : Array[_Doomer_Card] = [
+@onready var field_cards : Array = $Field.get_children() 
+# @onready var field_cards : Array[_Doomer_Card] = $Field.get_children() 
+"""
+[
 	$"Field/Field Card 1",
 	$"Field/Field Card 2",
 	$"Field/Field Card 3",
 	$"Field/Field Card 4",
 	$"Field/Field Card 5",
 ]
+"""
 
 
+@onready var enemy_cards : Array = $Opponents/Enemy.get_children()
+"""
 @onready var enemy_cards : Array[_Doomer_Card] = [
 $"Opponents/Enemy/Enemy Card 1",
 $"Opponents/Enemy/Enemy Card 2",
 ]
+"""
 
+@onready var player_cards : Array = $Opponents/Player.get_children()
+
+
+"""
 @onready var player_cards : Array[_Doomer_Card] = [
 $"Opponents/Player/Player Card 1",
 $"Opponents/Player/Player Card 2",
 ]
+"""
 
 
 @onready var player : _Doomer_Opponent = $Opponents/Player

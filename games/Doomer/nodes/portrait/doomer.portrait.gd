@@ -6,7 +6,7 @@ signal animation_loop_finished
 @export var doomer : _Doomer
 # @onready var doomer : _Doomer = get_parent().doomer
 
-enum Portraits {Face, Coin, TurnBoard}
+enum Portraits {Face, Coin, TurnBoard, Gun}
 enum Animations {
 	RESET, Idle, Damage, Attack, Defend, AttackRallyEnd,
 	UpdateTurn, BoardIn, BoardOut
@@ -25,18 +25,6 @@ var turnboard_turn_name : String = "Field"
 		# 	_update_portrait()
 		
 
-# @export var portrait : Portraits:
-"""
-	set(value):
-		return # Fix the following to run before ready
-		animation_player = PortraitMap[value][0]
-		sprite = PortraitMap[value][1]
-
-		for s in all_portrait_sprites:
-			s.visible = false
-		sprite.visible = true
-"""
-
 var animation_player : AnimationPlayer
 var sprite : Node
 
@@ -54,7 +42,7 @@ var AnimationMap : Dictionary = {
 }
 
 
-@onready var all_portrait_sprites = [$Head, $Coin, $"TurnBoard"]
+@onready var all_portrait_sprites = [$Head, $Coin, $"TurnBoard", $Gun]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

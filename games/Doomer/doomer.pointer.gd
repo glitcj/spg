@@ -18,10 +18,13 @@ enemy_portrait, message_box}
 var key : Keys
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _init(key_ : Keys = Keys.nothing) -> void:
 	key = key_
+
+
+### Go through the Keys in this file, and then make a callable like enemy_portrait that returns what its supposed to withough having to call grab(), I want to deprecate grab() eventually, ill do that manually you just make the callables, also type their outputs correctly
 
 func grab():
 	assert(key is Keys)
@@ -144,6 +147,6 @@ func next_field_card():
 	
 func player_portrait() -> _Doomer_Portrait:
 	return doomer.player_portrait
-	
+
 func enemy_portrait() -> _Doomer_Portrait:
 	return doomer.enemy_portrait
