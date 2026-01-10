@@ -7,6 +7,7 @@ enum Action {Call, Check, Fold, Null}
 var action : Action
 
 var action_placed_and_performed : bool = false
+var interrupt_buffer_wait_time : float = 0.5
 
 var InputToAction := {
 	KEY_UP: Action.Call,
@@ -17,7 +18,7 @@ var InputToAction := {
 func _init() -> void:
 	turn_name = "PLY"
 	turn_colour = Color(1,1,1)
-	turn_wait_time = 2
+	turn_wait_time = 200
 
 func on_turn_start():
 	doomer.handler.mode = doomer.handler.InputMode.Active
@@ -67,9 +68,7 @@ func _on_fold_action():
 	
 
 func _interrupt_and_end_turn():
-	var interrupt_buffer_wait_time = doomer.turner.turner_timer.wait_time/8
 	await get_tree().create_timer(interrupt_buffer_wait_time).timeout
 	
-	# Reset timer which is paused while processing action
 	doomer.turner.turner_timer.paused = false
 	doomer.turner._update_turn_state()

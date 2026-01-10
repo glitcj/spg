@@ -1,6 +1,11 @@
 extends Node
 class_name _Doomer_Templates
 
+var prompt_todo = "res://prompts/prompt.todo.txt"
+var pormpt_common = "res://prompts/prompt.common.txt"
+var prompt_context = "res://prompts/prompt.context.txt"
+
+
 static var portrait = preload("res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn")
 static var coin_box_coin = preload("res://games/Doomer/nodes/coin_box/doomer.coin_box.coin.tscn")
 static var card_mark = preload("res://games/Doomer/nodes/card/doomer.card.mark.tscn")

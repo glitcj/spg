@@ -1,0 +1,1 @@
+Read the file in this godot project games/Doomer/doomer.pointer.gd the do the todos in it, which are all comments starting with ###
