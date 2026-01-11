@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=21 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_cp6uo"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_jh38i"]
@@ -16,8 +16,9 @@
 [ext_resource type="Script" uid="uid://dl78wbdaiprqq" path="res://games/Doomer/notes.gd" id="10_3vrde"]
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://games/Doomer/nodes/doomer.board_background.tscn" id="11_jh38i"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://games/Doomer/docs.gd" id="13_ayhyn"]
-[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn" id="14_5a2ym"]
+[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="14_5a2ym"]
 [ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="15_kvjod"]
+[ext_resource type="PackedScene" uid="uid://r4iwnpw8jo1" path="res://games/Doomer/nodes/gun/doomer.gun.tscn" id="15_rj2r0"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cp6uo"]
 
@@ -65,7 +66,7 @@ metadata/_custom_type_script = "uid://mkdbmh21w7is"
 [node name="Player Head" parent="Portraits" node_paths=PackedStringArray("doomer", "container") instance=ExtResource("14_5a2ym")]
 position = Vector2(-1000, 0)
 doomer = NodePath("../..")
-container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/CenterContainer")
+container = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer")
 
 [node name="Enemy Head" parent="Portraits" node_paths=PackedStringArray("doomer", "container") instance=ExtResource("14_5a2ym")]
 position = Vector2(-1000, 0)
@@ -89,7 +90,7 @@ viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelConta
 position = Vector2(-1000, 0)
 scale = Vector2(0.5, 0.5)
 doomer = NodePath("../../..")
-container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
+container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer")
 viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer/SubViewport")
 
 [node name="Opponents" type="Node" parent="."]
@@ -100,22 +101,22 @@ is_playable = true
 
 [node name="Player Card 1" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer/Player Gun/VBoxContainer/HBoxContainer/MarginContainer 1/Card Container")
 
 [node name="Player Card 2" parent="Opponents/Player" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer/Player Gun/VBoxContainer/HBoxContainer/MarginContainer 2/Card Container")
 
 [node name="Enemy" type="Node" parent="Opponents"]
 script = ExtResource("5_rb180")
 
 [node name="Enemy Card 1" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer")
 
 [node name="Enemy Card 2" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
 doomer = NodePath("../../..")
-position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer")
+position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
 
 [node name="Field" type="Node" parent="."]
 
@@ -166,6 +167,12 @@ texture = SubResource("ViewportTexture_cp6uo")
 [node name="SubViewport" parent="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer" index="0"]
 size = Vector2i(2, 2)
 
+[node name="Enemy Gun" parent="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer" index="0" instance=ExtResource("15_rj2r0")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Player Gun" parent="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer" index="0" instance=ExtResource("15_rj2r0")]
+scale = Vector2(0.5, 0.5)
+
 [node name="SubViewport" parent="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/CoinsMarginContainer/SubViewportContainer" index="0"]
 size = Vector2i(2, 2)
 
@@ -182,4 +189,6 @@ script = ExtResource("13_ayhyn")
 script = ExtResource("10_3vrde")
 
 [editable path="Containers/VBoxContainer/BoardContainer"]
+[editable path="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer/Enemy Gun"]
+[editable path="Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer/Player Gun"]
 [editable path="Containers/VBoxContainer/HUDContainer"]

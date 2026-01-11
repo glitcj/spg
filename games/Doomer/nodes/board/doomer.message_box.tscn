@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://dioopxi2opgrn"]
 
 [ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://games/Doomer/nodes/board/doomer.message_box.gd" id="1_vr8u8"]
-[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn" id="2_dlr4c"]
+[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_dlr4c"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_i2qql"]
 
 [sub_resource type="Animation" id="Animation_vr8u8"]

@@ -4,19 +4,18 @@ class_name _Doomer_Portrait
 signal animation_loop_finished
 
 @export var doomer : _Doomer
-# @onready var doomer : _Doomer = get_parent().doomer
 
-enum Portraits {Face, Coin, TurnBoard, Gun}
+enum Portraits {Face, Coin, TurnBoard, Gun, StakeBoard}
 enum Animations {
 	RESET, Idle, Damage, Attack, Defend, AttackRallyEnd,
 	UpdateTurn, BoardIn, BoardOut
 	}
 
-# enum TurnBoardAnimations {RESET, Field, Flip}
-var turnboard_turn_name : String = "Field"
+var turnboard_turn_name : String = "Null"
+var stakeboard_stake : int = 100
 
 @onready var turnboard_label : Label = $"TurnBoard/Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label"
-# TODO : Add face frame randomiser for Damage and Attack
+@onready var stakeboard_label : Label = $"StakeBoard/Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label"
 
 @export var portrait : Portraits:
 	set(value):
@@ -35,20 +34,28 @@ var AnimationMap : Dictionary = {
 	Animations.Idle : &"Idle",
 }
 
-@onready var PortraitMap : Dictionary = {
-	Portraits.Face : [$Head/AnimationPlayer, $Head],
-	Portraits.Coin : [$Coin/AnimationPlayer, $Coin],
-	Portraits.TurnBoard : [$TurnBoard/AnimationPlayer, $"TurnBoard"]
-}
-
-
-@onready var all_portrait_sprites = [$Head, $Coin, $"TurnBoard", $Gun]
+@onready var PortraitMap : Dictionary 
+@onready var all_portrait_sprites : Array = get_children() # [$Head, $Coin, $"TurnBoard", $Gun, $StakeBoard]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for _portrait in Portraits.values():
+		PortraitMap[_portrait] = [
+			get_node("%s/AnimationPlayer" % [Portraits.keys()[_portrait]]), 
+			get_node("%s" % [Portraits.keys()[_portrait]])
+			]
+		
+	print(PortraitMap)
+	print(get_children())
+	
 	_update_portrait()
 	queue_enumation(Animations.RESET)
 	queue_enumation(Animations.Idle)
+	
+	
+
+		
+		
 	
 	if container:
 		doomer.ready.connect(_reparent_to_container)
@@ -121,6 +128,10 @@ func queue_enumation(enumation : Animations, wait : bool = false):
 	
 func _update_turnboard_label():
 	turnboard_label.text = turnboard_turn_name
+	
+func _update_stakeboard_label():
+	stakeboard_label.text = str(stakeboard_stake)
+	
 	
 func _emit_animation_loop_finished():
 	animation_loop_finished.emit()

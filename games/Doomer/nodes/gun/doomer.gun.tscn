@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://r4iwnpw8jo1"]
+
+[ext_resource type="Script" uid="uid://b4407hdbap3yk" path="res://games/Doomer/nodes/gun/doomer.gun.gd" id="1_7yrmh"]
+[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_8yir6"]
+[ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="3_4a7bg"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_7yrmh")
+
+[node name="MarginContainer Coin Box" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+
+[node name="CenterContainer 2" type="CenterContainer" parent="MarginContainer Coin Box"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="CoinBox" parent="MarginContainer Coin Box/CenterContainer 2" instance=ExtResource("3_4a7bg")]
+scale = Vector2(0.25, 0.25)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 104.0
+
+[node name="MarginContainer Gun" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer Gun"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Portrait" parent="VBoxContainer/MarginContainer Gun/CenterContainer" instance=ExtResource("2_8yir6")]
+z_index = 1
+portrait = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer 1" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card Container" type="CenterContainer" parent="VBoxContainer/HBoxContainer/MarginContainer 1"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="MarginContainer 2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card Container" type="CenterContainer" parent="VBoxContainer/HBoxContainer/MarginContainer 2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4

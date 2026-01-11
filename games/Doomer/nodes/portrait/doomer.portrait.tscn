@@ -12,7 +12,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Face/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/AnimatedSprite2D:scale")
+tracks/1/path = NodePath("Face/AnimatedSprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/AnimatedSprite2D:position")
+tracks/2/path = NodePath("Face/AnimatedSprite2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +48,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Head/AnimatedSprite2D:modulate")
+tracks/3/path = NodePath("Face/AnimatedSprite2D:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -63,7 +63,7 @@ resource_name = "AttackRallyEnd"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Face/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,7 +75,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/AnimatedSprite2D:position")
+tracks/1/path = NodePath("Face/AnimatedSprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -87,7 +87,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/AnimatedSprite2D:modulate")
+tracks/2/path = NodePath("Face/AnimatedSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -103,7 +103,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Face/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -115,7 +115,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("Face/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -127,7 +127,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/AnimatedSprite2D:scale")
+tracks/2/path = NodePath("Face/AnimatedSprite2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -139,7 +139,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Head/AnimatedSprite2D:position")
+tracks/3/path = NodePath("Face/AnimatedSprite2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -151,7 +151,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Head/AnimatedSprite2D:modulate")
+tracks/4/path = NodePath("Face/AnimatedSprite2D:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -168,7 +168,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Face/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -180,7 +180,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("Face/AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -192,7 +192,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/AnimatedSprite2D:scale")
+tracks/2/path = NodePath("Face/AnimatedSprite2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -204,7 +204,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Head/AnimatedSprite2D:position")
+tracks/3/path = NodePath("Face/AnimatedSprite2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -234,7 +234,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Face/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -258,7 +258,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/AnimatedSprite2D:position")
+tracks/2/path = NodePath("Face/AnimatedSprite2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -270,7 +270,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Head/AnimatedSprite2D:modulate")
+tracks/3/path = NodePath("Face/AnimatedSprite2D:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -582,74 +582,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_gnr3s"]
-resource_name = "BoardIn"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Turn Board Control/Label Node:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 10), Vector2(0, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_update_turnboard_label"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_jgygw"]
-resource_name = "BoardOut"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Turn Board Control/Label Node:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.251),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, -10)]
-}
-
 [sub_resource type="Animation" id="Animation_22uii"]
 resource_name = "RESET"
 tracks/0/type = "value"
@@ -718,11 +650,79 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_gnr3s"]
+resource_name = "StakeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turn Board Control/Label Node:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_update_turnboard_label"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jgygw"]
+resource_name = "StakeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turn Board Control/Label Node/VBoxContainer/CenterContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turn Board Control/Label Node:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.251),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, -10)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cg2dv"]
 _data = {
-&"BoardIn": SubResource("Animation_gnr3s"),
-&"BoardOut": SubResource("Animation_jgygw"),
 &"RESET": SubResource("Animation_22uii"),
+&"StakeIn": SubResource("Animation_gnr3s"),
+&"StakeOut": SubResource("Animation_jgygw"),
 &"UpdateTurn": SubResource("Animation_cg2dv")
 }
 
@@ -939,16 +939,17 @@ outline_color = Color(0.0026359288, 0.34006116, 0.4611519, 1)
 scale = Vector2(2.75, 2.75)
 script = ExtResource("1_vapn4")
 
-[node name="Head" type="Node2D" parent="."]
+[node name="Face" type="Node2D" parent="."]
 visible = false
+scale = Vector2(0.9999999, 0.9999999)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Face"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_pxrbc")
 }
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Face"]
 texture_filter = 1
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_e7h6i")
@@ -967,6 +968,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_4ymqg")
 
 [node name="Gun" type="Node2D" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Gun"]
 libraries = {
@@ -1016,6 +1018,51 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="TurnBoard/Turn Board Control/Label Node/VBoxContainer/CenterContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Field"
+label_settings = SubResource("LabelSettings_pxrbc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StakeBoard" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StakeBoard"]
+libraries = {
+&"": SubResource("AnimationLibrary_cg2dv")
+}
+autoplay = "RESET"
+
+[node name="Turn Board Control" type="Node2D" parent="StakeBoard"]
+texture_filter = 1
+position = Vector2(-8, -6)
+
+[node name="TileMap" type="TileMap" parent="StakeBoard/Turn Board Control"]
+scale = Vector2(0.5, 0.5)
+tile_set = SubResource("TileSet_wj1uh")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 524288, 4, -65536, 65536, 8, -65535, 65536, 8, -65534, 65536, 8, -65533, 65536, 8, 2, 327680, 2, 65538, 327680, 2, 3, 327680, 2, 65539, 327680, 2, 0, 327680, 2, 65536, 327680, 2, 1, 327680, 2, 65537, 327680, 2, 65535, 0, 10, 131071, 0, 10, 131072, 327680, 2, 196608, 131072, 11, 131073, 327680, 2, 196609, 131072, 11, 131074, 327680, 2, 196610, 131072, 11, 131075, 327680, 2, 196611, 131072, 11, 262143, 524288, 7, 196607, 0, 10, 4, 196608, 9, 65540, 196608, 9, 131076, 196608, 9, 196612, 720896, 7, -65532, 720896, 4)
+
+[node name="Panel" type="Panel" parent="StakeBoard/Turn Board Control"]
+visible = false
+texture_filter = 1
+offset_right = 15.0
+offset_bottom = 12.0
+size_flags_vertical = 3
+
+[node name="Label Node" type="Node2D" parent="StakeBoard/Turn Board Control"]
+scale = Vector2(0.3, 0.3)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StakeBoard/Turn Board Control/Label Node"]
+offset_right = 50.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="StakeBoard/Turn Board Control/Label Node/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="StakeBoard/Turn Board Control/Label Node/VBoxContainer/CenterContainer"]
 texture_filter = 1
 layout_mode = 2
 text = "Field"

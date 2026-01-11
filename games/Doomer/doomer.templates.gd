@@ -6,7 +6,7 @@ var pormpt_common = "res://prompts/prompt.common.txt"
 var prompt_context = "res://prompts/prompt.context.txt"
 
 
-static var portrait = preload("res://games/Doomer/nodes/portrait/doomer.portrait.all.tscn")
+static var portrait = preload("res://games/Doomer/nodes/portrait/doomer.portrait.tscn")
 static var coin_box_coin = preload("res://games/Doomer/nodes/coin_box/doomer.coin_box.coin.tscn")
 static var card_mark = preload("res://games/Doomer/nodes/card/doomer.card.mark.tscn")
 
@@ -31,3 +31,4 @@ var tscn_doomer_pointer = "res://games/Doomer/doomer.pointer.gd"
 var tscn_card = "res://games/Doomer/nodes/card/node.doomer.card.tscn"
 var tscn_card_mark = "res://games/Doomer/nodes/card/doomer.card.mark.tscn"
 var tscn_message_box = "res://games/Doomer/nodes/board/doomer.message_box.tscn"
+var tscn_coin_box = "res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn"

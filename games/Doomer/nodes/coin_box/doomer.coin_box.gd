@@ -48,6 +48,21 @@ func add_coins(count : int = 1):
 	
 func remove_coins():
 	pass
+	
+	
+func _bet_coins():
+	pass
+	# Add Gun Gravity
+	# Coin Box is the GAME BOARD
+	# Enemy has ANTI GRAVITY coins
+	# When a Bet is made with < >, the gun INCREASES gravity to pull the coins
+	# Coins are blood
+	# Game loop is reaching COIN/BLOOD OVERFLOW
+	
+	# Game Board has a below latch the lets coins flow to below off to the war chest offset screen
+	
+func _open_coin_box_latch():
+	pass
 
 func _on_container_rect_changed():
 	CommonFunctions.move_node_to_container(self, container)

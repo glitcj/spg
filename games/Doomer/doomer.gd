@@ -17,6 +17,9 @@ enum Opponents {Player, Enemy}
 @onready var logic : _Doomer_Logic = $Logic
 
 
+@onready var player_gun : _Doomer_Gun = $"Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer/Player Gun"
+@onready var enemy_gun : _Doomer_Gun = $"Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer/Enemy Gun"
+
 @onready var field_cards : Array = $Field.get_children() 
 # @onready var field_cards : Array[_Doomer_Card] = $Field.get_children() 
 """
