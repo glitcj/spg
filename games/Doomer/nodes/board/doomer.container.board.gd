@@ -15,7 +15,7 @@ class_name _Doomer_Board_Container
 
 
 
-
+# TODO: REFACTOR with find children
 @onready var player_hand_containers  =  [
 	$"PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer",
 	$"PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer"
@@ -25,21 +25,7 @@ class_name _Doomer_Board_Container
 	$"PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer"
 ]
 
-
 var field_cards : Array[_Doomer_Card]
-
-"""
-@onready var field_cards : Array[_Doomer_Card] = [
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer/Card-1",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-2/CenterContainer/Card-2",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-3/CenterContainer/Card-3",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-4/CenterContainer/Card-4",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer/Card-5",
-]
-"""
-
-# @onready var field_cards : Array[_Doomer_Card] = doomer.field_cards
-
 
 @onready var field_card_containers : Array = [
 	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer",
@@ -49,35 +35,13 @@ var field_cards : Array[_Doomer_Card]
 	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer",
 ]
 
-@export var field_card_1 : _Doomer_Card
-@export var field_card_2 : _Doomer_Card
-@export var field_card_3 : _Doomer_Card
-@export var field_card_4 : _Doomer_Card
-@export var field_card_5 : _Doomer_Card
-
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_portrait_container.add_child(player.portrait)
-	opponent_portrait_container.add_child(opponent.portrait)
-	
-	
-	for i in range(len(player.hand)):
-		player_hand_containers[i].add_child(player.hand[i])
-		opponent_hand_containers[i].add_child(opponent.hand[i])
-
-	for i in range(len(player.hand)):
-		player_hand_containers[i].add_child(player.hand[i])
-		opponent_hand_containers[i].add_child(opponent.hand[i])
-
-
-
+	pass
 	
 func on_orchestrator_is_ready():
 	field_cards = doomer.field_cards
 	for i in range(field_cards.size()):
-		# field_card_containers[i].add_child(field_cards[i])
 		field_cards[i].reparent(field_card_containers[i])
 		
 func instantiate_field_cards():

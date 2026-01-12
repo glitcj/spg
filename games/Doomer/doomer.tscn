@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=20 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_cp6uo"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_jh38i"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://dwg0a3ker5rp4" path="res://games/Doomer/doomer.board.gd" id="3_cw5lf"]
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://games/Doomer/nodes/turner/doomer.turner.tscn" id="4_w1tet"]
 [ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/board/node.doomer.hud.tscn" id="5_e5fcw"]
-[ext_resource type="Script" uid="uid://beqqp67u4n3by" path="res://games/Doomer/nodes/opponent/node.doomer.opponent.gd" id="5_rb180"]
 [ext_resource type="Script" uid="uid://mkdbmh21w7is" path="res://source/autoload/common_functions.gd" id="7_xkyh8"]
 [ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://games/Doomer/doomer.templates.gd" id="8_cp6uo"]
 [ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="8_tiri3"]
@@ -33,8 +32,8 @@ zoom = Vector2(0.9, 1)
 [node name="Cards Inspector" type="Node" parent="Inspectors" node_paths=PackedStringArray("inspectee_1", "inspectee_2", "inspectee_3", "inspectee_4")]
 script = ExtResource("2_rj2r0")
 inspectee_1 = NodePath("../../Field/Field Card 1")
-inspectee_2 = NodePath("../../Opponents/Player/Player Card 1")
-inspectee_3 = NodePath("../../Opponents/Player/Player Card 2")
+inspectee_2 = NodePath("")
+inspectee_3 = NodePath("")
 inspectee_4 = NodePath("../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer/SubViewport")
 
 [node name="Portraits Inspector" type="Node" parent="Inspectors" node_paths=PackedStringArray("inspectee_1", "inspectee_2")]
@@ -95,27 +94,6 @@ viewport = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelConta
 
 [node name="Opponents" type="Node" parent="."]
 
-[node name="Player" type="Node" parent="Opponents"]
-script = ExtResource("5_rb180")
-is_playable = true
-
-[node name="Player Card 1" parent="Opponents/Player" node_paths=PackedStringArray("doomer") instance=ExtResource("8_tiri3")]
-doomer = NodePath("../../..")
-
-[node name="Player Card 2" parent="Opponents/Player" node_paths=PackedStringArray("doomer") instance=ExtResource("8_tiri3")]
-doomer = NodePath("../../..")
-
-[node name="Enemy" type="Node" parent="Opponents"]
-script = ExtResource("5_rb180")
-
-[node name="Enemy Card 1" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
-doomer = NodePath("../../..")
-position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer")
-
-[node name="Enemy Card 2" parent="Opponents/Enemy" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
-doomer = NodePath("../../..")
-position_container = NodePath("../../../Containers/VBoxContainer/BoardContainer/PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer")
-
 [node name="Field" type="Node" parent="."]
 
 [node name="Field Card 1" parent="Field" node_paths=PackedStringArray("doomer", "position_container") instance=ExtResource("8_tiri3")]
@@ -156,8 +134,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BoardContainer" parent="Containers/VBoxContainer" node_paths=PackedStringArray("player", "opponent") instance=ExtResource("3_cp4er")]
-player = NodePath("../../../Opponents/Player")
-opponent = NodePath("../../../Opponents/Enemy")
+player = NodePath("")
+opponent = NodePath("")
 
 [node name="TextureRect" parent="Containers/VBoxContainer/BoardContainer/PanelContainerBG" index="1"]
 texture = SubResource("ViewportTexture_cp6uo")
