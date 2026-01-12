@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://50stjaah1tme"]
+[gd_scene load_steps=6 format=3 uid="uid://50stjaah1tme"]
 
 [ext_resource type="Script" uid="uid://dhkau3qujg0fs" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.gd" id="1_niy41"]
-[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_niy41"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_mpgp7"]
 
@@ -23,6 +22,7 @@ zoom = Vector2(0.1, 0.1)
 position = Vector2(0, 150)
 
 [node name="Bottom" type="Node2D" parent="CoinBoxStaticBody"]
+z_index = 1
 scale = Vector2(5, 1)
 
 [node name="StaticBody" type="StaticBody2D" parent="CoinBoxStaticBody/Bottom"]
@@ -35,6 +35,7 @@ texture = SubResource("CanvasTexture_mpgp7")
 shape = SubResource("RectangleShape2D_mpgp7")
 
 [node name="Left" type="Node2D" parent="CoinBoxStaticBody"]
+z_index = 1
 position = Vector2(-200, -150)
 scale = Vector2(1, 4)
 
@@ -48,6 +49,7 @@ texture = SubResource("CanvasTexture_mpgp7")
 shape = SubResource("RectangleShape2D_mpgp7")
 
 [node name="Right" type="Node2D" parent="CoinBoxStaticBody"]
+z_index = 1
 position = Vector2(200, -150)
 scale = Vector2(1, 4)
 
@@ -59,6 +61,12 @@ texture = SubResource("CanvasTexture_mpgp7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinBoxStaticBody/Right/StaticBody"]
 shape = SubResource("RectangleShape2D_mpgp7")
+
+[node name="BoxBG" type="Sprite2D" parent="CoinBoxStaticBody"]
+modulate = Color(0.015166652, 0.91, 0, 1)
+position = Vector2(0, -150)
+scale = Vector2(500, 300)
+texture = SubResource("CanvasTexture_mpgp7")
 
 [node name="Coins" type="Node2D" parent="."]
 
@@ -73,12 +81,6 @@ position = Vector2(0, -200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawner"]
 shape = SubResource("CircleShape2D_niy41")
-
-[node name="Portrait" parent="." instance=ExtResource("2_niy41")]
-z_index = 1
-position = Vector2(0, -150)
-rotation = -1.5707964
-portrait = 3
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, -150)

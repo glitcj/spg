@@ -2,6 +2,8 @@ extends Node2D
 class_name _Doomer_Card
 
 
+signal card_value_changed
+
 enum CardActions {RemoveAllMarks, Randomise, FlipUp, FlipDown}
 
 enum MarkPointers {all_marks, last_added_mark}
@@ -82,7 +84,11 @@ var marks : Array
 	]
 
 
-var value: CardValue = CardValue.Ace
+var value: CardValue = CardValue.Ace:
+	set(v):
+		value = v
+		card_value_changed.emit()
+		
 var suite: CardSuite = CardSuite.Diamond
 var state: CardState = CardState.FacingDown
 
