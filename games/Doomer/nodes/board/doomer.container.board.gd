@@ -1,7 +1,7 @@
 extends Node2D
 class_name _Doomer_Board_Container
 
-@onready var doomer : _Doomer = get_parent().get_parent().get_parent()
+@onready var doomer : _Doomer = get_parent().get_parent()
 
 @export var player : _Doomer_Opponent
 @export var opponent : _Doomer_Opponent
@@ -138,15 +138,3 @@ func get_field_cards():
 	
 func get_highest_player_or_enemy_card():
 	return field_cards
-
-
-"""
-func get_field_cards():
-	return board.get_field_cards()
-	
-func get_highest_player_or_enemy_card():
-	return board.get_highest_player_or_enemy_card()
-	
-func get_next_field_card():
-	return board.next_field_card()
-"""
