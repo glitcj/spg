@@ -9,7 +9,7 @@ class_name _Doomer
 enum Opponents {Player, Enemy}
 
 @onready var handler : _Doomer_Handler = $Handler
-@onready var hud : _Doomer_HUD = $Containers/VBoxContainer/HUDContainer
+@onready var hud : _Doomer_HUD = $Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer/HUD  # $Containers/VBoxContainer/HUDContainer
 @onready var turner : _Doomer_Turner = $Turner
 
 @onready var board_container : _Doomer_Board_Container = $Containers/VBoxContainer/BoardContainer
@@ -20,7 +20,7 @@ enum Opponents {Player, Enemy}
 @export var player_gun : _Doomer_Gun # = $"Containers/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer/Player Gun"
 @export var enemy_gun : _Doomer_Gun # = $"Containers/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer/Enemy Gun"
 
-@onready var field_cards : Array = 	find_children("Field Card *", "*", true, false)
+@onready var field_cards : Array = 	find_children("Field Card *")# , "*", true, false)
 
 
 @onready var enemy_cards : Array = enemy_gun.hand_cards
@@ -53,6 +53,7 @@ func _ready() -> void:
 	handler.mode = handler.InputMode.Inactive
 	
 func make_pointer(key : _Doomer_Pointer.Keys):
+	# print(field_cards)
 	var pointer_ = _Doomer_Pointer.new(key)
 	add_child(pointer_)
 	return pointer_

@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://games/Doomer/nodes/board/doomer.message_box.tscn" id="4_mevwo"]
 
 [node name="HUD" type="Node2D"]
-position = Vector2(-285, 309)
-scale = Vector2(7, 7)
 script = ExtResource("1_dldit")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -165.0
+offset_top = -20.0
+offset_right = -15.0
+offset_bottom = -10.0
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
