@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=20 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_cp6uo"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_jh38i"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://games/Doomer/nodes/doomer.board_background.tscn" id="11_jh38i"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://games/Doomer/docs.gd" id="13_ayhyn"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="14_5a2ym"]
+[ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="15_kvjod"]
 [ext_resource type="PackedScene" uid="uid://r4iwnpw8jo1" path="res://games/Doomer/nodes/gun/doomer.gun.tscn" id="15_rj2r0"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jh38i"]
@@ -114,6 +115,9 @@ doomer = NodePath("../../../../../../../..")
 
 [node name="Player Gun" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer" index="0" instance=ExtResource("15_rj2r0")]
 scale = Vector2(0.5, 0.5)
+
+[node name="CoinBox" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Bottom/CenterContainer" index="0" instance=ExtResource("15_kvjod")]
+scale = Vector2(0.1, 0.1)
 
 [node name="HUD" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer" index="0" instance=ExtResource("5_e5fcw")]
 

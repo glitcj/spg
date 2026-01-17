@@ -67,7 +67,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Card:scale")
+tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,7 +79,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Card:rotation")
+tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -126,7 +126,7 @@ resource_name = "FlipIn"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Card:frame")
+tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,7 +138,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Card:animation")
+tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -150,7 +150,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/Card:scale")
+tracks/2/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -165,7 +165,7 @@ resource_name = "FlipOut"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Card:frame")
+tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -177,7 +177,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Card:animation")
+tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -189,7 +189,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/Card:scale")
+tracks/2/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -237,7 +237,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Card:frame")
+tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -249,7 +249,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Card:animation")
+tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -261,7 +261,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/Card:rotation")
+tracks/2/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -273,26 +273,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
+tracks/3/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.4, 0.4)]
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprites/Card:position")
+tracks/4/path = NodePath(".:card_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(1.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eiu11"]
@@ -866,25 +866,15 @@ animations = [{
 [node name="Card" type="Node2D" node_paths=PackedStringArray("card", "card_viewport", "containers_node")]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_kt143")
-card = NodePath("Sprites/Card")
+card = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite")
 card_viewport = NodePath("Containers Node/Containers/SubViewportContainer")
 containers_node = NodePath("Containers Node")
 
-[node name="AnimationPlayers" type="Node" parent="."]
-
-[node name="Card" type="AnimationPlayer" parent="AnimationPlayers"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_eiu11")
 }
 autoplay = "RESET"
-
-[node name="Sprites" type="Node2D" parent="."]
-
-[node name="Card" type="AnimatedSprite2D" parent="Sprites"]
-scale = Vector2(0.99999976, 0.99999976)
-sprite_frames = SubResource("SpriteFrames_djf6f")
-animation = &"cards_other"
 
 [node name="Containers Node" type="Node2D" parent="."]
 position = Vector2(-50, -75)
@@ -929,7 +919,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Mark" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1"]
+[node name="Mark 1" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1"]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
@@ -940,7 +930,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Mark" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2"]
+[node name="Mark 2" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2"]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
@@ -951,7 +941,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Mark" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"]
+[node name="Mark 3" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
@@ -969,26 +959,30 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin"]
+[node name="Enemy Bet Container" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="Card Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
+[node name="VBox" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
 custom_minimum_size = Vector2(80, 85)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Card Container"]
+[node name="Card Container" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+
+[node name="Card Sprite" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container"]
+sprite_frames = SubResource("SpriteFrames_djf6f")
+animation = &"cards_other"
 
 [node name="Bottom Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin"]
+[node name="Player Bet Container" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6

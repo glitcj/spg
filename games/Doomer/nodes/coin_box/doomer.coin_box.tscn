@@ -26,6 +26,7 @@ z_index = 1
 scale = Vector2(5, 1)
 
 [node name="StaticBody" type="StaticBody2D" parent="CoinBoxStaticBody/Bottom"]
+scale = Vector2(3, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CoinBoxStaticBody/Bottom/StaticBody"]
 scale = Vector2(100, 100)
@@ -40,6 +41,7 @@ position = Vector2(-200, -150)
 scale = Vector2(1, 4)
 
 [node name="StaticBody" type="StaticBody2D" parent="CoinBoxStaticBody/Left"]
+position = Vector2(-550, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="CoinBoxStaticBody/Left/StaticBody"]
 scale = Vector2(100, 100)
@@ -54,6 +56,7 @@ position = Vector2(200, -150)
 scale = Vector2(1, 4)
 
 [node name="StaticBody" type="StaticBody2D" parent="CoinBoxStaticBody/Right"]
+position = Vector2(550, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="CoinBoxStaticBody/Right/StaticBody"]
 scale = Vector2(100, 100)

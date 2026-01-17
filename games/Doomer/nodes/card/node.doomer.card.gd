@@ -49,6 +49,10 @@ var enumation_speeds : Dictionary = {
 @export var position_container : CanvasItem
 @export var card_viewport : SubViewportContainer
 @export var containers_node : CanvasItem
+
+
+@export var card_scale_multiplier = 1.0
+
 var marks : Array
 
 # card_scale cannot be set with @onready, must be @exported so that 
@@ -58,7 +62,7 @@ var marks : Array
 		card_scale = value
 		# if is_instance_valid(card):
 		if is_instance_valid(card_viewport):
-			card_viewport.scale = value
+			card_viewport.scale = value * card_scale_multiplier
 
 
 # Animation players cannot handle reparented nodes.
@@ -69,19 +73,17 @@ var marks : Array
 		if is_instance_valid(card):
 			containers_node.position = value
 
-@onready var animation_player := $AnimationPlayers/Card
-@onready var sprite := $Sprites/Card
+@onready var animation_player := $AnimationPlayer
+@onready var sprite := find_children("Card Sprite", "AnimatedSprite2D")[0]
 
-@onready var card_container : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Card Container/CenterContainer"
+@onready var card_container : CanvasItem = find_children("Card Container", "Container")[0]
 
 # Mark containers
-@onready var enemy_bet_continer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin/CenterContainer"
-@onready var player_bet_continer : CanvasItem = $"Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin/CenterContainer"
-@onready var player_mark_containers : Array = [
-	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1",
-	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2",
-	$"Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"	
-	]
+@onready var enemy_bet_continer : CanvasItem = find_children("Enemy Bet Container", "Container")[0]
+@onready var player_bet_continer : CanvasItem = find_children("Player Bet Container", "Container")[0]
+
+
+@onready var player_mark_containers : Array = find_children("Player Mark Container*", "Container")
 
 
 var value: CardValue = CardValue.Ace:

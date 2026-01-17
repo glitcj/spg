@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://r4iwnpw8jo1"]
+[gd_scene load_steps=5 format=3 uid="uid://r4iwnpw8jo1"]
 
 [ext_resource type="Script" uid="uid://b4407hdbap3yk" path="res://games/Doomer/nodes/gun/doomer.gun.gd" id="1_7yrmh"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_8yir6"]
-[ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="3_4a7bg"]
 [ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="4_nuvoh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nuvoh"]
@@ -11,21 +10,6 @@ font_size = 42
 [node name="Gun" type="Node2D"]
 position = Vector2(0, -3)
 script = ExtResource("1_7yrmh")
-
-[node name="MarginContainer Coin Box" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(0, 100)
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = 50.0
-
-[node name="CenterContainer 2" type="CenterContainer" parent="MarginContainer Coin Box"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="CoinBox" parent="MarginContainer Coin Box/CenterContainer 2" instance=ExtResource("3_4a7bg")]
-scale = Vector2(0.25, 0.25)
 
 [node name="MarginContainer Gun" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 100)
@@ -52,6 +36,7 @@ offset_bottom = 60.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MarginContainer Card 2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(80, 0)
@@ -67,42 +52,34 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2"]
+layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Card" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2/CenterContainer" instance=ExtResource("4_nuvoh")]
 z_index = 1
+card_scale_multiplier = 1.5
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-layout_direction = 2
-layout_mode = 2
-
-[node name="MarginContainer Card 2" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
+[node name="MarginContainer Card 3" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="Label Card Value" type="Label" parent="VBoxContainer/HBoxContainer3/MarginContainer Card 2"]
+[node name="Label Card Value" type="Label" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 3"]
 modulate = Color(1, 0, 1, 1)
 z_index = 10
 layout_mode = 2
-text = "2"
+text = "12"
 label_settings = SubResource("LabelSettings_nuvoh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer3/MarginContainer Card 2"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 3"]
+layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Card" parent="VBoxContainer/HBoxContainer3/MarginContainer Card 2/CenterContainer" instance=ExtResource("4_nuvoh")]
+[node name="Card" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 3/CenterContainer" instance=ExtResource("4_nuvoh")]
 z_index = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
+card_scale_multiplier = 1.5

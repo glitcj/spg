@@ -2,3 +2,5 @@ ignore/
 ignore/*
 .godot/
 .godot/*
+android/
+android/*
