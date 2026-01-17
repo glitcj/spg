@@ -131,19 +131,8 @@ func queue_enumation(enumation : _Doomer_Card.Enumation, wait : bool = true):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if doomer:
-		doomer.ready.connect(_reparent_card_to_position_container)
-	ready.connect(_reparent_nodes_to_containers)
+	pass
 
-func _reparent_card_to_position_container():
-	reparent(position_container)	
-	
-	# Must reset position after reparenting
-	position = Vector2.ZERO
-
-func _reparent_nodes_to_containers():
-	card.reparent(card_container)
-	card.position = Vector2.ZERO
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

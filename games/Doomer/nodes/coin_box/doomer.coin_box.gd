@@ -12,9 +12,7 @@ var spawn_point_randomness = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if doomer:
-		# doomer.ready.connect(move_to_viewport)
-		doomer.ready.connect(move_to_container)
+	pass
 		
 		
 	add_coins(100)
@@ -24,12 +22,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func move_to_viewport():
-	self.reparent(viewport)
-
-func move_to_container():
-	self.reparent(container)
-	position = Vector2.ZERO
 
 func add_coins(count : int = 1):
 	var coin : RigidBody2D

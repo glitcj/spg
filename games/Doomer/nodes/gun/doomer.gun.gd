@@ -1,15 +1,10 @@
 extends Node2D
 class_name _Doomer_Gun
 
-@onready var hand_cards = [
-	$"VBoxContainer/HBoxContainer/MarginContainer Card 1/Card Container/Card",
-	$"VBoxContainer/HBoxContainer2/MarginContainer Card 2/Card Container/Card"
-]
+@onready var hand_cards = find_children("Card", "_Doomer_Card")
+@onready var card_labels = find_children("Label Card *", "Label")
 
-@onready var card_labels = [
-	$"VBoxContainer/HBoxContainer/MarginContainer Card 1/Card Container/Label Card Value",
-	$"VBoxContainer/HBoxContainer2/MarginContainer Card 2/Card Container/Label Card Value"
-]
+@onready var coin_box = $"MarginContainer Coin Box/CenterContainer 2/CoinBox"
 
 @export var holder : _Doomer.Opponents:
 	set(v):

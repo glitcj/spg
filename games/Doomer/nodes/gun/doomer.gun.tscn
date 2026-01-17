@@ -1,17 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://r4iwnpw8jo1"]
+[gd_scene load_steps=6 format=3 uid="uid://r4iwnpw8jo1"]
 
 [ext_resource type="Script" uid="uid://b4407hdbap3yk" path="res://games/Doomer/nodes/gun/doomer.gun.gd" id="1_7yrmh"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_8yir6"]
 [ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="3_4a7bg"]
 [ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="4_nuvoh"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_m0ku2"]
-font_size = 42
-
 [sub_resource type="LabelSettings" id="LabelSettings_nuvoh"]
 font_size = 42
 
 [node name="Gun" type="Node2D"]
+position = Vector2(0, -3)
 script = ExtResource("1_7yrmh")
 
 [node name="MarginContainer Coin Box" type="MarginContainer" parent="."]
@@ -47,69 +45,64 @@ rotation = 0.34906584
 portrait = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 150.0
-offset_bottom = 104.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer Card 1" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Card Container" type="CenterContainer" parent="VBoxContainer/HBoxContainer/MarginContainer Card 1"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Card" parent="VBoxContainer/HBoxContainer/MarginContainer Card 1/Card Container" instance=ExtResource("4_nuvoh")]
-z_index = 1
-
-[node name="Label Card Value" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer Card 1/Card Container"]
-modulate = Color(1, 0, 0, 1)
-z_index = 10
-layout_mode = 2
-text = "NONE"
-label_settings = SubResource("LabelSettings_m0ku2")
-
-[node name="M2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="M3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = 60.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="MarginContainer Card 2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Card Container" type="CenterContainer" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Card" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2/Card Container" instance=ExtResource("4_nuvoh")]
-z_index = 1
-
-[node name="Label Card Value" type="Label" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2/Card Container"]
+[node name="Label Card Value" type="Label" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2"]
 modulate = Color(1, 0, 1, 1)
 z_index = 10
 layout_mode = 2
-text = "NONE"
+text = "2"
 label_settings = SubResource("LabelSettings_nuvoh")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="M2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Card" parent="VBoxContainer/HBoxContainer2/MarginContainer Card 2/CenterContainer" instance=ExtResource("4_nuvoh")]
+z_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="M3" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="MarginContainer Card 2" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Label Card Value" type="Label" parent="VBoxContainer/HBoxContainer3/MarginContainer Card 2"]
+modulate = Color(1, 0, 1, 1)
+z_index = 10
+layout_mode = 2
+text = "2"
+label_settings = SubResource("LabelSettings_nuvoh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer3/MarginContainer Card 2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Card" parent="VBoxContainer/HBoxContainer3/MarginContainer Card 2/CenterContainer" instance=ExtResource("4_nuvoh")]
+z_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3

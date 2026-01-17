@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=19 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_cp6uo"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_jh38i"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://games/Doomer/nodes/doomer.board_background.tscn" id="11_jh38i"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://games/Doomer/docs.gd" id="13_ayhyn"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="14_5a2ym"]
-[ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="15_kvjod"]
 [ext_resource type="PackedScene" uid="uid://r4iwnpw8jo1" path="res://games/Doomer/nodes/gun/doomer.gun.tscn" id="15_rj2r0"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jh38i"]
@@ -27,8 +26,8 @@ player_gun = NodePath("Containers/BoardContainer/PanelContainer/VBoxContainer/Bo
 enemy_gun = NodePath("Containers/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer/Enemy Gun")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(-240, 150)
-zoom = Vector2(1.6, 1.779)
+offset = Vector2(-240, 160)
+zoom = Vector2(1.55, 1.724)
 
 [node name="Inspectors" type="Node" parent="."]
 
@@ -73,25 +72,6 @@ position = Vector2(-1000, 0)
 doomer = NodePath("../..")
 container = NodePath("../../Containers/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer")
 
-[node name="Coins" type="Node" parent="Portraits"]
-
-[node name="Coin Player" parent="Portraits/Coins" instance=ExtResource("14_5a2ym")]
-position = Vector2(-1000, 0)
-portrait = 1
-
-[node name="Player CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container") instance=ExtResource("15_kvjod")]
-position = Vector2(-1000, 0)
-scale = Vector2(0.5, 0.5)
-doomer = NodePath("../../..")
-container = NodePath("../../../Containers/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer")
-
-[node name="Enemy CoinBox" parent="Portraits/Coins" node_paths=PackedStringArray("doomer", "container", "viewport") instance=ExtResource("15_kvjod")]
-position = Vector2(-1000, 0)
-scale = Vector2(0.5, 0.5)
-doomer = NodePath("../../..")
-container = NodePath("../../../Containers/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer")
-viewport = NodePath("../../../Containers/BoardContainer/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer/SubViewport")
-
 [node name="Opponents" type="Node" parent="."]
 
 [node name="Field" type="Node" parent="."]
@@ -118,34 +98,24 @@ scale = Vector2(0.5, 0.5)
 holder = 1
 
 [node name="Field Card 1" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-1/CenterContainer" index="0" node_paths=PackedStringArray("doomer") instance=ExtResource("8_tiri3")]
-position = Vector2(107.46915, 35.320995)
 doomer = NodePath("../../../../../../../..")
 
 [node name="Field Card 2" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-2/CenterContainer" index="0" node_paths=PackedStringArray("doomer") instance=ExtResource("8_tiri3")]
-position = Vector2(53.469143, 35.320995)
 doomer = NodePath("../../../../../../../..")
 
 [node name="Field Card 3" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-3/CenterContainer" index="0" node_paths=PackedStringArray("doomer") instance=ExtResource("8_tiri3")]
-position = Vector2(-0.53085333, 35.320995)
 doomer = NodePath("../../../../../../../..")
 
 [node name="Field Card 4" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-4/CenterContainer" index="0" node_paths=PackedStringArray("doomer") instance=ExtResource("8_tiri3")]
-position = Vector2(107.46915, -18.679003)
 doomer = NodePath("../../../../../../../..")
 
 [node name="Field Card 5" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-5/CenterContainer" index="0" node_paths=PackedStringArray("doomer") instance=ExtResource("8_tiri3")]
-position = Vector2(53.469143, -18.679003)
 doomer = NodePath("../../../../../../../..")
 
 [node name="Player Gun" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer" index="0" instance=ExtResource("15_rj2r0")]
 scale = Vector2(0.5, 0.5)
 
 [node name="HUD" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer" index="0" instance=ExtResource("5_e5fcw")]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Containers"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Turner" parent="." instance=ExtResource("4_w1tet")]
 

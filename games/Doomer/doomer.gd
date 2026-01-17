@@ -28,9 +28,6 @@ enum Opponents {Player, Enemy}
 
 @onready var player_cards : Array = player_gun.hand_cards
 
-
-
-
 @onready var player : _Doomer_Opponent = $Opponents/Player
 @onready var enemy : _Doomer_Opponent = $Opponents/Enemy
 
@@ -39,8 +36,8 @@ enum Opponents {Player, Enemy}
 
 @onready var next_field_card : _Doomer_Card
 
-@onready var player_coin_box : _Doomer_Coin_Box = $"Portraits/Coins/Player CoinBox"
-@onready var enemy_coin_box : _Doomer_Coin_Box = $"Portraits/Coins/Enemy CoinBox"
+@onready var player_coin_box : _Doomer_Coin_Box = player_gun.coin_box
+@onready var enemy_coin_box : _Doomer_Coin_Box = enemy_gun.coin_box
 
 @onready var player_portrait : _Doomer_Portrait = $"Portraits/Player Head"
 @onready var enemy_portrait : _Doomer_Portrait = $"Portraits/Enemy Head"
