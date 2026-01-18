@@ -7,7 +7,7 @@ enum Action {Call, Check, Fold, Null}
 var action : Action
 
 var action_placed_and_performed : bool = false
-var interrupt_buffer_wait_time : float = 0.5
+var interrupt_buffer_wait_time : float = _Doomer_Constants.imeddiate_action_time_delta
 
 var InputToAction := {
 	KEY_UP: Action.Call,
@@ -47,7 +47,7 @@ func _process_action():
 
 func _on_call_action():
 	var _portrait : _Doomer_Portrait = doomer.pointer.player_portrait()
-	await _portrait.play_enumation_queue([_Doomer_Portrait.Animations.Attack, _Doomer_Portrait.Animations.RESET, _Doomer_Portrait.Animations.Idle], true)
+	_portrait.play_enumation_queue([_Doomer_Portrait.Animations.Attack, _Doomer_Portrait.Animations.RESET, _Doomer_Portrait.Animations.Idle], false)
 	
 	var cards = doomer.pointer.cards_ready_to_bet_by_player()
 	var mark_type = _Doomer_Card_Mark.MarkType.ATK
@@ -58,7 +58,7 @@ func _on_call_action():
 
 func _on_fold_action():
 	var _portrait : _Doomer_Portrait = doomer.pointer.player_portrait()
-	await _portrait.play_enumation_queue([_Doomer_Portrait.Animations.Damage, _Doomer_Portrait.Animations.RESET,  _Doomer_Portrait.Animations.Idle], true)
+	_portrait.play_enumation_queue([_Doomer_Portrait.Animations.Damage, _Doomer_Portrait.Animations.RESET,  _Doomer_Portrait.Animations.Idle], false)
 	
 	var cards = doomer.pointer.cards_ready_to_bet_by_player()
 	var mark_type = _Doomer_Card_Mark.MarkType.DEF

@@ -6,7 +6,7 @@ class_name _Doomer_Turn_Field
 func _init() -> void:
 	turn_name = "Field"
 	turn_colour = Color(1,1,1)
-	turn_wait_time = .2
+	turn_wait_time = 0.1
 	
 func on_turn_start():
 	doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Field.new())
@@ -81,8 +81,6 @@ class Turns:
 		turn_ = _Doomer_Turn_Show_Message.new(message, false, message_type, null)
 		doomer.turner.turn_state_queue.insert(0, turn_)
 		
-		
-		
 		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
 		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Flip_Cards.new(pointer))
 		
@@ -92,8 +90,6 @@ class Turns:
 		doomer.turner.turn_state_queue.insert(0, turn_)
 		
 		
-
-
 	func flip_all_cards_down_turns():
 		var wait_for_each_card = false
 		

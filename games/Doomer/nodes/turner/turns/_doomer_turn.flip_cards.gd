@@ -9,7 +9,7 @@ func _init(cards_pointer_: _Doomer_Pointer, direction_ : Variant = null, wait_fo
 	turn_name = "Flip"
 	turn_colour = Color(0.5,.3,.5)
 	name = "_Doomer_Turn_Flip_Next_Field_Card"
-	turn_wait_time = 1
+	turn_wait_time = .001
 	cards_pointer = cards_pointer_
 	wait_for_each_flip = wait_for_each_flip_
 	

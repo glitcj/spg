@@ -4,20 +4,31 @@ class_name _Doomer_Coin_Box
 @export var doomer : _Doomer
 @export var container : CanvasItem
 @export var viewport : SubViewport
-
+@export var holder : _Doomer.Opponents:
+	set(v):
+		holder = v
+		if is_node_ready():
+			_on_holder_assignment()
+		
 @onready var resizer_sprite = $"Resizer Sprite"
 @onready var spawner =  $"Spawner"
-
+@onready var gravity_area : Area2D = find_children("Area2D Gravity")[0]
+@onready var gravity_vector : Vector2:
+	set(v):
+		gravity_vector = v
+		gravity_area.gravity_direction = gravity_vector
+		
 var spawn_point_randomness = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-		
-		
+	_on_holder_assignment()
 	add_coins(100)
-
-
+	
+func _on_holder_assignment():
+	rotation = PI if holder == _Doomer.Opponents.Enemy else 0.0
+	gravity_vector = Vector2(0, -1) if  holder == _Doomer.Opponents.Enemy else Vector2(0, 1)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

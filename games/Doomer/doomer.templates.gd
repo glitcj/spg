@@ -1,18 +1,12 @@
 extends Node
 class_name _Doomer_Templates
 
-
 static var portrait = preload("res://games/Doomer/nodes/portrait/doomer.portrait.tscn")
 static var coin_box_coin = preload("res://games/Doomer/nodes/coin_box/doomer.coin_box.coin.tscn")
 static var card_mark = preload("res://games/Doomer/nodes/card/doomer.card.mark.tscn")
 
-
-
-
 # Recent:
-
 var tscn_gun = "res://games/Doomer/nodes/gun/doomer.gun.tscn"
-
 
 # References:
 var turn_field = "res://games/Doomer/nodes/turner/turns/_doomer_turn.field.gd"

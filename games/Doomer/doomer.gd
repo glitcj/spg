@@ -39,7 +39,7 @@ enum Opponents {Player, Enemy}
 # @onready var player_coin_box : _Doomer_Coin_Box = player_gun.coin_box
 # @onready var enemy_coin_box : _Doomer_Coin_Box = enemy_gun.coin_box
 @onready var player_coin_box : _Doomer_Coin_Box = $"Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Bottom/CenterContainer/CoinBox" 
-@onready var enemy_coin_box : _Doomer_Coin_Box = $"Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Bottom/CenterContainer/CoinBox" 
+@onready var enemy_coin_box : _Doomer_Coin_Box = $"Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Top/CenterContainer/CoinBox"
 
 
 @onready var player_portrait : _Doomer_Portrait = $"Portraits/Player Head"
