@@ -1,29 +1,19 @@
 extends Node
 class_name _Doomer_Handler
 
-@onready var doomer: _Doomer = get_parent()
-
-enum InputMode {Inactive, Active}
 signal finished_input_mode
+enum InputMode {Inactive, Active}
 
 var mode: InputMode = InputMode.Inactive
 var input_tray : Key
+
+@onready var doomer: _Doomer = get_parent()
 
 # TODO: Will be extended:
 # Gamepad buttons
 # var button: JoyButton = JOY_BUTTON_A
 # Mouse buttons
 # var mouse: MouseButton = MOUSE_BUTTON_LEFT
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func handle_inputs(event):
 	if mode == InputMode.Inactive:
@@ -44,8 +34,6 @@ func _process_input(event):
 
 func _reset():
 	mode = InputMode.Inactive
-
-
 
 
 

@@ -1,14 +1,7 @@
 extends Node2D
 class_name _Doomer_Board_Container
 
-@onready var doomer : _Doomer = get_parent().get_parent()
-
-@export var player : _Doomer_Opponent
-@export var opponent : _Doomer_Opponent
-
-
-@export var field : Array
-
+@export var doomer : _Doomer
 
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer

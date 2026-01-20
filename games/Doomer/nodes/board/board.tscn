@@ -787,7 +787,7 @@ sources/0 = SubResource("TileSetAtlasSource_mw5tf")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kc1k1"]
 
-[node name="Board" type="Node2D"]
+[node name="Poker Scene" type="Node2D"]
 position = Vector2(-355, -410)
 scale = Vector2(4.5, 4.5)
 script = ExtResource("1_n8eav")

@@ -46,6 +46,8 @@ inspectee_2 = NodePath("../../Portraits/Enemy Head")
 [node name="Pointer" type="Node" parent="."]
 script = ExtResource("2_jh38i")
 
+[node name="Turner" parent="." instance=ExtResource("4_w1tet")]
+
 [node name="Board" type="Node" parent="."]
 script = ExtResource("3_cw5lf")
 
@@ -93,12 +95,13 @@ scale = Vector2(0.9, 0.9)
 [node name="Board BG" parent="Containers" instance=ExtResource("11_jh38i")]
 position = Vector2(-750, -750)
 
-[node name="BoardContainer" parent="Containers" instance=ExtResource("3_cp4er")]
+[node name="BoardContainer" parent="Containers" node_paths=PackedStringArray("doomer") instance=ExtResource("3_cp4er")]
+doomer = NodePath("../..")
 
 [node name="TextureRect" parent="Containers/BoardContainer/MarginContainer" index="1"]
 texture = SubResource("ViewportTexture_jh38i")
 
-[node name="CoinBox" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Top/CenterContainer" index="0" instance=ExtResource("15_kvjod")]
+[node name="Enemy CoinBox" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Top/CenterContainer" index="0" instance=ExtResource("15_kvjod")]
 scale = Vector2(0.1, 0.1)
 holder = 1
 
@@ -124,18 +127,23 @@ doomer = NodePath("../../../../../../../..")
 [node name="Player Gun" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer" index="0" instance=ExtResource("15_rj2r0")]
 scale = Vector2(0.5, 0.5)
 
-[node name="CoinBox" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Bottom/CenterContainer" index="0" instance=ExtResource("15_kvjod")]
+[node name="Player CoinBox" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/CoinBox Bottom/CenterContainer" index="0" instance=ExtResource("15_kvjod")]
 scale = Vector2(0.1, 0.1)
 
 [node name="HUD" parent="Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer" index="0" instance=ExtResource("5_e5fcw")]
-
-[node name="Turner" parent="." instance=ExtResource("4_w1tet")]
 
 [node name="Documentation" type="Node" parent="."]
 script = ExtResource("13_ayhyn")
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("10_3vrde")
+
+[node name="Scenes" type="Node2D" parent="."]
+position = Vector2(0, 2000)
+
+[node name="GridContainer" type="GridContainer" parent="Scenes"]
+offset_right = 5000.0
+offset_bottom = 5000.0
 
 [editable path="Containers/BoardContainer"]
 [editable path="Containers/BoardContainer/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer/Enemy Gun"]

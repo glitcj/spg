@@ -10,8 +10,11 @@ class_name _Doomer_Coin_Box
 		if is_node_ready():
 			_on_holder_assignment()
 		
-@onready var resizer_sprite = $"Resizer Sprite"
-@onready var spawner =  $"Spawner"
+@onready var coins : Node2D = find_child("Coins")
+@onready var spawner : Area2D =  find_child("Spawner")
+
+
+
 @onready var gravity_area : Area2D = find_children("Area2D Gravity")[0]
 @onready var gravity_vector : Vector2:
 	set(v):
@@ -47,7 +50,7 @@ func add_coins(count : int = 1):
 		# print("dddd %f %f %f" % [coin.global_position.x, coin.global_position.y,  (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))] )
 		coin.position.y += (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))
 		coin.sleeping = false
-		$Coins.add_child(coin)
+		coins.add_child(coin)
 	
 func remove_coins():
 	pass
@@ -69,7 +72,3 @@ func _open_coin_box_latch():
 
 func _on_container_rect_changed():
 	CommonFunctions.move_node_to_container(self, container)
-
-# This is not working correctly, always scales the nodes directly
-func _set_absolute_size(desired_width := 50, desired_height := 50, keep_ratio := false) -> void:
-	CommonFunctions.set_node_absolute_size_from_sprite_reference(resizer_sprite, self, desired_width, desired_height, keep_ratio)
