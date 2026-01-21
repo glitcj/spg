@@ -21,12 +21,16 @@ class_name _Doomer_Coin_Box
 		gravity_vector = v
 		gravity_area.gravity_direction = gravity_vector
 		
-var spawn_point_randomness = 200
+var spawn_point_randomness = Vector2(1300, 100)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_on_holder_assignment()
-	add_coins(100)
+	add_coins(20)
+	while true:
+		await CommonFunctions.waiter(self,1)
+		add_coins(20)
 	
 func _on_holder_assignment():
 	rotation = PI if holder == _Doomer.Opponents.Enemy else 0.0
@@ -39,18 +43,26 @@ func _process(delta: float) -> void:
 
 func add_coins(count : int = 1):
 	var coin : RigidBody2D
-	for i in range(count):
-		coin = _Doomer_Templates.coin_box_coin.instantiate()
-		
-		# print("cccc %f %f %f" % [spawner.global_position.x, spawner.global_position.y,  (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))] )
-		coin.position = spawner.position 
-		coin.position.x += (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))
-		
-		
-		# print("dddd %f %f %f" % [coin.global_position.x, coin.global_position.y,  (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))] )
-		coin.position.y += (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))
-		coin.sleeping = false
-		coins.add_child(coin)
+	
+	var coin_batch = 2
+	for batch_i in range(int(count/coin_batch)):
+		for i in range(coin_batch):
+			coin = _Doomer_Templates.coin_box_coin.instantiate()
+			coin.visible = false
+			coins.add_child(coin)
+			coin.visible = true
+
+			
+			# print("cccc %f %f %f" % [spawner.global_position.x, spawner.global_position.y,  (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))] )
+			coin.position = spawner.position 
+			# coin.scale = Vector2(2,10)
+			coin.position.x += (randi() % int(spawn_point_randomness.x) - (float(spawn_point_randomness.x)/2))
+			
+			# print("dddd %f %f %f" % [coin.global_position.x, coin.global_position.y,  (randi() % spawn_point_randomness - (float(spawn_point_randomness)/2))] )
+			coin.position.y += (randi() % int(spawn_point_randomness.y) - (float(spawn_point_randomness.y)/2))
+			# coin.sleeping = false
+			
+		await CommonFunctions.waiter(self, 0.01)
 	
 func remove_coins():
 	pass

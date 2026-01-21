@@ -8,7 +8,7 @@
 radius = 31.906113
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0frw7"]
-size = Vector2(1500, 700)
+size = Vector2(1500, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpgp7"]
 size = Vector2(100.5, 99.8125)
@@ -59,13 +59,13 @@ scale = Vector2(1500, 300)
 texture = SubResource("CanvasTexture_mpgp7")
 
 [node name="Spawner" type="Area2D" parent="VBoxContainer/MarginContainer1/CenterContainer/CoinBox Node"]
-position = Vector2(0, -200)
+position = Vector2(0, -700)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/MarginContainer1/CenterContainer/CoinBox Node/Spawner"]
 shape = SubResource("CircleShape2D_niy41")
 
 [node name="Area2D Gravity" type="Area2D" parent="VBoxContainer/MarginContainer1/CenterContainer/CoinBox Node"]
-position = Vector2(0, -200)
+position = Vector2(0, -300)
 gravity_space_override = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/MarginContainer1/CenterContainer/CoinBox Node/Area2D Gravity"]

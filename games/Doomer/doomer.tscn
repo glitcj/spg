@@ -141,7 +141,7 @@ script = ExtResource("10_3vrde")
 [node name="Scenes" type="Node2D" parent="."]
 position = Vector2(0, 2000)
 
-[node name="GridContainer" type="GridContainer" parent="Scenes"]
+[node name="Scene Grid" type="GridContainer" parent="Scenes"]
 offset_right = 5000.0
 offset_bottom = 5000.0
 
