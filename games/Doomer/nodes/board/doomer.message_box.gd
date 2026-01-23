@@ -5,10 +5,10 @@ signal text_is_fully_displayed
 
 @export var doomer : _Doomer
 
-@onready var label : Label = $"Control/HBoxContainer/Message Box Control/Label"
+@onready var label : Label = find_child("Message Label")
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var message_box
-@onready var message_portrait : _Doomer_Portrait = $Control/HBoxContainer/CenterContainer/Control/Portrait
+@onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
 
 enum Enumations {ShowNewMessage, ShowLogMessage, ShowDialogueMessage}
 

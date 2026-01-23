@@ -11,7 +11,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer:scale")
+tracks/0/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer:position")
+tracks/1/path = NodePath("Scaler:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -39,7 +39,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer:scale")
+tracks/0/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,7 +51,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer:position")
+tracks/1/path = NodePath("Scaler:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -67,7 +67,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
+tracks/0/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,7 +79,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:rotation")
+tracks/1/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -126,7 +126,7 @@ resource_name = "FlipIn"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
+tracks/0/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,7 +138,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
+tracks/1/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -150,7 +150,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
+tracks/2/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -165,7 +165,7 @@ resource_name = "FlipOut"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
+tracks/0/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -177,7 +177,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
+tracks/1/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -189,7 +189,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
+tracks/2/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -237,7 +237,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
+tracks/0/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -249,7 +249,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
+tracks/1/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -261,7 +261,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:rotation")
+tracks/2/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -273,7 +273,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:position")
+tracks/3/path = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -289,7 +289,7 @@ tracks/4/path = NodePath(".:card_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
@@ -864,11 +864,14 @@ animations = [{
 }]
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("card", "card_viewport", "containers_node")]
-scale = Vector2(0.4, 0.4)
 script = ExtResource("1_kt143")
-card = NodePath("Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite")
-card_viewport = NodePath("Containers Node/Containers/SubViewportContainer")
-containers_node = NodePath("Containers Node")
+card = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container/Card Sprite")
+card_viewport = NodePath("Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer")
+containers_node = NodePath("")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -876,117 +879,135 @@ libraries = {
 }
 autoplay = "RESET"
 
-[node name="Containers Node" type="Node2D" parent="."]
-position = Vector2(-50, -75)
+[node name="Scaler" type="Node2D" parent="."]
+scale = Vector2(2.5, 2.5)
 
-[node name="Containers" type="Control" parent="Containers Node"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="Scaler"]
+offset_left = -540.0
+offset_top = -1200.0
+offset_right = 540.0
+offset_bottom = 1200.0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Containers Node/Containers"]
+[node name="CenterContainer" type="CenterContainer" parent="Scaler/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="Scaler/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Scaler/MarginContainer/CenterContainer/Control"]
 custom_minimum_size = Vector2(100, 150)
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 150.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(50, 70)
 
-[node name="SubViewport" type="SubViewport" parent="Containers Node/Containers/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(100, 140)
 render_target_update_mode = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Containers Node/Containers/SubViewportContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport"]
 custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
+offset_right = 100.0
+offset_bottom = 150.0
 
-[node name="Left Marks Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
+[node name="Left Marks Container" type="VBoxContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Margin 1" type="MarginContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container"]
+[node name="Margin 1" type="MarginContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container"]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container"]
+[node name="GridContainer" type="GridContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Player Mark Container 1" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer"]
+[node name="Player Mark Container 1" type="CenterContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Mark 1" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1"]
+[node name="Mark 1" type="AnimatedSprite2D" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 1"]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
 frame = 2
 
-[node name="Player Mark Container 2" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer"]
+[node name="Player Mark Container 2" type="CenterContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Mark 2" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2"]
+[node name="Mark 2" type="AnimatedSprite2D" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 2"]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
 frame = 3
 
-[node name="Player Mark Container 3" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer"]
+[node name="Player Mark Container 3" type="CenterContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Mark 3" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"]
+[node name="Mark 3" type="AnimatedSprite2D" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container/GridContainer/Player Mark Container 3"]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
 frame = 5
 
-[node name="Margin 2" type="MarginContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Left Marks Container"]
+[node name="Margin 2" type="MarginContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Left Marks Container"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
-[node name="Middle Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
+[node name="Middle Container" type="VBoxContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Top Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
+[node name="Top Margin" type="VBoxContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Enemy Bet Container" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Top Margin"]
+[node name="Enemy Bet Container" type="CenterContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/Top Margin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="VBox" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
+[node name="VBox" type="VBoxContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container"]
 custom_minimum_size = Vector2(80, 85)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Card Container" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox"]
+[node name="Card Container" type="CenterContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="Card Sprite" type="AnimatedSprite2D" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/VBox/Card Container"]
+[node name="Card Sprite" type="AnimatedSprite2D" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/VBox/Card Container"]
 sprite_frames = SubResource("SpriteFrames_djf6f")
 animation = &"cards_other"
 
-[node name="Bottom Margin" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container"]
+[node name="Bottom Margin" type="VBoxContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Player Bet Container" type="CenterContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer/Middle Container/Bottom Margin"]
+[node name="Player Bet Container" type="CenterContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer/Middle Container/Bottom Margin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="Right Marks Container" type="VBoxContainer" parent="Containers Node/Containers/SubViewportContainer/HBoxContainer"]
+[node name="Right Marks Container" type="VBoxContainer" parent="Scaler/MarginContainer/CenterContainer/Control/SubViewportContainer/SubViewport/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3

@@ -12,7 +12,7 @@ enum Scenes {PokerRound, StartScreen, WorldMap}
 var scene : Scenes = Scenes.PokerRound
 
 @onready var handler : _Doomer_Handler = $Handler
-@onready var hud : _Doomer_HUD = $Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer/HUD  # $Containers/VBoxContainer/HUDContainer
+@onready var hud : _Doomer_HUD = find_child("HUD Box") # $Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer/HUD  # $Containers/VBoxContainer/HUDContainer
 @onready var turner : _Doomer_Turner = $Turner
 
 @onready var board_container : _Doomer_Board_Container = $Containers/VBoxContainer/BoardContainer
@@ -41,8 +41,8 @@ var scene : Scenes = Scenes.PokerRound
 @onready var enemy_coin_box : _Doomer_Coin_Box = find_child("Enemy CoinBox")
 
 
-@onready var player_portrait : _Doomer_Portrait = $"Portraits/Player Head"
-@onready var enemy_portrait : _Doomer_Portrait = $"Portraits/Enemy Head"
+@onready var player_portrait : _Doomer_Portrait = find_child("Player Head")
+@onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
 func _input(event):
 	handler.handle_inputs(event)

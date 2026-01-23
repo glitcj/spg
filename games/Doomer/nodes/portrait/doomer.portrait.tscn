@@ -253,7 +253,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.75, 2.75)]
+"values": [Vector2(15, 15)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -922,8 +922,11 @@ outline_size = 2
 outline_color = Color(0.0026359288, 0.34006116, 0.4611519, 1)
 
 [node name="Portrait" type="Node2D"]
-scale = Vector2(2.75, 2.75)
+scale = Vector2(15, 15)
 script = ExtResource("1_vapn4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 
 [node name="Face" type="Node2D" parent="."]
 visible = false

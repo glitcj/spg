@@ -7,24 +7,9 @@
 [node name="HUD" type="Node2D"]
 script = ExtResource("1_dldit")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = -165.0
-offset_top = -20.0
-offset_right = -155.0
-offset_bottom = -10.0
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="MessageBox" parent="HBoxContainer/MarginContainer" instance=ExtResource("4_mevwo")]
-position = Vector2(7, 3)
-
 [node name="Hourglass" parent="." instance=ExtResource("2_mevwo")]
 z_index = 10
-position = Vector2(194.71428, 12.428573)
+position = Vector2(50, -20)
 rotation = 1.5707964
-scale = Vector2(0.99999994, 0.99999994)
+
+[node name="MessageBox" parent="." instance=ExtResource("4_mevwo")]
