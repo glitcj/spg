@@ -1,6 +1,7 @@
 extends Node
 class_name _Doomer_Board
 
+
 @onready var doomer : _Doomer = get_parent()
 # @onready var field_cards # : Array = doomer.board_container.field_cards
 

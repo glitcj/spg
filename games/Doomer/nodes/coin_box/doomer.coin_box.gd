@@ -28,9 +28,6 @@ var spawn_point_randomness = Vector2(1300, 100)
 func _ready() -> void:
 	_on_holder_assignment()
 	add_coins(20)
-	while true:
-		await CommonFunctions.waiter(self,1)
-		add_coins(20)
 	
 func _on_holder_assignment():
 	rotation = PI if holder == _Doomer.Opponents.Enemy else 0.0

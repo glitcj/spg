@@ -1,5 +1,5 @@
 extends Node2D
-class_name _Doomer_Board_Container
+class_name _Doomer_Scene_Poker_Board
 
 @export var doomer : _Doomer
 

@@ -15,7 +15,7 @@ var scene : Scenes = Scenes.PokerRound
 @onready var hud : _Doomer_HUD = find_child("HUD Box") # $Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer/HUD  # $Containers/VBoxContainer/HUDContainer
 @onready var turner : _Doomer_Turner = $Turner
 
-@onready var board_container : _Doomer_Board_Container = $Containers/VBoxContainer/BoardContainer
+@onready var board_container : _Doomer_Scene_Poker_Board = $Containers/VBoxContainer/BoardContainer
 @onready var board : _Doomer_Board = $Board
 @onready var logic : _Doomer_Logic = $Logic
 
