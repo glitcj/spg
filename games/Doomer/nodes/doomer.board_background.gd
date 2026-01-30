@@ -5,9 +5,7 @@ var parallax_accelaration = 0.001
 @export var parallax_speed = Vector2(5, 5)
 
 @onready var parallax_layers = [
-	$"SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 1", 
-	$"SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 2", 
-	$"SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 3"]
+	$"SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 1"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

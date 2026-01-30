@@ -1,9 +1,12 @@
 extends Node2D
 class_name _Doomer_Turner
 
+
+
 signal turner_timer_timeout
 @onready var turner_timer: Timer = $ActionTimer
 @onready var doomer: _Doomer = get_parent()
+@onready var scene : _Doomer_Scene = doomer.find_child("Poker Board Scene")
 
 var last_turn_state : _Doomer_Turn
 var current_turn_state : _Doomer_Turn
@@ -16,7 +19,9 @@ var turn_state_queue = [_Doomer_Turn_Field.new()]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$ActionTimer.start()
+	# $ActionTimer.start()
+	scene.scene_activated.connect(_on_scene_activated)
+	scene.scene_deactivated.connect(_on_scene_deactivated)
 	turner_timer_timeout.connect(_on_timer_timeout)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,5 +71,9 @@ func _update_turn_state():
 func _update_hud():
 	if not current_turn_state.show_in_turnboard:
 		return
-	# doomer.hud.message_box.message_portrait.turnboard_turn_name = "%s" % [current_turn_state.turn_name]
-	# doomer.hud.message_box.message_portrait.play_enumation(_Doomer_Portrait.Animations.UpdateTurn)
+
+func _on_scene_activated():
+	$ActionTimer.start()
+
+func _on_scene_deactivated():
+	$ActionTimer.stop()

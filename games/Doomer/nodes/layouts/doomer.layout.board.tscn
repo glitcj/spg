@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://bj4gwlna6b7q8"]
 
-[ext_resource type="Script" uid="uid://bfv6k2vgcm5vy" path="res://games/Doomer/nodes/board/doomer.layout.board.gd" id="1_n8eav"]
+[ext_resource type="Script" uid="uid://bfv6k2vgcm5vy" path="res://games/Doomer/nodes/layouts/doomer.layout.board.gd" id="1_n8eav"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_nr83l"]
 
 [sub_resource type="Animation" id="Animation_mw5tf"]
@@ -699,7 +699,7 @@ sources/0 = SubResource("TileSetAtlasSource_nr83l")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kc1k1"]
 
-[node name="Poker Board Layout" type="Node2D"]
+[node name="Poker Board Scene" type="Node2D"]
 scale = Vector2(4.5, 4.5)
 script = ExtResource("1_n8eav")
 

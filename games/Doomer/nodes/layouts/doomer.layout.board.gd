@@ -1,12 +1,10 @@
-extends Node2D
+extends _Doomer_Scene
 class_name _Doomer_Scene_Poker_Board
 
-@export var doomer : _Doomer
+# @export var doomer : _Doomer
 
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
-
-
 
 # TODO: REFACTOR with find children
 @onready var player_hand_containers  =  [
@@ -30,7 +28,7 @@ var field_cards : Array[_Doomer_Card]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	scene_id = _Doomer.DoomerScene.PokerBoard
 	
 func on_orchestrator_is_ready():
 	field_cards = doomer.field_cards
@@ -131,3 +129,6 @@ func get_field_cards():
 	
 func get_highest_player_or_enemy_card():
 	return field_cards
+	
+func _on_scene_start():
+	super()

@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcswdc80s3eyf"]
+
+[ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://games/Doomer/nodes/layouts/doomer.layout.start_screen.gd" id="1_id86s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iubvs"]
+line_spacing = 0.0
+font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_id86s"]
+line_spacing = 0.0
+font_size = 130
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1htd0"]
+
+[node name="Start Sceen Scene" type="Node2D"]
+script = ExtResource("1_id86s")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -1200.0
+offset_right = 540.0
+offset_bottom = 1200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer Foreground" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer Foreground"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label Title" type="Label" parent="MarginContainer/VBoxContainer Foreground/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Title"
+label_settings = SubResource("LabelSettings_iubvs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer Foreground"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label Press Start" type="Label" parent="MarginContainer/VBoxContainer Foreground/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Press Start"
+label_settings = SubResource("LabelSettings_id86s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer Foreground"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect Background" type="TextureRect" parent="MarginContainer"]
+modulate = Color(0.11797333, 0.1064, 0.28, 1)
+z_index = -10
+layout_mode = 2
+texture = SubResource("CanvasTexture_1htd0")

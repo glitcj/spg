@@ -2,6 +2,8 @@ extends Node
 class_name _Doomer_Handler
 
 signal finished_input_mode
+signal input_received
+
 enum InputMode {Inactive, Active}
 
 var mode: InputMode = InputMode.Inactive
@@ -30,6 +32,7 @@ func _process_input(event):
 		
 	input_tray = event_keycode
 	finished_input_mode.emit()
+	input_received.emit()
 
 
 func _reset():

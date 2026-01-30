@@ -7,9 +7,13 @@ class_name _Doomer
 # Static here means that the object does not change throughout the game, and a Pointer is not needed (for example containers)
 
 enum Opponents {Player, Enemy}
-enum Scenes {PokerRound, StartScreen, WorldMap}
+enum DoomerScene {PokerBoard, StartScreen, WorldMap, Null}
 
-var scene : Scenes = Scenes.PokerRound
+# var scene : Scenes = Scenes.PokerBoard
+var current_scene : DoomerScene
+var current_scene_node : Node
+@onready var current_scene_container = find_child("Current Scene Container")
+@onready var scene_grid = find_child("Scene Grid")
 
 @onready var handler : _Doomer_Handler = $Handler
 @onready var hud : _Doomer_HUD = find_child("HUD Box") # $Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer/HUD  # $Containers/VBoxContainer/HUDContainer
@@ -49,9 +53,28 @@ func _input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	handler.mode = handler.InputMode.Inactive
+	# handler.mode = handler.InputMode.Inactive
+	handler.mode = handler.InputMode.Active
+	
+	ready.connect(change_scene.bind(_Doomer.DoomerScene.StartScreen)) 
 	
 func make_pointer(key : _Doomer_Pointer.Keys):
 	var pointer_ = _Doomer_Pointer.new(key)
 	add_child(pointer_)
 	return pointer_
+
+func change_scene(scene_ = _Doomer.DoomerScene):
+	var scene_tscn : _Doomer_Scene
+	if scene_ == _Doomer.DoomerScene.PokerBoard:
+		scene_tscn = find_child("Poker Board Scene")
+	if scene_ == _Doomer.DoomerScene.StartScreen:
+		scene_tscn = find_child("Start Sceen Scene")
+	
+	if current_scene_node:
+		current_scene_node._on_scene_end()
+		current_scene_node.reparent(scene_grid)
+		
+	scene_tscn.reparent(current_scene_container)
+	scene_tscn.position = Vector2.ZERO
+	scene_tscn._on_scene_start()
+	current_scene_node = scene_tscn

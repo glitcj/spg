@@ -22,27 +22,26 @@ func _init() -> void:
 
 func on_turn_start():
 	doomer.handler.mode = doomer.handler.InputMode.Active
-	
 	await doomer.handler.finished_input_mode
 	
 	doomer.turner.turner_timer.paused = true
-	
-	action = InputToAction[doomer.handler.input_tray]
-	await _process_action()
-	_interrupt_and_end_turn()
+	doomer.handler.input_received.connect(_process_action)
 
 func on_turn_end():
-	doomer.handler.mode = doomer.handler.InputMode.Inactive
+	doomer.handler.input_received.disconnect(_process_action)
 	if not action_placed_and_performed:
 		await _on_fold_action()
-	queue_free()
+	super()
 
 func _process_action():
+	action = InputToAction[doomer.handler.input_tray]
 	if action == Action.Call:
 		await _on_call_action()
 	elif action == Action.Fold:
 		await _on_fold_action()
 	action_placed_and_performed = true
+	_interrupt_and_end_turn()
+
 
 
 func _on_call_action():
@@ -68,7 +67,8 @@ func _on_fold_action():
 	
 
 func _interrupt_and_end_turn():
-	await get_tree().create_timer(interrupt_buffer_wait_time).timeout
+	doomer.handler.input_received.disconnect(_process_action)
 	
+	await get_tree().create_timer(interrupt_buffer_wait_time).timeout
 	doomer.turner.turner_timer.paused = false
 	doomer.turner._update_turn_state()
