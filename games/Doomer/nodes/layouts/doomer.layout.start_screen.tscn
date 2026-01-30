@@ -50,10 +50,13 @@ size_flags_vertical = 3
 [node name="Label Press Start" type="Label" parent="MarginContainer/VBoxContainer Foreground/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Press Start"
+text = "Press Start
+
+add poker map scene + replace scene root node type, start > map > poker > start > .."
 label_settings = SubResource("LabelSettings_id86s")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer Foreground"]
 layout_mode = 2
