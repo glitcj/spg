@@ -1,4 +1,4 @@
-extends Node2D
+extends SubViewportContainer
 class_name  _Doomer_Scene
 
 signal scene_activated

@@ -24,8 +24,11 @@ var current_scene_node : Node
 @onready var logic : _Doomer_Logic = $Logic
 
 
-@export var player_gun : _Doomer_Gun
-@export var enemy_gun : _Doomer_Gun
+# @export var player_gun : _Doomer_Gun
+# @export var enemy_gun : _Doomer_Gun
+
+@onready var player_gun : _Doomer_Gun = find_child("Player Gun")
+@onready var enemy_gun : _Doomer_Gun = find_child("Enemy Gun")
 
 @onready var field_cards : Array = 	find_children("Field Card *")
 @onready var enemy_cards : Array = enemy_gun.hand_cards

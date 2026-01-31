@@ -1,7 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://bj4gwlna6b7q8"]
+[gd_scene load_steps=14 format=4 uid="uid://bj4gwlna6b7q8"]
 
 [ext_resource type="Script" uid="uid://bfv6k2vgcm5vy" path="res://games/Doomer/nodes/layouts/doomer.layout.board.gd" id="1_n8eav"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_nr83l"]
+[ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="3_k7src"]
+[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="4_37l2k"]
+[ext_resource type="PackedScene" uid="uid://r4iwnpw8jo1" path="res://games/Doomer/nodes/gun/doomer.gun.tscn" id="5_x2cid"]
+[ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="6_kihg7"]
+[ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/board/node.doomer.hud.tscn" id="7_ibdp7"]
 
 [sub_resource type="Animation" id="Animation_mw5tf"]
 resource_name = "Idle"
@@ -13,7 +18,7 @@ resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/path = NodePath("SubViewport/PanelContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -699,8 +704,11 @@ sources/0 = SubResource("TileSetAtlasSource_nr83l")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kc1k1"]
 
-[node name="Poker Board Scene" type="Node2D"]
-scale = Vector2(4.5, 4.5)
+[node name="Poker Board Scene" type="SubViewportContainer"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_n8eav")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -709,24 +717,22 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="MarginContainer Shader Board BG" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(147, 238)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1200.0
-offset_right = 540.0
-offset_bottom = 1200.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1080, 2400)
+render_target_update_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer Shader Board BG"]
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+anchor_mode = 0
+
+[node name="MarginContainer Shader Board BG" type="MarginContainer" parent="SubViewport"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/MarginContainer Shader Board BG"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer Shader Board BG/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MarginContainer Shader Board BG/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2000)
 layout_mode = 2
 theme_override_constants/margin_left = 100
@@ -734,229 +740,241 @@ theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 150
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer Shader Board BG/VBoxContainer/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Shader Board BG/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TileMapLayer" type="TileMapLayer" parent="MarginContainer Shader Board BG/VBoxContainer/MarginContainer/CenterContainer"]
+[node name="TileMapLayer" type="TileMapLayer" parent="SubViewport/MarginContainer Shader Board BG/VBoxContainer/MarginContainer/CenterContainer"]
 scale = Vector2(9, 9)
 tile_map_data = PackedByteArray("AABLAGsAAAALAB8AAAAGAAsAAAALAB0AAAAGAPT/AAALAB4AAAD5//T/AAAIAB4AAAD5/wsAAAAIAB4AAAD6/wsAAAABAAIAAAD7/wsAAAABAAIAAAD8/wsAAAABAAIAAAD9/wsAAAABAAIAAAD+/wsAAAABAAIAAAD//wsAAAABAAIAAAAAAAsAAAABAAIAAAABAAsAAAABAAIAAAACAAsAAAABAAIAAAADAAsAAAABAAIAAAAEAAsAAAABAAIAAAAFAAsAAAABAAIAAAD5/woAAAAIAB0AAAD5/wkAAAAIAB0AAAD5/wgAAAAIAB0AAAD5/wcAAAAIAB0AAAD5/wYAAAAIAB0AAAD5/wUAAAAIAB0AAAD5/wQAAAAIAB0AAAD5/wMAAAAIAB0AAAD5/wIAAAAIAB0AAAD5/wEAAAAIAB0AAAD5/wAAAAAIAB0AAAD5////AAAIAB0AAAD5//7/AAAIAB0AAAD5//3/AAAIAB0AAAD5//z/AAAIAB0AAAD5//v/AAAIAB0AAAD5//r/AAAIAB0AAAD5//n/AAAIAB0AAAD5//j/AAAIAB4AAAD5//X/AAAIAB4AAAD5//b/AAAIAB4AAAD5//f/AAAIAB4AAAD6//T/AAABAAIAAAD7//T/AAABAAIAAAD8//T/AAABAAIAAAD9//T/AAABAAIAAAD+//T/AAABAAIAAAD///T/AAABAAIAAAAAAPT/AAABAAIAAAABAPT/AAABAAIAAAACAPT/AAABAAIAAAADAPT/AAABAAIAAAAEAPT/AAABAAIAAAAFAPT/AAABAAIAAAAGAPX/AAALAB4AAAAGAPb/AAALAB0AAAAGAPf/AAALAB0AAAAGAPj/AAALAB0AAAAGAPn/AAALAB0AAAAGAPr/AAALAB0AAAAGAPv/AAALAB0AAAAGAPz/AAALAB0AAAAGAP3/AAALAB0AAAAGAP7/AAALAB0AAAAGAP//AAALAB0AAAAGAAAAAAALAB0AAAAGAAEAAAALAB0AAAAGAAIAAAALAB0AAAAGAAMAAAALAB0AAAAGAAQAAAALAB0AAAAGAAUAAAALAB0AAAAGAAYAAAALAB0AAAAGAAcAAAALAB0AAAAGAAgAAAALAB0AAAAGAAkAAAALAB0AAAAGAAoAAAALAB0AAAD6//P/AAAJABwAAAD7//P/AAAJABwAAAD8//P/AAAJABwAAAD9//P/AAAJABwAAAD+//P/AAAJABwAAAD///P/AAAJABwAAAAAAPP/AAAJABwAAAABAPP/AAAJABwAAAACAPP/AAAJABwAAAADAPP/AAAJABwAAAAEAPP/AAAJABwAAAAFAPP/AAAJABwAAAD5//P/AAAIABwAAAAGAPP/AAALABwAAAD6/wwAAAAKAB8AAAD7/wwAAAAKAB8AAAD5/wwAAAAIAB8AAAAGAAwAAAALAB8AAAD8/wwAAAAKAB8AAAD9/wwAAAAKAB8AAAD+/wwAAAAKAB8AAAD//wwAAAAKAB8AAAAAAAwAAAAKAB8AAAABAAwAAAAKAB8AAAACAAwAAAAKAB8AAAADAAwAAAAKAB8AAAAEAAwAAAAKAB8AAAAFAAwAAAAKAB8AAAD6//X/AAABAAIAAAD6//b/AAABAAIAAAD6//f/AAABAAIAAAD6//j/AAABAAIAAAD6//n/AAABAAIAAAD6//r/AAABAAIAAAD6//v/AAABAAIAAAD6//z/AAABAAIAAAD6//3/AAABAAIAAAD6//7/AAABAAIAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAABAAIAAAD6/wIAAAABAAIAAAD6/wMAAAABAAIAAAD6/wQAAAABAAIAAAD6/wUAAAABAAIAAAD6/wYAAAABAAIAAAD6/wcAAAABAAIAAAD6/wgAAAABAAIAAAD6/wkAAAABAAIAAAD6/woAAAABAAIAAAD7//X/AAABAAIAAAD7//b/AAABAAIAAAD7//f/AAABAAIAAAD7//j/AAABAAIAAAD7//n/AAABAAIAAAD7//r/AAABAAIAAAD7//v/AAABAAIAAAD7//z/AAABAAIAAAD7//3/AAABAAIAAAD7//7/AAABAAIAAAD7////AAABAAIAAAD7/wAAAAABAAIAAAD7/wEAAAABAAIAAAD7/wIAAAABAAIAAAD7/wMAAAABAAIAAAD7/wQAAAABAAIAAAD7/wUAAAABAAIAAAD7/wYAAAABAAIAAAD7/wcAAAABAAIAAAD7/wgAAAABAAIAAAD7/wkAAAABAAIAAAD7/woAAAABAAIAAAD8//X/AAABAAIAAAD8//b/AAABAAIAAAD8//f/AAABAAIAAAD8//j/AAABAAIAAAD8//n/AAABAAIAAAD8//r/AAABAAIAAAD8//v/AAABAAIAAAD8//z/AAABAAIAAAD8//3/AAABAAIAAAD8//7/AAABAAIAAAD8////AAABAAIAAAD8/wAAAAABAAIAAAD8/wEAAAABAAIAAAD8/wIAAAABAAIAAAD8/wMAAAABAAIAAAD8/wQAAAABAAIAAAD8/wUAAAABAAIAAAD8/wYAAAABAAIAAAD8/wcAAAABAAIAAAD8/wgAAAABAAIAAAD8/wkAAAABAAIAAAD8/woAAAABAAIAAAD9//X/AAABAAIAAAD9//b/AAABAAIAAAD9//f/AAABAAIAAAD9//j/AAABAAIAAAD9//n/AAABAAIAAAD9//r/AAABAAIAAAD9//v/AAABAAIAAAD9//z/AAABAAIAAAD9//3/AAABAAIAAAD9//7/AAABAAIAAAD9////AAABAAIAAAD9/wAAAAABAAIAAAD9/wEAAAABAAIAAAD9/wIAAAABAAIAAAD9/wMAAAABAAIAAAD9/wQAAAABAAIAAAD9/wUAAAABAAIAAAD9/wYAAAABAAIAAAD9/wcAAAABAAIAAAD9/wgAAAABAAIAAAD9/wkAAAABAAIAAAD9/woAAAABAAIAAAD+//X/AAABAAIAAAD+//b/AAABAAIAAAD+//f/AAABAAIAAAD+//j/AAABAAIAAAD+//n/AAABAAIAAAD+//r/AAABAAIAAAD+//v/AAABAAIAAAD+//z/AAABAAIAAAD+//3/AAABAAIAAAD+//7/AAABAAIAAAD+////AAABAAIAAAD+/wAAAAABAAIAAAD+/wEAAAABAAIAAAD+/wIAAAABAAIAAAD+/wMAAAABAAIAAAD+/wQAAAABAAIAAAD+/wUAAAABAAIAAAD+/wYAAAABAAIAAAD+/wcAAAABAAIAAAD+/wgAAAABAAIAAAD+/wkAAAABAAIAAAD+/woAAAABAAIAAAD///X/AAABAAIAAAD///b/AAABAAIAAAD///f/AAABAAIAAAD///j/AAABAAIAAAD///n/AAABAAIAAAD///r/AAABAAIAAAD///v/AAABAAIAAAD///z/AAABAAIAAAD///3/AAABAAIAAAD///7/AAABAAIAAAD/////AAABAAIAAAD//wAAAAABAAIAAAD//wEAAAABAAIAAAD//wIAAAABAAIAAAD//wMAAAABAAIAAAD//wQAAAABAAIAAAD//wUAAAABAAIAAAD//wYAAAABAAIAAAD//wcAAAABAAIAAAD//wgAAAABAAIAAAD//wkAAAABAAIAAAD//woAAAABAAIAAAAAAPX/AAABAAIAAAAAAPb/AAABAAIAAAAAAPf/AAABAAIAAAAAAPj/AAABAAIAAAAAAPn/AAABAAIAAAAAAPr/AAABAAIAAAAAAPv/AAABAAIAAAAAAPz/AAABAAIAAAAAAP3/AAABAAIAAAAAAP7/AAABAAIAAAAAAP//AAABAAIAAAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAIAAAAAAAMAAAABAAIAAAAAAAQAAAABAAIAAAAAAAUAAAABAAIAAAAAAAYAAAABAAIAAAAAAAcAAAABAAIAAAAAAAgAAAABAAIAAAAAAAkAAAABAAIAAAAAAAoAAAABAAIAAAABAPX/AAABAAIAAAABAPb/AAABAAIAAAABAPf/AAABAAIAAAABAPj/AAABAAIAAAABAPn/AAABAAIAAAABAPr/AAABAAIAAAABAPv/AAABAAIAAAABAPz/AAABAAIAAAABAP3/AAABAAIAAAABAP7/AAABAAIAAAABAP//AAABAAIAAAABAAAAAAABAAIAAAABAAEAAAABAAIAAAABAAIAAAABAAIAAAABAAMAAAABAAIAAAABAAQAAAABAAIAAAABAAUAAAABAAIAAAABAAYAAAABAAIAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAIAAAABAAoAAAABAAIAAAACAPX/AAABAAIAAAACAPb/AAABAAIAAAACAPf/AAABAAIAAAACAPj/AAABAAIAAAACAPn/AAABAAIAAAACAPr/AAABAAIAAAACAPv/AAABAAIAAAACAPz/AAABAAIAAAACAP3/AAABAAIAAAACAP7/AAABAAIAAAACAP//AAABAAIAAAACAAAAAAABAAIAAAACAAEAAAABAAIAAAACAAIAAAABAAIAAAACAAMAAAABAAIAAAACAAQAAAABAAIAAAACAAUAAAABAAIAAAACAAYAAAABAAIAAAACAAcAAAABAAIAAAACAAgAAAABAAIAAAACAAkAAAABAAIAAAACAAoAAAABAAIAAAADAPX/AAABAAIAAAADAPb/AAABAAIAAAADAPf/AAABAAIAAAADAPj/AAABAAIAAAADAPn/AAABAAIAAAADAPr/AAABAAIAAAADAPv/AAABAAIAAAADAPz/AAABAAIAAAADAP3/AAABAAIAAAADAP7/AAABAAIAAAADAP//AAABAAIAAAADAAAAAAABAAIAAAADAAEAAAABAAIAAAADAAIAAAABAAIAAAADAAMAAAABAAIAAAADAAQAAAABAAIAAAADAAUAAAABAAIAAAADAAYAAAABAAIAAAADAAcAAAABAAIAAAADAAgAAAABAAIAAAADAAkAAAABAAIAAAADAAoAAAABAAIAAAAEAPX/AAABAAIAAAAEAPb/AAABAAIAAAAEAPf/AAABAAIAAAAEAPj/AAABAAIAAAAEAPn/AAABAAIAAAAEAPr/AAABAAIAAAAEAPv/AAABAAIAAAAEAPz/AAABAAIAAAAEAP3/AAABAAIAAAAEAP7/AAABAAIAAAAEAP//AAABAAIAAAAEAAAAAAABAAIAAAAEAAEAAAABAAIAAAAEAAIAAAABAAIAAAAEAAMAAAABAAIAAAAEAAQAAAABAAIAAAAEAAUAAAABAAIAAAAEAAYAAAABAAIAAAAEAAcAAAABAAIAAAAEAAgAAAABAAIAAAAEAAkAAAABAAIAAAAEAAoAAAABAAIAAAAFAPX/AAABAAIAAAAFAPb/AAABAAIAAAAFAPf/AAABAAIAAAAFAPj/AAABAAIAAAAFAPn/AAABAAIAAAAFAPr/AAABAAIAAAAFAPv/AAABAAIAAAAFAPz/AAABAAIAAAAFAP3/AAABAAIAAAAFAP7/AAABAAIAAAAFAP//AAABAAIAAAAFAAAAAAABAAIAAAAFAAEAAAABAAIAAAAFAAIAAAABAAIAAAAFAAMAAAABAAIAAAAFAAQAAAABAAIAAAAFAAUAAAABAAIAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAABAAIAAAAFAAkAAAABAAIAAAAFAAoAAAABAAIAAAA=")
 tile_set = SubResource("TileSet_mw5tf")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer Shader Board BG/VBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="SubViewport/MarginContainer Shader Board BG/VBoxContainer/MarginContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_kc1k1")
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer Shader Board BG/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer Shader Board BG/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MessageBoxContainer" type="MarginContainer" parent="."]
+[node name="MessageBoxContainer" type="MarginContainer" parent="SubViewport"]
 custom_minimum_size = Vector2(147, 158)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1200.0
-offset_right = 540.0
-offset_bottom = 1200.0
+offset_left = -2686.0
+offset_top = -5656.0
+offset_right = -1606.0
+offset_bottom = -3256.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MessageBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/MessageBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer1" type="HBoxContainer" parent="MessageBoxContainer/VBoxContainer"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="SubViewport/MessageBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Enemy Message Container" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer1"]
+[node name="Enemy Message Container" type="MarginContainer" parent="SubViewport/MessageBoxContainer/VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Enemy Face Container" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer1"]
+[node name="Enemy Face Container" type="MarginContainer" parent="SubViewport/MessageBoxContainer/VBoxContainer/HBoxContainer1"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MessageBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="SubViewport/MessageBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MessageBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MessageBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="SubViewport/MessageBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Player Message Container" type="MarginContainer" parent="MessageBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="Player Message Container" type="MarginContainer" parent="SubViewport/MessageBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="MarginContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1200.0
-offset_right = 540.0
-offset_bottom = 1200.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PanelContainer" type="MarginContainer" parent="SubViewport"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/PanelContainer"]
 layout_mode = 2
 
-[node name="Empty  1" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Empty  1" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 
-[node name="CoinBox Top" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="CoinBox Top" type="HBoxContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/CoinBox Top"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/CoinBox Top"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Top" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Enemy CoinBox" parent="SubViewport/PanelContainer/VBoxContainer/CoinBox Top/CenterContainer" instance=ExtResource("3_k7src")]
+scale = Vector2(0.6, 0.6)
+holder = 1
+
+[node name="Top" type="HBoxContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CoinsMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
+[node name="CoinsMarginContainer" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
-visible = false
-texture_filter = 1
-layout_mode = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CardsMarginContainer-1" type="MarginContainer" parent="PanelContainer/VBoxContainer/Top"]
+[node name="Enemy Head" parent="SubViewport/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer" instance=ExtResource("4_37l2k")]
+
+[node name="CardsMarginContainer-1" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Top/CardsMarginContainer-1"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Field Row 1" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Enemy Gun" parent="SubViewport/PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer" instance=ExtResource("5_x2cid")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Field Row 1" type="HBoxContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CardsMarginContainer-1" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field Row 1"]
+[node name="CardsMarginContainer-1" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-1"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CardsMarginContainer-2" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field Row 1"]
+[node name="Field Card 1" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-1/CenterContainer" instance=ExtResource("6_kihg7")]
+
+[node name="CardsMarginContainer-2" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-2"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CardsMarginContainer-3" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field Row 1"]
+[node name="Field Card 2" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-2/CenterContainer" instance=ExtResource("6_kihg7")]
+
+[node name="CardsMarginContainer-3" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-3"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-3"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Field Row 2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Field Card 3" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 1/CardsMarginContainer-3/CenterContainer" instance=ExtResource("6_kihg7")]
+
+[node name="Field Row 2" type="HBoxContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CardsMarginContainer-4" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field Row 2"]
+[node name="CardsMarginContainer-4" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-4"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-4"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CardsMarginContainer-5" type="MarginContainer" parent="PanelContainer/VBoxContainer/Field Row 2"]
+[node name="Field Card 4" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-4/CenterContainer" instance=ExtResource("6_kihg7")]
+
+[node name="CardsMarginContainer-5" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-5"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-5"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Bottom" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Field Card 5" parent="SubViewport/PanelContainer/VBoxContainer/Field Row 2/CardsMarginContainer-5/CenterContainer" instance=ExtResource("6_kihg7")]
+
+[node name="Bottom" type="HBoxContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FaceMarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
+[node name="FaceMarginContainer" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Bottom/FaceMarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CardsMarginContainer-1" type="MarginContainer" parent="PanelContainer/VBoxContainer/Bottom"]
+[node name="Player Gun" parent="SubViewport/PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer" instance=ExtResource("5_x2cid")]
+scale = Vector2(0.5, 0.5)
+
+[node name="CardsMarginContainer-1" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CoinBox Bottom" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Player Head" parent="SubViewport/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer" instance=ExtResource("4_37l2k")]
+
+[node name="CoinBox Bottom" type="HBoxContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/CoinBox Bottom"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/CoinBox Bottom"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Empty  2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Player CoinBox" parent="SubViewport/PanelContainer/VBoxContainer/CoinBox Bottom/CenterContainer" instance=ExtResource("3_k7src")]
+scale = Vector2(0.6, 0.6)
+
+[node name="Empty  2" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="HUD" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HUD" type="HBoxContainer" parent="SubViewport/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HUDContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HUD"]
+[node name="HUDContainer" type="MarginContainer" parent="SubViewport/PanelContainer/VBoxContainer/HUD"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/HUD/HUDContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/PanelContainer/VBoxContainer/HUD/HUDContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="HUD Box" parent="SubViewport/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer" instance=ExtResource("7_ibdp7")]
+scale = Vector2(5.2, 5.2)

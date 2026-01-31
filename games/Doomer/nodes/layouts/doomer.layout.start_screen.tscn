@@ -12,30 +12,38 @@ font_size = 130
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1htd0"]
 
-[node name="Start Sceen Scene" type="Node2D"]
+[node name="Start Sceen Scene" type="SubViewportContainer"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_id86s")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1200.0
-offset_right = 540.0
-offset_bottom = 1200.0
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1080, 2400)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+anchor_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="VBoxContainer Foreground" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer Foreground" type="VBoxContainer" parent="SubViewport/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer Foreground"]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer Foreground"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label Title" type="Label" parent="MarginContainer/VBoxContainer Foreground/MarginContainer"]
+[node name="Label Title" type="Label" parent="SubViewport/MarginContainer/VBoxContainer Foreground/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Title"
@@ -43,11 +51,11 @@ label_settings = SubResource("LabelSettings_iubvs")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer Foreground"]
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer Foreground"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label Press Start" type="Label" parent="MarginContainer/VBoxContainer Foreground/MarginContainer2"]
+[node name="Label Press Start" type="Label" parent="SubViewport/MarginContainer/VBoxContainer Foreground/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Press Start
@@ -58,11 +66,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer Foreground"]
+[node name="m3" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer Foreground"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect Background" type="TextureRect" parent="MarginContainer"]
+[node name="TextureRect Background" type="TextureRect" parent="SubViewport/MarginContainer"]
 modulate = Color(0.11797333, 0.1064, 0.28, 1)
 z_index = -10
 layout_mode = 2
