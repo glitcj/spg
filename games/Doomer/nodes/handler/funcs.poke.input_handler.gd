@@ -6,7 +6,7 @@ signal input_received
 
 enum InputMode {Inactive, Active}
 
-var mode: InputMode = InputMode.Inactive
+var mode: InputMode = InputMode.Active
 var input_tray : Key
 
 @onready var doomer: _Doomer = get_parent()
@@ -18,18 +18,16 @@ var input_tray : Key
 # var mouse: MouseButton = MOUSE_BUTTON_LEFT
 
 func handle_inputs(event):
-	if mode == InputMode.Inactive:
-		return
-	elif mode == InputMode.Active:
-		_process_input(event)
-
-
+	_process_input(event)
+	
 func _process_input(event):
 	var event_keycode = CommonFunctions.get_first_input_event_keycode(event)
 	
-	if event_keycode not in _Doomer_Turn_Player.accepted_inputs:
+	# if event_keycode not in _Doomer_Turn_Player.accepted_inputs:
+	# 	return
+	if event_keycode == null:
 		return
-		
+	
 	input_tray = event_keycode
 	finished_input_mode.emit()
 	input_received.emit()

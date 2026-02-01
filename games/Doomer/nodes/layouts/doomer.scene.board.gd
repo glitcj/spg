@@ -29,6 +29,7 @@ var field_cards : Array[_Doomer_Card]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	scene_id = _Doomer.DoomerScene.PokerBoard
+	accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 	
 func on_orchestrator_is_ready():
 	field_cards = doomer.field_cards
@@ -131,4 +132,7 @@ func get_highest_player_or_enemy_card():
 	return field_cards
 	
 func _on_scene_start():
+	super()
+
+func _on_scene_end():
 	super()

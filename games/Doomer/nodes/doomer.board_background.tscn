@@ -3,43 +3,31 @@
 [ext_resource type="Script" uid="uid://bkcjqu72q6l72" path="res://games/Doomer/nodes/doomer.board_background.gd" id="1_vkjba"]
 [ext_resource type="Texture2D" uid="uid://bj7wm1aamse3v" path="res://assets/doomer/parallax/balatro_bg_1.png" id="2_vkjba"]
 
-[node name="Board BG" type="Node2D"]
+[node name="Board BG" type="SubViewportContainer"]
+offset_right = 1080.0
+offset_bottom = 2400.0
 script = ExtResource("1_vkjba")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1200.0
-offset_right = 540.0
-offset_bottom = 1200.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
 size = Vector2i(1080, 2400)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
 visible = false
 position = Vector2(517.5, 326)
 scale = Vector2(2000.0001, 2000.0001)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="SubViewportContainer/SubViewport"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="SubViewport"]
 
-[node name="ParallaxLayer 1" type="ParallaxLayer" parent="SubViewportContainer/SubViewport/ParallaxBackground"]
+[node name="ParallaxLayer 1" type="ParallaxLayer" parent="SubViewport/ParallaxBackground"]
 motion_mirroring = Vector2(1080, 2400)
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 1"]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/ParallaxBackground/ParallaxLayer 1"]
 offset_right = 1080.0
 offset_bottom = 2400.0
 
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/ParallaxBackground/ParallaxLayer 1/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="SubViewport/ParallaxBackground/ParallaxLayer 1/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("2_vkjba")
 expand_mode = 1

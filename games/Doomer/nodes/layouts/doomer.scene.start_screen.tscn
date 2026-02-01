@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcswdc80s3eyf"]
 
-[ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://games/Doomer/nodes/layouts/doomer.layout.start_screen.gd" id="1_id86s"]
+[ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://games/Doomer/nodes/layouts/doomer.scene.start_screen.gd" id="1_id86s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iubvs"]
 line_spacing = 0.0
@@ -60,7 +60,7 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "Press Start
 
-add poker map scene + replace scene root node type, start > map > poker > start > .."
+Finish traits world map, floating message box w/ anim, randomised easy mode face and traits (high prob with given condition0"
 label_settings = SubResource("LabelSettings_id86s")
 horizontal_alignment = 1
 vertical_alignment = 1

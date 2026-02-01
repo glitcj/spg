@@ -14,8 +14,6 @@ func on_turn_start():
 	
 	if doomer.logic.face_up_field_cards().size() == 0:
 		turns.start_betting_round_turns()
-		
-
 	
 	elif doomer.logic.face_up_field_cards().size() < 5:
 		turns.flip_next_card_turns()
@@ -103,6 +101,12 @@ class Turns:
 		
 		
 	func show_enemy_hand_and_winner_decision():
+		
+		
+		_turn = _Doomer_Turn_Change_Scene.new(_Doomer.DoomerScene.WorldMap)
+		doomer.turner.turn_state_queue.insert(0, _turn)
+
+		
 		self.flip_all_cards_down_turns()
 		
 		

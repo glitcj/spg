@@ -24,9 +24,6 @@ var current_scene_node : Node
 @onready var logic : _Doomer_Logic = $Logic
 
 
-# @export var player_gun : _Doomer_Gun
-# @export var enemy_gun : _Doomer_Gun
-
 @onready var player_gun : _Doomer_Gun = find_child("Player Gun")
 @onready var enemy_gun : _Doomer_Gun = find_child("Enemy Gun")
 
@@ -42,8 +39,7 @@ var current_scene_node : Node
 
 @onready var next_field_card : _Doomer_Card
 
-# @onready var player_coin_box : _Doomer_Coin_Box = player_gun.coin_box
-# @onready var enemy_coin_box : _Doomer_Coin_Box = enemy_gun.coin_box
+
 @onready var player_coin_box : _Doomer_Coin_Box = find_child("Player CoinBox")
 @onready var enemy_coin_box : _Doomer_Coin_Box = find_child("Enemy CoinBox")
 
@@ -56,9 +52,7 @@ func _input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# handler.mode = handler.InputMode.Inactive
-	handler.mode = handler.InputMode.Active
-	
+	handler.mode = handler.InputMode.Active	
 	ready.connect(change_scene.bind(_Doomer.DoomerScene.StartScreen)) 
 	
 func make_pointer(key : _Doomer_Pointer.Keys):
@@ -72,12 +66,16 @@ func change_scene(scene_ = _Doomer.DoomerScene):
 		scene_tscn = find_child("Poker Board Scene")
 	if scene_ == _Doomer.DoomerScene.StartScreen:
 		scene_tscn = find_child("Start Sceen Scene")
+	if scene_ == _Doomer.DoomerScene.WorldMap:
+		scene_tscn = find_child("World Map Scene")
 	
 	if current_scene_node:
 		current_scene_node._on_scene_end()
 		current_scene_node.reparent(scene_grid)
+		current_scene_node.position = Vector2.ZERO
 		
 	scene_tscn.reparent(current_scene_container)
 	scene_tscn.position = Vector2.ZERO
 	scene_tscn._on_scene_start()
+	
 	current_scene_node = scene_tscn

@@ -9,10 +9,9 @@ var action : Action
 var action_placed_and_performed : bool = false
 var interrupt_buffer_wait_time : float = _Doomer_Constants.imeddiate_action_time_delta
 
-var InputToAction := {
+var ActionMap := {
 	KEY_UP: Action.Call,
 	KEY_DOWN: Action.Fold,
-	KEY_RIGHT: Action.Check	
 }
 
 func _init() -> void:
@@ -25,7 +24,7 @@ func on_turn_start():
 	await doomer.handler.finished_input_mode
 	
 	doomer.turner.turner_timer.paused = true
-	doomer.handler.input_received.connect(_process_action)
+	doomer.handler.input_received.connect(_on_input_received)
 
 func on_turn_end():
 	doomer.handler.input_received.disconnect(_process_action)
@@ -34,7 +33,8 @@ func on_turn_end():
 	super()
 
 func _process_action():
-	action = InputToAction[doomer.handler.input_tray]
+	action = ActionMap[doomer.handler.input_tray]
+
 	if action == Action.Call:
 		await _on_call_action()
 	elif action == Action.Fold:
@@ -42,6 +42,10 @@ func _process_action():
 	action_placed_and_performed = true
 	_interrupt_and_end_turn()
 
+func _on_input_received():
+	if doomer.handler.input_tray not in accepted_inputs:
+		return false
+	_process_action()
 
 
 func _on_call_action():

@@ -5,6 +5,7 @@ signal scene_activated
 signal scene_deactivated
 
 var is_active = false
+var accepted_inputs = []
 
 @export var doomer : _Doomer
 var scene_id : _Doomer.DoomerScene = _Doomer.DoomerScene.Null
@@ -23,5 +24,7 @@ func _on_scene_end():
 
 func _on_input_received():
 	if not is_active:
-		return
-	pass
+		return false
+	if doomer.handler.input_tray not in accepted_inputs:
+		return false
+	return true

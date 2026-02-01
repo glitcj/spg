@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=19 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://games/Doomer/doomer.gd" id="1_cp6uo"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://games/Doomer/doomer.pointer.gd" id="2_jh38i"]
 [ext_resource type="Script" uid="uid://djvk5f1dkttil" path="res://games/Doomer/inspector.gd" id="2_rj2r0"]
 [ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://games/Doomer/nodes/handler/funcs.poke.input_handler.gd" id="2_yud1a"]
 [ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://games/Doomer/funcs/doomer.logic.gd" id="3_0kyin"]
-[ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://games/Doomer/nodes/layouts/doomer.layout.board.tscn" id="3_cp4er"]
+[ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://games/Doomer/nodes/layouts/doomer.scene.board.tscn" id="3_cp4er"]
 [ext_resource type="Script" uid="uid://dwg0a3ker5rp4" path="res://games/Doomer/doomer.board.gd" id="3_cw5lf"]
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://games/Doomer/nodes/turner/doomer.turner.tscn" id="4_w1tet"]
 [ext_resource type="Script" uid="uid://tvyfjvrduup" path="res://games/Doomer/doomer.constants.gd" id="7_rj2r0"]
@@ -14,7 +14,8 @@
 [ext_resource type="Script" uid="uid://dl78wbdaiprqq" path="res://games/Doomer/notes.gd" id="10_3vrde"]
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://games/Doomer/nodes/doomer.board_background.tscn" id="11_jh38i"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://games/Doomer/docs.gd" id="13_ayhyn"]
-[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://games/Doomer/nodes/layouts/doomer.layout.start_screen.tscn" id="20_kuqke"]
+[ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://games/Doomer/scenes/doomer.scene.world_map.tscn" id="16_xkyh8"]
+[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://games/Doomer/nodes/layouts/doomer.scene.start_screen.tscn" id="20_kuqke"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
 
@@ -68,25 +69,12 @@ metadata/_custom_type_script = "uid://mkdbmh21w7is"
 [node name="Current Scene" type="Node" parent="."]
 
 [node name="Background Container" type="MarginContainer" parent="Current Scene"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1200.0
-offset_right = 540.0
-offset_bottom = 1200.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1080.0
+offset_bottom = 2400.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Current Scene/Background Container"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Board BG" parent="Current Scene/Background Container/CenterContainer" instance=ExtResource("11_jh38i")]
+[node name="Board BG" parent="Current Scene/Background Container" instance=ExtResource("11_jh38i")]
 z_index = -100
+layout_mode = 2
 
 [node name="Current Scene Container" type="MarginContainer" parent="Current Scene"]
 offset_right = 1080.0
@@ -165,6 +153,10 @@ doomer = NodePath("../../../../../../../../../..")
 doomer = NodePath("../../../../../../../../..")
 
 [node name="Start Sceen Scene" parent="Scenes/Scene Grid" node_paths=PackedStringArray("doomer") instance=ExtResource("20_kuqke")]
+layout_mode = 2
+doomer = NodePath("../../..")
+
+[node name="World Map Scene" parent="Scenes/Scene Grid" node_paths=PackedStringArray("doomer") instance=ExtResource("16_xkyh8")]
 layout_mode = 2
 doomer = NodePath("../../..")
 
