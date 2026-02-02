@@ -21,6 +21,7 @@ func _ready() -> void:
 func is_current_scene():
 	return doomer.current_scene == _Doomer.DoomerScene.StartScreen
 
+"""
 func _on_input_received():
 	super()
 	doomer.change_scene(_Doomer.DoomerScene.PokerBoard)
@@ -30,3 +31,4 @@ func _on_scene_start():
 
 func _on_scene_end():
 	super()
+"""
