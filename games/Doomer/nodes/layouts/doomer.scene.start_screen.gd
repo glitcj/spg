@@ -17,18 +17,10 @@ var InputToAction := {
 func _ready() -> void:
 	scene_id = _Doomer.DoomerScene.StartScreen
 	accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
+	scene_id = _Doomer.DoomerScene.StartScreen
 
-func is_current_scene():
-	return doomer.current_scene == _Doomer.DoomerScene.StartScreen
-
-"""
-func _on_input_received():
-	super()
-	doomer.change_scene(_Doomer.DoomerScene.PokerBoard)
 
 func _on_scene_start():
+	var _turn = _Doomer_Turn_Start_Screen_Player_Input.new()
+	doomer.turner.turn_state_queue.insert(0, _turn)
 	super()
-
-func _on_scene_end():
-	super()
-"""

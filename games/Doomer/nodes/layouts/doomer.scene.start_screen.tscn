@@ -59,8 +59,10 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 1
 text = "Press Start
-
-Finish traits world map, floating message box w/ anim, randomised easy mode face and traits (high prob with given condition0"
+- Use lambda to replace many turns
+- Refactor turns to reudce and simplify
+- USE RESOURCES
+- Finish traits world map, floating message box w/ anim, randomised easy mode face and traits (high prob with given condition0"
 label_settings = SubResource("LabelSettings_id86s")
 horizontal_alignment = 1
 vertical_alignment = 1

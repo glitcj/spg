@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgpq25ikdeulv"]
 
-[ext_resource type="Script" uid="uid://bkcjqu72q6l72" path="res://games/Doomer/nodes/doomer.board_background.gd" id="1_vkjba"]
+[ext_resource type="Script" uid="uid://bkcjqu72q6l72" path="res://games/Doomer/nodes/core/doomer.core.background.gd" id="1_vkjba"]
 [ext_resource type="Texture2D" uid="uid://bj7wm1aamse3v" path="res://assets/doomer/parallax/balatro_bg_1.png" id="2_vkjba"]
 
 [node name="Board BG" type="SubViewportContainer"]

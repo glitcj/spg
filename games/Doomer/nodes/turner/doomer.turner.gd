@@ -16,8 +16,8 @@ var next_turn_state : _Doomer_Turn
 var processed_turns : Array[_Doomer_Turn] = []
 var turn_state_queue = [
 	_Doomer_Turn_Change_Scene.new(_Doomer.DoomerScene.StartScreen),
-	_Doomer_Turn_Start_Screen_Player_Input.new()
-	] # _Doomer_Turn_Field.new()]
+	# _Doomer_Turn_Start_Screen_Player_Input.new()
+	]
 
 
 # Called when the node enters the scene tree for the first time.

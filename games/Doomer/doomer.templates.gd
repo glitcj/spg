@@ -8,6 +8,7 @@ static var card_mark = preload("res://games/Doomer/nodes/card/doomer.card.mark.t
 # Recent:
 var tscn_gun = "res://games/Doomer/nodes/gun/doomer.gun.tscn"
 var turn_start_screen_player_input = "res://games/Doomer/nodes/turner/turns/doomer.turn.start_screen.player_input.gd"
+var turn_world_map_player_input = "res://games/Doomer/nodes/turner/turns/doomer.turn.world_map.player_input.gd"
 
 var turn_change_scene = "res://games/Doomer/nodes/turner/turns/_doomer_turn.change_scene.gd"
 

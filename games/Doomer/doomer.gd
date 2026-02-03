@@ -10,7 +10,7 @@ enum Opponents {Player, Enemy}
 enum DoomerScene {PokerBoard, StartScreen, WorldMap, Null}
 
 # var scene : Scenes = Scenes.PokerBoard
-var current_scene : DoomerScene
+var current_scene : DoomerScene = DoomerScene.Null
 var current_scene_node : Node
 @onready var current_scene_container = find_child("Current Scene Container")
 @onready var scene_grid = find_child("Scene Grid")
@@ -53,7 +53,7 @@ func _input(event):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	handler.mode = handler.InputMode.Active	
-	ready.connect(change_scene.bind(_Doomer.DoomerScene.StartScreen)) 
+	# ready.connect(change_scene.bind(_Doomer.DoomerScene.StartScreen)) 
 	
 func make_pointer(key : _Doomer_Pointer.Keys):
 	var pointer_ = _Doomer_Pointer.new(key)
@@ -78,4 +78,5 @@ func change_scene(scene_ = _Doomer.DoomerScene):
 	scene_tscn.position = Vector2.ZERO
 	scene_tscn._on_scene_start()
 	
+	current_scene = scene_
 	current_scene_node = scene_tscn

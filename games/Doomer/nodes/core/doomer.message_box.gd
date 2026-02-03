@@ -6,14 +6,16 @@ signal text_is_fully_displayed
 @export var doomer : _Doomer
 
 @onready var label : Label = find_child("Message Label")
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
-@onready var message_box
+@onready var animation_player : AnimationPlayer = find_child("AnimationPlayer")
 @onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
+@onready var message_box
 
-enum Enumations {ShowNewMessage, ShowLogMessage, ShowDialogueMessage}
+
+
+enum Action {ShowLog, ShowMessage, Buzz}
+enum Enumations {ShowNewMessage, ShowLogMessage, ShowDialogueMessage, Idle, Buzz}
 
 var history : Array = []
-
 var full_message_log : Array = []
 
 var message : String:
@@ -54,8 +56,16 @@ func show_log(m : String):
 	play_enumation(Enumations.ShowLogMessage)
 	
 func play_enumation(e : Enumations):
-	# assert("ShowLogMessage" in animation_player.get_animation_list())
 	animation_player.play(Enumations.keys()[e])
 	await animation_player.animation_finished
 	
-	
+
+"""
+class _Doomer_MessageBox_Action:
+	func _init():
+		pass
+
+class _Doomer_MessageBox_Action_Buzz extends _Doomer_MessageBox_Action:
+	func _init():
+		pass
+"""

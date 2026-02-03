@@ -16,11 +16,12 @@ func _init(target_scene_ : _Doomer.DoomerScene) -> void:
 func on_turn_start():
 	await get_tree().create_timer(doomer.turner.turner_timer.time_left/2).timeout
 	doomer.turner.turner_timer.paused = true
-	
+	print(target_scene)
+	print(doomer.current_scene)
 	doomer.change_scene(target_scene)
 
+	print(target_scene)
+	print(doomer.current_scene)
+	
 	doomer.turner.turner_timer.paused = false
 	return
-
-func on_turn_end():
-	pass

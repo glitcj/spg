@@ -28,3 +28,8 @@ func _on_input_received():
 	if doomer.handler.input_tray not in accepted_inputs:
 		return false
 	return true
+
+
+func is_current_scene():
+	return doomer.current_scene == scene_id
+	

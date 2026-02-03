@@ -132,6 +132,8 @@ func get_highest_player_or_enemy_card():
 	return field_cards
 	
 func _on_scene_start():
+	var _turn = _Doomer_Turn_Field.new()
+	doomer.turner.turn_state_queue.insert(0, _turn)
 	super()
 
 func _on_scene_end():

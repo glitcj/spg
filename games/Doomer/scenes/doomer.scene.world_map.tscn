@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bsvvh5tdtnnla" path="res://games/Doomer/scenes/doomer.scene.world_map.gd" id="1_l3jp3"]
 [ext_resource type="Texture2D" uid="uid://dm0frm25hapm5" path="res://assets/doomer/parallax/balatro_bg_2.png" id="2_pyjtq"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_s0lhg"]
-[ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://games/Doomer/nodes/board/doomer.message_box.tscn" id="3_dq431"]
+[ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://games/Doomer/nodes/core/doomer.message_box.tscn" id="3_dq431"]
 
 [node name="World Map Scene" type="SubViewportContainer"]
 anchors_preset = 15

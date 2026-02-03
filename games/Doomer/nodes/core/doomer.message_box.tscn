@@ -1,11 +1,23 @@
-[gd_scene load_steps=12 format=4 uid="uid://dioopxi2opgrn"]
+[gd_scene load_steps=14 format=4 uid="uid://dioopxi2opgrn"]
 
-[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://games/Doomer/nodes/board/doomer.message_box.gd" id="1_vr8u8"]
+[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://games/Doomer/nodes/core/doomer.message_box.gd" id="1_vr8u8"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_dlr4c"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_i2qql"]
 
 [sub_resource type="Animation" id="Animation_vr8u8"]
 resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animated Node:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_d27xf"]
 resource_name = "ShowDialogueMessage"
@@ -47,7 +59,7 @@ resource_name = "ShowLogMessage_Backup"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/CenterContainer/Control/Message Label:position")
+tracks/0/path = NodePath("Animated Node/MarginContainer/Message Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +71,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/CenterContainer/Control/Message Label:modulate")
+tracks/1/path = NodePath("Animated Node/MarginContainer/Message Label:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -83,8 +95,28 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_5a7l5"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_7dksj"]
+resource_name = "Buzz"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animated Node:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.05235987755982989, -0.05235987755982989, 0.05235987755982989, -0.05235987755982989, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dlr4c"]
 _data = {
+&"Buzz": SubResource("Animation_7dksj"),
+&"Idle": SubResource("Animation_5a7l5"),
 &"RESET": SubResource("Animation_vr8u8"),
 &"ShowDialogueMessage": SubResource("Animation_d27xf"),
 &"ShowLogMessage": SubResource("Animation_dlr4c"),
@@ -586,55 +618,61 @@ libraries = {
 &"": SubResource("AnimationLibrary_dlr4c")
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Animated Node" type="Node2D" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Animated Node"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Animated Node/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Frame Tilemaps" type="Node2D" parent="MarginContainer/CenterContainer"]
+[node name="Frame Tilemaps" type="Node2D" parent="Animated Node/MarginContainer/CenterContainer"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="MarginContainer/CenterContainer/Frame Tilemaps"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Animated Node/MarginContainer/CenterContainer/Frame Tilemaps"]
 tile_map_data = PackedByteArray("AAD+////AAABAAEAAAD+/wAAAAABAAEAAAD+/wEAAAABAAEAAAD+/wIAAAABAAEAAAD+/wMAAAABABsAAAD/////AAABAAEAAAAAAP//AAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABABsAAAAAAAIAAAABAAEAAAAAAAMAAAABABsAAAABAP//AAABAAEAAAACAP//AAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABABsAAAACAAIAAAABAAEAAAACAAMAAAABABsAAAADAP//AAABAAEAAAAEAP//AAABAAEAAAADAAAAAAABAAEAAAADAAEAAAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAABAAEAAAADAAIAAAABAAEAAAADAAMAAAABABsAAAAEAAIAAAABAAEAAAAEAAMAAAABABsAAAAFAP//AAABAAEAAAAGAP//AAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAGAAAAAAABAAEAAAAGAAEAAAABAAEAAAAFAAIAAAABAAEAAAAFAAMAAAABABsAAAAGAAIAAAABAAEAAAAGAAMAAAABABsAAAAHAP//AAABAAEAAAAIAP//AAABAAEAAAAHAAAAAAABAAEAAAAHAAEAAAABAAEAAAAIAAAAAAABAAEAAAAIAAEAAAABAAEAAAAHAAIAAAABAAEAAAAHAAMAAAABABsAAAAIAAIAAAABAAEAAAAIAAMAAAABABsAAAAJAP//AAABAAEAAAAKAP//AAABAAEAAAAJAAAAAAABAAEAAAAJAAEAAAABAAEAAAAKAAAAAAABAAEAAAAKAAEAAAABAAEAAAAJAAIAAAABAAEAAAAJAAMAAAABABsAAAAKAAIAAAABAAEAAAAKAAMAAAABABsAAAALAP//AAADABoAAAALAAAAAAADABoAAAALAAEAAAADABoAAAALAAIAAAADABoAAAALAAMAAAADABsAAAD0//z/AAAAABgAAAAIAPz/AAABABgAAAAIAP3/AAABAAEAAAAIAP7/AAABAAEAAAD1//z/AAABABgAAAD1//3/AAABAAEAAAD1//7/AAABAAEAAAD1////AAABAAEAAAD1/wAAAAABAAEAAAD1/wEAAAABAAEAAAD1/wIAAAABAAEAAAD2//z/AAABABgAAAD2//3/AAABAAEAAAD2//7/AAABAAEAAAD2////AAABAAEAAAD2/wAAAAABAAEAAAD2/wEAAAABAAEAAAD2/wIAAAABAAEAAAD2/wMAAAABABsAAAD3//z/AAABABgAAAD4//z/AAABABgAAAD5//z/AAABABgAAAD6//z/AAABABgAAAD7//z/AAABABgAAAD8//z/AAABABgAAAD9//z/AAABABgAAAD+//z/AAABABgAAAD///z/AAABABgAAAAAAPz/AAABABgAAAABAPz/AAABABgAAAACAPz/AAABABgAAAADAPz/AAABABgAAAAEAPz/AAABABgAAAAFAPz/AAABABgAAAAGAPz/AAABABgAAAAHAPz/AAABABgAAAALAPz/AAADABgAAAALAP3/AAADABoAAAALAP7/AAADABoAAAD0/wIAAAADABoAAAD0/wMAAAAAABsAAAD1/wMAAAABABsAAAD3/wIAAAABAAEAAAD3/wMAAAABABsAAAD4/wIAAAABAAEAAAD4/wMAAAABABsAAAD5/wIAAAABAAEAAAD5/wMAAAABABsAAAD6/wIAAAABAAEAAAD6/wMAAAABABsAAAD7/wIAAAABAAEAAAD7/wMAAAABABsAAAD8/wIAAAABAAEAAAD8/wMAAAABABsAAAD9/wIAAAABAAEAAAD9/wMAAAABABsAAAD0//3/AAADABoAAAD0//7/AAADABoAAAD0////AAADABoAAAD0/wAAAAADABoAAAD0/wEAAAADABoAAAD3//3/AAABAAEAAAD3//7/AAABAAEAAAD3////AAABAAEAAAD3/wAAAAABAAEAAAD3/wEAAAABAAEAAAD4//3/AAABAAEAAAD4//7/AAABAAEAAAD4////AAABAAEAAAD4/wAAAAABAAEAAAD4/wEAAAABAAEAAAD5//3/AAABAAEAAAD5//7/AAABAAEAAAD5////AAABAAEAAAD5/wAAAAABAAEAAAD5/wEAAAABAAEAAAD6//3/AAABAAEAAAD6//7/AAABAAEAAAD6////AAABAAEAAAD6/wAAAAABAAEAAAD6/wEAAAABAAEAAAD7//3/AAABAAEAAAD7//7/AAABAAEAAAD7////AAABAAEAAAD7/wAAAAABAAEAAAD7/wEAAAABAAEAAAD8//3/AAABAAEAAAD8//7/AAABAAEAAAD8////AAABAAEAAAD8/wAAAAABAAEAAAD8/wEAAAABAAEAAAD9//3/AAABAAEAAAD9//7/AAABAAEAAAD9////AAABAAEAAAD9/wAAAAABAAEAAAD9/wEAAAABAAEAAAD+//3/AAABAAEAAAD+//7/AAABAAEAAAD///3/AAABAAEAAAD///7/AAABAAEAAAAAAP3/AAABAAEAAAAAAP7/AAABAAEAAAABAP3/AAABAAEAAAABAP7/AAABAAEAAAACAP3/AAABAAEAAAACAP7/AAABAAEAAAADAP3/AAABAAEAAAADAP7/AAABAAEAAAAEAP3/AAABAAEAAAAEAP7/AAABAAEAAAAFAP3/AAABAAEAAAAFAP7/AAABAAEAAAAGAP3/AAABAAEAAAAGAP7/AAABAAEAAAAHAP3/AAABAAEAAAAHAP7/AAABAAEAAAAJAPz/AAABABgAAAAJAP3/AAABAAEAAAAJAP7/AAABAAEAAAAKAPz/AAABABgAAAAKAP3/AAABAAEAAAAKAP7/AAABAAEAAAA=")
 tile_set = SubResource("TileSet_dlr4c")
 
-[node name="Control" type="Control" parent="MarginContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="Message Label" type="Label" parent="MarginContainer/CenterContainer/Control"]
+[node name="Message Label" type="Label" parent="Animated Node/MarginContainer"]
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(20, 20)
-layout_mode = 0
-offset_left = -80.0
-offset_top = -25.0
-offset_right = 80.0
-offset_bottom = 25.0
+layout_mode = 2
 size_flags_vertical = 1
 label_settings = SubResource("LabelSettings_msdvt")
 autowrap_mode = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="Animated Node"]
 visible = false
 z_index = 6
 layout_mode = 3
 anchors_preset = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Animated Node/Control"]
 layout_mode = 0
 offset_right = 79.0
 offset_bottom = 40.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Animated Node/Control/HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="Control/HBoxContainer/CenterContainer"]
+[node name="Control" type="Control" parent="Animated Node/Control/HBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="Message Portrait" parent="Control/HBoxContainer/CenterContainer/Control" instance=ExtResource("2_dlr4c")]
+[node name="Message Portrait" parent="Animated Node/Control/HBoxContainer/CenterContainer/Control" instance=ExtResource("2_dlr4c")]
 visible = false
 position = Vector2(-1, 0)
 portrait = 2

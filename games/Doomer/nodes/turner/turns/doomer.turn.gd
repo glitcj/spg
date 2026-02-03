@@ -2,6 +2,8 @@ extends Node
 class_name _Doomer_Turn
 
 signal turn_time_finished
+signal turn_interrupted_and_finished
+
 @onready var doomer : _Doomer = get_parent().get_parent()
 @onready var scene = doomer.find_child("Poker Board Scene")
 
@@ -20,7 +22,7 @@ func _ready() -> void:
 	if doomer:
 		if doomer.turner:
 			doomer.turner.turner_timer.timeout.connect(_on_turner_timer_timeout)
-
+			
 func on_turn_start():
 	pass
 
