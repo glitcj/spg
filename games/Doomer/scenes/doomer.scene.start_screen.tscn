@@ -59,6 +59,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 1
 text = "Press Start
+- Add docstrings to  proof claude mods
 - Use lambda to replace many turns
 - Refactor turns to reudce and simplify
 - USE RESOURCES

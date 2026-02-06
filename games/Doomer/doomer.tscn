@@ -69,11 +69,11 @@ script = ExtResource("8_cp6uo")
 script = ExtResource("7_xkyh8")
 metadata/_custom_type_script = "uid://mkdbmh21w7is"
 
-[node name="Portraits" type="Node" parent="."]
+[node name="Documentation" type="Node" parent="."]
+script = ExtResource("13_ayhyn")
 
-[node name="Opponents" type="Node" parent="."]
-
-[node name="Field" type="Node" parent="."]
+[node name="Notes" type="Node" parent="."]
+script = ExtResource("10_3vrde")
 
 [node name="Current Scene" type="Node" parent="."]
 
@@ -109,12 +109,6 @@ grow_vertical = 2
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = SubResource("CanvasTexture_rj2r0")
-
-[node name="Documentation" type="Node" parent="."]
-script = ExtResource("13_ayhyn")
-
-[node name="Notes" type="Node" parent="."]
-script = ExtResource("10_3vrde")
 
 [node name="Scenes" type="Node2D" parent="."]
 position = Vector2(0, 5000)
