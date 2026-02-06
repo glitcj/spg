@@ -40,7 +40,7 @@ func _process_input():
 	_turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
 
-	doomer.turns.change_scene(_Doomer.DoomerScene.PokerBoard)
+	doomer.events.change_scene(_Doomer.DoomerScene.PokerBoard)
 		
 
 

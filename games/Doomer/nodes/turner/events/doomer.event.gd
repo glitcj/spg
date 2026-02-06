@@ -1,5 +1,5 @@
 extends Node
-class_name _Doomer_Turns
+class_name _Doomer_Events
 
 enum MessageType {Dialogue, Log}
 
@@ -80,5 +80,47 @@ func mark_cards(_cards_getter : Callable, _mark_type : _Doomer_Card_Mark.MarkTyp
 				await card.add_mark(_mark_type, _opponent, false)
 			else:
 				card.add_mark(_mark_type, _opponent, false)
+	_turn = _Doomer_Turn_Lambda.new(_lambda)
+	doomer.turner.insert_turn(_turn)
+
+func card_attack(_cards_getter : Callable, _loser_getter : Callable, _coin_amount : int):
+	_lambda = func():
+		var opponent : _Doomer.Opponents = _loser_getter.call()
+
+		var coin_box : _Doomer_Coin_Box
+		var enumation : _Doomer_Card.Enumation
+		var attacker_portrait : _Doomer_Portrait
+		var defender_portrait : _Doomer_Portrait
+
+		if opponent == _Doomer.Opponents.Enemy:
+			coin_box = doomer.pointer.player_coin_box()
+			enumation = _Doomer_Card.Enumation.AttackUp
+			attacker_portrait = doomer.pointer.player_portrait()
+			defender_portrait = doomer.pointer.enemy_portrait()
+		else:
+			coin_box = doomer.pointer.enemy_coin_box()
+			enumation = _Doomer_Card.Enumation.AttackDown
+			attacker_portrait = doomer.pointer.enemy_portrait()
+			defender_portrait = doomer.pointer.player_portrait()
+
+		var cards : Array = _cards_getter.call()
+		var counter = 0
+		for card : _Doomer_Card in cards:
+			var is_last_attack = counter == cards.size() - 1
+
+			coin_box.add_coins(_coin_amount)
+
+			defender_portrait.play_enumation(_Doomer_Portrait.Animations.Damage, false)
+			attacker_portrait.play_enumation(_Doomer_Portrait.Animations.Attack, false)
+			await card.play_enumation(enumation, true)
+
+			if is_last_attack:
+				await attacker_portrait.play_enumation(_Doomer_Portrait.Animations.AttackRallyEnd, true)
+			counter += 1
+
+		defender_portrait.play_enumation(_Doomer_Portrait.Animations.Idle, false)
+		attacker_portrait.play_enumation(_Doomer_Portrait.Animations.Idle, false)
+
+		await CommonFunctions.waiter(doomer, .2)
 	_turn = _Doomer_Turn_Lambda.new(_lambda)
 	doomer.turner.insert_turn(_turn)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=4 uid="uid://bj4gwlna6b7q8"]
 
-[ext_resource type="Script" uid="uid://bfv6k2vgcm5vy" path="res://games/Doomer/nodes/layouts/doomer.scene.board.gd" id="1_n8eav"]
+[ext_resource type="Script" uid="uid://bfv6k2vgcm5vy" path="res://games/Doomer/scenes/doomer.scene.board.gd" id="1_n8eav"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_nr83l"]
 [ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.tscn" id="3_k7src"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="4_37l2k"]
 [ext_resource type="PackedScene" uid="uid://r4iwnpw8jo1" path="res://games/Doomer/nodes/gun/doomer.gun.tscn" id="5_x2cid"]
 [ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="6_kihg7"]
-[ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/board/doomer.hud.tscn" id="7_ibdp7"]
+[ext_resource type="PackedScene" uid="uid://dn8lu6wp47k2k" path="res://games/Doomer/nodes/hud/doomer.hud.tscn" id="7_ibdp7"]
 
 [sub_resource type="Animation" id="Animation_mw5tf"]
 resource_name = "Idle"

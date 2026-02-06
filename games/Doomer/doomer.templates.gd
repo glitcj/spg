@@ -11,15 +11,13 @@ var turn_start_screen_player_input = "res://games/Doomer/nodes/turner/turns/doom
 var turn_world_map_player_input = "res://games/Doomer/nodes/turner/turns/doomer.turn.world_map.player_input.gd"
 
 var turn_lambda = "res://games/Doomer/nodes/turner/turns/doomer.turn.lambda.gd"
-var turn_turns = "res://games/Doomer/nodes/turner/turns/doomer.turns.gd"
+var turn_turns = "res://games/Doomer/nodes/turner/turns/doomer.events.gd"
 
 # References:
 var turn_field = "res://games/Doomer/nodes/turner/turns/doomer.turn.field.gd"
 var turn_enemy = "res://games/Doomer/nodes/turner/turns/doomer.turn.enemy.gd"
 var turn_player = "res://games/Doomer/nodes/turner/turns/doomer.turn.player.gd"
 var tscn_portrait = "res://games/Doomer/nodes/portrait/doomer.portrait.tscn"
-
-var turn_card_attack = "res://games/Doomer/nodes/turner/turns/doomer.turn.card_attack.gd"
 
 
 # TSCN:

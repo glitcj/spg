@@ -34,16 +34,16 @@ func _process_input():
 	var _message_box : _Doomer_Message_Box
 	
 	if action == Action.got_to_left_enemy:
-		doomer.turns.change_scene(_Doomer.DoomerScene.StartScreen)
+		doomer.events.change_scene(_Doomer.DoomerScene.StartScreen)
 		
 		_message_box = doomer.scene.world_map.find_child("Enemy Trait Message Box 1")
-		doomer.turns.buzz_message_box(_message_box)
+		doomer.events.buzz_message_box(_message_box)
 		
 	elif action == Action.got_to_right_enemy:
-		doomer.turns.change_scene(_Doomer.DoomerScene.PokerBoard)
+		doomer.events.change_scene(_Doomer.DoomerScene.PokerBoard)
 		
 		_message_box = doomer.scene.world_map.find_child("Enemy Trait Message Box 2")
-		doomer.turns.buzz_message_box(_message_box)
+		doomer.events.buzz_message_box(_message_box)
 		
 	_interrupt_and_end_turn_end()
 	

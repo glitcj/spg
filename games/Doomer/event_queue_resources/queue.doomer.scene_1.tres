@@ -1,21 +1,20 @@
-[gd_resource type="Resource" script_class="_Doomer_EventResource_EventQueue" load_steps=7 format=3 uid="uid://dvxvj743cndeh"]
+[gd_resource type="Resource" script_class="_Doomer_EventResource_EventQueue" load_steps=8 format=3 uid="uid://dvxvj743cndeh"]
 
-[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.gd" id="1_1r7c6"]
-[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.message_box.gd" id="2_t5l8q"]
-[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.event_queue.gd" id="2_w0sfn"]
-[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.lambda.gd" id="3_pgxe8"]
+[ext_resource type="Script" uid="uid://5glsjj2djmgc" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.gd" id="1_1r7c6"]
+[ext_resource type="Script" uid="uid://plxo4j87vphl" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.message_box.gd" id="2_t5l8q"]
+[ext_resource type="Script" uid="uid://c3ningtm8biuu" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.event_queue.gd" id="2_w0sfn"]
+[ext_resource type="Script" uid="uid://dks37trcmmqf1" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.lambda.gd" id="3_pgxe8"]
 
 [sub_resource type="Resource" id="Resource_5qb7i"]
 script = ExtResource("2_t5l8q")
-Messages = Array[String]([])
-type = 3
 
 [sub_resource type="Resource" id="Resource_yc6af"]
 script = ExtResource("3_pgxe8")
-function_to_call = Callable()
-type = 3
+
+[sub_resource type="Resource" id="Resource_3ju2d"]
+script = ExtResource("2_w0sfn")
+metadata/_custom_type_script = "uid://c3ningtm8biuu"
 
 [resource]
 script = ExtResource("2_w0sfn")
-events = Array[ExtResource("1_1r7c6")]([SubResource("Resource_5qb7i"), SubResource("Resource_yc6af"), null])
-type = 3
+events = Array[ExtResource("1_1r7c6")]([SubResource("Resource_5qb7i"), SubResource("Resource_yc6af"), SubResource("Resource_3ju2d")])

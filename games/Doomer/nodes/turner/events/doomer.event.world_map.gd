@@ -1,8 +1,8 @@
 extends Node
-class_name _Doomer_Turns_World_Map
-
+class_name _Doomer_Events_World_Map
 
 @export var doomer : _Doomer
+
 var _turn : _Doomer_Turn
 
 func buzz_world_map_message_box(_message_box : _Doomer_Message_Box):

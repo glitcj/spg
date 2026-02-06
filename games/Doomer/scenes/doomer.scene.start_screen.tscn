@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcswdc80s3eyf"]
 
-[ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://games/Doomer/nodes/layouts/doomer.scene.start_screen.gd" id="1_id86s"]
+[ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://games/Doomer/scenes/doomer.scene.start_screen.gd" id="1_id86s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iubvs"]
 line_spacing = 0.0

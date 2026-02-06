@@ -9,37 +9,18 @@ class_name _Doomer
 enum Opponents {Player, Enemy}
 enum DoomerScene {PokerBoard, StartScreen, WorldMap, Null}
 
-# var scene : Scenes = Scenes.PokerBoard
 var current_scene : DoomerScene = DoomerScene.Null
 var current_scene_node : Node
-@onready var current_scene_container = find_child("Current Scene Container")
+
 @onready var scene_grid = find_child("Scene Grid")
+@onready var current_scene_container = find_child("Current Scene Container")
 
-@onready var handler : _Doomer_Handler = $Handler
-@onready var hud : _Doomer_HUD = find_child("HUD Box") # $Containers/BoardContainer/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer/HUD  # $Containers/VBoxContainer/HUDContainer
-@onready var turner : _Doomer_Turner = $Turner
-
-@onready var board_container : _Doomer_Scene_Poker_Board = $Containers/VBoxContainer/BoardContainer
-@onready var board : _Doomer_Board = $Board
-@onready var logic : _Doomer_Logic = $Logic
-
+@onready var hud : _Doomer_HUD = find_child("HUD Box")
 
 @onready var player_gun : _Doomer_Gun = find_child("Player Gun")
 @onready var enemy_gun : _Doomer_Gun = find_child("Enemy Gun")
 
 @onready var field_cards : Array = 	find_children("Field Card *")
-@onready var enemy_cards : Array = enemy_gun.hand_cards
-@onready var player_cards : Array = player_gun.hand_cards
-
-@onready var player : _Doomer_Opponent = $Opponents/Player
-@onready var enemy : _Doomer_Opponent = $Opponents/Enemy
-
-@onready var opponents : Array[_Doomer_Opponent] = [$Opponents/Player, $"Opponents/Enemy"]
-@onready var pointer : _Doomer_Pointer = $Pointer
-
-@onready var next_field_card : _Doomer_Card
-
-
 @onready var player_coin_box : _Doomer_Coin_Box = find_child("Player CoinBox")
 @onready var enemy_coin_box : _Doomer_Coin_Box = find_child("Enemy CoinBox")
 
@@ -47,8 +28,22 @@ var current_scene_node : Node
 @onready var player_portrait : _Doomer_Portrait = find_child("Player Head")
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
-@onready var turns : _Doomer_Turns = find_child("Turns")
-@onready var world_map_turns : _Doomer_Turns_World_Map = find_child("World Map Turns")
+@onready var events : _Doomer_Events = find_child("Events")
+@onready var world_map_events : _Doomer_Events_World_Map = find_child("World Map Events")
+
+
+
+@onready var handler : _Doomer_Handler = $Handler
+@onready var turner : _Doomer_Turner = $Turner
+@onready var board : _Doomer_Board = $Board
+@onready var logic : _Doomer_Logic = $Logic
+@onready var pointer : _Doomer_Pointer = $Pointer
+
+
+@onready var enemy_cards : Array = enemy_gun.hand_cards
+@onready var player_cards : Array = player_gun.hand_cards
+@onready var next_field_card : _Doomer_Card
+
 
 func _input(event):
 	handler.handle_inputs(event)
@@ -56,8 +51,7 @@ func _input(event):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	handler.mode = handler.InputMode.Active	
-	# ready.connect(change_scene.bind(_Doomer.DoomerScene.StartScreen)) 
-	
+		
 func make_pointer(key : _Doomer_Pointer.Keys):
 	var pointer_ = _Doomer_Pointer.new(key)
 	add_child(pointer_)
