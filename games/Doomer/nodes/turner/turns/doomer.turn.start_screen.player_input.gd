@@ -36,12 +36,11 @@ func _process_input():
 		return
 
 	var _turn
-	
+
 	_turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
-	
-	_turn = _Doomer_Turn_Change_Scene.new(_Doomer.DoomerScene.PokerBoard)
-	doomer.turner.turn_state_queue.insert(0, _turn)
+
+	doomer.turns.change_scene(_Doomer.DoomerScene.PokerBoard)
 		
 
 

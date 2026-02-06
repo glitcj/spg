@@ -1,9 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo8lclxe6oiqv"]
+[gd_scene load_steps=14 format=3 uid="uid://bo8lclxe6oiqv"]
 
 [ext_resource type="Script" uid="uid://bsvvh5tdtnnla" path="res://games/Doomer/scenes/doomer.scene.world_map.gd" id="1_l3jp3"]
 [ext_resource type="Texture2D" uid="uid://dm0frm25hapm5" path="res://assets/doomer/parallax/balatro_bg_2.png" id="2_pyjtq"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_s0lhg"]
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://games/Doomer/nodes/core/doomer.message_box.tscn" id="3_dq431"]
+[ext_resource type="Texture2D" uid="uid://b6pq22kfp7up1" path="res://assets/doomer/coins/coin-Sheet.png" id="4_ff5u8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6lp2"]
+atlas = ExtResource("4_ff5u8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r60w"]
+atlas = ExtResource("4_ff5u8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsqlx"]
+atlas = ExtResource("4_ff5u8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q80xx"]
+atlas = ExtResource("4_ff5u8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4dpm"]
+atlas = ExtResource("4_ff5u8")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyaet"]
+atlas = ExtResource("4_ff5u8")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3dbn"]
+atlas = ExtResource("4_ff5u8")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1elb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6lp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r60w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsqlx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q80xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4dpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyaet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3dbn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="World Map Scene" type="SubViewportContainer"]
 anchors_preset = 15
@@ -43,13 +101,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Enemy Trait Container 1" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Enemy Trait Message Box 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/CenterContainer" instance=ExtResource("3_dq431")]
+[node name="Enemy Trait Message Box 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1" instance=ExtResource("3_dq431")]
 scale = Vector2(5.5, 5.5)
+
+[node name="Cursor" type="AnimatedSprite2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1"]
+texture_filter = 1
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_q1elb")
 
 [node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -67,7 +130,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Portrait" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/CenterContainer" instance=ExtResource("2_s0lhg")]
+[node name="Enemy Trait Portrait 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/CenterContainer" instance=ExtResource("2_s0lhg")]
 
 [node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
@@ -78,16 +141,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Portrait" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_s0lhg")]
+[node name="Enemy Trait Portrait 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_s0lhg")]
 
 [node name="MarginContainer3" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="Enemy Trait Container 2" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Enemy Trait Message Box 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer3/CenterContainer" instance=ExtResource("3_dq431")]
+[node name="Enemy Trait Message Box 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer3/Enemy Trait Container 2" instance=ExtResource("3_dq431")]
 scale = Vector2(5.5, 5.5)

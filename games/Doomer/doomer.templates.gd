@@ -10,7 +10,8 @@ var tscn_gun = "res://games/Doomer/nodes/gun/doomer.gun.tscn"
 var turn_start_screen_player_input = "res://games/Doomer/nodes/turner/turns/doomer.turn.start_screen.player_input.gd"
 var turn_world_map_player_input = "res://games/Doomer/nodes/turner/turns/doomer.turn.world_map.player_input.gd"
 
-var turn_change_scene = "res://games/Doomer/nodes/turner/turns/_doomer_turn.change_scene.gd"
+var turn_lambda = "res://games/Doomer/nodes/turner/turns/doomer.turn.lambda.gd"
+var turn_turns = "res://games/Doomer/nodes/turner/turns/doomer.turns.gd"
 
 # References:
 var turn_field = "res://games/Doomer/nodes/turner/turns/doomer.turn.field.gd"
@@ -18,13 +19,7 @@ var turn_enemy = "res://games/Doomer/nodes/turner/turns/doomer.turn.enemy.gd"
 var turn_player = "res://games/Doomer/nodes/turner/turns/doomer.turn.player.gd"
 var tscn_portrait = "res://games/Doomer/nodes/portrait/doomer.portrait.tscn"
 
-var turn_change_coins = "res://games/Doomer/nodes/turner/turns/doomer.turn.change_coins.gd"
-var turn_flip_cards = "res://games/Doomer/nodes/turner/turns/doomer.turn.flip_cards.gd"
-var turn_randomise_cards = "res://games/Doomer/nodes/turner/turns/doomer.turn.randomise_cards.gd"
 var turn_card_attack = "res://games/Doomer/nodes/turner/turns/doomer.turn.card_attack.gd"
-var turn_show_message = "res://games/Doomer/nodes/turner/turns/doomer.turn.show_message.gd"
-var turn_mark_cards  = "res://games/Doomer/nodes/turner/turns/doomer.turn.mark_cards.gd"
-var turn_action_cards = "res://games/Doomer/nodes/turner/turns/doomer.turn.action_cards.gd"
 
 
 # TSCN:

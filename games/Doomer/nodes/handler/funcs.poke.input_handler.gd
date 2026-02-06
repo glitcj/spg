@@ -23,8 +23,7 @@ func handle_inputs(event):
 func _process_input(event):
 	var event_keycode = CommonFunctions.get_first_input_event_keycode(event)
 	
-	# if event_keycode not in _Doomer_Turn_Player.accepted_inputs:
-	# 	return
+
 	if event_keycode == null:
 		return
 	

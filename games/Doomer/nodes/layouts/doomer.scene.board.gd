@@ -6,15 +6,6 @@ class_name _Doomer_Scene_Poker_Board
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
 
-# TODO: REFACTOR with find children
-@onready var player_hand_containers  =  [
-	$"PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer",
-	$"PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-2/CenterContainer"
-]
-@onready var opponent_hand_containers = [
-	$"PanelContainer/VBoxContainer/Top/CardsMarginContainer-1/CenterContainer",
-	$"PanelContainer/VBoxContainer/Top/CardsMarginContainer-2/CenterContainer"
-]
 
 var field_cards : Array[_Doomer_Card]
 

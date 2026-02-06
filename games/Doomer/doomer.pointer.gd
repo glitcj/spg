@@ -196,3 +196,6 @@ func enemy_portrait() -> _Doomer_Portrait:
 
 func message_box() -> _Doomer_Message_Box:
 	return doomer.hud.message_box
+
+func world_map_scene():
+	return doomer.find_child("World Map Scene")

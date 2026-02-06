@@ -15,7 +15,7 @@ var wait_amount : float = .2
 func _init() -> void:
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)
-	name = "_Doomer_Turn_Change_Scene"
+	name = "_Doomer_Turn_World_Map_Player_Input"
 	turn_wait_time = .2
 	
 func on_turn_start():
@@ -30,16 +30,20 @@ func _process_input():
 		return
 	action = ActionMap[doomer.handler.input_tray]
 
-	var _turn
+	var _turn : _Doomer_Turn
+	var _message_box : _Doomer_Message_Box
 	
 	if action == Action.got_to_left_enemy:
-		_turn = _Doomer_Turn_Change_Scene.new(_Doomer.DoomerScene.StartScreen)
-		doomer.turner.turn_state_queue.insert(0, _turn)
+		doomer.turns.change_scene(_Doomer.DoomerScene.StartScreen)
+		
+		_message_box = doomer.scene.world_map.find_child("Enemy Trait Message Box 1")
+		doomer.turns.buzz_message_box(_message_box)
 		
 	elif action == Action.got_to_right_enemy:
+		doomer.turns.change_scene(_Doomer.DoomerScene.PokerBoard)
 		
-		_turn = _Doomer_Turn_Change_Scene.new(_Doomer.DoomerScene.PokerBoard)
-		doomer.turner.turn_state_queue.insert(0, _turn)
+		_message_box = doomer.scene.world_map.find_child("Enemy Trait Message Box 2")
+		doomer.turns.buzz_message_box(_message_box)
 		
 	_interrupt_and_end_turn_end()
 	

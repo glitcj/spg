@@ -32,3 +32,11 @@ func on_turn_end():
 func _on_turner_timer_timeout():
 	turn_time_finished.emit()
 	pass
+
+func _process_input():
+	pass
+
+func _interrupt_and_end_turn_end():
+	doomer.handler.input_received.disconnect(_process_input)
+	doomer.turner.turner_timer.paused = false
+	queue_free()

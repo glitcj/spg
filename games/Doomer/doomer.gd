@@ -47,6 +47,9 @@ var current_scene_node : Node
 @onready var player_portrait : _Doomer_Portrait = find_child("Player Head")
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
+@onready var turns : _Doomer_Turns = find_child("Turns")
+@onready var world_map_turns : _Doomer_Turns_World_Map = find_child("World Map Turns")
+
 func _input(event):
 	handler.handle_inputs(event)
 
@@ -80,3 +83,10 @@ func change_scene(scene_ = _Doomer.DoomerScene):
 	
 	current_scene = scene_
 	current_scene_node = scene_tscn
+	
+	
+@onready var scene  = _Scene.new(self)
+class _Scene:
+	var world_map : _Doomer_Scene_World_Map
+	func _init(doomer : _Doomer):
+		world_map = doomer.find_child("World Map Scene")

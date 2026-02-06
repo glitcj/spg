@@ -14,14 +14,13 @@ var next_turn_state : _Doomer_Turn
 
 
 var processed_turns : Array[_Doomer_Turn] = []
-var turn_state_queue = [
-	_Doomer_Turn_Change_Scene.new(_Doomer.DoomerScene.StartScreen),
-	# _Doomer_Turn_Start_Screen_Player_Input.new()
-	]
+var turn_state_queue = []
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	turn_state_queue = [_Doomer_Turn_Lambda.new(doomer.change_scene, [_Doomer.DoomerScene.StartScreen])]
+	# _Doomer_Turn_Start_Screen_Player_Input.new()
 	$ActionTimer.start()
 	scene.scene_activated.connect(_on_scene_activated)
 	scene.scene_deactivated.connect(_on_scene_deactivated)
@@ -82,3 +81,6 @@ func _on_scene_activated():
 func _on_scene_deactivated():
 	pass
 	# $ActionTimer.stop()
+	
+func insert_turn(_turn : _Doomer_Turn, _position = 0):
+	turn_state_queue.insert(_position, _turn)
