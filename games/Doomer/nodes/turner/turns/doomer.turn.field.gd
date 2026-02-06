@@ -39,48 +39,39 @@ class Turns:
 	func start_betting_round_turns():
 		var wait_for_each_card = false
 
-		_turn = _Doomer_Turn_Enemy.new()
-		doomer.turner.turn_state_queue.insert(0, _turn)
+		doomer.turner.insert_turn(_Doomer_Turn_Enemy.new())
 
-		_turn = _Doomer_Turn_Player.new()
-		doomer.turner.turn_state_queue.insert(0, _turn)
+		doomer.turner.insert_turn(_Doomer_Turn_Player.new())
 
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
-		doomer.turns.flip_cards(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		doomer.turns.flip_cards(doomer.pointer.flop_cards, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 
-		doomer.turns.show_message("Turning flop cards.", false, _Doomer_Turns.MessageType.Log, null)
+		doomer.turns.show_message("Turning flop cards.", false, _Doomer_Turns.MessageType.Log)
 
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.player_cards)
-		doomer.turns.flip_cards(pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		doomer.turns.flip_cards(doomer.pointer.player_cards, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 
-		doomer.turns.show_message("Lets see the hand..", false, _Doomer_Turns.MessageType.Log, null)
+		doomer.turns.show_message("Lets see the hand..", false, _Doomer_Turns.MessageType.Log)
 
 		self.randomise_all_cards()
 
 
 	func flip_next_card_turns():
-		_turn = _Doomer_Turn_Enemy.new()
-		doomer.turner.turn_state_queue.insert(0, _turn)
+		doomer.turner.insert_turn(_Doomer_Turn_Enemy.new())
 
-		_turn = _Doomer_Turn_Player.new()
-		doomer.turner.turn_state_queue.insert(0, _turn)
+		doomer.turner.insert_turn(_Doomer_Turn_Player.new())
 
-		doomer.turns.show_message("Dealbring marks card ATK.", false, _Doomer_Turns.MessageType.Log, null)
+		doomer.turns.show_message("Dealbring marks card ATK.", false, _Doomer_Turns.MessageType.Log)
 
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
-		doomer.turns.flip_cards(pointer)
+		doomer.turns.flip_cards(doomer.pointer.next_field_card)
 
-		doomer.turns.show_message("Flipping next card.", false, _Doomer_Turns.MessageType.Log, null)
+		doomer.turns.show_message("Flipping next card.", false, _Doomer_Turns.MessageType.Log)
 		
 		
 	func flip_all_cards_down_turns():
 		var wait_for_each_card = false
 
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.player_and_enemy_cards)
-		doomer.turns.flip_cards(pointer, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
+		doomer.turns.flip_cards(doomer.pointer.player_and_enemy_cards, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
 
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
-		doomer.turns.flip_cards(pointer, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
+		doomer.turns.flip_cards(doomer.pointer.field_cards, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
 		
 		
 	func show_enemy_hand_and_winner_decision():
@@ -89,25 +80,21 @@ class Turns:
 
 		self.flip_all_cards_down_turns()
 
-		var cards_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.all_cards)
-		var marks_pointer = _Doomer_Card.MarkPointers.all_marks
-		doomer.turns.demark_cards(cards_pointer, marks_pointer, false)
+		doomer.turns.demark_cards(doomer.pointer.all_cards, _Doomer_Card.MarkPointers.all_marks, false)
 
-		_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.winner_coin_box)
-		doomer.turns.change_coins(100, _pointer)
+		doomer.turns.change_coins(100, doomer.pointer.winner_coin_box)
 
 		var loser_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.loser_opponent)
-		cards_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
+		
+		var cards_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
+
 		_turn = _Doomer_Turn_Card_Attack.new(cards_pointer, loser_pointer, 10)
 		doomer.turner.turn_state_queue.insert(0, _turn)
 
-		var wait_for_each_card = false
-		_pointer = doomer.make_pointer(_Doomer_Pointer.Keys.enemy_cards)
-		doomer.turns.flip_cards(_pointer, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		doomer.turns.flip_cards(doomer.pointer.enemy_cards, _Doomer_Card.CardState.FacingUp, false)
 		
 	func randomise_all_cards():
-		pointer = doomer.make_pointer(_Doomer_Pointer.Keys.all_cards)
-		doomer.turns.randomise_cards(pointer)
+		doomer.turns.randomise_cards(doomer.pointer.all_cards)
 
 	func on_turn_end():
 		pass
