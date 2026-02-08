@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://r4iwnpw8jo1"]
 
-[ext_resource type="Script" uid="uid://b4407hdbap3yk" path="res://games/Doomer/nodes/gun/doomer.gun.gd" id="1_7yrmh"]
-[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://games/Doomer/nodes/portrait/doomer.portrait.tscn" id="2_8yir6"]
-[ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://games/Doomer/nodes/card/node.doomer.card.tscn" id="4_nuvoh"]
+[ext_resource type="Script" uid="uid://b4407hdbap3yk" path="res://nodes/gun/doomer.gun.gd" id="1_7yrmh"]
+[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://nodes/portrait/doomer.portrait.tscn" id="2_8yir6"]
+[ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://nodes/card/node.doomer.card.tscn" id="4_nuvoh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nuvoh"]
 font_size = 256

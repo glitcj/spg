@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bttjxx16ayyk5"]
 
-[ext_resource type="Script" path="res://games/Doomer/nodes/portrait/node.poke.portrait.gd" id="1_iqag8"]
+[ext_resource type="Script" path="res://nodes/portrait/node.poke.portrait.gd" id="1_iqag8"]
 
 [sub_resource type="Animation" id="Animation_5jys0"]
 resource_name = "Idle"

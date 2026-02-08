@@ -1,6 +1,6 @@
 [gd_scene load_steps=89 format=3 uid="uid://bh76i8vm1ftt2"]
 
-[ext_resource type="Script" uid="uid://b1ojkok8uy3g3" path="res://games/Doomer/nodes/card/node.doomer.card.gd" id="1_kt143"]
+[ext_resource type="Script" uid="uid://b1ojkok8uy3g3" path="res://nodes/card/node.doomer.card.gd" id="1_kt143"]
 [ext_resource type="Texture2D" uid="uid://y8u3owkjoqd2" path="res://assets/doomer/cards/doom-poker-cards-Sheet.png" id="2_2wj50"]
 [ext_resource type="Texture2D" uid="uid://t350wnyvjfji" path="res://assets/doomer/heads/doom-poker-face-Sheet.png" id="3_sweri"]
 [ext_resource type="Texture2D" uid="uid://d3fj0b8gjif82" path="res://assets/doomer/cards/cards_7.png" id="3_tgwkm"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=685 format=3 uid="uid://b4muq3ort3bx0"]
 
-[ext_resource type="Script" uid="uid://cqcotrms8s8go" path="res://games/Doomer/nodes/card/doomer.card.mark.gd" id="1_2dkbg"]
+[ext_resource type="Script" uid="uid://cqcotrms8s8go" path="res://nodes/card/doomer.card.mark.gd" id="1_2dkbg"]
 [ext_resource type="Texture2D" uid="uid://bb7cwktwngste" path="res://assets/doomer/icons/icons_sheet.png" id="2_spj7v"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cy2l4"]

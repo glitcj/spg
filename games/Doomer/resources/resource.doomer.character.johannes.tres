@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="_Doomer_Character" load_steps=6 format=3 uid="uid://iaqtp5fbb548"]
 
-[ext_resource type="Script" path="res://games/Doomer/resources/resource.doomer.character.gd" id="1_cs44a"]
-[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.gd" id="1_lt3sr"]
-[ext_resource type="Script" path="res://games/Doomer/event_queue_resources/resource.doomer.event_resource.message_box.gd" id="2_nspdh"]
+[ext_resource type="Script" path="res://resources/resource.doomer.character.gd" id="1_cs44a"]
+[ext_resource type="Script" path="res://event_queue_resources/resource.doomer.event_resource.gd" id="1_lt3sr"]
+[ext_resource type="Script" path="res://event_queue_resources/resource.doomer.event_resource.message_box.gd" id="2_nspdh"]
 
 [sub_resource type="Resource" id="Resource_y1rdq"]
 script = ExtResource("1_lt3sr")

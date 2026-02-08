@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://50stjaah1tme"]
 
-[ext_resource type="Script" uid="uid://dhkau3qujg0fs" path="res://games/Doomer/nodes/coin_box/doomer.coin_box.gd" id="1_niy41"]
+[ext_resource type="Script" uid="uid://dhkau3qujg0fs" path="res://nodes/coin_box/doomer.coin_box.gd" id="1_niy41"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_mpgp7"]
 
