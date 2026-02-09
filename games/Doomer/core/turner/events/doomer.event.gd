@@ -107,7 +107,6 @@ func card_attack(_cards_getter : Callable, _loser_getter : Callable, _coin_amoun
 		var counter = 0
 		for card : _Doomer_Card in cards:
 			var is_last_attack = counter == cards.size() - 1
-
 			coin_box.add_coins(_coin_amount)
 
 			defender_portrait.play_enumation(_Doomer_Portrait.Animations.Damage, false)

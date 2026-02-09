@@ -5,7 +5,7 @@ signal turn_time_finished
 signal turn_interrupted_and_finished
 
 @onready var doomer : _Doomer = get_parent().get_parent()
-@onready var scene = doomer.find_child("Poker Board Scene")
+# @onready var scene = doomer.find_child("Poker Board Scene")
 
 
 var turn_name : String

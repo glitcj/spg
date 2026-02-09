@@ -14,6 +14,10 @@ var InputToAction := {
 var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 var wait_amount : float = .2
 
+
+@onready var scene = doomer.find_child("Poker Board Scene")
+
+
 func _init() -> void:
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)
@@ -34,16 +38,13 @@ func _process_action():
 func _process_input():
 	if not doomer.handler.input_tray in accepted_inputs:
 		return
-
 	var _turn
 
 	_turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
-
+	
 	doomer.events.change_scene(_Doomer.DoomerScene.PokerBoard)
-		
-
-
+	
 	_interrupt_and_end_turn_end()
 	
 

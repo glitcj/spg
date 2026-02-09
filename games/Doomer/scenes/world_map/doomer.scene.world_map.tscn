@@ -102,14 +102,17 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Enemy Trait Container 1" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Enemy Trait Message Box 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1" instance=ExtResource("3_dq431")]
+unique_name_in_owner = true
 scale = Vector2(5.5, 5.5)
 
 [node name="Cursor" type="AnimatedSprite2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1"]
+unique_name_in_owner = true
 visible = false
 texture_filter = 1
 scale = Vector2(8, 8)
@@ -149,9 +152,11 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Enemy Trait Container 2" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Enemy Trait Message Box 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer3/Enemy Trait Container 2" instance=ExtResource("3_dq431")]
+unique_name_in_owner = true
 scale = Vector2(5.5, 5.5)

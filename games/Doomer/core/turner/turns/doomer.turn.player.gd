@@ -7,7 +7,7 @@ enum Action {Call, Check, Fold, Null}
 var action : Action
 
 var action_placed_and_performed : bool = false
-var interrupt_buffer_wait_time : float = _Doomer_Constants.imeddiate_action_time_delta
+var interrupt_buffer_wait_time : float = _Doomer_Constants.immediate_action_time_delta
 
 var ActionMap := {
 	KEY_UP: Action.Call,

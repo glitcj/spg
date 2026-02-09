@@ -79,7 +79,7 @@ func change_scene(scene_ = _Doomer.DoomerScene):
 	current_scene_node = scene_tscn
 	
 	
-@onready var scene  = _Scene.new(self)
+@onready var scene = _Scene.new(self)
 class _Scene:
 	var world_map : _Doomer_Scene_World_Map
 	func _init(doomer : _Doomer):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=22 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://doomer.gd" id="1_cp6uo"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.pointer.gd" id="2_jh38i"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://tvyfjvrduup" path="res://other/doomer.constants.gd" id="7_rj2r0"]
 [ext_resource type="Script" uid="uid://cup3l4uj7b0ja" path="res://core/doomer.common_functions.gd" id="7_xkyh8"]
 [ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://other/doomer.templates.gd" id="8_cp6uo"]
+[ext_resource type="Script" uid="uid://dvjmt8qsd6kt7" path="res://core/turner/events/doomer.events.board.gd" id="8_ihg64"]
 [ext_resource type="Script" uid="uid://dl78wbdaiprqq" path="res://docs/notes.gd" id="10_3vrde"]
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://core/grounds/doomer.core.background.tscn" id="11_jh38i"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/docs.gd" id="13_ayhyn"]
@@ -57,6 +58,9 @@ doomer = NodePath("..")
 
 [node name="World Map Events" type="Node" parent="Events"]
 script = ExtResource("5_cp6uo")
+
+[node name="Board Events" type="Node" parent="Events"]
+script = ExtResource("8_ihg64")
 
 [node name="Board" type="Node" parent="."]
 script = ExtResource("3_cw5lf")

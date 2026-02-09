@@ -9,7 +9,7 @@ var action : Action
 func _init() -> void:
 	turn_name = "ENM"
 	turn_colour = Color(1,1,1)
-	turn_wait_time = _Doomer_Constants.imeddiate_action_time_delta
+	turn_wait_time = _Doomer_Constants.immediate_action_time_delta
 
 func on_turn_start():
 	
