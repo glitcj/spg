@@ -981,5 +981,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HUD Box" parent="SubViewport/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer" instance=ExtResource("7_ibdp7")]
+[node name="HUD" parent="SubViewport/PanelContainer/VBoxContainer/HUD/HUDContainer/CenterContainer" instance=ExtResource("7_ibdp7")]
+unique_name_in_owner = true
 scale = Vector2(5.2, 5.2)

@@ -60,6 +60,8 @@ func _process_input_during_active_cursor():
 	elif doomer.handler.input_tray == KEY_ENTER:
 		doomer.events.change_scene(_Doomer.DoomerScene.PokerBoard)
 		
+		doomer.events.wait(.25)
+		
 		doomer.turner.insert_lambda(scene.reset_cursor)
 		
 		doomer.events.buzz_message_box(

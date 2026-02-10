@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dioopxi2opgrn"]
+[gd_scene load_steps=16 format=4 uid="uid://dioopxi2opgrn"]
 
 [ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/message_box/doomer.message_box.gd" id="1_vr8u8"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://nodes/portrait/doomer.portrait.tscn" id="2_dlr4c"]
@@ -36,6 +36,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animated Node:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_d27xf"]
@@ -114,6 +126,38 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_dhcsi"]
+resource_name = "SlideInFromLeft"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animated Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rjo55"]
+resource_name = "SlideInFromRight"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animated Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(200, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dlr4c"]
 _data = {
 &"Buzz": SubResource("Animation_7dksj"),
@@ -121,7 +165,9 @@ _data = {
 &"RESET": SubResource("Animation_vr8u8"),
 &"ShowDialogueMessage": SubResource("Animation_d27xf"),
 &"ShowLogMessage": SubResource("Animation_dlr4c"),
-&"ShowLogMessage_Backup": SubResource("Animation_mepe5")
+&"ShowLogMessage_Backup": SubResource("Animation_mepe5"),
+&"SlideInFromLeft": SubResource("Animation_dhcsi"),
+&"SlideInFromRight": SubResource("Animation_rjo55")
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2qql"]

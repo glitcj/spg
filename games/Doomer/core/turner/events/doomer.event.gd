@@ -8,6 +8,11 @@ enum MessageType {Dialogue, Log}
 var _turn : _Doomer_Turn
 var _lambda : Callable
 
+func wait(_time : float = 1):
+	_lambda = func():
+		await CommonFunctions.waiter(doomer, _time)
+	doomer.turner.insert_lambda(_lambda)
+
 func buzz_message_box(_message_box : _Doomer_Message_Box):
 	_lambda = _message_box.play_enumation
 	_turn = _Doomer_Turn_Lambda.new(_lambda, [_Doomer_Message_Box.Enumations.Buzz])

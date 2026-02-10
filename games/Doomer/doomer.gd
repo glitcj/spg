@@ -15,7 +15,7 @@ var current_scene_node : Node
 @onready var scene_grid = find_child("Scene Grid")
 @onready var current_scene_container = find_child("Current Scene Container")
 
-@onready var hud : _Doomer_HUD = find_child("HUD Box")
+@onready var hud : _Doomer_HUD = find_child("HUD")
 
 @onready var player_gun : _Doomer_Gun = find_child("Player Gun")
 @onready var enemy_gun : _Doomer_Gun = find_child("Enemy Gun")
@@ -29,7 +29,8 @@ var current_scene_node : Node
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
 @onready var events : _Doomer_Events = find_child("Events")
-@onready var world_map_events : _Doomer_Events_World_Map = find_child("World Map Events")
+@onready var world_map_events : _Doomer_World_Map_Events = find_child("World Map Events")
+@onready var poker_board_events : _Doomer_Poker_Board_Events = find_child("Poker Board Events")
 
 
 
@@ -82,5 +83,7 @@ func change_scene(scene_ = _Doomer.DoomerScene):
 @onready var scene = _Scene.new(self)
 class _Scene:
 	var world_map : _Doomer_Scene_World_Map
+	var poker_board : _Doomer_Scene_Poker_Board
 	func _init(doomer : _Doomer):
 		world_map = doomer.find_child("World Map Scene")
+		poker_board = doomer.find_child("Poker Board Scene")

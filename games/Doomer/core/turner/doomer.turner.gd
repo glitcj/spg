@@ -5,7 +5,6 @@ signal turner_timer_timeout
 
 @onready var turner_timer: Timer = $ActionTimer
 @onready var doomer: _Doomer = get_parent()
-# @onready var scene : _Doomer_Scene = doomer.find_child("Poker Board Scene")
 
 var last_turn_state : _Doomer_Turn
 var current_turn_state : _Doomer_Turn
@@ -19,10 +18,7 @@ var turn_state_queue = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	turn_state_queue = [_Doomer_Turn_Lambda.new(doomer.change_scene, [_Doomer.DoomerScene.StartScreen])]
-	# _Doomer_Turn_Start_Screen_Player_Input.new()
 	$ActionTimer.start()
-	# scene.scene_activated.connect(_on_scene_activated)
-	# scene.scene_deactivated.connect(_on_scene_deactivated)
 	turner_timer_timeout.connect(_on_timer_timeout)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +29,6 @@ func _on_timer_timeout() -> void:
 	_update_turn_state()
 
 func _update_turn_indicator():
-	# doomer.hud.turn_indicator.modulate = current_turn_state.turn_colour
 	pass
 
 func _update_turn_state():

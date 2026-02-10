@@ -97,26 +97,23 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Enemy Trait Container 1" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer"]
-unique_name_in_owner = true
+[node name="Enemy Trait Container 1" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer4"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Enemy Trait Message Box 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1" instance=ExtResource("3_dq431")]
+[node name="Guide Message Box" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer4/Enemy Trait Container 1" instance=ExtResource("3_dq431")]
 unique_name_in_owner = true
 scale = Vector2(5.5, 5.5)
 
-[node name="Cursor" type="AnimatedSprite2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1"]
-unique_name_in_owner = true
-visible = false
-texture_filter = 1
-scale = Vector2(8, 8)
-sprite_frames = SubResource("SpriteFrames_q1elb")
+[node name="Message Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer4/Enemy Trait Container 1/Guide Message Box/Animated Node/MarginContainer" index="1"]
+text = "Select the next opponent !"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -147,6 +144,27 @@ size_flags_vertical = 4
 
 [node name="Enemy Trait Portrait 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_s0lhg")]
 
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Enemy Trait Container 1" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Enemy Trait Message Box 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1" instance=ExtResource("3_dq431")]
+unique_name_in_owner = true
+scale = Vector2(5.5, 5.5)
+
+[node name="Cursor" type="AnimatedSprite2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer/Enemy Trait Container 1"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_q1elb")
+
 [node name="MarginContainer3" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -160,3 +178,5 @@ size_flags_vertical = 4
 [node name="Enemy Trait Message Box 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer3/Enemy Trait Container 2" instance=ExtResource("3_dq431")]
 unique_name_in_owner = true
 scale = Vector2(5.5, 5.5)
+
+[editable path="SubViewport/MarginContainer/VBoxContainer/MarginContainer4/Enemy Trait Container 1/Guide Message Box"]

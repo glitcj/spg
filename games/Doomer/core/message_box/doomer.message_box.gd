@@ -10,10 +10,11 @@ signal text_is_fully_displayed
 @onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
 @onready var message_box
 
-
-
 enum Action {ShowLog, ShowMessage, Buzz}
-enum Enumations {ShowNewMessage, ShowLogMessage, ShowDialogueMessage, Idle, Buzz}
+enum Enumations {ShowNewMessage, ShowLogMessage, 
+	ShowDialogueMessage, Idle, Buzz,
+	SlideInFromLeft, SlideInFromRight
+	}
 
 var history : Array = []
 var full_message_log : Array = []
@@ -22,18 +23,9 @@ var message : String:
 	set(value):
 		message = value
 		pass
-		# _update_message()
 
 var full_log
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func add_line(s : String):
 	label.text = "\n".join([label.text, s])
 
@@ -58,14 +50,3 @@ func show_log(m : String):
 func play_enumation(e : Enumations):
 	animation_player.play(Enumations.keys()[e])
 	await animation_player.animation_finished
-	
-
-"""
-class _Doomer_MessageBox_Action:
-	func _init():
-		pass
-
-class _Doomer_MessageBox_Action_Buzz extends _Doomer_MessageBox_Action:
-	func _init():
-		pass
-"""

@@ -56,8 +56,9 @@ script = ExtResource("2_jh38i")
 script = ExtResource("5_jh38i")
 doomer = NodePath("..")
 
-[node name="World Map Events" type="Node" parent="Events"]
+[node name="World Map Events" type="Node" parent="Events" node_paths=PackedStringArray("doomer")]
 script = ExtResource("5_cp6uo")
+doomer = NodePath("../..")
 
 [node name="Board Events" type="Node" parent="Events"]
 script = ExtResource("8_ihg64")

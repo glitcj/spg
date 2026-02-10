@@ -1,9 +1,7 @@
 extends Node2D
 class_name _Doomer_HUD
 
-# @export var doomer : _Doomer
-# @onready var turn_indicator = $HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer4/CenterContainer/TurnIndicatorSprite
-# @onready var tug_of_doom_indicator = $HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/CenterContainer/TugIndicatorSprite
+
 @onready var hourglass : Node2D = $Hourglass
 
 @onready var turn_label = $HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer/Panel/MarginContainer/TurnLabel

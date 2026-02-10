@@ -1,11 +1,13 @@
 extends _Doomer_Scene
 class_name _Doomer_Scene_Poker_Board
 
-# @export var doomer : _Doomer
-
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
 
+
+@onready var all_message_boxes = [
+	%HUD.message_box
+]
 
 var field_cards : Array[_Doomer_Card]
 
@@ -125,6 +127,7 @@ func get_highest_player_or_enemy_card():
 func _on_scene_start():
 	var _turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
+	doomer.poker_board_events.on_scene_start_slide_windows_in()
 	super()
 
 func _on_scene_end():
