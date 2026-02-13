@@ -59,6 +59,8 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 1
 text = "Press Start
+- Doomer opponents as resources with spritessheets, see selected map face in board
+- Lambdas instead of events, can be called or inserted
 - Add docstrings to  proof claude mods
 - Use lambda to replace many turns
 - Refactor turns to reudce and simplify

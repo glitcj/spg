@@ -14,7 +14,6 @@ var traits : Dictionary = {}
 func _ready() -> void:
 	_randomise_traits()
 
-
 func _randomise_traits():
 	for t in Traits.keys():
 		traits[t] = randi() % 10

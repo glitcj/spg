@@ -1,19 +1,8 @@
 extends _Doomer_Turn
 class_name _Doomer_Turn_Start_Screen_Player_Input
 
-enum Action {Continue}
-var action : Action
-
-var InputToAction := {
-	KEY_UP: Action.Continue,
-	KEY_RIGHT: Action.Continue,
-	KEY_LEFT: Action.Continue,
-	KEY_DOWN: Action.Continue,
-}
-
 var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 var wait_amount : float = .2
-
 
 @onready var scene = doomer.find_child("Poker Board Scene")
 
@@ -28,11 +17,6 @@ func _init() -> void:
 func on_turn_start():
 	doomer.turner.turner_timer.paused = true
 	doomer.handler.input_received.connect(_process_input)
-	# await doomer.handler.input_received
-	pass
-
-
-func _process_action():
 	pass
 
 func _process_input():
@@ -43,7 +27,7 @@ func _process_input():
 	_turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
 	
-	doomer.events.change_scene(_Doomer.DoomerScene.PokerBoard)
+	doomer.events.change_scene(_Doomer.DoomerScene.WorldMap)
 	
 	_interrupt_and_end_turn_end()
 	

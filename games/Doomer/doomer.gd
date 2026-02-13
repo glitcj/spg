@@ -24,13 +24,12 @@ var current_scene_node : Node
 @onready var player_coin_box : _Doomer_Coin_Box = find_child("Player CoinBox")
 @onready var enemy_coin_box : _Doomer_Coin_Box = find_child("Enemy CoinBox")
 
-
 @onready var player_portrait : _Doomer_Portrait = find_child("Player Head")
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
 @onready var events : _Doomer_Events = find_child("Events")
-@onready var world_map_events : _Doomer_World_Map_Events = %"World Map Events"
-@onready var poker_board_events : _Doomer_Poker_Board_Events = %"Poker Board Events"
+@onready var world_map_events : _Doomer_World_Map_Events = %"World Map Lambdas"
+@onready var poker_board_events : _Doomer_Poker_Board_Events = %"Poker Board Lambdas"
 
 
 @onready var handler : _Doomer_Handler = $Handler
@@ -39,10 +38,11 @@ var current_scene_node : Node
 @onready var logic : _Doomer_Logic = $Logic
 @onready var pointer : _Doomer_Pointer = $Pointer
 
-
 @onready var enemy_cards : Array = enemy_gun.hand_cards
 @onready var player_cards : Array = player_gun.hand_cards
 @onready var next_field_card : _Doomer_Card
+
+@onready var current_opponent : _Doomer_Opponent
 
 
 func _input(event):

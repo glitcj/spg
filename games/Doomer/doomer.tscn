@@ -128,7 +128,7 @@ columns = 2
 layout_mode = 2
 doomer = NodePath("../../..")
 
-[node name="Poker Board Events" type="Node" parent="Scenes/Scene Grid/Poker Board Scene" node_paths=PackedStringArray("doomer")]
+[node name="Poker Board Lambdas" type="Node" parent="Scenes/Scene Grid/Poker Board Scene" node_paths=PackedStringArray("doomer")]
 unique_name_in_owner = true
 script = ExtResource("8_ihg64")
 doomer = NodePath("../../../..")
@@ -141,7 +141,7 @@ doomer = NodePath("../../..")
 layout_mode = 2
 doomer = NodePath("../../..")
 
-[node name="World Map Events" type="Node" parent="Scenes/Scene Grid/World Map Scene" node_paths=PackedStringArray("doomer")]
+[node name="World Map Lambdas" type="Node" parent="Scenes/Scene Grid/World Map Scene" node_paths=PackedStringArray("doomer")]
 unique_name_in_owner = true
 script = ExtResource("5_cp6uo")
 doomer = NodePath("../../../..")

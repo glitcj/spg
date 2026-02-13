@@ -123,6 +123,7 @@ func _on_scene_start():
 	var _turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
 	doomer.poker_board_events.on_scene_start_events()
+	
 	super()
 
 func _on_scene_end():

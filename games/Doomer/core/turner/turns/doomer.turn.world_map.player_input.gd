@@ -7,6 +7,8 @@ var accepted_inputs = [KEY_LEFT, KEY_RIGHT, KEY_ENTER, KEY_ESCAPE]
 
 @onready var scene = doomer.scene.world_map as _Doomer_Scene_World_Map
 
+@onready var opponents = [] as Array
+
 func _init() -> void:
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)
@@ -27,6 +29,8 @@ func _update_traits():
 	for i in range(scene.number_of_opponents):
 		opponent = _Doomer_Opponent.new()
 		opponent._randomise_traits()
+		opponents.append(opponent)
+		
 		scene.add_child(opponent)
 		var _message_box = scene.trait_option_message_boxes[i] as _Doomer_Message_Box
 		_message_box.show_dialogue(opponent.description())
@@ -54,8 +58,6 @@ func _update_portrait_animations():
 		_portrait = scene.all_portraits[i]
 		if i == scene.cursor_index:
 			_portrait.play_enumation(_Doomer_Portrait.Animations.show_in_background)
-			# await _portrait.animation_player.animation_finished
-			# _portrait.play_enumation(_Doomer_Portrait.Animations.Idle)
 		else:
 			_portrait.play_enumation(_Doomer_Portrait.Animations.hide_in_background)
 
@@ -80,6 +82,8 @@ func _process_input_during_active_cursor():
 		doomer.events.wait(.25)
 		
 		doomer.turner.insert_lambda(scene.reset_cursor)
+		
+		doomer.current_opponent = opponents[scene.cursor_index]
 		
 		doomer.events.buzz_message_box(
 			 doomer.scene.world_map.trait_option_message_boxes[
