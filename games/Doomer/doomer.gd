@@ -15,7 +15,7 @@ var current_scene_node : Node
 @onready var scene_grid = find_child("Scene Grid")
 @onready var current_scene_container = find_child("Current Scene Container")
 
-@onready var hud : _Doomer_HUD = find_child("HUD")
+@onready var hud : _Doomer_HUD = find_child("Poker Board Scene").find_child("HUD")
 
 @onready var player_gun : _Doomer_Gun = find_child("Player Gun")
 @onready var enemy_gun : _Doomer_Gun = find_child("Enemy Gun")
@@ -29,9 +29,8 @@ var current_scene_node : Node
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
 @onready var events : _Doomer_Events = find_child("Events")
-@onready var world_map_events : _Doomer_World_Map_Events = find_child("World Map Events")
-@onready var poker_board_events : _Doomer_Poker_Board_Events = find_child("Poker Board Events")
-
+@onready var world_map_events : _Doomer_World_Map_Events = %"World Map Events"
+@onready var poker_board_events : _Doomer_Poker_Board_Events = %"Poker Board Events"
 
 
 @onready var handler : _Doomer_Handler = $Handler

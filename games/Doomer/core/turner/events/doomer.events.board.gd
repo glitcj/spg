@@ -1,17 +1,24 @@
 extends Node
 class_name _Doomer_Poker_Board_Events
 
+
 @export var doomer : _Doomer
 var _turn : _Doomer_Turn
 
 var _lambda : Callable
 var scene : _Doomer_Scene_Poker_Board
 
-
 func field_logic():
 	pass
 
+func on_scene_start_events():
+	scene = doomer.scene.poker_board
+	scene.animation_player.play("slide_board_in")
+	await scene.animation_player.animation_finished
+	
+	await on_scene_start_slide_windows_in()
 
+# Queue Event
 func on_scene_start_slide_windows_in():
 	scene = doomer.scene.poker_board
 	_lambda = func():

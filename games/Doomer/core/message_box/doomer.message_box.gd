@@ -13,7 +13,8 @@ signal text_is_fully_displayed
 enum Action {ShowLog, ShowMessage, Buzz}
 enum Enumations {ShowNewMessage, ShowLogMessage, 
 	ShowDialogueMessage, Idle, Buzz,
-	SlideInFromLeft, SlideInFromRight
+	SlideInFromLeft, SlideInFromRight,
+	SlideOutToLeft, SlideOutToRight
 	}
 
 var history : Array = []

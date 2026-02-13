@@ -12,6 +12,13 @@ func setup_map():
 	
 var _lambda : Callable
 
+
+func on_scene_start_events():
+	_turn = _Doomer_Turn_World_Map_Player_Input.new()
+	doomer.turner.turn_state_queue.insert(0, _turn)
+	on_scene_start_slide_windows_in()
+	on_scene_start_hide_faces()
+
 func on_scene_start_slide_windows_in():
 	scene = doomer.scene.world_map
 	
@@ -26,5 +33,9 @@ func on_scene_start_slide_windows_in():
 				
 	doomer.turner.insert_lambda(_lambda)
 	
-	# _turn = _Doomer_Turn_Lambda.new(_lambda)
-	# doomer.turner.insert_turn(_turn)
+func on_scene_start_hide_faces():
+	scene = doomer.scene.world_map
+	_lambda = func():
+		for portrait : _Doomer_Portrait in scene.all_portraits:
+			portrait.play_enumation(_Doomer_Portrait.Animations.hide_in_background)
+	doomer.turner.insert_lambda(_lambda)

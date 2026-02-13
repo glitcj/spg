@@ -131,7 +131,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Enemy Trait Portrait 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/CenterContainer" instance=ExtResource("2_s0lhg")]
+[node name="Enemy Portrait 1" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/CenterContainer" instance=ExtResource("2_s0lhg")]
+unique_name_in_owner = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
@@ -142,7 +143,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Enemy Trait Portrait 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_s0lhg")]
+[node name="Enemy Portrait 2" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("2_s0lhg")]
+unique_name_in_owner = true
 
 [node name="MarginContainer" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2

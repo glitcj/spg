@@ -1,9 +1,10 @@
 extends _Doomer_Scene
 class_name _Doomer_Scene_Poker_Board
 
+
+@onready var animation_player  = $AnimationPlayer as AnimationPlayer
 @onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
 @onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
-
 
 @onready var all_message_boxes = [
 	%HUD.message_box
@@ -11,13 +12,9 @@ class_name _Doomer_Scene_Poker_Board
 
 var field_cards : Array[_Doomer_Card]
 
-@onready var field_card_containers : Array = [
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-1/CenterContainer",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-2/CenterContainer",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-3/CenterContainer",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-4/CenterContainer",
-	$"PanelContainer/VBoxContainer/Field/CardsMarginContainer-5/CenterContainer",
-]
+@onready var field_card_containers : Array = find_children("CenterContainer Field Card *")
+
+@onready var enemy_traits_message_box = %"Traits Message Box" as _Doomer_Message_Box
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,8 +38,6 @@ func flip_next_field_card():
 		if card.state == _Doomer_Card.CardState.FacingDown:
 			await card.flip_up()
 			break
-
-
 
 func all_cards_are_up():
 	for card : _Doomer_Card in field_cards:
@@ -127,7 +122,7 @@ func get_highest_player_or_enemy_card():
 func _on_scene_start():
 	var _turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
-	doomer.poker_board_events.on_scene_start_slide_windows_in()
+	doomer.poker_board_events.on_scene_start_events()
 	super()
 
 func _on_scene_end():

@@ -8,8 +8,8 @@ signal animation_loop_finished
 enum Portraits {Face, Coin, TurnBoard, Gun, StakeBoard}
 enum Animations {
 	RESET, Idle, Damage, Attack, Defend, AttackRallyEnd,
-	UpdateTurn, BoardIn, BoardOut
-	}
+	UpdateTurn, BoardIn, BoardOut, show_in_background, hide_in_background
+	}	
 
 var turnboard_turn_name : String = "Null"
 var stakeboard_stake : int = 100
