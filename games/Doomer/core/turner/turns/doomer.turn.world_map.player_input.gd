@@ -3,7 +3,7 @@ class_name _Doomer_Turn_World_Map_Player_Input
 
 enum StateMachine {ShowTraits, ActiveCursor}
 var state : StateMachine = StateMachine.ShowTraits
-var accepted_inputs = [KEY_LEFT, KEY_RIGHT, KEY_ENTER, KEY_ESCAPE]
+var accepted_inputs = [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, KEY_ENTER, KEY_ESCAPE]
 
 @onready var scene = doomer.scene.world_map as _Doomer_Scene_World_Map
 
@@ -28,7 +28,6 @@ func _update_traits():
 	var opponent : _Doomer_Opponent
 	for i in range(scene.number_of_opponents):
 		opponent = _Doomer_Opponent.new()
-		opponent._randomise_traits()
 		opponents.append(opponent)
 		
 		scene.add_child(opponent)
@@ -64,32 +63,32 @@ func _update_portrait_animations():
 
 
 func _process_input_during_active_cursor():
-	if doomer.handler.input_tray == KEY_LEFT:
+	if doomer.handler.input_tray == KEY_LEFT or doomer.handler.input_tray == KEY_UP:
 		scene.move_cursor(
 			(scene.cursor_index + 1) % scene.trait_option_containers.size()
 			)
 		_update_portrait_animations()
 		
-	elif doomer.handler.input_tray == KEY_RIGHT:
+	elif doomer.handler.input_tray == KEY_RIGHT or doomer.handler.input_tray == KEY_DOWN:
 		scene.move_cursor(
 			(scene.cursor_index + 1) % scene.trait_option_containers.size()
 			)
 		_update_portrait_animations()
 			
 	elif doomer.handler.input_tray == KEY_ENTER:
-		doomer.events.change_scene(_Doomer.DoomerScene.PokerBoard)
-		
-		doomer.events.wait(.25)
-		
+		doomer.turner.insert_lambda(doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard))
+
+		doomer.turner.insert_lambda(doomer.lambdas.wait(.25))
+
 		doomer.turner.insert_lambda(scene.reset_cursor)
-		
+
 		doomer.current_opponent = opponents[scene.cursor_index]
-		
-		doomer.events.buzz_message_box(
+
+		doomer.turner.insert_lambda(doomer.lambdas.buzz_message_box(
 			 doomer.scene.world_map.trait_option_message_boxes[
 				doomer.scene.world_map.cursor_index
 				]
-		)
+		))
 		
 		_interrupt_and_end_turn_end()
 		

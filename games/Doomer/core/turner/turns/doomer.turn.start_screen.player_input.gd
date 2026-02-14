@@ -27,7 +27,7 @@ func _process_input():
 	_turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
 	
-	doomer.events.change_scene(_Doomer.DoomerScene.WorldMap)
+	doomer.turner.insert_lambda(doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap))
 	
 	_interrupt_and_end_turn_end()
 	

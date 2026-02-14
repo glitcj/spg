@@ -37,13 +37,13 @@ class Turns:
 
 		doomer.turner.insert_turn(_Doomer_Turn_Player.new())
 
-		doomer.events.flip_cards(doomer.pointer.flop_cards, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		doomer.turner.insert_lambda(doomer.lambdas.flip_cards(doomer.pointer.flop_cards, _Doomer_Card.CardState.FacingUp, wait_for_each_card))
 
-		doomer.events.show_message("Turning flop cards.", false, _Doomer_Events.MessageType.Log)
+		doomer.turner.insert_lambda(doomer.lambdas.show_message("Turning flop cards.", false, _Doomer_Lambdas.MessageType.Log))
 
-		doomer.events.flip_cards(doomer.pointer.player_cards, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
+		doomer.turner.insert_lambda(doomer.lambdas.flip_cards(doomer.pointer.player_cards, _Doomer_Card.CardState.FacingUp, wait_for_each_card))
 
-		doomer.events.show_message("Lets see the hand..", false, _Doomer_Events.MessageType.Log)
+		doomer.turner.insert_lambda(doomer.lambdas.show_message("Lets see the hand..", false, _Doomer_Lambdas.MessageType.Log))
 
 		self.randomise_all_cards()
 
@@ -53,37 +53,37 @@ class Turns:
 
 		doomer.turner.insert_turn(_Doomer_Turn_Player.new())
 
-		doomer.events.show_message("Dealbring marks card ATK.", false, _Doomer_Events.MessageType.Log)
+		doomer.turner.insert_lambda(doomer.lambdas.show_message("Dealbring marks card ATK.", false, _Doomer_Lambdas.MessageType.Log))
 
-		doomer.events.flip_cards(doomer.pointer.next_field_card)
+		doomer.turner.insert_lambda(doomer.lambdas.flip_cards(doomer.pointer.next_field_card))
 
-		doomer.events.show_message("Flipping next card.", false, _Doomer_Events.MessageType.Log)
+		doomer.turner.insert_lambda(doomer.lambdas.show_message("Flipping next card.", false, _Doomer_Lambdas.MessageType.Log))
 		
 		
 	func flip_all_cards_down_turns():
 		var wait_for_each_card = false
 
-		doomer.events.flip_cards(doomer.pointer.player_and_enemy_cards, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
+		doomer.turner.insert_lambda(doomer.lambdas.flip_cards(doomer.pointer.player_and_enemy_cards, _Doomer_Card.CardState.FacingDown, wait_for_each_card))
 
-		doomer.events.flip_cards(doomer.pointer.field_cards, _Doomer_Card.CardState.FacingDown, wait_for_each_card)
+		doomer.turner.insert_lambda(doomer.lambdas.flip_cards(doomer.pointer.field_cards, _Doomer_Card.CardState.FacingDown, wait_for_each_card))
 		
 		
 	func show_enemy_hand_and_winner_decision():
 
-		doomer.events.change_scene(_Doomer.DoomerScene.WorldMap)
+		doomer.turner.insert_lambda(doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap))
 
 		self.flip_all_cards_down_turns()
 
-		doomer.events.demark_cards(doomer.pointer.all_cards, _Doomer_Card.MarkPointers.all_marks, false)
+		doomer.turner.insert_lambda(doomer.lambdas.demark_cards(doomer.pointer.all_cards, _Doomer_Card.MarkPointers.all_marks, false))
 
-		doomer.events.change_coins(100, doomer.pointer.winner_coin_box)
+		doomer.turner.insert_lambda(doomer.lambdas.change_coins(100, doomer.pointer.winner_coin_box))
 
-		doomer.events.card_attack(doomer.pointer.field_cards, doomer.pointer.loser_opponent, 10)
+		doomer.turner.insert_lambda(doomer.lambdas.card_attack(doomer.pointer.field_cards, doomer.pointer.loser_opponent, 10))
 
-		doomer.events.flip_cards(doomer.pointer.enemy_cards, _Doomer_Card.CardState.FacingUp, false)
+		doomer.turner.insert_lambda(doomer.lambdas.flip_cards(doomer.pointer.enemy_cards, _Doomer_Card.CardState.FacingUp, false))
 		
 	func randomise_all_cards():
-		doomer.events.randomise_cards(doomer.pointer.all_cards)
+		doomer.turner.insert_lambda(doomer.lambdas.randomise_cards(doomer.pointer.all_cards))
 
 	func on_turn_end():
 		pass

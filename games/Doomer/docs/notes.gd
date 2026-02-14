@@ -1,6 +1,29 @@
 extends Node
 
 
+"""
+how about if i make it a normal poker game, but the winners win more the more they won, meaning their blind grows as a function of how much they win, would the performance delta grow between random players and informed players ? Thats what i mean by a simple change to poker
+In short: Yes, the delta would grow exponentially.
+By making the blinds a function of a player's winnings (a "Progressive Blind" system), you are effectively adding a compounding multiplier to skill. In a normal game, the blinds stay flat, meaning a pro beats a random player at a linear rate. In your version, the pro’s edge accelerates.
+1. The "Rich Get Richer" Feedback Loop
+In standard poker, if an informed player wins 100 chips, the next hand still costs the same 1/2 chip blinds. In your game, if the pro wins, their "cost of entry" increases, but so does the pot size they can generate.
+The Informed Player uses this to "snowball." Since they have a higher Win Rate (bb/100), they will reach higher blind levels faster, winning massive pots while the random player is stuck playing for "pennies."
+2. Punishing Random Mistakes
+Random players make frequent mathematical errors (e.g., calling with bad Pot Odds).
+The Delta: In your game, a random player’s mistake at a high blind level is catastrophic. An informed player will wait for the random player to reach a high "won amount" (and thus high blinds), then "trap" them. The loss for the random player isn't just a flat amount; it’s a percentage of their entire successful run.
+3. Forced Aggression (The Skill Ceiling)
+As blinds grow, the M-ratio (the ratio of your stack to the cost of one orbit) drops.
+Random Player: Usually plays too "passive." High blinds force them to bleed chips until they are forced to go "all-in" with random cards.
+Informed Player: Understands Push/Fold Charts and knows exactly when the math dictates an all-in. The skill delta here is the difference between "guessing" when to shove and "knowing" the mathematical threshold.
+The Mathematical Result
+If Player A has a 5% edge over Player B:
+Standard Poker: Player A wins 5% more money over time.
+Your Game: Player A wins 5% more money, which increases their blinds, which increases the pot sizes they win, leading to geometric growth of their lead.
+Warning for Game Design: This mechanic creates a "runaway leader" problem. Once a skilled player gets ahead, the random player mathematically cannot catch up because the pro is playing for much larger stakes.
+Do you want to balance this by making the high-blind player take more risk, or do you want the game to end quickly once a "boss" emerges at the table?
+"""
+
+
 
 
 

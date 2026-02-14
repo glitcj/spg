@@ -26,13 +26,6 @@ func on_orchestrator_is_ready():
 	for i in range(field_cards.size()):
 		field_cards[i].reparent(field_card_containers[i])
 		
-func instantiate_field_cards():
-	pass
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-		pass
-
 func flip_next_field_card():
 	for card : _Doomer_Card in field_cards:
 		if card.state == _Doomer_Card.CardState.FacingDown:
@@ -76,7 +69,6 @@ func flip_cards(cards_ : Array, direction : Variant = null, wait_for_each_flip :
 		else:
 			await card.flip(direction, true)
 		
-
 func randomise_cards(cards_):
 	for card : _Doomer_Card in cards_:
 		card.set_random_card_value_and_suite()
