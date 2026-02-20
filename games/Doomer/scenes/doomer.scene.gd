@@ -10,6 +10,8 @@ var accepted_inputs = []
 @export var doomer : _Doomer
 var scene_id : _Doomer.DoomerScene = _Doomer.DoomerScene.Null
 
+@onready var camera : Camera2D
+
 func _on_scene_start():
 	# doomer.handler.input_received.connect(_on_input_received)
 	is_active = true

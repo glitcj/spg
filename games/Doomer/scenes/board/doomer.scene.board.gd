@@ -2,22 +2,38 @@ extends _Doomer_Scene
 class_name _Doomer_Scene_Poker_Board
 
 
+@export var turn :  Script
+@export var lambdas :  Script
+
+
 @onready var animation_player  = $AnimationPlayer as AnimationPlayer
-@onready var player_portrait_container = $PanelContainer/VBoxContainer/Bottom/FaceMarginContainer/CenterContainer
-@onready var opponent_portrait_container =  $PanelContainer/VBoxContainer/Top/FaceMarginContainer/CenterContainer
+@onready var player_portrait_container = %"Player Head Container"
+@onready var opponent_portrait_container =  %"Enemy Head Container"
+
+
+@export var camera_zoom : Vector2 :
+	set(v):
+		camera.zoom = v
+		camera_zoom = v
 
 @onready var all_message_boxes = [
 	%HUD.message_box
 ]
 
-var field_cards : Array[_Doomer_Card]
 
 @onready var field_card_containers : Array = find_children("CenterContainer Field Card *")
 
 @onready var enemy_traits_message_box = %"Traits Message Box" as _Doomer_Message_Box
+@onready var player_hand_message_box = %"Player Hand Message Box" as _Doomer_Message_Box
+@onready var poker_end_declaration_message_box = %"Poker End Declaration" as _Doomer_Message_Box
+
+var round_counter
+var number_of_rounds
+var field_cards : Array[_Doomer_Card]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	camera = %Camera2D as Camera2D
 	scene_id = _Doomer.DoomerScene.PokerBoard
 	accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 	
@@ -114,7 +130,8 @@ func get_highest_player_or_enemy_card():
 func _on_scene_start():
 	var _turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
-	doomer.poker_board_events.on_scene_start_events()
+	# doomer.poker_board_events.on_scene_start_events()
+	doomer.scene.poker_board.lambdas.on_scene_start_events()
 	
 	super()
 

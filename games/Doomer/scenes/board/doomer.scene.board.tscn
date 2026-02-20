@@ -31,26 +31,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewport/Animated Node:scale")
+tracks/1/path = NodePath("SubViewport/Animated Node:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubViewport/Animated Node:modulate")
+tracks/2/path = NodePath(".:camera_zoom")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_e3dop"]
@@ -59,26 +59,26 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewport/Animated Node:scale")
+tracks/0/path = NodePath("SubViewport/Animated Node:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
+"values": [Color(1, 1, 1, 0.30980393), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewport/Animated Node:modulate")
+tracks/1/path = NodePath(".:camera_zoom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.30980393), Color(1, 1, 1, 1)]
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i4cv2"]
@@ -759,8 +759,17 @@ sources/0 = SubResource("TileSetAtlasSource_nr83l")
 [sub_resource type="ViewportTexture" id="ViewportTexture_kc1k1"]
 
 [node name="Poker Board Scene" type="SubViewportContainer"]
-offset_right = 1080.0
-offset_bottom = 2400.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -1200.0
+offset_right = 540.0
+offset_bottom = 1200.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_n8eav")
@@ -778,7 +787,9 @@ size = Vector2i(1080, 2400)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
-anchor_mode = 0
+unique_name_in_owner = true
+offset = Vector2(540, 1200)
+zoom = Vector2(0.8, 0.8)
 
 [node name="Animated Node" type="Node2D" parent="SubViewport"]
 position = Vector2(540, 1200)
@@ -870,6 +881,16 @@ unique_name_in_owner = true
 z_index = 10
 scale = Vector2(5, 5)
 
+[node name="Player Hand Message Box" parent="SubViewport/Animated Node/MarginContainer Overlay/VBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("3_ojdld")]
+unique_name_in_owner = true
+z_index = 10
+scale = Vector2(5, 5)
+
+[node name="Poker End Declaration" parent="SubViewport/Animated Node/MarginContainer Overlay/VBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("3_ojdld")]
+unique_name_in_owner = true
+z_index = 10
+scale = Vector2(5, 5)
+
 [node name="MarginContainer3" type="MarginContainer" parent="SubViewport/Animated Node/MarginContainer Overlay/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -922,12 +943,13 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
+[node name="Enemy Head Container" type="CenterContainer" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Top/CoinsMarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Enemy Head" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/CenterContainer" instance=ExtResource("4_37l2k")]
+[node name="Enemy Head" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Top/CoinsMarginContainer/Enemy Head Container" instance=ExtResource("4_37l2k")]
 
 [node name="CardsMarginContainer-1" type="MarginContainer" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Top"]
 layout_mode = 2
@@ -1024,12 +1046,13 @@ scale = Vector2(0.5, 0.5)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1"]
+[node name="Player Head Container" type="CenterContainer" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Player Head" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/CenterContainer" instance=ExtResource("4_37l2k")]
+[node name="Player Head" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer/Bottom/CardsMarginContainer-1/Player Head Container" instance=ExtResource("4_37l2k")]
 
 [node name="CoinBox Bottom" type="HBoxContainer" parent="SubViewport/Animated Node/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)

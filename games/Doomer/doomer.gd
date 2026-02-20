@@ -29,7 +29,9 @@ var current_scene_node : Node
 
 @onready var lambdas : _Doomer_Lambdas = find_child("Events")
 @onready var world_map_events : _Doomer_World_Map_Events = %"World Map Lambdas"
-@onready var poker_board_events : _Doomer_Poker_Board_Events = %"Poker Board Lambdas"
+# @onready var poker_board_events : _Doomer_Poker_Board_Events = %"Poker Board Lambdas"
+
+# @onready var poker_board_events = scene.poker_board.lambdas
 
 
 @onready var handler : _Doomer_Handler = $Handler
@@ -44,13 +46,18 @@ var current_scene_node : Node
 
 @onready var current_opponent : _Doomer_Opponent
 
+@onready var camera = %Camera2D as Camera2D
 
 func _input(event):
 	handler.handle_inputs(event)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	handler.mode = handler.InputMode.Active	
+	handler.mode = handler.InputMode.Active
+	
+	scene.world_map = %"World Map Scene"
+	scene.poker_board = %"Poker Board Scene"
+	scene.start_screen = %"Start Sceen Scene"
 		
 func make_pointer(key : _Doomer_Pointer.Keys):
 	var pointer_ = _Doomer_Pointer.new(key)
@@ -68,21 +75,23 @@ func change_scene(scene_ = _Doomer.DoomerScene):
 	
 	if current_scene_node:
 		current_scene_node._on_scene_end()
-		current_scene_node.reparent(scene_grid)
-		current_scene_node.position = Vector2.ZERO
+		# current_scene_node.reparent(scene_grid)
+		# current_scene_node.position = Vector2.ZERO
 		
-	scene_tscn.reparent(current_scene_container)
-	scene_tscn.position = Vector2.ZERO
+		
+	# scene_tscn.reparent(current_scene_container)
+	# scene_tscn.position = Vector2.ZERO
 	scene_tscn._on_scene_start()
 	
 	current_scene = scene_
-	current_scene_node = scene_tscn
+	current_scene_node = scene_tscn as _Doomer_Scene
+	# current_scene_node.camera.make_current()
+	camera.reparent(current_scene_node)
+	camera.position = Vector2.ZERO
 	
 	
-@onready var scene = _Scene.new(self)
+var scene = _Scene.new()
 class _Scene:
 	var world_map : _Doomer_Scene_World_Map
 	var poker_board : _Doomer_Scene_Poker_Board
-	func _init(doomer : _Doomer):
-		world_map = doomer.find_child("World Map Scene")
-		poker_board = doomer.find_child("Poker Board Scene")
+	var start_screen : _Doomer_Scene_Start_Screen
