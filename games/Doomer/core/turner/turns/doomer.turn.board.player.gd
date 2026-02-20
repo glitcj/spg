@@ -11,7 +11,7 @@ var interrupt_buffer_wait_time : float = _Doomer_Constants.immediate_action_time
 
 var scene : _Doomer_Scene_Poker_Board
 
-enum StateMachine {ShowingBoard, ShowingTraits}
+enum StateMachine {ShowingBoard, ShowingTraits, ShowingPlayerHand}
 
 var state : StateMachine = StateMachine.ShowingBoard
 
@@ -49,23 +49,41 @@ func _process_action_while_showing_board():
 	elif doomer.handler.input_tray == KEY_RIGHT:
 		await _on_show_traits_action()
 		state = StateMachine.ShowingTraits
-	
+	elif doomer.handler.input_tray == KEY_LEFT:
+		await _on_show_player_hand_action()
+		state = StateMachine.ShowingPlayerHand
+		
 	var performed_call_or_fold_action = doomer.handler.input_tray in [KEY_UP, KEY_DOWN]
 	if performed_call_or_fold_action:
 		action_placed_and_performed = true
 		_interrupt_and_end_turn()
-
-
-
+		
 func _process_action_while_showing_traits():
 	if doomer.handler.input_tray == KEY_LEFT:
 		await _on_hide_traits_action()
 		state = StateMachine.ShowingBoard
 
 
+func _process_action_while_showing_hand():
+	if doomer.handler.input_tray == KEY_RIGHT:
+		await _on_hide_player_hand_action()
+		state = StateMachine.ShowingBoard
+
+
 func _on_show_traits_action():
 	scene = doomer.scene.poker_board
 	await scene.enemy_traits_message_box.play_enumation(_Doomer_Message_Box.Enumations.SlideInFromLeft)
+
+
+func _on_show_player_hand_action():
+	scene = doomer.scene.poker_board
+	await scene.player_hand_message_box.play_enumation(_Doomer_Message_Box.Enumations.SlideInFromRight)
+
+
+func _on_hide_player_hand_action():
+	scene = doomer.scene.poker_board
+	await scene.player_hand_message_box.play_enumation(_Doomer_Message_Box.Enumations.SlideOutToRight)
+
 
 func _on_hide_traits_action():
 	scene = doomer.scene.poker_board
@@ -79,7 +97,8 @@ func _on_input_received():
 		_process_action_while_showing_board()
 	elif state == StateMachine.ShowingTraits:
 		_process_action_while_showing_traits()
-	
+	elif state == StateMachine.ShowingPlayerHand:
+		_process_action_while_showing_hand()
 
 
 func _on_call_action():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=24 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://doomer.gd" id="1_cp6uo"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.pointer.gd" id="2_jh38i"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/docs.gd" id="13_ayhyn"]
 [ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://scenes/world_map/doomer.scene.world_map.tscn" id="16_xkyh8"]
 [ext_resource type="Script" uid="uid://svxnai8avvm8" path="res://core/turner/turns/doomer.turn.board.player.gd" id="17_valsd"]
+[ext_resource type="Script" uid="uid://bjb6ohogqlfea" path="res://core/turner/turns/doomer.turn.field.gd" id="19_pvbnl"]
 [ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/doomer.scene.start_screen.tscn" id="20_kuqke"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
@@ -129,11 +130,11 @@ columns = 2
 [node name="Poker Board Scene" parent="Scenes/Scene Grid" node_paths=PackedStringArray("doomer") instance=ExtResource("3_cp4er")]
 unique_name_in_owner = true
 layout_mode = 2
-turn = ExtResource("17_valsd")
-lambdas = ExtResource("8_ihg64")
+player_turn = ExtResource("17_valsd")
+field_turn = ExtResource("19_pvbnl")
 doomer = NodePath("../../..")
 
-[node name="Poker Board Lambdas" type="Node" parent="Scenes/Scene Grid/Poker Board Scene" node_paths=PackedStringArray("doomer")]
+[node name="Poker Board Events" type="Node" parent="Scenes/Scene Grid/Poker Board Scene" node_paths=PackedStringArray("doomer")]
 unique_name_in_owner = true
 script = ExtResource("8_ihg64")
 doomer = NodePath("../../../..")

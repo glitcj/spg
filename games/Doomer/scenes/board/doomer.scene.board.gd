@@ -2,9 +2,10 @@ extends _Doomer_Scene
 class_name _Doomer_Scene_Poker_Board
 
 
-@export var turn :  Script
-@export var lambdas :  Script
+@export var player_turn :  Script
+@export var field_turn :  Script
 
+@onready var lambdas  =  %"Poker Board Events" as _Doomer_Poker_Board_Events
 
 @onready var animation_player  = $AnimationPlayer as AnimationPlayer
 @onready var player_portrait_container = %"Player Head Container"
@@ -22,10 +23,9 @@ class_name _Doomer_Scene_Poker_Board
 
 
 @onready var field_card_containers : Array = find_children("CenterContainer Field Card *")
-
 @onready var enemy_traits_message_box = %"Traits Message Box" as _Doomer_Message_Box
 @onready var player_hand_message_box = %"Player Hand Message Box" as _Doomer_Message_Box
-@onready var poker_end_declaration_message_box = %"Poker End Declaration" as _Doomer_Message_Box
+@onready var winner_declaration_message_box = %"Winner Declaration" as _Doomer_Message_Box
 
 var round_counter
 var number_of_rounds
@@ -130,7 +130,7 @@ func get_highest_player_or_enemy_card():
 func _on_scene_start():
 	var _turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
-	# doomer.poker_board_events.on_scene_start_events()
+	
 	doomer.scene.poker_board.lambdas.on_scene_start_events()
 	
 	super()

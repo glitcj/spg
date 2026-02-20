@@ -886,7 +886,7 @@ unique_name_in_owner = true
 z_index = 10
 scale = Vector2(5, 5)
 
-[node name="Poker End Declaration" parent="SubViewport/Animated Node/MarginContainer Overlay/VBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("3_ojdld")]
+[node name="Winner Declaration" parent="SubViewport/Animated Node/MarginContainer Overlay/VBoxContainer/MarginContainer2/CenterContainer" instance=ExtResource("3_ojdld")]
 unique_name_in_owner = true
 z_index = 10
 scale = Vector2(5, 5)
