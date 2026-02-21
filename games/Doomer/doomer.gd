@@ -27,7 +27,7 @@ var current_scene_node : Node
 @onready var player_portrait : _Doomer_Portrait = find_child("Player Head")
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
-@onready var lambdas : _Doomer_Lambdas = find_child("Events")
+@onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
 @onready var world_map_events : _Doomer_World_Map_Events = %"World Map Lambdas"
 # @onready var poker_board_events : _Doomer_Poker_Board_Events = %"Poker Board Lambdas"
 

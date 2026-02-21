@@ -5,7 +5,7 @@ class_name _Doomer_Scene_Poker_Board
 @export var player_turn :  Script
 @export var field_turn :  Script
 
-@onready var lambdas  =  %"Poker Board Events" as _Doomer_Poker_Board_Events
+@onready var lambdas  =  %"Poker Board Lambdas" as _Doomer_Poker_Board_Events
 
 @onready var animation_player  = $AnimationPlayer as AnimationPlayer
 @onready var player_portrait_container = %"Player Head Container"
@@ -27,8 +27,8 @@ class_name _Doomer_Scene_Poker_Board
 @onready var player_hand_message_box = %"Player Hand Message Box" as _Doomer_Message_Box
 @onready var winner_declaration_message_box = %"Winner Declaration" as _Doomer_Message_Box
 
-var round_counter
-var number_of_rounds
+var round_counter = 0
+var number_of_rounds = 2
 var field_cards : Array[_Doomer_Card]
 
 # Called when the node enters the scene tree for the first time.
