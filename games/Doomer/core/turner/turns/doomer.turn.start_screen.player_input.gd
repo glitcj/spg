@@ -22,13 +22,12 @@ func on_turn_start():
 func _process_input():
 	if not doomer.handler.input_tray in accepted_inputs:
 		return
-	var _turn
 
-	_turn = _Doomer_Turn_Field.new()
+	var _turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
-	
-	doomer.turner.insert_lambda(doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap))
-	
+
+	await doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap).call()
+
 	_interrupt_and_end_turn_end()
 	
 

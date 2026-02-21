@@ -76,20 +76,17 @@ func _process_input_during_active_cursor():
 		_update_portrait_animations()
 			
 	elif doomer.handler.input_tray == KEY_ENTER:
-		doomer.turner.insert_lambda(doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard))
-
-		doomer.turner.insert_lambda(doomer.lambdas.wait(.25))
-
-		doomer.turner.insert_lambda(scene.reset_cursor)
-
 		doomer.current_opponent = opponents[scene.cursor_index]
 
-		doomer.turner.insert_lambda(doomer.lambdas.buzz_message_box(
+		await doomer.lambdas.buzz_message_box(
 			 doomer.scene.world_map.trait_option_message_boxes[
 				doomer.scene.world_map.cursor_index
 				]
-		))
-		
+		).call()
+		await scene.reset_cursor.call()
+		await doomer.lambdas.wait(.25).call()
+		await doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard).call()
+
 		_interrupt_and_end_turn_end()
 		
 	elif doomer.handler.input_tray == KEY_ESCAPE:
