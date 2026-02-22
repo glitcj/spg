@@ -32,11 +32,6 @@ func _ready() -> void:
 func _on_holder_assignment():
 	rotation = PI if holder == _Doomer.Opponents.Enemy else 0.0
 	gravity_vector = Vector2(0, -1) if  holder == _Doomer.Opponents.Enemy else Vector2(0, 1)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func add_coins(count : int = 1):
 	var coin : RigidBody2D
@@ -61,23 +56,5 @@ func add_coins(count : int = 1):
 			
 		await CommonFunctions.waiter(self, 0.01)
 	
-func remove_coins():
-	pass
-	
-	
-func _bet_coins():
-	pass
-	# Add Gun Gravity
-	# Coin Box is the GAME BOARD
-	# Enemy has ANTI GRAVITY coins
-	# When a Bet is made with < >, the gun INCREASES gravity to pull the coins
-	# Coins are blood
-	# Game loop is reaching COIN/BLOOD OVERFLOW
-	
-	# Game Board has a below latch the lets coins flow to below off to the war chest offset screen
-	
-func _open_coin_box_latch():
-	pass
-
 func _on_container_rect_changed():
 	CommonFunctions.move_node_to_container(self, container)

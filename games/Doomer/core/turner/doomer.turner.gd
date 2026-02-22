@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	_update_turn_state()
+	pass
+
 
 func _update_turn_indicator():
 	pass
@@ -36,6 +38,7 @@ func _update_turn_state():
 		last_turn_state = current_turn_state
 		processed_turns.append(current_turn_state)
 		remove_child(last_turn_state)
+		$ActionTimer.wait_time = current_turn_state.turn_wait_time
 		
 	if turn_state_queue == []:
 		pass
@@ -46,13 +49,17 @@ func _update_turn_state():
 	if not turn_state_queue == []:
 		next_turn_state = turn_state_queue[0]
 
-	_update_hud()
-	
-	
-	print("current_turn_state.turn_wait_time ", current_turn_state.turn_wait_time)
-	$ActionTimer.wait_time = current_turn_state.turn_wait_time
+	# _update_hud()
+		
+	# $ActionTimer.wait_time = current_turn_state.turn_wait_time
 	$ActionTimer.start()
 	
+	if current_turn_state == null:
+		return
+		
+	print("current_turn_state.turn_wait_time ", current_turn_state.turn_wait_time)
+
+
 	if last_turn_state != null:
 		await last_turn_state.on_turn_end()
 		if last_turn_state.show_in_turnboard:

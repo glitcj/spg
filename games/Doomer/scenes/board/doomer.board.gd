@@ -5,14 +5,6 @@ class_name _Doomer_Board
 @onready var doomer : _Doomer = get_parent()
 # @onready var field_cards # : Array = doomer.board_container.field_cards
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	# field_cards = doomer.board_container.field_cards
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func flip_next_field_card():
 	for card : _Doomer_Card in doomer.field_cards:
 		if card.state == _Doomer_Card.CardState.FacingDown:

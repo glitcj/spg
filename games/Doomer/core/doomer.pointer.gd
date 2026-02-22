@@ -109,25 +109,6 @@ static func unpack_and_flatten(things : Array):
 	
 
 
-func pointer_to_next_field_card():
-	return doomer.make_pointer(_Doomer_Pointer.Keys.next_field_card)
-
-func pointer_to_field_cards():
-	return doomer.make_pointer(_Doomer_Pointer.Keys.field_cards)
-
-func pointer_to_flop_cards():
-	return doomer.make_pointer(_Doomer_Pointer.Keys.flop_cards)
-	
-func pointer_to_player_and_enemy_cards():
-	return doomer.make_pointer(_Doomer_Pointer.Keys.player_and_enemy_cards)
-
-func get_filtered_field_cards(filters : Array):
-	var filtered_cards = []
-	for card : _Doomer_Card in doomer.board.get_field_cards():
-		if card.is_complying_with_any_filter(filters):
-			filtered_cards.append(card)
-	return filtered_cards
-	
 func cards_ready_to_bet_by_enemy():
 	var filtered_cards = []
 	for card : _Doomer_Card in doomer.board.get_field_cards():
@@ -144,10 +125,6 @@ func cards_ready_to_bet_by_player():
 
 func next_field_card() -> Array:
 	return doomer.board.get_next_field_card()
-
-func last_field_card():
-	# TODO: Implement last_field_card getter in board
-	pass
 
 func field_cards() -> Array:
 	return doomer.board.get_field_cards()

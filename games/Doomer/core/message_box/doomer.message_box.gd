@@ -1,8 +1,6 @@
 extends Node2D
 class_name _Doomer_Message_Box
 
-signal text_is_fully_displayed
-
 @export var doomer : _Doomer
 
 @onready var label : Label = find_child("Message Label")

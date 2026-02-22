@@ -18,15 +18,9 @@ var sprite_position : Vector2:
 		pass
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_mark_type()
 	play_enumation(Enumation.AddMark)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _update_mark_type():
 	sprite = get_node("%s" % [MarkType.keys()[mark_type]])

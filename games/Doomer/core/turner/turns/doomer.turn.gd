@@ -2,10 +2,8 @@ extends Node
 class_name _Doomer_Turn
 
 signal turn_time_finished
-signal turn_interrupted_and_finished
 
 @onready var doomer : _Doomer = get_parent().get_parent()
-# @onready var scene = doomer.find_child("Poker Board Scene")
 
 
 var turn_name : String

@@ -86,6 +86,10 @@ func _process_input_during_active_cursor():
 		await scene.reset_cursor.call()
 		await doomer.lambdas.wait(.25).call()
 		await doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard).call()
+		
+		var _turn = _Doomer_Turn_Field.new()
+		doomer.turner.turn_state_queue.insert(0, _turn)
+
 
 		_interrupt_and_end_turn_end()
 		

@@ -65,20 +65,6 @@ func _reparent_to_container():
 	reparent(container)
 	position = Vector2.ZERO
 
-func _update_position():
-	var rect = container.get_global_rect()
-	global_position = rect.get_center() + Vector2.ZERO
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _update_state():
-	pass
-
-func _on_portrait_changed():
-	_update_portrait()
-
 func _update_portrait():
 	animation_player = PortraitMap[portrait][0]
 	sprite = PortraitMap[portrait][1]
@@ -128,10 +114,6 @@ func queue_enumation(enumation : Animations, wait : bool = false):
 	
 func _update_turnboard_label():
 	turnboard_label.text = turnboard_turn_name
-	
-func _update_stakeboard_label():
-	stakeboard_label.text = str(stakeboard_stake)
-	
 	
 func _emit_animation_loop_finished():
 	animation_loop_finished.emit()
