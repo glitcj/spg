@@ -12,10 +12,7 @@ func _init() -> void:
 	turn_wait_time = _Doomer_Constants.immediate_action_time_delta
 
 func on_turn_start():
-	
 	await CommonFunctions.waiter(self, turn_wait_time/2)
-	doomer.turner.turner_timer.paused = true
-	# action = Action.Call
 	action = Action.values()[randi() % Action.size()]
 	await _process_action()
 	_interrupt_and_end_turn()
@@ -55,6 +52,5 @@ func _on_fold_action():
 	
 	
 func _interrupt_and_end_turn():
-	doomer.turner.turner_timer.paused = false
 	doomer.turner._update_turn_state()
 	

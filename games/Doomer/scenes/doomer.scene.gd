@@ -13,13 +13,11 @@ var scene_id : _Doomer.DoomerScene = _Doomer.DoomerScene.Null
 @onready var camera : Camera2D
 
 func _on_scene_start():
-	# doomer.handler.input_received.connect(_on_input_received)
 	is_active = true
 	scene_activated.emit()
 
 
 func _on_scene_end():
-	# doomer.handler.input_received.disconnect(_on_input_received)
 	is_active = false
 	scene_deactivated.emit()
 

@@ -1,8 +1,6 @@
 extends Node
 class_name _Doomer_Turn
 
-signal turn_time_finished
-
 @onready var doomer : _Doomer = get_parent().get_parent()
 
 
@@ -17,24 +15,17 @@ func _init() -> void:
 
 func _ready() -> void:
 	assert(get_parent().get_parent() is _Doomer)
-	if doomer:
-		if doomer.turner:
-			doomer.turner.turner_timer.timeout.connect(_on_turner_timer_timeout)
-			
+
 func on_turn_start():
 	pass
 
 func on_turn_end():
 	queue_free()
 
-func _on_turner_timer_timeout():
-	turn_time_finished.emit()
-	pass
-
 func _process_input():
 	pass
 
 func _interrupt_and_end_turn_end():
 	doomer.handler.input_received.disconnect(_process_input)
-	doomer.turner.turner_timer.paused = false
+	doomer.turner._update_turn_state()
 	queue_free()

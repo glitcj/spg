@@ -42,7 +42,6 @@ func on_orchestrator_is_ready():
 func _on_scene_start():
 	var _turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
-	
 	doomer.scene.poker_board.lambdas.on_scene_start_events()
 	
 	super()

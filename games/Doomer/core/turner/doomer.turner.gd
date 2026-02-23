@@ -1,9 +1,6 @@
 extends Node
 class_name _Doomer_Turner
 
-signal turner_timer_timeout
-
-@onready var turner_timer: Timer = $ActionTimer
 @onready var doomer: _Doomer = get_parent()
 
 var last_turn_state : _Doomer_Turn
@@ -15,18 +12,12 @@ var processed_turns : Array[_Doomer_Turn] = []
 var turn_state_queue = []
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	turn_state_queue = [_Doomer_Turn_Lambda.new(doomer.change_scene, [_Doomer.DoomerScene.StartScreen])]
-	$ActionTimer.start()
-	turner_timer_timeout.connect(_on_timer_timeout)
+	call_deferred("_update_turn_state")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	doomer.hud.hourglass.gauge = (turner_timer.time_left/turner_timer.wait_time)/ 0.2
-
+# Stub kept because doomer.turner.tscn connects ActionTimer.timeout to this method.
 func _on_timer_timeout() -> void:
-	_update_turn_state()
 	pass
 
 
@@ -38,25 +29,19 @@ func _update_turn_state():
 		last_turn_state = current_turn_state
 		processed_turns.append(current_turn_state)
 		remove_child(last_turn_state)
-		$ActionTimer.wait_time = current_turn_state.turn_wait_time
-		
+
 	if turn_state_queue == []:
-		pass
-		
+		return
+
 	current_turn_state = turn_state_queue.pop_front()
 	add_child(current_turn_state)
-	
+
 	if not turn_state_queue == []:
 		next_turn_state = turn_state_queue[0]
 
-	# _update_hud()
-		
-	# $ActionTimer.wait_time = current_turn_state.turn_wait_time
-	$ActionTimer.start()
-	
-	if current_turn_state == null:
-		return
-		
+	# if current_turn_state == null:
+	# 	return
+
 	print("current_turn_state.turn_wait_time ", current_turn_state.turn_wait_time)
 
 

@@ -15,6 +15,7 @@ func on_scene_start_events():
 	await on_scene_start_slide_windows_in()
 	_turn = _Doomer_Turn_World_Map_Player_Input.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
+	doomer.turner._update_turn_state()
 
 func on_scene_start_slide_windows_in():
 	scene = doomer.scene.world_map

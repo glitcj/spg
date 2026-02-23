@@ -23,8 +23,7 @@ func _init() -> void:
 func on_turn_start():
 	doomer.handler.mode = doomer.handler.InputMode.Active
 	await doomer.handler.finished_input_mode
-	
-	doomer.turner.turner_timer.paused = true
+
 	doomer.handler.input_received.connect(_on_input_received)
 
 func on_turn_end():
@@ -35,9 +34,7 @@ func on_turn_end():
 	
 func _interrupt_and_end_turn():
 	doomer.handler.input_received.disconnect(_on_input_received)
-	
 	await get_tree().create_timer(interrupt_buffer_wait_time).timeout
-	doomer.turner.turner_timer.paused = false
 	doomer.turner._update_turn_state()
 	
 func _process_action_while_showing_board():

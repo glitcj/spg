@@ -9,20 +9,21 @@ func _init() -> void:
 	turn_wait_time = 0.1
 	
 func on_turn_start():
-	doomer.turner.turner_timer.paused = true
-	doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Field.new())
+	# doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Field.new())
 
 	if doomer.logic.face_up_field_cards().size() == 0:
+		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Field.new())
 		await start_betting_round_turns()
 
 	elif doomer.logic.face_up_field_cards().size() < 5:
+		doomer.turner.turn_state_queue.insert(0, _Doomer_Turn_Field.new())
 		await flip_next_card_turns()
 
 	elif doomer.logic.face_up_field_cards().size() == 5:
 		await show_enemy_hand_and_winner_decision()
+		await doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap).call()
 
-	doomer.turner.turner_timer.paused = false
-	return
+	doomer.turner._update_turn_state()
 	
 func start_betting_round_turns():
 	var wait_for_each_card = false
@@ -69,7 +70,7 @@ func show_enemy_hand_and_winner_decision():
 		_lambda = func():
 			doomer.scene.poker_board.round_counter = 0
 		await _lambda.call()
-		await doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap).call()
+
 	
 func randomise_all_cards():
 	await doomer.lambdas.randomise_cards(doomer.pointer.all_cards).call()

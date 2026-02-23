@@ -16,18 +16,16 @@ func _init(to_call_ : Callable, to_bind_ : Array = [], wait_for_call_ : bool = t
 	wait_for_call = wait_for_call_
 	
 func on_turn_start():
-	await get_tree().create_timer(doomer.turner.turner_timer.time_left/2).timeout
-	doomer.turner.turner_timer.paused = true
-	
+	await get_tree().create_timer(turn_wait_time).timeout
+
 	# TODO: Deep loop through to_bind if you runtime variables are needed
 	# bindv is bind vector which accepts parameters as an array
 	if wait_for_call:
 		await to_call.bindv(to_bind).call()
 	else:
 		to_call.bind(to_bind).call()
-		
-	doomer.turner.turner_timer.paused = false
-	
+
+	doomer.turner._update_turn_state()
+
 func on_turn_end():
-	doomer.turner.turner_timer.paused = false
 	super()

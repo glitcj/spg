@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=24 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://doomer.gd" id="1_pvbnl"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.pointer.gd" id="2_jh38i"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://svxnai8avvm8" path="res://core/turner/turns/doomer.turn.board.player.gd" id="17_valsd"]
 [ext_resource type="Script" uid="uid://bjb6ohogqlfea" path="res://core/turner/turns/doomer.turn.field.gd" id="19_pvbnl"]
 [ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/doomer.scene.start_screen.tscn" id="20_kuqke"]
+[ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/doomer.turn.start_screen.player_input.gd" id="20_pvbnl"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
 
@@ -138,6 +139,7 @@ doomer = NodePath("../../../..")
 [node name="Start Sceen Scene" parent="Scenes/Scene Grid" node_paths=PackedStringArray("doomer") instance=ExtResource("20_kuqke")]
 unique_name_in_owner = true
 layout_mode = 2
+player_turn = ExtResource("20_pvbnl")
 doomer = NodePath("../../..")
 
 [node name="World Map Scene" parent="Scenes/Scene Grid" node_paths=PackedStringArray("doomer") instance=ExtResource("16_xkyh8")]

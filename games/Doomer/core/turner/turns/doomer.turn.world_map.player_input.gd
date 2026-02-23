@@ -18,7 +18,6 @@ func _init() -> void:
 	
 func on_turn_start():
 	scene = doomer.scene.world_map
-	doomer.turner.turner_timer.paused = true
 	await _update_portrait_animations()
 	doomer.handler.input_received.connect(_process_input)
 	_update_traits()
@@ -101,5 +100,5 @@ func _process_input_during_active_cursor():
 		
 func _interrupt_and_end_turn_end():
 	doomer.handler.input_received.disconnect(_process_input)
-	doomer.turner.turner_timer.paused = false
+	doomer.turner._update_turn_state()
 	queue_free()

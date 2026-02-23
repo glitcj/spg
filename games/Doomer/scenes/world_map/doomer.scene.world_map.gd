@@ -35,6 +35,8 @@ func _ready():
 	
 func _on_scene_start():
 	doomer.world_map_events.on_scene_start_events()	
+	var _turn = _Doomer_Turn_World_Map_Player_Input.new()
+	doomer.turner.turn_state_queue.insert(0, _turn)
 	super()
 
 func move_cursor(_index):

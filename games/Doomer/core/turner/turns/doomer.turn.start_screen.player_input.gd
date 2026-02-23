@@ -15,9 +15,7 @@ func _init() -> void:
 
 	
 func on_turn_start():
-	doomer.turner.turner_timer.paused = true
 	doomer.handler.input_received.connect(_process_input)
-	pass
 
 func _process_input():
 	if not doomer.handler.input_tray in accepted_inputs:
@@ -34,5 +32,5 @@ func _process_input():
 	
 func _interrupt_and_end_turn_end():
 	doomer.handler.input_received.disconnect(_process_input)
-	doomer.turner.turner_timer.paused = false
+	doomer.turner._update_turn_state()
 	queue_free()

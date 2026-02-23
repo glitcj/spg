@@ -1,7 +1,7 @@
 extends _Doomer_Scene
 class_name _Doomer_Scene_Start_Screen
 
-@export var player_turn : _Doomer_Turn_Start_Screen_Player_Input
+@export var player_turn : Script
 
 enum Action {Continue}
 var action : Action
