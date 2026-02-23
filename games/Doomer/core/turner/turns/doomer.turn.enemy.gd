@@ -52,5 +52,5 @@ func _on_fold_action():
 	
 	
 func _interrupt_and_end_turn():
-	doomer.turner._update_turn_state()
+	doomer.turner.start_next_turn()
 	

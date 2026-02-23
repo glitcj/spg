@@ -25,7 +25,7 @@ func on_turn_start():
 	else:
 		to_call.bind(to_bind).call()
 
-	doomer.turner._update_turn_state()
+	doomer.turner.start_next_turn()
 
 func on_turn_end():
 	super()

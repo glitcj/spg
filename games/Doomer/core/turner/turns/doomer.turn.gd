@@ -1,8 +1,9 @@
 extends Node
 class_name _Doomer_Turn
 
-@onready var doomer : _Doomer = get_parent().get_parent()
+signal turn_finished
 
+@onready var doomer : _Doomer = get_parent().get_parent()
 
 var turn_name : String
 var turn_colour : Color
@@ -27,5 +28,5 @@ func _process_input():
 
 func _interrupt_and_end_turn_end():
 	doomer.handler.input_received.disconnect(_process_input)
-	doomer.turner._update_turn_state()
+	doomer.turner.start_next_turn()
 	queue_free()

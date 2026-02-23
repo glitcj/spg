@@ -35,7 +35,7 @@ func on_turn_end():
 func _interrupt_and_end_turn():
 	doomer.handler.input_received.disconnect(_on_input_received)
 	await get_tree().create_timer(interrupt_buffer_wait_time).timeout
-	doomer.turner._update_turn_state()
+	doomer.turner.start_next_turn()
 	
 func _process_action_while_showing_board():
 

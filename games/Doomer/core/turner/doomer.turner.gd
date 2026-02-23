@@ -14,7 +14,7 @@ var turn_state_queue = []
 
 func _ready() -> void:
 	turn_state_queue = [_Doomer_Turn_Lambda.new(doomer.change_scene, [_Doomer.DoomerScene.StartScreen])]
-	call_deferred("_update_turn_state")
+	call_deferred("start_next_turn")
 
 # Stub kept because doomer.turner.tscn connects ActionTimer.timeout to this method.
 func _on_timer_timeout() -> void:
@@ -24,7 +24,7 @@ func _on_timer_timeout() -> void:
 func _update_turn_indicator():
 	pass
 
-func _update_turn_state():
+func start_next_turn():
 	if current_turn_state != null:
 		last_turn_state = current_turn_state
 		processed_turns.append(current_turn_state)

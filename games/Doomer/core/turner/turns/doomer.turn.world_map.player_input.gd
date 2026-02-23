@@ -100,5 +100,5 @@ func _process_input_during_active_cursor():
 		
 func _interrupt_and_end_turn_end():
 	doomer.handler.input_received.disconnect(_process_input)
-	doomer.turner._update_turn_state()
+	doomer.turner.start_next_turn()
 	queue_free()
