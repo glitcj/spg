@@ -86,9 +86,9 @@ func _process_input_during_active_cursor():
 
 		doomer.handler.input_received.disconnect(_process_input)
 
-		var field_turn = _Doomer_Turn_Field.new(doomer)
-		field_turn.start()
-		await field_turn.turn_finished
+		# var field_turn = _Doomer_Turn_Field.new(doomer)
+		# field_turn.start()
+		# await field_turn.turn_finished
 
 		on_turn_end()
 
