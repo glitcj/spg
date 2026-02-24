@@ -54,10 +54,17 @@ func _input(event):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	handler.mode = handler.InputMode.Active
-	
+
 	scene.world_map = %"World Map Scene"
 	scene.poker_board = %"Poker Board Scene"
 	scene.start_screen = %"Start Sceen Scene"
+
+	call_deferred("_boot")
+
+func _boot():
+	var turn = _Doomer_Turn_Start_Screen_Player_Input.new(self)
+	turn.start()
+	await turn.turn_finished
 		
 func make_pointer(key : _Doomer_Pointer.Keys):
 	var pointer_ = _Doomer_Pointer.new(key)

@@ -23,6 +23,4 @@ func _ready() -> void:
 
 
 func _on_scene_start():
-	var _turn = _Doomer_Turn_Start_Screen_Player_Input.new()
-	doomer.turner.turn_state_queue.insert(0, _turn)
 	super()

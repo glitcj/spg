@@ -15,7 +15,8 @@ enum StateMachine {ShowingBoard, ShowingTraits, ShowingPlayerHand}
 
 var state : StateMachine = StateMachine.ShowingBoard
 
-func _init() -> void:
+func _init(_doomer: _Doomer) -> void:
+	super(_doomer)
 	turn_name = "PLY"
 	turn_colour = Color(1,1,1)
 	turn_wait_time = 200
@@ -27,16 +28,17 @@ func on_turn_start():
 	doomer.handler.input_received.connect(_on_input_received)
 
 func on_turn_end():
-	doomer.handler.input_received.disconnect(_on_input_received)
+	if doomer.handler.input_received.is_connected(_on_input_received):
+		doomer.handler.input_received.disconnect(_on_input_received)
 	if not action_placed_and_performed:
 		await _on_fold_action()
 	super()
-	
+
 func _interrupt_and_end_turn():
 	doomer.handler.input_received.disconnect(_on_input_received)
 	await get_tree().create_timer(interrupt_buffer_wait_time).timeout
-	doomer.turner.start_next_turn()
-	
+	on_turn_end()
+
 func _process_action_while_showing_board():
 
 	if doomer.handler.input_tray == KEY_UP:
@@ -49,12 +51,12 @@ func _process_action_while_showing_board():
 	elif doomer.handler.input_tray == KEY_LEFT:
 		await _on_show_player_hand_action()
 		state = StateMachine.ShowingPlayerHand
-		
+
 	var performed_call_or_fold_action = doomer.handler.input_tray in [KEY_UP, KEY_DOWN]
 	if performed_call_or_fold_action:
 		action_placed_and_performed = true
 		_interrupt_and_end_turn()
-		
+
 func _process_action_while_showing_traits():
 	if doomer.handler.input_tray == KEY_LEFT:
 		await _on_hide_traits_action()
@@ -85,7 +87,7 @@ func _on_hide_player_hand_action():
 func _on_hide_traits_action():
 	scene = doomer.scene.poker_board
 	await scene.enemy_traits_message_box.play_enumation(_Doomer_Message_Box.Enumations.SlideOutToLeft)
-		
+
 
 func _on_input_received():
 	if doomer.handler.input_tray not in accepted_inputs:
@@ -101,20 +103,19 @@ func _on_input_received():
 func _on_call_action():
 	var _portrait : _Doomer_Portrait = doomer.pointer.player_portrait()
 	_portrait.play_enumation_queue([_Doomer_Portrait.Animations.Attack, _Doomer_Portrait.Animations.RESET, _Doomer_Portrait.Animations.Idle], false)
-	
+
 	var cards = doomer.pointer.cards_ready_to_bet_by_player()
 	var mark_type = _Doomer_Card_Mark.MarkType.ATK
-	
+
 	for card : _Doomer_Card in cards:
 		card.add_mark(mark_type, _Doomer.Opponents.Player)
-	
+
 func _on_fold_action():
 	var _portrait : _Doomer_Portrait = doomer.pointer.player_portrait()
 	_portrait.play_enumation_queue([_Doomer_Portrait.Animations.Damage, _Doomer_Portrait.Animations.RESET,  _Doomer_Portrait.Animations.Idle], false)
-	
+
 	var cards = doomer.pointer.cards_ready_to_bet_by_player()
 	var mark_type = _Doomer_Card_Mark.MarkType.DEF
-	
+
 	for card : _Doomer_Card in cards:
 		card.add_mark(mark_type, _Doomer.Opponents.Player)
-	

@@ -2,8 +2,12 @@ extends _Doomer_Scene
 class_name _Doomer_Scene_World_Map
 
 
+@export var player_turn : Script
+
 @onready var cursor = %Cursor as AnimatedSprite2D
 @onready var guide_message_box = %"Guide Message Box" as _Doomer_Message_Box
+
+
 
 var cursor_index = 0
 var number_of_opponents = 2
@@ -34,9 +38,7 @@ func _ready():
 	pass
 	
 func _on_scene_start():
-	doomer.world_map_events.on_scene_start_events()	
-	var _turn = _Doomer_Turn_World_Map_Player_Input.new()
-	doomer.turner.turn_state_queue.insert(0, _turn)
+	doomer.world_map_events.on_scene_start_events()
 	super()
 
 func move_cursor(_index):

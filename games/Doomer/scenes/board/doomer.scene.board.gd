@@ -40,10 +40,7 @@ func on_orchestrator_is_ready():
 		doomer.field_cards[i].reparent(field_card_containers[i])
 
 func _on_scene_start():
-	var _turn = _Doomer_Turn_Field.new()
-	doomer.turner.turn_state_queue.insert(0, _turn)
 	doomer.scene.poker_board.lambdas.on_scene_start_events()
-	
 	super()
 
 func _on_scene_end():
