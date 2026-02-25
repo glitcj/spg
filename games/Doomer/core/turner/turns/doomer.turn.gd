@@ -18,6 +18,7 @@ func _init(_doomer: _Doomer = null) -> void:
 func start():
 	doomer.add_child(self)
 	on_turn_start()
+	await turn_finished
 
 func on_turn_start():
 	pass

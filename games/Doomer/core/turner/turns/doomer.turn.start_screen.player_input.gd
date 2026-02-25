@@ -25,8 +25,5 @@ func _process_input():
 	doomer.handler.input_received.disconnect(_process_input)
 	await doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap).call()
 
-	# var next_turn = _Doomer_Turn_World_Map_Player_Input.new(doomer)
-	# next_turn.start()
-	# await next_turn.turn_finished
 
 	on_turn_end()

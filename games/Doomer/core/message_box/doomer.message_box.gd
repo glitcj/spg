@@ -40,7 +40,7 @@ func _update_label_as_log():
 	
 func show_dialogue(m : String):
 	message = m
-	play_enumation(Enumations.ShowDialogueMessage)
+	await play_enumation(Enumations.ShowDialogueMessage)
 	
 func show_log(m : String):
 	message = m

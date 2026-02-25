@@ -7,8 +7,6 @@ class_name _Doomer_Scene_World_Map
 @onready var cursor = %Cursor as AnimatedSprite2D
 @onready var guide_message_box = %"Guide Message Box" as _Doomer_Message_Box
 
-
-
 var cursor_index = 0
 var number_of_opponents = 2
 	
@@ -38,8 +36,10 @@ func _ready():
 	pass
 	
 func _on_scene_start():
-	doomer.world_map_events.on_scene_start_events()
 	super()
+	await doomer.world_map_events.on_scene_start_events()
+	await _Doomer_Turn_World_Map_Player_Input.new(doomer).start()
+
 
 func move_cursor(_index):
 	cursor_index = _index

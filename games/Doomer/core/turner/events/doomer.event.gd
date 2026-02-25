@@ -16,7 +16,7 @@ func buzz_message_box(_message_box : _Doomer_Message_Box) -> Callable:
 
 func change_scene(_scene :_Doomer.DoomerScene) -> Callable:
 	return func():
-		doomer.change_scene(_scene)
+		await doomer.change_scene(_scene)
 
 func flip_cards(_cards_getter : Callable, _direction : Variant = null, _wait_for_each_flip : bool = false) -> Callable:
 	return func():

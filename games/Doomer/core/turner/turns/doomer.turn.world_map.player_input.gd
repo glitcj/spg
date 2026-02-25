@@ -28,10 +28,11 @@ func _update_traits():
 	for i in range(scene.number_of_opponents):
 		opponent = _Doomer_Opponent.new()
 		opponents.append(opponent)
-
+		
 		scene.add_child(opponent)
 		var _message_box = scene.trait_option_message_boxes[i] as _Doomer_Message_Box
-		_message_box.show_dialogue(opponent.description())
+		print(_message_box, opponent.description())
+		await _message_box.show_dialogue(opponent.description())
 
 func _process_action():
 	pass
@@ -85,11 +86,6 @@ func _process_input_during_active_cursor():
 		await doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard).call()
 
 		doomer.handler.input_received.disconnect(_process_input)
-
-		# var field_turn = _Doomer_Turn_Field.new(doomer)
-		# field_turn.start()
-		# await field_turn.turn_finished
-
 		on_turn_end()
 
 	elif doomer.handler.input_tray == KEY_ESCAPE:

@@ -54,7 +54,8 @@ offset_bottom = 23.0
 [node name="Pointer" type="Node" parent="."]
 script = ExtResource("2_jh38i")
 
-[node name="Turner" parent="." instance=ExtResource("4_w1tet")]
+[node name="Turner" parent="." node_paths=PackedStringArray("doomer") instance=ExtResource("4_w1tet")]
+doomer = NodePath("..")
 
 [node name="Board" type="Node" parent="."]
 script = ExtResource("3_cw5lf")

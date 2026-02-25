@@ -24,3 +24,4 @@ func _ready() -> void:
 
 func _on_scene_start():
 	super()
+	await _Doomer_Turn_Start_Screen_Player_Input.new(doomer).start()

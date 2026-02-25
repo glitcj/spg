@@ -29,9 +29,6 @@ var current_scene_node : Node
 
 @onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
 @onready var world_map_events : _Doomer_World_Map_Events = %"World Map Lambdas"
-# @onready var poker_board_events : _Doomer_Poker_Board_Events = %"Poker Board Lambdas"
-
-# @onready var poker_board_events = scene.poker_board.lambdas
 
 
 @onready var handler : _Doomer_Handler = $Handler
@@ -59,12 +56,11 @@ func _ready() -> void:
 	scene.poker_board = %"Poker Board Scene"
 	scene.start_screen = %"Start Sceen Scene"
 
-	call_deferred("_boot")
+	# call_deferred("_boot")
+	_boot()
 
 func _boot():
-	var turn = _Doomer_Turn_Start_Screen_Player_Input.new(self)
-	turn.start()
-	await turn.turn_finished
+	change_scene(DoomerScene.StartScreen)
 		
 func make_pointer(key : _Doomer_Pointer.Keys):
 	var pointer_ = _Doomer_Pointer.new(key)
@@ -82,17 +78,11 @@ func change_scene(scene_ = _Doomer.DoomerScene):
 	
 	if current_scene_node:
 		current_scene_node._on_scene_end()
-		# current_scene_node.reparent(scene_grid)
-		# current_scene_node.position = Vector2.ZERO
-		
-		
-	# scene_tscn.reparent(current_scene_container)
-	# scene_tscn.position = Vector2.ZERO
+
 	scene_tscn._on_scene_start()
 	
 	current_scene = scene_
 	current_scene_node = scene_tscn as _Doomer_Scene
-	# current_scene_node.camera.make_current()
 	camera.reparent(current_scene_node)
 	camera.position = Vector2.ZERO
 	

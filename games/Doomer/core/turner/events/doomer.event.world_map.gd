@@ -2,21 +2,12 @@ extends Node
 class_name _Doomer_World_Map_Events
 
 @export var doomer : _Doomer
-var _turn : _Doomer_Turn
-
 @onready var scene : _Doomer_Scene_World_Map
-
-func setup_map():
-	# TODO: Animation events to slide in portraits and message boxes.
-	pass
 
 func on_scene_start_events():
 	await on_scene_start_hide_faces()
 	await on_scene_start_slide_windows_in()
-	_turn = _Doomer_Turn_World_Map_Player_Input.new(doomer)
-	_turn.start()
-	await _turn.turn_finished
-	
+
 
 func on_scene_start_slide_windows_in():
 	scene = doomer.scene.world_map

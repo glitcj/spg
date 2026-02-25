@@ -21,4 +21,4 @@ func _update_label():
 		label.text +=  "%s : %s" % [k, log[k]]
 		
 func _on_turn_updated():
-	log["turn"] =  doomer.turner.current_turn_state
+	log["turn"] =  doomer.turner.current_turn
