@@ -60,3 +60,68 @@ func get_all_cards():
 	all_cards.append_array(get_player_cards())
 	all_cards.append_array(get_enemy_cards())
 	return all_cards
+
+func cards_ready_to_bet_by_enemy():
+	var filtered_cards = []
+	for card : _Doomer_Card in get_field_cards():
+		if card.is_ready_to_bet_by_enemy():
+			filtered_cards.append(card)
+	return filtered_cards
+
+func cards_ready_to_bet_by_player():
+	var filtered_cards = []
+	for card : _Doomer_Card in get_field_cards():
+		if card.is_ready_to_bet_by_player():
+			filtered_cards.append(card)
+	return filtered_cards
+
+func next_field_card() -> Array:
+	return get_next_field_card()
+
+func field_cards() -> Array:
+	return get_field_cards()
+
+func player_and_enemy_cards() -> Array:
+	return get_player_and_enemy_cards()
+
+func player_cards() -> Array:
+	return get_player_cards()
+
+func enemy_cards() -> Array:
+	return get_enemy_cards()
+
+func highest_player_or_enemy_card() -> _Doomer_Card:
+	return get_highest_player_or_enemy_card()
+
+func flop_cards() -> Array:
+	return get_flop_cards()
+
+func all_cards() -> Array:
+	return get_all_cards()
+
+func last_flipped_field_card():
+	return get_last_flipped_field_card()
+
+func player_coin_box() -> _Doomer_Coin_Box:
+	return doomer.player_coin_box
+
+func enemy_coin_box() -> _Doomer_Coin_Box:
+	return doomer.enemy_coin_box
+
+func winner_coin_box() -> _Doomer_Coin_Box:
+	return doomer.logic.get_winner_coin_box()
+
+func winner_opponent() -> _Doomer.Opponents:
+	return doomer.logic.calculate_winner()
+
+func loser_opponent() -> _Doomer.Opponents:
+	return doomer.logic.calculate_loser()
+
+func player_portrait() -> _Doomer_Portrait:
+	return doomer.player_portrait
+
+func enemy_portrait() -> _Doomer_Portrait:
+	return doomer.enemy_portrait
+
+func message_box() -> _Doomer_Message_Box:
+	return doomer.hud.message_box

@@ -4,7 +4,7 @@ class_name _Doomer_Pointer
 # _Doomer_Parent is created only by the orchestrator _Doomer instance
 @onready var doomer : _Doomer = get_parent()
 
-
+"""
 # TODO: Replace Pointer keys with getter functions
 enum Keys {nothing, next_field_card, last_field_card, 
 player_and_enemy_cards, field_cards, player_cards, 
@@ -16,16 +16,14 @@ winner_opponent, loser_opponent, player_portrait,
 enemy_portrait, message_box}
 
 var key : Keys
+"""
 
 func _ready() -> void:
 	pass
 
-func _init(key_ : Keys = Keys.nothing) -> void:
-	key = key_
-
 
 ### Go through the Keys in this file, and then make a callable like enemy_portrait that returns what its supposed to withough having to call grab(), I want to deprecate grab() eventually, ill do that manually you just make the callables, also type their outputs correctly
-
+"""
 func grab():
 	assert(key is Keys)
 	if key == Keys.next_field_card:
@@ -83,6 +81,8 @@ func grab():
 		
 	else:
 		assert(false)
+"""
+
 
 static func unpack(things : Array):
 	var unpacked_things = []
@@ -107,72 +107,5 @@ static func flatten(things : Array):
 static func unpack_and_flatten(things : Array):
 	return flatten(unpack(things))
 	
-
-# TODO: Move the below to _Doomer_Getters_Board
-func cards_ready_to_bet_by_enemy():
-	var filtered_cards = []
-	for card : _Doomer_Card in doomer.board.get_field_cards():
-		if card.is_ready_to_bet_by_enemy():
-			filtered_cards.append(card)
-	return filtered_cards
-# TODO: Move the below to _Doomer_Getters_Board
-func cards_ready_to_bet_by_player():
-	var filtered_cards = []
-	for card : _Doomer_Card in doomer.board.get_field_cards():
-		if card.is_ready_to_bet_by_player():
-			filtered_cards.append(card)
-	return filtered_cards
-# TODO: Move the below to _Doomer_Getters_Board
-func next_field_card() -> Array:
-	return doomer.board.get_next_field_card()
-# TODO: Move the below to _Doomer_Getters_Board
-func field_cards() -> Array:
-	return doomer.board.get_field_cards()
-# TODO: Move the below to _Doomer_Getters_Board
-func player_and_enemy_cards() -> Array:
-	return doomer.board.get_player_and_enemy_cards()
-# TODO: Move the below to _Doomer_Getters_Board
-func player_cards() -> Array:
-	return doomer.board.get_player_cards()
-# TODO: Move the below to _Doomer_Getters_Board
-func enemy_cards() -> Array:
-	return doomer.board.get_enemy_cards()
-# TODO: Move the below to _Doomer_Getters_Board
-func highest_player_or_enemy_card() -> _Doomer_Card:
-	return doomer.board.get_highest_player_or_enemy_card()
-# TODO: Move the below to _Doomer_Getters_Board
-func flop_cards() -> Array:
-	return doomer.board.get_flop_cards()
-# TODO: Move the below to _Doomer_Getters_Board
-func all_cards() -> Array:
-	return doomer.board.get_all_cards()
-# TODO: Move the below to _Doomer_Getters_Board
-func last_flipped_field_card():
-	return doomer.board.get_last_flipped_field_card()
-# TODO: Move the below to _Doomer_Getters_Board
-func player_coin_box() -> _Doomer_Coin_Box:
-	return doomer.player_coin_box
-# TODO: Move the below to _Doomer_Getters_Board
-func enemy_coin_box() -> _Doomer_Coin_Box:
-	return doomer.enemy_coin_box
-# TODO: Move the below to _Doomer_Getters_Board
-func winner_coin_box() -> _Doomer_Coin_Box:
-	return doomer.logic.get_winner_coin_box()
-# TODO: Move the below to _Doomer_Getters_Board
-func winner_opponent() -> _Doomer.Opponents:
-	return doomer.logic.calculate_winner()
-# TODO: Move the below to _Doomer_Getters_Board
-func loser_opponent() -> _Doomer.Opponents:
-	return doomer.logic.calculate_loser()
-# TODO: Move the below to _Doomer_Getters_Board
-func player_portrait() -> _Doomer_Portrait:
-	return doomer.player_portrait
-# TODO: Move the below to _Doomer_Getters_Board
-func enemy_portrait() -> _Doomer_Portrait:
-	return doomer.enemy_portrait
-# TODO: Move the below to _Doomer_Getters_Board
-func message_box() -> _Doomer_Message_Box:
-	return doomer.hud.message_box
-
 func world_map_scene():
 	return doomer.find_child("World Map Scene")

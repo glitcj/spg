@@ -54,17 +54,12 @@ func _ready() -> void:
 	scene.world_map = %"World Map Scene"
 	scene.poker_board = %"Poker Board Scene"
 	scene.start_screen = %"Start Sceen Scene"
-
-	# call_deferred("_boot")
-	_boot()
+	
+	_boot.call_deferred()
 
 func _boot():
 	change_scene(DoomerScene.StartScreen)
-		
-func make_pointer(key : _Doomer_Pointer.Keys):
-	var pointer_ = _Doomer_Pointer.new(key)
-	add_child(pointer_)
-	return pointer_
+
 
 func change_scene(scene_ = _Doomer.DoomerScene):
 	var scene_tscn : _Doomer_Scene

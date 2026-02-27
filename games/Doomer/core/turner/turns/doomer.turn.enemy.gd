@@ -31,20 +31,20 @@ func _process_action():
 
 
 func _on_call_action():
-	var _portrait : _Doomer_Portrait = doomer.pointer.enemy_portrait()
+	var _portrait : _Doomer_Portrait = doomer.board.enemy_portrait()
 	_portrait.play_enumation_queue([_Doomer_Portrait.Animations.Attack, _Doomer_Portrait.Animations.RESET, _Doomer_Portrait.Animations.Idle], false)
 
-	var cards = doomer.pointer.cards_ready_to_bet_by_enemy()
+	var cards = doomer.board.cards_ready_to_bet_by_enemy()
 	var mark_type = _Doomer_Card_Mark.MarkType.ATK
 
 	for card : _Doomer_Card in cards:
 		card.add_mark(mark_type, _Doomer.Opponents.Enemy)
 
 func _on_fold_action():
-	var _portrait : _Doomer_Portrait = doomer.pointer.enemy_portrait()
+	var _portrait : _Doomer_Portrait = doomer.board.enemy_portrait()
 	_portrait.play_enumation_queue([_Doomer_Portrait.Animations.Damage, _Doomer_Portrait.Animations.RESET,  _Doomer_Portrait.Animations.Idle], false)
 
-	var cards = doomer.pointer.cards_ready_to_bet_by_enemy()
+	var cards = doomer.board.cards_ready_to_bet_by_enemy()
 	var mark_type = _Doomer_Card_Mark.MarkType.DEF
 
 	for card : _Doomer_Card in cards:
