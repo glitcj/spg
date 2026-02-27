@@ -5,7 +5,7 @@ class_name _Doomer_Scene_Poker_Board
 @export var player_turn :  Script
 @export var field_turn :  Script
 
-
+@onready var getter : _Doomer_Getter_Board = $Getter
 
 @onready var animation_player  = $AnimationPlayer as AnimationPlayer
 @onready var player_portrait_container = %"Player Head Container"

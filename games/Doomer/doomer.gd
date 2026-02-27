@@ -15,7 +15,12 @@ var current_scene_node : Node
 @onready var camera = %Camera2D as Camera2D
 @onready var handler : _Doomer_Handler = $Handler
 @onready var turner : _Doomer_Turner = $Turner
-@onready var board : _Doomer_Getters_Board = $Board
+
+
+# TODO: Deprecate the following line, and call the board scene's getter instead from doomer.scene.poker_board.getter
+@onready var board : _Doomer_Getter_Board = $Board
+
+
 @onready var logic : _Doomer_Logic = $Logic
 @onready var getter : _Doomer_Getter = $Getter
 

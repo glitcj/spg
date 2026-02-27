@@ -1,5 +1,5 @@
 extends Node
-class_name _Doomer_Getters_Board
+class_name _Doomer_Getter_Board
 
 @onready var doomer : _Doomer = get_parent()
 
