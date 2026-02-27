@@ -18,9 +18,9 @@ func _init(_doomer: _Doomer) -> void:
 	
 func on_turn_start():
 	scene = doomer.scene.world_map
-	await doomer.world_map_events.update_portrait_animations()
+	await doomer.scene.world_map.lambdas.update_portrait_animations()
 	doomer.handler.input_received.connect(_process_input)
-	await doomer.world_map_events.create_opponents(opponents)
+	await doomer.scene.world_map.lambdas.create_opponents(opponents)
 
 func _process_action():
 	pass
@@ -37,13 +37,13 @@ func _process_input():
 
 func _process_input_during_active_cursor():
 	if doomer.handler.input_tray == KEY_LEFT or doomer.handler.input_tray == KEY_UP:
-		await doomer.world_map_events.move_cursor.bind(1).call()
+		await doomer.scene.world_map.lambdas.move_cursor.bind(1).call()
 
 	elif doomer.handler.input_tray == KEY_RIGHT or doomer.handler.input_tray == KEY_DOWN:
-		await doomer.world_map_events.move_cursor.bind(1).call()
+		await doomer.scene.world_map.lambdas.move_cursor.bind(1).call()
 
 	elif doomer.handler.input_tray == KEY_ENTER:
-		await doomer.world_map_events.select_opponent(opponents)
+		await doomer.scene.world_map.lambdas.select_opponent(opponents)
 		doomer.handler.input_received.disconnect(_process_input)
 		on_turn_end()
 

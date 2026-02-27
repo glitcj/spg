@@ -33,11 +33,30 @@ func on_scene_start_slide_windows_in():
 
 func flip_cards(_cards_getter : Callable, _direction : Variant = null, _wait_for_each_flip : bool = false):
 	var cards : Array = _cards_getter.call()
-	await doomer.board.flip_cards(cards, _direction, _wait_for_each_flip)
+	if cards == []:
+		return
+	for i in range(cards.size()):
+		var card : _Doomer_Card = cards[i]
+		if not _wait_for_each_flip and i < cards.size() - 1:
+			card.flip(_direction, false)
+		else:
+			await card.flip(_direction, true)
 
 func randomise_cards(_cards_getter : Callable):
 	var cards : Array = _cards_getter.call()
-	await doomer.board.randomise_cards(cards)
+	for card : _Doomer_Card in cards:
+		card.set_random_card_value_and_suite()
+
+func flip_next_field_card():
+	for card : _Doomer_Card in doomer.field_cards:
+		if card.state == _Doomer_Card.CardState.FacingDown:
+			await card.flip_up()
+			break
+
+func randomise_all_field_cards():
+	for card : _Doomer_Card in doomer.field_cards:
+		card.set_random_card_value_and_suite()
+	return true
 
 func show_message(_message : String, _wait_for_message : bool = false, _message_type : MessageType = MessageType.Dialogue, _message_box_getter : Callable = Callable()):
 	var mbg = _message_box_getter

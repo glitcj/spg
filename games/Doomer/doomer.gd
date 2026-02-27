@@ -28,13 +28,11 @@ var current_scene_node : Node
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
 
 @onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
-@onready var world_map_events : _Doomer_World_Map_Events = %"World Map Lambdas"
-@onready var board_events : _Doomer_Poker_Board_Events = %"Poker Board Lambdas"
 
 
 @onready var handler : _Doomer_Handler = $Handler
 @onready var turner : _Doomer_Turner = $Turner
-@onready var board : _Doomer_Board = $Board
+@onready var board : _Doomer_Getters_Board = $Board
 @onready var logic : _Doomer_Logic = $Logic
 @onready var pointer : _Doomer_Pointer = $Pointer
 
