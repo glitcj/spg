@@ -57,4 +57,4 @@ func select_opponent(_opponents: Array):
 	)
 	scene.reset_cursor()
 	await doomer.lambdas.wait(.25)
-	await doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard)
+	await doomer.lambdas.change_scene(doomer.scene.poker_board)

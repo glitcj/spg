@@ -8,7 +8,6 @@ var is_active = false
 var accepted_inputs = []
 
 @export var doomer : _Doomer
-var scene_id : _Doomer.DoomerScene = _Doomer.DoomerScene.Null
 
 @onready var camera : Camera2D
 
@@ -31,5 +30,5 @@ func _on_input_received():
 
 
 func is_current_scene():
-	return doomer.current_scene == scene_id
+	return doomer.current_scene_node == self
 	

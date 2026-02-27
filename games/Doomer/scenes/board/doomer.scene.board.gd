@@ -42,7 +42,6 @@ var number_of_rounds = 2
 
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
-	scene_id = _Doomer.DoomerScene.PokerBoard
 	accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 
 func on_orchestrator_is_ready():

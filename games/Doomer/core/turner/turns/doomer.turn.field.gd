@@ -27,7 +27,7 @@ func on_turn_start():
 
 	elif doomer.logic.face_up_field_cards().size() == 5:
 		await show_enemy_hand_and_winner_decision()
-		await doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap)
+		await doomer.lambdas.change_scene(doomer.scene.world_map)
 
 	on_turn_end()
 

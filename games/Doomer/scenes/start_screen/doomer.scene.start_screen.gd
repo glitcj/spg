@@ -17,9 +17,7 @@ var InputToAction := {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
-	scene_id = _Doomer.DoomerScene.StartScreen
 	accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
-	scene_id = _Doomer.DoomerScene.StartScreen
 
 
 func _on_scene_start():

@@ -13,5 +13,5 @@ func wait(_time : float = 1):
 func buzz_message_box(_message_box : _Doomer_Message_Box):
 	await _message_box.play_enumation(_Doomer_Message_Box.Enumations.Buzz)
 
-func change_scene(_scene :_Doomer.DoomerScene):
+func change_scene(_scene : _Doomer_Scene):
 	await doomer.change_scene(_scene)

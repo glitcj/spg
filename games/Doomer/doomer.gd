@@ -7,10 +7,8 @@ class_name _Doomer
 # Static here means that the object does not change throughout the game, and a Pointer is not needed (for example containers)
 
 enum Opponents {Player, Enemy}
-enum DoomerScene {PokerBoard, StartScreen, WorldMap, Null}
 
-var current_scene : DoomerScene = DoomerScene.Null
-var current_scene_node : Node
+var current_scene_node : _Doomer_Scene
 
 @onready var camera = %Camera2D as Camera2D
 @onready var handler : _Doomer_Handler = $Handler
@@ -41,27 +39,17 @@ func _ready() -> void:
 	_boot.call_deferred()
 
 func _boot():
-	change_scene(DoomerScene.StartScreen)
+	change_scene(scene.start_screen)
 
 
 
-# TODO: lets deprecate DoomerScene and the following function should accept a _Doomer_Scene instance instead of DoomerScene
-func change_scene(scene_ = _Doomer.DoomerScene):
-	var scene_tscn : _Doomer_Scene
-	if scene_ == _Doomer.DoomerScene.PokerBoard:
-		scene_tscn = find_child("Poker Board Scene")
-	if scene_ == _Doomer.DoomerScene.StartScreen:
-		scene_tscn = find_child("Start Sceen Scene")
-	if scene_ == _Doomer.DoomerScene.WorldMap:
-		scene_tscn = find_child("World Map Scene")
-	
+func change_scene(scene_: _Doomer_Scene):
 	if current_scene_node:
 		current_scene_node._on_scene_end()
 
-	scene_tscn._on_scene_start()
-	
-	current_scene = scene_
-	current_scene_node = scene_tscn as _Doomer_Scene
+	scene_._on_scene_start()
+
+	current_scene_node = scene_
 	camera.reparent(current_scene_node)
 	camera.position = Vector2.ZERO
 	
