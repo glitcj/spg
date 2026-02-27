@@ -9,12 +9,12 @@
 [ext_resource type="Script" uid="uid://dwg0a3ker5rp4" path="res://scenes/board/doomer.board.gd" id="3_cw5lf"]
 [ext_resource type="Script" uid="uid://bx1omwn0qjk24" path="res://core/debug/doomer.debug.log.gd" id="3_l3pki"]
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://core/turner/doomer.turner.tscn" id="4_w1tet"]
-[ext_resource type="Script" uid="uid://b3vkdpxc82gqh" path="res://core/turner/events/doomer.event.world_map.gd" id="5_cp6uo"]
+[ext_resource type="Script" uid="uid://b3vkdpxc82gqh" path="res://scenes/world_map/doomer.lambdas.world_map.gd" id="5_cp6uo"]
 [ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://core/turner/events/doomer.event.gd" id="5_jh38i"]
 [ext_resource type="Script" uid="uid://tvyfjvrduup" path="res://other/doomer.constants.gd" id="7_rj2r0"]
 [ext_resource type="Script" uid="uid://cup3l4uj7b0ja" path="res://core/doomer.common_functions.gd" id="7_xkyh8"]
 [ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://other/doomer.templates.gd" id="8_cp6uo"]
-[ext_resource type="Script" uid="uid://dvjmt8qsd6kt7" path="res://core/turner/events/doomer.events.board.gd" id="8_ihg64"]
+[ext_resource type="Script" uid="uid://dvjmt8qsd6kt7" path="res://scenes/board/doomer.lambdas.board.gd" id="8_ihg64"]
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://core/grounds/doomer.core.background.tscn" id="11_jh38i"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/docs.gd" id="13_ayhyn"]
 [ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://scenes/world_map/doomer.scene.world_map.tscn" id="16_xkyh8"]
@@ -143,6 +143,8 @@ unique_name_in_owner = true
 layout_mode = 2
 player_turn = ExtResource("20_pvbnl")
 doomer = NodePath("../../..")
+
+[node name="Start Screen Lambdas" type="Node" parent="Scenes/Scene Grid/Start Sceen Scene"]
 
 [node name="World Map Scene" parent="Scenes/Scene Grid" node_paths=PackedStringArray("doomer") instance=ExtResource("16_xkyh8")]
 unique_name_in_owner = true
