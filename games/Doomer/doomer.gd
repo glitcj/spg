@@ -15,13 +15,19 @@ var current_scene_node : Node
 @onready var camera = %Camera2D as Camera2D
 @onready var handler : _Doomer_Handler = $Handler
 @onready var turner : _Doomer_Turner = $Turner
-
-
 @onready var logic : _Doomer_Logic = $Logic
 @onready var getter : _Doomer_Getter = $Getter
-
 @onready var scene_grid = find_child("Scene Grid")
 @onready var current_scene_container = find_child("Current Scene Container")
+
+
+@onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
+
+
+
+
+
+# TODO: move the following parameters to _Doomer_Scene_Poker_Board and make any other changes needed following the movement
 @onready var hud : _Doomer_HUD = find_child("Poker Board Scene").find_child("HUD")
 @onready var player_gun : _Doomer_Gun = find_child("Player Gun")
 @onready var enemy_gun : _Doomer_Gun = find_child("Enemy Gun")
@@ -30,13 +36,10 @@ var current_scene_node : Node
 @onready var enemy_coin_box : _Doomer_Coin_Box = find_child("Enemy CoinBox")
 @onready var player_portrait : _Doomer_Portrait = find_child("Player Head")
 @onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
-@onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
-
 @onready var enemy_cards : Array = enemy_gun.hand_cards
 @onready var player_cards : Array = player_gun.hand_cards
 @onready var next_field_card : _Doomer_Card
 @onready var current_opponent : _Doomer_Opponent
-
 
 func _input(event):
 	handler.handle_inputs(event)
