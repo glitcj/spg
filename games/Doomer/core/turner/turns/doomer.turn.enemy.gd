@@ -13,7 +13,7 @@ func _init(_doomer: _Doomer) -> void:
 	turn_wait_time = _Doomer_Constants.immediate_action_time_delta
 
 func on_turn_start():
-	await CommonFunctions.waiter(self, turn_wait_time/2)
+	await doomer.lambdas.waiter(turn_wait_time/2)
 	action = Action.values()[randi() % Action.size()]
 	await _process_action()
 	on_turn_end()

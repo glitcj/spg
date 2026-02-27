@@ -1,7 +1,6 @@
 extends Node
 class_name _Doomer_Getter
 
-# _Doomer_Parent is created only by the orchestrator _Doomer instance
 @onready var doomer : _Doomer = get_parent()
 
 func _ready() -> void:
@@ -29,6 +28,7 @@ static func flatten(things : Array):
 
 static func unpack_and_flatten(things : Array):
 	return flatten(unpack(things))
-	
+""" 
 func world_map_scene():
 	return doomer.find_child("World Map Scene")
+"""

@@ -19,9 +19,14 @@ var input_tray : Key
 
 func handle_inputs(event):
 	_process_input(event)
-	
+
+func get_first_input_event_keycode(event: InputEvent):
+	if event is InputEventKey and event.pressed and not event.echo:
+		return event.keycode
+	return null
+
 func _process_input(event):
-	var event_keycode = CommonFunctions.get_first_input_event_keycode(event)
+	var event_keycode = get_first_input_event_keycode(event)
 	
 
 	if event_keycode == null:

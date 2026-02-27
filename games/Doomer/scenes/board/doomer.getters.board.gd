@@ -4,55 +4,55 @@ class_name _Doomer_Getter_Board
 @export var doomer : _Doomer
 
 func all_cards_are_up():
-	for card : _Doomer_Card in doomer.field_cards:
+	for card : _Doomer_Card in doomer.scene.poker_board.field_cards:
 		if card.state == _Doomer_Card.CardState.FacingDown:
 			return false
 	return true
 
 func get_player_and_enemy_cards():
 	var __cards = []
-	__cards.append_array(doomer.player_cards)
-	__cards.append_array(doomer.enemy_cards)	
+	__cards.append_array(doomer.scene.poker_board.player_cards)
+	__cards.append_array(doomer.scene.poker_board.enemy_cards)
 	return __cards
 
 func get_player_cards():
-	return doomer.player_cards
+	return doomer.scene.poker_board.player_cards
 
 func get_enemy_cards():
-	return doomer.enemy_cards
+	return doomer.scene.poker_board.enemy_cards
 
 func get_next_field_card():
-	for card : _Doomer_Card in doomer.field_cards:
+	for card : _Doomer_Card in doomer.scene.poker_board.field_cards:
 		if card.state == _Doomer_Card.CardState.FacingDown:
 			return [card]
 	return null
 
 func get_last_flipped_field_card():
-	var first_card : _Doomer_Card = doomer.field_cards[0]
+	var first_card : _Doomer_Card = doomer.scene.poker_board.field_cards[0]
 	if first_card.state == _Doomer_Card.CardState.FacingDown:
 		return null
-	
+
 	var counter = 1
-	var last_inspected_card = doomer.field_cards[0]
-	for card : _Doomer_Card in doomer.field_cards.slice(1, doomer.field_cards.size()):
+	var last_inspected_card = doomer.scene.poker_board.field_cards[0]
+	for card : _Doomer_Card in doomer.scene.poker_board.field_cards.slice(1, doomer.scene.poker_board.field_cards.size()):
 		if card.state == _Doomer_Card.CardState.FacingDown:
 			return [last_inspected_card]
-		
+
 		# If this is the last card on the field.
-		if counter == doomer.field_cards.size() - 1:
+		if counter == doomer.scene.poker_board.field_cards.size() - 1:
 			return [card]
-			
+
 		last_inspected_card = card
 		counter += 1
-	
+
 func get_field_cards():
-	return doomer.field_cards
-	
+	return doomer.scene.poker_board.field_cards
+
 func get_highest_player_or_enemy_card():
-	return doomer.field_cards[0]
-		
+	return doomer.scene.poker_board.field_cards[0]
+
 func get_flop_cards():
-	return doomer.field_cards.slice(0, 3)
+	return doomer.scene.poker_board.field_cards.slice(0, 3)
 	
 func get_all_cards():
 	var all_cards = []
@@ -103,10 +103,10 @@ func last_flipped_field_card():
 	return get_last_flipped_field_card()
 
 func player_coin_box() -> _Doomer_Coin_Box:
-	return doomer.player_coin_box
+	return doomer.scene.poker_board.player_coin_box
 
 func enemy_coin_box() -> _Doomer_Coin_Box:
-	return doomer.enemy_coin_box
+	return doomer.scene.poker_board.enemy_coin_box
 
 func winner_coin_box() -> _Doomer_Coin_Box:
 	return doomer.logic.get_winner_coin_box()
@@ -118,10 +118,10 @@ func loser_opponent() -> _Doomer.Opponents:
 	return doomer.logic.calculate_loser()
 
 func player_portrait() -> _Doomer_Portrait:
-	return doomer.player_portrait
+	return doomer.scene.poker_board.player_portrait
 
 func enemy_portrait() -> _Doomer_Portrait:
-	return doomer.enemy_portrait
+	return doomer.scene.poker_board.enemy_portrait
 
 func message_box() -> _Doomer_Message_Box:
-	return doomer.hud.message_box
+	return doomer.scene.poker_board.hud.message_box

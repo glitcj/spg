@@ -48,13 +48,13 @@ func randomise_cards(_cards_getter : Callable):
 		card.set_random_card_value_and_suite()
 
 func flip_next_field_card():
-	for card : _Doomer_Card in doomer.field_cards:
+	for card : _Doomer_Card in doomer.scene.poker_board.field_cards:
 		if card.state == _Doomer_Card.CardState.FacingDown:
 			await card.flip_up()
 			break
 
 func randomise_all_field_cards():
-	for card : _Doomer_Card in doomer.field_cards:
+	for card : _Doomer_Card in doomer.scene.poker_board.field_cards:
 		card.set_random_card_value_and_suite()
 	return true
 
@@ -79,7 +79,7 @@ func demark_cards(_cards_getter : Callable, _marks_pointer : _Doomer_Card.MarkPo
 func change_coins(_coin_amount : int, _coin_box_getter : Callable):
 	var coin_box : _Doomer_Coin_Box = _coin_box_getter.call()
 	await coin_box.add_coins(_coin_amount)
-	await CommonFunctions.waiter(doomer, .2)
+	await doomer.lambdas.waiter(.2)
 
 func action_cards(_cards_getter : Callable, _card_action : _Doomer_Card.CardActions, _wait_for_each_action : bool = false):
 	var cards : Array = _cards_getter.call()
@@ -130,4 +130,4 @@ func card_attack(_cards_getter : Callable, _loser_getter : Callable, _coin_amoun
 	defender_portrait.play_enumation(_Doomer_Portrait.Animations.Idle, false)
 	attacker_portrait.play_enumation(_Doomer_Portrait.Animations.Idle, false)
 
-	await CommonFunctions.waiter(doomer, .2)
+	await doomer.lambdas.waiter(.2)

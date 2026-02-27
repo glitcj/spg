@@ -19,27 +19,13 @@ var current_scene_node : Node
 @onready var getter : _Doomer_Getter = $Getter
 @onready var scene_grid = find_child("Scene Grid")
 @onready var current_scene_container = find_child("Current Scene Container")
-
-
 @onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
 
 
 
+var current_opponent : _Doomer_Opponent
 
 
-# TODO: move the following parameters to _Doomer_Scene_Poker_Board and make any other changes needed following the movement
-@onready var hud : _Doomer_HUD = find_child("Poker Board Scene").find_child("HUD")
-@onready var player_gun : _Doomer_Gun = find_child("Player Gun")
-@onready var enemy_gun : _Doomer_Gun = find_child("Enemy Gun")
-@onready var field_cards : Array = 	find_children("Field Card *")
-@onready var player_coin_box : _Doomer_Coin_Box = find_child("Player CoinBox")
-@onready var enemy_coin_box : _Doomer_Coin_Box = find_child("Enemy CoinBox")
-@onready var player_portrait : _Doomer_Portrait = find_child("Player Head")
-@onready var enemy_portrait : _Doomer_Portrait = find_child("Enemy Head")
-@onready var enemy_cards : Array = enemy_gun.hand_cards
-@onready var player_cards : Array = player_gun.hand_cards
-@onready var next_field_card : _Doomer_Card
-@onready var current_opponent : _Doomer_Opponent
 
 func _input(event):
 	handler.handle_inputs(event)
@@ -58,6 +44,8 @@ func _boot():
 	change_scene(DoomerScene.StartScreen)
 
 
+
+# TODO: lets deprecate DoomerScene and the following function should accept a _Doomer_Scene instance instead of DoomerScene
 func change_scene(scene_ = _Doomer.DoomerScene):
 	var scene_tscn : _Doomer_Scene
 	if scene_ == _Doomer.DoomerScene.PokerBoard:
