@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bx1omwn0qjk24" path="res://core/debug/doomer.debug.log.gd" id="3_l3pki"]
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://core/turner/doomer.turner.tscn" id="4_w1tet"]
 [ext_resource type="Script" uid="uid://b3vkdpxc82gqh" path="res://scenes/world_map/doomer.lambdas.world_map.gd" id="5_cp6uo"]
-[ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://core/turner/events/doomer.event.gd" id="5_jh38i"]
+[ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/doomer.lambdas.gd" id="5_jh38i"]
 [ext_resource type="Script" uid="uid://tvyfjvrduup" path="res://other/doomer.constants.gd" id="7_rj2r0"]
 [ext_resource type="Script" uid="uid://cup3l4uj7b0ja" path="res://core/doomer.common_functions.gd" id="7_xkyh8"]
 [ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://other/doomer.templates.gd" id="8_cp6uo"]

@@ -23,7 +23,7 @@ func _process_input():
 		return
 
 	doomer.handler.input_received.disconnect(_process_input)
-	await doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap).call()
+	await doomer.lambdas.change_scene(_Doomer.DoomerScene.WorldMap)
 
 
 	on_turn_end()

@@ -54,7 +54,7 @@ func select_opponent(_opponents: Array):
 	doomer.current_opponent = _opponents[scene.cursor_index]
 	await doomer.lambdas.buzz_message_box(
 		scene.trait_option_message_boxes[scene.cursor_index]
-	).call()
+	)
 	scene.reset_cursor()
-	await doomer.lambdas.wait(.25).call()
-	await doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard).call()
+	await doomer.lambdas.wait(.25)
+	await doomer.lambdas.change_scene(_Doomer.DoomerScene.PokerBoard)

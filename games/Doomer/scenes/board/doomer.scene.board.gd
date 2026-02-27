@@ -5,12 +5,13 @@ class_name _Doomer_Scene_Poker_Board
 @export var player_turn :  Script
 @export var field_turn :  Script
 
-@onready var lambdas  =  %"Poker Board Lambdas" as _Doomer_Poker_Board_Events
+
 
 @onready var animation_player  = $AnimationPlayer as AnimationPlayer
 @onready var player_portrait_container = %"Player Head Container"
 @onready var opponent_portrait_container =  %"Enemy Head Container"
 
+@onready var lambdas  =  %"Poker Board Lambdas" as _Doomer_Poker_Board_Events
 
 @export var camera_zoom : Vector2 :
 	set(v):
