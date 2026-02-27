@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://doomer.gd" id="1_pvbnl"]
-[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.pointer.gd" id="2_jh38i"]
+[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.getter.gd" id="2_jh38i"]
 [ext_resource type="Script" uid="uid://djvk5f1dkttil" path="res://core/inspector.gd" id="2_rj2r0"]
 [ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://core/handler/funcs.poke.input_handler.gd" id="2_yud1a"]
 [ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://other/doomer.poker.logic.gd" id="3_0kyin"]

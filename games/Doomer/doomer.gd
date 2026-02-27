@@ -34,7 +34,7 @@ var current_scene_node : Node
 @onready var turner : _Doomer_Turner = $Turner
 @onready var board : _Doomer_Getters_Board = $Board
 @onready var logic : _Doomer_Logic = $Logic
-@onready var pointer : _Doomer_Pointer = $Pointer
+@onready var getter : _Doomer_Getter = $Getter
 
 @onready var enemy_cards : Array = enemy_gun.hand_cards
 @onready var player_cards : Array = player_gun.hand_cards
