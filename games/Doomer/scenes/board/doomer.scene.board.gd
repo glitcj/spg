@@ -1,7 +1,6 @@
 extends _Doomer_Scene
 class_name _Doomer_Scene_Poker_Board
 
-
 @export var player_turn :  Script
 @export var field_turn :  Script
 

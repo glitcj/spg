@@ -61,7 +61,7 @@ func randomise_all_field_cards():
 func show_message(_message : String, _wait_for_message : bool = false, _message_type : MessageType = MessageType.Dialogue, _message_box_getter : Callable = Callable()):
 	var mbg = _message_box_getter
 	if not mbg.is_valid():
-		mbg = doomer.board.message_box
+		mbg = doomer.scene.poker_board.getter.message_box
 	var message_box : _Doomer_Message_Box = mbg.call()
 	if _message_type == MessageType.Dialogue:
 		await message_box.show_dialogue(_message)
@@ -103,15 +103,15 @@ func card_attack(_cards_getter : Callable, _loser_getter : Callable, _coin_amoun
 	var defender_portrait : _Doomer_Portrait
 
 	if opponent == _Doomer.Opponents.Enemy:
-		coin_box = doomer.board.player_coin_box()
+		coin_box = doomer.scene.poker_board.getter.player_coin_box()
 		enumation = _Doomer_Card.Enumation.AttackUp
-		attacker_portrait = doomer.board.player_portrait()
-		defender_portrait = doomer.board.enemy_portrait()
+		attacker_portrait = doomer.scene.poker_board.getter.player_portrait()
+		defender_portrait = doomer.scene.poker_board.getter.enemy_portrait()
 	else:
-		coin_box = doomer.board.enemy_coin_box()
+		coin_box = doomer.scene.poker_board.getter.enemy_coin_box()
 		enumation = _Doomer_Card.Enumation.AttackDown
-		attacker_portrait = doomer.board.enemy_portrait()
-		defender_portrait = doomer.board.player_portrait()
+		attacker_portrait = doomer.scene.poker_board.getter.enemy_portrait()
+		defender_portrait = doomer.scene.poker_board.getter.player_portrait()
 
 	var cards : Array = _cards_getter.call()
 	var counter = 0

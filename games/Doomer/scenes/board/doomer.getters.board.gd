@@ -1,7 +1,7 @@
 extends Node
 class_name _Doomer_Getter_Board
 
-@onready var doomer : _Doomer = get_parent()
+@export var doomer : _Doomer
 
 func all_cards_are_up():
 	for card : _Doomer_Card in doomer.field_cards:

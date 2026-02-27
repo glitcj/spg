@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=26 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://doomer.gd" id="1_pvbnl"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.getter.gd" id="2_jh38i"]
@@ -25,6 +25,8 @@
 [ext_resource type="Script" uid="uid://24v0qjou812u" path="res://core/turner/turns/doomer.turn.world_map.player_input.gd" id="22_q5iqo"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q5iqo"]
 
 [node name="Doomer" type="Node2D"]
 script = ExtResource("1_pvbnl")
@@ -133,6 +135,12 @@ player_turn = ExtResource("17_valsd")
 field_turn = ExtResource("19_pvbnl")
 doomer = NodePath("../../..")
 
+[node name="Getter" parent="Scenes/Scene Grid/Poker Board Scene" index="0" node_paths=PackedStringArray("doomer")]
+doomer = NodePath("../../../..")
+
+[node name="TextureRect" parent="Scenes/Scene Grid/Poker Board Scene/SubViewport/Animated Node/MarginContainer Shader Board BG/VBoxContainer/MarginContainer" index="1"]
+texture = SubResource("ViewportTexture_q5iqo")
+
 [node name="Poker Board Lambdas" type="Node" parent="Scenes/Scene Grid/Poker Board Scene" node_paths=PackedStringArray("doomer")]
 unique_name_in_owner = true
 script = ExtResource("8_ihg64")
@@ -156,3 +164,5 @@ doomer = NodePath("../../..")
 unique_name_in_owner = true
 script = ExtResource("5_cp6uo")
 doomer = NodePath("../../../..")
+
+[editable path="Scenes/Scene Grid/Poker Board Scene"]

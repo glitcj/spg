@@ -17,10 +17,6 @@ var current_scene_node : Node
 @onready var turner : _Doomer_Turner = $Turner
 
 
-# TODO: Deprecate the following line, and call the board scene's getter instead from doomer.scene.poker_board.getter
-@onready var board : _Doomer_Getter_Board = $Board
-
-
 @onready var logic : _Doomer_Logic = $Logic
 @onready var getter : _Doomer_Getter = $Getter
 
