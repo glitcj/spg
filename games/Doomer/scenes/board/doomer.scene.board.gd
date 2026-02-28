@@ -6,7 +6,6 @@ class_name _Doomer_Scene_Poker_Board
 
 @onready var getter : _Doomer_Getter_Board = $Getter
 @onready var lambdas  =  %"Lambdas" as _Doomer_Poker_Board_Events
-
 @onready var animation_player  = $AnimationPlayer as AnimationPlayer
 
 @export var camera_zoom : Vector2 :

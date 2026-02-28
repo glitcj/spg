@@ -3,6 +3,9 @@ class_name _Doomer_Message_Box
 
 @export var doomer : _Doomer
 
+# Settings
+@export var visible_on_reset = false
+
 @onready var label : Label = find_child("Message Label")
 @onready var animation_player : AnimationPlayer = find_child("AnimationPlayer")
 @onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
@@ -49,3 +52,6 @@ func show_log(m : String):
 func play_enumation(e : Enumations):
 	animation_player.play(Enumations.keys()[e])
 	await animation_player.animation_finished
+
+func _on_reset():
+	%"Animated Node".visible = visible_on_reset

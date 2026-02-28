@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://d08p5bfc634r"]
+
+[ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/scene.peekaboo.gd" id="1_522sx"]
+[ext_resource type="Script" uid="uid://47v8qk0virue" path="res://scenes/peekaboo/getter.peekaboo.gd" id="2_edxlk"]
+[ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/lambdas.peekaboo.gd" id="3_80427"]
+[ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/doomer.message_box.tscn" id="4_iicln"]
+
+[node name="Peekaboo Scene" type="SubViewportContainer"]
+script = ExtResource("1_522sx")
+
+[node name="Getter" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_edxlk")
+
+[node name="Lambdas" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_80427")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1080, 2400)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+anchor_mode = 0
+
+[node name="MarginContainer L0" type="MarginContainer" parent="SubViewport"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="MarginContainer L1" type="MarginContainer" parent="SubViewport"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/MarginContainer L1"]
+layout_mode = 2
+
+[node name="MarginContainer Top" type="MarginContainer" parent="SubViewport/MarginContainer L1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer Middle" type="MarginContainer" parent="SubViewport/MarginContainer L1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer Bottom" type="MarginContainer" parent="SubViewport/MarginContainer L1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Bottom"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Message Box Logger" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Bottom/CenterContainer" instance=ExtResource("4_iicln")]
+unique_name_in_owner = true
+scale = Vector2(5, 5)
+visible_on_reset = true
+
+[node name="MarginContainer L2" type="MarginContainer" parent="SubViewport"]
+offset_right = 1080.0
+offset_bottom = 2400.0
