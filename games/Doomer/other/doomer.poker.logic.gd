@@ -44,6 +44,9 @@ func get_winner_coin_box():
 	else:
 		return doomer.scene.poker_board.enemy_coin_box
 
+
+"""
 class _Doomer_Hand:
 	enum HandType {HighCard, Pair, TwoPair, ThreePair, FourPair, Straight, FullHouse, Flush}
 	var hand
+"""

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo8lclxe6oiqv"]
+[gd_scene load_steps=15 format=3 uid="uid://bo8lclxe6oiqv"]
 
 [ext_resource type="Script" uid="uid://bsvvh5tdtnnla" path="res://scenes/world_map/doomer.scene.world_map.gd" id="1_l3jp3"]
+[ext_resource type="Script" uid="uid://b3vkdpxc82gqh" path="res://scenes/world_map/doomer.lambdas.world_map.gd" id="2_6c6hj"]
 [ext_resource type="Texture2D" uid="uid://dm0frm25hapm5" path="res://assets/doomer/parallax/balatro_bg_2.png" id="2_pyjtq"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://nodes/portrait/doomer.portrait.tscn" id="2_s0lhg"]
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/doomer.message_box.tscn" id="3_dq431"]
@@ -70,6 +71,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l3jp3")
+
+[node name="Lambdas" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_6c6hj")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true

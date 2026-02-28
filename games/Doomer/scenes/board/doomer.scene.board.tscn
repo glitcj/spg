@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://bj4gwlna6b7q8"]
+[gd_scene load_steps=18 format=4 uid="uid://bj4gwlna6b7q8"]
 
 [ext_resource type="Script" uid="uid://bfv6k2vgcm5vy" path="res://scenes/board/doomer.scene.board.gd" id="1_n8eav"]
+[ext_resource type="Script" uid="uid://dvjmt8qsd6kt7" path="res://scenes/board/doomer.lambdas.board.gd" id="2_8g1pe"]
 [ext_resource type="Script" uid="uid://dwg0a3ker5rp4" path="res://scenes/board/doomer.getters.board.gd" id="2_lixwe"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_nr83l"]
 [ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://nodes/coin_box/doomer.coin_box.tscn" id="3_k7src"]
@@ -774,6 +775,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_n8eav")
+
+[node name="Lambdas" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_8g1pe")
 
 [node name="Getter" type="Node" parent="."]
 script = ExtResource("2_lixwe")

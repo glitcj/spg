@@ -7,7 +7,7 @@ class_name _Doomer_Scene_World_Map
 @onready var cursor = %Cursor as AnimatedSprite2D
 @onready var guide_message_box = %"Guide Message Box" as _Doomer_Message_Box
 
-@onready var lambdas : _Doomer_World_Map_Events = %"World Map Lambdas" as _Doomer_World_Map_Events
+@onready var lambdas = %"Lambdas" as _Doomer_World_Map_Events
 
 
 var cursor_index = 0
