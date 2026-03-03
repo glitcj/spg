@@ -20,10 +20,7 @@ var stakeboard_stake : int = 100
 @export var portrait : Portraits:
 	set(value):
 		portrait = value
-		# if portrait in PortraitMap.keys():
-		# 	_update_portrait()
 		
-
 var animation_player : AnimationPlayer
 var sprite : Node
 

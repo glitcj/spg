@@ -18,3 +18,15 @@ func _slide_windows_in():
 		await _window.play_enumation(_Doomer_Message_Box.Enumations.SlideInFromLeft)
 		await get_tree().create_timer(.1).timeout
 		await _window.play_enumation(_Doomer_Message_Box.Enumations.Buzz)
+
+
+func update_idle_animation():
+	var portrait = peekaboo.find_child("Player Portrait") as _Core_Portrait
+	if Input.is_action_just_pressed("ui_left"):
+		portrait.animation_player.play("move_left")
+	elif Input.is_action_just_pressed("ui_right"):
+		portrait.animation_player.play("move_right")
+	elif Input.is_action_just_pressed("ui_up"):
+		portrait.animation_player.play("move_up")
+	elif Input.is_action_just_pressed("ui_down"):
+		portrait.animation_player.play("move_down")
