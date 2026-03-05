@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.character.tscn" id="6_s4s5r"]
 [ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="6_s7xtm"]
 [ext_resource type="PackedScene" uid="uid://bb68u0lc28266" path="res://scenes/peekaboo/peekaboo.portrait.peeka.tscn" id="7_jdnrp"]
-[ext_resource type="Texture2D" uid="uid://cnrlclx236fi8" path="res://assets/ninja/Actor/Monsters/Axolot/Faceset.png" id="8_a6aq7"]
 [ext_resource type="Script" uid="uid://bf5737f8myfli" path="res://scenes/peekaboo/scripts/script.npc.1-1.gd" id="8_s4s5r"]
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/doomer.message_box.tscn" id="9_l5o1f"]
+[ext_resource type="PackedScene" uid="uid://wxotpnma33wf" path="res://scenes/peekaboo/peekaboo.portrait.npc.1-1.tscn" id="9_s4s5r"]
 [ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="10_5dvgp"]
 [ext_resource type="Script" uid="uid://df5fvc4fwhmai" path="res://scenes/peekaboo/scripts/script.enemy.1-1.gd" id="11_4c825"]
 [ext_resource type="Script" uid="uid://0t6ea4n70ikf" path="res://scenes/peekaboo/scripts/script.enemy.1-2.gd" id="12_ycnkv"]
@@ -929,20 +929,18 @@ texture = SubResource("CanvasTexture_kcels")
 position = Vector2(-471, 180.99997)
 gravity_scale = 0.0
 
-[node name="Script" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/RigidBody2D" node_paths=PackedStringArray("peekaboo")]
+[node name="_Peekaboo_Script" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/RigidBody2D" node_paths=PackedStringArray("peekaboo")]
 script = ExtResource("8_s4s5r")
 peekaboo = NodePath("../../../../../../..")
-trigger = 1
+trigger = 4
 action_range = 200.0
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/RigidBody2D"]
-z_index = 1
-scale = Vector2(3, 3)
-texture = ExtResource("8_a6aq7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/RigidBody2D"]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
+
+[node name="_Core_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/RigidBody2D" instance=ExtResource("9_s4s5r")]
+scale = Vector2(2.5, 2.5)
 
 [node name="Enemy 1" type="RigidBody2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer"]
 position = Vector2(326, -68)

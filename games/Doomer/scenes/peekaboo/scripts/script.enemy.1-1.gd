@@ -1,6 +1,6 @@
 extends _Peekaboo_Script
 
-func _on_trigger():
+func _on_automatic():
 	while true:
 		mover.move(Vector2(0, 500))
 		portrait.animation_player.play("move_down")
