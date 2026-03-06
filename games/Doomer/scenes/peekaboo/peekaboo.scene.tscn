@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d08p5bfc634r"]
+[gd_scene load_steps=25 format=4 uid="uid://d08p5bfc634r"]
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://47v8qk0virue" path="res://scenes/peekaboo/peekaboo.getter.gd" id="2_s7xtm"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="10_5dvgp"]
 [ext_resource type="Script" uid="uid://df5fvc4fwhmai" path="res://scenes/peekaboo/scripts/script.enemy.1-1.gd" id="11_4c825"]
 [ext_resource type="Script" uid="uid://0t6ea4n70ikf" path="res://scenes/peekaboo/scripts/script.enemy.1-2.gd" id="12_ycnkv"]
+[ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/script.message_box.1-1.gd" id="15_a6aq7"]
+[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="15_jdnrp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kcels"]
 texture = ExtResource("4_4c825")
@@ -998,6 +1000,13 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 scale = Vector2(5, 5)
 visible_on_reset = true
+
+[node name="_Peekaboo_Script" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Bottom/CenterContainer/Message Box Logger"]
+script = ExtResource("15_a6aq7")
+
+[node name="_Peekaboo_Tweener" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Bottom/CenterContainer/Message Box Logger"]
+script = ExtResource("15_jdnrp")
+metadata/_custom_type_script = "uid://5fqo6d3fleu4"
 
 [node name="MarginContainer L2" type="MarginContainer" parent="SubViewport"]
 offset_right = 1080.0

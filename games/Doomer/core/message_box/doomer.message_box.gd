@@ -1,6 +1,7 @@
 extends Node2D
 class_name _Doomer_Message_Box
 
+
 @export var doomer : _Doomer
 
 # Settings
@@ -21,12 +22,24 @@ enum Enumations {ShowNewMessage, ShowLogMessage,
 var history : Array = []
 var full_message_log : Array = []
 
+var is_active = false
+
+var message_queue = []
+var processed_messages = []
+
 var message : String:
 	set(value):
 		message = value
-		pass
-
+		
+var visible_message : String:
+	set(value):
+		label.text = value
+		visible_message = value
+		
 var full_log
+
+func _process(delta: float) -> void:
+	_process_input()
 
 func add_line(s : String):
 	label.text = "\n".join([label.text, s])
@@ -39,12 +52,74 @@ func _update_label_as_message():
 func _update_label_as_log():
 	full_message_log.append(message)
 	label.text = "\n".join(full_message_log.slice(-1 * min(3, full_message_log.size()), full_message_log.size()))
-	pass
 	
-func show_dialogue(m : String):
+func _slide_in():
+	var parent = self
+
+	var tween = parent.create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	var slide_duration = .5
+	
+	tween.tween_callback(func(): parent.position = Vector2(0, 300))
+	tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 0))
+	
+	tween.tween_property(parent, "position", Vector2.ZERO, slide_duration)
+	tween.parallel().tween_property(parent, "modulate", Color(1,1,1,1), 1)
+
+func _slide_out():
+	var parent = self
+
+	var tween = parent.create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	var slide_duration = .5
+	
+	tween.tween_callback(func(): parent.position = Vector2(0, 0))
+	tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 1))
+	
+	tween.tween_property(parent, "position", Vector2(0, 300), slide_duration)
+	tween.parallel().tween_property(parent, "modulate", Color(1,1,1,0), 1)
+	
+
+
+
+
+
+func start(m):
+	is_active = true
+	_slide_in()
+	if m is String:
+		_show_current_message(m)
+	elif m is Array:
+		message_queue = m
+		_show_next_message()
+
+
+func _show_current_message(m):
 	message = m
 	await play_enumation(Enumations.ShowDialogueMessage)
-	
+
+
+func _show_next_message():
+	if message_queue == []:
+		if is_active:
+			_slide_out()
+			is_active = false
+		return
+		
+	message = message_queue.pop_front()
+	_show_current_message(message)
+	processed_messages.append(message)
+
+
+func _process_input():
+	if not is_active:
+		return
+		
+	if Input.is_action_just_pressed("ui_accept"):
+		_show_next_message()
+
 func show_log(m : String):
 	message = m
 	play_enumation(Enumations.ShowLogMessage)

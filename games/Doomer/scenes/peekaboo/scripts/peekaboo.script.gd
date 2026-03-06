@@ -31,7 +31,7 @@ func _ready():
 		
 func _get_components():
 	parent = get_parent()
-	
+
 	if parent.find_children("*", "_Peekaboo_Mover").size() > 0:
 		mover = parent.find_child("_Peekaboo_Mover")
 		
