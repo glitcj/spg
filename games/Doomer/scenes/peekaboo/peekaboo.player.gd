@@ -3,6 +3,7 @@ class_name _PeekaBoo_Player
 
 
 @export var peekaboo : _PeekaBoo
+var is_active = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +15,8 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_on_input()
+	if is_active:
+		_on_input()
 	
 func _on_input():
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

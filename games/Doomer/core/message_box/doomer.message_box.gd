@@ -2,6 +2,8 @@ extends Node2D
 class_name _Doomer_Message_Box
 
 
+signal finished
+
 @export var doomer : _Doomer
 
 # Settings
@@ -11,6 +13,8 @@ class_name _Doomer_Message_Box
 @onready var animation_player : AnimationPlayer = find_child("AnimationPlayer")
 @onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
 @onready var message_box
+
+@onready var tweener = %_Peekaboo_Tweener
 
 enum Action {ShowLog, ShowMessage, Buzz}
 enum Enumations {ShowNewMessage, ShowLogMessage, 
@@ -47,53 +51,22 @@ func add_line(s : String):
 
 func _update_label_as_message():
 	label.text = message # "\n".join(full_message_log.slice(-3, 0))
-
-
+	
 func _update_label_as_log():
 	full_message_log.append(message)
 	label.text = "\n".join(full_message_log.slice(-1 * min(3, full_message_log.size()), full_message_log.size()))
 	
-func _slide_in():
-	var parent = self
-
-	var tween = parent.create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	var slide_duration = .5
+func start(m : Array):
+	tweener._slide_in()
+	message_queue = m
+	_show_next_message()
 	
-	tween.tween_callback(func(): parent.position = Vector2(0, 300))
-	tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 0))
-	
-	tween.tween_property(parent, "position", Vector2.ZERO, slide_duration)
-	tween.parallel().tween_property(parent, "modulate", Color(1,1,1,1), 1)
+	# Defer setting is_active to run after _process_input()
+	# _process_input() should ignore inputs in this frame
+	var lambda = func(): is_active = true
+	lambda.call_deferred()
 
-func _slide_out():
-	var parent = self
-
-	var tween = parent.create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	var slide_duration = .5
-	
-	tween.tween_callback(func(): parent.position = Vector2(0, 0))
-	tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 1))
-	
-	tween.tween_property(parent, "position", Vector2(0, 300), slide_duration)
-	tween.parallel().tween_property(parent, "modulate", Color(1,1,1,0), 1)
-	
-
-
-
-
-
-func start(m):
-	is_active = true
-	_slide_in()
-	if m is String:
-		_show_current_message(m)
-	elif m is Array:
-		message_queue = m
-		_show_next_message()
+	return finished
 
 
 func _show_current_message(m):
@@ -104,11 +77,13 @@ func _show_current_message(m):
 func _show_next_message():
 	if message_queue == []:
 		if is_active:
-			_slide_out()
+			tweener._slide_out()
 			is_active = false
+			finished.emit()
 		return
 		
 	message = message_queue.pop_front()
+	print(message)
 	_show_current_message(message)
 	processed_messages.append(message)
 

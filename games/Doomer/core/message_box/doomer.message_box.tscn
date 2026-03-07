@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://dioopxi2opgrn"]
+[gd_scene load_steps=21 format=4 uid="uid://dioopxi2opgrn"]
 
 [ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/message_box/doomer.message_box.gd" id="1_vr8u8"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://nodes/portrait/doomer.portrait.tscn" id="2_dlr4c"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_i2qql"]
+[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="4_rjo55"]
 
 [sub_resource type="Animation" id="Animation_7dksj"]
 resource_name = "Buzz"
@@ -916,3 +917,8 @@ layout_mode = 2
 visible = false
 position = Vector2(-1, 0)
 portrait = 2
+
+[node name="_Peekaboo_Tweener" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_rjo55")
+metadata/_custom_type_script = "uid://5fqo6d3fleu4"

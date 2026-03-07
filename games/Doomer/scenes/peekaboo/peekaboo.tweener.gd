@@ -11,3 +11,34 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+
+func _slide_in():
+	# var parent = self
+
+	var tween = parent.create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	var slide_duration = .5
+	
+	tween.tween_callback(func(): parent.position = Vector2(0, 300))
+	tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 0))
+	
+	tween.tween_property(parent, "position", Vector2.ZERO, slide_duration)
+	tween.parallel().tween_property(parent, "modulate", Color(1,1,1,1), 1)
+
+func _slide_out():
+	# var parent = self
+
+	var tween = parent.create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	var slide_duration = .5
+	
+	tween.tween_callback(func(): parent.position = Vector2(0, 0))
+	tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 1))
+	
+	tween.tween_property(parent, "position", Vector2(0, 300), slide_duration)
+	tween.parallel().tween_property(parent, "modulate", Color(1,1,1,0), 1)
+	

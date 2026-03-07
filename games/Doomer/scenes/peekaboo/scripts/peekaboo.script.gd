@@ -11,7 +11,7 @@ signal exited_range
 var last_distnace_from_player : Vector2 = Vector2.ZERO
 var current_distnace_from_player : Vector2 = Vector2.ZERO
 
-var parent : Node2D
+var parent : Object
 var mover : _Peekaboo_Mover
 var portrait : _Core_Portrait
 
@@ -25,9 +25,12 @@ enum ScriptTirgger {
 @export var trigger : ScriptTirgger
 @export var action_range : float = 10.0
 
+var is_running = false
+
 func _ready():
 	_get_components.call_deferred()
-	_on_automatic.call_deferred()
+	# _on_automatic.call_deferred()
+	_wrapped_callable.bind(_on_automatic).call_deferred()
 		
 func _get_components():
 	parent = get_parent()
@@ -64,15 +67,18 @@ func _process(delta : float):
 
 	_check_range_signals()
 	
-	entered_range.connect(_on_entered_range)
-	exited_range.connect(_on_exited_range)
+	
+	entered_range.connect(_wrapped_callable.bind(_on_entered_range))
+	exited_range.connect(_wrapped_callable.bind(_on_exited_range))
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		if (peekaboo.player.position - parent.position).length() < action_range:
-			_on_action_within_range_trigger()
+			# _on_action_within_range_trigger()
+			_wrapped_callable(_on_action_within_range_trigger)
 				
 	if (peekaboo.player.position - parent.position).length() < action_range:
-		_on_within_range()
+		# _on_within_range()
+		_wrapped_callable(_on_within_range)
 	
 func _on_action_within_range_trigger():
 	pass
@@ -88,6 +94,13 @@ func _on_within_range():
 	
 func _on_automatic():
 	pass
+
+func _wrapped_callable(c : Callable):
+	if is_running:
+		return
+	is_running = true
+	await c.call()
+	is_running = false
 
 func _log():
 	print("distance ", (peekaboo.player.position - parent.position).length())

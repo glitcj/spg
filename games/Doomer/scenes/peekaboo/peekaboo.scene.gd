@@ -10,6 +10,8 @@ class_name _PeekaBoo
 @onready var player =  %Player as CharacterBody2D
 
 
+@onready var message_window = %"Message Window" as _Doomer_Message_Box
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# await lambdas._slide_windows_in()
