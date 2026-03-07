@@ -1009,12 +1009,34 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Message Window" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Bottom/CenterContainer" instance=ExtResource("9_l5o1f")]
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+
+[node name="MarginContainer L2" type="MarginContainer" parent="SubViewport/CanvasLayer"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CanvasLayer/MarginContainer L2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Message Window" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer3/CenterContainer" instance=ExtResource("9_l5o1f")]
 unique_name_in_owner = true
 z_index = 10
 scale = Vector2(5, 5)
 visible_on_reset = true
-
-[node name="MarginContainer L2" type="MarginContainer" parent="SubViewport"]
-offset_right = 1080.0
-offset_bottom = 2400.0
