@@ -3,6 +3,8 @@ class_name _Peekaboo_Script
 
 signal script_finished
 
+@export var interrupt_player := false
+
 @export var peekaboo : _PeekaBoo
 
 signal entered_range
@@ -98,9 +100,15 @@ func _on_automatic():
 func _wrapped_callable(c : Callable):
 	if is_running:
 		return
+		
 	is_running = true
+	if interrupt_player:
+		peekaboo.player.is_active = false
+		
 	await c.call()
+	
 	is_running = false
+	peekaboo.player.is_active = true
 
 func _log():
 	print("distance ", (peekaboo.player.position - parent.position).length())

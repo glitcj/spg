@@ -15,8 +15,10 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if is_active:
-		_on_input()
+	if not is_active:
+		return
+		
+	_on_input()
 	
 func _on_input():
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
