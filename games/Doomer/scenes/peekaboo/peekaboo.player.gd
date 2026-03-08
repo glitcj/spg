@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	
 func _on_input():
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	peekaboo.player.move_and_collide(direction * peekaboo.player_speed)
+	peekaboo.map.player.move_and_collide(direction * peekaboo.player_speed)
 	peekaboo.lambdas.update_idle_animation()
 
 

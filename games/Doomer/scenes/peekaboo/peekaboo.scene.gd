@@ -7,7 +7,8 @@ class_name _PeekaBoo
 @onready var getter = %Getter as _PeekaBoo_Getter
 
 @export var player_speed = 10
-@onready var player =  %Player as CharacterBody2D
+# @onready var player =  %Player as CharacterBody2D
+@onready var map =  %Map as _Peekaboo_Map
 
 
 @onready var message_window = %"Message Window" as _Doomer_Message_Box

@@ -14,6 +14,7 @@ func _on_action_within_range_trigger():
 		await peekaboo.message_window.start(
 		["NPC: You got them !", "NPC: Go to the next location.."]
 		)
+		parent.queue_free()
 		return
 		
 	await peekaboo.message_window.start(

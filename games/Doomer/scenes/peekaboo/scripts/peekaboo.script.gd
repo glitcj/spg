@@ -61,7 +61,7 @@ func _get_components():
 		portrait = parent.find_child("_Core_Portrait")
 
 func _process(_delta: float):
-	if not peekaboo or not peekaboo.player:
+	if not peekaboo or not peekaboo.map.player:
 		return
 	_log()
 	_check_range_signals()
@@ -75,7 +75,7 @@ func _process(_delta: float):
 
 func _check_range_signals():
 	last_distnace_from_player = current_distnace_from_player
-	current_distnace_from_player = peekaboo.player.position - parent.position
+	current_distnace_from_player = peekaboo.map.player.position - parent.position
 
 	if scene_just_started:
 		scene_just_started = false
@@ -88,7 +88,7 @@ func _check_range_signals():
 		exited_range.emit()
 
 func _distance_to_player() -> float:
-	return (peekaboo.player.position - parent.position).length()
+	return (peekaboo.map.player.position - parent.position).length()
 
 func _wrapped_callable(c: Callable):
 	if trigger_is_running[c.get_method()]:
