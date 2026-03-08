@@ -954,6 +954,7 @@ gravity_scale = 0.0
 [node name="Script" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Enemy 1" node_paths=PackedStringArray("peekaboo")]
 script = ExtResource("11_4c825")
 peekaboo = NodePath("../../../../../../..")
+action_range = 100.0
 
 [node name="Lambdas" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Enemy 1"]
 
