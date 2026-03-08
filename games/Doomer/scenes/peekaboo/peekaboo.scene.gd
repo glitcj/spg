@@ -15,7 +15,7 @@ class_name _PeekaBoo
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# await lambdas._slide_windows_in()
-	pass
+	_Peekaboo_Variables.initialise_variables()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

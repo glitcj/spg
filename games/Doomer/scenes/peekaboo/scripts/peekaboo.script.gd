@@ -13,6 +13,8 @@ signal is_within_range
 @export var action_range : float = 10.0
 
 
+var variables = _Peekaboo_Variables
+
 enum ScriptTirgger {
 	Automatic, ActionWithinRange, WithinRange,
 	Collision, EnteredRange, ExitedRange

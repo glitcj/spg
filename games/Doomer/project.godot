@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 [display]
 
-window/size/viewport_width=240
-window/size/viewport_height=160
+window/size/viewport_width=1080
+window/size/viewport_height=2400
 window/size/always_on_top=true
 window/stretch/mode="viewport"
