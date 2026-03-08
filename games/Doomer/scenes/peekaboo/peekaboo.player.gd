@@ -11,6 +11,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	is_active = true	
+	print(peekaboo.scripts_currently_on_map())
+	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
+		print(script.is_running(), script.interrupt_player)
+		if script.is_running() and script.interrupt_player:
+			is_active = false
 	pass
 
 

@@ -845,6 +845,8 @@ sources/2 = SubResource("TileSetAtlasSource_cswif")
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7xtm"]
 
 [node name="Peekaboo Scene" type="SubViewportContainer"]
+offset_right = 1080.0
+offset_bottom = 2400.0
 script = ExtResource("1_3t57p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -874,9 +876,6 @@ offset_bottom = 2400.0
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/MarginContainer L1"]
 layout_mode = 2
 
-[node name="MarginContainer Top" type="MarginContainer" parent="SubViewport/MarginContainer L1/VBoxContainer"]
-layout_mode = 2
-
 [node name="MarginContainer Middle" type="MarginContainer" parent="SubViewport/MarginContainer L1/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -902,6 +901,7 @@ tile_set = SubResource("TileSet_w75v0")
 
 [node name="_on_automatic script" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map 1-1" node_paths=PackedStringArray("peekaboo")]
 script = ExtResource("15_a6aq7")
+interrupt_player = true
 peekaboo = NodePath("../../../../../../..")
 
 [node name="Player" type="CharacterBody2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map 1-1" node_paths=PackedStringArray("peekaboo")]
@@ -1003,15 +1003,6 @@ shape = SubResource("CircleShape2D_s7xtm")
 script = ExtResource("10_5dvgp")
 max_distance_per_step = 5.0
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="MarginContainer Bottom" type="MarginContainer" parent="SubViewport/MarginContainer L1/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Bottom"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 

@@ -26,7 +26,7 @@ var parent : Object
 var mover : _Peekaboo_Mover
 var portrait : _Core_Portrait
 var scene_just_started := true
-var is_running := false
+# var is_running := false
 
 
 var trigger_is_running : Dictionary = {}
@@ -94,13 +94,11 @@ func _wrapped_callable(c: Callable):
 	if trigger_is_running[c.get_method()]:
 		return
 	trigger_is_running[c.get_method()] = true
-	if interrupt_player:
-		peekaboo.player.is_active = false
-		
+
 	await c.call()
 	
 	trigger_is_running[c.get_method()] = false
-	peekaboo.player.is_active = true
+
 
 func _on_automatic():
 	pass
@@ -119,3 +117,6 @@ func _on_exited_range():
 
 func _log():
 	print("distance ", _distance_to_player())
+
+func is_running():
+	return trigger_is_running.values().any(func(x): return x)
