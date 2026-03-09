@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/peekaboo.map.gd" id="5_80738"]
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/doomer.message_box.tscn" id="9_l5o1f"]
 
-[node name="Peekaboo Scene" type="SubViewportContainer"]
+[node name="_PeekaBoo" type="SubViewportContainer"]
 offset_right = 1080.0
 offset_bottom = 2400.0
 script = ExtResource("1_3t57p")
@@ -52,20 +52,8 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 script = ExtResource("5_80738")
 
-[node name="_on_automatic script" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="2" node_paths=PackedStringArray("peekaboo")]
+[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="4" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
-
-[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="3" node_paths=PackedStringArray("peekaboo")]
-peekaboo = NodePath("../../../../../../..")
-
-[node name="_Peekaboo_Script" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/NPC 1" index="0" node_paths=PackedStringArray("peekaboo")]
-peekaboo = NodePath("../../../../../../../..")
-
-[node name="Script" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 1" index="0" node_paths=PackedStringArray("peekaboo")]
-peekaboo = NodePath("../../../../../../../..")
-
-[node name="Script" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 2" index="0" node_paths=PackedStringArray("peekaboo")]
-peekaboo = NodePath("../../../../../../../..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 

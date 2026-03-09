@@ -8,10 +8,12 @@ signal actioned_within_range
 signal is_within_range
 
 @export var interrupt_player := false
-@export var peekaboo : _PeekaBoo
+# @export var peekaboo : _PeekaBoo
 @export var trigger : ScriptTirgger
 @export var action_range : float = 10.0
 
+
+@onready var peekaboo : _PeekaBoo = find_parent("_PeekaBoo")
 
 var variables = _Peekaboo_Variables
 
