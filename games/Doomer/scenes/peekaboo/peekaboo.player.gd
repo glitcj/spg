@@ -7,6 +7,13 @@ var is_active = true
 
 
 var direction = Vector2.ZERO as Vector2
+var next_direction = Vector2.ZERO:
+	set(v):
+		next_direction = v
+		%"future position".position = next_direction * 100
+		
+
+var input_just_pressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,19 +22,27 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	is_active = true	
-	print(peekaboo.scripts_currently_on_map())
+	
 	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
 		print(script.is_running(), script.interrupt_player)
 		if script.is_running() and script.interrupt_player:
 			is_active = false
-	pass
+
+	
+	_on_input()
 
 
 func _physics_process(delta: float) -> void:
 	if not is_active:
 		return
 		
-	_on_input()
+	if next_direction != direction:
+		if input_just_pressed:
+			input_just_pressed = false
+		else:
+			if %"future position".get_overlapping_bodies().size() == 0:
+				direction = next_direction
+
 	_update_movement()
 	
 func _valid_direction_is_pressed():
@@ -39,15 +54,13 @@ func _valid_direction_is_pressed():
 	
 func _on_input():
 	if _valid_direction_is_pressed():
-		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	# else:
-	# 	direction = Vector2.ZERO
-	
-	
+		next_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		input_just_pressed = true
+
+
 	if Input.is_action_just_pressed("ui_accept"):
 		direction = Vector2.ZERO
-	# peekaboo.map.player.move_and_collide(direction * peekaboo.player_speed)
-	# peekaboo.lambdas.update_idle_animation()
+		next_direction = Vector2.ZERO
 
 
 func _update_movement():
@@ -55,11 +68,3 @@ func _update_movement():
 		return
 	peekaboo.map.player.move_and_collide(direction * peekaboo.player_speed)
 	peekaboo.lambdas.update_idle_animation()
-
-
-"""
-func _on_input_move_and_slide_player():
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	peekaboo.player.velocity = direction * peekaboo.player_speed
-	peekaboo.player.move_and_collide(direction * peekaboo.player_speed)
-"""
