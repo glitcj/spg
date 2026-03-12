@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://ca8vvptjr324n"]
+[gd_scene load_steps=24 format=3 uid="uid://ca8vvptjr324n"]
 
 [ext_resource type="Script" uid="uid://7bue6k2pdo5t" path="res://core/core.portrait.gd" id="1_801td"]
 [ext_resource type="Texture2D" uid="uid://ddqq7cd7mui6k" path="res://assets/peekaboo/hood.png" id="1_jrgv2"]
+[ext_resource type="Shader" uid="uid://doh3w7ir2pjh1" path="res://scenes/peekaboo/peekaboo.shader.enemy.gdshader" id="2_waupg"]
 
 [sub_resource type="Animation" id="Animation_mh3n7"]
 length = 0.001
@@ -90,6 +91,9 @@ _data = {
 &"move_right": SubResource("Animation_8wpup"),
 &"move_up": SubResource("Animation_b4mb6")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7rm7"]
+shader = ExtResource("2_waupg")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4mb6"]
 atlas = ExtResource("1_jrgv2")
@@ -195,4 +199,7 @@ libraries = {
 autoplay = "move_down"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("ShaderMaterial_w7rm7")
 sprite_frames = SubResource("SpriteFrames_l6o0d")

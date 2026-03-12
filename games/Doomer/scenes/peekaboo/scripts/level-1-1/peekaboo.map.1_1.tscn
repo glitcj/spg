@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=40 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Texture2D" uid="uid://cklccjgem4vvs" path="res://assets/ninja/Backgrounds/Tilesets/TilesetFloor.png" id="1_mxsbq"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/ninja/Backgrounds/Tilesets/TilesetField.png" id="2_drndv"]
@@ -914,11 +914,22 @@ sources/2 = SubResource("TileSetAtlasSource_cswif")
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ntr3"]
 
 [sub_resource type="Gradient" id="Gradient_2ylu0"]
-offsets = PackedFloat32Array(0.0064794817, 1)
-colors = PackedColorArray(0.27387285, 0.27387273, 0.2738727, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.0064794817, 0.99568033)
+colors = PackedColorArray(1, 1, 1, 1, 0.40784314, 0.40784314, 0.40784314, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r103f"]
 gradient = SubResource("Gradient_2ylu0")
+width = 1028
+height = 1028
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_2ntr3"]
+offsets = PackedFloat32Array(0, 0.41468683)
+colors = PackedColorArray(0.90576947, 0.90576947, 0.90576947, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6de6d"]
+gradient = SubResource("Gradient_2ntr3")
 width = 1028
 height = 1028
 fill = 1
@@ -978,10 +989,19 @@ unique_name_in_owner = true
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_2ntr3")
 
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
-energy = 2.0
+[node name="PointLight2D 1" type="PointLight2D" parent="Player"]
+visible = false
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_r103f")
+
+[node name="PointLight2D 2" type="PointLight2D" parent="Player"]
+light_mask = 2
+visibility_layer = 2
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_6de6d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-930.0001, 575)
@@ -1017,6 +1037,7 @@ gravity_scale = 0.0
 
 [node name="_Peekaboo_Script" type="Node" parent="NPC 2"]
 script = ExtResource("8_2ntr3")
+messages = ["Some enemies can only be seen by light.", "You can sense them, bugs show in their wake."]
 action_range = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 2"]
@@ -1081,3 +1102,5 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wptde")
+
+[editable path="Enemy 1/_Core_Portrait"]
