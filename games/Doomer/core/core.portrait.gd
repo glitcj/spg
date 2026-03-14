@@ -21,8 +21,8 @@ enum EnemySprite {default, red}
 
 
 func _update_material():
+	# TODO: Understand more about light masks, and shaders, light bitmasks arent simple filters
 	if %AnimatedSprite2D:
-			
 		if not is_ghost:
 			%AnimatedSprite2D.material = null
 			%AnimatedSprite2D.light_mask = 0

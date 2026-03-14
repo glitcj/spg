@@ -6,6 +6,8 @@ class_name _PeekaBoo_Player
 var is_active = true
 
 
+@onready var tweener = %_Peekaboo_Tweener as _Peekaboo_Tweener
+
 var direction = Vector2.ZERO as Vector2
 var next_direction = Vector2.ZERO:
 	set(v):
@@ -53,6 +55,9 @@ func _valid_direction_is_pressed():
 	return false
 	
 func _on_input():
+	if Input.is_action_just_pressed("ui_select"):
+		tweener.highlight()
+		
 	if _valid_direction_is_pressed():
 		next_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		input_just_pressed = true

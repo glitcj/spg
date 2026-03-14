@@ -52,3 +52,12 @@ func _move_linearly():
 
 func _move_exponentially():
 	parent.move_and_collide((destination - parent.position) / steps)
+
+
+
+func move_to_tile(tile_position : Vector2):
+	var peekaboo = find_parent("_PeekaBoo") as _PeekaBoo
+	var local_pos = peekaboo.map.l1.map_to_local(tile_position)
+	var global_pos = peekaboo.map.l1.to_global(local_pos)
+	# destination = global_pos
+	move(global_pos - get_parent().position)

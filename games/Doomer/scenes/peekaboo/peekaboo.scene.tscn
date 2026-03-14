@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d08p5bfc634r"]
+[gd_scene load_steps=6 format=3 uid="uid://d08p5bfc634r"]
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://47v8qk0virue" path="res://scenes/peekaboo/peekaboo.getter.gd" id="2_s7xtm"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
 [ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/scripts/level-1-1/peekaboo.map.1_1.tscn" id="4_n54ed"]
-[ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/peekaboo.map.gd" id="5_80738"]
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/doomer.message_box.tscn" id="9_l5o1f"]
 
 [node name="_PeekaBoo" type="SubViewportContainer"]
@@ -50,7 +49,6 @@ size_flags_vertical = 4
 
 [node name="Map" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer" instance=ExtResource("4_n54ed")]
 unique_name_in_owner = true
-script = ExtResource("5_80738")
 
 [node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")

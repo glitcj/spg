@@ -10,7 +10,6 @@ class_name _PeekaBoo
 # @onready var player =  %Player as CharacterBody2D
 @onready var map =  %Map as _Peekaboo_Map
 
-
 @onready var message_window = %"Message Window" as _Doomer_Message_Box
 
 
