@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=37 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Texture2D" uid="uid://cklccjgem4vvs" path="res://assets/ninja/Backgrounds/Tilesets/TilesetFloor.png" id="1_mxsbq"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/ninja/Backgrounds/Tilesets/TilesetField.png" id="2_drndv"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://df5fvc4fwhmai" path="res://scenes/peekaboo/scripts/level-1-1/script.enemy.1-1.gd" id="8_fboiy"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.character.tscn" id="9_3e75c"]
 [ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="10_b6854"]
-[ext_resource type="Shader" uid="uid://doh3w7ir2pjh1" path="res://scenes/peekaboo/peekaboo.shader.enemy.gdshader" id="11_6de6d"]
 [ext_resource type="Script" uid="uid://0t6ea4n70ikf" path="res://scenes/peekaboo/scripts/level-1-1/script.enemy.1-2.gd" id="11_6ny3k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kcels"]
@@ -931,9 +930,6 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pa1n3"]
-shader = ExtResource("11_6de6d")
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7xtm"]
 
 [node name="_Peekaboo_Map 1-1" type="Node2D"]
@@ -1036,15 +1032,13 @@ gravity_scale = 0.0
 script = ExtResource("8_fboiy")
 action_range = 100.0
 
-[node name="Lambdas" type="Node" parent="Enemy 1"]
-
 [node name="_Core_Portrait" parent="Enemy 1" instance=ExtResource("9_3e75c")]
 unique_name_in_owner = true
 scale = Vector2(3.5, 3.5)
+sprite = 1
 
 [node name="AnimatedSprite2D" parent="Enemy 1/_Core_Portrait" index="1"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_pa1n3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy 1"]
 scale = Vector2(5, 5)
@@ -1054,14 +1048,6 @@ shape = SubResource("CircleShape2D_s7xtm")
 script = ExtResource("10_b6854")
 max_distance_per_step = 5.0
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="RayCast2D" type="RayCast2D" parent="Enemy 1"]
-visible = false
-target_position = Vector2(0, 500)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemy 1"]
-visible = false
-polygon = PackedVector2Array(-50, 10, 50, 10, 0, 0)
 
 [node name="Enemy 2" type="RigidBody2D" parent="."]
 position = Vector2(-400, -446)

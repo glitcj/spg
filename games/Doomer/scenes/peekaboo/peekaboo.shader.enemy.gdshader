@@ -1,6 +1,7 @@
 shader_type canvas_item;
 render_mode light_only;
 
+
 void fragment() {
     vec4 tex = texture(TEXTURE, UV);
     // Set RGB to 0 so we don't "double add" the brightness.

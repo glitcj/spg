@@ -55,6 +55,9 @@ script = ExtResource("5_80738")
 [node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
 
+[node name="_Core_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 2" index="2"]
+is_ghost = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 
 [node name="MarginContainer L2" type="MarginContainer" parent="SubViewport/CanvasLayer"]
@@ -88,3 +91,4 @@ scale = Vector2(5, 5)
 visible_on_reset = true
 
 [editable path="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map"]
+[editable path="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 1/_Core_Portrait"]
