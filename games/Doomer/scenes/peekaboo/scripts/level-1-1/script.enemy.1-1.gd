@@ -8,6 +8,7 @@ func _on_automatic():
 		await mover.move_to_tile(Vector2(2,2))
 
 		# await mover.finished_movement
+
 		await mover.wait(1.0)
 		
 		# mover.move(Vector2(0, -500))

@@ -53,6 +53,9 @@ unique_name_in_owner = true
 [node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
 
+[node name="Enemy 2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="8"]
+position = Vector2(-185, -216)
+
 [node name="_Core_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 2" index="2"]
 is_ghost = true
 
