@@ -60,4 +60,26 @@ func move_to_tile(tile_position : Vector2):
 	var local_pos = peekaboo.map.l1.map_to_local(tile_position)
 	var global_pos = peekaboo.map.l1.to_global(local_pos)
 	# destination = global_pos
-	move(global_pos - get_parent().position)
+	
+	print(local_pos, global_pos, global_pos - get_parent().global_position)
+	# 	get_parent().position
+	
+	var tween_displacement = global_pos - get_parent().global_position as Vector2
+	
+	var tween = get_parent().create_tween()
+	# tween.set_ease(Tween.EASE_OUT)
+	# tween.set_trans(Tween.TRANS_CUBIC)
+	var duration = .5
+	
+	## tween.tween_callback(func(): parent.position = Vector2(0, 0))
+	## tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 1))
+	
+	
+	## tween.tween_property(parent, "modulate", Color(1,0,1,1), duration)
+	tween.parallel().tween_property(parent, "position", parent.position + tween_displacement, duration)
+	
+	await tween.finished
+	
+	
+	# move(global_pos - get_parent().global_position)
+	# move(displacement)
