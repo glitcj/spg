@@ -1057,7 +1057,9 @@ shape = SubResource("CircleShape2D_s7xtm")
 
 [node name="_Peekaboo_Mover" type="Node" parent="Enemy 1"]
 script = ExtResource("10_b6854")
+type = 2
 max_distance_per_step = 5.0
+map_position = Vector2(2, -4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Enemy 2" type="RigidBody2D" parent="."]
