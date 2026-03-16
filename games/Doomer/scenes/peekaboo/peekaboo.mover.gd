@@ -1,3 +1,4 @@
+# refresh
 @tool # REQUIRED: Runs the script in the editor
 extends Node
 class_name _Peekaboo_Mover
@@ -5,18 +6,20 @@ class_name _Peekaboo_Mover
 signal finished_movement
 enum MovementType {Linear, Random, Exponential}
 
+@export var peekaboo : _PeekaBoo
+
 @onready var parent = get_parent() as Node2D
 
 @export var type = MovementType.Linear as MovementType
 @export var steps = 50
 @export var max_distance_per_step = 20.0
 
-@export var map_position = Vector2(0, 0):
+@export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
 		map_position = v
-		# Safety check: Don't run logic if we aren't inside the Tree yet
-		if is_inside_tree():
-			_quantise_position()
+		print("Quantising from setter.")
+		_quantise_position()
+
 
 func _ready() -> void:
 	# Ensure parent is valid in the editor
@@ -27,31 +30,61 @@ func _ready() -> void:
 		# Sync position once when the scene is opened
 		_quantise_position()
 		return
-
 func _quantise_position():
-	# 1. Get the PeekaBoo node
-	var peekaboo = find_parent("_PeekaBoo")
-	if not peekaboo: 
-		return # Stop if we can't find the map system
+	print("--- Quantise Started ---")
 	
-	# 2. Access the TileMapLayer (Ensure your path to .l1 is correct)
-	var tile_map_layer = peekaboo.map.l1 as TileMapLayer
-	if not tile_map_layer:
+	if not is_inside_tree():
+		print("FAIL: Not inside tree")
 		return
-
-	# 3. Convert Map -> Local -> Global
-	var local_center = tile_map_layer.map_to_local(map_position)
-	var global_center = tile_map_layer.to_global(local_center)
+		
+	if not peekaboo:
+		print("FAIL: Peekaboo variable is null")
+		return
 	
-	# 4. Apply to parent (checking if parent exists first)
-	if parent:
-		parent.global_position = global_center
-	elif get_parent() is Node2D:
-		get_parent().global_position = global_center
+	# 1. Find the Map node
+	var map_node = peekaboo.find_child("Map", true, false) 
+	if not map_node:
+		print("FAIL: Could not find child 'Map' inside ", peekaboo.name)
+		return
+	print("SUCCESS: Found Map node: ", map_node.name)
 
-# ... rest of your movement logic ...
+	# 2. Find the Layer (l1)
+	var layer = map_node.find_child("l1", true, false) as TileMapLayer
+	if not layer:
+		if "l1" in map_node:
+			layer = map_node.l1
+			print("SUCCESS: Found l1 via property access")
+			
+	if not layer:
+		print("FAIL: Could not find TileMapLayer 'l1'")
+		return
+	print("SUCCESS: Found Layer: ", layer.name)
 
+	# 3. Calculate Position
+	var grid_pos = Vector2i(map_position)
+	var local_center = layer.map_to_local(grid_pos)
+	var global_center = layer.to_global(local_center)
+	print("CALC: Grid", grid_pos, " -> Global", global_center)
+	
+	# 4. Apply to Parent
+	var p = get_parent()
+	if not p:
+		print("FAIL: Parent is null")
+		return
+		
+	print("ATTEMPTING MOVE: Parent is ", p.name, " (Type: ", p.get_class(), ")")
+	
+	if p is RigidBody2D:
+		p.freeze = true # Required for RigidBody to move in editor
+		p.global_position = global_center
+		print("MOVE COMPLETE: RigidBody2D positioned and frozen.")
+	elif p is Node2D:
+		p.global_position = global_center
+		print("MOVE COMPLETE: Node2D positioned.")
+	else:
+		print("FAIL: Parent is not a Node2D/RigidBody2D")
 
+	print("--- Quantise Finished ---")
 
 func move_to_tile(tile_position : Vector2):
 	
@@ -113,7 +146,6 @@ func wait(time : float = 1.0):
 
 
 
-"""
 
 @export_group("Editor Tools")
 @export var snap_to_grid: bool = false:
@@ -125,7 +157,8 @@ func wait(time : float = 1.0):
 
 # This does the REVERSE of _quantise_position
 func _sync_map_to_actual_position():
-	var peekaboo = find_parent("_PeekaBoo")
+	# var peekaboo = find_parent("_PeekaBoo")
+	
 	if not peekaboo or not is_inside_tree():
 		printerr("Cannot snap: _PeekaBoo parent not found.")
 		return
@@ -146,4 +179,3 @@ func _sync_map_to_actual_position():
 		# 4. Force the visual snap immediately
 		_quantise_position()
 		print("Snapped to: ", map_position)
-"""

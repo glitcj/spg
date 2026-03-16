@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://d08p5bfc634r"]
+[gd_scene load_steps=8 format=3 uid="uid://d08p5bfc634r"]
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://47v8qk0virue" path="res://scenes/peekaboo/peekaboo.getter.gd" id="2_s7xtm"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
 [ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/scripts/level-1-1/peekaboo.map.1_1.tscn" id="4_n54ed"]
+[ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="5_80738"]
 [ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/doomer.message_box.tscn" id="9_l5o1f"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7f4js"]
 
 [node name="_PeekaBoo" type="SubViewportContainer"]
 offset_right = 1080.0
@@ -53,11 +56,40 @@ unique_name_in_owner = true
 [node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
 
+[node name="Enemy 1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="7"]
+position = Vector2(321, 64)
+freeze = true
+
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 1" index="3" node_paths=PackedStringArray("peekaboo")]
+peekaboo = NodePath("../../../../../../../..")
+map_position = Vector2i(2, 0)
+
 [node name="Enemy 2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map" index="8"]
-position = Vector2(-185, -216)
+position = Vector2(65, -576)
+freeze = true
 
 [node name="_Core_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 2" index="2"]
 is_ghost = true
+
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Map/Enemy 2" index="4" node_paths=PackedStringArray("peekaboo")]
+peekaboo = NodePath("../../../../../../../..")
+map_position = Vector2i(0, -5)
+
+[node name="Node2D" type="Node2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer"]
+position = Vector2(577, 448)
+
+[node name="Node2" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Node2D" node_paths=PackedStringArray("peekaboo")]
+script = ExtResource("5_80738")
+peekaboo = NodePath("../../../../../../..")
+map_position = Vector2i(4, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Node2D"]
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_7f4js")
+
+[node name="_Peekaboo_Mover" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Node2D"]
+script = ExtResource("5_80738")
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 
