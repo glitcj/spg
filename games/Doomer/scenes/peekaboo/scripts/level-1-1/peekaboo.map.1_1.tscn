@@ -934,7 +934,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7xtm"]
 
-[node name="_Peekaboo_Map 1-1" type="Node2D"]
+[node name="_Peekaboo_Map" type="Node2D"]
 script = ExtResource("1_pa1n3")
 
 [node name="L1" type="TileMapLayer" parent="."]
@@ -1057,11 +1057,13 @@ shape = SubResource("CircleShape2D_s7xtm")
 
 [node name="_Peekaboo_Mover" type="Node" parent="Enemy 1"]
 script = ExtResource("10_b6854")
+map_position = Vector2i(4, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Enemy 2" type="RigidBody2D" parent="."]
-position = Vector2(-400, -446)
+position = Vector2(-191, 64)
 gravity_scale = 0.0
+freeze = true
 
 [node name="Script" type="Node" parent="Enemy 2"]
 script = ExtResource("11_6ny3k")
@@ -1078,6 +1080,6 @@ shape = SubResource("CircleShape2D_s7xtm")
 
 [node name="_Peekaboo_Mover" type="Node" parent="Enemy 2"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(3, 3)
+map_position = Vector2i(-2, 0)
 
 [editable path="Enemy 1/_Core_Portrait"]
