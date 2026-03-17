@@ -7,6 +7,8 @@ var is_active = true
 
 
 @onready var tweener = %_Peekaboo_Tweener as _Peekaboo_Tweener
+@onready var mover = find_child("_Peekaboo_Mover") as _Peekaboo_Mover
+
 
 var direction = Vector2.ZERO as Vector2
 var next_direction = Vector2.ZERO:
@@ -43,7 +45,10 @@ func _physics_process(delta: float) -> void:
 			input_just_pressed = false
 		else:
 			if %"future position".get_overlapping_bodies().size() == 0:
+				
 				direction = next_direction
+				await tweener.correct_position()
+				# await mover.update_map_position()
 
 	_update_movement()
 	

@@ -3,17 +3,16 @@ extends _Peekaboo_Script
 
 func _on_automatic():
 	while true:
-		# mover.move(Vector2(0, 500))
-		portrait.animation_player.play("move_down")
-		await mover.move(Vector2i(0,-2))
+		portrait.animation_player.play("move_left")
+		await mover.move(Vector2i(-2,0))
 
 		# await mover.finished_movement
 
 		await mover.wait(1.0)
 		
 		# mover.move(Vector2(0, -500))
-		portrait.animation_player.play("move_up")
-		await mover.move(Vector2i(0,2))
+		portrait.animation_player.play("move_right")
+		await mover.move(Vector2i(2,0))
 		# await mover.finished_movement
 		await mover.wait(1.0)
 		

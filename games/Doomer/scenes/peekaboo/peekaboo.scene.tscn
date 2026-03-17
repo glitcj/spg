@@ -56,23 +56,11 @@ unique_name_in_owner = true
 [node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
 
-[node name="Enemy 1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="7"]
-position = Vector2(321, 320)
-freeze = true
-
-[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1" index="3" node_paths=PackedStringArray("peekaboo")]
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1" index="1" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../../..")
 
-[node name="Enemy 2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="8"]
-position = Vector2(321, -576)
-freeze = true
-
-[node name="_Core_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 2" index="2"]
-is_ghost = true
-
-[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 2" index="4" node_paths=PackedStringArray("peekaboo")]
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 2" index="2" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../../..")
-map_position = Vector2i(2, -5)
 
 [node name="Node2D" type="Node2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer"]
 position = Vector2(577, 448)
@@ -123,4 +111,4 @@ scale = Vector2(5, 5)
 visible_on_reset = true
 
 [editable path="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map"]
-[editable path="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1/_Core_Portrait"]
+[editable path="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1/RigidBody2D/_Core_Portrait"]
