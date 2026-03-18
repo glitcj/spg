@@ -1,5 +1,5 @@
 extends Node2D
-class_name _Core_Portrait
+class_name _Peekaboo_Portrait
 
 enum EnemySprite {default, red}
 

@@ -985,7 +985,7 @@ shape = SubResource("CircleShape2D_wptde")
 unique_name_in_owner = true
 
 [node name="future position collider" type="CollisionShape2D" parent="Player/future position"]
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_x570f")
 
 [node name="PointLight2D Enemies" type="PointLight2D" parent="Player"]
