@@ -9,6 +9,7 @@ var is_active = true
 @onready var tweener = %_Peekaboo_Tweener as _Peekaboo_Tweener
 @onready var mover = find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 
+@onready var map = find_parent("_Peekaboo_Map")
 
 var direction = Vector2.ZERO as Vector2
 var next_direction = Vector2.ZERO:
@@ -35,7 +36,6 @@ func _process(delta: float) -> void:
 	
 	_on_input()
 
-
 func _physics_process(delta: float) -> void:
 	if not is_active:
 		return
@@ -47,10 +47,39 @@ func _physics_process(delta: float) -> void:
 			if %"future position".get_overlapping_bodies().size() == 0:
 				
 				direction = next_direction
-				await tweener.correct_position()
-				# await mover.update_map_position()
+				# await tweener.correct_position()
 
-	_update_movement()
+	# _update_movement()
+	# _update_movement_tween()
+	if mover.is_moving:
+		return
+	
+	var tile_position_delta = direction / direction.abs() as Vector2i
+	
+	# mover.move(mover.map_position + tile_position_delta)
+	print(tile_position_delta)
+	
+	if mover.tile_has_collision(mover.map_position + tile_position_delta):
+		return
+	
+	# for body in %"future position".get_overlapping_bodies().size() > 0:
+	for body in %"future position".get_overlapping_bodies():
+		# if body is not TileMapLayer and body and body is not CharacterBody2D:
+			
+		# if typeof(body) not in [TileMapLayer, CharacterBody2D]:
+		if body is RigidBody2D and body is not CharacterBody2D:
+			body = body as RigidBody2D
+			body.collision_mask
+			print( %"future position".get_overlapping_bodies())
+
+			direction = Vector2.ZERO
+			next_direction = Vector2.ZERO
+			
+			return
+	
+	if tile_position_delta != Vector2i.ZERO:
+		print(tile_position_delta, mover.map_position + tile_position_delta)
+		await mover.move(tile_position_delta)
 	
 func _valid_direction_is_pressed():
 	

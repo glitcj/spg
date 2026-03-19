@@ -8,6 +8,8 @@ enum MovementType {Linear, Random, Exponential}
 @export var peekaboo : _PeekaBoo
 @export var type = MovementType.Linear as MovementType
 
+@export var speed = 0.5 as float
+
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
 		map_position = v
@@ -15,7 +17,7 @@ enum MovementType {Linear, Random, Exponential}
 		# correct_position()
 		
 		
-		
+var is_moving = false
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		_quantise_position()
@@ -26,7 +28,8 @@ func _quantise_position():
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
 	var map_tile_global_center = map.l1.to_global(map.l1.map_to_local(map_position))
 	
-	get_parent().find_child("RigidBody2D").freeze = Engine.is_editor_hint()
+	if get_parent().has_node("RigidBody2D"):
+		get_parent().find_child("RigidBody2D").freeze = Engine.is_editor_hint()
 	get_parent().global_position = map_tile_global_center
 	
 func move_to_tile(tile_position : Vector2i):
@@ -44,8 +47,11 @@ func move(tile_vector : Vector2i):
 	
 	var target_global = layer.to_global(layer.map_to_local(map_position + tile_vector))
 	var displacement = target_global - get_parent().global_position
+	
+	is_moving = true
 	await displace(displacement)
 	map_position = map_position + tile_vector
+	is_moving = false
 
 
 func displace(displacement : Vector2):
@@ -54,7 +60,7 @@ func displace(displacement : Vector2):
 	if type == MovementType.Exponential:
 		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
-	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 2.0).finished
+	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 1/speed).finished
 
 
 func wait(time : float = 1.0):
@@ -74,24 +80,25 @@ func get_map_position():
 	var layer = map.l1 as TileMapLayer
 	
 	return layer.local_to_map(layer.to_local(get_parent().global_position))
-
-
-
-
-
-"""
-func correct_position():
 	
+	
+	
+	
+func tile_has_collision(tile_pos: Vector2i) -> bool:
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	if not map:
-		return
-	var layer = map.l1 as TileMapLayer
+	# var layer = map.l3 as TileMapLayer
+	for layer : TileMapLayer in map.layers:
+		
+		# 1. Get the TileData at the specific grid position
+		var tile_data = layer.get_cell_tile_data(tile_pos)
+		
+		# 2. If the cell is empty, tile_data will be null
+		if tile_data == null:
+			# return true
+			continue
 	
-
-	var target_global_position = layer.to_global(layer.map_to_local(map_position))
-	var tween = get_parent().create_tween()
-
-	var duration = 10
-	tween.tween_property(get_parent(), "global_position", target_global_position, duration)
-	await tween.finished
-"""
+		# 3. Check the collision polygons in Physics Layer 0
+		# get_collision_polygons_count returns 0 if no collision is defined
+		if tile_data.get_collision_polygons_count(0) > 0:
+			return true
+	return false

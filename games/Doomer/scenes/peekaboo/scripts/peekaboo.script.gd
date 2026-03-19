@@ -26,7 +26,7 @@ var last_distnace_from_player : Vector2 = Vector2.ZERO
 var current_distnace_from_player : Vector2 = Vector2.ZERO
 var parent : Object
 var mover : _Peekaboo_Mover
-var portrait : _Core_Portrait
+var portrait : _Peekaboo_Portrait
 var scene_just_started := true
 # var is_running := false
 
@@ -59,8 +59,8 @@ func _get_components():
 	parent = get_parent()
 	if parent.find_children("*", "_Peekaboo_Mover").size() > 0:
 		mover = parent.find_child("_Peekaboo_Mover")
-	if parent.find_children("*", "_Core_Portrait").size() > 0:
-		portrait = parent.find_child("_Core_Portrait")
+	if parent.find_children("*", "_Peekaboo_Portrait").size() > 0:
+		portrait = parent.find_child("_Peekaboo_Portrait")
 
 func _process(_delta: float):
 	if not peekaboo or not peekaboo.map.player:

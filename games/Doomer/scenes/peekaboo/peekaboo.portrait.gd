@@ -1,12 +1,12 @@
 extends Node2D
 class_name _Peekaboo_Portrait
 
-enum EnemySprite {default, red}
+enum EnemySprite {cream, red}
 
 # const GHOST_MATERIAL = preload("res://scenes/peekaboo/peekaboo.shader.enemy.gdshader")
 
 
-@export var sprite : EnemySprite = EnemySprite.default:
+@export var sprite : EnemySprite = EnemySprite.cream:
 	set(v):
 		%AnimatedSprite2D.animation = EnemySprite.keys()[v]
 		sprite = v
