@@ -3,15 +3,18 @@ extends Node2D
 class_name _Peekaboo_Map
 
 @onready var player : CharacterBody2D = %Player
-@onready var l1 =  %L1 as TileMapLayer
+@onready var l1 = %L1 as TileMapLayer
+@onready var layers = find_children("L*", "TileMapLayer")
 
-@onready var layers =  find_children("L*", "TileMapLayer")
+@export var quantize_all : bool:
+	set(_v): _quantize_all()
 
-# Called when the node enters the scene tree for the first time.
+func _quantize_all():
+	for mover in find_children("*", "_Peekaboo_Mover", true, false):
+		(mover as _Peekaboo_Mover)._quantise_position()
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

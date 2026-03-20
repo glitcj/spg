@@ -26,7 +26,8 @@ func _quantise_position():
 	if not is_inside_tree():
 		return
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var map_tile_global_center = map.l1.to_global(map.l1.map_to_local(map_position))
+	var l1 = map.find_child("L1") as TileMapLayer
+	var map_tile_global_center = l1.to_global(l1.map_to_local(map_position))
 	
 	if get_parent().has_node("RigidBody2D"):
 		get_parent().find_child("RigidBody2D").freeze = Engine.is_editor_hint()
