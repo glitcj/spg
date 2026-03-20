@@ -1,8 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://ca8vvptjr324n"]
+[gd_scene load_steps=44 format=3 uid="uid://ca8vvptjr324n"]
 
 [ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/peekaboo.portrait.gd" id="1_d26c4"]
 [ext_resource type="Shader" uid="uid://doh3w7ir2pjh1" path="res://scenes/peekaboo/peekaboo.shader.enemy.gdshader" id="2_nh0p8"]
 [ext_resource type="Texture2D" uid="uid://ddqq7cd7mui6k" path="res://assets/peekaboo/hood.png" id="3_hqufs"]
+[ext_resource type="Texture2D" uid="uid://cbynwx8akyvtk" path="res://assets/peekaboo/Peeka-Sheet.png" id="4_nh0p8"]
 
 [sub_resource type="Animation" id="Animation_mh3n7"]
 length = 0.001
@@ -160,6 +161,30 @@ region = Rect2(48, 336, 48, 48)
 atlas = ExtResource("3_hqufs")
 region = Rect2(96, 336, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqufs"]
+atlas = ExtResource("4_nh0p8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iwj8"]
+atlas = ExtResource("4_nh0p8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r77mo"]
+atlas = ExtResource("4_nh0p8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1p7n"]
+atlas = ExtResource("4_nh0p8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tir56"]
+atlas = ExtResource("4_nh0p8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mw87"]
+atlas = ExtResource("4_nh0p8")
+region = Rect2(160, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_waupg"]
 atlas = ExtResource("3_hqufs")
 region = Rect2(0, 0, 48, 48)
@@ -253,6 +278,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hqufs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iwj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqufs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r77mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1p7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r77mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r77mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1p7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r77mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tir56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mw87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tir56")
+}],
+"loop": true,
+"name": &"player",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_waupg")
 }, {
 "duration": 1.0,
@@ -310,4 +376,4 @@ light_mask = 2
 visibility_layer = 2
 material = SubResource("ShaderMaterial_waupg")
 sprite_frames = SubResource("SpriteFrames_l6o0d")
-animation = &"cream"
+animation = &"player"

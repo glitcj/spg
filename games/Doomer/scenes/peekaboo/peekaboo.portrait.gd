@@ -1,10 +1,7 @@
 extends Node2D
 class_name _Peekaboo_Portrait
 
-enum EnemySprite {cream, red}
-
-# const GHOST_MATERIAL = preload("res://scenes/peekaboo/peekaboo.shader.enemy.gdshader")
-
+enum EnemySprite {cream, red, player}
 
 @export var sprite : EnemySprite = EnemySprite.cream:
 	set(v):
@@ -17,7 +14,6 @@ enum EnemySprite {cream, red}
 		_update_material()
 
 @onready var animation_player : AnimationPlayer = %AnimationPlayer as AnimationPlayer
-
 
 
 func _update_material():
@@ -37,17 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-
-func face_down():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 0, 0.0001)
-	
-func face_right():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 6, 0.0001)
-	
-func face_left():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 3, 0.0001)
-	
-func face_up():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 11, 0.0001)
-	
+func face_down(): %AnimationPlayer.play("move_down")
+func face_up(): %AnimationPlayer.play("move_up")
+func face_left(): %AnimationPlayer.play("move_left")
+func face_right(): %AnimationPlayer.play("move_right")

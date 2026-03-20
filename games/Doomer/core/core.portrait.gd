@@ -39,15 +39,15 @@ func _process(delta: float) -> void:
 
 
 
-func face_down():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 0, 0.0001)
-	
-func face_right():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 6, 0.0001)
-	
-func face_left():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 3, 0.0001)
-	
-func face_up():
-	create_tween().tween_property(%AnimatedSprite2D, "frame", 11, 0.0001)
-	
+var _tween : Tween
+
+func _play(frames: Array):
+	if _tween: _tween.kill()
+	_tween = create_tween().set_loops()
+	for f in frames:
+		_tween.tween_property(%AnimatedSprite2D, "frame", f, 1.0)
+
+func face_down():  _play([0, 1, 2])
+func face_right(): _play([6, 7, 8])
+func face_left():  _play([3, 4, 5])
+func face_up():    _play([11, 12, 13])

@@ -64,13 +64,8 @@ func _physics_process(delta: float) -> void:
 	
 	# for body in %"future position".get_overlapping_bodies().size() > 0:
 	for body in %"future position".get_overlapping_bodies():
-		# if body is not TileMapLayer and body and body is not CharacterBody2D:
-			
-		# if typeof(body) not in [TileMapLayer, CharacterBody2D]:
 		if body is RigidBody2D and body is not CharacterBody2D:
 			body = body as RigidBody2D
-			body.collision_mask
-			print( %"future position".get_overlapping_bodies())
 
 			direction = Vector2.ZERO
 			next_direction = Vector2.ZERO
@@ -94,6 +89,9 @@ func _on_input():
 		
 	if _valid_direction_is_pressed():
 		next_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		
+		await mover.face(next_direction/next_direction.abs())
+		
 		input_just_pressed = true
 
 

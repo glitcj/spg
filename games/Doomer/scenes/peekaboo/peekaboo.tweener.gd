@@ -64,29 +64,3 @@ func highlight():
 	
 	tween.tween_property(parent, "modulate", Color(1,1,1,1), duration)
 	tween.parallel().tween_property(parent, "scale", base_scale, duration)
-	
-
-
-func correct_position():
-	
-	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.l1 as TileMapLayer
-	var mover = find_parent("Player").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-	
-	var unsynced_map_position = mover.get_map_position()
-	var target_global_position = layer.to_global(layer.map_to_local(unsynced_map_position))
-	
-
-	var tween = parent.create_tween()
-	var player = find_parent("Player") as _PeekaBoo_Player
-
-	var duration = .2
-	tween.tween_property(find_parent("Player"), "global_position", target_global_position, duration)
-	
-	# Doesnt work because it fights with move_and_collide which forces xy of the global position
-	"""
-	if player.direction in ["ui_down", "ui_up"]:
-		tween.tween_property(find_parent("Player"), "global_position.x", target_global_position.x, duration)
-	elif player.direction in ["ui_left", "ui_right"]:
-		tween.tween_property(find_parent("Player"), "global_position.y", target_global_position.y, duration)
-	"""

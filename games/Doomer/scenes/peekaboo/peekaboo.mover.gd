@@ -35,7 +35,8 @@ func _quantise_position():
 	
 func move_to_tile(tile_position : Vector2i):
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.l1 as TileMapLayer
+	var layer = map.find_child("L1") as TileMapLayer
+
 	
 	var target_global = layer.to_global(layer.map_to_local(tile_position))
 	var displacement = target_global - get_parent().global_position
@@ -53,6 +54,21 @@ func move(tile_vector : Vector2i):
 	await displace(displacement)
 	map_position = map_position + tile_vector
 	is_moving = false
+	
+	return self
+	
+func face(tile_vector : Vector2i):
+	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
+	if portrait:
+		if tile_vector == Vector2i(1, 0):
+			portrait.face_right()
+		elif tile_vector == Vector2i(-1, 0):
+			portrait.face_left()
+		elif tile_vector == Vector2i(0, 1):
+			portrait.face_down()
+		elif tile_vector == Vector2i(0, -1):
+			portrait.face_up()
+	return self
 
 
 func displace(displacement : Vector2):
@@ -62,23 +78,19 @@ func displace(displacement : Vector2):
 		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 1/speed).finished
+	
+	finished_movement.emit()
+	# map_position = closest_map_position()
 
 
 func wait(time : float = 1.0):
 	await get_tree().create_timer(time).timeout
 
 
-func sync_map_position():
+
+func closest_map_position() -> Vector2i:
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.l1 as TileMapLayer
-	
-	map_position =  layer.local_to_map(layer.to_local(get_parent().global_position))
-
-
-
-func get_map_position():
-	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.l1 as TileMapLayer
+	var layer = map.find_child("L1") as TileMapLayer
 	
 	return layer.local_to_map(layer.to_local(get_parent().global_position))
 	
@@ -87,7 +99,7 @@ func get_map_position():
 	
 func tile_has_collision(tile_pos: Vector2i) -> bool:
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	# var layer = map.l3 as TileMapLayer
+	
 	for layer : TileMapLayer in map.layers:
 		
 		# 1. Get the TileData at the specific grid position
@@ -95,7 +107,6 @@ func tile_has_collision(tile_pos: Vector2i) -> bool:
 		
 		# 2. If the cell is empty, tile_data will be null
 		if tile_data == null:
-			# return true
 			continue
 	
 		# 3. Check the collision polygons in Physics Layer 0
