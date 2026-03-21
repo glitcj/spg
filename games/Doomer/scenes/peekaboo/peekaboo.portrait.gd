@@ -1,7 +1,8 @@
+@tool
 extends Node2D
 class_name _Peekaboo_Portrait
 
-enum EnemySprite {cream, red, player}
+enum EnemySprite {cream, red, player, blue}
 
 @export var sprite : EnemySprite = EnemySprite.cream:
 	set(v):

@@ -3,7 +3,7 @@ extends _Peekaboo_Script
 @export var messages = []
 
 func _on_automatic():
-	portrait.animation_player.play("idle")
+	pass
 	
 func _on_entered_range():
 	portrait.animation_player.play("talking")

@@ -5,8 +5,12 @@ class_name _Peekaboo_Mover
 signal finished_movement
 enum MovementType {Linear, Random, Exponential}
 
-@export var peekaboo : _PeekaBoo
 @export var type = MovementType.Linear as MovementType
+
+@export var facing = Vector2i(0, 1) as Vector2i:
+	set(v):
+		facing = v
+		face.bind(facing).call_deferred()
 
 @export var speed = 0.5 as float
 
