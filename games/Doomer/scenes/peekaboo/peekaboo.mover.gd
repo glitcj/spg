@@ -18,8 +18,6 @@ enum MovementType {Linear, Random, Exponential}
 	set(v):
 		map_position = v
 		_quantise_position() # TODO: Move quantise_position to _peekaboo_map ?
-		# correct_position()
-		
 		
 var is_moving = false
 func _ready() -> void:
@@ -80,16 +78,13 @@ func displace(displacement : Vector2):
 	
 	if type == MovementType.Exponential:
 		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-
+	print(get_parent(), get_parent().global_position, speed)
 	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 1/speed).finished
 	
 	finished_movement.emit()
-	# map_position = closest_map_position()
-
 
 func wait(time : float = 1.0):
 	await get_tree().create_timer(time).timeout
-
 
 
 func closest_map_position() -> Vector2i:
@@ -97,24 +92,29 @@ func closest_map_position() -> Vector2i:
 	var layer = map.find_child("L1") as TileMapLayer
 	
 	return layer.local_to_map(layer.to_local(get_parent().global_position))
+
+func get_facing_direction():
+	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
+	var animation_name = portrait.animation_player.current_animation
 	
-	
-	
-	
+	if animation_name == "move_down":
+		return Vector2i(0, 1)
+	elif animation_name == "move_up":
+		return Vector2i(0, -1)
+	elif animation_name == "move_right":
+		return Vector2i(1, 0)
+	elif animation_name == "move_left":
+		return Vector2i(-1, 0)
+		
 func tile_has_collision(tile_pos: Vector2i) -> bool:
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
 	
 	for layer : TileMapLayer in map.layers:
-		
-		# 1. Get the TileData at the specific grid position
 		var tile_data = layer.get_cell_tile_data(tile_pos)
 		
-		# 2. If the cell is empty, tile_data will be null
 		if tile_data == null:
 			continue
 	
-		# 3. Check the collision polygons in Physics Layer 0
-		# get_collision_polygons_count returns 0 if no collision is defined
 		if tile_data.get_collision_polygons_count(0) > 0:
 			return true
 	return false

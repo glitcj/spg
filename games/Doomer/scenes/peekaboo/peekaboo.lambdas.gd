@@ -3,7 +3,7 @@ class_name _PeekaBoo_Lambdas
 
 @export var doomer : _Doomer
 
-@onready var peekaboo = get_parent()
+@onready var peekaboo = find_parent("_PeekaBoo")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +20,12 @@ func _slide_windows_in():
 		await _window.play_enumation(_Doomer_Message_Box.Enumations.Buzz)
 
 
+
+func transport_player():
+	pass
+
+
+"""
 func update_idle_animation():
 	var portrait = peekaboo.find_child("Player Portrait") as _Core_Portrait
 	if Input.is_action_just_pressed("ui_left"):
@@ -30,3 +36,4 @@ func update_idle_animation():
 		portrait.animation_player.play("move_up")
 	elif Input.is_action_just_pressed("ui_down"):
 		portrait.animation_player.play("move_down")
+"""

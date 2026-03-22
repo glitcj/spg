@@ -67,10 +67,17 @@ func _process(_delta: float):
 		return
 	_log()
 	_check_range_signals()
-
+	
+	
+	
+	
 	if Input.is_action_just_pressed("ui_accept"):
 		if _distance_to_player() < action_range:
-			actioned_within_range.emit()
+			
+			var player_mover = peekaboo.find_child("Player").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
+			var player_is_facing_this_event : bool = mover.map_position == player_mover.get_facing_direction() + player_mover.map_position
+			if player_is_facing_this_event:
+				actioned_within_range.emit()
 
 	if _distance_to_player() < action_range:
 		is_within_range.emit()

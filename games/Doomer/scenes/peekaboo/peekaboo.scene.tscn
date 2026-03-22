@@ -56,18 +56,25 @@ unique_name_in_owner = true
 [node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
 
-[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1" index="1" node_paths=PackedStringArray("peekaboo")]
-peekaboo = NodePath("../../../../../../../..")
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/NPC 1" index="2"]
+facing = null
 
-[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 2" index="2" node_paths=PackedStringArray("peekaboo")]
-peekaboo = NodePath("../../../../../../../..")
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/NPC 2" index="2"]
+facing = null
+
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1" index="1"]
+facing = null
+
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 3" index="1"]
+facing = null
 
 [node name="Node2D" type="Node2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer"]
 position = Vector2(577, 448)
 
-[node name="Node2" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Node2D" node_paths=PackedStringArray("peekaboo")]
+[node name="Node2" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Node2D"]
 script = ExtResource("5_80738")
-peekaboo = NodePath("../../../../../../..")
+facing = null
+speed = null
 map_position = Vector2i(4, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Node2D"]
@@ -76,6 +83,8 @@ texture = SubResource("CanvasTexture_7f4js")
 
 [node name="_Peekaboo_Mover" type="Node" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/Node2D"]
 script = ExtResource("5_80738")
+facing = null
+speed = null
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
@@ -111,4 +120,3 @@ scale = Vector2(5, 5)
 visible_on_reset = true
 
 [editable path="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map"]
-[editable path="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1/RigidBody2D/_Core_Portrait"]

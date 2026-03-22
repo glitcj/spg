@@ -13,6 +13,5 @@ func _on_exited_range():
 
 func _on_action_within_range_trigger():
 	await peekaboo.message_window.start(messages)
-	## parent.queue_free()
 	return
 	
