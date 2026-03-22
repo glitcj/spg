@@ -1,7 +1,6 @@
 extends _Peekaboo_Script
 
 func _on_automatic():
-	# portrait.animation_player.play("idle")
 	pass
 	
 func _on_entered_range():
@@ -21,3 +20,4 @@ func _on_action_within_range_trigger():
 	await peekaboo.message_window.start(
 		["NPC: Hello.", "NPC: Good to see you here !"]
 		)
+	get_lambdas().transport_player(Vector2i(-2, 1))

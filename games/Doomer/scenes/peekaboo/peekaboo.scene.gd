@@ -2,7 +2,7 @@
 extends Node
 class_name _PeekaBoo
 
-@onready var lambdas = %Lambdas as _PeekaBoo_Lambdas
+@onready var lambdas = %Lambdas as _Peekaboo_Lambdas
 @onready var getter = %Getter as _PeekaBoo_Getter
 
 @export var player_speed = 10

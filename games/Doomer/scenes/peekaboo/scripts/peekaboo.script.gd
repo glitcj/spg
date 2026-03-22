@@ -14,6 +14,16 @@ signal is_within_range
 
 
 @onready var peekaboo : _PeekaBoo = find_parent("_PeekaBoo")
+@onready var map : _Peekaboo_Map = find_parent("_Peekaboo_Map")
+@onready var lambdas : _Peekaboo_Lambdas = map.find_child("Peekaboo_Lambdas")
+
+
+func get_peekaboo(): return find_parent("_PeekaBoo") as _PeekaBoo
+func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
+func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _PeekaBoo_Player
+func get_lambdas(): return find_parent("_Peekaboo_Map").find_child("_Peekaboo_Lambdas") as _Peekaboo_Lambdas
+
+
 
 var variables = _Peekaboo_Variables
 
