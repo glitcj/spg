@@ -4,3 +4,12 @@ var slide_duration = 1.0
 
 func _on_automatic():
 	await peekaboo.message_window.start(["Map started..", "1", "2", "3"])
+
+func _on_frame():
+	if get_variables().l1_1_enemies_count == 2:
+
+		await peekaboo.message_window.start(
+		["NPC: You got them !", "NPC: Go to the next location.."]
+		)
+		get_lambdas().transport_player(get_variables().l3_1_entry_position)
+		parent.queue_free()
