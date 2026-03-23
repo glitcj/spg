@@ -16,5 +16,6 @@ func _on_automatic():
 		
 func _on_within_range():
 	parent = parent as Node
-	variables.all[_Peekaboo_Variables.Keys.l1_1_enemies_count] += 1
+	# variables.all[_Peekaboo_Variables.l1_1_enemies_count] += 1
+	get_variables().l1_1_enemies_count += 1
 	parent.queue_free()

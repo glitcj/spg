@@ -6,6 +6,7 @@ signal entered_range
 signal exited_range
 signal actioned_within_range
 signal is_within_range
+signal frame_started
 
 @export var interrupt_player := false
 # @export var peekaboo : _PeekaBoo
@@ -22,6 +23,7 @@ func get_peekaboo(): return find_parent("_PeekaBoo") as _PeekaBoo
 func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
 func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _PeekaBoo_Player
 func get_lambdas(): return find_parent("_Peekaboo_Map").find_child("_Peekaboo_Lambdas") as _Peekaboo_Lambdas
+func get_variables(): return _Peekaboo_Variables
 
 
 
@@ -55,6 +57,7 @@ func bind_triggers():
 		_on_within_range, _on_automatic, 
 		_on_entered_range, _on_exited_range,
 		_on_action_within_range_trigger,
+		_on_frame,
 		]
 	for c : Callable in trigger_callables:
 		trigger_is_running[c.get_method()] = false
@@ -63,6 +66,7 @@ func bind_triggers():
 	exited_range.connect(_wrapped_callable.bind(_on_exited_range))
 	actioned_within_range.connect(_wrapped_callable.bind(_on_action_within_range_trigger))
 	is_within_range.connect(_wrapped_callable.bind(_on_within_range))
+	frame_started.connect(_wrapped_callable.bind(_on_frame))
 
 	
 func _get_components():
@@ -77,6 +81,8 @@ func _process(_delta: float):
 		return
 	_log()
 	_check_range_signals()
+	frame_started.emit()
+
 	
 	
 	
@@ -120,6 +126,9 @@ func _wrapped_callable(c: Callable):
 
 
 func _on_automatic():
+	pass
+
+func _on_frame():
 	pass
 
 func _on_within_range():
