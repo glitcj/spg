@@ -49,7 +49,9 @@ var trigger_is_running : Dictionary = {}
 func _ready():
 	_get_components.call_deferred()
 	bind_triggers()
+	await get_tree().process_frame
 	_wrapped_callable.bind(_on_automatic).call_deferred()
+
 
 
 func bind_triggers():
