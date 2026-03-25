@@ -146,7 +146,8 @@ func _on_exited_range():
 	pass
 
 func _log():
-	print("distance ", _distance_to_player())
+	# print("distance ", _distance_to_player())
+	pass
 
 func is_running():
 	return trigger_is_running.values().any(func(x): return x)
