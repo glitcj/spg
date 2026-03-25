@@ -11,9 +11,9 @@ func _on_automatic():
 		await mover.move(Vector2i(3,0))
 		await mover.wait(1.0)
 		
-func _on_within_range():
+		
+func _on_action_within_range_trigger():
 	parent = parent as Node
-	# variables.all[_Peekaboo_Variables.Keys.l1_1_enemies_count] += 1
-	get_variables().l1_1_enemies_count += 1
+	get_variables().l2_enemies_count += 1
 
 	parent.queue_free()

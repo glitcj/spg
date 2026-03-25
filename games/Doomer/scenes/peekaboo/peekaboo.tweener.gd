@@ -56,11 +56,17 @@ func highlight():
 	
 	
 	var base_scale = parent.scale as Vector2
-	tween.set_loops(3)
+	tween.set_loops(1)
 	
+	var mover = find_parent("Player").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
+	
+	var base_speed = mover.speed
+	
+
 	tween.tween_property(parent, "modulate", Color(1,0,1,1), duration)
 	tween.parallel().tween_property(parent, "scale", base_scale * 1.2, duration)
-	
+	tween.parallel().tween_property(mover, "speed", base_speed * 2, 0.1)
 	
 	tween.tween_property(parent, "modulate", Color(1,1,1,1), duration)
 	tween.parallel().tween_property(parent, "scale", base_scale, duration)
+	tween.parallel().tween_property(mover, "speed", base_speed, 0.1)
