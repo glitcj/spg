@@ -11,6 +11,9 @@ var is_active = true
 
 @onready var map = find_parent("_Peekaboo_Map")
 
+
+func get_portrait(): return find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
+
 var direction = Vector2.ZERO as Vector2
 var next_direction = Vector2.ZERO:
 	set(v):
@@ -30,8 +33,6 @@ func _process(delta: float) -> void:
 		print(script.is_running(), script.interrupt_player)
 		if script.is_running() and script.interrupt_player:
 			is_active = false
-
-	
 	_on_input()
 
 func _physics_process(delta: float) -> void:
@@ -86,10 +87,16 @@ func _on_input():
 
 
 	if Input.is_action_just_pressed("ui_accept"):
-		direction = Vector2.ZERO
-		next_direction = Vector2.ZERO
+		reset_movement()
+		# direction = Vector2.ZERO
+		# next_direction = Vector2.ZERO
 
 
+func reset_movement():
+	get_portrait().face_down()
+	direction = Vector2.ZERO
+	next_direction = Vector2.ZERO
+	
 func _update_movement():
 	if direction == Vector2.ZERO:
 		return
