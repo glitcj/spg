@@ -78,7 +78,6 @@ func displace(displacement : Vector2):
 	
 	if type == MovementType.Exponential:
 		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	print(get_parent(), get_parent().global_position, speed)
 	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 1/speed).finished
 	
 	finished_movement.emit()

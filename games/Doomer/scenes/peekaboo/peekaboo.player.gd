@@ -30,7 +30,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	is_active = true	
 	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
-		print(script.is_running(), script.interrupt_player)
 		if script.is_running() and script.interrupt_player:
 			is_active = false
 	_on_input()
@@ -63,7 +62,6 @@ func _physics_process(delta: float) -> void:
 			return
 	
 	if tile_position_delta != Vector2i.ZERO:
-		print(tile_position_delta, mover.map_position + tile_position_delta)
 		await mover.move(tile_position_delta)
 	
 func _valid_direction_is_pressed():
@@ -93,7 +91,7 @@ func _on_input():
 
 
 func reset_movement():
-	get_portrait().face_down()
+	# get_portrait().face_down()
 	direction = Vector2.ZERO
 	next_direction = Vector2.ZERO
 	

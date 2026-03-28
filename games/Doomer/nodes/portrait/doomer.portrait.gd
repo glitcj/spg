@@ -41,9 +41,6 @@ func _ready() -> void:
 			get_node("%s/AnimationPlayer" % [Portraits.keys()[_portrait]]), 
 			get_node("%s" % [Portraits.keys()[_portrait]])
 			]
-		
-	print(PortraitMap)
-	print(get_children())
 	
 	_update_portrait()
 	queue_enumation(Animations.RESET)
@@ -96,7 +93,6 @@ func play_enumation_queue(enumations : Array, wait : bool = false) -> void:
 
 func _wait_for_animation_end():
 	var animation = animation_player.get_animation(animation_player.current_animation)
-	print(animation_player.current_animation)
 	
 	if animation.loop_mode == Animation.LOOP_NONE:
 		await animation_player.animation_finished

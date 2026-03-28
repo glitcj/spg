@@ -15,13 +15,9 @@ class_name _Doomer_Gun
 func _ready() -> void:
 	for card : _Doomer_Card in hand_cards:
 		card.card_value_changed.connect(_on_cards_value_changed)
-
-	
-	
 	_update_layout()
 	
 func _update_layout():
-	print(holder)
 	var hboxes = find_children("*", "HBoxContainer", true, false)
 	for hbox : HBoxContainer in hboxes:
 		hbox.layout_direction = Control.LAYOUT_DIRECTION_LTR if holder == _Doomer.Opponents.Player else Control.LAYOUT_DIRECTION_RTL
