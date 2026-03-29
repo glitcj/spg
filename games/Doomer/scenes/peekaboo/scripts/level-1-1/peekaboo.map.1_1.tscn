@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=49 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Texture2D" uid="uid://cklccjgem4vvs" path="res://assets/ninja/Backgrounds/Tilesets/TilesetFloor.png" id="1_mxsbq"]
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/peekaboo.map.gd" id="1_pa1n3"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="11_j52ey"]
 [ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/level-1-1/script.enemy.2-2.gd" id="13_sq2sq"]
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="13_ul6yd"]
-[ext_resource type="Script" uid="uid://ttw6ss6t7a0y" path="res://scenes/peekaboo/scripts/level-1-1/_script_teleport_4_1.gd" id="14_ceddd"]
 [ext_resource type="Script" uid="uid://da5b4ins7hwmf" path="res://scenes/peekaboo/scripts/level-1-1/script.event.3-1.gd" id="14_x570f"]
 [ext_resource type="Script" uid="uid://cx7v6r1guj6r" path="res://scenes/peekaboo/scripts/level-1-1/script.enemy.2-1.gd" id="15_sq2sq"]
 [ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/level-1-1/_common_script_teleport.gd" id="16_bj00i"]
@@ -946,6 +945,10 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcels"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kcels"]
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x570f"]
@@ -953,10 +956,6 @@ font_size = 75
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceddd"]
 size = Vector2(100, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcels"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_kcels"]
 
 [node name="_Peekaboo_Map" type="Node2D"]
 script = ExtResource("1_pa1n3")
@@ -1076,6 +1075,24 @@ shape = SubResource("RectangleShape2D_cswif")
 scale = Vector2(4, 4)
 sprite = 3
 
+[node name="NPC 3-1 Talking Tree" type="Node2D" parent="."]
+position = Vector2(1521, 880)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NPC 3-1 Talking Tree"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 3-1 Talking Tree/StaticBody2D"]
+shape = SubResource("RectangleShape2D_kcels")
+
+[node name="Sprite2D" type="Sprite2D" parent="NPC 3-1 Talking Tree/StaticBody2D"]
+scale = Vector2(20, 25)
+texture = SubResource("CanvasTexture_kcels")
+
+[node name="_Peekaboo_Mover" type="Node" parent="NPC 3-1 Talking Tree"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(9, 5)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
 [node name="Event 1-1" type="Node2D" parent="."]
 position = Vector2(81, -80)
 
@@ -1105,6 +1122,23 @@ map_position = Vector2i(-19, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="Event 2-1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Event 3-1" type="Node2D" parent="."]
+position = Vector2(-3119, 2960)
+
+[node name="_Peekaboo_Script" type="Node" parent="Event 3-1"]
+script = ExtResource("14_x570f")
+interrupt_player = true
+
+[node name="_Peekaboo_Mover" type="Node" parent="Event 3-1"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(-20, 18)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="Event 3-1"]
 z_index = 100
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
@@ -1144,93 +1178,72 @@ text = "EVT"
 label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
-[node name="_teleport_4_1" type="Node2D" parent="."]
-position = Vector2(2801, 1360)
+[node name="Enemy 1-1" type="Node2D" parent="."]
+position = Vector2(81, -560)
 
-[node name="_script_teleport_4_1" type="Node" parent="_teleport_4_1"]
-script = ExtResource("14_ceddd")
-interrupt_player = true
+[node name="Script" type="Node" parent="Enemy 1-1"]
+script = ExtResource("8_fboiy")
+action_range = 100.0
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_4_1"]
+[node name="_Peekaboo_Mover" type="Node" parent="Enemy 1-1"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(17, 8)
+map_position = Vector2i(0, -4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_4_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
+[node name="_Peekaboo_Portrait" parent="Enemy 1-1" instance=ExtResource("9_3e75c")]
+scale = Vector2(4, 4)
+sprite = 1
 
-[node name="Label" type="Label" parent="_teleport_4_1"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
+[node name="Enemy 1-2" type="Node2D" parent="."]
+position = Vector2(-399, -80)
 
-[node name="Area2D" type="Area2D" parent="_teleport_4_1"]
+[node name="Script" type="Node" parent="Enemy 1-2"]
+script = ExtResource("11_6ny3k")
+action_range = 200.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_4_1/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_2_1" type="Node2D" parent="."]
-position = Vector2(-2319, -400)
-
-[node name="_common_script_teleport_2_1" type="Node" parent="_teleport_2_1"]
-script = ExtResource("16_bj00i")
-camera_position = Vector2i(0, -4)
-player_position = Vector2i(-3, -1)
-
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_2_1"]
+[node name="_Peekaboo_Mover" type="Node" parent="Enemy 1-2"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(-15, -3)
+map_position = Vector2i(-3, -1)
+
+[node name="_Peekaboo_Portrait" parent="Enemy 1-2" instance=ExtResource("9_3e75c")]
+scale = Vector2(4, 4)
+
+[node name="Enemy 2-1" type="Node2D" parent="."]
+position = Vector2(-2959, -80)
+
+[node name="Script" type="Node" parent="Enemy 2-1"]
+script = ExtResource("15_sq2sq")
+action_range = 200.0
+
+[node name="_Peekaboo_Mover" type="Node" parent="Enemy 2-1"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(-19, -1)
+
+[node name="_Peekaboo_Portrait" parent="Enemy 2-1" instance=ExtResource("9_3e75c")]
+scale = Vector2(4, 4)
+
+[node name="Enemy 2-2" type="Node2D" parent="."]
+position = Vector2(-2959, 720)
+
+[node name="Script" type="Node" parent="Enemy 2-2"]
+script = ExtResource("13_sq2sq")
+action_range = 100.0
+
+[node name="_Peekaboo_Mover" type="Node" parent="Enemy 2-2"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(-19, 4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_2_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_2_1"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_2_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_2_1/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
+[node name="_Peekaboo_Portrait" parent="Enemy 2-2" instance=ExtResource("9_3e75c")]
+scale = Vector2(4, 4)
+sprite = 1
 
 [node name="_teleport_1_1" type="Node2D" parent="."]
 position = Vector2(-559, -80)
 
 [node name="_common_script_teleport_1_1" type="Node" parent="_teleport_1_1"]
 script = ExtResource("16_bj00i")
-camera_position = Vector2i(-19, -4)
+camera_position = Vector2i(-19, 1)
 player_position = Vector2i(-16, -3)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_1"]
@@ -1269,10 +1282,12 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_1_2" type="Node2D" parent="."]
 position = Vector2(721, -80)
 
-[node name="_common_script_teleport_1_2" type="Node" parent="_teleport_1_2"]
+[node name="_common_script_teleport_1_2" type="Node" parent="_teleport_1_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
-camera_position = Vector2i(9, -1)
+camera_position = Vector2i(9, 5)
 player_position = Vector2i(7, -1)
+camera_position_node = NodePath("../../_camera_position_3_1")
+player_position_node = NodePath("../../_player_position_3_1")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_2"]
 script = ExtResource("10_b6854")
@@ -1307,20 +1322,144 @@ horizontal_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_1_2/Area2D"]
 shape = SubResource("RectangleShape2D_ceddd")
 
-[node name="_camera_position_l1_1" type="Node2D" parent="."]
-position = Vector2(81, -560)
+[node name="_teleport_1_3" type="Node2D" parent="."]
+position = Vector2(-559, -80)
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_l1_1"]
+[node name="_common_script_teleport_1_3" type="Node" parent="_teleport_1_3"]
+script = ExtResource("16_bj00i")
+camera_position = Vector2i(-19, 1)
+player_position = Vector2i(-16, -3)
+
+[node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_3"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(0, -4)
+map_position = Vector2i(-4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_l1_1"]
+[node name="Sprite2D" type="Sprite2D" parent="_teleport_1_3"]
 z_index = 100
 scale = Vector2(150, 150)
 texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Label" type="Label" parent="_camera_position_l1_1"]
+[node name="Label" type="Label" parent="_teleport_1_3"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleport_1_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_1_3/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_2_1" type="Node2D" parent="."]
+position = Vector2(-2319, -400)
+
+[node name="_common_script_teleport_2_1" type="Node" parent="_teleport_2_1"]
+script = ExtResource("16_bj00i")
+camera_position = Vector2i(0, -1)
+player_position = Vector2i(-3, -1)
+
+[node name="_Peekaboo_Mover" type="Node" parent="_teleport_2_1"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(-15, -3)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleport_2_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleport_2_1"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleport_2_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_2_1/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_4_1" type="Node2D" parent="."]
+position = Vector2(2801, 1360)
+
+[node name="_common_script_teleport_4_1" type="Node" parent="_teleport_4_1"]
+script = ExtResource("16_bj00i")
+camera_position = Vector2i(-19, 1)
+player_position = Vector2i(-16, -3)
+
+[node name="_Peekaboo_Mover" type="Node" parent="_teleport_4_1"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(17, 8)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleport_4_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleport_4_1"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleport_4_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_4_1/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_camera_position_1_1" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(81, -80)
+
+[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_1_1"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_position_1_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_position_1_1"]
 modulate = Color(1, 0.11372549, 0.972549, 1)
 z_index = 200
 anchors_preset = 8
@@ -1338,27 +1477,26 @@ text = "MRK"
 label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
-[node name="Area2D" type="Area2D" parent="_camera_position_l1_1"]
+[node name="Area2D" type="Area2D" parent="_camera_position_1_1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_camera_position_l1_1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_camera_position_1_1/Area2D"]
 shape = SubResource("RectangleShape2D_ceddd")
 
-[node name="Camera Position 4-1" type="Node2D" parent="."]
+[node name="_camera_position_3_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(3121, 80)
+position = Vector2(1521, 880)
 
-[node name="_Peekaboo_Mover" type="Node" parent="Camera Position 4-1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_3_1"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(19, 0)
+map_position = Vector2i(9, 5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera Position 4-1"]
+[node name="Sprite2D" type="Sprite2D" parent="_camera_position_3_1"]
 z_index = 100
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Label" type="Label" parent="Camera Position 4-1"]
+[node name="Label" type="Label" parent="_camera_position_3_1"]
 modulate = Color(1, 0.15686275, 1, 1)
 z_index = 200
 anchors_preset = 8
@@ -1372,105 +1510,73 @@ offset_right = 33.0
 offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "CAMERA 
-POSITION"
+text = "CMR"
 label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
-[node name="Event 3-1" type="Node2D" parent="."]
-position = Vector2(-3119, 2960)
+[node name="_player_position_3_1" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1041, 1680)
 
-[node name="_Peekaboo_Script" type="Node" parent="Event 3-1"]
-script = ExtResource("14_x570f")
-interrupt_player = true
-
-[node name="_Peekaboo_Mover" type="Node" parent="Event 3-1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_1"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(-20, 18)
+map_position = Vector2i(6, 10)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="Event 3-1"]
+[node name="Sprite2D" type="Sprite2D" parent="_player_position_3_1"]
 z_index = 100
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Enemy 1-1" type="Node2D" parent="."]
-position = Vector2(81, -560)
+[node name="Label" type="Label" parent="_player_position_3_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
 
-[node name="Script" type="Node" parent="Enemy 1-1"]
-script = ExtResource("8_fboiy")
-action_range = 100.0
+[node name="_camera_position_4_1" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3121, 880)
 
-[node name="_Peekaboo_Mover" type="Node" parent="Enemy 1-1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_4_1"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(0, -4)
+map_position = Vector2i(19, 5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="Enemy 1-1" instance=ExtResource("9_3e75c")]
-scale = Vector2(4, 4)
-sprite = 1
+[node name="Sprite2D" type="Sprite2D" parent="_camera_position_4_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Enemy 1-2" type="Node2D" parent="."]
-position = Vector2(-399, -80)
-
-[node name="Script" type="Node" parent="Enemy 1-2"]
-script = ExtResource("11_6ny3k")
-action_range = 200.0
-
-[node name="_Peekaboo_Mover" type="Node" parent="Enemy 1-2"]
-script = ExtResource("10_b6854")
-map_position = Vector2i(-3, -1)
-
-[node name="_Peekaboo_Portrait" parent="Enemy 1-2" instance=ExtResource("9_3e75c")]
-scale = Vector2(4, 4)
-
-[node name="Enemy 2-2" type="Node2D" parent="."]
-position = Vector2(-2959, 720)
-
-[node name="Script" type="Node" parent="Enemy 2-2"]
-script = ExtResource("13_sq2sq")
-action_range = 100.0
-
-[node name="_Peekaboo_Mover" type="Node" parent="Enemy 2-2"]
-script = ExtResource("10_b6854")
-map_position = Vector2i(-19, 4)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="_Peekaboo_Portrait" parent="Enemy 2-2" instance=ExtResource("9_3e75c")]
-scale = Vector2(4, 4)
-sprite = 1
-
-[node name="Enemy 2-1" type="Node2D" parent="."]
-position = Vector2(-2959, -80)
-
-[node name="Script" type="Node" parent="Enemy 2-1"]
-script = ExtResource("15_sq2sq")
-action_range = 200.0
-
-[node name="_Peekaboo_Mover" type="Node" parent="Enemy 2-1"]
-script = ExtResource("10_b6854")
-map_position = Vector2i(-19, -1)
-
-[node name="_Peekaboo_Portrait" parent="Enemy 2-1" instance=ExtResource("9_3e75c")]
-scale = Vector2(4, 4)
-
-[node name="NPC 3 Talking Tree" type="Node2D" parent="."]
-position = Vector2(1521, 880)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="NPC 3 Talking Tree"]
-scale = Vector2(10, 10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 3 Talking Tree/StaticBody2D"]
-shape = SubResource("RectangleShape2D_kcels")
-
-[node name="Sprite2D" type="Sprite2D" parent="NPC 3 Talking Tree/StaticBody2D"]
-scale = Vector2(20, 25)
-texture = SubResource("CanvasTexture_kcels")
-
-[node name="_Peekaboo_Mover" type="Node" parent="NPC 3 Talking Tree"]
-script = ExtResource("10_b6854")
-map_position = Vector2i(9, 5)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
+[node name="Label" type="Label" parent="_camera_position_4_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
 
 [node name="_Peekaboo_Camera" type="Node2D" parent="."]
 position = Vector2(81, 80)
@@ -1480,4 +1586,3 @@ script = ExtResource("10_b6854")
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Camera2D" type="Camera2D" parent="_Peekaboo_Camera"]
-position = Vector2(0, 800)
