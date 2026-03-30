@@ -35,14 +35,14 @@ func _ready() -> void:
 	scene.world_map = %"World Map Scene"
 	scene.poker_board = %"Poker Board Scene"
 	scene.start_screen = %"Start Sceen Scene"
+	scene.peekaboo = %_PeekaBoo
 	
 	_boot.call_deferred()
 
 func _boot():
 	change_scene(scene.start_screen)
-
-
-
+	
+	
 func change_scene(scene_: _Doomer_Scene):
 	if current_scene_node:
 		current_scene_node._on_scene_end()
@@ -59,3 +59,4 @@ class _Scene:
 	var world_map : _Doomer_Scene_World_Map
 	var poker_board : _Doomer_Scene_Poker_Board
 	var start_screen : _Doomer_Scene_Start_Screen
+	var peekaboo : _PeekaBoo

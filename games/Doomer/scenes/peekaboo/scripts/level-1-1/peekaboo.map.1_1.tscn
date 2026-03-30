@@ -1800,3 +1800,17 @@ script = ExtResource("10_b6854")
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Camera2D" type="Camera2D" parent="_Peekaboo_Camera"]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="_Peekaboo_Camera/Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -1200.0
+offset_right = 540.0
+offset_bottom = 1200.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 50.0

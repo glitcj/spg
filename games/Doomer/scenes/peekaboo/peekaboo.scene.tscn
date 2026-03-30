@@ -14,9 +14,6 @@ offset_right = 1080.0
 offset_bottom = 2400.0
 script = ExtResource("1_3t57p")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
 [node name="Getter" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_s7xtm")
@@ -53,19 +50,13 @@ size_flags_vertical = 4
 [node name="_Peekaboo_Map" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer" instance=ExtResource("4_n54ed")]
 unique_name_in_owner = true
 
-[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="5" node_paths=PackedStringArray("peekaboo")]
+[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="4" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
 
 [node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/NPC 1" index="2"]
 facing = null
 
-[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/NPC 2" index="2"]
-facing = null
-
-[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 1" index="1"]
-facing = null
-
-[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Enemy 3" index="1"]
+[node name="_Peekaboo_Mover" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/NPC 2" index="1"]
 facing = null
 
 [node name="Node2D" type="Node2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer"]

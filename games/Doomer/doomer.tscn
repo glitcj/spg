@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=24 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://doomer.gd" id="1_pvbnl"]
 [ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.getter.gd" id="2_jh38i"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bjb6ohogqlfea" path="res://core/turner/turns/doomer.turn.field.gd" id="19_pvbnl"]
 [ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/doomer.scene.start_screen.tscn" id="20_kuqke"]
 [ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/doomer.turn.start_screen.player_input.gd" id="20_pvbnl"]
+[ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/peekaboo.scene.tscn" id="21_valsd"]
 [ext_resource type="Script" uid="uid://24v0qjou812u" path="res://core/turner/turns/doomer.turn.world_map.player_input.gd" id="22_q5iqo"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
@@ -160,6 +161,11 @@ doomer = NodePath("../../..")
 
 [node name="Lambdas" parent="Scenes/Scene Grid/World Map Scene" index="0" node_paths=PackedStringArray("doomer")]
 doomer = NodePath("../../../..")
+
+[node name="_PeekaBoo" parent="Scenes/Scene Grid" node_paths=PackedStringArray("doomer") instance=ExtResource("21_valsd")]
+unique_name_in_owner = true
+layout_mode = 2
+doomer = NodePath("../../..")
 
 [editable path="Scenes/Scene Grid/Poker Board Scene"]
 [editable path="Scenes/Scene Grid/World Map Scene"]
