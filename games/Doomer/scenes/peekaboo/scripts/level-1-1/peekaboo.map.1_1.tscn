@@ -1144,7 +1144,7 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="Event 4-1" type="Node2D" parent="."]
-position = Vector2(3121, 80)
+position = Vector2(3121, 240)
 
 [node name="_Peekaboo_Script" type="Node" parent="Event 4-1"]
 script = ExtResource("13_ul6yd")
@@ -1152,7 +1152,7 @@ interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="Event 4-1"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(19, 0)
+map_position = Vector2i(19, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="Event 4-1"]
@@ -1633,7 +1633,7 @@ horizontal_alignment = 1
 [node name="_player_position_1_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0, -1)
+position = Vector2(-399, -80)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_1"]
 script = ExtResource("10_b6854")
