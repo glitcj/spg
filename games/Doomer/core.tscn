@@ -142,7 +142,7 @@ unique_name_in_owner = true
 layout_mode = 2
 player_turn = ExtResource("20_rgo8v")
 
-[node name="_PeekaBoo" parent="Scenes/Scene Grid" instance=ExtResource("21_u8aor")]
+[node name="_Peekaboo" parent="Scenes/Scene Grid" instance=ExtResource("21_u8aor")]
 unique_name_in_owner = true
 layout_mode = 2
 

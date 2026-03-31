@@ -1,8 +1,8 @@
 extends Node2D
-class_name _PeekaBoo_Player
+class_name _Peekaboo_Player
 
 
-@export var peekaboo : _PeekaBoo
+@export var peekaboo : _Peekaboo
 var is_active = true
 
 

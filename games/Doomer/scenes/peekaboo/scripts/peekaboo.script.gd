@@ -10,19 +10,18 @@ signal frame_started
 signal area_entered_by_player
 
 @export var interrupt_player := false
-# @export var peekaboo : _PeekaBoo
 @export var trigger : ScriptTirgger
 @export var action_range : float = 10.0
 
 
-@onready var peekaboo : _PeekaBoo = find_parent("_PeekaBoo")
+@onready var peekaboo : _Peekaboo = find_parent("_Peekaboo")
 @onready var map : _Peekaboo_Map = find_parent("_Peekaboo_Map")
 @onready var lambdas : _Peekaboo_Lambdas = map.find_child("Peekaboo_Lambdas")
 
 
-func get_peekaboo(): return find_parent("_PeekaBoo") as _PeekaBoo
+func get_peekaboo(): return find_parent("_Peekaboo") as _Peekaboo
 func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
-func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _PeekaBoo_Player
+func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _Peekaboo_Player
 func get_lambdas(): return find_parent("_Peekaboo_Map").find_child("_Peekaboo_Lambdas") as _Peekaboo_Lambdas
 func get_variables(): return _Peekaboo_Variables
 func get_area(): return get_parent().find_child("Area2D") as Area2D

@@ -1,9 +1,9 @@
 @tool
 extends _Core_Scene
-class_name _PeekaBoo
+class_name _Peekaboo
 
 @onready var lambdas = %Lambdas as _Peekaboo_Lambdas
-@onready var getter = %Getter as _PeekaBoo_Getter
+@onready var getter = %Getter as _Peekaboo_Getter
 
 @export var player_speed = 10
 @onready var map =  %_Peekaboo_Map as _Peekaboo_Map

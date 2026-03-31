@@ -1,5 +1,5 @@
 extends Node
-class_name _PeekaBoo_Getter
+class_name _Peekaboo_Getter
 
 @onready var peekaboo = get_parent()
 

@@ -9,7 +9,7 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7f4js"]
 
-[node name="_PeekaBoo" type="SubViewportContainer"]
+[node name="_Peekaboo" type="SubViewportContainer"]
 offset_right = 1080.0
 offset_bottom = 2400.0
 script = ExtResource("1_3t57p")

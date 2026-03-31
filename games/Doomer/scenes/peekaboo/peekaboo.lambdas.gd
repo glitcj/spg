@@ -3,9 +3,9 @@ class_name _Peekaboo_Lambdas
 
 @onready var doomer : _Core = find_parent("_Core")
 
-func get_peekaboo(): return find_parent("_PeekaBoo") as _PeekaBoo
+func get_peekaboo(): return find_parent("_Peekaboo") as _Peekaboo
 func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
-func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _PeekaBoo_Player
+func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _Peekaboo_Player
 func get_camera(): return get_map().find_child("Camera2D")
 
 
