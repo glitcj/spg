@@ -3,7 +3,7 @@ class_name _Peekaboo_Player
 
 
 @export var peekaboo : _Peekaboo
-var is_active = true
+var is_active = false
 
 
 @onready var tweener = %_Peekaboo_Tweener as _Peekaboo_Tweener
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	is_active = true	
+	# is_active = true	
 	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
 		if script.is_running() and script.interrupt_player:
 			is_active = false

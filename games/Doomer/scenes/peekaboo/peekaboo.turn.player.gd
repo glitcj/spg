@@ -4,6 +4,8 @@ class_name _Peekaboo_Turn_Player
 var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 var wait_amount : float = .2
 
+var peekaboo : _Peekaboo
+
 func _init() -> void:
 	super()
 	turn_name = "SCN"
@@ -13,15 +15,12 @@ func _init() -> void:
 
 
 func on_turn_start():
-	doomer.handler.input_received.connect(_process_input)
+	peekaboo =  find_parent("_Peekaboo") as _Peekaboo
+	
+	print(find_parent("_Peekaboo").find_child("Player"), find_parent("_Peekaboo"))
+	(find_parent("_Peekaboo").find_child("Player") as _Peekaboo_Player).is_active = true
+	
+	_process_input()
 
 func _process_input():
-	if not doomer.handler.input_tray in accepted_inputs:
-		return
-
-	doomer.handler.input_received.disconnect(_process_input)
-	print(doomer.scene.peekaboo)
-
-	await doomer.lambdas.change_scene(doomer.scene.peekaboo)
-	
 	on_turn_end()

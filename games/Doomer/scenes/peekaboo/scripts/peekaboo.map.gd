@@ -17,7 +17,7 @@ func _quantize_all():
 		(mover as _Peekaboo_Mover)._quantise_position()
 
 func _ready() -> void:
-	pass
+	await _Peekaboo_Turn_Player.new().start(self)
 
 func _process(delta: float) -> void:
 	pass
