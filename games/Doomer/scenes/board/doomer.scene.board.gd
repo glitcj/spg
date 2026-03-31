@@ -47,7 +47,7 @@ func _ready() -> void:
 func _on_scene_start():
 	super()
 	await doomer.scene.poker_board.lambdas.on_scene_start_events()
-	await _Doomer_Turn_Field.new(doomer).start()
+	await _Doomer_Turn_Field.new().start(self)
 	
 func _on_scene_end():
 	super()

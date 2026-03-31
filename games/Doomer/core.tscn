@@ -126,7 +126,6 @@ unique_name_in_owner = true
 layout_mode = 2
 player_turn = ExtResource("15_sd2we")
 field_turn = ExtResource("16_au8ko")
-camera_zoom = Vector2(0, 0)
 
 [node name="TextureRect" parent="Scenes/Scene Grid/Poker Board Scene/SubViewport/Animated Node/MarginContainer Shader Board BG/VBoxContainer/MarginContainer" index="1"]
 texture = SubResource("ViewportTexture_q5iqo")

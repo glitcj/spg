@@ -1,17 +1,17 @@
 extends _Core_Turn
-class_name _Doomer_Turn_Start_Screen_Player_Input
+class_name _Peekaboo_Turn_Player
 
 var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 var wait_amount : float = .2
 
-# var scene
+var scene
 
 
-func _init() -> void:
-	super()
+func _init(_core: _Core) -> void:
+	super(_core)
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)
-	name = "_Doomer_Turn_Change_Scene"
+	name = "_Peekaboo_Turn_Player"
 	turn_wait_time = .2
 
 
@@ -23,7 +23,6 @@ func _process_input():
 		return
 
 	doomer.handler.input_received.disconnect(_process_input)
-	# await doomer.lambdas.change_scene(doomer.scene.world_map)
 	print(doomer.scene.peekaboo)
 
 	await doomer.lambdas.change_scene(doomer.scene.peekaboo)

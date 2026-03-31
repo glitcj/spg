@@ -3,8 +3,8 @@ class_name _Doomer_Turn_Field
 
 var _lambda : Callable
 
-func _init(_doomer: _Core) -> void:
-	super(_doomer)
+func _init() -> void:
+	super()
 	turn_name = "Field"
 	turn_colour = Color(1,1,1)
 	turn_wait_time = 0.1
@@ -12,11 +12,11 @@ func _init(_doomer: _Core) -> void:
 func on_turn_start():
 	if doomer.logic.face_up_field_cards().size() == 0:
 		await start_betting_round_turns()		
-		await _Doomer_Turn_Field.new(doomer).start()
+		await _Doomer_Turn_Field.new().start(self)
 
 	elif doomer.logic.face_up_field_cards().size() < 5:
 		await flip_next_card_turns()
-		await _Doomer_Turn_Field.new(doomer).start()
+		await _Doomer_Turn_Field.new().start(self)
 
 	elif doomer.logic.face_up_field_cards().size() == 5:
 		await show_enemy_hand_and_winner_decision()
@@ -32,8 +32,8 @@ func start_betting_round_turns():
 	await doomer.scene.poker_board.lambdas.show_message("Turning flop cards.", false, _Doomer_Poker_Board_Events.MessageType.Log)
 	await doomer.scene.poker_board.lambdas.flip_cards(doomer.scene.poker_board.getter.flop_cards, _Doomer_Card.CardState.FacingUp, wait_for_each_card)
 
-	await _Doomer_Turn_Player.new(doomer).start()
-	await _Doomer_Turn_Enemy.new(doomer).start()
+	await _Doomer_Turn_Player.new().start(self)
+	await _Doomer_Turn_Enemy.new().start(self)
 
 
 
@@ -42,8 +42,8 @@ func flip_next_card_turns():
 	await doomer.scene.poker_board.lambdas.flip_cards(doomer.scene.poker_board.getter.next_field_card)
 	await doomer.scene.poker_board.lambdas.show_message("Dealbring marks card ATK.", false, _Doomer_Poker_Board_Events.MessageType.Log)
 
-	await _Doomer_Turn_Player.new(doomer).start()
-	await _Doomer_Turn_Enemy.new(doomer).start()
+	await _Doomer_Turn_Player.new().start(self)
+	await _Doomer_Turn_Enemy.new().start(self)
 
 
 
@@ -65,7 +65,7 @@ func show_enemy_hand_and_winner_decision():
 	if doomer.scene.poker_board.round_counter < doomer.scene.poker_board.number_of_rounds - 1:
 		_lambda = func():
 			doomer.scene.poker_board.round_counter += 1
-			await _Doomer_Turn_Field.new(doomer).start()
+			await _Doomer_Turn_Field.new().start(self)
 		await _lambda.call()
 	else:
 		_lambda = func():

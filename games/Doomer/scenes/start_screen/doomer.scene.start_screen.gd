@@ -1,5 +1,5 @@
 extends _Core_Scene
-class_name _Doomer_Scene_Start_Screen
+class_name _Core_Scene_Start_Screen
 
 @export var player_turn : Script
 
@@ -22,4 +22,5 @@ func _ready() -> void:
 
 func _on_scene_start():
 	super()
-	await _Doomer_Turn_Start_Screen_Player_Input.new(doomer).start()
+	print(get_parent(), find_parent("_Core"), doomer)
+	await _Doomer_Turn_Start_Screen_Player_Input.new().start(self)

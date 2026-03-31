@@ -41,7 +41,7 @@ func _ready():
 func _on_scene_start():
 	super()
 	await doomer.scene.world_map.lambdas.on_scene_start_events()
-	await _Doomer_Turn_World_Map_Player_Input.new(doomer).start()
+	await _Doomer_Turn_World_Map_Player_Input.new().start(self)
 
 
 func move_cursor(_index):

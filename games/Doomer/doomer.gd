@@ -58,5 +58,5 @@ var scene = _Scene.new()
 class _Scene:
 	var world_map : _Doomer_Scene_World_Map
 	var poker_board : _Doomer_Scene_Poker_Board
-	var start_screen : _Doomer_Scene_Start_Screen
+	var start_screen : _Core_Scene_Start_Screen
 	var peekaboo : _PeekaBoo

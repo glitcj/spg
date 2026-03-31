@@ -9,14 +9,14 @@ var action : Action
 var action_placed_and_performed : bool = false
 var interrupt_buffer_wait_time : float = _Doomer_Constants.immediate_action_time_delta
 
-var scene : _Doomer_Scene_Poker_Board
+# var scene : _Doomer_Scene_Poker_Board
 
 enum StateMachine {ShowingBoard, ShowingTraits, ShowingPlayerHand}
 
 var state : StateMachine = StateMachine.ShowingBoard
 
-func _init(_doomer: _Core) -> void:
-	super(_doomer)
+func _init() -> void:
+	super()
 	turn_name = "PLY"
 	turn_colour = Color(1,1,1)
 	turn_wait_time = 200

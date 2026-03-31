@@ -5,12 +5,12 @@ enum StateMachine {ShowTraits, ActiveCursor}
 var state : StateMachine = StateMachine.ShowTraits
 var accepted_inputs = [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, KEY_ENTER, KEY_ESCAPE]
 
-var scene : _Doomer_Scene_World_Map
+# var scene : _Doomer_Scene_World_Map
 
 @onready var opponents = [] as Array
 
-func _init(_doomer: _Core) -> void:
-	super(_doomer)
+func _init() -> void:
+	super()
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)
 	name = "_Doomer_Turn_World_Map_Player_Input"

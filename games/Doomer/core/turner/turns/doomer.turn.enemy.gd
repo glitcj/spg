@@ -6,8 +6,8 @@ static var accepted_inputs = []
 enum Action {Call, Fold}
 var action : Action
 
-func _init(_doomer: _Core) -> void:
-	super(_doomer)
+func _init() -> void:
+	super()
 	turn_name = "ENM"
 	turn_colour = Color(1,1,1)
 	turn_wait_time = _Doomer_Constants.immediate_action_time_delta
