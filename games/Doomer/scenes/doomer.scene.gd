@@ -1,5 +1,5 @@
 extends SubViewportContainer
-class_name  _Doomer_Scene
+class_name _Core_Scene
 
 signal scene_activated
 signal scene_deactivated
@@ -7,7 +7,7 @@ signal scene_deactivated
 var is_active = false
 var accepted_inputs = []
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
 @onready var camera : Camera2D
 

@@ -1,7 +1,7 @@
 extends Node
 class_name _Doomer_World_Map_Events
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 @onready var scene : _Doomer_Scene_World_Map
 
 func on_scene_start_events():

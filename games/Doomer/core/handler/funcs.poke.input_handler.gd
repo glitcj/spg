@@ -9,7 +9,7 @@ enum InputMode {Inactive, Active}
 var mode: InputMode = InputMode.Active
 var input_tray : Key
 
-@onready var doomer: _Doomer = get_parent()
+@onready var doomer: _Core = get_parent()
 
 # TODO: Will be extended:
 # Gamepad buttons

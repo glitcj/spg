@@ -3,7 +3,7 @@ class_name _Doomer_Portrait
 
 signal animation_loop_finished
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
 enum Portraits {Face, Coin, TurnBoard, Gun, StakeBoard}
 enum Animations {

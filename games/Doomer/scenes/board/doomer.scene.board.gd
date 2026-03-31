@@ -1,4 +1,4 @@
-extends _Doomer_Scene
+extends _Core_Scene
 class_name _Doomer_Scene_Poker_Board
 
 @export var player_turn :  Script
@@ -10,8 +10,9 @@ class_name _Doomer_Scene_Poker_Board
 
 @export var camera_zoom : Vector2 :
 	set(v):
-		camera.zoom = v
-		camera_zoom = v
+		if camera:
+			camera.zoom = v
+			camera_zoom = v
 
 @onready var all_message_boxes = [
 	%HUD.message_box

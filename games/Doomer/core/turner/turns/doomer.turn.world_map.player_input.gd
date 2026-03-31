@@ -1,4 +1,4 @@
-extends _Doomer_Turn
+extends _Core_Turn
 class_name _Doomer_Turn_World_Map_Player_Input
 
 enum StateMachine {ShowTraits, ActiveCursor}
@@ -9,7 +9,7 @@ var scene : _Doomer_Scene_World_Map
 
 @onready var opponents = [] as Array
 
-func _init(_doomer: _Doomer) -> void:
+func _init(_doomer: _Core) -> void:
 	super(_doomer)
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)

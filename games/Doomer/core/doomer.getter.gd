@@ -1,7 +1,7 @@
 extends Node
 class_name _Doomer_Getter
 
-@onready var doomer : _Doomer = get_parent()
+@onready var doomer : _Core = find_parent("_Core")
 
 func _ready() -> void:
 	pass

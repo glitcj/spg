@@ -1,4 +1,4 @@
-extends _Doomer_Turn
+extends _Core_Turn
 class_name _Doomer_Turn_Start_Screen_Player_Input
 
 var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
@@ -7,7 +7,7 @@ var wait_amount : float = .2
 var scene
 
 
-func _init(_doomer: _Doomer) -> void:
+func _init(_doomer: _Core) -> void:
 	super(_doomer)
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)

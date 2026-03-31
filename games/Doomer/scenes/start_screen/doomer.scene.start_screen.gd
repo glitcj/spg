@@ -1,4 +1,4 @@
-extends _Doomer_Scene
+extends _Core_Scene
 class_name _Doomer_Scene_Start_Screen
 
 @export var player_turn : Script

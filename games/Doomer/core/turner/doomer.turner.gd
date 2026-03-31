@@ -1,13 +1,13 @@
 extends Node
-class_name _Doomer_Turner
+class_name _Core_Turner
 
-@export var doomer: _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
-var last_turn : _Doomer_Turn
-var current_turn : _Doomer_Turn
-var next_turn : _Doomer_Turn
+var last_turn : _Core_Turn
+var current_turn : _Core_Turn
+var next_turn : _Core_Turn
 
-var processed_turns : Array[_Doomer_Turn] = []
+var processed_turns : Array[_Core_Turn] = []
 var turn_queue = []
 
 
@@ -37,7 +37,7 @@ func _update_hud():
 	if not current_turn.show_in_turnboard:
 		return
 
-func insert_turn(_turn : _Doomer_Turn, _position = 0):
+func insert_turn(_turn : _Core_Turn, _position = 0):
 	turn_queue.insert(_position, _turn)
 
 func insert_lambda(_callable : Callable):

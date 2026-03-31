@@ -2,7 +2,7 @@ extends Node
 class_name _Doomer_Debug_Log
 
 @onready var label : Label = find_child("Label")
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
 enum LoggedKeys {
 	current_turn,

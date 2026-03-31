@@ -1,16 +1,16 @@
 extends Node
-class_name _Doomer_Turn
+class_name _Core_Turn
 
 signal turn_finished
 
-var doomer : _Doomer
+var doomer : _Core
 
 var turn_name : String
 var turn_colour : Color
 var turn_wait_time : float = 5.0
 var show_in_turnboard : bool = true
 
-func _init(_doomer: _Doomer = null) -> void:
+func _init(_doomer: _Core = null) -> void:
 	doomer = _doomer
 	turn_name = "Turn"
 	turn_colour = Color(1,1,1)

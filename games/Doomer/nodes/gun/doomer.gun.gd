@@ -6,7 +6,7 @@ class_name _Doomer_Gun
 
 @onready var coin_box = $"MarginContainer Coin Box/CenterContainer 2/CoinBox"
 
-@export var holder : _Doomer.Opponents:
+@export var holder : _Core.Opponents:
 	set(v):
 		holder = v
 		_update_layout()
@@ -20,7 +20,7 @@ func _ready() -> void:
 func _update_layout():
 	var hboxes = find_children("*", "HBoxContainer", true, false)
 	for hbox : HBoxContainer in hboxes:
-		hbox.layout_direction = Control.LAYOUT_DIRECTION_LTR if holder == _Doomer.Opponents.Player else Control.LAYOUT_DIRECTION_RTL
+		hbox.layout_direction = Control.LAYOUT_DIRECTION_LTR if holder == _Core.Opponents.Player else Control.LAYOUT_DIRECTION_RTL
 
 
 func _on_cards_value_changed():

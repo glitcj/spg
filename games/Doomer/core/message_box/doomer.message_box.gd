@@ -4,7 +4,7 @@ class_name _Doomer_Message_Box
 
 signal finished
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
 # Settings
 @export var visible_on_reset = false

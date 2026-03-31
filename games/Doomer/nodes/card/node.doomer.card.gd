@@ -44,7 +44,7 @@ var enumation_speeds : Dictionary = {
 	Enumation.FlipDown : 2,
 }
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 @export var card : AnimatedSprite2D
 @export var position_container : CanvasItem
 @export var card_viewport : SubViewportContainer
@@ -171,14 +171,14 @@ func show_card_face_down_sprite():
 	sprite.animation = "cards_other"
 	sprite.frame = 0
 
-func next_available_mark_container(opponent : _Doomer.Opponents):
-	if opponent == _Doomer.Opponents.Enemy:
+func next_available_mark_container(opponent : _Core.Opponents):
+	if opponent == _Core.Opponents.Enemy:
 		return enemy_bet_continer
-	elif opponent == _Doomer.Opponents.Player:
+	elif opponent == _Core.Opponents.Player:
 		return player_bet_continer
 		
 
-func add_mark(mark_type : _Doomer_Card_Mark.MarkType, opponent: _Doomer.Opponents , wait_for_mark : bool = false):
+func add_mark(mark_type : _Doomer_Card_Mark.MarkType, opponent: _Core.Opponents , wait_for_mark : bool = false):
 	var mark : _Doomer_Card_Mark = _Doomer_Templates.card_mark.instantiate()
 	mark.mark_type = mark_type
 	# mark._update_mark_type()

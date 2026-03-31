@@ -1,10 +1,10 @@
 extends Node2D
 class_name _Doomer_Coin_Box
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 @export var container : CanvasItem
 @export var viewport : SubViewport
-@export var holder : _Doomer.Opponents:
+@export var holder : _Core.Opponents:
 	set(v):
 		holder = v
 		if is_node_ready():
@@ -28,8 +28,8 @@ func _ready() -> void:
 	add_coins.bind(20).call_deferred()
 	
 func _on_holder_assignment():
-	rotation = PI if holder == _Doomer.Opponents.Enemy else 0.0
-	gravity_vector = Vector2(0, -1) if  holder == _Doomer.Opponents.Enemy else Vector2(0, 1)
+	rotation = PI if holder == _Core.Opponents.Enemy else 0.0
+	gravity_vector = Vector2(0, -1) if  holder == _Core.Opponents.Enemy else Vector2(0, 1)
 
 func add_coins(count : int = 1):
 	var coin : RigidBody2D

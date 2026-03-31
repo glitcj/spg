@@ -1,9 +1,9 @@
-extends _Doomer_Turn
+extends _Core_Turn
 class_name _Doomer_Turn_Field
 
 var _lambda : Callable
 
-func _init(_doomer: _Doomer) -> void:
+func _init(_doomer: _Core) -> void:
 	super(_doomer)
 	turn_name = "Field"
 	turn_colour = Color(1,1,1)

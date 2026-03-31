@@ -10,7 +10,7 @@ script = ExtResource("1_axhyf")
 wait_time = 0.5
 one_shot = true
 
-[node name="_Doomer_Turn" type="Node" parent="."]
+[node name="_Core_Turn" type="Node" parent="."]
 script = ExtResource("3_1o6bk")
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_timer_timeout"]

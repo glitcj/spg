@@ -1,7 +1,7 @@
 extends Node
 class_name _Doomer_Lambdas
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
 func waiter(time: float = 1):
 	var wait_timer = get_tree().create_timer(time)
@@ -13,7 +13,7 @@ func wait(_time : float = 1):
 func buzz_message_box(_message_box : _Doomer_Message_Box):
 	await _message_box.play_enumation(_Doomer_Message_Box.Enumations.Buzz)
 
-func change_scene(_scene : _Doomer_Scene):
+func change_scene(_scene : _Core_Scene):
 	await doomer.change_scene(_scene)
 
 

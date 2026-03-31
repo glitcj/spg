@@ -1,7 +1,7 @@
 extends Node
 class_name _Doomer_Getter_Board
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
 func all_cards_are_up():
 	for card : _Doomer_Card in doomer.scene.poker_board.field_cards:
@@ -111,10 +111,10 @@ func enemy_coin_box() -> _Doomer_Coin_Box:
 func winner_coin_box() -> _Doomer_Coin_Box:
 	return doomer.logic.get_winner_coin_box()
 
-func winner_opponent() -> _Doomer.Opponents:
+func winner_opponent() -> _Core.Opponents:
 	return doomer.logic.calculate_winner()
 
-func loser_opponent() -> _Doomer.Opponents:
+func loser_opponent() -> _Core.Opponents:
 	return doomer.logic.calculate_loser()
 
 func player_portrait() -> _Doomer_Portrait:

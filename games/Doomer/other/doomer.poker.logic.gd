@@ -1,7 +1,7 @@
 extends Node
 class_name _Doomer_Logic
 
-@onready var doomer : _Doomer = get_parent()
+@onready var doomer : _Core = find_parent("_Core")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +15,7 @@ func face_up_field_cards() -> Array:
 	return cards
 	
 	
-func calculate_winner() -> _Doomer.Opponents:
+func calculate_winner() -> _Core.Opponents:
 	var enemy_hand_value = 0
 	var player_hand_value = 0
 	for card : _Doomer_Card in doomer.scene.poker_board.player_cards:
@@ -25,21 +25,21 @@ func calculate_winner() -> _Doomer.Opponents:
 		enemy_hand_value += card.value # _Doomer_Card.CardValue.keys()[card.value]
 	
 	if player_hand_value > enemy_hand_value:
-		return _Doomer.Opponents.Player
+		return _Core.Opponents.Player
 	else:
-		return _Doomer.Opponents.Enemy
+		return _Core.Opponents.Enemy
 		
 
-func calculate_loser() -> _Doomer.Opponents:
-	if calculate_winner() == _Doomer.Opponents.Player:
-		return _Doomer.Opponents.Enemy
+func calculate_loser() -> _Core.Opponents:
+	if calculate_winner() == _Core.Opponents.Player:
+		return _Core.Opponents.Enemy
 	else:
-		return _Doomer.Opponents.Player
+		return _Core.Opponents.Player
 		
 
 
 func get_winner_coin_box():
-	if calculate_winner() == _Doomer.Opponents.Player:
+	if calculate_winner() == _Core.Opponents.Player:
 		return doomer.scene.poker_board.player_coin_box
 	else:
 		return doomer.scene.poker_board.enemy_coin_box

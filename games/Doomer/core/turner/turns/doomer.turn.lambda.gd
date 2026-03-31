@@ -1,4 +1,4 @@
-extends _Doomer_Turn
+extends _Core_Turn
 class_name _Doomer_Turn_Lambda
 
 var to_call : Callable

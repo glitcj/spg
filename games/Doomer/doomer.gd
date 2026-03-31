@@ -1,5 +1,5 @@
 extends Node
-class_name _Doomer
+class_name _Core
 
 # Orchestrator
 # This class assigns all the static objects that are cross-referenced across objects
@@ -8,11 +8,11 @@ class_name _Doomer
 
 enum Opponents {Player, Enemy}
 
-var current_scene_node : _Doomer_Scene
+var current_scene_node : _Core_Scene
 
 @onready var camera = %Camera2D as Camera2D
 @onready var handler : _Doomer_Handler = $Handler
-@onready var turner : _Doomer_Turner = $Turner
+@onready var turner : _Core_Turner = $Turner
 @onready var logic : _Doomer_Logic = $Logic
 @onready var getter : _Doomer_Getter = $Getter
 @onready var scene_grid = find_child("Scene Grid")
@@ -43,7 +43,7 @@ func _boot():
 	change_scene(scene.start_screen)
 	
 	
-func change_scene(scene_: _Doomer_Scene):
+func change_scene(scene_: _Core_Scene):
 	if current_scene_node:
 		current_scene_node._on_scene_end()
 

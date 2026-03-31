@@ -1,7 +1,7 @@
 extends Node
 class_name _Peekaboo_Lambdas
 
-@export var doomer : _Doomer
+@onready var doomer : _Core = find_parent("_Core")
 
 func get_peekaboo(): return find_parent("_PeekaBoo") as _PeekaBoo
 func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map

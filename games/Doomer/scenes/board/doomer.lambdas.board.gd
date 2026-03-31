@@ -4,8 +4,8 @@ class_name _Doomer_Poker_Board_Events
 
 enum MessageType {Dialogue, Log}
 
-@export var doomer : _Doomer
-var _turn : _Doomer_Turn
+@onready var doomer : _Core = find_parent("_Core")
+var _turn : _Core_Turn
 
 var scene : _Doomer_Scene_Poker_Board
 
@@ -95,14 +95,14 @@ func mark_cards(_cards_getter : Callable, _mark_type : _Doomer_Card_Mark.MarkTyp
 			card.add_mark(_mark_type, _opponent, false)
 
 func card_attack(_cards_getter : Callable, _loser_getter : Callable, _coin_amount : int):
-	var opponent : _Doomer.Opponents = _loser_getter.call()
+	var opponent : _Core.Opponents = _loser_getter.call()
 
 	var coin_box : _Doomer_Coin_Box
 	var enumation : _Doomer_Card.Enumation
 	var attacker_portrait : _Doomer_Portrait
 	var defender_portrait : _Doomer_Portrait
 
-	if opponent == _Doomer.Opponents.Enemy:
+	if opponent == _Core.Opponents.Enemy:
 		coin_box = doomer.scene.poker_board.getter.player_coin_box()
 		enumation = _Doomer_Card.Enumation.AttackUp
 		attacker_portrait = doomer.scene.poker_board.getter.player_portrait()

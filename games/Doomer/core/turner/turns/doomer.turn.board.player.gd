@@ -1,4 +1,4 @@
-extends _Doomer_Turn
+extends _Core_Turn
 class_name _Doomer_Turn_Player
 
 static var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_RIGHT, KEY_LEFT]
@@ -15,7 +15,7 @@ enum StateMachine {ShowingBoard, ShowingTraits, ShowingPlayerHand}
 
 var state : StateMachine = StateMachine.ShowingBoard
 
-func _init(_doomer: _Doomer) -> void:
+func _init(_doomer: _Core) -> void:
 	super(_doomer)
 	turn_name = "PLY"
 	turn_colour = Color(1,1,1)
@@ -108,7 +108,7 @@ func _on_call_action():
 	var mark_type = _Doomer_Card_Mark.MarkType.ATK
 
 	for card : _Doomer_Card in cards:
-		card.add_mark(mark_type, _Doomer.Opponents.Player)
+		card.add_mark(mark_type, _Core.Opponents.Player)
 
 func _on_fold_action():
 	var _portrait : _Doomer_Portrait = doomer.scene.poker_board.getter.player_portrait()
@@ -118,4 +118,4 @@ func _on_fold_action():
 	var mark_type = _Doomer_Card_Mark.MarkType.DEF
 
 	for card : _Doomer_Card in cards:
-		card.add_mark(mark_type, _Doomer.Opponents.Player)
+		card.add_mark(mark_type, _Core.Opponents.Player)

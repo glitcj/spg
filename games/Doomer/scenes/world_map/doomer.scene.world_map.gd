@@ -1,4 +1,4 @@
-extends _Doomer_Scene
+extends _Core_Scene
 class_name _Doomer_Scene_World_Map
 
 
