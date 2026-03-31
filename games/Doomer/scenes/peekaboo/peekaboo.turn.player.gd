@@ -4,11 +4,8 @@ class_name _Peekaboo_Turn_Player
 var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 var wait_amount : float = .2
 
-var scene
-
-
-func _init(_core: _Core) -> void:
-	super(_core)
+func _init() -> void:
+	super()
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)
 	name = "_Peekaboo_Turn_Player"
@@ -26,6 +23,5 @@ func _process_input():
 	print(doomer.scene.peekaboo)
 
 	await doomer.lambdas.change_scene(doomer.scene.peekaboo)
-
-
+	
 	on_turn_end()

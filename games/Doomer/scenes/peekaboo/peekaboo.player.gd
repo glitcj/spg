@@ -8,9 +8,7 @@ var is_active = true
 
 @onready var tweener = %_Peekaboo_Tweener as _Peekaboo_Tweener
 @onready var mover = find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-
 @onready var map = find_parent("_Peekaboo_Map")
-
 
 func get_portrait(): return find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
 
@@ -86,12 +84,8 @@ func _on_input():
 
 	if Input.is_action_just_pressed("ui_accept"):
 		reset_movement()
-		# direction = Vector2.ZERO
-		# next_direction = Vector2.ZERO
-
 
 func reset_movement():
-	# get_portrait().face_down()
 	direction = Vector2.ZERO
 	next_direction = Vector2.ZERO
 	

@@ -1,6 +1,18 @@
 extends Node
 
 
+
+
+
+"""
+
+
+lets do a big refacor so do a deep review before doing it, in the classes, we are 
+   gonna deprecate _Doomer_Handler, so do that and then go all the classes that     
+  used it eg  _Core_Turn_*** and follow standard gdscript practive e.g., using      
+  Input or _input to handle inputs as appropriate   
+
+"""
 """
 # Gameplay loop
 
