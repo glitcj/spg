@@ -44,10 +44,19 @@ var full_log
 
 func _process(delta: float) -> void:
 	_process_input()
+	# _check_is_active()
 
 func add_line(s : String):
 	label.text = "\n".join([label.text, s])
 
+
+"""
+func _check_is_active():
+	is_active = true
+	if get_parent() is _Core_Scene:
+		if not (get_parent() as _Core_Scene).is_active:
+			is_active = false
+"""
 
 func _update_label_as_message():
 	label.text = message # "\n".join(full_message_log.slice(-3, 0))
@@ -63,7 +72,7 @@ func start(m : Array):
 	
 	# Defer setting is_active to run after _process_input()
 	# _process_input() should ignore inputs in this frame
-	var lambda = func(): is_active = true
+	var lambda = func(): visible = true
 	lambda.call_deferred()
 
 	return finished
@@ -76,9 +85,9 @@ func _show_current_message(m):
 
 func _show_next_message():
 	if message_queue == []:
-		if is_active:
-			tweener._slide_out()
-			is_active = false
+		if visible:
+			await tweener._slide_out()
+			visible = false
 			finished.emit()
 		return
 		

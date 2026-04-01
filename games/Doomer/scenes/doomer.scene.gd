@@ -4,7 +4,16 @@ class_name _Core_Scene
 signal scene_activated
 signal scene_deactivated
 
-var is_active = false
+var is_active = false:
+	set(v):
+		is_active = v
+		if is_active:
+			print(self)
+			await _on_scene_activated()
+		else:
+			print(self)
+			await _on_scene_deactivated()
+
 var accepted_inputs = []
 
 @onready var doomer : _Core = find_parent("_Core")
@@ -13,12 +22,10 @@ var accepted_inputs = []
 
 func _on_scene_start():
 	is_active = true
-	scene_activated.emit()
 
 
 func _on_scene_end():
 	is_active = false
-	scene_deactivated.emit()
 
 
 func _on_input_received():
@@ -31,4 +38,10 @@ func _on_input_received():
 
 func is_current_scene():
 	return doomer.current_scene_node == self
-	
+
+
+func _on_scene_activated():
+	pass
+
+func _on_scene_deactivated():
+	pass

@@ -40,6 +40,8 @@ func _slide_out():
 	tween.tween_property(parent, "position", Vector2(0, 300), slide_duration)
 	tween.parallel().tween_property(parent, "modulate", Color(1,1,1,0), 1)
 	
+	await tween.finished
+	
 
 
 

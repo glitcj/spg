@@ -6,7 +6,6 @@ var slide_duration = 1.0
 
 func _on_automatic():
 	await peekaboo.message_window.start(["Map started.."])
-	# await get_lambdas().move_camera(Vector2i(0, -4))
 	await get_lambdas().transport_player(get_variables().l4_entry_position)
 	await get_lambdas().transport_camera(get_variables().l4_camera_position)
 	await get_lambdas().transport_camera(get_map().find_child("_camera_position_4_1").find_child("_Peekaboo_Mover").map_position)

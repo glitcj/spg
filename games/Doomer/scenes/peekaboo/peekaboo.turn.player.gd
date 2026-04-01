@@ -15,10 +15,10 @@ func _init() -> void:
 
 
 func on_turn_start():
-	peekaboo =  find_parent("_Peekaboo") as _Peekaboo
+	peekaboo = find_parent("_Peekaboo") as _Peekaboo
 	
-	print(find_parent("_Peekaboo").find_child("Player"), find_parent("_Peekaboo"))
-	(find_parent("_Peekaboo").find_child("Player") as _Peekaboo_Player).is_active = true
+	# print(find_parent("_Peekaboo").find_child("Player"), find_parent("_Peekaboo"))
+	# (find_parent("_Peekaboo").find_child("Player") as _Peekaboo_Player).is_active = true
 	
 	_process_input()
 

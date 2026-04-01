@@ -26,11 +26,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# is_active = true	
+	is_active = true	
+	# if not peekaboo.is_active:
+	# 	is_active = false
+		
 	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
 		if script.is_running() and script.interrupt_player:
 			is_active = false
-	_on_input()
+			
+	# _on_input()
+	_process_input()
 
 func _physics_process(delta: float) -> void:
 	if not is_active:
@@ -69,7 +74,8 @@ func _valid_direction_is_pressed():
 			return true
 	return false
 	
-func _on_input():
+# func _input():# _on_input():
+func _process_input():# _on_input():
 	if Input.is_action_just_pressed("ui_select"):
 		tweener.highlight()
 		
