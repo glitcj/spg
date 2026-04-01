@@ -42,11 +42,12 @@ enum ScriptTirgger {
 
 var last_distnace_from_player : Vector2 = Vector2.ZERO
 var current_distnace_from_player : Vector2 = Vector2.ZERO
+
+# TODO: replace with getters
 var parent : Object
 var mover : _Peekaboo_Mover
 var portrait : _Peekaboo_Portrait
 var scene_just_started := true
-# var is_running := false
 
 
 var trigger_is_running : Dictionary = {}
@@ -54,15 +55,16 @@ var trigger_is_running : Dictionary = {}
 
 func _ready():
 	_get_components.call_deferred()
-	bind_triggers()
+	# bind_triggers()
+	bind_triggers.call_deferred()
 	await get_tree().process_frame
-	_wrapped_callable.bind(_on_automatic).call_deferred()
+	# _wrapped_callable.bind(_on_scene_start).call_deferred()
 
 
 
 func bind_triggers():
 	var trigger_callables = [
-		_on_within_range, _on_automatic, 
+		_on_within_range, _on_scene_start, 
 		_on_entered_range, _on_exited_range,
 		_on_action_within_range_trigger,
 		_on_frame, _on_area_entered
@@ -75,6 +77,8 @@ func bind_triggers():
 	actioned_within_range.connect(_wrapped_callable.bind(_on_action_within_range_trigger))
 	is_within_range.connect(_wrapped_callable.bind(_on_within_range))
 	frame_started.connect(_wrapped_callable.bind(_on_frame))
+	get_peekaboo().scene_started.connect(_wrapped_callable.bind(_on_scene_start))
+	
 	
 	if get_area():
 
@@ -127,13 +131,6 @@ func _check_area_signals(body: Node2D): # Add the 'body' parameter
 	if body == get_player(): 
 		area_entered_by_player.emit()
 		
-"""
-func _check_area_signals():
-	if true: # get_map().find_child("Player") in get_area().get_overlapping_bodies():
-		print(get_area().get_overlapping_bodies())
-		area_entered_by_player.emit()
-"""
-
 func _distance_to_player() -> float:
 	return (peekaboo.map.player.position - parent.position).length()
 
@@ -147,7 +144,7 @@ func _wrapped_callable(c: Callable):
 	trigger_is_running[c.get_method()] = false
 
 
-func _on_automatic():
+func _on_scene_start():
 	pass
 
 func _on_frame():
@@ -169,7 +166,6 @@ func _on_area_entered():
 	pass
 
 func _log():
-	# print("distance ", _distance_to_player())
 	pass
 
 func is_running():

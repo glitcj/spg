@@ -2,7 +2,7 @@ extends _Peekaboo_Script
 
 @export var messages = []
 
-func _on_automatic():
+func _on_scene_start():
 	pass
 	
 func _on_entered_range():

@@ -1101,6 +1101,8 @@ position = Vector2(81, -80)
 [node name="_Peekaboo_Script" type="Node" parent="Event 1-1"]
 script = ExtResource("3_2fpur")
 interrupt_player = true
+trigger = null
+action_range = null
 
 [node name="_Peekaboo_Mover" type="Node" parent="Event 1-1"]
 script = ExtResource("10_b6854")

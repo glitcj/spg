@@ -4,10 +4,10 @@ extends _Peekaboo_Script
 var slide_duration = 1.0
 
 
-func _on_automatic():
+func _on_scene_start():
 	await peekaboo.message_window.start(["Map started.."])
 	await get_lambdas().transport_player(get_variables().l4_entry_position)
-	await get_lambdas().transport_camera(get_variables().l4_camera_position)
+	# await get_lambdas().transport_camera(get_variables().l4_camera_position)
 	await get_lambdas().transport_camera(get_map().find_child("_camera_position_4_1").find_child("_Peekaboo_Mover").map_position)
 
 

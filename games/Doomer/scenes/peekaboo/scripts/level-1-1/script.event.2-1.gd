@@ -4,7 +4,7 @@ extends _Peekaboo_Script
 var slide_duration = 1.0
 
 
-func _on_automatic():
+func _on_scene_start():
 	await peekaboo.message_window.start(["Map started.."])
 
 

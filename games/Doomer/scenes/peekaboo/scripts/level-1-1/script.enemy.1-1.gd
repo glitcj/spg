@@ -1,7 +1,7 @@
 extends _Peekaboo_Script
 
 
-func _on_automatic():
+func _on_scene_start():
 	while true:
 		portrait.animation_player.play("move_down")
 		await mover.move(Vector2i(0,-2))

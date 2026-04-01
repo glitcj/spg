@@ -1,6 +1,6 @@
 extends _Peekaboo_Script
 
-func _on_automatic():
+func _on_scene_start():
 	portrait.animation_player.play("idle")
 	
 func _on_entered_range():
