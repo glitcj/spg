@@ -26,12 +26,9 @@ func get_lambdas(): return find_parent("_Peekaboo_Map").find_child("_Peekaboo_La
 func get_variables(): return _Peekaboo_Variables
 func get_area(): return get_parent().find_child("Area2D") as Area2D
 
-"""
-	if get_parent().find_child("Area2D"):
-	
-		return get_parent().find_child("Area2D")
-	return find_child("Area2D")
-"""
+func get_mover(): return get_parent().find_child("_Peekaboo_Mover")
+func get_portrait(): return get_parent().find_child("_Peekaboo_Portrait")
+
 
 var variables = _Peekaboo_Variables
 
@@ -85,7 +82,6 @@ func bind_triggers():
 		get_area().body_entered.connect(_check_area_signals)
 	area_entered_by_player.connect(_wrapped_callable.bind(_on_area_entered))
 
-	
 func _get_components():
 	parent = get_parent()
 	if parent.find_children("*", "_Peekaboo_Mover").size() > 0:
