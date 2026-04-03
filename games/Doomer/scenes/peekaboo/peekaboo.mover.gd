@@ -60,15 +60,17 @@ func move(tile_vector : Vector2i):
 	return self
 	
 func face(tile_vector : Vector2i):
+	
+	var normalised_vector = Vector2(tile_vector).normalized()
 	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
 	if portrait:
-		if tile_vector == Vector2i(1, 0):
+		if normalised_vector == Vector2(1, 0):
 			portrait.face_right()
-		elif tile_vector == Vector2i(-1, 0):
+		elif normalised_vector == Vector2(-1, 0):
 			portrait.face_left()
-		elif tile_vector == Vector2i(0, 1):
+		elif normalised_vector == Vector2(0, 1):
 			portrait.face_down()
-		elif tile_vector == Vector2i(0, -1):
+		elif normalised_vector == Vector2(0, -1):
 			portrait.face_up()
 	return self
 

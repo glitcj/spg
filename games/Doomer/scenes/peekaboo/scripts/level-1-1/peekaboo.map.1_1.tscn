@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=54 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Texture2D" uid="uid://cklccjgem4vvs" path="res://assets/ninja/Backgrounds/Tilesets/TilesetFloor.png" id="1_mxsbq"]
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/peekaboo.map.gd" id="1_pa1n3"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_common_script_ghost.gd" id="13_sq2sq"]
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="13_ul6yd"]
 [ext_resource type="Script" uid="uid://da5b4ins7hwmf" path="res://scenes/peekaboo/scripts/level-1-1/script.event.3-1.gd" id="14_x570f"]
-[ext_resource type="Script" uid="uid://cx7v6r1guj6r" path="res://scenes/peekaboo/scripts/level-1-1/script.enemy.2-1.gd" id="15_sq2sq"]
 [ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_common_script_teleport.gd" id="16_bj00i"]
 [ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="20_5max1"]
 
@@ -959,17 +958,32 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="LabelSettings" id="LabelSettings_x570f"]
 font_size = 75
 
-[sub_resource type="GDScript" id="GDScript_5max1"]
+[sub_resource type="GDScript" id="GDScript_ceddd"]
 script/source = "extends _Peekaboo_Script
 
 
 func _on_area_entered():
 	get_variables().l2_enemies_count += 1
-	# get_parent().queue_free()
 	parent.queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5max1"]
+
+[sub_resource type="GDScript" id="GDScript_5max1"]
+script/source = "extends _Peekaboo_Script
+
+func _on_area_entered():
+	get_variables().l2_enemies_count += 1
+	parent.queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_bj00i"]
+script/source = "extends _Peekaboo_Script
+
+func _on_area_entered():
+	get_variables().l2_enemies_count += 2
+	parent.queue_free()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceddd"]
 size = Vector2(100, 100)
@@ -1226,43 +1240,79 @@ map_position = Vector2i(-3, -1)
 [node name="_Peekaboo_Portrait" parent="Enemy 1-2" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
 
-[node name="Enemy 2-1" type="Node2D" parent="."]
+[node name="_enemy_2_1" type="Node2D" parent="."]
 position = Vector2(-1999, 240)
 
-[node name="Script" type="Node" parent="Enemy 2-1"]
-script = ExtResource("15_sq2sq")
-action_range = 200.0
+[node name="_common_script_ghost" type="Node" parent="_enemy_2_1"]
+script = ExtResource("13_sq2sq")
+movement = Array[Vector2i]([Vector2i(-4, 0), Vector2i(4, 0)])
+action_range = 100.0
 
-[node name="_Peekaboo_Mover" type="Node" parent="Enemy 2-1"]
+[node name="_enemy_script_2_1" type="Node" parent="_enemy_2_1"]
+script = SubResource("GDScript_ceddd")
+
+[node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_1"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(-13, 1)
 
-[node name="_Peekaboo_Portrait" parent="Enemy 2-1" instance=ExtResource("9_3e75c")]
+[node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
 
-[node name="Enemy 2-2" type="Node2D" parent="."]
+[node name="Area2D" type="Area2D" parent="_enemy_2_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_enemy_2_1/Area2D"]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_5max1")
+
+[node name="_enemy_2_2" type="Node2D" parent="."]
 position = Vector2(-1999, 1040)
 
-[node name="_common_script_ghost" type="Node" parent="Enemy 2-2"]
+[node name="_common_script_ghost" type="Node" parent="_enemy_2_2"]
 script = ExtResource("13_sq2sq")
 movement = Array[Vector2i]([Vector2i(-3, 0), Vector2i(3, 0)])
 action_range = 100.0
 
-[node name="_enemy_script_2_2" type="Node" parent="Enemy 2-2"]
+[node name="_enemy_script_2_2" type="Node" parent="_enemy_2_2"]
 script = SubResource("GDScript_5max1")
 
-[node name="_Peekaboo_Mover" type="Node" parent="Enemy 2-2"]
+[node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_2"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(-13, 6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="Enemy 2-2" instance=ExtResource("9_3e75c")]
+[node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
 sprite = 1
 
-[node name="Area2D" type="Area2D" parent="Enemy 2-2"]
+[node name="Area2D" type="Area2D" parent="_enemy_2_2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy 2-2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_enemy_2_2/Area2D"]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_5max1")
+
+[node name="_enemy_2_3" type="Node2D" parent="."]
+position = Vector2(-1999, 1520)
+
+[node name="_common_script_ghost" type="Node" parent="_enemy_2_3"]
+script = ExtResource("13_sq2sq")
+movement = Array[Vector2i]([Vector2i(-3, 0), Vector2i(3, 0)])
+action_range = 100.0
+
+[node name="_enemy_script_2_3" type="Node" parent="_enemy_2_3"]
+script = SubResource("GDScript_bj00i")
+
+[node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_3"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(-13, 9)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("9_3e75c")]
+scale = Vector2(4, 4)
+sprite = 1
+
+[node name="Area2D" type="Area2D" parent="_enemy_2_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_enemy_2_3/Area2D"]
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 

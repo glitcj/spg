@@ -13,7 +13,6 @@ func _on_scene_start():
 		
 func _on_within_range():
 	parent = parent as Node
-	# variables.all[_Peekaboo_Variables.Keys.l1_1_enemies_count] += 1
 	get_variables().l2_enemies_count += 1
 
 	parent.queue_free()

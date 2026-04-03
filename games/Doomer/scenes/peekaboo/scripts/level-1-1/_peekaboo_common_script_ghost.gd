@@ -11,7 +11,8 @@ func _on_scene_start():
 	while true:
 		vector = movement.pop_front()
 		movement.append(vector)
-
-		await mover.move(vector)
+		
+		await mover.face(vector).move(vector)
+		# await mover.move(vector)
 		await mover.wait(1.0)
 		
