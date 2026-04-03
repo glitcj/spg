@@ -13,6 +13,5 @@ func _on_scene_start():
 		movement.append(vector)
 		
 		await mover.face(vector).move(vector)
-		# await mover.move(vector)
 		await mover.wait(1.0)
 		
