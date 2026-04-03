@@ -157,6 +157,8 @@ func convert_a1() -> void:
 	var a2_image_paths:= get_target_autotile_image_file_paths("_A1")
 	for image_path in a2_image_paths:
 		var imagefilename:String = image_path.get_basename().split("/")[-1]
+		
+		print("Processing: ", image_path)
 		var image:= Image.load_from_file(image_path)
 		
 		## VXかMVか判定
