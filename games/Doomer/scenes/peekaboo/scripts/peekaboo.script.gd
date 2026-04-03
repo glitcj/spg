@@ -2,10 +2,13 @@ extends Node
 class_name _Peekaboo_Script
 
 signal script_finished
-signal entered_range
-signal exited_range
+# signal entered_range
+# signal exited_range
+
 signal actioned_within_range
-signal is_within_range
+
+# signal is_within_range
+
 signal frame_started
 signal area_entered_by_player
 
@@ -69,10 +72,13 @@ func bind_triggers():
 	for c : Callable in trigger_callables:
 		trigger_is_running[c.get_method()] = false
 	
-	entered_range.connect(_wrapped_callable.bind(_on_entered_range))
-	exited_range.connect(_wrapped_callable.bind(_on_exited_range))
+	# entered_range.connect(_wrapped_callable.bind(_on_entered_range))
+	# exited_range.connect(_wrapped_callable.bind(_on_exited_range))
+	
+
+	
 	actioned_within_range.connect(_wrapped_callable.bind(_on_action_within_range_trigger))
-	is_within_range.connect(_wrapped_callable.bind(_on_within_range))
+	# is_within_range.connect(_wrapped_callable.bind(_on_within_range))
 	frame_started.connect(_wrapped_callable.bind(_on_frame))
 	get_peekaboo().scene_started.connect(_wrapped_callable.bind(_on_scene_start))
 	
@@ -93,7 +99,7 @@ func _process(_delta: float):
 	if not peekaboo or not peekaboo.map.player:
 		return
 	_log()
-	_check_range_signals()
+	# _check_range_signals()
 	frame_started.emit()
 	
 	if Input.is_action_just_pressed("ui_accept"):
@@ -104,9 +110,11 @@ func _process(_delta: float):
 			if player_is_facing_this_event:
 				actioned_within_range.emit()
 
-	if _distance_to_player() < action_range:
-		is_within_range.emit()
+	# if _distance_to_player() < action_range:
+	# 	is_within_range.emit()
 
+
+"""
 func _check_range_signals():
 	last_distnace_from_player = current_distnace_from_player
 	current_distnace_from_player = peekaboo.map.player.position - parent.position
@@ -121,7 +129,7 @@ func _check_range_signals():
 	if last_distnace_from_player.length() <= action_range and current_distnace_from_player.length() > action_range:
 		exited_range.emit()
 
-
+"""
 
 func _check_area_signals(body: Node2D): # Add the 'body' parameter
 	if body == get_player(): 
