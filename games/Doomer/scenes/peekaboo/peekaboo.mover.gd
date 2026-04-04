@@ -28,7 +28,7 @@ func _quantise_position():
 	if not is_inside_tree():
 		return
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var l1 = map.find_child("L1") as TileMapLayer
+	var l1 = map.find_child("L1 Base") as TileMapLayer
 	var map_tile_global_center = l1.to_global(l1.map_to_local(map_position))
 	
 	if get_parent().has_node("RigidBody2D"):
@@ -37,7 +37,7 @@ func _quantise_position():
 	
 func move_to_tile(tile_position : Vector2i):
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.find_child("L1") as TileMapLayer
+	var layer = map.find_child("L1 Base") as TileMapLayer
 
 	
 	var target_global = layer.to_global(layer.map_to_local(tile_position))
@@ -47,7 +47,8 @@ func move_to_tile(tile_position : Vector2i):
 
 func move(tile_vector : Vector2i):
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.l1 as TileMapLayer
+	# var layer = map.l1 as TileMapLayer
+	var layer = map.find_child("L1 Base") as TileMapLayer
 	
 	var target_global = layer.to_global(layer.map_to_local(map_position + tile_vector))
 	var displacement = target_global - get_parent().global_position
@@ -90,7 +91,7 @@ func wait(time : float = 1.0):
 
 func closest_map_position() -> Vector2i:
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.find_child("L1") as TileMapLayer
+	var layer = map.find_child("L1 Base") as TileMapLayer
 	
 	return layer.local_to_map(layer.to_local(get_parent().global_position))
 
