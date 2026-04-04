@@ -4,10 +4,11 @@ extends _Peekaboo_Script
 @export var camera_position = Vector2i.ZERO as Vector2i
 @export var player_position = Vector2i.ZERO as Vector2i
 
-# @export var use_position_name = false
-
 @export var camera_position_node : Node2D
 @export var player_position_node : Node2D
+
+
+@export_enum("2k3", "rmv", "rmz") var standard : String
 
 @export var duration = 0.0
 

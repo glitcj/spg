@@ -2,7 +2,7 @@ extends Node
 class_name _Peekaboo_Script
 
 signal script_finished
-signal actioned_within_range
+signal actioned_within_area
 signal frame_started
 signal area_entered_by_player
 
@@ -52,13 +52,13 @@ func bind_triggers():
 	var trigger_callables = [
 		_on_within_range, _on_scene_start, 
 		_on_entered_range, _on_exited_range,
-		_on_action_within_range_trigger,
+		_on_action_within_area,
 		_on_frame, _on_area_entered
 		]
 	for c : Callable in trigger_callables:
 		trigger_is_running[c.get_method()] = false
 	
-	actioned_within_range.connect(_wrapped_callable.bind(_on_action_within_range_trigger))
+	actioned_within_area.connect(_wrapped_callable.bind(_on_action_within_area))
 	frame_started.connect(_wrapped_callable.bind(_on_frame))
 	get_peekaboo().scene_started.connect(_wrapped_callable.bind(_on_scene_start))
 	
@@ -79,23 +79,31 @@ func _process(_delta: float):
 	if not peekaboo or not peekaboo.map.player:
 		return
 	_log()
-	# _check_range_signals()
 	frame_started.emit()
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		if _distance_to_player() < action_range:
-			
+		if _player_is_within_event_area():
 			var player_mover = peekaboo.find_child("Player").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 			var player_is_facing_this_event : bool = mover.map_position == player_mover.get_facing_direction() + player_mover.map_position
 			if player_is_facing_this_event:
-				actioned_within_range.emit()
+				await get_tree().process_frame # wait for input buffer to clear
+				actioned_within_area.emit()
 
 func _check_area_signals(body: Node2D): # Add the 'body' parameter
 	if body == get_player(): 
 		area_entered_by_player.emit()
-		
+
+
+func _player_is_within_event_area():
+	if get_area(): return get_area().overlaps_body(get_player())
+
 func _distance_to_player() -> float:
 	return (peekaboo.map.player.position - parent.position).length()
+
+
+
+
+
 
 func _wrapped_callable(c: Callable):
 	if trigger_is_running[c.get_method()]:
@@ -116,7 +124,7 @@ func _on_frame():
 func _on_within_range():
 	pass
 
-func _on_action_within_range_trigger():
+func _on_action_within_area():
 	pass
 
 func _on_entered_range():
@@ -136,8 +144,10 @@ func is_running():
 
 
 func _get_direction_to_player():
-	var player_position = get_player().find_child("Peekaboo_Mover").map_position as Vector2i
+	# print(get_player())
+	# print(get_player().find_child("_Peekaboo_Mover").map_position)
+	var player_position = get_player().find_child("_Peekaboo_Mover").map_position as Vector2i
 	var direction = Vector2(player_position - get_mover().map_position).normalized()
 	
-	assert(direction	.x + direction.y == 1) # make sure direction is in udlr
+	assert(direction.x + direction.y == 1) # make sure direction is in udlr
 	return Vector2i(direction)

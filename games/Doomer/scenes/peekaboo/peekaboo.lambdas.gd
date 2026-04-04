@@ -28,3 +28,17 @@ func dettach_camera_from_player():
 func move_camera(delta : Vector2i):
 	var mover = get_map().find_child("_Peekaboo_Camera").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 	await mover.move(delta)
+
+
+
+func set_base_tilemaps_to_rmz_standard():
+	# TODO: set tile pixel size to 48 and scale to 3.333 (159.9 pixels)
+	return
+	
+func set_base_tilemaps_to_2k3_standard():
+	# TODO: set tile pixel size to 16 and scale to 10 (160 pixels)
+	return
+	
+func set_base_tilemaps_to_rmv_standard():
+	# TODO: set tile pixel size to 32 and scale to 5 (160 pixels)
+	return

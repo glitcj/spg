@@ -9,9 +9,7 @@
 [ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="4_j53a2"]
 [ext_resource type="Texture2D" uid="uid://6pqni6eylgxw" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A2.png" id="6_2ylu0"]
 [ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="6_6de6d"]
-[ext_resource type="Script" uid="uid://bf5737f8myfli" path="res://scenes/peekaboo/scripts/level-1-1/script.npc.1-1.gd" id="6_ipevu"]
 [ext_resource type="Texture2D" uid="uid://bwtqf8qjwe2ew" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A4.png" id="7_r103f"]
-[ext_resource type="Script" uid="uid://cv1ck86dcy0tg" path="res://scenes/peekaboo/scripts/level-1-1/script.npc.1-2.gd" id="8_2ntr3"]
 [ext_resource type="Texture2D" uid="uid://nrvnmkijidre" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A5.png" id="8_b0sri"]
 [ext_resource type="Script" uid="uid://df5fvc4fwhmai" path="res://scenes/peekaboo/scripts/level-1-1/script.enemy.1-1.gd" id="8_fboiy"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.tscn" id="9_3e75c"]
@@ -25,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="13_ul6yd"]
 [ext_resource type="Script" uid="uid://da5b4ins7hwmf" path="res://scenes/peekaboo/scripts/level-1-1/script.event.3-1.gd" id="14_x570f"]
 [ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_common_script_teleport.gd" id="16_bj00i"]
+[ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_common_script_talker.gd" id="19_b0sri"]
 [ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="20_5max1"]
 
 [sub_resource type="TileSet" id="TileSet_b0sri"]
@@ -9805,6 +9804,8 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcels"]
@@ -9917,7 +9918,7 @@ map_position = Vector2i(0, 3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(5, 5)
+scale = Vector2(7, 7)
 shape = SubResource("CircleShape2D_wptde")
 
 [node name="future position" type="Area2D" parent="Player"]
@@ -9948,11 +9949,9 @@ metadata/_custom_type_script = "uid://5fqo6d3fleu4"
 [node name="NPC 1" type="Node2D" parent="."]
 position = Vector2(81, 240)
 
-[node name="_Peekaboo_Script" type="Node" parent="NPC 1"]
-script = ExtResource("6_ipevu")
-interrupt_player = true
-trigger = 4
-action_range = 200.0
+[node name="_peekaboo_common_script_talker_1_1" type="Node" parent="NPC 1"]
+script = ExtResource("19_b0sri")
+messages = ["Hello..", "Good to see you here !", "Add _Peekaboo_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="NPC 1"]
 gravity_scale = 0.0
@@ -9971,13 +9970,18 @@ script = ExtResource("10_b6854")
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
+[node name="Area2D" type="Area2D" parent="NPC 1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 1/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_r103f")
+
 [node name="NPC 2" type="Node2D" parent="."]
 position = Vector2(1841, -1360)
 
-[node name="_Peekaboo_Script" type="Node" parent="NPC 2"]
-script = ExtResource("8_2ntr3")
-messages = ["Some enemies can only be seen by light.", "You can sense them, bugs show in their wake."]
-action_range = 200.0
+[node name="_peekaboo_common_script_talker_3_1" type="Node" parent="NPC 2"]
+script = ExtResource("19_b0sri")
+messages = ["Some enemies you cannot see.", "Bugs appear off their wake.", "That's all I can say now."]
 
 [node name="_Peekaboo_Mover" type="Node" parent="NPC 2"]
 script = ExtResource("10_b6854")

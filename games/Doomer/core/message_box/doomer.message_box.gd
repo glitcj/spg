@@ -66,6 +66,11 @@ func _update_label_as_log():
 	label.text = "\n".join(full_message_log.slice(-1 * min(3, full_message_log.size()), full_message_log.size()))
 	
 func start(m : Array):
+	
+	# await get_tree().process_frame
+	# await get_tree().process_frame
+	
+	
 	tweener._slide_in()
 	message_queue = m
 	_show_next_message()

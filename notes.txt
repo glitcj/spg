@@ -1,0 +1,6 @@
+add face player talking common
+
+
+
+add peekaboo event
+add message window wait for frame before start
