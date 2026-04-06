@@ -14,7 +14,7 @@ signal finished
 # @onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
 # @onready var message_box
 
-@onready var tweener = %_Peekaboo_Tweener
+# @onready var tweener = %_Peekaboo_Tweener
 
 # enum Action {ShowLog, ShowMessage, Buzz}
 
@@ -46,7 +46,7 @@ func add_line(s : String):
 	label.text = "\n".join([label.text, s])
 
 func _update_label_as_message():
-	label.text = message # "\n".join(full_message_log.slice(-3, 0))
+	label.text = message
 	
 func _update_label_as_log():
 	full_message_log.append(message)
@@ -58,7 +58,7 @@ func start(message_queue_ : Array):
 	visible = true
 	position = Vector2.ZERO
 	
-	await tweener._slide_in(self)
+	await _Peekaboo_Tweener._slide_in(self)
 
 	print(message_queue)
 	is_active = true
@@ -72,7 +72,7 @@ func _show_current_message(m):
 
 func _show_next_message():
 	if message_queue == [] and visible:
-		await tweener._slide_out(self)
+		await _Peekaboo_Tweener._slide_out(self)
 		finished.emit()
 		queue_free.call_deferred()
 		return

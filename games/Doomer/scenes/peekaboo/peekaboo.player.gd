@@ -5,8 +5,6 @@ class_name _Peekaboo_Player
 @export var peekaboo : _Peekaboo
 var is_active = false
 
-
-@onready var tweener = %_Peekaboo_Tweener as _Peekaboo_Tweener
 @onready var mover = find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 @onready var map = find_parent("_Peekaboo_Map")
 
@@ -27,14 +25,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	is_active = true	
-	# if not peekaboo.is_active:
-	# 	is_active = false
-		
+
 	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
 		if script.is_running() and script.interrupt_player:
 			is_active = false
 			
-	# _on_input()
 	_process_input()
 
 func _physics_process(delta: float) -> void:
@@ -74,10 +69,9 @@ func _valid_direction_is_pressed():
 			return true
 	return false
 	
-# func _input():# _on_input():
 func _process_input():# _on_input():
 	if Input.is_action_just_pressed("ui_select"):
-		tweener.highlight(self)
+		_Peekaboo_Tweener.highlight(self)
 		
 		
 	if _valid_direction_is_pressed():
@@ -94,9 +88,11 @@ func _process_input():# _on_input():
 func reset_movement():
 	direction = Vector2.ZERO
 	next_direction = Vector2.ZERO
-	
+
+"""
 func _update_movement():
 	if direction == Vector2.ZERO:
 		return
 	peekaboo.map.player.move_and_collide(direction * peekaboo.player_speed)
 	peekaboo.lambdas.update_idle_animation()
+"""
