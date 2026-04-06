@@ -12,6 +12,6 @@ func _on_exited_range():
 	portrait.animation_player.play("idle")
 
 func _on_action_within_range_trigger():
-	await peekaboo.message_window.start(messages)
+	await get_peekaboo().get_lambdas().show_messages(messages)
 	return
 	

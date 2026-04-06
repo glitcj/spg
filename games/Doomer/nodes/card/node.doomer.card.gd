@@ -179,7 +179,7 @@ func next_available_mark_container(opponent : _Core.Opponents):
 		
 
 func add_mark(mark_type : _Doomer_Card_Mark.MarkType, opponent: _Core.Opponents , wait_for_mark : bool = false):
-	var mark : _Doomer_Card_Mark = _Doomer_Templates.card_mark.instantiate()
+	var mark : _Doomer_Card_Mark = _Core_Templates.card_mark.instantiate()
 	mark.mark_type = mark_type
 	# mark._update_mark_type()
 	

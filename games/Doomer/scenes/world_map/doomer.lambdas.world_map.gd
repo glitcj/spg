@@ -11,12 +11,12 @@ func on_scene_start_events():
 func on_scene_start_slide_windows_in():
 	scene = doomer.scene.world_map
 	var flipper = 1
-	for m : _Doomer_Message_Box in scene.all_message_boxes:
+	for m : _Core_Window in scene.all_message_boxes:
 		flipper = -flipper
 		if flipper > 0:
-			await m.play_enumation(_Doomer_Message_Box.Enumations.SlideInFromLeft)
+			await m.play_enumation(_Core_Window.Enumations.SlideInFromLeft)
 		else:
-			await m.play_enumation(_Doomer_Message_Box.Enumations.SlideInFromRight)
+			await m.play_enumation(_Core_Window.Enumations.SlideInFromRight)
 
 func on_scene_start_hide_faces():
 	scene = doomer.scene.world_map
@@ -29,7 +29,7 @@ func create_opponents(_opponents: Array):
 		var opponent = _Doomer_Opponent.new()
 		_opponents.append(opponent)
 		scene.add_child(opponent)
-		var _message_box = scene.trait_option_message_boxes[i] as _Doomer_Message_Box
+		var _message_box = scene.trait_option_message_boxes[i] as _Core_Window
 		print(_message_box, opponent.description())
 		await _message_box.show_dialogue(opponent.description())
 

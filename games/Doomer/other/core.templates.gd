@@ -1,9 +1,14 @@
 extends Node
-class_name _Doomer_Templates
+class_name _Core_Templates
+
+
+static var window = preload("res://core/message_box/core.window.tscn")
+
 
 static var portrait = preload("res://nodes/portrait/doomer.portrait.tscn")
 static var coin_box_coin = preload("res://nodes/coin_box/doomer.coin_box.coin.tscn")
 static var card_mark = preload("res://nodes/card/doomer.card.mark.tscn")
+
 
 # Recent:
 var tscn_gun = "res://nodes/gun/doomer.gun.tscn"

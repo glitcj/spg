@@ -37,7 +37,7 @@ func add_coins(count : int = 1):
 	var coin_batch = 2
 	for batch_i in range(int(count/coin_batch)):
 		for i in range(coin_batch):
-			coin = _Doomer_Templates.coin_box_coin.instantiate()
+			coin = _Core_Templates.coin_box_coin.instantiate()
 			coin.visible = false
 			coins.add_child(coin)
 			coin.visible = true

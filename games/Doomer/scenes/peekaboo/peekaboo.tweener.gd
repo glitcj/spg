@@ -22,6 +22,7 @@ func _slide_in():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	var slide_duration = .5
 	
+	tween.tween_callback(func(): parent.visible = true)
 	tween.tween_callback(func(): parent.position = Vector2(0, 300))
 	tween.tween_callback(func(): parent.modulate = Color(1, 1, 1, 0))
 	

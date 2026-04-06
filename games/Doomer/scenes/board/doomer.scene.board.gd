@@ -34,9 +34,9 @@ class_name _Doomer_Scene_Poker_Board
 @onready var opponent_portrait_container =  %"Enemy Head Container"
 @onready var field_card_containers = find_children("CenterContainer Field Card *") as Array
 
-@onready var enemy_traits_message_box = %"Traits Message Box" as _Doomer_Message_Box
-@onready var player_hand_message_box = %"Player Hand Message Box" as _Doomer_Message_Box
-@onready var winner_declaration_message_box = %"Winner Declaration" as _Doomer_Message_Box
+@onready var enemy_traits_message_box = %"Traits Message Box" as _Core_Window
+@onready var player_hand_message_box = %"Player Hand Message Box" as _Core_Window
+@onready var winner_declaration_message_box = %"Winner Declaration" as _Core_Window
 
 var round_counter = 0
 var number_of_rounds = 2

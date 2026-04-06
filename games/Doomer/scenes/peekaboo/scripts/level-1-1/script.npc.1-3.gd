@@ -11,12 +11,12 @@ func _on_exited_range():
 
 func _on_action_within_range_trigger():
 	if variables.all[variables.Keys.l1_1_enemies_count] == 2:
-		await peekaboo.message_window.start(
+		await get_peekaboo().get_lambdas().show_messages(
 		["NPC: You got them !", "NPC: Go to the next location.."]
 		)
 		parent.queue_free()
 		return
 		
-	await peekaboo.message_window.start(
+	await get_peekaboo().get_lambdas().show_messages(
 		["NPC: Hello.", "NPC: Good to see you here !"]
 		)

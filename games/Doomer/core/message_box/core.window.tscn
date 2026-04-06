@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://dioopxi2opgrn"]
+[gd_scene load_steps=15 format=4 uid="uid://dioopxi2opgrn"]
 
-[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/message_box/doomer.message_box.gd" id="1_vr8u8"]
-[ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://nodes/portrait/doomer.portrait.tscn" id="2_dlr4c"]
+[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/message_box/core.window.gd" id="1_vr8u8"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_i2qql"]
 [ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="4_rjo55"]
 
@@ -690,7 +689,7 @@ sources/0 = SubResource("TileSetAtlasSource_i2qql")
 line_spacing = 0.0
 font_size = 10
 
-[node name="Message Box" type="Node2D"]
+[node name="_Core_Window" type="Node2D"]
 scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("1_vr8u8")
 
@@ -736,29 +735,6 @@ size_flags_vertical = 1
 text = "test"
 label_settings = SubResource("LabelSettings_msdvt")
 autowrap_mode = 2
-
-[node name="Control" type="Control" parent="Animated Node"]
-z_index = 6
-layout_mode = 3
-anchors_preset = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Animated Node/Control"]
-layout_mode = 0
-offset_right = 79.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="Animated Node/Control/HBoxContainer"]
-custom_minimum_size = Vector2(75, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control" type="Control" parent="Animated Node/Control/HBoxContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="Message Portrait" parent="Animated Node/Control/HBoxContainer/CenterContainer/Control" instance=ExtResource("2_dlr4c")]
-visible = false
-position = Vector2(-1, 0)
-portrait = 2
 
 [node name="_Peekaboo_Tweener" type="Node" parent="."]
 unique_name_in_owner = true

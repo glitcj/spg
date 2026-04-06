@@ -28,17 +28,33 @@ func dettach_camera_from_player():
 func move_camera(delta : Vector2i):
 	var mover = get_map().find_child("_Peekaboo_Camera").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 	await mover.move(delta)
+	
+func show_messages(messages: Array):
+	
+	
+	var window = _Core_Templates.window.instantiate() as _Core_Window
+	var container = get_peekaboo().find_child("Canvas Bottom") as CenterContainer
+	container.add_child(window)
+	window.scale = Vector2(5,5)
+	# window.position = Vector2.ZERO
+	# window.visible = true
+
+	# await window.start(messages)
+	window.start(messages.duplicate())
+	await window.finished
+	print("window finished")
+	pass
 
 
 
-func set_base_tilemaps_to_rmz_standard():
+func set_base_tilemap_to_rmz_standard():
 	# TODO: set tile pixel size to 48 and scale to 3.333 (159.9 pixels)
 	return
 	
-func set_base_tilemaps_to_2k3_standard():
+func set_base_tilemap_to_2k3_standard():
 	# TODO: set tile pixel size to 16 and scale to 10 (160 pixels)
 	return
 	
-func set_base_tilemaps_to_rmv_standard():
+func set_base_tilemap_to_rmv_standard():
 	# TODO: set tile pixel size to 32 and scale to 5 (160 pixels)
 	return

@@ -1,5 +1,5 @@
 extends Node2D
-class_name _Doomer_Message_Box
+class_name _Core_Window
 
 
 signal finished
@@ -7,7 +7,7 @@ signal finished
 @onready var doomer : _Core = find_parent("_Core")
 
 # Settings
-@export var visible_on_reset = false
+# @export var visible_on_reset = false
 
 @onready var label : Label = find_child("Message Label")
 @onready var animation_player : AnimationPlayer = find_child("AnimationPlayer")
@@ -33,6 +33,7 @@ var processed_messages = []
 
 var message : String:
 	set(value):
+
 		message = value
 		
 var visible_message : String:
@@ -49,15 +50,6 @@ func _process(delta: float) -> void:
 func add_line(s : String):
 	label.text = "\n".join([label.text, s])
 
-
-"""
-func _check_is_active():
-	is_active = true
-	if get_parent() is _Core_Scene:
-		if not (get_parent() as _Core_Scene).is_active:
-			is_active = false
-"""
-
 func _update_label_as_message():
 	label.text = message # "\n".join(full_message_log.slice(-3, 0))
 	
@@ -66,40 +58,36 @@ func _update_label_as_log():
 	label.text = "\n".join(full_message_log.slice(-1 * min(3, full_message_log.size()), full_message_log.size()))
 	
 func start(m : Array):
-	
-	# await get_tree().process_frame
-	# await get_tree().process_frame
-	
-	
-	tweener._slide_in()
-	message_queue = m
-	_show_next_message()
-	
-	# Defer setting is_active to run after _process_input()
-	# _process_input() should ignore inputs in this frame
-	var lambda = func(): visible = true
-	lambda.call_deferred()
 
-	return finished
+	message_queue = m
+	visible = true
+	position = Vector2.ZERO
+	
+	await tweener._slide_in()
+
+	print(message_queue)
+	is_active = true
+	_show_next_message() # .call_deferred()
 
 
 func _show_current_message(m):
+	print(m)
 	message = m
+	visible_message = m
 	await play_enumation(Enumations.ShowDialogueMessage)
 
 
 func _show_next_message():
-	if message_queue == []:
-		if visible:
-			await tweener._slide_out()
-			visible = false
-			finished.emit()
+	if message_queue == [] and visible:
+		await tweener._slide_out()
+		finished.emit()
+		queue_free.call_deferred()
 		return
 		
-	message = message_queue.pop_front()
-	print(message)
-	_show_current_message(message)
-	processed_messages.append(message)
+	var popped_message = message_queue.pop_front()
+	print(popped_message)
+	await _show_current_message(popped_message)
+	processed_messages.append(popped_message)
 
 
 func _process_input():
@@ -107,7 +95,9 @@ func _process_input():
 		return
 		
 	if Input.is_action_just_pressed("ui_accept"):
-		_show_next_message()
+		await get_tree().process_frame
+		# _show_next_message()
+		await _show_next_message() # .call_deferred()
 
 func show_log(m : String):
 	message = m
@@ -116,6 +106,3 @@ func show_log(m : String):
 func play_enumation(e : Enumations):
 	animation_player.play(Enumations.keys()[e])
 	await animation_player.animation_finished
-
-func _on_reset():
-	%"Animated Node".visible = visible_on_reset

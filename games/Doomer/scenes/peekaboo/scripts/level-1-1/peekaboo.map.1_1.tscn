@@ -9946,153 +9946,155 @@ unique_name_in_owner = true
 script = ExtResource("6_6de6d")
 metadata/_custom_type_script = "uid://5fqo6d3fleu4"
 
-[node name="NPC 1" type="Node2D" parent="."]
+[node name="_npc_1_1" type="Node2D" parent="."]
 position = Vector2(81, 240)
 
-[node name="_peekaboo_common_script_talker_1_1" type="Node" parent="NPC 1"]
+[node name="_peekaboo_common_script_talker_1_1" type="Node" parent="_npc_1_1"]
 script = ExtResource("19_b0sri")
 messages = ["Hello..", "Good to see you here !", "Add _Peekaboo_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"]
+interrupt_player = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="NPC 1"]
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_1"]
 gravity_scale = 0.0
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 1/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_1/RigidBody2D"]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="NPC 1/RigidBody2D" instance=ExtResource("9_3e75c")]
+[node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
 sprite = 3
 
-[node name="_Peekaboo_Mover" type="Node" parent="NPC 1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_1"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Area2D" type="Area2D" parent="NPC 1"]
+[node name="Area2D" type="Area2D" parent="_npc_1_1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_1/Area2D"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
-[node name="NPC 2" type="Node2D" parent="."]
+[node name="_npc_3_1" type="Node2D" parent="."]
 position = Vector2(1841, -1360)
 
-[node name="_peekaboo_common_script_talker_3_1" type="Node" parent="NPC 2"]
+[node name="_peekaboo_common_script_talker_3_1" type="Node" parent="_npc_3_1"]
 script = ExtResource("19_b0sri")
 messages = ["Some enemies you cannot see.", "Bugs appear off their wake.", "That's all I can say now."]
+interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="NPC 2"]
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_1"]
 script = ExtResource("10_b6854")
 facing = Vector2i(1, 0)
 map_position = Vector2i(11, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="NPC 2"]
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_3_1"]
 gravity_scale = 0.0
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 2/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_1/RigidBody2D"]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="NPC 2/RigidBody2D" instance=ExtResource("9_3e75c")]
+[node name="_Peekaboo_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
 sprite = 3
 
-[node name="Area2D" type="Area2D" parent="NPC 2"]
+[node name="Area2D" type="Area2D" parent="_npc_3_1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_1/Area2D"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_b0sri")
 
-[node name="NPC 3-1 Talking Tree" type="Node2D" parent="."]
+[node name="_npc_3_2_talking_tree" type="Node2D" parent="."]
 position = Vector2(2161, -880)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="NPC 3-1 Talking Tree"]
+[node name="StaticBody2D" type="StaticBody2D" parent="_npc_3_2_talking_tree"]
 scale = Vector2(10, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC 3-1 Talking Tree/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_2_talking_tree/StaticBody2D"]
 shape = SubResource("RectangleShape2D_kcels")
 
-[node name="Sprite2D" type="Sprite2D" parent="NPC 3-1 Talking Tree/StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="_npc_3_2_talking_tree/StaticBody2D"]
 scale = Vector2(20, 25)
 texture = SubResource("CanvasTexture_kcels")
 
-[node name="_Peekaboo_Mover" type="Node" parent="NPC 3-1 Talking Tree"]
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_2_talking_tree"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(13, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Event 1-1" type="Node2D" parent="."]
+[node name="_event_1_1" type="Node2D" parent="."]
 position = Vector2(81, -80)
 
-[node name="_Peekaboo_Script" type="Node" parent="Event 1-1"]
+[node name="_Peekaboo_Script" type="Node" parent="_event_1_1"]
 script = ExtResource("3_2fpur")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="Event 1-1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_event_1_1"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="Event 1-1"]
+[node name="Sprite2D" type="Sprite2D" parent="_event_1_1"]
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Event 2-1" type="Node2D" parent="."]
+[node name="_event_2_1" type="Node2D" parent="."]
 position = Vector2(-2159, -80)
 
-[node name="_Peekaboo_Script" type="Node" parent="Event 2-1"]
+[node name="_Peekaboo_Script" type="Node" parent="_event_2_1"]
 script = ExtResource("13_ul6yd")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="Event 2-1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_event_2_1"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(-14, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="Event 2-1"]
+[node name="Sprite2D" type="Sprite2D" parent="_event_2_1"]
 z_index = 100
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Event 3-1" type="Node2D" parent="."]
+[node name="_event_3_1" type="Node2D" parent="."]
 position = Vector2(2641, -1360)
 
-[node name="_Peekaboo_Script" type="Node" parent="Event 3-1"]
+[node name="_Peekaboo_Script" type="Node" parent="_event_3_1"]
 script = ExtResource("14_x570f")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="Event 3-1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_event_3_1"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(16, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="Event 3-1"]
+[node name="Sprite2D" type="Sprite2D" parent="_event_3_1"]
 z_index = 100
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Event 4-1" type="Node2D" parent="."]
+[node name="_event_4_1" type="Node2D" parent="."]
 position = Vector2(2001, -4880)
 
-[node name="_Peekaboo_Script" type="Node" parent="Event 4-1"]
+[node name="_Peekaboo_Script" type="Node" parent="_event_4_1"]
 script = ExtResource("13_ul6yd")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="Event 4-1"]
+[node name="_Peekaboo_Mover" type="Node" parent="_event_4_1"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(12, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="Event 4-1"]
+[node name="Sprite2D" type="Sprite2D" parent="_event_4_1"]
 z_index = 100
 scale = Vector2(150, 150)
 texture = SubResource("CanvasTexture_j52ey")
 
-[node name="Label" type="Label" parent="Event 4-1"]
+[node name="Label" type="Label" parent="_event_4_1"]
 modulate = Color(0, 0.91764706, 0, 1)
 z_index = 200
 anchors_preset = 8

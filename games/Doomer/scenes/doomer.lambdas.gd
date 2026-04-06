@@ -10,8 +10,8 @@ func waiter(time: float = 1):
 func wait(_time : float = 1):
 	await waiter(_time)
 
-func buzz_message_box(_message_box : _Doomer_Message_Box):
-	await _message_box.play_enumation(_Doomer_Message_Box.Enumations.Buzz)
+func buzz_message_box(_message_box : _Core_Window):
+	await _message_box.play_enumation(_Core_Window.Enumations.Buzz)
 
 func change_scene(_scene : _Core_Scene):
 	await doomer.change_scene(_scene)

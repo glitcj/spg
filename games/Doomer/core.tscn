@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://core/handler/funcs.poke.input_handler.gd" id="7_mn1uc"]
 [ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://other/doomer.poker.logic.gd" id="8_0nlrq"]
 [ext_resource type="Script" uid="uid://tvyfjvrduup" path="res://other/doomer.constants.gd" id="9_r8hhm"]
-[ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://other/doomer.templates.gd" id="10_2wlno"]
+[ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://other/core.templates.gd" id="10_2wlno"]
 [ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/doomer.lambdas.gd" id="11_uk77y"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/notes.gd" id="12_lpjtg"]
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://core/grounds/doomer.core.background.tscn" id="13_1ugrs"]

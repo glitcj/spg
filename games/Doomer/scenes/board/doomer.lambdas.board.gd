@@ -24,12 +24,12 @@ func on_scene_start_events():
 func on_scene_start_slide_windows_in():
 	scene = doomer.scene.poker_board
 	var flipper = 1
-	for m : _Doomer_Message_Box in scene.all_message_boxes:
+	for m : _Core_Window in scene.all_message_boxes:
 		flipper = -flipper
 		if flipper > 0:
-			await m.play_enumation(_Doomer_Message_Box.Enumations.SlideInFromLeft)
+			await m.play_enumation(_Core_Window.Enumations.SlideInFromLeft)
 		else:
-			await m.play_enumation(_Doomer_Message_Box.Enumations.SlideInFromRight)
+			await m.play_enumation(_Core_Window.Enumations.SlideInFromRight)
 
 func flip_cards(_cards_getter : Callable, _direction : Variant = null, _wait_for_each_flip : bool = false):
 	var cards : Array = _cards_getter.call()
@@ -62,7 +62,7 @@ func show_message(_message : String, _wait_for_message : bool = false, _message_
 	var mbg = _message_box_getter
 	if not mbg.is_valid():
 		mbg = doomer.scene.poker_board.getter.message_box
-	var message_box : _Doomer_Message_Box = mbg.call()
+	var message_box : _Core_Window = mbg.call()
 	if _message_type == MessageType.Dialogue:
 		await message_box.show_dialogue(_message)
 	elif _message_type == MessageType.Log:

@@ -13,4 +13,4 @@ func _on_exited_range():
 
 func _on_action_within_area():
 	await get_mover().face(_get_direction_to_player())
-	await peekaboo.message_window.start(messages)
+	await get_peekaboo().get_lambdas().show_messages(messages)

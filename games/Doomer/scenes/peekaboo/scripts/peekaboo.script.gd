@@ -149,5 +149,5 @@ func _get_direction_to_player():
 	var player_position = get_player().find_child("_Peekaboo_Mover").map_position as Vector2i
 	var direction = Vector2(player_position - get_mover().map_position).normalized()
 	
-	assert(direction.x + direction.y == 1) # make sure direction is in udlr
+	assert(direction.abs().x + direction.abs().y == 1) # make sure direction is in udlr
 	return Vector2i(direction)

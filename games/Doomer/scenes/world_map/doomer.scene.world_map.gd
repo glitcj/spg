@@ -5,7 +5,7 @@ class_name _Doomer_Scene_World_Map
 @export var player_turn : Script
 
 @onready var cursor = %Cursor as AnimatedSprite2D
-@onready var guide_message_box = %"Guide Message Box" as _Doomer_Message_Box
+@onready var guide_message_box = %"Guide Message Box" as _Core_Window
 
 @onready var lambdas = %"Lambdas" as _Doomer_World_Map_Events
 

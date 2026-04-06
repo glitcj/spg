@@ -123,5 +123,5 @@ func player_portrait() -> _Doomer_Portrait:
 func enemy_portrait() -> _Doomer_Portrait:
 	return doomer.scene.poker_board.enemy_portrait
 
-func message_box() -> _Doomer_Message_Box:
+func message_box() -> _Core_Window:
 	return doomer.scene.poker_board.hud.message_box

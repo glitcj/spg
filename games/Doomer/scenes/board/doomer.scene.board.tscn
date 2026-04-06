@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dwg0a3ker5rp4" path="res://scenes/board/doomer.getters.board.gd" id="2_lixwe"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_nr83l"]
 [ext_resource type="PackedScene" uid="uid://50stjaah1tme" path="res://nodes/coin_box/doomer.coin_box.tscn" id="3_k7src"]
-[ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/doomer.message_box.tscn" id="3_ojdld"]
+[ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/core.window.tscn" id="3_ojdld"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://nodes/portrait/doomer.portrait.tscn" id="4_37l2k"]
 [ext_resource type="PackedScene" uid="uid://r4iwnpw8jo1" path="res://nodes/gun/doomer.gun.tscn" id="5_x2cid"]
 [ext_resource type="PackedScene" uid="uid://bh76i8vm1ftt2" path="res://nodes/card/node.doomer.card.tscn" id="6_kihg7"]

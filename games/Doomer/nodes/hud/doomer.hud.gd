@@ -8,7 +8,7 @@ class_name _Doomer_HUD
 @onready var turnboard : _Doomer_Portrait = $HBoxContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CenterContainer/Portrait
 @onready var game_log : Node2D = $HBoxContainer/PanelContainer/HBoxContainer/MarginContainer/LogAndDialogue
 
-@onready var message_box : _Doomer_Message_Box = $MessageBox
+@onready var message_box : _Core_Window = $MessageBox
 
 var tug_of_doom_max_position = Vector2(20, 0)
 var tug_of_doom_min_position = Vector2(-20, 0)
