@@ -71,22 +71,26 @@ func _process_action_while_showing_hand():
 
 func _on_show_traits_action():
 	scene = doomer.scene.poker_board
-	await scene.enemy_traits_message_box.play_enumation(_Core_Window.Enumations.SlideInFromLeft)
+	# await scene.enemy_traits_message_box.play_enumation(_Core_Window.Enumations.SlideInFromLeft)
+	pass # TODO
 
 
 func _on_show_player_hand_action():
 	scene = doomer.scene.poker_board
-	await scene.player_hand_message_box.play_enumation(_Core_Window.Enumations.SlideInFromRight)
+	# await scene.player_hand_message_box.play_enumation(_Core_Window.Enumations.SlideInFromRight)
+	pass # TODO
 
 
 func _on_hide_player_hand_action():
 	scene = doomer.scene.poker_board
-	await scene.player_hand_message_box.play_enumation(_Core_Window.Enumations.SlideOutToRight)
+	# await scene.player_hand_message_box.play_enumation(_Core_Window.Enumations.SlideOutToRight)
+	pass # TODO
 
 
 func _on_hide_traits_action():
 	scene = doomer.scene.poker_board
-	await scene.enemy_traits_message_box.play_enumation(_Core_Window.Enumations.SlideOutToLeft)
+	# await scene.enemy_traits_message_box.play_enumation(_Core_Window.Enumations.SlideOutToLeft)
+	pass # TODO
 
 
 func _on_input_received():

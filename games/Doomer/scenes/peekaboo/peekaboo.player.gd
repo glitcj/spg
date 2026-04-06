@@ -77,7 +77,7 @@ func _valid_direction_is_pressed():
 # func _input():# _on_input():
 func _process_input():# _on_input():
 	if Input.is_action_just_pressed("ui_select"):
-		tweener.highlight()
+		tweener.highlight(self)
 		
 		
 	if _valid_direction_is_pressed():

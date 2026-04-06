@@ -10,18 +10,14 @@ signal finished
 # @export var visible_on_reset = false
 
 @onready var label : Label = find_child("Message Label")
-@onready var animation_player : AnimationPlayer = find_child("AnimationPlayer")
-@onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
-@onready var message_box
+# @onready var animation_player : AnimationPlayer = find_child("AnimationPlayer")
+# @onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
+# @onready var message_box
 
 @onready var tweener = %_Peekaboo_Tweener
 
-enum Action {ShowLog, ShowMessage, Buzz}
-enum Enumations {ShowNewMessage, ShowLogMessage, 
-	ShowDialogueMessage, Idle, Buzz,
-	SlideInFromLeft, SlideInFromRight,
-	SlideOutToLeft, SlideOutToRight
-	}
+# enum Action {ShowLog, ShowMessage, Buzz}
+
 
 var history : Array = []
 var full_message_log : Array = []
@@ -45,7 +41,6 @@ var full_log
 
 func _process(delta: float) -> void:
 	_process_input()
-	# _check_is_active()
 
 func add_line(s : String):
 	label.text = "\n".join([label.text, s])
@@ -57,28 +52,27 @@ func _update_label_as_log():
 	full_message_log.append(message)
 	label.text = "\n".join(full_message_log.slice(-1 * min(3, full_message_log.size()), full_message_log.size()))
 	
-func start(m : Array):
+func start(message_queue_ : Array):
 
-	message_queue = m
+	message_queue = message_queue_
 	visible = true
 	position = Vector2.ZERO
 	
-	await tweener._slide_in()
+	await tweener._slide_in(self)
 
 	print(message_queue)
 	is_active = true
-	_show_next_message() # .call_deferred()
+	_show_next_message()
 
 
 func _show_current_message(m):
-	print(m)
 	message = m
-	await play_enumation(Enumations.ShowDialogueMessage)
+	visible_message = message
 
 
 func _show_next_message():
 	if message_queue == [] and visible:
-		await tweener._slide_out()
+		await tweener._slide_out(self)
 		finished.emit()
 		queue_free.call_deferred()
 		return
@@ -95,13 +89,11 @@ func _process_input():
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		await get_tree().process_frame
-		# _show_next_message()
 		await _show_next_message() # .call_deferred()
 
 func show_log(m : String):
 	message = m
-	play_enumation(Enumations.ShowLogMessage)
+	visible_message = message
 	
-func play_enumation(e : Enumations):
-	animation_player.play(Enumations.keys()[e])
-	await animation_player.animation_finished
+func _show_latest_message():
+	visible_message = message
