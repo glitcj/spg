@@ -3,7 +3,6 @@ extends Node2D
 class_name _Peekaboo_Map
 
 @onready var player : CharacterBody2D = %Player
-# @onready var l1 = %"L1 Base" as TileMapLayer
 @onready var layers = find_children("L*", "TileMapLayer")
 
 @export var quantize_all : bool:

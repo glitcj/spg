@@ -6,7 +6,7 @@ class_name _Peekaboo_Lambdas
 func get_peekaboo(): return find_parent("_Peekaboo") as _Peekaboo
 func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
 func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _Peekaboo_Player
-func get_camera(): return get_map().find_child("Camera2D")
+func get_camera(): return get_map().find_child("Camera2D") as Camera2D
 
 
 func transport_player(position: Vector2i):
@@ -36,10 +36,7 @@ func show_messages(messages: Array):
 	var container = get_peekaboo().find_child("Canvas Bottom") as CenterContainer
 	container.add_child(window)
 	window.scale = Vector2(5,5)
-	# window.position = Vector2.ZERO
-	# window.visible = true
-
-	# await window.start(messages)
+	
 	window.start(messages.duplicate())
 	await window.finished
 	print("window finished")

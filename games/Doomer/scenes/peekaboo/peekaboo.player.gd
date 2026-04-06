@@ -6,7 +6,7 @@ class_name _Peekaboo_Player
 var is_active = false
 
 @onready var mover = find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-@onready var map = find_parent("_Peekaboo_Map")
+@onready var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
 
 func get_portrait(): return find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
 
@@ -37,17 +37,15 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if next_direction != direction:
-		if input_just_pressed:
-			input_just_pressed = false
-		else:
-			if %"future position".get_overlapping_bodies().size() == 0:
-				direction = next_direction
+		await get_tree().physics_frame # Allow time for future position collision physics
+		if %"future position".get_overlapping_bodies().size() == 0:
+			print(%"future position".get_overlapping_bodies())
+			direction = next_direction
 				
 	if mover.is_moving:
 		return
 	
 	var tile_position_delta = direction / direction.abs() as Vector2i
-	
 	
 	if mover.tile_has_collision(mover.map_position + tile_position_delta):
 		return
@@ -63,7 +61,6 @@ func _physics_process(delta: float) -> void:
 		await mover.move(tile_position_delta)
 	
 func _valid_direction_is_pressed():
-	
 	for d in ["ui_up", "ui_down", "ui_left", "ui_right"]:
 		if Input.is_action_just_pressed(d):
 			return true
@@ -73,14 +70,9 @@ func _process_input():# _on_input():
 	if Input.is_action_just_pressed("ui_select"):
 		_Peekaboo_Tweener.highlight(self)
 		
-		
 	if _valid_direction_is_pressed():
 		next_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		
-		await mover.face(next_direction/next_direction.abs())
-		
-		input_just_pressed = true
-
+		mover.face(next_direction/next_direction.abs())
 
 	if Input.is_action_just_pressed("ui_accept"):
 		reset_movement()
@@ -88,11 +80,3 @@ func _process_input():# _on_input():
 func reset_movement():
 	direction = Vector2.ZERO
 	next_direction = Vector2.ZERO
-
-"""
-func _update_movement():
-	if direction == Vector2.ZERO:
-		return
-	peekaboo.map.player.move_and_collide(direction * peekaboo.player_speed)
-	peekaboo.lambdas.update_idle_animation()
-"""
