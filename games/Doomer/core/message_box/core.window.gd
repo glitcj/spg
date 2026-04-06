@@ -73,7 +73,6 @@ func start(m : Array):
 func _show_current_message(m):
 	print(m)
 	message = m
-	visible_message = m
 	await play_enumation(Enumations.ShowDialogueMessage)
 
 
