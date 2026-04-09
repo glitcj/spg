@@ -9906,7 +9906,7 @@ tile_set = SubResource("TileSet_yx7f7")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(81, 560)
+position = Vector2(80.992, 559.944)
 script = ExtResource("4_j53a2")
 
 [node name="_Peekaboo_Mover" type="Node" parent="Player"]
@@ -9937,7 +9937,7 @@ texture = SubResource("GradientTexture2D_6de6d")
 [node name="_Peekaboo_Portrait" parent="Player" instance=ExtResource("9_3e75c")]
 texture_filter = 1
 scale = Vector2(8, 8)
-sprite = 2
+sprite = "player"
 
 [node name="_Peekaboo_Tweener" type="Node" parent="Player/_Peekaboo_Portrait"]
 unique_name_in_owner = true
@@ -9945,11 +9945,11 @@ script = ExtResource("6_6de6d")
 metadata/_custom_type_script = "uid://5fqo6d3fleu4"
 
 [node name="_npc_1_1" type="Node2D" parent="."]
-position = Vector2(81, 240)
+position = Vector2(80.992, 239.976)
 
 [node name="_peekaboo_common_script_talker_1_1" type="Node" parent="_npc_1_1"]
 script = ExtResource("19_b0sri")
-messages = ["Hello..", "Good to see you here !", "Add _Peekaboo_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"]
+messages = Array[String](["Hello..", "Good to see you here !", "Add _Peekaboo_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"])
 interrupt_player = true
 
 [node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_1"]
@@ -9962,7 +9962,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
-sprite = 3
+sprite = "priest"
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_1_1"]
 script = ExtResource("10_b6854")
@@ -9976,11 +9976,11 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
 [node name="_npc_3_1" type="Node2D" parent="."]
-position = Vector2(1841, -1360)
+position = Vector2(1840.8159, -1359.864)
 
 [node name="_peekaboo_common_script_talker_3_1" type="Node" parent="_npc_3_1"]
 script = ExtResource("19_b0sri")
-messages = ["Some enemies you cannot see.", "Bugs appear off their wake.", "That's all I can say now."]
+messages = Array[String](["Some enemies you cannot see.", "Bugs appear off their wake.", "That's all I can say now."])
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_1"]
@@ -9999,7 +9999,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
-sprite = 3
+sprite = "red_prince"
 
 [node name="Area2D" type="Area2D" parent="_npc_3_1"]
 
@@ -10008,7 +10008,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_2_talking_tree" type="Node2D" parent="."]
-position = Vector2(2161, -880)
+position = Vector2(2160.784, -879.912)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="_npc_3_2_talking_tree"]
 scale = Vector2(10, 10)
@@ -10026,7 +10026,7 @@ map_position = Vector2i(13, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_event_1_1" type="Node2D" parent="."]
-position = Vector2(81, -80)
+position = Vector2(80.992, -79.992)
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_1_1"]
 script = ExtResource("3_2fpur")
@@ -10042,7 +10042,7 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_event_2_1" type="Node2D" parent="."]
-position = Vector2(-2159, -80)
+position = Vector2(-2158.784, -79.992)
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_2_1"]
 script = ExtResource("13_ul6yd")
@@ -10059,7 +10059,7 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_event_3_1" type="Node2D" parent="."]
-position = Vector2(2641, -1360)
+position = Vector2(2640.7358, -1359.864)
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_3_1"]
 script = ExtResource("14_x570f")
@@ -10076,7 +10076,7 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_event_4_1" type="Node2D" parent="."]
-position = Vector2(2001, -4880)
+position = Vector2(2000.7999, -4879.5117)
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_4_1"]
 script = ExtResource("13_ul6yd")
@@ -10111,7 +10111,7 @@ label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
 [node name="_enemy_2_1" type="Node2D" parent="."]
-position = Vector2(-1999, 240)
+position = Vector2(-1998.7999, 239.976)
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_1"]
 script = ExtResource("13_sq2sq")
@@ -10127,6 +10127,7 @@ map_position = Vector2i(-13, 1)
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
+sprite = "priest"
 
 [node name="Area2D" type="Area2D" parent="_enemy_2_1"]
 
@@ -10135,7 +10136,7 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_2" type="Node2D" parent="."]
-position = Vector2(-1999, 1040)
+position = Vector2(-1998.7999, 1039.896)
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_2"]
 script = ExtResource("13_sq2sq")
@@ -10152,7 +10153,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
-sprite = 1
+sprite = "red_prince"
 
 [node name="Area2D" type="Area2D" parent="_enemy_2_2"]
 
@@ -10161,7 +10162,7 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_3" type="Node2D" parent="."]
-position = Vector2(-1999, 1520)
+position = Vector2(-1998.7999, 1519.848)
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_3"]
 script = ExtResource("13_sq2sq")
@@ -10178,7 +10179,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("9_3e75c")]
 scale = Vector2(4, 4)
-sprite = 1
+sprite = "white"
 
 [node name="Area2D" type="Area2D" parent="_enemy_2_3"]
 
@@ -10187,7 +10188,7 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_teleport_1_1" type="Node2D" parent="."]
-position = Vector2(-559, -80)
+position = Vector2(-558.944, -79.992)
 
 [node name="_common_script_teleport_1_1" type="Node" parent="_teleport_1_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
@@ -10228,7 +10229,7 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_2" type="Node2D" parent="."]
-position = Vector2(721, -80)
+position = Vector2(720.928, -79.992)
 
 [node name="_common_script_teleport_1_2" type="Node" parent="_teleport_1_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
@@ -10269,7 +10270,7 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_3" type="Node2D" parent="."]
-position = Vector2(-559, -80)
+position = Vector2(-558.944, -79.992)
 
 [node name="_common_script_teleport_1_3" type="Node" parent="_teleport_1_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
@@ -10310,7 +10311,7 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_2_1" type="Node2D" parent="."]
-position = Vector2(-1519, -80)
+position = Vector2(-1518.848, -79.992)
 
 [node name="_common_script_teleport_2_1" type="Node" parent="_teleport_2_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
@@ -10351,7 +10352,7 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_3_1" type="Node2D" parent="."]
-position = Vector2(1521, -80)
+position = Vector2(1520.848, -79.992)
 
 [node name="_common_script_teleport_3_1" type="Node" parent="_teleport_3_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
@@ -10392,7 +10393,7 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_3_2" type="Node2D" parent="."]
-position = Vector2(2161, -2160)
+position = Vector2(2160.784, -2159.784)
 
 [node name="_common_script_teleport_3_2" type="Node" parent="_teleport_3_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
@@ -10433,7 +10434,7 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_4_1" type="Node2D" parent="."]
-position = Vector2(2161, -3120)
+position = Vector2(2160.784, -3119.688)
 
 [node name="_common_script_teleport_4_1" type="Node" parent="_teleport_4_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("16_bj00i")
@@ -10475,7 +10476,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_camera_position_1_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(81, -80)
+position = Vector2(80.992, -79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_1_1"]
 script = ExtResource("10_b6854")
@@ -10512,7 +10513,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_camera_position_3_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2161, -880)
+position = Vector2(2160.784, -879.912)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_3_1"]
 script = ExtResource("10_b6854")
@@ -10544,7 +10545,7 @@ horizontal_alignment = 1
 
 [node name="_camera_position_4_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2001, -4560)
+position = Vector2(2000.7999, -4559.544)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_4_1"]
 script = ExtResource("10_b6854")
@@ -10576,7 +10577,7 @@ horizontal_alignment = 1
 
 [node name="_camera_position_2_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-2159, 560)
+position = Vector2(-2158.784, 559.944)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_2_1"]
 script = ExtResource("10_b6854")
@@ -10609,7 +10610,7 @@ horizontal_alignment = 1
 [node name="_player_position_1_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-399, -80)
+position = Vector2(-398.96, -79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_1"]
 script = ExtResource("10_b6854")
@@ -10642,7 +10643,7 @@ horizontal_alignment = 1
 [node name="_player_position_1_2" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(561, -80)
+position = Vector2(560.944, -79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_2"]
 script = ExtResource("10_b6854")
@@ -10674,7 +10675,7 @@ horizontal_alignment = 1
 
 [node name="_player_position_2_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-1679, -80)
+position = Vector2(-1678.832, -79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_2_1"]
 script = ExtResource("10_b6854")
@@ -10706,7 +10707,7 @@ horizontal_alignment = 1
 
 [node name="_player_position_3_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1681, -80)
+position = Vector2(1680.832, -79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_1"]
 script = ExtResource("10_b6854")
@@ -10738,7 +10739,7 @@ horizontal_alignment = 1
 
 [node name="_player_position_3_2" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2161, -2000)
+position = Vector2(2160.784, -1999.7999)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_2"]
 script = ExtResource("10_b6854")
@@ -10770,7 +10771,7 @@ horizontal_alignment = 1
 
 [node name="_player_position_4_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2161, -3280)
+position = Vector2(2160.784, -3279.6719)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_1"]
 script = ExtResource("10_b6854")
@@ -10802,7 +10803,7 @@ horizontal_alignment = 1
 
 [node name="_player_position_4_2" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2001, -5200)
+position = Vector2(2000.7999, -5199.48)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_2"]
 script = ExtResource("10_b6854")
@@ -10833,7 +10834,7 @@ label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
 [node name="_Peekaboo_Camera" type="Node2D" parent="."]
-position = Vector2(81, 80)
+position = Vector2(80.992, 79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_Peekaboo_Camera"]
 script = ExtResource("10_b6854")

@@ -2,12 +2,12 @@
 extends Node2D
 class_name _Peekaboo_Portrait
 
-enum EnemySprite {cream, red, player, blue}
-
-@export var sprite : EnemySprite = EnemySprite.cream:
+# @export_enum("player", "priest", "red") var sprite : String
+var sprite : String:
 	set(v):
-		%AnimatedSprite2D.animation = EnemySprite.keys()[v]
 		sprite = v
+		if has_node("%AnimatedSprite2D"):
+			%AnimatedSprite2D.animation = sprite
 		
 @export var is_ghost = false:
 	set(v):
@@ -16,23 +16,44 @@ enum EnemySprite {cream, red, player, blue}
 
 @onready var animation_player : AnimationPlayer = %AnimationPlayer as AnimationPlayer
 
+# 2. Override to define the property
+func _get_property_list() -> Array[Dictionary]:
+	var properties: Array[Dictionary] = []
+	
+	# Fetch names dynamically right now
+	var anim_names = _get_available_animation_names()
+	
+	properties.append({
+		"name": "sprite",
+		"type": TYPE_STRING,
+		"usage": PROPERTY_USAGE_DEFAULT,
+		"hint": PROPERTY_HINT_ENUM,
+		"hint_string": ",".join(anim_names) 
+	})
+	
+	return properties
+
+# 3. Improved helper function
+func _get_available_animation_names() -> Array:
+	# Use get_node instead of find_child for performance if you know where it is
+	var sprite_node = get_node_or_null("AnimatedSprite2D") # Adjust path if needed
+	
+	if sprite_node and sprite_node.sprite_frames:
+		return Array(sprite_node.sprite_frames.get_animation_names())
+	
+	return ["None"] # Fallback if node isn't found
 
 func _update_material():
-	# TODO: Understand more about light masks, and shaders, light bitmasks arent simple filters
-	if %AnimatedSprite2D:
+	if has_node("%AnimatedSprite2D"):
+		var s = %AnimatedSprite2D
 		if not is_ghost:
-			%AnimatedSprite2D.material = null
-			%AnimatedSprite2D.light_mask = 0
+			s.material = null
+			s.light_mask = 0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_material()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+# Animation helpers
 func face_down(): %AnimationPlayer.play("move_down")
 func face_up(): %AnimationPlayer.play("move_up")
 func face_left(): %AnimationPlayer.play("move_left")
