@@ -10029,6 +10029,52 @@ sprite = "red_prince"
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_b0sri")
 
+[node name="_npc_3_3_stuff" type="Node2D" parent="."]
+position = Vector2(2480.752, -1359.864)
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_3_stuff"]
+script = ExtResource("10_b6854")
+facing = Vector2i(1, 0)
+map_position = Vector2i(15, -9)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_3_3_stuff"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_3_stuff/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="Area2D" type="Area2D" parent="_npc_3_3_stuff"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_3_stuff/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_b0sri")
+
+[node name="_npc_3_4_stuff" type="Node2D" parent="."]
+position = Vector2(2320.768, -1359.864)
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_4_stuff"]
+script = ExtResource("10_b6854")
+facing = Vector2i(1, 0)
+map_position = Vector2i(14, -9)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_3_4_stuff"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_4_stuff/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="Area2D" type="Area2D" parent="_npc_3_4_stuff"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_4_stuff/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_b0sri")
+
 [node name="_npc_3_2_talking_tree" type="Node2D" parent="."]
 position = Vector2(2160.784, -879.912)
 
@@ -10062,7 +10108,7 @@ position = Vector2(2000.7999, -4879.5117)
 
 [node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_4_1_talking_tree"]
 script = ExtResource("19_b0sri")
-messages = Array[String](["I am a talking tree.", "And write now..", "I have nothing to say.", "I might as well not be, a, talking, tree.", "Would you not say ?", "I would not."])
+messages = Array[String](["Hmmm..", "Mmmm..yes..", ".. Maybe not."])
 interrupt_player = true
 metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
