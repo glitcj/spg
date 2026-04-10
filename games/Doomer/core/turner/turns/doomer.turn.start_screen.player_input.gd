@@ -13,16 +13,13 @@ func _init() -> void:
 
 
 func on_turn_start():
-	doomer.handler.input_received.connect(_process_input)
+	pass
 
-func _process_input():
-	if not doomer.handler.input_tray in accepted_inputs:
-		return
-
-	doomer.handler.input_received.disconnect(_process_input)
-	print(doomer.scene.peekaboo)
-
-	await doomer.lambdas.change_scene(doomer.scene.peekaboo)
-
-
-	on_turn_end()
+func _input(event: InputEvent) -> void:
+	if not event is InputEventKey: return
+	if not (event.pressed and not event.echo): return
+	
+	if (event as InputEventKey).keycode in accepted_inputs:
+		await doomer.lambdas.change_scene(doomer.scene.peekaboo)
+		on_turn_end()
+		
