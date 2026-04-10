@@ -1,8 +1,8 @@
 extends _Core_Scene
-class_name _Starter
+class_name _Swiper
 
 @export_category("Uses")
-@export var player_turn : Script
+@export var words : Array[String]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,4 +10,3 @@ func _ready() -> void:
 
 func _on_scene_start():
 	super()
-	await _Starter_Turn.new().start(self)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://dioopxi2opgrn"]
 
-[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/message_box/core.window.gd" id="1_vr8u8"]
+[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/window/core.window.gd" id="1_vr8u8"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_i2qql"]
 [ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="4_rjo55"]
 

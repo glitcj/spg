@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=25 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://doomer.gd" id="1_fcxkh"]
 [ext_resource type="Script" uid="uid://djvk5f1dkttil" path="res://core/inspector.gd" id="2_y5kl3"]
@@ -16,11 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://scenes/board/doomer.scene.board.tscn" id="14_mfkxc"]
 [ext_resource type="Script" uid="uid://svxnai8avvm8" path="res://core/turner/turns/doomer.turn.board.player.gd" id="15_sd2we"]
 [ext_resource type="Script" uid="uid://bjb6ohogqlfea" path="res://core/turner/turns/doomer.turn.field.gd" id="16_au8ko"]
-[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/doomer.scene.start_screen.tscn" id="17_rlvb2"]
-[ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/doomer.turn.start_screen.player_input.gd" id="18_uq53n"]
+[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/start_screen.scene.tscn" id="17_rlvb2"]
+[ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/core.turn.start_screen.player_input.gd" id="18_uq53n"]
 [ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://scenes/world_map/doomer.scene.world_map.tscn" id="19_uhlwl"]
 [ext_resource type="Script" uid="uid://24v0qjou812u" path="res://core/turner/turns/doomer.turn.world_map.player_input.gd" id="20_rgo8v"]
 [ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/peekaboo.scene.tscn" id="21_u8aor"]
+[ext_resource type="PackedScene" uid="uid://cxiw0m4n4emut" path="res://scenes/swiper/swiper.scene.tscn" id="22_y5kl3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
 
@@ -42,7 +43,7 @@ script = ExtResource("2_y5kl3")
 
 [node name="Portraits Inspector" type="Node" parent="Debug/Inspectors" node_paths=PackedStringArray("inspectee_3")]
 script = ExtResource("2_y5kl3")
-inspectee_3 = NodePath("../../../Scenes/Scene Grid/Start Sceen Scene")
+inspectee_3 = NodePath("../../../Scenes/Scene Grid/_Starter")
 
 [node name="Log" type="Node" parent="Debug"]
 script = ExtResource("3_h7ise")
@@ -130,7 +131,7 @@ field_turn = ExtResource("16_au8ko")
 [node name="TextureRect" parent="Scenes/Scene Grid/Poker Board Scene/SubViewport/Animated Node/MarginContainer Shader Board BG/VBoxContainer/MarginContainer" index="1"]
 texture = SubResource("ViewportTexture_q5iqo")
 
-[node name="Start Sceen Scene" parent="Scenes/Scene Grid" instance=ExtResource("17_rlvb2")]
+[node name="_Starter" parent="Scenes/Scene Grid" instance=ExtResource("17_rlvb2")]
 unique_name_in_owner = true
 layout_mode = 2
 player_turn = ExtResource("18_uq53n")
@@ -141,6 +142,10 @@ layout_mode = 2
 player_turn = ExtResource("20_rgo8v")
 
 [node name="_Peekaboo" parent="Scenes/Scene Grid" instance=ExtResource("21_u8aor")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="_Swiper" parent="Scenes/Scene Grid" instance=ExtResource("22_y5kl3")]
 unique_name_in_owner = true
 layout_mode = 2
 

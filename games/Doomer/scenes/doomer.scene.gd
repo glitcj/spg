@@ -17,7 +17,7 @@ var is_active = false:
 			print(self)
 			await _on_scene_deactivated()
 
-var accepted_inputs = []
+# var accepted_inputs = []
 
 @onready var doomer : _Core = find_parent("_Core")
 
@@ -25,22 +25,24 @@ var accepted_inputs = []
 
 func _on_scene_start():
 	is_active = true
+	scene_activated.emit()
 	scene_started.emit()
 	
 
 
 func _on_scene_end():
 	is_active = false
+	scene_deactivated.emit()
 	scene_ended.emit()
 
-
+"""
 func _on_input_received():
 	if not is_active:
 		return false
 	if doomer.handler.input_tray not in accepted_inputs:
 		return false
 	return true
-
+"""
 
 func is_current_scene():
 	return doomer.current_scene_node == self

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b3vkdpxc82gqh" path="res://scenes/world_map/doomer.lambdas.world_map.gd" id="2_6c6hj"]
 [ext_resource type="Texture2D" uid="uid://dm0frm25hapm5" path="res://assets/doomer/parallax/balatro_bg_2.png" id="2_pyjtq"]
 [ext_resource type="PackedScene" uid="uid://bitmrxv27slgf" path="res://nodes/portrait/doomer.portrait.tscn" id="2_s0lhg"]
-[ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/message_box/core.window.tscn" id="3_dq431"]
+[ext_resource type="PackedScene" uid="uid://dioopxi2opgrn" path="res://core/window/core.window.tscn" id="3_dq431"]
 [ext_resource type="Texture2D" uid="uid://b6pq22kfp7up1" path="res://assets/doomer/coins/coin-Sheet.png" id="4_ff5u8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6lp2"]

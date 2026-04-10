@@ -11,24 +11,24 @@ var turn_colour : Color
 var turn_wait_time : float = 5.0
 var show_in_turnboard : bool = true
 
+
+
+
+func get_core(): return find_parent("_Core")
+
 func _init() -> void:
-	# doomer = _core
-	# doomer = find_parent.bind("_Core").call_deferred()
-	# _boot.call_deferred()
-	# scene.add_child(_scene)
 	turn_name = "Turn"
 	turn_colour = Color(1,1,1)
 
-func _boot():
-	pass
-	
 
 func start(_parent : Node):
 	var parent = _parent
 	parent.add_child(self)
+	
+	if parent is _Core_Scene:
+		scene = parent
 	doomer = find_parent("_Core")
 	
-	# get_tree().add_child(self)
 	on_turn_start()
 	await turn_finished
 

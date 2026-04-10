@@ -20,10 +20,10 @@ var current_scene_node : _Core_Scene
 @onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
 
 
+func get_scene(_name): return find_child(_name) as _Core_Scene
+
 
 var current_opponent : _Doomer_Opponent
-
-
 
 func _input(event):
 	handler.handle_inputs(event)
@@ -34,7 +34,7 @@ func _ready() -> void:
 
 	scene.world_map = %"World Map Scene"
 	scene.poker_board = %"Poker Board Scene"
-	scene.start_screen = %"Start Sceen Scene"
+	scene.start_screen = %"_Starter"
 	scene.peekaboo = %_Peekaboo
 	
 	_boot.call_deferred()
@@ -58,5 +58,5 @@ var scene = _Scene.new()
 class _Scene:
 	var world_map : _Doomer_Scene_World_Map
 	var poker_board : _Doomer_Scene_Poker_Board
-	var start_screen : _Core_Scene_Start_Screen
+	var start_screen : _Starter
 	var peekaboo : _Peekaboo

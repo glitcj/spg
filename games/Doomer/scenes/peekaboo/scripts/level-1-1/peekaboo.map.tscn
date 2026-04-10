@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=69 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/peekaboo.map.gd" id="1_eu0qy"]
 [ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="2_q5qis"]
@@ -9826,6 +9826,15 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
 
+[sub_resource type="GDScript" id="GDScript_eu0qy"]
+script/source = "extends _Peekaboo_Script
+
+func _on_action_within_area():
+	print(\"start\")
+	get_core().change_scene(get_core().get_scene(\"_Swiper\"))
+	pass
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4w2g"]
@@ -9984,6 +9993,11 @@ script = ExtResource("19_giqst")
 messages = Array[String](["Hello..", "Good to see you here !", "Add _Peekaboo_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"])
 interrupt_player = true
 
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_1"]
+script = ExtResource("15_spxyh")
+map_position = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
 [node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_1"]
 gravity_scale = 0.0
 freeze = true
@@ -9996,14 +10010,44 @@ shape = SubResource("RectangleShape2D_cswif")
 scale = Vector2(4, 4)
 sprite = "priest"
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_1"]
-script = ExtResource("15_spxyh")
-map_position = Vector2i(0, 1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
 [node name="Area2D" type="Area2D" parent="_npc_1_1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_1/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_r103f")
+
+[node name="_npc_1_2" type="Node2D" parent="."]
+position = Vector2(80.992, -879.912)
+script = ExtResource("18_1be5g")
+
+[node name="_Peekaboo_Script" type="Node" parent="_npc_1_2"]
+script = SubResource("GDScript_eu0qy")
+interrupt_player = true
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_2"]
+script = ExtResource("15_spxyh")
+map_position = Vector2i(0, -6)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_1_2"]
+script = ExtResource("19_giqst")
+metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_2"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="_Peekaboo_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_3giqw")]
+scale = Vector2(4, 4)
+sprite = "green"
+
+[node name="Area2D" type="Area2D" parent="_npc_1_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/Area2D"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
