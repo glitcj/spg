@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/peekaboo.map.gd" id="1_pa1n3"]
 [ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/ninja/Backgrounds/Tilesets/TilesetField.png" id="2_drndv"]
 [ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="3_2fpur"]
+[ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_2ylu0"]
 [ext_resource type="Texture2D" uid="uid://cir837rpp1qt3" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A1.png" id="3_a4w2g"]
 [ext_resource type="Script" uid="uid://da77evou2la0g" path="res://scenes/peekaboo/scripts/peekaboo.variables.gd" id="3_j52ey"]
 [ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="4_j53a2"]
@@ -13,15 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://nrvnmkijidre" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A5.png" id="8_b0sri"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.tscn" id="9_3e75c"]
 [ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="10_b6854"]
-[ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="11_j52ey"]
 [ext_resource type="TileSet" uid="uid://chbwhee5ecdx1" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A1.tres" id="11_r103f"]
 [ext_resource type="TileSet" uid="uid://dmuy2eaehvonb" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A4.tres" id="12_b0sri"]
 [ext_resource type="Texture2D" uid="uid://dagwq224gg87f" path="res://assets/rpgmaker/mv/tilesets/Dungeon_B.png" id="13_b0sri"]
-[ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_common_script_ghost.gd" id="13_sq2sq"]
+[ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_ghost.gd" id="13_sq2sq"]
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="13_ul6yd"]
 [ext_resource type="Script" uid="uid://da5b4ins7hwmf" path="res://scenes/peekaboo/scripts/level-1-1/script.event.3-1.gd" id="14_x570f"]
-[ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_common_script_teleport.gd" id="16_bj00i"]
-[ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_common_script_talker.gd" id="19_b0sri"]
+[ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_teleport.gd" id="16_bj00i"]
+[ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_talker.gd" id="19_b0sri"]
 [ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="20_5max1"]
 
 [sub_resource type="TileSet" id="TileSet_b0sri"]
@@ -7996,13 +7996,21 @@ texture_region_size = Vector2i(48, 48)
 46:7/0 = 0
 47:7/0 = 0
 0:8/0 = 0
+0:8/0/z_index = 1
 1:8/0 = 0
+1:8/0/z_index = 1
 2:8/0 = 0
+2:8/0/z_index = 1
 3:8/0 = 0
+3:8/0/z_index = 1
 4:8/0 = 0
+4:8/0/z_index = 1
 5:8/0 = 0
+5:8/0/z_index = 1
 6:8/0 = 0
+6:8/0/z_index = 1
 7:8/0 = 0
+7:8/0/z_index = 1
 8:8/0 = 0
 9:8/0 = 0
 10:8/0 = 0
@@ -8043,9 +8051,13 @@ texture_region_size = Vector2i(48, 48)
 6:9/0 = 0
 7:9/0 = 0
 8:9/0 = 0
+8:9/0/z_index = 1
 9:9/0 = 0
+9:9/0/z_index = 1
 10:9/0 = 0
+10:9/0/z_index = 1
 11:9/0 = 0
+11:9/0/z_index = 1
 12:9/0 = 0
 13:9/0 = 0
 14:9/0 = 0
@@ -8077,13 +8089,21 @@ texture_region_size = Vector2i(48, 48)
 46:9/0 = 0
 47:9/0 = 0
 0:10/0 = 0
+0:10/0/z_index = 1
 1:10/0 = 0
+1:10/0/z_index = 1
 2:10/0 = 0
+2:10/0/z_index = 1
 3:10/0 = 0
+3:10/0/z_index = 1
 4:10/0 = 0
+4:10/0/z_index = 1
 5:10/0 = 0
+5:10/0/z_index = 1
 6:10/0 = 0
+6:10/0/z_index = 1
 7:10/0 = 0
+7:10/0/z_index = 1
 8:10/0 = 0
 9:10/0 = 0
 10:10/0 = 0
@@ -9783,6 +9803,7 @@ texture_region_size = Vector2i(48, 48)
 47:47/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_yx7f7"]
+tile_size = Vector2i(48, 48)
 sources/0 = SubResource("TileSetAtlasSource_htdhx")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wptde"]
@@ -9806,14 +9827,11 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcels"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4w2g"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_kcels"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ylu0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_x570f"]
-font_size = 75
 
 [sub_resource type="GDScript" id="GDScript_ceddd"]
 script/source = "extends _Peekaboo_Script
@@ -9842,6 +9860,9 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
+[sub_resource type="LabelSettings" id="LabelSettings_x570f"]
+font_size = 75
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceddd"]
 size = Vector2(100, 100)
 
@@ -9850,7 +9871,7 @@ script = ExtResource("1_pa1n3")
 player_turn = ExtResource("20_5max1")
 
 [node name="_Peekaboo_Lambdas" type="Node" parent="."]
-script = ExtResource("11_j52ey")
+script = ExtResource("3_2ylu0")
 metadata/_custom_type_script = "uid://c6484wl627c5c"
 
 [node name="_Peekaboo_Variables" type="Node" parent="."]
@@ -9902,6 +9923,7 @@ tile_set = ExtResource("12_b0sri")
 texture_filter = 1
 position = Vector2(0, 1)
 scale = Vector2(3.333, 3.333)
+tile_map_data = PackedByteArray("AAAvAJv/AAAEAAkAAAAPAPf/AAAEAAcAAAAOAPb/AAAGAAgAAAAOAPf/AAAGAAkAAAANAPn/AAAHAAgAAAANAPr/AAAHAAkAAAAMAOD/AAAHAAgAAAAMAOH/AAAHAAkAAAA=")
 tile_set = SubResource("TileSet_yx7f7")
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -10010,20 +10032,58 @@ shape = SubResource("RectangleShape2D_b0sri")
 [node name="_npc_3_2_talking_tree" type="Node2D" parent="."]
 position = Vector2(2160.784, -879.912)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="_npc_3_2_talking_tree"]
-scale = Vector2(10, 10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_2_talking_tree/StaticBody2D"]
-shape = SubResource("RectangleShape2D_kcels")
-
-[node name="Sprite2D" type="Sprite2D" parent="_npc_3_2_talking_tree/StaticBody2D"]
-scale = Vector2(20, 25)
-texture = SubResource("CanvasTexture_kcels")
+[node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_3_2_talking_tree"]
+script = ExtResource("19_b0sri")
+messages = Array[String](["I am a talking tree.", "And write now..", "I have nothing to say.", "I might as well not be, a, talking, tree.", "Would you not say ?", "I would not."])
+interrupt_player = true
+metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_2_talking_tree"]
 script = ExtResource("10_b6854")
 map_position = Vector2i(13, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_3_2_talking_tree"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_2_talking_tree/RigidBody2D"]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_a4w2g")
+
+[node name="Area2D" type="Area2D" parent="_npc_3_2_talking_tree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_3_2_talking_tree/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_2ylu0")
+
+[node name="_npc_4_1_talking_tree" type="Node2D" parent="."]
+position = Vector2(2000.7999, -4879.5117)
+
+[node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_4_1_talking_tree"]
+script = ExtResource("19_b0sri")
+messages = Array[String](["I am a talking tree.", "And write now..", "I have nothing to say.", "I might as well not be, a, talking, tree.", "Would you not say ?", "I would not."])
+interrupt_player = true
+metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_4_1_talking_tree"]
+script = ExtResource("10_b6854")
+map_position = Vector2i(12, -31)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_4_1_talking_tree"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_4_1_talking_tree/RigidBody2D"]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_a4w2g")
+
+[node name="Area2D" type="Area2D" parent="_npc_4_1_talking_tree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_4_1_talking_tree/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_2ylu0")
 
 [node name="_event_1_1" type="Node2D" parent="."]
 position = Vector2(80.992, -79.992)
@@ -10074,41 +10134,6 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 z_index = 100
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
-
-[node name="_event_4_1" type="Node2D" parent="."]
-position = Vector2(2000.7999, -4879.5117)
-
-[node name="_Peekaboo_Script" type="Node" parent="_event_4_1"]
-script = ExtResource("13_ul6yd")
-interrupt_player = true
-
-[node name="_Peekaboo_Mover" type="Node" parent="_event_4_1"]
-script = ExtResource("10_b6854")
-map_position = Vector2i(12, -31)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_event_4_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_event_4_1"]
-modulate = Color(0, 0.91764706, 0, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "EVT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
 
 [node name="_enemy_2_1" type="Node2D" parent="."]
 position = Vector2(-1998.7999, 239.976)
@@ -10513,6 +10538,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_camera_position_3_1" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(2160.784, -879.912)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_3_1"]
@@ -10803,11 +10829,11 @@ horizontal_alignment = 1
 
 [node name="_player_position_4_2" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2000.7999, -5199.48)
+position = Vector2(2000.7999, -4719.528)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_2"]
 script = ExtResource("10_b6854")
-map_position = Vector2i(12, -33)
+map_position = Vector2i(12, -30)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="_player_position_4_2"]
