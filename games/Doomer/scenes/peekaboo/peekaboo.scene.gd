@@ -15,8 +15,8 @@ func get_camera(): return get_map().find_child("Camera2D") as Camera2D
 func get_lambdas(): return find_child("_Peekaboo_Lambdas") as _Peekaboo_Lambdas
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		_Peekaboo_Variables.initialise_variables()
+	# if not Engine.is_editor_hint():
+	# 	_Peekaboo_Variables.initialise_variables()
 	is_active = false # triggers first _on_scene_deactivated
 
 func scripts_currently_on_map():

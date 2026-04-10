@@ -8,26 +8,24 @@ func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
 func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _Peekaboo_Player
 func get_camera(): return get_map().find_child("Camera2D") as Camera2D
 
-
-func transport_player(position):
-	assert(position is Vector2i or position is _Peekaboo_Event)
+func transport_player(v):
+	assert(v is Vector2i or v is _Peekaboo_Event)
+	var mover = get_player().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
+	if v is Vector2i: mover.map_position = v
+	if v is _Peekaboo_Event: mover.map_position = (v as _Peekaboo_Event).get_mover().map_position
 	
-	if position is Vector2i:
-		var mover = get_player().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-		mover.map_position = position
-
-
-func transport_camera(position: Vector2i):
+func transport_camera(v):
+	assert(v is Vector2i or v is _Peekaboo_Event)
 	var mover = get_map().find_child("_Peekaboo_Camera").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-	mover.map_position = position
-
+	if v is Vector2i: mover.map_position = v
+	if v is _Peekaboo_Event: mover.map_position = (v as _Peekaboo_Event).get_mover().map_position
+	
 func attach_camera_to_player():
 	get_camera().reparent(get_player())
 	
 func dettach_camera_from_player():
 	get_camera().reparent(get_map().find_child("Camera"))
-
-
+	
 func move_camera(delta : Vector2i):
 	var mover = get_map().find_child("_Peekaboo_Camera").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 	await mover.move(delta)

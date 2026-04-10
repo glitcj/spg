@@ -4,9 +4,6 @@ class_name _Doomer_Turn_Start_Screen_Player_Input
 var accepted_inputs = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]
 var wait_amount : float = .2
 
-# var scene
-
-
 func _init() -> void:
 	super()
 	turn_name = "SCN"
@@ -23,7 +20,6 @@ func _process_input():
 		return
 
 	doomer.handler.input_received.disconnect(_process_input)
-	# await doomer.lambdas.change_scene(doomer.scene.world_map)
 	print(doomer.scene.peekaboo)
 
 	await doomer.lambdas.change_scene(doomer.scene.peekaboo)

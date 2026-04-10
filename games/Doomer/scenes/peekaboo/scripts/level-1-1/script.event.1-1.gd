@@ -1,8 +1,6 @@
 ### Event 1-1 ###
 extends _Peekaboo_Script
-
 var slide_duration = 1.0
-
 
 func _on_scene_start():
 	await get_peekaboo().get_lambdas().show_messages(["Map started.."])

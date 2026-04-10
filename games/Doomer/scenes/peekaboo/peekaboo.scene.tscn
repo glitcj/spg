@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://47v8qk0virue" path="res://scenes/peekaboo/peekaboo.getter.gd" id="2_s7xtm"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
-[ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/scripts/level-1-1/peekaboo.map.1_1.tscn" id="4_n54ed"]
+[ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/scripts/level-1-1/peekaboo.map.tscn" id="4_n54ed"]
 
 [node name="_Peekaboo" type="SubViewportContainer"]
 offset_right = 1080.0
@@ -46,102 +46,15 @@ size_flags_vertical = 4
 [node name="_Peekaboo_Map" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer" instance=ExtResource("4_n54ed")]
 unique_name_in_owner = true
 
-[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="9" node_paths=PackedStringArray("peekaboo")]
-position = Vector2(80.992, 559.944)
+[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="8" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
 
-[node name="_npc_1_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="10"]
-position = Vector2(80.992, 239.976)
+[node name="RigidBody2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_3_2_talking_tree" index="2"]
+freeze = true
 
-[node name="_npc_3_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="11"]
-position = Vector2(1840.8159, -1359.864)
-
-[node name="_npc_3_2_talking_tree" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="12"]
-position = Vector2(2160.784, -879.912)
-
-[node name="_event_1_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="13"]
-position = Vector2(80.992, -79.992)
-
-[node name="_event_2_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="14"]
-position = Vector2(-2158.784, -79.992)
-
-[node name="_event_3_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="15"]
-position = Vector2(2640.7358, -1359.864)
-
-[node name="_event_4_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="16"]
-position = Vector2(2000.7999, -4879.5117)
-
-[node name="Enemy 1-1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="17"]
-position = Vector2(80.992, -559.944)
-
-[node name="Enemy 1-2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="18"]
-position = Vector2(-398.96, -79.992)
-
-[node name="_enemy_2_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="19"]
-position = Vector2(-1998.7999, 239.976)
-
-[node name="_enemy_2_2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="20"]
-position = Vector2(-1998.7999, 1039.896)
-
-[node name="_enemy_2_3" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="21"]
-position = Vector2(-1998.7999, 1519.848)
-
-[node name="_teleport_1_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="22"]
-position = Vector2(-558.944, -79.992)
-
-[node name="_teleport_1_2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="23"]
-position = Vector2(720.928, -79.992)
-
-[node name="_teleport_1_3" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="24"]
-position = Vector2(-558.944, -79.992)
-
-[node name="_teleport_2_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="25"]
-position = Vector2(-1518.848, -79.992)
-
-[node name="_teleport_3_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="26"]
-position = Vector2(1520.848, -79.992)
-
-[node name="_teleport_3_2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="27"]
-position = Vector2(2160.784, -2159.784)
-
-[node name="_teleport_4_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="28"]
-position = Vector2(2160.784, -3119.688)
-
-[node name="_camera_position_1_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="29"]
-position = Vector2(80.992, -79.992)
-
-[node name="_camera_position_3_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="30"]
-position = Vector2(2160.784, -879.912)
-
-[node name="_camera_position_4_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="31"]
-position = Vector2(2000.7999, -4559.544)
-
-[node name="_camera_position_2_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="32"]
-position = Vector2(-2158.784, 559.944)
-
-[node name="_player_position_1_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="33"]
-position = Vector2(-398.96, -79.992)
-
-[node name="_player_position_1_2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="34"]
-position = Vector2(560.944, -79.992)
-
-[node name="_player_position_2_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="35"]
-position = Vector2(-1678.832, -79.992)
-
-[node name="_player_position_3_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="36"]
-position = Vector2(1680.832, -79.992)
-
-[node name="_player_position_3_2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="37"]
-position = Vector2(2160.784, -1999.7999)
-
-[node name="_player_position_4_1" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="38"]
-position = Vector2(2160.784, -3279.6719)
-
-[node name="_player_position_4_2" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="39"]
-position = Vector2(2000.7999, -5199.48)
-
-[node name="_Peekaboo_Camera" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="40"]
-position = Vector2(80.992, 79.992)
+[node name="_Peekaboo_Script" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_event_2_1" index="0"]
+trigger = null
+action_range = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 
