@@ -9,9 +9,12 @@ func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _
 func get_camera(): return get_map().find_child("Camera2D") as Camera2D
 
 
-func transport_player(position: Vector2i):
-	var mover = get_player().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-	mover.map_position = position
+func transport_player(position):
+	assert(position is Vector2i or position is _Peekaboo_Event)
+	
+	if position is Vector2i:
+		var mover = get_player().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
+		mover.map_position = position
 
 
 func transport_camera(position: Vector2i):
