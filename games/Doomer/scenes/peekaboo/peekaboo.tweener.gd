@@ -7,7 +7,7 @@ func set_displacement(v):
 	displacement = v
 	return self
 
-static func _slide_in(tweenee : Node, duration := 0.5, eased = true):
+static func _slide_in(tweenee : Node, duration := 0.5, vector = Vector2i(0, 1)):
 	var tween = tweenee.create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -15,15 +15,16 @@ static func _slide_in(tweenee : Node, duration := 0.5, eased = true):
 	
 	var _disaplacement = 300 # pixels
 	
-	tween.tween_callback(func(): tweenee.visible = true)
-	tween.tween_callback(func(): tweenee.position = Vector2(0, 1) * _disaplacement)
+	tween.tween_callback(func(): tweenee.position = vector * _disaplacement)
 	tween.tween_callback(func(): tweenee.modulate = Color(1, 1, 1, 0))
+	tween.tween_callback(func(): tweenee.visible = true)
+
 	
 	tween.tween_property(tweenee, "position", Vector2.ZERO, duration)
 	tween.parallel().tween_property(tweenee, "modulate", Color(1,1,1,1), duration)
 	await tween.finished
 
-static func _slide_out(tweenee : Node, duration := 0.5, eased = true):
+static func _slide_out(tweenee : Node, duration := 0.5, vector = Vector2i(0, 1)):
 	var tween = tweenee.create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -32,8 +33,9 @@ static func _slide_out(tweenee : Node, duration := 0.5, eased = true):
 	tween.tween_callback(func(): tweenee.modulate = Color(1, 1, 1, 1))
 	
 	var _disaplacement = 300
-	tween.tween_property(tweenee, "position", Vector2(0, 1) * _disaplacement, duration)
+	tween.tween_property(tweenee, "position", vector * _disaplacement, duration)
 	tween.parallel().tween_property(tweenee, "modulate", Color(1,1,1,0), duration)
+	tween.tween_callback(func(): tweenee.visible = false)
 	
 	await tween.finished
 	

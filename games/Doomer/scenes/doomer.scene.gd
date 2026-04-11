@@ -18,7 +18,6 @@ var is_active = false:
 			await _on_scene_deactivated()
 
 @onready var doomer : _Core = find_parent("_Core")
-
 @onready var camera : Camera2D
 
 func _on_scene_start():

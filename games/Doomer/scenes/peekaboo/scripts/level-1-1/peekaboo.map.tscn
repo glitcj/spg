@@ -9830,9 +9830,9 @@ fill_from = Vector2(0.5, 0.5)
 script/source = "extends _Peekaboo_Script
 
 func _on_action_within_area():
-	print(\"start\")
+	var _lambda : Callable = func(): get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))
+	(get_core().get_scene(\"_Swiper\") as _Swiper).round_finished.connect(_lambda)
 	get_core().change_scene(get_core().get_scene(\"_Swiper\"))
-	pass
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
@@ -10017,7 +10017,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
 [node name="_npc_1_2" type="Node2D" parent="."]
-position = Vector2(80.992, -879.912)
+position = Vector2(2160.784, -4879.5117)
 script = ExtResource("18_1be5g")
 
 [node name="_Peekaboo_Script" type="Node" parent="_npc_1_2"]
@@ -10026,7 +10026,7 @@ interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_1_2"]
 script = ExtResource("15_spxyh")
-map_position = Vector2i(0, -6)
+map_position = Vector2i(13, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_1_2"]

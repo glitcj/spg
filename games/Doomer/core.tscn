@@ -134,7 +134,7 @@ texture = SubResource("ViewportTexture_q5iqo")
 [node name="_Starter" parent="Scenes/Scene Grid" node_paths=PackedStringArray("next_scene") instance=ExtResource("17_rlvb2")]
 unique_name_in_owner = true
 layout_mode = 2
-next_scene = NodePath("../_Swiper")
+next_scene = NodePath("../_Peekaboo")
 player_turn = ExtResource("18_uq53n")
 
 [node name="World Map Scene" parent="Scenes/Scene Grid" instance=ExtResource("19_uhlwl")]
