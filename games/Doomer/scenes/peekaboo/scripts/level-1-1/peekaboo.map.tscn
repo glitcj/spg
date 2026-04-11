@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="14_gnkti"]
 [ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="15_spxyh"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.tscn" id="16_3giqw"]
-[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="17_v2lv5"]
+[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/_peekaboo_tweener.gd" id="17_v2lv5"]
 [ext_resource type="Script" uid="uid://dxkbij13lf7tg" path="res://scenes/peekaboo/_peekaboo_event.gd" id="18_1be5g"]
 [ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_talker.gd" id="19_giqst"]
 [ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="20_byi4p"]

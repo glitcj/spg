@@ -87,6 +87,9 @@ func _distance_to_player() -> float:
 	return (get_player().position - parent.position).length()
 	
 func _wrapped_callable(c: Callable):
+	if not get_peekaboo().is_active:
+		return
+	
 	if trigger_is_running[c.get_method()]:
 		return
 	trigger_is_running[c.get_method()] = true

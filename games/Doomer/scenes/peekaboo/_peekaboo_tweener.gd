@@ -33,7 +33,8 @@ static func _slide_out(tweenee : Node, duration := 0.5, vector = Vector2i(0, 1))
 	tween.tween_callback(func(): tweenee.modulate = Color(1, 1, 1, 1))
 	
 	var _disaplacement = 300
-	tween.tween_property(tweenee, "position", vector * _disaplacement, duration)
+	# print(vector * _disaplacement)
+	tween.tween_property(tweenee, "position", Vector2(vector * _disaplacement), duration)
 	tween.parallel().tween_property(tweenee, "modulate", Color(1,1,1,0), duration)
 	tween.tween_callback(func(): tweenee.visible = false)
 	

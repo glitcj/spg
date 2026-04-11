@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/window/_core_window.gd" id="1_c2pol"]
 [ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_810en"]
-[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="3_4b78m"]
+[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/_peekaboo_tweener.gd" id="3_4b78m"]
 
 [sub_resource type="Animation" id="Animation_7dksj"]
 resource_name = "Buzz"

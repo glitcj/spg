@@ -24,8 +24,9 @@ var is_active = false:
 
 func _on_scene_start():
 	await get_tree().process_frame
-	scene_started.emit()
 	is_active = true
+	scene_started.emit()
+
 	
 func _on_scene_end():
 	await get_tree().process_frame

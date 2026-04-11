@@ -34,8 +34,18 @@ func _input(event: InputEvent) -> void:
 	match (event as InputEventKey).keycode:
 		KEY_RIGHT:
 			await _Peekaboo_Tweener._slide_out(find_child("_word_1"), .5, Vector2i(1, 0))
+			
+			_Peekaboo_Tweener._slide_out(find_child("_word_2"), .5, Vector2i(0, 1))
+			await _Peekaboo_Tweener._slide_out(find_child("_definition"), .5, Vector2i(0, 1))
 			round_finished.emit()
+
 			
 		KEY_LEFT:
 			await _Peekaboo_Tweener._slide_out(find_child("_word_2"), .5, Vector2i(-1, 0))
+			
+			_Peekaboo_Tweener._slide_out(find_child("_word_1"), .5, Vector2i(0, 1))
+			await _Peekaboo_Tweener._slide_out(find_child("_definition"), .5, Vector2i(0, 1))
 			round_finished.emit()
+			
+		_:
+			pass

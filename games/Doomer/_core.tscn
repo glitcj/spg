@@ -1,0 +1,155 @@
+[gd_scene load_steps=25 format=3 uid="uid://bv3klgr035oac"]
+
+[ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://_core.gd" id="1_110wm"]
+[ext_resource type="Script" uid="uid://djvk5f1dkttil" path="res://core/inspector.gd" id="2_2jvhd"]
+[ext_resource type="Script" uid="uid://bx1omwn0qjk24" path="res://core/debug/doomer.debug.log.gd" id="3_day3e"]
+[ext_resource type="Script" uid="uid://3hcdvyqyhlc2" path="res://core/doomer.getter.gd" id="4_l46r8"]
+[ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://core/turner/doomer.turner.tscn" id="5_okhcm"]
+[ext_resource type="Script" uid="uid://dwg0a3ker5rp4" path="res://scenes/board/doomer.getters.board.gd" id="6_swcwv"]
+[ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://core/handler/funcs.poke.input_handler.gd" id="7_l5m0l"]
+[ext_resource type="Script" uid="uid://b4mhr6s4wa6ql" path="res://other/doomer.poker.logic.gd" id="8_uno8a"]
+[ext_resource type="Script" uid="uid://tvyfjvrduup" path="res://other/doomer.constants.gd" id="9_tueys"]
+[ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://other/_core_templates.gd" id="10_0i5h7"]
+[ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/doomer.lambdas.gd" id="11_yes15"]
+[ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/notes.gd" id="12_dhys3"]
+[ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://core/grounds/doomer.core.background.tscn" id="13_v53g8"]
+[ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://scenes/board/doomer.scene.board.tscn" id="14_ptxyp"]
+[ext_resource type="Script" uid="uid://svxnai8avvm8" path="res://core/turner/turns/doomer.turn.board.player.gd" id="15_galbn"]
+[ext_resource type="Script" uid="uid://bjb6ohogqlfea" path="res://core/turner/turns/doomer.turn.field.gd" id="16_l20uk"]
+[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/_starter.tscn" id="17_8i81m"]
+[ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_sps4g"]
+[ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://scenes/world_map/doomer.scene.world_map.tscn" id="19_o0yd7"]
+[ext_resource type="Script" uid="uid://24v0qjou812u" path="res://core/turner/turns/doomer.turn.world_map.player_input.gd" id="20_2wcf0"]
+[ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/peekaboo.scene.tscn" id="21_pw4lx"]
+[ext_resource type="PackedScene" uid="uid://cxiw0m4n4emut" path="res://scenes/swiper/swiper.scene.tscn" id="22_t1t3w"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q5iqo"]
+
+[node name="_Core" type="Node2D"]
+script = ExtResource("1_110wm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+
+[node name="Debug" type="Node" parent="."]
+
+[node name="Inspectors" type="Node" parent="Debug"]
+
+[node name="Cards Inspector" type="Node" parent="Debug/Inspectors"]
+script = ExtResource("2_2jvhd")
+
+[node name="Portraits Inspector" type="Node" parent="Debug/Inspectors" node_paths=PackedStringArray("inspectee_3")]
+script = ExtResource("2_2jvhd")
+inspectee_3 = NodePath("../../../Scenes/Scene Grid/_Starter")
+
+[node name="Log" type="Node" parent="Debug"]
+script = ExtResource("3_day3e")
+
+[node name="Label" type="Label" parent="Debug/Log"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Getter" type="Node" parent="."]
+script = ExtResource("4_l46r8")
+
+[node name="Turner" parent="." instance=ExtResource("5_okhcm")]
+
+[node name="Board" type="Node" parent="."]
+script = ExtResource("6_swcwv")
+
+[node name="Handler" type="Node" parent="."]
+script = ExtResource("7_l5m0l")
+
+[node name="Logic" type="Node" parent="."]
+script = ExtResource("8_uno8a")
+
+[node name="Constants" type="Node" parent="."]
+script = ExtResource("9_tueys")
+
+[node name="Templates" type="Node" parent="."]
+script = ExtResource("10_0i5h7")
+
+[node name="_Core_Lambdas" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_yes15")
+
+[node name="Documentation" type="Node" parent="."]
+script = ExtResource("12_dhys3")
+
+[node name="Current Scene" type="Node" parent="."]
+
+[node name="Background Container" type="MarginContainer" parent="Current Scene"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="Board BG" parent="Current Scene/Background Container" instance=ExtResource("13_v53g8")]
+z_index = -100
+layout_mode = 2
+
+[node name="Current Scene Container" type="MarginContainer" parent="Current Scene"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Foreground Container" type="MarginContainer" parent="Current Scene"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -1200.0
+offset_right = 540.0
+offset_bottom = 1200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Current Scene/Foreground Container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_rj2r0")
+
+[node name="Scenes" type="Node2D" parent="."]
+position = Vector2(0, 5000)
+
+[node name="Scene Grid" type="GridContainer" parent="Scenes"]
+offset_right = 7773.0
+offset_bottom = 7631.0
+columns = 2
+
+[node name="Poker Board Scene" parent="Scenes/Scene Grid" instance=ExtResource("14_ptxyp")]
+unique_name_in_owner = true
+layout_mode = 2
+player_turn = ExtResource("15_galbn")
+field_turn = ExtResource("16_l20uk")
+
+[node name="TextureRect" parent="Scenes/Scene Grid/Poker Board Scene/SubViewport/Animated Node/MarginContainer Shader Board BG/VBoxContainer/MarginContainer" index="1"]
+texture = SubResource("ViewportTexture_q5iqo")
+
+[node name="_Starter" parent="Scenes/Scene Grid" node_paths=PackedStringArray("next_scene") instance=ExtResource("17_8i81m")]
+unique_name_in_owner = true
+layout_mode = 2
+next_scene = NodePath("../_Peekaboo")
+player_turn = ExtResource("18_sps4g")
+
+[node name="World Map Scene" parent="Scenes/Scene Grid" instance=ExtResource("19_o0yd7")]
+unique_name_in_owner = true
+layout_mode = 2
+player_turn = ExtResource("20_2wcf0")
+
+[node name="_Peekaboo" parent="Scenes/Scene Grid" instance=ExtResource("21_pw4lx")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="_Swiper" parent="Scenes/Scene Grid" instance=ExtResource("22_t1t3w")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[editable path="Scenes/Scene Grid/Poker Board Scene"]
+[editable path="Scenes/Scene Grid/World Map Scene"]
+[editable path="Scenes/Scene Grid/World Map Scene/SubViewport/MarginContainer/VBoxContainer/MarginContainer4/Enemy Trait Container 1/Guide Message Box"]
