@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://dioopxi2opgrn"]
 
-[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/window/core.window.gd" id="1_vr8u8"]
-[ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_i2qql"]
-[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="4_rjo55"]
+[ext_resource type="Script" uid="uid://d0tgvegkh87bt" path="res://core/window/_core_window.gd" id="1_c2pol"]
+[ext_resource type="Texture2D" uid="uid://cqwqfiycxfrp" path="res://assets/doomer/frames/doomer.asset.frames.png" id="2_810en"]
+[ext_resource type="Script" uid="uid://5fqo6d3fleu4" path="res://scenes/peekaboo/peekaboo.tweener.gd" id="3_4b78m"]
 
 [sub_resource type="Animation" id="Animation_7dksj"]
 resource_name = "Buzz"
@@ -204,7 +204,7 @@ _data = {
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2qql"]
-texture = ExtResource("2_i2qql")
+texture = ExtResource("2_810en")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -691,7 +691,7 @@ font_size = 10
 
 [node name="_Core_Window" type="Node2D"]
 scale = Vector2(0.99999994, 0.99999994)
-script = ExtResource("1_vr8u8")
+script = ExtResource("1_c2pol")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -738,5 +738,5 @@ autowrap_mode = 2
 
 [node name="_Peekaboo_Tweener" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("4_rjo55")
+script = ExtResource("3_4b78m")
 metadata/_custom_type_script = "uid://5fqo6d3fleu4"

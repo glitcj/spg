@@ -5,19 +5,7 @@ class_name _Core_Window
 signal finished
 
 @onready var doomer : _Core = find_parent("_Core")
-
-# Settings
-# @export var visible_on_reset = false
-
 @onready var label : Label = find_child("Message Label")
-# @onready var animation_player : AnimationPlayer = find_child("AnimationPlayer")
-# @onready var message_portrait : _Doomer_Portrait = find_child("Message Portrait")
-# @onready var message_box
-
-# @onready var tweener = %_Peekaboo_Tweener
-
-# enum Action {ShowLog, ShowMessage, Buzz}
-
 
 var history : Array = []
 var full_message_log : Array = []
@@ -53,17 +41,10 @@ func _update_label_as_log():
 	label.text = "\n".join(full_message_log.slice(-1 * min(3, full_message_log.size()), full_message_log.size()))
 	
 func start(message_queue_ : Array):
-
 	message_queue = message_queue_
-	visible = true
-	position = Vector2.ZERO
-	
-	await _Peekaboo_Tweener._slide_in(self)
-
-	print(message_queue)
 	is_active = true
 	_show_next_message()
-
+	await _Peekaboo_Tweener._slide_in(self)
 
 func _show_current_message(m):
 	message = m

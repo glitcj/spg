@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=71 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/peekaboo.map.gd" id="1_eu0qy"]
 [ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="2_q5qis"]
@@ -9835,11 +9835,15 @@ func _on_action_within_area():
 	get_core().change_scene(get_core().get_scene(\"_Swiper\"))
 "
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4w2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ylu0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eu0qy"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
 
@@ -10029,10 +10033,6 @@ script = ExtResource("15_spxyh")
 map_position = Vector2i(13, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_1_2"]
-script = ExtResource("19_giqst")
-metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
-
 [node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_2"]
 gravity_scale = 0.0
 freeze = true
@@ -10048,8 +10048,8 @@ sprite = "green"
 [node name="Area2D" type="Area2D" parent="_npc_1_2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_r103f")
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_q5qis")
 
 [node name="_npc_3_1" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -10190,8 +10190,8 @@ shape = SubResource("RectangleShape2D_a4w2g")
 [node name="Area2D" type="Area2D" parent="_npc_4_1_talking_tree"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_4_1_talking_tree/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_2ylu0")
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_eu0qy")
 
 [node name="_event_1_1" type="Node2D" parent="."]
 position = Vector2(80.992, -79.992)

@@ -2,7 +2,7 @@ extends Node
 class_name _Core_Templates
 
 
-static var window = preload("res://core/window/core.window.tscn")
+static var window = preload("res://core/window/_core_window.tscn")
 
 
 static var portrait = preload("res://nodes/portrait/doomer.portrait.tscn")
