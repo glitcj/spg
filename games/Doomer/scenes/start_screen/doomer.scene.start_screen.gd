@@ -11,7 +11,8 @@ class_name _Starter
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
+	await _Starter_Turn.new().start(self)
+
 
 func _on_scene_start():
 	super()
-	await _Starter_Turn.new().start(self)

@@ -3,12 +3,19 @@ class_name _Peekaboo_Player
 
 
 @export var peekaboo : _Peekaboo
-var is_active = false
+var is_active = false:
+	set(v):
+		if get_peekaboo() and not get_peekaboo().is_active:
+			return
+		is_active = v
 
 @onready var mover = find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 @onready var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
 
 func get_portrait(): return find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
+func get_peekaboo(): return find_parent("_Peekaboo") as _Peekaboo
+
+
 
 var direction = Vector2.ZERO as Vector2
 var next_direction = Vector2.ZERO:
@@ -24,8 +31,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not get_peekaboo().is_active:
+		return
+		
 	is_active = true	
-
 	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
 		if script.is_running() and script.interrupt_player:
 			is_active = false

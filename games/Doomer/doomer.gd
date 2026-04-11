@@ -46,9 +46,9 @@ func _boot():
 	
 func change_scene(scene_: _Core_Scene):
 	if current_scene_node:
-		current_scene_node._on_scene_end()
+		await current_scene_node._on_scene_end()
 
-	scene_._on_scene_start()
+	await scene_._on_scene_start()
 
 	current_scene_node = scene_
 	camera.reparent(current_scene_node)

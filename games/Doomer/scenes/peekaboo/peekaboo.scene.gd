@@ -8,12 +8,15 @@ func get_camera(): return get_map().find_child("Camera2D") as Camera2D
 func get_lambdas(): return find_child("_Peekaboo_Lambdas") as _Peekaboo_Lambdas
 
 func _ready() -> void:
-	is_active = false
+	pass
 
 func scripts_currently_on_map():
 	return find_children("*", "_Peekaboo_Script")
 
 func _on_scene_start():
+	super()
+
+func _on_scene_end():
 	super()
 
 func _on_scene_activated():

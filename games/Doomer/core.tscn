@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bj4gwlna6b7q8" path="res://scenes/board/doomer.scene.board.tscn" id="14_mfkxc"]
 [ext_resource type="Script" uid="uid://svxnai8avvm8" path="res://core/turner/turns/doomer.turn.board.player.gd" id="15_sd2we"]
 [ext_resource type="Script" uid="uid://bjb6ohogqlfea" path="res://core/turner/turns/doomer.turn.field.gd" id="16_au8ko"]
-[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/start_screen.scene.tscn" id="17_rlvb2"]
+[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/_starter.tscn" id="17_rlvb2"]
 [ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_uq53n"]
 [ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://scenes/world_map/doomer.scene.world_map.tscn" id="19_uhlwl"]
 [ext_resource type="Script" uid="uid://24v0qjou812u" path="res://core/turner/turns/doomer.turn.world_map.player_input.gd" id="20_rgo8v"]

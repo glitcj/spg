@@ -12,22 +12,25 @@ var is_active = false:
 		is_active = v
 		if is_active:
 			print(self)
+			scene_activated.emit()
 			await _on_scene_activated()
 		else:
 			print(self)
+			scene_deactivated.emit()
 			await _on_scene_deactivated()
 
 @onready var doomer : _Core = find_parent("_Core")
 @onready var camera : Camera2D
 
 func _on_scene_start():
-	is_active = true
-	scene_activated.emit()
+	await get_tree().process_frame
 	scene_started.emit()
+	is_active = true
 	
 func _on_scene_end():
+	await get_tree().process_frame
+
 	is_active = false
-	scene_deactivated.emit()
 	scene_ended.emit()
 
 
