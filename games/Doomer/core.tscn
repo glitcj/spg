@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://svxnai8avvm8" path="res://core/turner/turns/doomer.turn.board.player.gd" id="15_sd2we"]
 [ext_resource type="Script" uid="uid://bjb6ohogqlfea" path="res://core/turner/turns/doomer.turn.field.gd" id="16_au8ko"]
 [ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/start_screen.scene.tscn" id="17_rlvb2"]
-[ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/core.turn.start_screen.player_input.gd" id="18_uq53n"]
+[ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_uq53n"]
 [ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://scenes/world_map/doomer.scene.world_map.tscn" id="19_uhlwl"]
 [ext_resource type="Script" uid="uid://24v0qjou812u" path="res://core/turner/turns/doomer.turn.world_map.player_input.gd" id="20_rgo8v"]
 [ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/peekaboo.scene.tscn" id="21_u8aor"]
@@ -72,7 +72,7 @@ script = ExtResource("9_r8hhm")
 [node name="Templates" type="Node" parent="."]
 script = ExtResource("10_2wlno")
 
-[node name="Lambdas" type="Node" parent="."]
+[node name="_Core_Lambdas" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_uk77y")
 
@@ -131,9 +131,10 @@ field_turn = ExtResource("16_au8ko")
 [node name="TextureRect" parent="Scenes/Scene Grid/Poker Board Scene/SubViewport/Animated Node/MarginContainer Shader Board BG/VBoxContainer/MarginContainer" index="1"]
 texture = SubResource("ViewportTexture_q5iqo")
 
-[node name="_Starter" parent="Scenes/Scene Grid" instance=ExtResource("17_rlvb2")]
+[node name="_Starter" parent="Scenes/Scene Grid" node_paths=PackedStringArray("next_scene") instance=ExtResource("17_rlvb2")]
 unique_name_in_owner = true
 layout_mode = 2
+next_scene = NodePath("../_Peekaboo")
 player_turn = ExtResource("18_uq53n")
 
 [node name="World Map Scene" parent="Scenes/Scene Grid" instance=ExtResource("19_uhlwl")]

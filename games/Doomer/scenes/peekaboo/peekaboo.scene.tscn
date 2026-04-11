@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d08p5bfc634r"]
+[gd_scene load_steps=4 format=3 uid="uid://d08p5bfc634r"]
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
-[ext_resource type="Script" uid="uid://47v8qk0virue" path="res://scenes/peekaboo/peekaboo.getter.gd" id="2_s7xtm"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
 [ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/scripts/level-1-1/peekaboo.map.tscn" id="4_n54ed"]
 
@@ -9,10 +8,6 @@
 offset_right = 1080.0
 offset_bottom = 2400.0
 script = ExtResource("1_3t57p")
-
-[node name="Getter" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_s7xtm")
 
 [node name="_Peekaboo_Lambdas" type="Node" parent="."]
 unique_name_in_owner = true

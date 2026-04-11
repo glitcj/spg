@@ -11,26 +11,27 @@ enum Opponents {Player, Enemy}
 var current_scene_node : _Core_Scene
 
 @onready var camera = %Camera2D as Camera2D
-@onready var handler : _Doomer_Handler = $Handler
+# @onready var handler : _Doomer_Handler = $Handler
 @onready var turner : _Core_Turner = $Turner
 @onready var logic : _Doomer_Logic = $Logic
 @onready var getter : _Doomer_Getter = $Getter
 @onready var scene_grid = find_child("Scene Grid")
 @onready var current_scene_container = find_child("Current Scene Container")
-@onready var lambdas : _Doomer_Lambdas = find_child("Lambdas")
+@onready var lambdas : _Core_Lambdas = find_child("_Core_Lambdas")
 
 
 func get_scene(_name): return find_child(_name) as _Core_Scene
+func get_lambdas(_name): return find_child("_Core_Lambdas") as _Core_Lambdas
 
 
 var current_opponent : _Doomer_Opponent
 
 func _input(event):
-	handler.handle_inputs(event)
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	handler.mode = handler.InputMode.Active
+	pass
 
 	scene.world_map = %"World Map Scene"
 	scene.poker_board = %"Poker Board Scene"

@@ -1,8 +1,12 @@
 extends _Core_Scene
 class_name _Starter
 
-@export_category("Uses")
+@export var next_scene : _Core_Scene
+
+
+@export_category("Scripts")
 @export var player_turn : Script
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
