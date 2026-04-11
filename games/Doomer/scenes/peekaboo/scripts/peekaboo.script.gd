@@ -1,19 +1,12 @@
 extends Node
 class_name _Peekaboo_Script
 
-signal script_finished
 signal actioned_within_area
 signal frame_started
 signal area_entered_by_player
 
 @export var interrupt_player := false
-@export var trigger : ScriptTirgger
 @export var action_range : float = 10.0
-
-
-@onready var peekaboo : _Peekaboo = find_parent("_Peekaboo")
-@onready var map : _Peekaboo_Map = find_parent("_Peekaboo_Map")
-@onready var lambdas : _Peekaboo_Lambdas = map.find_child("Peekaboo_Lambdas")
 
 
 func get_core(): return find_parent("_Core") as _Core
@@ -25,13 +18,6 @@ func get_variables(): return _Peekaboo_Variables
 func get_area(): return get_parent().find_child("Area2D") as Area2D
 func get_mover(): return get_parent().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 func get_portrait(): return get_parent().find_child("_Peekaboo_Portrait")
-
-var variables = _Peekaboo_Variables
-
-enum ScriptTirgger {
-	Automatic, ActionWithinRange, WithinRange,
-	Collision, EnteredRange, ExitedRange
-}
 
 var last_distnace_from_player : Vector2 = Vector2.ZERO
 var current_distnace_from_player : Vector2 = Vector2.ZERO
@@ -65,7 +51,6 @@ func bind_triggers():
 	
 	
 	if get_area():
-
 		get_area().body_entered.connect(_check_area_signals)
 	area_entered_by_player.connect(_wrapped_callable.bind(_on_area_entered))
 
@@ -77,14 +62,14 @@ func _get_components():
 		portrait = parent.find_child("_Peekaboo_Portrait")
 
 func _process(_delta: float):
-	if not peekaboo or not peekaboo.map.player:
+	if not get_peekaboo() or not get_player():
 		return
 	_log()
 	frame_started.emit()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		if _player_is_within_event_area():
-			var player_mover = peekaboo.find_child("Player").find_child("_Peekaboo_Mover") as _Peekaboo_Mover
+			var player_mover = get_player().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 			var player_is_facing_this_event : bool = mover.map_position == player_mover.get_facing_direction() + player_mover.map_position
 			if player_is_facing_this_event:
 				await get_tree().process_frame # wait for input buffer to clear
@@ -99,13 +84,8 @@ func _player_is_within_event_area():
 	if get_area(): return get_area().overlaps_body(get_player())
 
 func _distance_to_player() -> float:
-	return (peekaboo.map.player.position - parent.position).length()
-
-
-
-
-
-
+	return (get_player().position - parent.position).length()
+	
 func _wrapped_callable(c: Callable):
 	if trigger_is_running[c.get_method()]:
 		return
@@ -145,10 +125,7 @@ func is_running():
 
 
 func _get_direction_to_player():
-	# print(get_player())
-	# print(get_player().find_child("_Peekaboo_Mover").map_position)
 	var player_position = get_player().find_child("_Peekaboo_Mover").map_position as Vector2i
 	var direction = Vector2(player_position - get_mover().map_position).normalized()
-	
 	assert(direction.abs().x + direction.abs().y == 1) # make sure direction is in udlr
 	return Vector2i(direction)

@@ -46,15 +46,8 @@ size_flags_vertical = 4
 [node name="_Peekaboo_Map" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer" instance=ExtResource("4_n54ed")]
 unique_name_in_owner = true
 
-[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="8" node_paths=PackedStringArray("peekaboo")]
+[node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
-
-[node name="RigidBody2D" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_3_2_talking_tree" index="2"]
-freeze = true
-
-[node name="_Peekaboo_Script" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_event_2_1" index="0"]
-trigger = null
-action_range = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 
