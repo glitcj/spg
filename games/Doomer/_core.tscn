@@ -131,6 +131,9 @@ field_turn = ExtResource("16_l20uk")
 [node name="TextureRect" parent="Scenes/Scene Grid/Poker Board Scene/SubViewport/Animated Node/MarginContainer Shader Board BG/VBoxContainer/MarginContainer" index="1"]
 texture = SubResource("ViewportTexture_q5iqo")
 
+[node name="Player CoinBox" parent="Scenes/Scene Grid/Poker Board Scene/SubViewport/Animated Node/PanelContainer/VBoxContainer/CoinBox Bottom/CenterContainer" index="0"]
+holder = null
+
 [node name="_Starter" parent="Scenes/Scene Grid" node_paths=PackedStringArray("next_scene") instance=ExtResource("17_8i81m")]
 unique_name_in_owner = true
 layout_mode = 2

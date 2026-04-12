@@ -8,56 +8,33 @@ class_name _Core
 
 enum Opponents {Player, Enemy}
 
-var current_scene_node : _Core_Scene
+var current_scene : _Core_Scene
 
 @onready var camera = %Camera2D as Camera2D
-# @onready var handler : _Doomer_Handler = $Handler
 @onready var turner : _Core_Turner = $Turner
-@onready var logic : _Doomer_Logic = $Logic
-@onready var getter : _Doomer_Getter = $Getter
-@onready var scene_grid = find_child("Scene Grid")
-@onready var current_scene_container = find_child("Current Scene Container")
-@onready var lambdas : _Core_Lambdas = find_child("_Core_Lambdas")
 
 
 func get_scene(_name): return find_child(_name) as _Core_Scene
-func get_lambdas(_name): return find_child("_Core_Lambdas") as _Core_Lambdas
+func get_lambdas(): return find_child("_Core_Lambdas") as _Core_Lambdas
 
 
-var current_opponent : _Doomer_Opponent
 
 func _input(event):
 	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
-	scene.world_map = %"World Map Scene"
-	scene.poker_board = %"Poker Board Scene"
-	scene.start_screen = %"_Starter"
-	scene.peekaboo = %_Peekaboo
-	
 	_boot.call_deferred()
 
 func _boot():
-	change_scene(scene.start_screen)
+	change_scene(get_scene("_Starter"))
 	
 	
 func change_scene(scene_: _Core_Scene):
-	if current_scene_node:
-		await current_scene_node._on_scene_end()
+	if current_scene:
+		await current_scene._on_scene_end()
 		
-	current_scene_node = scene_
-	camera.reparent(current_scene_node)
+	current_scene = scene_
+	camera.reparent(current_scene)
 	camera.position = Vector2.ZERO
 	await scene_._on_scene_start()
-
-	
-	
-var scene = _Scene.new()
-class _Scene:
-	var world_map : _Doomer_Scene_World_Map
-	var poker_board : _Doomer_Scene_Poker_Board
-	var start_screen : _Starter
-	var peekaboo : _Peekaboo

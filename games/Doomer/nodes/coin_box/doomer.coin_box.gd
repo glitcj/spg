@@ -49,5 +49,5 @@ func add_coins(count : int = 1):
 			
 			coin.position.y += (randi() % int(spawn_point_randomness.y) - (float(spawn_point_randomness.y)/2))
 			
-		await doomer.lambdas.waiter(0.01)
+		await doomer.get_lambdas().waiter(0.01)
 		

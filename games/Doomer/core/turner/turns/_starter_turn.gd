@@ -21,6 +21,6 @@ func _input(event: InputEvent) -> void:
 	if not (event.pressed and not event.echo): return
 	
 	if (event as InputEventKey).keycode in accepted_inputs:
-		await get_core().lambdas.change_scene((get_parent() as _Starter).next_scene)
+		await get_core().change_scene((get_parent() as _Starter).next_scene)
 		on_turn_end()
 		
