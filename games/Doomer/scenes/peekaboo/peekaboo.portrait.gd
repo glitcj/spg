@@ -2,7 +2,6 @@
 extends Node2D
 class_name _Peekaboo_Portrait
 
-# @export_enum("player", "priest", "red") var sprite : String
 var sprite : String:
 	set(v):
 		sprite = v

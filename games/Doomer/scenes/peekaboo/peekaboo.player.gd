@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		return
 		
 	is_active = true	
-	for script : _Peekaboo_Script in peekaboo.scripts_currently_on_map():
+	for script : _Peekaboo_Script in get_peekaboo().get_map().scripts_currently_on_map():
 		if script.is_running() and script.interrupt_player:
 			is_active = false
 			
@@ -77,7 +77,7 @@ func _valid_direction_is_pressed():
 	
 func _process_input():# _on_input():
 	if Input.is_action_just_pressed("ui_select"):
-		_Peekaboo_Tweener.highlight(self)
+		_Core_Tweener.highlight(self)
 		
 	if _valid_direction_is_pressed():
 		next_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

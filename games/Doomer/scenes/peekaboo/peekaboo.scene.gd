@@ -10,8 +10,6 @@ func get_lambdas(): return find_child("_Peekaboo_Lambdas") as _Peekaboo_Lambdas
 func _ready() -> void:
 	pass
 
-func scripts_currently_on_map():
-	return find_children("*", "_Peekaboo_Script")
 
 func _on_scene_start():
 	super()

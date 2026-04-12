@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
-[ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/scripts/level-1-1/peekaboo.map.tscn" id="4_n54ed"]
+[ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/scripts/level-1-1/_peekaboo_map.tscn" id="4_n54ed"]
 
 [node name="_Peekaboo" type="SubViewportContainer"]
 offset_right = 1080.0

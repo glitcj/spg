@@ -1,5 +1,5 @@
 extends Node
-class_name _Peekaboo_Tweener
+class_name _Core_Tweener
 
 var displacement = 300
 

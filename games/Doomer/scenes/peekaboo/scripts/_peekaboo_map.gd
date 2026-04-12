@@ -20,3 +20,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
+	
+func scripts_currently_on_map():
+	return find_children("*", "_Peekaboo_Script")

@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_sps4g"]
 [ext_resource type="PackedScene" uid="uid://bo8lclxe6oiqv" path="res://scenes/world_map/doomer.scene.world_map.tscn" id="19_o0yd7"]
 [ext_resource type="Script" uid="uid://24v0qjou812u" path="res://core/turner/turns/doomer.turn.world_map.player_input.gd" id="20_2wcf0"]
-[ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/peekaboo.scene.tscn" id="21_pw4lx"]
+[ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/_peekaboo.tscn" id="21_pw4lx"]
 [ext_resource type="PackedScene" uid="uid://cxiw0m4n4emut" path="res://scenes/swiper/swiper.scene.tscn" id="22_t1t3w"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
