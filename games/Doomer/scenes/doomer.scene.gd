@@ -12,12 +12,15 @@ var is_active = false:
 		is_active = v
 		if is_active:
 			print(self)
-			scene_activated.emit()
+			 # we do not connect, because signal_activated must be emitted AFTER activation is complete
 			await _on_scene_activated()
+			scene_activated.emit()
+
 		else:
 			print(self)
-			scene_deactivated.emit()
 			await _on_scene_deactivated()
+			scene_deactivated.emit()
+
 
 @onready var doomer : _Core = find_parent("_Core")
 @onready var camera : Camera2D

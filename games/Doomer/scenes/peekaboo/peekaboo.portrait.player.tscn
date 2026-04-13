@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bb68u0lc28266"]
 
-[ext_resource type="Script" uid="uid://7bue6k2pdo5t" path="res://core/core.portrait.gd" id="1_13cwq"]
+[ext_resource type="Script" uid="uid://7bue6k2pdo5t" path="res://core/_core_portrait.gd" id="1_13cwq"]
 [ext_resource type="Texture2D" uid="uid://dvxofhs6ueuia" path="res://assets/peekaboo/Peeka.png" id="2_13cwq"]
 [ext_resource type="Texture2D" uid="uid://cbynwx8akyvtk" path="res://assets/peekaboo/Peeka-Sheet.png" id="3_adpgn"]
 

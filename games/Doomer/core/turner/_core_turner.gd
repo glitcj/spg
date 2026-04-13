@@ -41,4 +41,4 @@ func insert_turn(_turn : _Core_Turn, _position = 0):
 	turn_queue.insert(_position, _turn)
 
 func insert_lambda(_callable : Callable):
-	insert_turn(_Doomer_Turn_Lambda.new(_callable))
+	insert_turn(_Core_Turn_Lambda.new(_callable))

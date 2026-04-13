@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://wxotpnma33wf"]
 
-[ext_resource type="Script" uid="uid://7bue6k2pdo5t" path="res://core/core.portrait.gd" id="1_muf41"]
+[ext_resource type="Script" uid="uid://7bue6k2pdo5t" path="res://core/_core_portrait.gd" id="1_muf41"]
 [ext_resource type="Texture2D" uid="uid://1gs8niu8oa2f" path="res://assets/ninja/Actor/Boss/GiantSpirit/Hit.png" id="2_nn3ia"]
 [ext_resource type="Texture2D" uid="uid://cycyjddn1swew" path="res://assets/ninja/Actor/Boss/GiantSpirit/Faceset.png" id="3_obq6a"]
 [ext_resource type="Texture2D" uid="uid://blralrc5p0y3f" path="res://assets/ninja/Actor/Boss/GiantSpirit/Idle.png" id="4_xehi6"]

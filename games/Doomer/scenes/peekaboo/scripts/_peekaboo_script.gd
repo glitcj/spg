@@ -9,6 +9,9 @@ signal area_entered_by_player
 @export var action_range : float = 10.0
 
 
+
+var this_script_is_running = false
+
 func get_core(): return find_parent("_Core") as _Core
 func get_peekaboo(): return find_parent("_Peekaboo") as _Peekaboo
 func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
@@ -64,6 +67,10 @@ func _get_components():
 func _process(_delta: float):
 	if not get_peekaboo() or not get_player():
 		return
+		
+	if not get_peekaboo().is_active:
+		return
+		
 	_log()
 	frame_started.emit()
 	
@@ -71,7 +78,7 @@ func _process(_delta: float):
 		if _player_is_within_event_area():
 			var player_mover = get_player().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
 			var player_is_facing_this_event : bool = mover.map_position == player_mover.get_facing_direction() + player_mover.map_position
-			if player_is_facing_this_event:
+			if player_is_facing_this_event and get_player().is_active:
 				await get_tree().process_frame # wait for input buffer to clear
 				actioned_within_area.emit()
 
@@ -87,15 +94,15 @@ func _distance_to_player() -> float:
 	return (get_player().position - parent.position).length()
 	
 func _wrapped_callable(c: Callable):
-	if not get_peekaboo().is_active:
-		return
-	
+	# if callable not defined in dict yet
+	if c.get_method() not in trigger_is_running.keys():
+		trigger_is_running[c.get_method()] = false
+		
 	if trigger_is_running[c.get_method()]:
 		return
 	trigger_is_running[c.get_method()] = true
-
-	await c.call()
 	
+	await c.call()
 	trigger_is_running[c.get_method()] = false
 
 
@@ -125,7 +132,6 @@ func _log():
 
 func is_running():
 	return trigger_is_running.values().any(func(x): return x)
-
 
 func _get_direction_to_player():
 	var player_position = get_player().find_child("_Peekaboo_Mover").map_position as Vector2i

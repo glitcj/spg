@@ -4,7 +4,7 @@ class_name _Swiper
 @export_category("Words")
 @export var words : Array[String]
 
-signal round_finished
+signal option_selected(selection)
 
 func _on_scene_end():
 	super()
@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 			
 			_Core_Tweener._slide_out(find_child("_word_2"), .5, Vector2i(0, 1))
 			await _Core_Tweener._slide_out(find_child("_definition"), .5, Vector2i(0, 1))
-			round_finished.emit()
+			option_selected.emit("_word_1")
 
 			
 		KEY_LEFT:
@@ -45,7 +45,7 @@ func _input(event: InputEvent) -> void:
 			
 			_Core_Tweener._slide_out(find_child("_word_1"), .5, Vector2i(0, 1))
 			await _Core_Tweener._slide_out(find_child("_definition"), .5, Vector2i(0, 1))
-			round_finished.emit()
+			option_selected.emit("_word_2")
 			
 		_:
 			pass
