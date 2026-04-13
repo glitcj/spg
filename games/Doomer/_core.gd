@@ -6,7 +6,7 @@ class_name _Core
 # This include nodes, and things inside nodes.
 # Static here means that the object does not change throughout the game, and a Pointer is not needed (for example containers)
 
-enum Opponents {Player, Enemy}
+# enum Opponents {Player, Enemy}
 
 var current_scene : _Core_Scene
 
