@@ -66,12 +66,6 @@ offset_bottom = 2400.0
 z_index = -100
 layout_mode = 2
 
-[node name="Current Scene Container" type="MarginContainer" parent="Current Scene"]
-offset_right = 1080.0
-offset_bottom = 2400.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="Foreground Container" type="MarginContainer" parent="Current Scene"]
 visible = false
 anchors_preset = 8
