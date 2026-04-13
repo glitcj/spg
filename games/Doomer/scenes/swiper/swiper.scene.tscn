@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxiw0m4n4emut"]
+[gd_scene load_steps=5 format=3 uid="uid://cxiw0m4n4emut"]
 
 [ext_resource type="Script" uid="uid://yry6g6f3wyis" path="res://scenes/swiper/swiper.scene.gd" id="1_jhufk"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1htd0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iar4r"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_jhufk"]
 font_size = 200
 
 [node name="_Swiper" type="SubViewportContainer"]
@@ -44,15 +47,16 @@ size_flags_vertical = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 1"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_word_1" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 1/CenterContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
-text = "word_1"
+text = "Sliding through a surface."
 label_settings = SubResource("LabelSettings_iar4r")
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="MarginContainer 2" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -66,7 +70,7 @@ size_flags_vertical = 4
 [node name="_definition" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 2/CenterContainer"]
 layout_mode = 2
 text = "Swiper"
-label_settings = SubResource("LabelSettings_iar4r")
+label_settings = SubResource("LabelSettings_jhufk")
 horizontal_alignment = 1
 
 [node name="MarginContainer 3" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
@@ -79,7 +83,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_word_2" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 3/CenterContainer"]
+custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
-text = "word_2"
+text = "Repated jumping."
 label_settings = SubResource("LabelSettings_iar4r")
 horizontal_alignment = 1
+autowrap_mode = 2

@@ -10164,7 +10164,7 @@ script = ExtResource("17_01ffu")
 
 [node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_3_2_talking_tree"]
 script = ExtResource("18_unejf")
-messages = Array[String](["I am a talking tree.", "And write now..", "I have nothing to say.", "I might as well not be, a, talking, tree.", "Would you not say ?", "I would not."])
+messages = Array[String](["I am a talking tree.", "And right now..", "I have nothing to say.", "I might as well not be, a, talking, tree.", "Would you not say ?", "I would not."])
 interrupt_player = true
 metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
