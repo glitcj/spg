@@ -10,12 +10,8 @@ func waiter(time: float = 1):
 func wait(_time : float = 1):
 	await waiter(_time)
 
-# func buzz_message_box(_message_box : _Core_Window):
-# 	await _message_box.play_enumation(_Core_Window.Enumations.Buzz)
-
 func change_scene(_scene : _Core_Scene):
 	await doomer.change_scene(_scene)
-
 
 func find_parent_by_type(node: Node, type_name: String) -> Node:
 	var current = node.get_parent()

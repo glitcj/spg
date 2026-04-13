@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=16 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://_core.gd" id="1_110wm"]
 [ext_resource type="Script" uid="uid://djvk5f1dkttil" path="res://core/inspector.gd" id="2_2jvhd"]
 [ext_resource type="Script" uid="uid://bx1omwn0qjk24" path="res://core/debug/doomer.debug.log.gd" id="3_day3e"]
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://core/turner/_core_turner.tscn" id="5_okhcm"]
 [ext_resource type="Script" uid="uid://bvdr1o2vqeb52" path="res://core/handler/funcs.poke.input_handler.gd" id="7_l5m0l"]
+[ext_resource type="Script" uid="uid://byxa8sksknfmi" path="res://_core_data_lambdas.gd" id="9_swu0y"]
 [ext_resource type="Script" uid="uid://b7rka2ees02dn" path="res://other/_core_templates.gd" id="10_0i5h7"]
 [ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/_core_lambdas.gd" id="11_yes15"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/notes.gd" id="12_dhys3"]
@@ -55,6 +56,9 @@ script = ExtResource("11_yes15")
 
 [node name="Documentation" type="Node" parent="."]
 script = ExtResource("12_dhys3")
+
+[node name="_Core_Data_Lambdas" type="Node" parent="."]
+script = ExtResource("9_swu0y")
 
 [node name="Current Scene" type="Node" parent="."]
 
