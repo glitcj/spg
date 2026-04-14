@@ -10,10 +10,10 @@
 [ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/_core_lambdas.gd" id="11_yes15"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/notes.gd" id="12_dhys3"]
 [ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://core/grounds/doomer.core.background.tscn" id="13_v53g8"]
-[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/start_screen/_starter.tscn" id="17_8i81m"]
+[ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/starter/_starter.tscn" id="17_8i81m"]
 [ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_sps4g"]
 [ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/_peekaboo.tscn" id="21_pw4lx"]
-[ext_resource type="PackedScene" uid="uid://cxiw0m4n4emut" path="res://scenes/swiper/swiper.scene.tscn" id="22_t1t3w"]
+[ext_resource type="PackedScene" uid="uid://cxiw0m4n4emut" path="res://scenes/swiper/_swiper.tscn" id="22_t1t3w"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
 

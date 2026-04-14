@@ -1,10 +1,22 @@
 extends _Core_Scene
-class_name _Swiper
+class_name _Quizer
 
 @export_category("Words")
 @export var words : Array[String]
 
 signal option_selected(selection)
+
+
+var correct_answer_index
+var incorrect_answer_index
+
+var selection : String
+
+var questions_counter
+
+
+var koran_loader : _Core_Data_Lambdas
+var start_ayah_index
 
 func _on_scene_end():
 	super()
@@ -15,24 +27,17 @@ func _ready() -> void:
 	
 	for label : Label in find_children("*", "Label"):
 		label.visible = false
+	
 		
 
-func _on_scene_start():
-	super()
-	await get_tree().process_frame
-	
-	
-	var correct_answer_index = randi() % 2
-	var incorrect_answer_index
+
+
+func _show_questions_and_answers(start_ayah_index):
+		
+	correct_answer_index = randi() % 2
 	incorrect_answer_index = int(not correct_answer_index)
 
 
-
-	# var koran = _Core_Data_Lambdas.new().load_csv("res://assets/kooran_de_go/quran.csv") as Array
-	var koran_loader = _Core_Data_Lambdas.new()
-	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
-	var start_ayah_index = 1 + (randi() % koran_loader.quran_db.size())
-	
 	var decoy_ayah_index = 1 + (randi() % koran_loader.quran_db.size())
 
 	print(correct_answer_index, incorrect_answer_index, "_word_%s" % correct_answer_index, "_word_%s" % incorrect_answer_index)
@@ -45,19 +50,22 @@ func _on_scene_start():
 	await _Core_Tweener._slide_in(find_child("_word_0"), .5, Vector2i(-1, 0))
 	await _Core_Tweener._slide_in(find_child("_word_1"), .5, Vector2i(1, 0))
 
-	
-	"""
-	# print(koran.slice(0, 10))
-	print(koran_loader.quran_db.keys().slice(0,10))
-	# print(koran_loader.quran_db.values().slice(0,10))
-	for i in range(10):
-		# print(koran_loader.quran_db["%s" % i]["ayah_ar"])
-		print(koran_loader.quran_db[i +1]["ayah_ar"])
-	"""
-	
-	
+
+func _on_scene_start():
+	super()
+	await get_tree().process_frame
 
 
+
+	
+	questions_counter = 3
+	
+	koran_loader = _Core_Data_Lambdas.new()
+
+	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
+	
+	start_ayah_index = 1 + (randi() % koran_loader.quran_db.size())
+	_show_questions_and_answers(start_ayah_index)
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return
@@ -66,19 +74,46 @@ func _input(event: InputEvent) -> void:
 	
 	match (event as InputEventKey).keycode:
 		KEY_RIGHT:
+			selection = "_word_0"
 			await _Core_Tweener._slide_out(find_child("_word_0"), .5, Vector2i(1, 0))
+			await _show_decision()
 			
-			_Core_Tweener._slide_out(find_child("_word_1"), .5, Vector2i(0, 1))
+			await _Core_Tweener._slide_out(find_child("_word_1"), .5, Vector2i(0, 1))
 			await _Core_Tweener._slide_out(find_child("_definition"), .5, Vector2i(0, 1))
-			option_selected.emit("_word_0")
+			
+			
+			if questions_counter > 0:
+				start_ayah_index = start_ayah_index + 1
+				questions_counter = questions_counter - 1
+				await _show_questions_and_answers(start_ayah_index)
+			else:
+				option_selected.emit("_word_0")
 
 			
 		KEY_LEFT:
+			selection = "_word_1"
 			await _Core_Tweener._slide_out(find_child("_word_1"), .5, Vector2i(-1, 0))
+			await _show_decision()
 			
-			_Core_Tweener._slide_out(find_child("_word_0"), .5, Vector2i(0, 1))
+			await _Core_Tweener._slide_out(find_child("_word_0"), .5, Vector2i(0, 1))
 			await _Core_Tweener._slide_out(find_child("_definition"), .5, Vector2i(0, 1))
-			option_selected.emit("_word_1")
 			
+			if questions_counter > 0:
+				start_ayah_index = start_ayah_index + 1
+				questions_counter = questions_counter - 1
+				await _show_questions_and_answers(start_ayah_index)
+			else:
+				option_selected.emit("_word_1")
 		_:
 			pass
+
+
+func _show_decision():
+	if selection == "_word_%s" % correct_answer_index:
+		%_marubatsu.frame = 0
+	else:
+		%_marubatsu.frame = 1
+	
+	await _Core_Tweener._slide_in(%_marubatsu)
+	await get_tree().create_timer(.25).timeout
+	await _Core_Tweener._slide_out(%_marubatsu)
