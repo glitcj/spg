@@ -13,7 +13,7 @@ signal option_selected(selection)
 
 var verses := []
 var total_verses_on_page = 5
-# const var verses_on_page = 5
+
 
 var selection : String
 
@@ -34,8 +34,8 @@ func _on_scene_end():
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
 	
-	for label : Label in find_children("*", "Label"):
-		label.visible = false
+	# for label : Label in find_children("*", "Label"):
+	# 	label.visible = false
 	
 	koran_loader = _Core_Data_Lambdas.new()
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
@@ -44,59 +44,69 @@ func _ready() -> void:
 
 
 func _initiate_visible_labels(start_ayah_index):
-	var verse
+	var verse : Node2D
 	var scroll_position
 	
 	for i in range(total_verses_on_page):
-		visible_indices.append(start_ayah_index + i)
-		visible_labels.append(koran_loader.quran_db[start_ayah_index + i]["ayah_ar"])
-		
-		
-		
-		# verse = Label.new().label_settings = LabelSettings.new()
-		
 		verse = find_child("_verse_%s" % i) as Node2D
+		verse.index = start_ayah_index + i
+		verse.text = koran_loader.quran_db[start_ayah_index + i]["ayah_ar"]
 		verses.append(verse)
 		scroll_position = find_child("_scroll_position_%s" % i) as CenterContainer
-		
-		# print(visible_labels)
-		verse.find_child("Label").text = visible_labels[i]
-		verse.find_child("Label").visible = true
-		# await _Core_Tweener._slide_in(find_child("_verse_%s" % i), .5)
 		
 		var tweener = verse.create_tween()
 		tweener.tween_property(verse, "global_position", scroll_position.global_position, .25)
 		await tweener.finished
 		print(visible_indices, visible_labels, verse.global_position)
-
-
+		
 func _on_scene_start():
 	super()
 	await get_tree().process_frame
 	
 	_reset_scroll_counter()
-	start_ayah_index = 1 + (randi() % koran_loader.quran_db.size())
+	# start_ayah_index = 1 + (randi() % koran_loader.quran_db.size())
+	start_ayah_index = 1 # + (randi() % koran_loader.quran_db.size())
 	_initiate_visible_labels(start_ayah_index)
 	
 	
 func _scroll_down():
+	
+	if verses[0].index == 1:
+		return
+		
 	var verse : Node2D
 	var scroll_position : CenterContainer
 	for i in range(total_verses_on_page):
 		verse = verses[i] as Node2D
 		scroll_position = find_child("_scroll_position_%s" % ((i + 1) % total_verses_on_page))
+		
+
+		if i == total_verses_on_page - 1:
+			verse.index = verses[0].index - 1
+			verse.text = koran_loader.quran_db[verse.index]["ayah_ar"]
+			
+			
 		var tweener = verse.create_tween()
 		tweener.tween_property(verse, "global_position", scroll_position.global_position, .25)
 	verses.insert(0, verses.pop_back())
 	
 func _scroll_up():
+	if verses[-1].index == koran_loader.quran_db.size() - 1:
+		return
+		
 	var verse : Node2D
 	var scroll_position : CenterContainer
 	for i in range(total_verses_on_page):
 		verse = verses[i] as Node2D
 		scroll_position = find_child("_scroll_position_%s" % (  range(total_verses_on_page)[(i - 1) % total_verses_on_page]  ))
+		
+		if i == 0:
+			verse.index = verses[-1].index + 1
+			verse.text = koran_loader.quran_db[verse.index]["ayah_ar"]
+			
 		var tweener = verse.create_tween()
 		tweener.tween_property(verse, "global_position", scroll_position.global_position, .25)
+		
 	verses.append(verses.pop_front())
 
 func _input(event: InputEvent) -> void:
@@ -109,7 +119,7 @@ func _input(event: InputEvent) -> void:
 			
 			if scroll_counter > 0:
 				scroll_counter = scroll_counter - 1
-				await _scroll_down()
+				await _scroll_up()
 			else:
 				option_selected.emit("_word_0")
 
@@ -117,7 +127,7 @@ func _input(event: InputEvent) -> void:
 		KEY_LEFT:
 			if scroll_counter > 0:
 				scroll_counter = scroll_counter - 1
-				await _scroll_up()
+				await _scroll_down()
 			else:
 				option_selected.emit("_word_1")
 		_:
