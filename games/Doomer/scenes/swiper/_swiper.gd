@@ -17,8 +17,8 @@ var scroll_counter = 100
 var koran_loader : _Core_Data_Lambdas
 var start_ayah_index
 
-var visible_labels : Array = []
-var visible_indices : Array = []
+
+@onready var verses_initialiser = find_children("_verse_*")
 
 
 func _on_scene_end():
@@ -34,11 +34,14 @@ func _initiate_visible_labels(start_ayah_index):
 	var verse : Node2D
 	var scroll_position
 	
+	verses = verses_initialiser.duplicate()
+	
 	for i in range(total_verses_on_page):
-		verse = find_child("_verse_%s" % i) as Node2D
+		# verse = find_child("_verse_%s" % i) as Node2D
+		verse = verses[i]
 		verse.index = start_ayah_index + i
 		verse.text = koran_loader.quran_db[start_ayah_index + i]["ayah_ar"]
-		verses.append(verse)
+		# verses.append(verse)
 		scroll_position = find_child("_scroll_position_%s" % i) as Node2D
 		
 		var tweener = verse.create_tween()
@@ -47,7 +50,6 @@ func _initiate_visible_labels(start_ayah_index):
 		tweener.parallel().tween_property(verse, "scale", scroll_position.applied_scale, .25)
 		
 		await tweener.finished
-		print(visible_indices, visible_labels, verse.global_position)
 		
 func _on_scene_start():
 	super()

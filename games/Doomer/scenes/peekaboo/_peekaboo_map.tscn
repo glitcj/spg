@@ -1,28 +1,28 @@
 [gd_scene load_steps=70 format=4 uid="uid://bc6scuw6gftg0"]
 
-[ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/scripts/_peekaboo_map.gd" id="1_tyf48"]
-[ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="2_jd0ak"]
-[ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_16sgp"]
-[ext_resource type="Script" uid="uid://da77evou2la0g" path="res://scenes/peekaboo/scripts/_peekaboo_variables.gd" id="4_1h6gq"]
-[ext_resource type="Texture2D" uid="uid://cir837rpp1qt3" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A1.png" id="5_bvwlh"]
-[ext_resource type="Texture2D" uid="uid://cklccjgem4vvs" path="res://assets/ninja/Backgrounds/Tilesets/TilesetFloor.png" id="6_c2cmy"]
-[ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/ninja/Backgrounds/Tilesets/TilesetField.png" id="7_hunrw"]
-[ext_resource type="Texture2D" uid="uid://6pqni6eylgxw" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A2.png" id="8_7r0v3"]
-[ext_resource type="Texture2D" uid="uid://bwtqf8qjwe2ew" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A4.png" id="9_h1dcy"]
-[ext_resource type="Texture2D" uid="uid://nrvnmkijidre" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A5.png" id="10_emnna"]
-[ext_resource type="TileSet" uid="uid://chbwhee5ecdx1" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A1.tres" id="11_uh5vs"]
-[ext_resource type="TileSet" uid="uid://dmuy2eaehvonb" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A4.tres" id="12_alk4k"]
-[ext_resource type="Texture2D" uid="uid://dagwq224gg87f" path="res://assets/rpgmaker/mv/tilesets/Dungeon_B.png" id="13_51xci"]
-[ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="14_76xfl"]
-[ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="15_yokbf"]
-[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.tscn" id="16_hskcg"]
-[ext_resource type="Script" uid="uid://dxkbij13lf7tg" path="res://scenes/peekaboo/_peekaboo_event.gd" id="17_01ffu"]
-[ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_talker.gd" id="18_unejf"]
-[ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="19_qfgq7"]
-[ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="20_e8e7y"]
-[ext_resource type="Script" uid="uid://da5b4ins7hwmf" path="res://scenes/peekaboo/scripts/level-1-1/script.event.3-1.gd" id="21_mgkgw"]
-[ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_ghost.gd" id="22_rpgrx"]
-[ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_teleport.gd" id="23_y15fk"]
+[ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_38inc"]
+[ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="2_x2jho"]
+[ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_05s22"]
+[ext_resource type="Script" uid="uid://da77evou2la0g" path="res://scenes/peekaboo/scripts/_peekaboo_variables.gd" id="4_q3qcn"]
+[ext_resource type="Texture2D" uid="uid://cir837rpp1qt3" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A1.png" id="5_nn7yr"]
+[ext_resource type="Texture2D" uid="uid://cklccjgem4vvs" path="res://assets/ninja/Backgrounds/Tilesets/TilesetFloor.png" id="6_oj08u"]
+[ext_resource type="Texture2D" uid="uid://dwo3ghnulbghq" path="res://assets/ninja/Backgrounds/Tilesets/TilesetField.png" id="7_lp0th"]
+[ext_resource type="Texture2D" uid="uid://6pqni6eylgxw" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A2.png" id="8_l28tk"]
+[ext_resource type="Texture2D" uid="uid://bwtqf8qjwe2ew" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A4.png" id="9_7a2af"]
+[ext_resource type="Texture2D" uid="uid://nrvnmkijidre" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A5.png" id="10_pqav7"]
+[ext_resource type="TileSet" uid="uid://chbwhee5ecdx1" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A1.tres" id="11_slw2g"]
+[ext_resource type="TileSet" uid="uid://dmuy2eaehvonb" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A4.tres" id="12_8uqff"]
+[ext_resource type="Texture2D" uid="uid://dagwq224gg87f" path="res://assets/rpgmaker/mv/tilesets/Dungeon_B.png" id="13_p7w0x"]
+[ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="14_apl3n"]
+[ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="15_rp1s8"]
+[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.tscn" id="16_66okp"]
+[ext_resource type="Script" uid="uid://dxkbij13lf7tg" path="res://scenes/peekaboo/_peekaboo_event.gd" id="17_ofync"]
+[ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_talker.gd" id="18_f88mx"]
+[ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="19_bn407"]
+[ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="20_yvjyl"]
+[ext_resource type="Script" uid="uid://da5b4ins7hwmf" path="res://scenes/peekaboo/scripts/level-1-1/script.event.3-1.gd" id="21_77bpt"]
+[ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_ghost.gd" id="22_lgejk"]
+[ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_teleport.gd" id="23_nfk3b"]
 
 [sub_resource type="TileSet" id="TileSet_b0sri"]
 tile_size = Vector2i(48, 48)
@@ -40,7 +40,7 @@ tile_data = PackedInt32Array(0, 65538, 1, 65536, 65538, 1, 131072, 65538, 1, 196
 tile_data = PackedInt32Array(0, 65538, 1, 65536, 65538, 1, 131072, 65538, 1, 196608, 65538, 1, 262144, 65538, 1, 327680, 65538, 1, 393216, 65538, 1, 458752, 65538, 1, 524288, 65538, 1, 589824, 65538, 1, 655360, 65538, 1, 720896, 65538, 1, 786432, 65538, 1, 851968, 65538, 1, 917504, 65538, 1, 983040, 65538, 1, 1048576, 65538, 1, 1114112, 65538, 1, 1, 65538, 1, 65537, 65538, 1, 131073, 65538, 1, 196609, 65538, 1, 262145, 65538, 1, 327681, 65538, 1, 393217, 65538, 1, 458753, 65538, 1, 524289, 65538, 1, 589825, 65538, 1, 655361, 65538, 1, 720897, 65538, 1, 786433, 65538, 1, 851969, 65538, 1, 917505, 65538, 1, 983041, 65538, 1, 1048577, 65538, 1, 1114113, 65538, 1, 2, 65538, 1, 65538, 65538, 1, 131074, 65538, 1, 196610, 131074, 1, 262146, 131074, 1, 327682, 131074, 1, 393218, 131074, 1, 458754, 131074, 1, 524290, 131074, 1, 589826, 131074, 1, 655362, 131074, 1, 720898, 131074, 1, 786434, 131074, 1, 851970, 131074, 1, 917506, 131074, 1, 983042, 131074, 1, 1048578, 65538, 1, 1114114, 65538, 1, 3, 65538, 1, 65539, 65538, 1, 131075, 65538, 2, 1048579, 65538, 0, 1114115, 65538, 1, 4, 65538, 1, 65540, 65538, 1, 131076, 65538, 2, 1048580, 65538, 0, 1114116, 65538, 1, 5, 65538, 1, 65541, 65538, 1, 131077, 65538, 2, 1048581, 65538, 0, 1114117, 65538, 1, 6, 65538, 1, 65542, 65538, 1, 131078, 65538, 2, 1048582, 65538, 0, 1114118, 65538, 1, 7, 65538, 1, 65543, 65538, 1, 131079, 65538, 2, 1048583, 65538, 0, 1114119, 65538, 1, 8, 65538, 1, 65544, 65538, 1, 131080, 65538, 1, 196616, 2, 1, 262152, 2, 1, 327688, 2, 1, 393224, 2, 1, 458760, 2, 1, 524296, 2, 1, 589832, 2, 1, 655368, 2, 1, 720904, 2, 1, 786440, 2, 1, 851976, 2, 1, 917512, 2, 1, 983048, 2, 1, 1048584, 65538, 1, 1114120, 65538, 1, 9, 65538, 1, 65545, 65538, 1, 131081, 65538, 1, 196617, 65538, 1, 262153, 65538, 1, 327689, 65538, 1, 393225, 65538, 1, 458761, 65538, 1, 524297, 65538, 1, 589833, 65538, 1, 655369, 65538, 1, 720905, 65538, 1, 786441, 65538, 1, 851977, 65538, 1, 917513, 65538, 1, 983049, 65538, 1, 1048585, 65538, 1, 1114121, 65538, 1, 10, 65538, 1, 65546, 65538, 1, 131082, 65538, 1, 196618, 65538, 1, 262154, 65538, 1, 327690, 65538, 1, 393226, 65538, 1, 458762, 65538, 1, 524298, 65538, 1, 589834, 65538, 1, 655370, 65538, 1, 720906, 65538, 1, 786442, 65538, 1, 851978, 65538, 1, 917514, 65538, 1, 983050, 65538, 1, 1048586, 65538, 1, 1114122, 65538, 1, 11, 65538, 1, 65547, 65538, 1, 131083, 65538, 1, 196619, 65538, 1, 262155, 65538, 1, 327691, 65538, 1, 393227, 65538, 1, 458763, 65538, 1, 524299, 65538, 1, 589835, 65538, 1, 655371, 65538, 1, 720907, 65538, 1, 786443, 65538, 1, 851979, 65538, 1, 917515, 65538, 1, 983051, 65538, 1, 1048587, 65538, 1, 1114123, 65538, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qqehr"]
-texture = ExtResource("5_bvwlh")
+texture = ExtResource("5_nn7yr")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -1736,7 +1736,7 @@ texture_region_size = Vector2i(48, 48)
 47:35/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kcels"]
-texture = ExtResource("6_c2cmy")
+texture = ExtResource("6_oj08u")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -2438,7 +2438,7 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cswif"]
-texture = ExtResource("7_hunrw")
+texture = ExtResource("7_lp0th")
 0:0/0 = 0
 0:0/0/z_index = 1
 0:0/0/terrain_set = 1
@@ -2617,7 +2617,7 @@ texture = ExtResource("7_hunrw")
 2:14/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_01wj2"]
-texture = ExtResource("8_7r0v3")
+texture = ExtResource("8_l28tk")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -4332,7 +4332,7 @@ texture_region_size = Vector2i(48, 48)
 47:35/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k1bwk"]
-texture = ExtResource("9_h1dcy")
+texture = ExtResource("9_7a2af")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -6496,7 +6496,7 @@ texture_region_size = Vector2i(48, 48)
 47:44/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uryal"]
-texture = ExtResource("10_emnna")
+texture = ExtResource("10_pqav7")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -7647,7 +7647,7 @@ pattern_2 = SubResource("TileMapPattern_x570f")
 pattern_3 = SubResource("TileMapPattern_5max1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htdhx"]
-texture = ExtResource("13_51xci")
+texture = ExtResource("13_p7w0x")
 texture_region_size = Vector2i(48, 48)
 3:0/0 = 0
 4:0/0 = 0
@@ -9910,15 +9910,15 @@ size = Vector2(100, 100)
 
 [node name="_Peekaboo_Map" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_tyf48")
-player_turn = ExtResource("2_jd0ak")
+script = ExtResource("1_38inc")
+player_turn = ExtResource("2_x2jho")
 
 [node name="_Peekaboo_Lambdas" type="Node" parent="."]
-script = ExtResource("3_16sgp")
+script = ExtResource("3_05s22")
 metadata/_custom_type_script = "uid://c6484wl627c5c"
 
 [node name="_Peekaboo_Variables" type="Node" parent="."]
-script = ExtResource("4_1h6gq")
+script = ExtResource("4_q3qcn")
 metadata/_custom_type_script = "uid://da77evou2la0g"
 
 [node name="Tilemap" type="Node2D" parent="."]
@@ -9952,20 +9952,20 @@ y_sort_origin = -1
 [node name="L1_RM_Dungeon_A1" type="TileMapLayer" parent="Tilemap"]
 texture_filter = 1
 scale = Vector2(3.333, 3.333)
-tile_set = ExtResource("11_uh5vs")
+tile_set = ExtResource("11_slw2g")
 
 [node name="L1_RM_Dungeon_A4" type="TileMapLayer" parent="Tilemap"]
 texture_filter = 1
 position = Vector2(0, 1)
 scale = Vector2(3.333, 3.333)
 tile_map_data = PackedByteArray("AAAMANn/AAAIAAMAAAAMANr/AAAGAAAAAAAMANv/AAAGAAAAAAAMANz/AAAKAAQAAAAMAN3/AAAHAAsAAAANANn/AAAIAAMAAAANANr/AAAGAAAAAAANANv/AAAGAAAAAAANANz/AAAKAAQAAAANAN3/AAAHAAsAAAAOANn/AAAIAAMAAAAOANr/AAAGAAAAAAAOANv/AAAGAAAAAAAOANz/AAAKAAQAAAAOAN3/AAAIAAsAAAAPANn/AAAIAAMAAAAPANr/AAAGAAAAAAAPANv/AAAGAAAAAAAPANz/AAAIAAEAAAAPAN3/AAAKAAIAAAAPAN7/AAAKAAIAAAAPAN//AAAKAAYAAAAPAOD/AAAGAAsAAAAQANn/AAAIAAMAAAAQANr/AAAGAAAAAAAQANv/AAAGAAAAAAAQANz/AAAGAAAAAAAQAN3/AAAGAAAAAAAQAN7/AAAGAAAAAAAQAN//AAAKAAQAAAAQAOD/AAAHAAsAAAARANn/AAAIAAMAAAARANr/AAAGAAAAAAARANv/AAAGAAAAAAARANz/AAAGAAAAAAARAN3/AAAGAAAAAAARAN7/AAAGAAAAAAARAN//AAAKAAQAAAARAOD/AAAHAAsAAAASANn/AAAIAAMAAAASANr/AAAGAAAAAAASANv/AAAGAAAAAAASANz/AAAGAAAAAAASAN3/AAAGAAAAAAASAN7/AAAGAAAAAAASAN//AAAKAAQAAAASAOD/AAAHAAsAAAATANn/AAAIAAMAAAATANr/AAAGAAAAAAATANv/AAAGAAAAAAATANz/AAAGAAAAAAATAN3/AAAGAAAAAAATAN7/AAAGAAAAAAATAN//AAAKAAQAAAATAOD/AAAHAAsAAAAUANn/AAAGAAYAAAAUANr/AAAGAAQAAAAUANv/AAAGAAQAAAAUANz/AAAGAAQAAAAUAN3/AAAGAAQAAAAUAN7/AAAGAAQAAAAUAN//AAAIAAYAAAAUAOD/AAAIAAsAAAAHANn/AAAKAAUAAAAHANr/AAAKAAIAAAAHANv/AAAKAAIAAAAHANz/AAAKAAIAAAAHAN3/AAAKAAIAAAAHAN7/AAAKAAIAAAAHAN//AAAKAAYAAAAHAOD/AAAGAAsAAAAHAOH/AAAKAAUAAAAHAOL/AAAKAAIAAAAHAOP/AAAKAAIAAAAHAOT/AAAKAAIAAAAHAOX/AAAKAAYAAAAHAOb/AAAGAAsAAAAHAOf/AAAKAAUAAAAHAOj/AAAKAAIAAAAHAOn/AAAKAAIAAAAHAOr/AAAKAAIAAAAHAOv/AAAKAAIAAAAHAOz/AAAKAAIAAAAHAO3/AAAKAAYAAAAHAO7/AAAAAAsAAAAIANn/AAAIAAMAAAAIANr/AAAGAAAAAAAIANv/AAAGAAAAAAAIANz/AAAGAAAAAAAIAN3/AAAGAAAAAAAIAN7/AAAGAAAAAAAIAN//AAAKAAQAAAAIAOD/AAAHAAsAAAAIAOH/AAAIAAMAAAAIAOL/AAAGAAAAAAAIAOP/AAAGAAAAAAAIAOT/AAAGAAAAAAAIAOX/AAAKAAQAAAAIAOb/AAAHAAsAAAAIAOf/AAAIAAMAAAAIAOj/AAAGAAAAAAAIAOn/AAAGAAAAAAAIAOr/AAAGAAAAAAAIAOv/AAAGAAAAAAAIAOz/AAAGAAAAAAAIAO3/AAAKAAQAAAAIAO7/AAABAAsAAAAJANn/AAAIAAMAAAAJANr/AAAGAAAAAAAJANv/AAAGAAAAAAAJANz/AAAKAAAAAAAJAN3/AAAGAAQAAAAJAN7/AAAGAAQAAAAJAN//AAAIAAYAAAAJAOD/AAAIAAsAAAAJAOH/AAAGAAYAAAAJAOL/AAAGAAQAAAAJAOP/AAAGAAQAAAAJAOT/AAAGAAQAAAAJAOX/AAAGAAUAAAAJAOb/AAAHAAsAAAAJAOf/AAAIAAMAAAAJAOj/AAAGAAAAAAAJAOn/AAAGAAAAAAAJAOr/AAAGAAAAAAAJAOv/AAAGAAAAAAAJAOz/AAAGAAAAAAAJAO3/AAAKAAQAAAAJAO7/AAABAAsAAAAKANn/AAAIAAMAAAAKANr/AAAGAAAAAAAKANv/AAAGAAAAAAAKANz/AAAKAAQAAAAKAN3/AAAGAAsAAAAKAOX/AAAJAAUAAAAKAOb/AAAHAAsAAAAKAOf/AAAIAAMAAAAKAOj/AAAGAAAAAAAKAOn/AAAGAAAAAAAKAOr/AAAGAAAAAAAKAOv/AAAGAAAAAAAKAOz/AAAGAAAAAAAKAO3/AAAKAAQAAAAKAO7/AAABAAsAAAALANn/AAAIAAMAAAALANr/AAAGAAAAAAALANv/AAAGAAAAAAALANz/AAAKAAQAAAALAN3/AAAHAAsAAAALAOX/AAAJAAUAAAALAOb/AAAHAAsAAAALAOf/AAAIAAMAAAALAOj/AAAGAAAAAAALAOn/AAAGAAAAAAALAOr/AAAGAAAAAAALAOv/AAAGAAAAAAALAOz/AAAGAAAAAAALAO3/AAAKAAQAAAALAO7/AAABAAsAAAAMAOr/AAAGAAQAAAAMAOv/AAAGAAQAAAAMAOz/AAAGAAQAAAAMAO3/AAAIAAYAAAAMAO7/AAACAAsAAAAOAOX/AAAHAAcAAAAOAOb/AAAGAAsAAAAOAOf/AAAKAAUAAAAOAOj/AAAKAAIAAAAOAOn/AAAKAAIAAAAOAOr/AAAKAAIAAAAOAOv/AAAKAAIAAAAOAOz/AAAKAAIAAAAOAO3/AAAKAAYAAAAOAO7/AAAAAAsAAAAPAOH/AAAKAAUAAAAPAOL/AAAKAAIAAAAPAOP/AAAKAAIAAAAPAOT/AAAKAAIAAAAPAOX/AAALAAQAAAAPAOb/AAAHAAsAAAAPAOf/AAAIAAMAAAAPAOj/AAAGAAAAAAAPAOn/AAAGAAAAAAAPAOr/AAAGAAAAAAAPAOv/AAAGAAAAAAAPAOz/AAAGAAAAAAAPAO3/AAAKAAQAAAAPAO7/AAABAAsAAAAQAOH/AAAIAAMAAAAQAOL/AAAGAAAAAAAQAOP/AAAGAAAAAAAQAOT/AAAGAAAAAAAQAOX/AAAKAAQAAAAQAOb/AAAHAAsAAAAQAOf/AAAIAAMAAAAQAOj/AAAGAAAAAAAQAOn/AAAGAAAAAAAQAOr/AAAGAAAAAAAQAOv/AAAGAAAAAAAQAOz/AAAGAAAAAAAQAO3/AAAKAAQAAAAQAO7/AAABAAsAAAARAOH/AAAIAAMAAAARAOL/AAAGAAAAAAARAOP/AAAGAAAAAAARAOT/AAAGAAAAAAARAOX/AAAKAAQAAAARAOb/AAAHAAsAAAARAOf/AAAIAAMAAAARAOj/AAAGAAAAAAARAOn/AAAGAAAAAAARAOr/AAAGAAAAAAARAOv/AAAGAAAAAAARAOz/AAAGAAAAAAARAO3/AAAKAAQAAAASAOH/AAAIAAMAAAASAOL/AAAGAAAAAAASAOP/AAAKAAAAAAASAOT/AAAGAAQAAAASAOX/AAAGAAUAAAASAOb/AAAIAAsAAAASAOf/AAAIAAMAAAASAOj/AAAGAAAAAAASAOn/AAAGAAAAAAASAOr/AAAGAAAAAAASAOv/AAAGAAAAAAASAOz/AAAGAAAAAAASAO3/AAAKAAQAAAATAOH/AAAIAAMAAAATAOL/AAAGAAAAAAATAOP/AAAKAAQAAAATAOT/AAAGAAsAAAATAOX/AAAKAAMAAAATAOb/AAAKAAIAAAATAOf/AAAHAAAAAAATAOj/AAAGAAAAAAATAOn/AAAGAAAAAAATAOr/AAAGAAAAAAATAOv/AAAGAAAAAAATAOz/AAAGAAAAAAATAO3/AAAKAAQAAAAUAOH/AAAGAAYAAAAUAOL/AAAGAAQAAAAUAOP/AAAIAAYAAAAUAOT/AAAIAAsAAAAUAOX/AAAGAAYAAAAUAOb/AAAGAAQAAAAUAOf/AAAGAAQAAAAUAOj/AAAGAAQAAAAUAOn/AAAGAAQAAAAUAOr/AAAGAAQAAAAUAOv/AAAGAAQAAAAUAOz/AAAGAAQAAAAUAO3/AAAIAAYAAAAUAO7/AAACAAsAAAAlAeP/AAAXAA4AAAAlAeT/AAAXAA4AAAAmAeP/AAATAA8AAAAmAeT/AAAUABEAAAAnAeP/AAATABEAAAAlAeX/AAAXAA4AAAAlAeb/AAAXAA4AAAAmAeX/AAAUABEAAAAmAeb/AAAUABEAAAAlAef/AAAXAA4AAAAmAef/AAAUABEAAAAnAef/AAASABMAAAAnAeb/AAAHAAEAAAAnAeX/AAAHAAEAAAAnAeT/AAAHAAEAAAAMAOn/AAAGAAQAAAAMAOj/AAAGAAQAAAAMAOf/AAAGAAYAAAAMAOb/AAAIAAsAAAAMAOX/AAAJAAcAAAAOAOT/AAACAAYAAAAOAOP/AAAAAAQAAAAOAOL/AAAAAAQAAAAOAOH/AAAAAAQAAAAOAOD/AAAAAAQAAAAOAN//AAAAAAQAAAAOAN7/AAAAAAYAAAANAOT/AAAAAAIAAAANAOP/AAAAAAAAAAANAOL/AAAAAAAAAAANAOD/AAAAAAAAAAANAN//AAAAAAAAAAANAN7/AAACAAMAAAAMAOT/AAAEAAQAAAAMAOP/AAAAAAAAAAAMAOL/AAAAAAAAAAAMAOH/AAAAAAAAAAAMAOD/AAAAAAAAAAAMAN//AAAAAAAAAAAMAN7/AAACAAMAAAALAOT/AAAEAAQAAAALAOP/AAAAAAAAAAALAOL/AAAAAAAAAAALAOH/AAAAAAAAAAALAOD/AAAAAAAAAAALAN//AAAAAAAAAAALAN7/AAACAAMAAAAKAOT/AAAEAAYAAAAKAOP/AAAEAAIAAAAKAOL/AAAEAAIAAAAKAOH/AAAEAAIAAAAKAOD/AAAEAAIAAAAKAN//AAAEAAIAAAAKAN7/AAAEAAUAAAANAO7/AAACAAcAAAANAO3/AAACAAUAAAANAOz/AAACAAUAAAANAOv/AAACAAUAAAANAOr/AAACAAUAAAANAOn/AAACAAUAAAANAOj/AAACAAUAAAANAOf/AAACAAUAAAANAOb/AAACAAUAAAANAOX/AAACAAUAAAATAO7/AAABAAsAAAASAO7/AAABAAsAAAARAO7/AAABAAsAAAA=")
-tile_set = ExtResource("12_alk4k")
+tile_set = ExtResource("12_8uqff")
 
 [node name="L2 RM_Dungeon_A4" type="TileMapLayer" parent="Tilemap"]
 texture_filter = 1
 position = Vector2(0, 1)
 scale = Vector2(3.333, 3.333)
-tile_set = ExtResource("12_alk4k")
+tile_set = ExtResource("12_8uqff")
 
 [node name="L1 RM_Dungeon_B" type="TileMapLayer" parent="Tilemap"]
 texture_filter = 1
@@ -9978,10 +9978,10 @@ tile_set = SubResource("TileSet_yx7f7")
 unique_name_in_owner = true
 y_sort_enabled = true
 position = Vector2(80.992, 559.944)
-script = ExtResource("14_76xfl")
+script = ExtResource("14_apl3n")
 
 [node name="_Peekaboo_Mover" type="Node" parent="Player"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 speed = 5.0
 map_position = Vector2i(0, 3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -10005,7 +10005,7 @@ shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_6de6d")
 
-[node name="_Peekaboo_Portrait" parent="Player" instance=ExtResource("16_hskcg")]
+[node name="_Peekaboo_Portrait" parent="Player" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(8, 8)
@@ -10013,15 +10013,15 @@ sprite = "player"
 
 [node name="_npc_1_1" type="Node2D" parent="."]
 position = Vector2(80.992, 239.976)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_peekaboo_common_script_talker_1_1" type="Node" parent="_npc_1_1"]
-script = ExtResource("18_unejf")
+script = ExtResource("18_f88mx")
 messages = Array[String](["Hello..", "Good to see you here !", "Add _Peekaboo_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"])
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_1_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10033,7 +10033,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("16_hskcg")]
+[node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -10045,14 +10045,14 @@ shape = SubResource("RectangleShape2D_r103f")
 
 [node name="_npc_1_2" type="Node2D" parent="."]
 position = Vector2(2160.784, -4879.5117)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_npc_1_2"]
 script = SubResource("GDScript_eu0qy")
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_1_2"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10064,7 +10064,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_hskcg")]
+[node name="_Peekaboo_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
 sprite = "green"
 
@@ -10077,15 +10077,15 @@ shape = SubResource("CircleShape2D_q5qis")
 [node name="_npc_3_1" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(1840.8159, -1359.864)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_peekaboo_common_script_talker_3_1" type="Node" parent="_npc_3_1"]
-script = ExtResource("18_unejf")
+script = ExtResource("18_f88mx")
 messages = Array[String](["Some enemies you cannot see.", "Bugs appear off their wake.", "That's all I can say now."])
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(11, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -10099,7 +10099,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("16_hskcg")]
+[node name="_Peekaboo_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 scale = Vector2(4, 4)
 sprite = "red_prince"
@@ -10112,10 +10112,10 @@ shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_3_stuff" type="Node2D" parent="."]
 position = Vector2(2480.752, -1359.864)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_3_stuff"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(15, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -10136,10 +10136,10 @@ shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_4_stuff" type="Node2D" parent="."]
 position = Vector2(2320.768, -1359.864)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_4_stuff"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(14, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -10160,16 +10160,16 @@ shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_2_talking_tree" type="Node2D" parent="."]
 position = Vector2(2160.784, -879.912)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_3_2_talking_tree"]
-script = ExtResource("18_unejf")
+script = ExtResource("18_f88mx")
 messages = Array[String](["I am a talking tree.", "And right now..", "I have nothing to say.", "I might as well not be, a, talking, tree.", "Would you not say ?", "I would not."])
 interrupt_player = true
 metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_2_talking_tree"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10189,16 +10189,16 @@ shape = SubResource("RectangleShape2D_2ylu0")
 
 [node name="_npc_4_1_talking_tree" type="Node2D" parent="."]
 position = Vector2(2000.7999, -4879.5117)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_4_1_talking_tree"]
-script = ExtResource("18_unejf")
+script = ExtResource("18_f88mx")
 messages = Array[String](["Hmmm..", "Mmmm..yes..", ".. Maybe not."])
 interrupt_player = true
 metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_4_1_talking_tree"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(12, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10218,14 +10218,14 @@ shape = SubResource("CircleShape2D_eu0qy")
 
 [node name="_event_1_1" type="Node2D" parent="."]
 position = Vector2(80.992, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_1_1"]
-script = ExtResource("19_qfgq7")
+script = ExtResource("19_bn407")
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_event_1_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10235,14 +10235,14 @@ texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_event_2_1" type="Node2D" parent="."]
 position = Vector2(-2158.784, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_2_1"]
-script = ExtResource("20_e8e7y")
+script = ExtResource("20_yvjyl")
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_event_2_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-14, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10253,14 +10253,14 @@ texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_event_3_1" type="Node2D" parent="."]
 position = Vector2(2640.7358, -1359.864)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_3_1"]
-script = ExtResource("21_mgkgw")
+script = ExtResource("21_77bpt")
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_event_3_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(16, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10271,10 +10271,10 @@ texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_enemy_2_1" type="Node2D" parent="."]
 position = Vector2(-1998.7999, 239.976)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_1"]
-script = ExtResource("22_rpgrx")
+script = ExtResource("22_lgejk")
 movement = Array[Vector2i]([Vector2i(-4, 0), Vector2i(4, 0)])
 action_range = 100.0
 
@@ -10282,10 +10282,10 @@ action_range = 100.0
 script = SubResource("GDScript_ceddd")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-13, 1)
 
-[node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("16_hskcg")]
+[node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -10297,10 +10297,10 @@ shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_2" type="Node2D" parent="."]
 position = Vector2(-1998.7999, 1039.896)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_2"]
-script = ExtResource("22_rpgrx")
+script = ExtResource("22_lgejk")
 movement = Array[Vector2i]([Vector2i(-3, 0), Vector2i(3, 0)])
 action_range = 100.0
 
@@ -10308,11 +10308,11 @@ action_range = 100.0
 script = SubResource("GDScript_5max1")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_2"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-13, 6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("16_hskcg")]
+[node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
 sprite = "red_prince"
 
@@ -10324,10 +10324,10 @@ shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_3" type="Node2D" parent="."]
 position = Vector2(-1998.7999, 1519.848)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_3"]
-script = ExtResource("22_rpgrx")
+script = ExtResource("22_lgejk")
 movement = Array[Vector2i]([Vector2i(-3, 0), Vector2i(3, 0)])
 action_range = 100.0
 
@@ -10335,11 +10335,11 @@ action_range = 100.0
 script = SubResource("GDScript_bj00i")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_3"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-13, 9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("16_hskcg")]
+[node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
 sprite = "white"
 
@@ -10351,15 +10351,15 @@ shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_teleport_1_1" type="Node2D" parent="."]
 position = Vector2(-558.944, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_1_1" type="Node" parent="_teleport_1_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_y15fk")
+script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_2_1")
 player_position_node = NodePath("../../_player_position_2_1")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10393,15 +10393,15 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_2" type="Node2D" parent="."]
 position = Vector2(720.928, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_1_2" type="Node" parent="_teleport_1_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_y15fk")
+script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_3_1")
 player_position_node = NodePath("../../_player_position_3_1")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_2"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10435,15 +10435,15 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_3" type="Node2D" parent="."]
 position = Vector2(-558.944, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_1_3" type="Node" parent="_teleport_1_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_y15fk")
+script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_2_1")
 player_position_node = NodePath("../../_player_position_2_1")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_3"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10477,15 +10477,15 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_2_1" type="Node2D" parent="."]
 position = Vector2(-1518.848, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_2_1" type="Node" parent="_teleport_2_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_y15fk")
+script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_1_1")
 player_position_node = NodePath("../../_player_position_1_1")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_2_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-10, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10519,15 +10519,15 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_3_1" type="Node2D" parent="."]
 position = Vector2(1520.848, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_3_1" type="Node" parent="_teleport_3_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_y15fk")
+script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_1_1")
 player_position_node = NodePath("../../_player_position_1_2")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_3_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(9, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10561,15 +10561,15 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_3_2" type="Node2D" parent="."]
 position = Vector2(2160.784, -2159.784)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_3_2" type="Node" parent="_teleport_3_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_y15fk")
+script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_4_1")
 player_position_node = NodePath("../../_player_position_4_1")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_3_2"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -14)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10603,15 +10603,15 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_4_1" type="Node2D" parent="."]
 position = Vector2(2160.784, -3119.688)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_4_1" type="Node" parent="_teleport_4_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_y15fk")
+script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_3_1")
 player_position_node = NodePath("../../_player_position_3_2")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_teleport_4_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -20)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10646,10 +10646,10 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_camera_position_1_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(80.992, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_1_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10685,10 +10685,10 @@ shape = SubResource("RectangleShape2D_ceddd")
 unique_name_in_owner = true
 visible = false
 position = Vector2(2160.784, -879.912)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_3_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10718,10 +10718,10 @@ horizontal_alignment = 1
 [node name="_camera_position_4_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(2000.7999, -4559.544)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_4_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(12, -29)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10751,10 +10751,10 @@ horizontal_alignment = 1
 [node name="_camera_position_2_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-2158.784, 559.944)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_2_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-14, 3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10785,10 +10785,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 visible = false
 position = Vector2(-398.96, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-3, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10819,10 +10819,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 visible = false
 position = Vector2(560.944, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_2"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(3, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10852,10 +10852,10 @@ horizontal_alignment = 1
 [node name="_player_position_2_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-1678.832, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_2_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(-11, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10885,10 +10885,10 @@ horizontal_alignment = 1
 [node name="_player_position_3_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1680.832, -79.992)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(10, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10918,10 +10918,10 @@ horizontal_alignment = 1
 [node name="_player_position_3_2" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(2160.784, -1999.7999)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_2"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -13)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10951,10 +10951,10 @@ horizontal_alignment = 1
 [node name="_player_position_4_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(2160.784, -3279.6719)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_1"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -10984,10 +10984,10 @@ horizontal_alignment = 1
 [node name="_player_position_4_2" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(2000.7999, -4719.528)
-script = ExtResource("17_01ffu")
+script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_2"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 map_position = Vector2i(12, -30)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11018,7 +11018,7 @@ horizontal_alignment = 1
 position = Vector2(80.992, 79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_Peekaboo_Camera"]
-script = ExtResource("15_yokbf")
+script = ExtResource("15_rp1s8")
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Camera2D" type="Camera2D" parent="_Peekaboo_Camera"]
