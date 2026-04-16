@@ -33,8 +33,34 @@ func _boot():
 func change_scene(scene_: _Core_Scene):
 	if current_scene:
 		await current_scene._on_scene_end()
-		
 	current_scene = scene_
 	camera.reparent(current_scene)
 	camera.position = Vector2.ZERO
 	await scene_._on_scene_start()
+	
+func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene):
+	if parent_scene == current_scene:
+		await current_scene._on_scene_end()
+	
+	current_scene = child_scene
+	var wrapper_node = Node2D.new()
+	wrapper_node.add_child(child_scene)
+	wrapper_node.scale = Vector2(0.5, 0.5)
+	
+	parent_scene.add_child(wrapper_node)
+	await child_scene._on_scene_start()
+
+
+func remove_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene):
+	if child_scene == current_scene:
+		await child_scene._on_scene_end()
+		pass
+	
+	current_scene = parent_scene
+
+	var wrapper_node = child_scene.get_parent() as Node2D
+	# wrapper_node.queue_free() #Node2D wrapper#
+	parent_scene.remove_child(wrapper_node)
+	
+	# parent_scene.add_child(wrapper_node)
+	await parent_scene._on_scene_start()

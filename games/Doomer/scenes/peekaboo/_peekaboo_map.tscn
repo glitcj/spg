@@ -1,7 +1,6 @@
-[gd_scene load_steps=70 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=69 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_38inc"]
-[ext_resource type="Script" uid="uid://cb87h5watlvbj" path="res://scenes/peekaboo/peekaboo.turn.player.gd" id="2_x2jho"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_05s22"]
 [ext_resource type="Script" uid="uid://da77evou2la0g" path="res://scenes/peekaboo/scripts/_peekaboo_variables.gd" id="4_q3qcn"]
 [ext_resource type="Texture2D" uid="uid://cir837rpp1qt3" path="res://assets/rpgmaker/mv/tilesets/Dungeon_A1.png" id="5_nn7yr"]
@@ -14,9 +13,9 @@
 [ext_resource type="TileSet" uid="uid://dmuy2eaehvonb" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A4.tres" id="12_8uqff"]
 [ext_resource type="Texture2D" uid="uid://dagwq224gg87f" path="res://assets/rpgmaker/mv/tilesets/Dungeon_B.png" id="13_p7w0x"]
 [ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="14_apl3n"]
-[ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/peekaboo.mover.gd" id="15_rp1s8"]
-[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/peekaboo.portrait.tscn" id="16_66okp"]
-[ext_resource type="Script" uid="uid://dxkbij13lf7tg" path="res://scenes/peekaboo/_peekaboo_event.gd" id="17_ofync"]
+[ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/components/_peekaboo_mover.gd" id="15_rp1s8"]
+[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="16_66okp"]
+[ext_resource type="Script" uid="uid://dxkbij13lf7tg" path="res://scenes/peekaboo/components/_peekaboo_event.gd" id="17_ofync"]
 [ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_talker.gd" id="18_f88mx"]
 [ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="19_bn407"]
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="20_yvjyl"]
@@ -9829,11 +9828,17 @@ fill_from = Vector2(0.5, 0.5)
 script/source = "extends _Peekaboo_Script
 
 
+var _swiper = preload(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
 
 func _on_swiper_option_selected(selection):
 	print(\"a\")
 	pass
-	get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))
+	
+	
+	# get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))
+	get_core().remove_scene(get_peekaboo(), _swiper)
+	
+	
 	await (get_core().get_scene(\"_Peekaboo\") as _Peekaboo).scene_activated
 	print(get_player().is_active)
 	get_player().is_active = false
@@ -9841,26 +9846,18 @@ func _on_swiper_option_selected(selection):
 	get_player().is_active = true
 
 
-
-# func _on_swiper_finised(selected_option):
-# 	get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))
-
 func _on_action_within_area():
-	# var _lambda : Callable = func(): get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))
-	# (get_core().get_scene(\"_Swiper\") as _Swiper).round_finished.connect(_lambda)
 	
-	# (get_core().get_scene(\"_Swiper\") as _Swiper).round_finished.connect(_on_swiper_finised)
-	
-	
-	# (get_core().get_scene(\"_Swiper\") as _Swiper).option_selected.connect(_on_swiper_option_selected)
-	
-	# (get_core().get_scene(\"_Swiper\") as _Swiper).option_selected.connect(_wrapped_callable.bind(_on_swiper_option_selected))
-	
+	# _wrapped_callable can check if callable has params and recursively call itself
 	var _wrapper = func(selection):
 		_wrapped_callable(_on_swiper_option_selected.bind(selection))
 		
 	(get_core().get_scene(\"_Swiper\") as _Swiper).option_selected.connect(_wrapper)
-	get_core().change_scene(get_core().get_scene(\"_Swiper\"))
+	# get_core().change_scene(get_core().get_scene(\"_Swiper\"))
+	
+	
+	_swiper.option_selected.connect(_wrapper)
+	get_core().add_scene(get_peekaboo(), _swiper)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
@@ -9911,7 +9908,6 @@ size = Vector2(100, 100)
 [node name="_Peekaboo_Map" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_38inc")
-player_turn = ExtResource("2_x2jho")
 
 [node name="_Peekaboo_Lambdas" type="Node" parent="."]
 script = ExtResource("3_05s22")

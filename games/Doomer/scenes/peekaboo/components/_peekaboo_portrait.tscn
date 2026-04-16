@@ -1,6 +1,6 @@
 [gd_scene load_steps=135 format=3 uid="uid://ca8vvptjr324n"]
 
-[ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/peekaboo.portrait.gd" id="1_d26c4"]
+[ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/components/_peekaboo_portrait.gd" id="1_d26c4"]
 [ext_resource type="Texture2D" uid="uid://bhy8mkqo4vdq" path="res://assets/rpgmaker/mv/characters/Evil.png" id="3_0iwj8"]
 [ext_resource type="Texture2D" uid="uid://ddqq7cd7mui6k" path="res://assets/peekaboo/hood.png" id="3_hqufs"]
 [ext_resource type="Texture2D" uid="uid://cbynwx8akyvtk" path="res://assets/peekaboo/Peeka-Sheet.png" id="4_nh0p8"]
