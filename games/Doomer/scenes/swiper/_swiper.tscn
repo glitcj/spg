@@ -101,7 +101,8 @@ size_flags_vertical = 4
 
 [node name="_scroll_position_0" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 0/CenterContainer2"]
 script = SubResource("GDScript_14spj")
-applied_scale = Vector2(0.8, 0.8)
+applied_modulate = Color(0, 0, 0, 0)
+applied_scale = Vector2(0.2, 0.2)
 
 [node name="MarginContainer 1" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -114,6 +115,7 @@ size_flags_vertical = 4
 
 [node name="_scroll_position_1" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 1/CenterContainer"]
 script = SubResource("GDScript_14spj")
+applied_modulate = Color(1, 1, 1, 0.5882353)
 applied_scale = Vector2(0.6, 0.6)
 
 [node name="MarginContainer 2" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
@@ -127,6 +129,7 @@ size_flags_vertical = 4
 
 [node name="_scroll_position_2" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 2/CenterContainer"]
 script = SubResource("GDScript_14spj")
+applied_modulate = Color(1, 1, 1, 1)
 applied_scale = Vector2(1, 1)
 
 [node name="MarginContainer 3" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
@@ -141,6 +144,7 @@ size_flags_vertical = 4
 
 [node name="_scroll_position_3" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 3/CenterContainer"]
 script = SubResource("GDScript_14spj")
+applied_modulate = Color(1, 1, 1, 0.5882353)
 applied_scale = Vector2(0.6, 0.6)
 
 [node name="MarginContainer 4" type="MarginContainer" parent="SubViewport/MarginContainer/VBoxContainer"]
@@ -154,7 +158,8 @@ size_flags_vertical = 4
 
 [node name="_scroll_position_4" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 4/CenterContainer"]
 script = SubResource("GDScript_14spj")
-applied_scale = Vector2(0.8, 0.8)
+applied_modulate = Color(0, 0, 0, 0)
+applied_scale = Vector2(0.2, 0.2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 
@@ -234,6 +239,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_verse_0" type="Node2D" parent="SubViewport/CanvasLayer"]
+position = Vector2(540, -500)
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/CanvasLayer/_verse_0"]
@@ -255,6 +261,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="_verse_1" type="Node2D" parent="SubViewport/CanvasLayer"]
+position = Vector2(540, -500)
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/CanvasLayer/_verse_1"]
@@ -276,6 +283,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="_verse_2" type="Node2D" parent="SubViewport/CanvasLayer"]
+position = Vector2(540, -500)
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/CanvasLayer/_verse_2"]
@@ -297,6 +305,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="_verse_3" type="Node2D" parent="SubViewport/CanvasLayer"]
+position = Vector2(540, -500)
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/CanvasLayer/_verse_3"]
@@ -318,6 +327,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="_verse_4" type="Node2D" parent="SubViewport/CanvasLayer"]
+position = Vector2(540, 3000)
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/CanvasLayer/_verse_4"]
