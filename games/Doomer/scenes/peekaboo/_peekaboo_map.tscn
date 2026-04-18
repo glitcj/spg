@@ -9828,13 +9828,12 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
 script/source = "extends _Peekaboo_Script
 
-@onready var _swiper = load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
+@onready var _scroller = load(\"res://scenes/swiper/_scroller.tscn\").instantiate() as _Scroller
 
 func _on_swiper_option_selected(selection):
-	get_core().remove_scene(get_peekaboo(), _swiper)
+	get_core().remove_scene(get_peekaboo(), _scroller)
+	await get_peekaboo().scene_activated
 	
-	await (get_core().get_scene(\"_Peekaboo\") as _Peekaboo).scene_activated
-	print(get_player().is_active)
 	get_player().is_active = false
 	await get_lambdas().show_messages([\"You selected %s.\" % selection])
 	get_player().is_active = true
@@ -9845,8 +9844,8 @@ func _on_action_within_area():
 	var _wrapper = func(selection):
 		_wrapped_callable(_on_swiper_option_selected.bind(selection))
 	
-	_swiper.option_selected.connect(_wrapper)
-	get_core().add_scene(get_peekaboo(), _swiper)
+	_scroller.option_selected.connect(_wrapper)
+	get_core().add_scene(get_peekaboo(), _scroller)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
@@ -9854,11 +9853,11 @@ func _on_action_within_area():
 [sub_resource type="GDScript" id="GDScript_byr4j"]
 script/source = "extends _Peekaboo_Script
 
-@onready var _swiper = get_core().get_scene(\"_Swiper\") as _Swiper # load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
+@onready var _scroller = get_core().get_scene(\"_Scroller\") as _Scroller # load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
 
 func _on_swiper_option_selected(selection):
-	get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))	
-	await (get_core().get_scene(\"_Peekaboo\") as _Peekaboo).scene_activated
+	get_core().change_scene(get_peekaboo())	
+	await get_peekaboo().scene_activated
 	
 	get_player().is_active = false
 	await get_lambdas().show_messages([\"You selected %s.\" % selection])
@@ -9870,8 +9869,8 @@ func _on_action_within_area():
 	var _wrapper = func(selection):
 		_wrapped_callable(_on_swiper_option_selected.bind(selection))
 		
-	_swiper.option_selected.connect(_wrapper)
-	get_core().change_scene(get_core().get_scene(\"_Swiper\"))
+	_scroller.option_selected.connect(_wrapper)
+	get_core().change_scene(get_core().get_scene(\"_Scroller\"))
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
