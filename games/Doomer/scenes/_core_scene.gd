@@ -26,6 +26,7 @@ var is_active = false:
 @onready var camera : Camera2D
 
 func _on_scene_start():
+	print(self, get_parent(), get_parent().get_parent())
 	await get_tree().process_frame
 	is_active = true
 	scene_started.emit()

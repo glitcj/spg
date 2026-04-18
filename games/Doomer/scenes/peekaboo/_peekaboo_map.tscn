@@ -9857,6 +9857,8 @@ func _on_action_within_area():
 	
 	
 	_swiper.option_selected.connect(_wrapper)
+	
+	print(get_peekaboo(), _swiper)
 	get_core().add_scene(get_peekaboo(), _swiper)
 "
 
