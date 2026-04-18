@@ -15,8 +15,6 @@ var current_scene : _Core_Scene
 func get_scene(_name): return find_child(_name) as _Core_Scene
 func get_lambdas(): return find_child("_Core_Lambdas") as _Core_Lambdas
 
-
-
 func _input(event):
 	pass
 
@@ -26,7 +24,6 @@ func _ready() -> void:
 
 func _boot():
 	change_scene(get_scene("_Starter"))
-	
 	
 func change_scene(scene_: _Core_Scene):
 	if current_scene:

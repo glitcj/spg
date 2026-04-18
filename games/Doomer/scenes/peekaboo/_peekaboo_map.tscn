@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=70 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_38inc"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_05s22"]
@@ -9827,17 +9827,10 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
 script/source = "extends _Peekaboo_Script
 
-
-var _swiper = preload(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
+@onready var _swiper = load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
 
 func _on_swiper_option_selected(selection):
-	print(\"a\")
-	pass
-	
-	
-	# get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))
 	get_core().remove_scene(get_peekaboo(), _swiper)
-	
 	
 	await (get_core().get_scene(\"_Peekaboo\") as _Peekaboo).scene_activated
 	print(get_player().is_active)
@@ -9847,14 +9840,10 @@ func _on_swiper_option_selected(selection):
 
 
 func _on_action_within_area():
-	
 	# _wrapped_callable can check if callable has params and recursively call itself
 	var _wrapper = func(selection):
 		_wrapped_callable(_on_swiper_option_selected.bind(selection))
-		
-	(get_core().get_scene(\"_Swiper\") as _Swiper).option_selected.connect(_wrapper)
-	# get_core().change_scene(get_core().get_scene(\"_Swiper\"))
-	
+	# (get_core().get_scene(\"_Swiper\") as _Swiper).option_selected.connect(_wrapper)
 	
 	_swiper.option_selected.connect(_wrapper)
 	
@@ -9863,6 +9852,33 @@ func _on_action_within_area():
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
+
+[sub_resource type="GDScript" id="GDScript_byr4j"]
+script/source = "extends _Peekaboo_Script
+
+@onready var _swiper = get_core().get_scene(\"_Swiper\") as _Swiper # load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
+
+func _on_swiper_option_selected(selection):
+	get_core().change_scene(get_core().get_scene(\"_Peekaboo\"))	
+	await (get_core().get_scene(\"_Peekaboo\") as _Peekaboo).scene_activated
+	
+	
+	get_player().is_active = false
+	await get_lambdas().show_messages([\"You selected %s.\" % selection])
+	get_player().is_active = true
+
+
+func _on_action_within_area():
+	# _wrapped_callable can check if callable has params and recursively call itself
+	var _wrapper = func(selection):
+		_wrapped_callable(_on_swiper_option_selected.bind(selection))
+		
+	# (get_core().get_scene(\"_Swiper\") as _Swiper).option_selected.connect(_wrapper)
+	_swiper.option_selected.connect(_wrapper)
+	get_core().change_scene(get_core().get_scene(\"_Swiper\"))
+	
+	# _swiper.option_selected.connect(_wrapper)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
@@ -10041,34 +10057,65 @@ sprite = "priest"
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
-[node name="_npc_1_2" type="Node2D" parent="."]
-position = Vector2(2160.784, -4879.5117)
+[node name="_npc_4_2" type="Node2D" parent="."]
+position = Vector2(2160.784, -5359.464)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Script" type="Node" parent="_npc_1_2"]
+[node name="_Peekaboo_Script" type="Node" parent="_npc_4_2"]
 script = SubResource("GDScript_eu0qy")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_2"]
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_4_2"]
 script = ExtResource("15_rp1s8")
-map_position = Vector2i(13, -31)
+map_position = Vector2i(13, -34)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_2"]
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_4_2"]
 gravity_scale = 0.0
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_4_2/RigidBody2D"]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_Peekaboo_Portrait" parent="_npc_4_2/RigidBody2D" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
 sprite = "green"
 
-[node name="Area2D" type="Area2D" parent="_npc_1_2"]
+[node name="Area2D" type="Area2D" parent="_npc_4_2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_4_2/Area2D"]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_q5qis")
+
+[node name="_npc_4_3" type="Node2D" parent="."]
+position = Vector2(1840.8159, -5359.464)
+script = ExtResource("17_ofync")
+
+[node name="_Peekaboo_Script" type="Node" parent="_npc_4_3"]
+script = SubResource("GDScript_byr4j")
+interrupt_player = true
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_4_3"]
+script = ExtResource("15_rp1s8")
+map_position = Vector2i(11, -34)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_4_3"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_4_3/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="_Peekaboo_Portrait" parent="_npc_4_3/RigidBody2D" instance=ExtResource("16_66okp")]
+scale = Vector2(4, 4)
+sprite = "green"
+
+[node name="Area2D" type="Area2D" parent="_npc_4_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_4_3/Area2D"]
 scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_q5qis")
 
