@@ -15,7 +15,7 @@ var selection : String
 var scroll_counter = 100
 
 var koran_loader : _Core_Data_Lambdas
-var start_ayah_index
+var current_verse_index
 
 
 @onready var verses_initialiser = find_children("_verse_*")
@@ -30,7 +30,7 @@ func _ready() -> void:
 	koran_loader = _Core_Data_Lambdas.new()
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
 	
-func _initiate_visible_labels(start_ayah_index):
+func _initiate_visible_labels(current_verse_index):
 	var verse : Node2D
 	var scroll_position
 	
@@ -39,8 +39,8 @@ func _initiate_visible_labels(start_ayah_index):
 	for i in range(total_verses_on_page):
 		# verse = find_child("_verse_%s" % i) as Node2D
 		verse = verses[i]
-		verse.index = start_ayah_index + i
-		verse.text = koran_loader.quran_db[start_ayah_index + i]["ayah_ar"]
+		verse.index = current_verse_index + i
+		verse.text = koran_loader.quran_db[current_verse_index + i]["ayah_ar"]
 		# verses.append(verse)
 		scroll_position = find_child("_scroll_position_%s" % i) as Node2D
 		
@@ -57,8 +57,8 @@ func _on_scene_start():
 	
 	
 	_reset_scroll_counter()
-	start_ayah_index = 1 # + (randi() % koran_loader.quran_db.size())
-	await _initiate_visible_labels(start_ayah_index)
+	current_verse_index = 1 # + (randi() % koran_loader.quran_db.size())
+	await _initiate_visible_labels(current_verse_index)
 	interrupt_scroll = false
 	
 func _scroll_down():

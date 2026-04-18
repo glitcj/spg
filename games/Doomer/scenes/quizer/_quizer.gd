@@ -16,7 +16,7 @@ var questions_counter
 
 
 var koran_loader : _Core_Data_Lambdas
-var start_ayah_index
+var current_verse_index
 
 func _on_scene_end():
 	super()
@@ -32,7 +32,7 @@ func _ready() -> void:
 
 
 
-func _show_questions_and_answers(start_ayah_index):
+func _show_questions_and_answers(current_verse_index):
 		
 	correct_answer_index = randi() % 2
 	incorrect_answer_index = int(not correct_answer_index)
@@ -41,8 +41,8 @@ func _show_questions_and_answers(start_ayah_index):
 	var decoy_ayah_index = 1 + (randi() % koran_loader.quran_db.size())
 
 	print(correct_answer_index, incorrect_answer_index, "_word_%s" % correct_answer_index, "_word_%s" % incorrect_answer_index)
-	(find_child("_definition") as Label).text = koran_loader.quran_db[start_ayah_index]["ayah_ar"]
-	(find_child("_word_%s" % correct_answer_index) as Label).text = koran_loader.quran_db[start_ayah_index + 1]["ayah_ar"]
+	(find_child("_definition") as Label).text = koran_loader.quran_db[current_verse_index]["ayah_ar"]
+	(find_child("_word_%s" % correct_answer_index) as Label).text = koran_loader.quran_db[current_verse_index + 1]["ayah_ar"]
 	(find_child("_word_%s" % incorrect_answer_index) as Label).text = koran_loader.quran_db[decoy_ayah_index]["ayah_ar"]
 	
 
@@ -64,8 +64,8 @@ func _on_scene_start():
 
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
 	
-	start_ayah_index = 1 + (randi() % koran_loader.quran_db.size())
-	_show_questions_and_answers(start_ayah_index)
+	current_verse_index = 1 + (randi() % koran_loader.quran_db.size())
+	_show_questions_and_answers(current_verse_index)
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return
@@ -83,9 +83,9 @@ func _input(event: InputEvent) -> void:
 			
 			
 			if questions_counter > 0:
-				start_ayah_index = start_ayah_index + 1
+				current_verse_index = current_verse_index + 1
 				questions_counter = questions_counter - 1
-				await _show_questions_and_answers(start_ayah_index)
+				await _show_questions_and_answers(current_verse_index)
 			else:
 				option_selected.emit("_word_0")
 
@@ -99,9 +99,9 @@ func _input(event: InputEvent) -> void:
 			await _Core_Tweener._slide_out(find_child("_definition"), .5, Vector2i(0, 1))
 			
 			if questions_counter > 0:
-				start_ayah_index = start_ayah_index + 1
+				current_verse_index = current_verse_index + 1
 				questions_counter = questions_counter - 1
-				await _show_questions_and_answers(start_ayah_index)
+				await _show_questions_and_answers(current_verse_index)
 			else:
 				option_selected.emit("_word_1")
 		_:

@@ -8,18 +8,16 @@ signal option_selected(selection)
 
 var interrupt_scroll = true
 
-var verses := []
 var total_verses_on_page = 5
 
 var selection : String
 var scroll_counter = 100
 
 var koran_loader : _Core_Data_Lambdas
-var start_ayah_index
+var current_verse_index = 1
 
-
+var verses := []
 @onready var verses_initialiser = find_children("_verse_*")
-
 
 func _on_scene_end():
 	super()
@@ -30,16 +28,20 @@ func _ready() -> void:
 	koran_loader = _Core_Data_Lambdas.new()
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
 	
-func _initiate_visible_labels(start_ayah_index):
+func _initiate_visible_labels():
 	var verse : Node2D
 	var scroll_position
 	
-	verses = verses_initialiser.duplicate()
 	
+	print(current_verse_index, verses)
+
+	if verses == []:
+		verses = verses_initialiser.duplicate()
+		
 	for i in range(total_verses_on_page):
 		verse = verses[i]
-		verse.index = start_ayah_index + i
-		verse.text = koran_loader.quran_db[start_ayah_index + i]["ayah_ar"]
+		verse.index = current_verse_index + i
+		verse.text = koran_loader.quran_db[current_verse_index + i]["ayah_ar"]
 		scroll_position = find_child("_scroll_position_%s" % i) as Node2D
 		
 		var tweener = verse.create_tween()
@@ -53,10 +55,7 @@ func _on_scene_start():
 	super()
 	await get_tree().process_frame
 	
-	
-	_reset_scroll_counter()
-	start_ayah_index = 1 # + (randi() % koran_loader.quran_db.size())
-	await _initiate_visible_labels(start_ayah_index)
+	await _initiate_visible_labels()
 	interrupt_scroll = false
 	
 func _scroll_down():
@@ -78,8 +77,6 @@ func _scroll_down():
 		var verse_is_at_top = (i == 0)
 			
 		tweener = verse.create_tween()
-		
-				
 		if verse_is_at_bottom:
 			tweener.tween_callback(func(): verse.visible = false)
 		
@@ -98,6 +95,7 @@ func _scroll_down():
 
 	
 	verses.insert(0, verses.pop_back())
+	current_verse_index -= 1
 	
 func _scroll_up():
 	if verses[-1].index == koran_loader.quran_db.size() - 1:
@@ -114,7 +112,6 @@ func _scroll_up():
 		
 		var verse_is_at_bottom = (i == total_verses_on_page - 1)
 		var verse_is_at_top = (i == 0)
-				
 		tweener = verse.create_tween()
 		
 		if verse_is_at_top:
@@ -133,6 +130,7 @@ func _scroll_up():
 	interrupt_scroll = false
 
 	verses.append(verses.pop_front())
+	current_verse_index += 1
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return
@@ -161,5 +159,5 @@ func _input(event: InputEvent) -> void:
 		_:
 			pass
 
-func _reset_scroll_counter():
-	scroll_counter = 100
+func _reset_scroller():
+	pass

@@ -9828,7 +9828,13 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
 script/source = "extends _Peekaboo_Script
 
-@onready var _scroller = load(\"res://scenes/swiper/_scroller.tscn\").instantiate() as _Scroller
+# @onready var _scroller = load(\"res://scenes/swiper/_scroller.tscn\").instantiate() as _Scroller
+var _scroller
+
+func _ready():
+	super()
+	_scroller = load(\"res://scenes/swiper/_scroller.tscn\").instantiate() as _Scroller
+	
 
 func _on_swiper_option_selected(selection):
 	get_core().remove_scene(get_peekaboo(), _scroller)
