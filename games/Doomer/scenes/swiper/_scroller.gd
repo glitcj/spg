@@ -5,14 +5,10 @@ class_name _Scroller
 @export var words : Array[String]
 
 signal option_selected(selection)
-
 var interrupt_scroll = true
-
 var total_verses_on_page = 5
-
 var selection : String
 var scroll_counter = 100
-
 var koran_loader : _Core_Data_Lambdas
 var current_verse_index = 1
 
@@ -21,6 +17,14 @@ var verses := []
 
 func _on_scene_end():
 	super()
+
+
+func get_verses():
+	if verses == []:
+		verses = verses_initialiser.duplicate()
+	return verses
+		
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,11 +36,7 @@ func _initiate_visible_labels():
 	var verse : Node2D
 	var scroll_position
 	
-	
-	print(current_verse_index, verses)
-
-	if verses == []:
-		verses = verses_initialiser.duplicate()
+	verses = get_verses()
 		
 	for i in range(total_verses_on_page):
 		verse = verses[i]
@@ -44,8 +44,11 @@ func _initiate_visible_labels():
 		verse.text = koran_loader.quran_db[current_verse_index + i]["ayah_ar"]
 		scroll_position = find_child("_scroll_position_%s" % i) as Node2D
 		
-		var tweener = verse.create_tween()
+		var tweener = get_tree().create_tween()
+		
+		
 		tweener.tween_property(verse, "global_position", scroll_position.global_position, .25)
+		
 		tweener.parallel().tween_property(verse, "modulate", scroll_position.applied_modulate, .25)
 		tweener.parallel().tween_property(verse, "scale", scroll_position.applied_scale, .25)
 		
@@ -55,6 +58,8 @@ func _on_scene_start():
 	super()
 	await get_tree().process_frame
 	
+	
+	interrupt_scroll = true
 	await _initiate_visible_labels()
 	interrupt_scroll = false
 	
@@ -108,7 +113,6 @@ func _scroll_up():
 	for i in range(total_verses_on_page):
 		verse = verses[i] as Node2D
 		scroll_position = find_child("_scroll_position_%s" % (range(total_verses_on_page)[(i - 1) % total_verses_on_page]))
-		
 		
 		var verse_is_at_bottom = (i == total_verses_on_page - 1)
 		var verse_is_at_top = (i == 0)
