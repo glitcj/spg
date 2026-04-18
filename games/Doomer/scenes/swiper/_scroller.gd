@@ -43,8 +43,17 @@ func _initiate_visible_labels():
 		verse.index = current_verse_index + i
 		verse.text = koran_loader.quran_db[current_verse_index + i]["ayah_ar"]
 		scroll_position = find_child("_scroll_position_%s" % i) as Node2D
-		await _Core_Tweener._slide_in(verse, .25)
-
+		
+		var tweener = get_tree().create_tween()
+		
+		
+		tweener.tween_property(verse, "global_position", scroll_position.global_position, .25)
+		
+		tweener.parallel().tween_property(verse, "modulate", scroll_position.applied_modulate, .25)
+		tweener.parallel().tween_property(verse, "scale", scroll_position.applied_scale, .25)
+		
+		await tweener.finished
+		
 func _on_scene_start():
 	super()
 	await get_tree().process_frame
