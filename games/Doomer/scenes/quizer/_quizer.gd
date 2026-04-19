@@ -15,7 +15,7 @@ var selection : String
 var questions_counter
 
 
-var koran_loader : _Core_Data_Lambdas
+var koran_loader : _Core_Data
 var current_verse_index
 
 func _on_scene_end():
@@ -60,7 +60,7 @@ func _on_scene_start():
 	
 	questions_counter = 3
 	
-	koran_loader = _Core_Data_Lambdas.new()
+	koran_loader = _Core_Data.new()
 
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
 	

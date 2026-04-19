@@ -9,17 +9,18 @@ var interrupt_scroll = true
 var total_verses_on_page = 5
 var selection : String
 var scroll_counter = 100
-var koran_loader : _Core_Data_Lambdas
+var koran_loader : _Core_Data
 var current_verse_index = 1
 
 var scroll_messages := []
-
 var verses := []
+
 @onready var verses_initialiser = find_children("_verse_*")
 
 func _on_scene_end():
+	for verse in verses:
+		await _Core_Tweener._slide_out(verse, 0.25)
 	super()
-
 
 func get_verses():
 	if verses == []:
@@ -27,14 +28,13 @@ func get_verses():
 	return verses
 		
 	
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
 	_load_koran()
 	
 func _load_koran():
-	koran_loader = _Core_Data_Lambdas.new()
+	koran_loader = _Core_Data.new()
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
 	for row in koran_loader.quran_db.values():
 		scroll_messages.append(row["ayah_ar"])
@@ -43,14 +43,12 @@ func _load_koran():
 	for i in range(3):
 		scroll_messages.append("- - - - -")
 		scroll_messages.insert(0, "- - - - -")
-	
-	
-	
-	
+		
 func _initiate_visible_labels():
 	var verse : Node2D
 	var scroll_position
 	
+	verses = []
 	verses = get_verses()
 		
 	for i in range(total_verses_on_page):
@@ -58,13 +56,14 @@ func _initiate_visible_labels():
 		verse.index = current_verse_index + i
 		verse.text = scroll_messages[current_verse_index + i]
 		scroll_position = find_child("_scroll_position_%s" % i) as Node2D
+
+		verse.global_position = scroll_position.global_position
+		verse.modulate = scroll_position.applied_modulate
+		verse.scale = scroll_position.applied_scale
+		verse.visible = false
+	for v in verses:
+		await _Core_Tweener._slide_in(v)
 		
-		var tweener = get_tree().create_tween()
-		tweener.tween_property(verse, "global_position", scroll_position.global_position, .01)
-		tweener.parallel().tween_property(verse, "modulate", scroll_position.applied_modulate, .01)
-		tweener.parallel().tween_property(verse, "scale", scroll_position.applied_scale, .01)
-		
-		await tweener.finished
 		
 func _on_scene_start():
 	super()
@@ -124,7 +123,8 @@ func _scroll_up():
 	var tweener : Tween
 	for i in range(total_verses_on_page):
 		verse = verses[i] as Node2D
-		scroll_position = find_child("_scroll_position_%s" % (range(total_verses_on_page)[(i - 1) % total_verses_on_page]))
+		# scroll_position = find_child("_scroll_position_%s" % (range(total_verses_on_page)[(i - 1) % total_verses_on_page]))
+		scroll_position = find_child("_scroll_position_%s" % (range(total_verses_on_page)[(i - 1 + total_verses_on_page) % total_verses_on_page]))
 		
 		var verse_is_at_bottom = (i == total_verses_on_page - 1)
 		var verse_is_at_top = (i == 0)
@@ -147,6 +147,7 @@ func _scroll_up():
 
 	verses.append(verses.pop_front())
 	current_verse_index += 1
+
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return

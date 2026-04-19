@@ -14,7 +14,7 @@ var total_verses_on_page = 5
 var selection : String
 var scroll_counter = 100
 
-var koran_loader : _Core_Data_Lambdas
+var koran_loader : _Core_Data
 var current_verse_index
 
 
@@ -27,7 +27,7 @@ func _on_scene_end():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
-	koran_loader = _Core_Data_Lambdas.new()
+	koran_loader = _Core_Data.new()
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
 	
 func _initiate_visible_labels(current_verse_index):
