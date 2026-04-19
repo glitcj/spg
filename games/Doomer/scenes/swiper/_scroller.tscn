@@ -44,7 +44,7 @@ script = ExtResource("1_fcb8s")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
-size = Vector2i(1080, 800)
+size = Vector2i(1080, 2000)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
@@ -52,9 +52,9 @@ unique_name_in_owner = true
 anchor_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
-offset_top = -1700.0
+offset_top = -1000.0
 offset_right = 1080.0
-offset_bottom = 2700.0
+offset_bottom = 3400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -152,7 +152,6 @@ applied_modulate = Color(1, 1, 1, 1)
 applied_scale = Vector2(1, 1)
 
 [node name="_verse_2" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 2/CenterContainer"]
-visible = false
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 2/CenterContainer/_verse_2"]

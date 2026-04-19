@@ -12,6 +12,8 @@ var scroll_counter = 100
 var koran_loader : _Core_Data_Lambdas
 var current_verse_index = 1
 
+var scroll_messages := []
+
 var verses := []
 @onready var verses_initialiser = find_children("_verse_*")
 
@@ -29,8 +31,21 @@ func get_verses():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
+	_load_koran()
+	
+func _load_koran():
 	koran_loader = _Core_Data_Lambdas.new()
 	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
+	for row in koran_loader.quran_db.values():
+		scroll_messages.append(row["ayah_ar"])
+		
+	# pad
+	for i in range(3):
+		scroll_messages.append("- - - - -")
+		scroll_messages.insert(0, "- - - - -")
+	
+	
+	
 	
 func _initiate_visible_labels():
 	var verse : Node2D
@@ -41,16 +56,13 @@ func _initiate_visible_labels():
 	for i in range(total_verses_on_page):
 		verse = verses[i]
 		verse.index = current_verse_index + i
-		verse.text = koran_loader.quran_db[current_verse_index + i]["ayah_ar"]
+		verse.text = scroll_messages[current_verse_index + i]
 		scroll_position = find_child("_scroll_position_%s" % i) as Node2D
 		
 		var tweener = get_tree().create_tween()
-		
-		
-		tweener.tween_property(verse, "global_position", scroll_position.global_position, .25)
-		
-		tweener.parallel().tween_property(verse, "modulate", scroll_position.applied_modulate, .25)
-		tweener.parallel().tween_property(verse, "scale", scroll_position.applied_scale, .25)
+		tweener.tween_property(verse, "global_position", scroll_position.global_position, .01)
+		tweener.parallel().tween_property(verse, "modulate", scroll_position.applied_modulate, .01)
+		tweener.parallel().tween_property(verse, "scale", scroll_position.applied_scale, .01)
 		
 		await tweener.finished
 		
@@ -89,11 +101,11 @@ func _scroll_down():
 		tweener.parallel().tween_property(verse, "modulate", scroll_position.applied_modulate, .25)
 		tweener.parallel().tween_property(verse, "scale", scroll_position.applied_scale, .25)
 	
-	
+	# scale y 800 margin position -1700
 	await tweener.finished
 	verse = verses[total_verses_on_page - 1]
 	verse.index = verses[0].index - 1
-	verse.text = koran_loader.quran_db[verse.index]["ayah_ar"]
+	verse.text = scroll_messages[verse.index]
 	for _verse in verses:
 		_verse.visible = true
 	interrupt_scroll = false
@@ -103,7 +115,7 @@ func _scroll_down():
 	current_verse_index -= 1
 	
 func _scroll_up():
-	if verses[-1].index == koran_loader.quran_db.size() - 1:
+	if verses[-1].index == scroll_messages.size() - 1:
 		return
 		
 	interrupt_scroll = true
@@ -128,7 +140,7 @@ func _scroll_up():
 	await tweener.finished
 	verse = verses[0]
 	verse.index = verses[-1].index + 1
-	verse.text = koran_loader.quran_db[verse.index]["ayah_ar"]
+	verse.text = scroll_messages[verse.index]
 	for _verse in verses:
 		_verse.visible = true
 	interrupt_scroll = false
