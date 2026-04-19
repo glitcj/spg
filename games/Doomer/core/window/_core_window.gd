@@ -1,7 +1,6 @@
 extends Node2D
 class_name _Core_Window
 
-
 signal finished
 
 @onready var doomer : _Core = find_parent("_Core")
@@ -44,7 +43,7 @@ func start(message_queue_ : Array):
 	message_queue = message_queue_
 	is_active = true
 	_show_next_message()
-	await _Core_Tweener._slide_in(self)
+	await _Core_Tweener.new().slide_in(self)
 
 func _show_current_message(m):
 	message = m
@@ -53,7 +52,7 @@ func _show_current_message(m):
 
 func _show_next_message():
 	if message_queue == [] and visible:
-		await _Core_Tweener._slide_out(self)
+		await _Core_Tweener.new().slide_out(self)
 		finished.emit()
 		queue_free.call_deferred()
 		return

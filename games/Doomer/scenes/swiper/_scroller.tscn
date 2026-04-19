@@ -82,6 +82,7 @@ applied_modulate = Color(0, 0, 0, 0)
 applied_scale = Vector2(0.2, 0.2)
 
 [node name="_verse_0" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 0/CenterContainer2"]
+visible = false
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 0/CenterContainer2/_verse_0"]
@@ -117,6 +118,7 @@ applied_modulate = Color(1, 1, 1, 0.5882353)
 applied_scale = Vector2(0.6, 0.6)
 
 [node name="_verse_1" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 1/CenterContainer"]
+visible = false
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 1/CenterContainer/_verse_1"]
@@ -152,6 +154,7 @@ applied_modulate = Color(1, 1, 1, 1)
 applied_scale = Vector2(1, 1)
 
 [node name="_verse_2" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 2/CenterContainer"]
+visible = false
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 2/CenterContainer/_verse_2"]
@@ -188,6 +191,7 @@ applied_modulate = Color(1, 1, 1, 0.5882353)
 applied_scale = Vector2(0.6, 0.6)
 
 [node name="_verse_3" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 3/CenterContainer"]
+visible = false
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 3/CenterContainer/_verse_3"]
@@ -223,6 +227,7 @@ applied_modulate = Color(0, 0, 0, 0)
 applied_scale = Vector2(0.2, 0.2)
 
 [node name="_verse_4" type="Node2D" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 4/CenterContainer"]
+visible = false
 script = SubResource("GDScript_wwys7")
 
 [node name="Label" type="Label" parent="SubViewport/MarginContainer/VBoxContainer/MarginContainer 4/CenterContainer/_verse_4"]

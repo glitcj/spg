@@ -18,9 +18,11 @@ var verses := []
 @onready var verses_initialiser = find_children("_verse_*")
 
 func _on_scene_end():	
+	var tweener : _Core_Tweener
 	for i in range(total_verses_on_page):
-		print(get_verses()[i], find_child("_scroll_position_%s" % i))
-		await _Core_Tweener._slide_out(get_verses()[i], .25)
+		tweener = _Core_Tweener.new()
+		tweener.slide_out(get_verses()[i], .5)
+	await tweener.tween.finished
 	super()
 
 func get_verses():
@@ -63,15 +65,17 @@ func _initiate_visible_labels():
 		verse.modulate = scroll_position.applied_modulate
 		verse.scale = scroll_position.applied_scale
 		verse.visible = false
-		
+	
+	var tweener : _Core_Tweener
 	for v in verses:
-		await _Core_Tweener._slide_in(v)
+		tweener = _Core_Tweener.new()
+		tweener.slide_in(v, 1.0)
+	await tweener.tween.finished
 		
 		
 func _on_scene_start():
 	super()
 	await get_tree().process_frame
-	
 	
 	interrupt_scroll = true
 	await _initiate_visible_labels()
@@ -88,10 +92,9 @@ func _scroll_down():
 	var tweener : Tween
 	
 	for i in range(total_verses_on_page):
-
 		verse = verses[i] as Node2D
 		scroll_position = find_child("_scroll_position_%s" % ((i + 1) % total_verses_on_page))
-
+		
 		var verse_is_at_bottom = (i == total_verses_on_page - 1)
 		var verse_is_at_top = (i == 0)
 			
@@ -111,7 +114,6 @@ func _scroll_down():
 	for _verse in verses:
 		_verse.visible = true
 	interrupt_scroll = false
-
 	
 	verses.insert(0, verses.pop_back())
 	current_verse_index -= 1
@@ -146,20 +148,22 @@ func _scroll_up():
 	for _verse in verses:
 		_verse.visible = true
 	interrupt_scroll = false
-
+	
 	verses.append(verses.pop_front())
 	current_verse_index += 1
 
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return
+	pass
 	if not event is InputEventKey: return
+	pass
 	if not (event.pressed and not event.echo): return
+	pass
 	if interrupt_scroll: return
 	
 	match (event as InputEventKey).keycode:
 		KEY_RIGHT:
-			
 			if scroll_counter > 0:
 				scroll_counter = scroll_counter - 1
 				await _scroll_up()
@@ -175,6 +179,7 @@ func _input(event: InputEvent) -> void:
 				
 		KEY_ESCAPE:
 			option_selected.emit("_word_1")
+			
 		_:
 			pass
 
