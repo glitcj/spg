@@ -18,8 +18,11 @@ var verses := []
 @onready var verses_initialiser = find_children("_verse_*")
 
 func _on_scene_end():
-	for verse in verses:
-		await _Core_Tweener._slide_out(verse, 0.25)
+	
+	# for verse in verses:
+	for i in range(total_verses_on_page):
+		print(get_verses()[i], find_child("_scroll_position_%s" % i))
+		await _Core_Tweener._slide_out(get_verses()[i], .25)
 	super()
 
 func get_verses():
@@ -61,6 +64,7 @@ func _initiate_visible_labels():
 		verse.modulate = scroll_position.applied_modulate
 		verse.scale = scroll_position.applied_scale
 		verse.visible = false
+		
 	for v in verses:
 		await _Core_Tweener._slide_in(v)
 		
@@ -123,7 +127,6 @@ func _scroll_up():
 	var tweener : Tween
 	for i in range(total_verses_on_page):
 		verse = verses[i] as Node2D
-		# scroll_position = find_child("_scroll_position_%s" % (range(total_verses_on_page)[(i - 1) % total_verses_on_page]))
 		scroll_position = find_child("_scroll_position_%s" % (range(total_verses_on_page)[(i - 1 + total_verses_on_page) % total_verses_on_page]))
 		
 		var verse_is_at_bottom = (i == total_verses_on_page - 1)
