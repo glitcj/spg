@@ -17,9 +17,7 @@ var verses := []
 
 @onready var verses_initialiser = find_children("_verse_*")
 
-func _on_scene_end():
-	
-	# for verse in verses:
+func _on_scene_end():	
 	for i in range(total_verses_on_page):
 		print(get_verses()[i], find_child("_scroll_position_%s" % i))
 		await _Core_Tweener._slide_out(get_verses()[i], .25)
@@ -29,6 +27,7 @@ func get_verses():
 	if verses == []:
 		verses = verses_initialiser.duplicate()
 	return verses
+		
 		
 	
 # Called when the node enters the scene tree for the first time.
