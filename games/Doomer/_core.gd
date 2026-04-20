@@ -14,6 +14,7 @@ var current_scene : _Core_Scene
 
 func get_scene(_name): return find_child(_name) as _Core_Scene
 func get_lambdas(): return find_child("_Core_Lambdas") as _Core_Lambdas
+func get_variables(): return find_child("_Core_Variables") as _Core_Variables
 
 func _input(event):
 	pass
@@ -33,7 +34,7 @@ func change_scene(scene_: _Core_Scene):
 	camera.position = Vector2.ZERO
 	await scene_._on_scene_start()
 	
-func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene):
+func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene,  _position := Vector2.ZERO, _scale := Vector2.ONE):
 	if parent_scene == current_scene:
 		await current_scene._on_scene_end()
 	current_scene = child_scene
@@ -41,9 +42,15 @@ func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene):
 	var wrapper_node = Node2D.new()
 	wrapper_node.name = "_Wrapper_"
 	wrapper_node.add_child(child_scene)
-	wrapper_node.scale = Vector2(0.5, 0.5)
-	parent_scene.add_child(wrapper_node)
+	# wrapper_node.scale = Vector2(0.5, 0.5)
 	
+	if _position != Vector2.ZERO:
+		wrapper_node.position = _position
+	if _scale != Vector2.ZERO:
+		wrapper_node.scale = _scale
+		
+	parent_scene.add_child(wrapper_node)
+
 	await child_scene._on_scene_start()
 
 

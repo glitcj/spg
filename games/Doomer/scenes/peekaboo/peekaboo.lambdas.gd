@@ -32,7 +32,7 @@ func move_camera(delta : Vector2i):
 	
 func show_messages(messages: Array):
 	var window = _Core_Templates.window.instantiate() as _Core_Window
-	var container = get_peekaboo().find_child("Canvas Bottom") as CenterContainer
+	var container = get_peekaboo().find_child("_canvas_bottom") as CenterContainer
 	container.add_child(window)
 	window.scale = Vector2(5,5)
 	

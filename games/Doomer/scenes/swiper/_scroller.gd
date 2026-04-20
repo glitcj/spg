@@ -1,27 +1,39 @@
 extends _Core_Scene
 class_name _Scroller
 
+
+@export var is_centered = false:
+	set(v):
+		position = Vector2(-540, -350) if v else Vector2.ZERO
+		is_centered = v
+
 @export_category("Words")
 @export var words : Array[String]
+
+func get_variables(): return (find_parent("_Core").find_child("_Core_Variables") as _Core_Variables)
+func get_core(): return find_parent("_Core") as _Core
 
 signal option_selected(selection)
 var interrupt_scroll = true
 var total_verses_on_page = 5
 var selection : String
 var scroll_counter = 100
-var koran_loader : _Core_Data
 var current_verse_index = 1
-
-var scroll_messages := []
 var verses := []
 
 @onready var verses_initialiser = find_children("_verse_*")
+@onready var scroll_messages = get_variables().koran as Array
+
 
 func _on_scene_end():	
 	var tweener : _Core_Tweener
 	for i in range(total_verses_on_page):
-		tweener = _Core_Tweener.new()
-		tweener.slide_out(get_verses()[i], .5)
+		if i == 2:
+			# TODO: Replace with shader
+			tweener = _Core_Tweener.new()
+			tweener.slide_out(get_verses()[i], .5, Vector2i(0, -1))
+		else:
+			get_verses()[i].visible = false
 	await tweener.tween.finished
 	super()
 
@@ -30,24 +42,10 @@ func get_verses():
 		verses = verses_initialiser.duplicate()
 	return verses
 		
-		
-	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
-	_load_koran()
-	
-func _load_koran():
-	koran_loader = _Core_Data.new()
-	koran_loader.load_quran_csv("res://assets/kooran_de_go/quran.csv")
-	for row in koran_loader.quran_db.values():
-		scroll_messages.append(row["ayah_ar"])
-		
-	# pad
-	for i in range(3):
-		scroll_messages.append("- - - - -")
-		scroll_messages.insert(0, "- - - - -")
-		
+
 func _initiate_visible_labels():
 	var verse : Node2D
 	var scroll_position
@@ -155,11 +153,8 @@ func _scroll_up():
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return
-	pass
 	if not event is InputEventKey: return
-	pass
 	if not (event.pressed and not event.echo): return
-	pass
 	if interrupt_scroll: return
 	
 	match (event as InputEventKey).keycode:

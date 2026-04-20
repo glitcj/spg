@@ -45,6 +45,7 @@ unique_name_in_owner = true
 peekaboo = NodePath("../../../../../../..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+unique_name_in_owner = true
 
 [node name="MarginContainer L2" type="MarginContainer" parent="SubViewport/CanvasLayer"]
 offset_right = 1080.0
@@ -57,7 +58,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Canvas Top" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer"]
+[node name="_canvas_top" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -66,7 +68,8 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Canvas Middle" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer2"]
+[node name="_canvas_middle" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -75,7 +78,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="Canvas Bottom" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer3"]
+[node name="_canvas_bottom" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer L2/VBoxContainer/MarginContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
