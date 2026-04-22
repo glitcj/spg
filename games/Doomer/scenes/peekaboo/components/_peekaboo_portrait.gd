@@ -48,7 +48,6 @@ func _get_available_animation_names() -> Array:
 func _update_material():
 	if has_node("%AnimatedSprite2D"):
 		var s = %AnimatedSprite2D
-		
 		"""
 		if not is_ghost:
 			s.material = null
