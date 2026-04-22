@@ -1,6 +1,7 @@
-[gd_scene load_steps=135 format=3 uid="uid://ca8vvptjr324n"]
+[gd_scene load_steps=137 format=3 uid="uid://ca8vvptjr324n"]
 
 [ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/components/_peekaboo_portrait.gd" id="1_d26c4"]
+[ext_resource type="Shader" uid="uid://jqr173jg6m8y" path="res://scenes/peekaboo/shaders/_peekaboo_shader_evaporate.gdshader" id="2_rm60n"]
 [ext_resource type="Texture2D" uid="uid://bhy8mkqo4vdq" path="res://assets/rpgmaker/mv/characters/Evil.png" id="3_0iwj8"]
 [ext_resource type="Texture2D" uid="uid://ddqq7cd7mui6k" path="res://assets/peekaboo/hood.png" id="3_hqufs"]
 [ext_resource type="Texture2D" uid="uid://cbynwx8akyvtk" path="res://assets/peekaboo/Peeka-Sheet.png" id="4_nh0p8"]
@@ -111,6 +112,15 @@ _data = {
 &"move_right": SubResource("Animation_8wpup"),
 &"move_up": SubResource("Animation_b4mb6")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uk5rb"]
+resource_local_to_scene = true
+shader = ExtResource("2_rm60n")
+shader_parameter/evaporate_progress = 0.0
+shader_parameter/edge_color = Color(0.6, 0.9, 1, 1)
+shader_parameter/edge_width = 0.08
+shader_parameter/noise_scale = 6.0
+shader_parameter/rise_speed = 1.2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_waupg"]
 atlas = ExtResource("3_hqufs")
@@ -1006,6 +1016,7 @@ animations = [{
 }]
 
 [node name="_Peekaboo_Portrait" type="Node2D"]
+scale = Vector2(10, 10)
 script = ExtResource("1_d26c4")
 sprite = "black"
 metadata/_custom_type_script = "uid://7bue6k2pdo5t"
@@ -1015,12 +1026,12 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_8wpup")
 }
-autoplay = "move_down"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 light_mask = 0
 visibility_layer = 2
 texture_filter = 1
+material = SubResource("ShaderMaterial_uk5rb")
 sprite_frames = SubResource("SpriteFrames_l6o0d")
 animation = &"black"

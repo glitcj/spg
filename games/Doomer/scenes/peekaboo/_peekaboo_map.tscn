@@ -11208,6 +11208,38 @@ sprite = "priest"
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
+[node name="_npc_5_1" type="Node2D" parent="."]
+position = Vector2(-2159.784, -4879.5117)
+script = ExtResource("17_ofync")
+
+[node name="_peekaboo_common_script_talker_1_1" type="Node" parent="_npc_5_1"]
+script = ExtResource("18_f88mx")
+messages = Array[String](["Congratulation.", "You neither won or lost.", "You, ended."])
+interrupt_player = true
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_5_1"]
+script = ExtResource("15_rp1s8")
+map_position = Vector2i(-14, -31)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_5_1"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_5_1/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="_Peekaboo_Portrait" parent="_npc_5_1/RigidBody2D" instance=ExtResource("16_66okp")]
+scale = Vector2(4, 4)
+sprite = "priest"
+
+[node name="Area2D" type="Area2D" parent="_npc_5_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_5_1/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_r103f")
+
 [node name="_npc_4_2" type="Node2D" parent="."]
 position = Vector2(2320.768, -5359.464)
 script = ExtResource("17_ofync")

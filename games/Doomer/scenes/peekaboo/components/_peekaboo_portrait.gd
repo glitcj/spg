@@ -8,10 +8,13 @@ var sprite : String:
 		if has_node("%AnimatedSprite2D"):
 			%AnimatedSprite2D.animation = sprite
 		
+
+"""
 @export var is_ghost = false:
 	set(v):
 		is_ghost = v
 		_update_material()
+"""
 
 @onready var animation_player : AnimationPlayer = %AnimationPlayer as AnimationPlayer
 
@@ -45,12 +48,20 @@ func _get_available_animation_names() -> Array:
 func _update_material():
 	if has_node("%AnimatedSprite2D"):
 		var s = %AnimatedSprite2D
+		
+		"""
 		if not is_ghost:
 			s.material = null
 			s.light_mask = 0
+		"""
 
 func _ready() -> void:
-	_update_material()
+	# _update_material()
+	var tween = create_tween()
+	tween.tween_method(
+		func(v): $AnimatedSprite2D.material.set_shader_parameter("evaporate_progress", v),
+		0.0, 1.0, 2.0  # duration in seconds
+	)
 
 # Animation helpers
 func face_down(): %AnimationPlayer.play("move_down")
