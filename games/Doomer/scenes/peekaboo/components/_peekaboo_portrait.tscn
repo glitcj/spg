@@ -3454,7 +3454,6 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_8wpup")
 }
-autoplay = "move_down"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
