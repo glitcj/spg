@@ -7,14 +7,29 @@ var sprite : String:
 		sprite = v
 		if has_node("%AnimatedSprite2D"):
 			%AnimatedSprite2D.animation = sprite
-		
 
-"""
-@export var is_ghost = false:
+
+@export var _frame := 0:
 	set(v):
-		is_ghost = v
-		_update_material()
-"""
+		$AnimatedSprite2D.frame = v
+		_frame = v
+
+@export_enum("ghost", "evaporate", "highlight") var matter: String = "highlight":
+	set(v):
+		if v == "highlight":
+			var _material = ShaderMaterial.new() as ShaderMaterial
+			_material.shader = load("res://scenes/peekaboo/shaders/_peekaboo_shader_highlight.gdshader")
+			%AnimatedSprite2D.material = _material
+		if v == "evaporate":
+			var _material = ShaderMaterial.new() as ShaderMaterial
+			_material.shader = load("res://scenes/peekaboo/shaders/_peekaboo_shader_evaporate.gdshader")
+			%AnimatedSprite2D.material = _material
+		if v == "ghost":
+			var _material = ShaderMaterial.new() as ShaderMaterial
+			_material.shader = load("res://scenes/peekaboo/shaders/_peekaboo_shader_ghost.gdshader")
+			%AnimatedSprite2D.material = _material
+		matter = v
+
 
 @onready var animation_player : AnimationPlayer = %AnimationPlayer as AnimationPlayer
 
@@ -45,21 +60,21 @@ func _get_available_animation_names() -> Array:
 	
 	return ["None"] # Fallback if node isn't found
 
-func _update_material():
-	if has_node("%AnimatedSprite2D"):
-		var s = %AnimatedSprite2D
-		"""
-		if not is_ghost:
-			s.material = null
-			s.light_mask = 0
-		"""
+
 
 func _ready() -> void:
-	# _update_material()
+	if matter == "evaporate":
+		_tween_material()
+
+func _tween_material():
 	var tween = create_tween()
 	tween.tween_method(
 		func(v): $AnimatedSprite2D.material.set_shader_parameter("evaporate_progress", v),
-		0.0, 1.0, 2.0  # duration in seconds
+		0.0, 1.0, 20.0  # duration in seconds
+	)
+	tween.parallel().tween_method(
+		func(v): $Sprite2D.material.set_shader_parameter("evaporate_progress", v),
+		0.0, 1.0, 20.0  # duration in seconds
 	)
 
 # Animation helpers

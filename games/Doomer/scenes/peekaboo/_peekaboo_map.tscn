@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=74 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_38inc"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_05s22"]
@@ -10963,6 +10963,15 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
 
+[sub_resource type="GDScript" id="GDScript_38inc"]
+script/source = "extends _Peekaboo_Script
+
+func _on_action_within_area():
+	await get_lambdas().show_messages([\"Congratulation.\", \"You neither won or lost.\", \"You ended.\"])
+	await get_tree().create_timer(.5).timeout
+	get_tree().quit()
+"
+
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
 script/source = "extends _Peekaboo_Script
 
@@ -11118,7 +11127,7 @@ y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, 25)
 scale = Vector2(3.333, 3.333)
-tile_map_data = PackedByteArray("AAAvAJv/AAAEAAkAAAAOAPb/AAAGAAgAAADx/+T/AAAEAAcAAADy/+T/AAAFAAcAAADz/+T/AAAGAAcAAADx/+X/AAAEAAcAAADy/+X/AAAFAAcAAADz/+X/AAAGAAcAAAA=")
+tile_map_data = PackedByteArray("AAAvAJv/AAAEAAkAAADx/+T/AAAEAAcAAADy/+T/AAAFAAcAAADz/+T/AAAGAAcAAADx/+X/AAAEAAcAAADy/+X/AAAFAAcAAADz/+X/AAAGAAcAAAA=")
 tile_set = SubResource("TileSet_38inc")
 
 [node name="L1 Dungeon A5" type="TileMapLayer" parent="Tilemap"]
@@ -11127,7 +11136,7 @@ y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, 25)
 scale = Vector2(3.333, 3.333)
-tile_map_data = PackedByteArray("AAAvAJv/AAAEAAkAAAAOAPb/AAAGAAgAAADr/+D/AAAAAAAAAADr/+H/AAAAAAAAAADr/+L/AAAAAAAAAADr/+P/AAAAAAAAAADr/+T/AAAAAAAAAADr/+X/AAAAAAAAAADr/+b/AAAAAAAAAADp/9v/AAAAAAAAAADp/9z/AAAAAAAAAADp/93/AAAAAAAAAADp/97/AAAAAAAAAADp/9//AAAAAAAAAADp/+D/AAAAAAAAAADp/+H/AAAAAAAAAADp/+L/AAAAAAAAAADp/+P/AAAAAAAAAADp/+T/AAAAAAAAAADp/+X/AAAAAAAAAADp/+b/AAAAAAAAAADp/+f/AAAAAAAAAADp/+j/AAAAAAAAAADp/+n/AAAAAAAAAADq/9v/AAAAAAAAAADq/9z/AAAAAAAAAADq/93/AAAAAAAAAADq/97/AAAAAAAAAADq/9//AAAAAAAAAADq/+D/AAAAAAAAAADq/+H/AAAAAAAAAADq/+L/AAAAAAAAAADq/+P/AAAAAAAAAADq/+T/AAAAAAAAAADq/+X/AAAAAAAAAADq/+b/AAAAAAAAAADq/+f/AAAAAAAAAADq/+j/AAAAAAAAAADq/+n/AAAAAAAAAADr/9v/AAAAAAAAAADr/9z/AAAAAAAAAADr/93/AAAAAAAAAADr/97/AAAAAAAAAADr/9//AAAAAAAAAADr/+f/AAAAAAAAAADr/+j/AAAAAAAAAADr/+n/AAAAAAAAAADs/9v/AAAAAAAAAADs/9z/AAAAAAAAAADs/93/AAAAAAAAAADs/97/AAAAAAAAAADs/9//AAAAAAAAAADs/+D/AAAAAAAAAADs/+H/AAAAAAAAAADs/+L/AAAAAAAAAADs/+P/AAAAAAAAAADs/+T/AAAAAAAAAADs/+X/AAAAAAAAAADs/+b/AAAAAAAAAADs/+f/AAAAAAAAAADs/+j/AAAAAAAAAADs/+n/AAAAAAAAAADt/9v/AAAAAAAAAADt/9z/AAAAAAAAAADt/93/AAAAAAAAAADt/97/AAAAAAAAAADt/9//AAAAAAAAAADt/+D/AAAAAAAAAADt/+H/AAAAAAAAAADt/+L/AAAAAAAAAADt/+P/AAAAAAAAAADt/+T/AAAAAAAAAADt/+X/AAAAAAAAAADt/+b/AAAAAAAAAADt/+f/AAAAAAAAAADt/+j/AAAAAAAAAADt/+n/AAAAAAAAAADu/9v/AAAAAAAAAADu/9z/AAAAAAAAAADu/93/AAAAAAAAAADu/97/AAAAAAAAAADu/9//AAAAAAAAAADu/+D/AAAAAAAAAADu/+H/AAAAAAAAAADu/+L/AAAAAAAAAADu/+P/AAAAAAAAAADu/+T/AAAAAAAAAADu/+X/AAAAAAAAAADu/+b/AAAAAAAAAADu/+f/AAAAAAAAAADu/+j/AAAAAAAAAADu/+n/AAAAAAAAAADv/9v/AAAAAAAAAADv/9z/AAAAAAAAAADv/93/AAAAAAAAAADv/97/AAAAAAAAAADv/9//AAAAAAAAAADv/+D/AAAAAAAAAADv/+H/AAAAAAAAAADv/+L/AAAAAAAAAADv/+P/AAAAAAAAAADv/+T/AAAAAAAAAADv/+X/AAAAAAAAAADv/+b/AAAAAAAAAADv/+f/AAAAAAAAAADv/+j/AAAAAAAAAADv/+n/AAAAAAAAAADw/9v/AAAAAAAAAADw/9z/AAAAAAAAAADx/9v/AAAAAAAAAADx/9z/AAAAAAAAAADy/9v/AAAAAAAAAADy/9z/AAAAAAAAAADz/9v/AAAAAAAAAADz/9z/AAAAAAAAAAD0/9v/AAAAAAAAAAD0/9z/AAAAAAAAAAD1/9v/AAAAAAAAAAD1/9z/AAAAAAAAAAD2/9v/AAAAAAAAAAD2/9z/AAAAAAAAAAD3/9v/AAAAAAAAAAD3/9z/AAAAAAAAAAD4/9v/AAAAAAAAAAD4/9z/AAAAAAAAAAD5/9v/AAAAAAAAAAD5/9z/AAAAAAAAAAD6/9v/AAAAAAAAAAD6/9z/AAAAAAAAAAD7/9v/AAAAAAAAAAD7/9z/AAAAAAAAAAD1/93/AAAAAAAAAAD1/97/AAAAAAAAAAD1/9//AAAAAAAAAAD1/+D/AAAAAAAAAAD1/+H/AAAAAAAAAAD1/+L/AAAAAAAAAAD1/+P/AAAAAAAAAAD1/+T/AAAAAAAAAAD1/+X/AAAAAAAAAAD1/+b/AAAAAAAAAAD1/+f/AAAAAAAAAAD1/+j/AAAAAAAAAAD2/93/AAAAAAAAAAD2/97/AAAAAAAAAAD2/9//AAAAAAAAAAD2/+D/AAAAAAAAAAD2/+H/AAAAAAAAAAD2/+L/AAAAAAAAAAD2/+P/AAAAAAAAAAD2/+T/AAAAAAAAAAD2/+X/AAAAAAAAAAD2/+b/AAAAAAAAAAD2/+f/AAAAAAAAAAD2/+j/AAAAAAAAAAD3/93/AAAAAAAAAAD3/97/AAAAAAAAAAD3/9//AAAAAAAAAAD3/+D/AAAAAAAAAAD3/+H/AAAAAAAAAAD3/+L/AAAAAAAAAAD3/+P/AAAAAAAAAAD3/+T/AAAAAAAAAAD3/+X/AAAAAAAAAAD3/+b/AAAAAAAAAAD3/+f/AAAAAAAAAAD3/+j/AAAAAAAAAAD4/93/AAAAAAAAAAD4/97/AAAAAAAAAAD4/9//AAAAAAAAAAD4/+D/AAAAAAAAAAD4/+H/AAAAAAAAAAD4/+L/AAAAAAAAAAD4/+P/AAAAAAAAAAD4/+T/AAAAAAAAAAD4/+X/AAAAAAAAAAD4/+b/AAAAAAAAAAD4/+f/AAAAAAAAAAD4/+j/AAAAAAAAAAD5/93/AAAAAAAAAAD5/97/AAAAAAAAAAD5/9//AAAAAAAAAAD5/+D/AAAAAAAAAAD5/+H/AAAAAAAAAAD5/+L/AAAAAAAAAAD5/+P/AAAAAAAAAAD5/+T/AAAAAAAAAAD5/+X/AAAAAAAAAAD5/+b/AAAAAAAAAAD5/+f/AAAAAAAAAAD5/+j/AAAAAAAAAAD6/93/AAAAAAAAAAD6/97/AAAAAAAAAAD6/9//AAAAAAAAAAD6/+D/AAAAAAAAAAD6/+H/AAAAAAAAAAD6/+L/AAAAAAAAAAD6/+P/AAAAAAAAAAD6/+T/AAAAAAAAAAD6/+X/AAAAAAAAAAD6/+b/AAAAAAAAAAD6/+f/AAAAAAAAAAD6/+j/AAAAAAAAAAD7/93/AAAAAAAAAAD7/97/AAAAAAAAAAD7/9//AAAAAAAAAAD7/+D/AAAAAAAAAAD7/+H/AAAAAAAAAAD7/+L/AAAAAAAAAAD7/+P/AAAAAAAAAAD7/+T/AAAAAAAAAAD7/+X/AAAAAAAAAAD7/+b/AAAAAAAAAAD7/+f/AAAAAAAAAAD7/+j/AAAAAAAAAAD8/9v/AAAAAAAAAAD8/9z/AAAAAAAAAAD8/93/AAAAAAAAAAD8/97/AAAAAAAAAAD8/9//AAAAAAAAAAD8/+D/AAAAAAAAAAD8/+H/AAAAAAAAAAD8/+L/AAAAAAAAAAD8/+P/AAAAAAAAAAD8/+T/AAAAAAAAAAD8/+X/AAAAAAAAAAD8/+b/AAAAAAAAAAD8/+f/AAAAAAAAAAD8/+j/AAAAAAAAAADp/+r/AAAAAAAAAADp/+v/AAAAAAAAAADp/+z/AAAAAAAAAADp/+3/AAAAAAAAAADp/+7/AAAAAAAAAADq/+r/AAAAAAAAAADq/+v/AAAAAAAAAADq/+z/AAAAAAAAAADq/+3/AAAAAAAAAADq/+7/AAAAAAAAAADr/+r/AAAAAAAAAADr/+v/AAAAAAAAAADr/+z/AAAAAAAAAADr/+3/AAAAAAAAAADr/+7/AAAAAAAAAADs/+r/AAAAAAAAAADs/+v/AAAAAAAAAADs/+z/AAAAAAAAAADs/+3/AAAAAAAAAADs/+7/AAAAAAAAAADt/+r/AAAAAAAAAADt/+v/AAAAAAAAAADt/+z/AAAAAAAAAADt/+3/AAAAAAAAAADt/+7/AAAAAAAAAADu/+r/AAAAAAAAAADu/+v/AAAAAAAAAADu/+z/AAAAAAAAAADu/+3/AAAAAAAAAADu/+7/AAAAAAAAAADv/+r/AAAAAAAAAADv/+v/AAAAAAAAAADv/+z/AAAAAAAAAADv/+3/AAAAAAAAAADv/+7/AAAAAAAAAADw/+n/AAAAAAAAAADw/+r/AAAAAAAAAADw/+v/AAAAAAAAAADw/+z/AAAAAAAAAADw/+3/AAAAAAAAAADw/+7/AAAAAAAAAADx/+r/AAAAAAAAAADx/+v/AAAAAAAAAADx/+z/AAAAAAAAAADx/+3/AAAAAAAAAADx/+7/AAAAAAAAAADy/+r/AAAAAAAAAADy/+v/AAAAAAAAAADy/+z/AAAAAAAAAADy/+3/AAAAAAAAAADy/+7/AAAAAAAAAADz/+r/AAAAAAAAAADz/+v/AAAAAAAAAADz/+z/AAAAAAAAAADz/+3/AAAAAAAAAADz/+7/AAAAAAAAAAD0/+r/AAAAAAAAAAD0/+v/AAAAAAAAAAD0/+z/AAAAAAAAAAD0/+3/AAAAAAAAAAD0/+7/AAAAAAAAAAD1/+r/AAAAAAAAAAD1/+v/AAAAAAAAAAD1/+z/AAAAAAAAAAD1/+3/AAAAAAAAAAD1/+7/AAAAAAAAAAD2/+r/AAAAAAAAAAD2/+v/AAAAAAAAAAD2/+z/AAAAAAAAAAD2/+3/AAAAAAAAAAD2/+7/AAAAAAAAAAD3/+r/AAAAAAAAAAD3/+v/AAAAAAAAAAD3/+z/AAAAAAAAAAD3/+3/AAAAAAAAAAD3/+7/AAAAAAAAAAD4/+r/AAAAAAAAAAD4/+v/AAAAAAAAAAD4/+z/AAAAAAAAAAD4/+3/AAAAAAAAAAD4/+7/AAAAAAAAAAD5/+r/AAAAAAAAAAD5/+v/AAAAAAAAAAD5/+z/AAAAAAAAAAD5/+3/AAAAAAAAAAD5/+7/AAAAAAAAAAD6/+r/AAAAAAAAAAD6/+v/AAAAAAAAAAD6/+z/AAAAAAAAAAD6/+3/AAAAAAAAAAD6/+7/AAAAAAAAAAD7/+r/AAAAAAAAAAD7/+v/AAAAAAAAAAD7/+z/AAAAAAAAAAD7/+3/AAAAAAAAAAD7/+7/AAAAAAAAAAD8/+r/AAAAAAAAAAD8/+v/AAAAAAAAAAD8/+z/AAAAAAAAAAD8/+3/AAAAAAAAAAD8/+7/AAAAAAAAAAD0/+n/AAAAAAAAAAD1/+n/AAAAAAAAAAD2/+n/AAAAAAAAAAD3/+n/AAAAAAAAAAD4/+n/AAAAAAAAAAD5/+n/AAAAAAAAAAD6/+n/AAAAAAAAAAD7/+n/AAAAAAAAAAD8/+n/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAvAJv/AAAEAAkAAAAOAPb/AAAAAAEAAADr/+D/AAAAAAAAAADr/+H/AAAAAAAAAADr/+L/AAAAAAAAAADr/+P/AAAAAAAAAADr/+T/AAAAAAAAAADr/+X/AAAAAAAAAADr/+b/AAAAAAAAAADp/9v/AAAAAAAAAADp/9z/AAAAAAAAAADp/93/AAAAAAAAAADp/97/AAAAAAAAAADp/9//AAAAAAAAAADp/+D/AAAAAAAAAADp/+H/AAAAAAAAAADp/+L/AAAAAAAAAADp/+P/AAAAAAAAAADp/+T/AAAAAAAAAADp/+X/AAAAAAAAAADp/+b/AAAAAAAAAADp/+f/AAAAAAAAAADp/+j/AAAAAAAAAADp/+n/AAAAAAAAAADq/9v/AAAAAAAAAADq/9z/AAAAAAAAAADq/93/AAAAAAAAAADq/97/AAAAAAAAAADq/9//AAAAAAAAAADq/+D/AAAAAAAAAADq/+H/AAAAAAAAAADq/+L/AAAAAAAAAADq/+P/AAAAAAAAAADq/+T/AAAAAAAAAADq/+X/AAAAAAAAAADq/+b/AAAAAAAAAADq/+f/AAAAAAAAAADq/+j/AAAAAAAAAADq/+n/AAAAAAAAAADr/9v/AAAAAAAAAADr/9z/AAAAAAAAAADr/93/AAAAAAAAAADr/97/AAAAAAAAAADr/9//AAAAAAAAAADr/+f/AAAAAAAAAADr/+j/AAAAAAAAAADr/+n/AAAAAAAAAADs/9v/AAAAAAAAAADs/9z/AAAAAAAAAADs/93/AAAAAAAAAADs/97/AAAAAAAAAADs/9//AAAAAAAAAADs/+D/AAAAAAAAAADs/+H/AAAAAAAAAADs/+L/AAAAAAAAAADs/+P/AAAAAAAAAADs/+T/AAAAAAAAAADs/+X/AAAAAAAAAADs/+b/AAAAAAAAAADs/+f/AAAAAAAAAADs/+j/AAAAAAAAAADs/+n/AAAAAAAAAADt/9v/AAAAAAAAAADt/9z/AAAAAAAAAADt/93/AAAAAAAAAADt/97/AAAAAAAAAADt/9//AAAAAAAAAADt/+D/AAAAAAAAAADt/+H/AAAAAAAAAADt/+L/AAAAAAAAAADt/+P/AAAAAAAAAADt/+T/AAAAAAAAAADt/+X/AAAAAAAAAADt/+b/AAAAAAAAAADt/+f/AAAAAAAAAADt/+j/AAAAAAAAAADt/+n/AAAAAAAAAADu/9v/AAAAAAAAAADu/9z/AAAAAAAAAADu/93/AAAAAAAAAADu/97/AAAAAAAAAADu/9//AAAAAAAAAADu/+D/AAAAAAAAAADu/+H/AAAAAAAAAADu/+L/AAAAAAAAAADu/+P/AAAAAAAAAADu/+T/AAAAAAAAAADu/+X/AAAAAAAAAADu/+b/AAAAAAAAAADu/+f/AAAAAAAAAADu/+j/AAAAAAAAAADu/+n/AAAAAAAAAADv/9v/AAAAAAAAAADv/9z/AAAAAAAAAADv/93/AAAAAAAAAADv/97/AAAAAAAAAADv/9//AAAAAAAAAADv/+D/AAAAAAAAAADv/+H/AAAAAAAAAADv/+L/AAAAAAAAAADv/+P/AAAAAAAAAADv/+T/AAAAAAAAAADv/+X/AAAAAAAAAADv/+b/AAAAAAAAAADv/+f/AAAAAAAAAADv/+j/AAAAAAAAAADv/+n/AAAAAAAAAADw/9v/AAAAAAAAAADw/9z/AAAAAAAAAADx/9v/AAAAAAAAAADx/9z/AAAAAAAAAADy/9v/AAAAAAAAAADy/9z/AAAAAAAAAADz/9v/AAAAAAAAAADz/9z/AAAAAAAAAAD0/9v/AAAAAAAAAAD0/9z/AAAAAAAAAAD1/9v/AAAAAAAAAAD1/9z/AAAAAAAAAAD2/9v/AAAAAAAAAAD2/9z/AAAAAAAAAAD3/9v/AAAAAAAAAAD3/9z/AAAAAAAAAAD4/9v/AAAAAAAAAAD4/9z/AAAAAAAAAAD5/9v/AAAAAAAAAAD5/9z/AAAAAAAAAAD6/9v/AAAAAAAAAAD6/9z/AAAAAAAAAAD7/9v/AAAAAAAAAAD7/9z/AAAAAAAAAAD1/93/AAAAAAAAAAD1/97/AAAAAAAAAAD1/9//AAAAAAAAAAD1/+D/AAAAAAAAAAD1/+H/AAAAAAAAAAD1/+L/AAAAAAAAAAD1/+P/AAAAAAAAAAD1/+T/AAAAAAAAAAD1/+X/AAAAAAAAAAD1/+b/AAAAAAAAAAD1/+f/AAAAAAAAAAD1/+j/AAAAAAAAAAD2/93/AAAAAAAAAAD2/97/AAAAAAAAAAD2/9//AAAAAAAAAAD2/+D/AAAAAAAAAAD2/+H/AAAAAAAAAAD2/+L/AAAAAAAAAAD2/+P/AAAAAAAAAAD2/+T/AAAAAAAAAAD2/+X/AAAAAAAAAAD2/+b/AAAAAAAAAAD2/+f/AAAAAAAAAAD2/+j/AAAAAAAAAAD3/93/AAAAAAAAAAD3/97/AAAAAAAAAAD3/9//AAAAAAAAAAD3/+D/AAAAAAAAAAD3/+H/AAAAAAAAAAD3/+L/AAAAAAAAAAD3/+P/AAAAAAAAAAD3/+T/AAAAAAAAAAD3/+X/AAAAAAAAAAD3/+b/AAAAAAAAAAD3/+f/AAAAAAAAAAD3/+j/AAAAAAAAAAD4/93/AAAAAAAAAAD4/97/AAAAAAAAAAD4/9//AAAAAAAAAAD4/+D/AAAAAAAAAAD4/+H/AAAAAAAAAAD4/+L/AAAAAAAAAAD4/+P/AAAAAAAAAAD4/+T/AAAAAAAAAAD4/+X/AAAAAAAAAAD4/+b/AAAAAAAAAAD4/+f/AAAAAAAAAAD4/+j/AAAAAAAAAAD5/93/AAAAAAAAAAD5/97/AAAAAAAAAAD5/9//AAAAAAAAAAD5/+D/AAAAAAAAAAD5/+H/AAAAAAAAAAD5/+L/AAAAAAAAAAD5/+P/AAAAAAAAAAD5/+T/AAAAAAAAAAD5/+X/AAAAAAAAAAD5/+b/AAAAAAAAAAD5/+f/AAAAAAAAAAD5/+j/AAAAAAAAAAD6/93/AAAAAAAAAAD6/97/AAAAAAAAAAD6/9//AAAAAAAAAAD6/+D/AAAAAAAAAAD6/+H/AAAAAAAAAAD6/+L/AAAAAAAAAAD6/+P/AAAAAAAAAAD6/+T/AAAAAAAAAAD6/+X/AAAAAAAAAAD6/+b/AAAAAAAAAAD6/+f/AAAAAAAAAAD6/+j/AAAAAAAAAAD7/93/AAAAAAAAAAD7/97/AAAAAAAAAAD7/9//AAAAAAAAAAD7/+D/AAAAAAAAAAD7/+H/AAAAAAAAAAD7/+L/AAAAAAAAAAD7/+P/AAAAAAAAAAD7/+T/AAAAAAAAAAD7/+X/AAAAAAAAAAD7/+b/AAAAAAAAAAD7/+f/AAAAAAAAAAD7/+j/AAAAAAAAAAD8/9v/AAAAAAAAAAD8/9z/AAAAAAAAAAD8/93/AAAAAAAAAAD8/97/AAAAAAAAAAD8/9//AAAAAAAAAAD8/+D/AAAAAAAAAAD8/+H/AAAAAAAAAAD8/+L/AAAAAAAAAAD8/+P/AAAAAAAAAAD8/+T/AAAAAAAAAAD8/+X/AAAAAAAAAAD8/+b/AAAAAAAAAAD8/+f/AAAAAAAAAAD8/+j/AAAAAAAAAADp/+r/AAAAAAAAAADp/+v/AAAAAAAAAADp/+z/AAAAAAAAAADp/+3/AAAAAAAAAADp/+7/AAAAAAAAAADq/+r/AAAAAAAAAADq/+v/AAAAAAAAAADq/+z/AAAAAAAAAADq/+3/AAAAAAAAAADq/+7/AAAAAAAAAADr/+r/AAAAAAAAAADr/+v/AAAAAAAAAADr/+z/AAAAAAAAAADr/+3/AAAAAAAAAADr/+7/AAAAAAAAAADs/+r/AAAAAAAAAADs/+v/AAAAAAAAAADs/+z/AAAAAAAAAADs/+3/AAAAAAAAAADs/+7/AAAAAAAAAADt/+r/AAAAAAAAAADt/+v/AAAAAAAAAADt/+z/AAAAAAAAAADt/+3/AAAAAAAAAADt/+7/AAAAAAAAAADu/+r/AAAAAAAAAADu/+v/AAAAAAAAAADu/+z/AAAAAAAAAADu/+3/AAAAAAAAAADu/+7/AAAAAAAAAADv/+r/AAAAAAAAAADv/+v/AAAAAAAAAADv/+z/AAAAAAAAAADv/+3/AAAAAAAAAADv/+7/AAAAAAAAAADw/+n/AAAAAAAAAADw/+r/AAAAAAAAAADw/+v/AAAAAAAAAADw/+z/AAAAAAAAAADw/+3/AAAAAAAAAADw/+7/AAAAAAAAAADx/+r/AAAAAAAAAADx/+v/AAAAAAAAAADx/+z/AAAAAAAAAADx/+3/AAAAAAAAAADx/+7/AAAAAAAAAADy/+r/AAAAAAAAAADy/+v/AAAAAAAAAADy/+z/AAAAAAAAAADy/+3/AAAAAAAAAADy/+7/AAAAAAAAAADz/+r/AAAAAAAAAADz/+v/AAAAAAAAAADz/+z/AAAAAAAAAADz/+3/AAAAAAAAAADz/+7/AAAAAAAAAAD0/+r/AAAAAAAAAAD0/+v/AAAAAAAAAAD0/+z/AAAAAAAAAAD0/+3/AAAAAAAAAAD0/+7/AAAAAAAAAAD1/+r/AAAAAAAAAAD1/+v/AAAAAAAAAAD1/+z/AAAAAAAAAAD1/+3/AAAAAAAAAAD1/+7/AAAAAAAAAAD2/+r/AAAAAAAAAAD2/+v/AAAAAAAAAAD2/+z/AAAAAAAAAAD2/+3/AAAAAAAAAAD2/+7/AAAAAAAAAAD3/+r/AAAAAAAAAAD3/+v/AAAAAAAAAAD3/+z/AAAAAAAAAAD3/+3/AAAAAAAAAAD3/+7/AAAAAAAAAAD4/+r/AAAAAAAAAAD4/+v/AAAAAAAAAAD4/+z/AAAAAAAAAAD4/+3/AAAAAAAAAAD4/+7/AAAAAAAAAAD5/+r/AAAAAAAAAAD5/+v/AAAAAAAAAAD5/+z/AAAAAAAAAAD5/+3/AAAAAAAAAAD5/+7/AAAAAAAAAAD6/+r/AAAAAAAAAAD6/+v/AAAAAAAAAAD6/+z/AAAAAAAAAAD6/+3/AAAAAAAAAAD6/+7/AAAAAAAAAAD7/+r/AAAAAAAAAAD7/+v/AAAAAAAAAAD7/+z/AAAAAAAAAAD7/+3/AAAAAAAAAAD7/+7/AAAAAAAAAAD8/+r/AAAAAAAAAAD8/+v/AAAAAAAAAAD8/+z/AAAAAAAAAAD8/+3/AAAAAAAAAAD8/+7/AAAAAAAAAAD0/+n/AAAAAAAAAAD1/+n/AAAAAAAAAAD2/+n/AAAAAAAAAAD3/+n/AAAAAAAAAAD4/+n/AAAAAAAAAAD5/+n/AAAAAAAAAAD6/+n/AAAAAAAAAAD7/+n/AAAAAAAAAAD8/+n/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_38inc")
 
 [node name="L0 RM_Dungeon_B" type="TileMapLayer" parent="Tilemap"]
@@ -11142,13 +11151,13 @@ tile_set = SubResource("TileSet_yx7f7")
 unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
-position = Vector2(79.992, 559.944)
+position = Vector2(79.992, -719.928)
 script = ExtResource("14_apl3n")
 
 [node name="_Peekaboo_Mover" type="Node" parent="Player"]
 script = ExtResource("15_rp1s8")
 speed = 5.0
-map_position = Vector2i(0, 3)
+map_position = Vector2i(0, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -11174,10 +11183,11 @@ texture = SubResource("GradientTexture2D_6de6d")
 y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(8, 8)
+_frame = 0
 sprite = "player"
 
 [node name="_npc_1_1" type="Node2D" parent="."]
-position = Vector2(80.992, 239.976)
+position = Vector2(79.992, 239.976)
 script = ExtResource("17_ofync")
 
 [node name="_peekaboo_common_script_talker_1_1" type="Node" parent="_npc_1_1"]
@@ -11200,6 +11210,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "priest"
 
 [node name="Area2D" type="Area2D" parent="_npc_1_1"]
@@ -11212,9 +11223,8 @@ shape = SubResource("RectangleShape2D_r103f")
 position = Vector2(-2159.784, -4879.5117)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker_1_1" type="Node" parent="_npc_5_1"]
-script = ExtResource("18_f88mx")
-messages = Array[String](["Congratulation.", "You neither won or lost.", "You, ended."])
+[node name="_Peekaboo_Script" type="Node" parent="_npc_5_1"]
+script = SubResource("GDScript_38inc")
 interrupt_player = true
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_5_1"]
@@ -11231,7 +11241,10 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_5_1/RigidBody2D" instance=ExtResource("16_66okp")]
+z_index = 1
+y_sort_enabled = true
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "priest"
 
 [node name="Area2D" type="Area2D" parent="_npc_5_1"]
@@ -11241,7 +11254,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
 [node name="_npc_4_2" type="Node2D" parent="."]
-position = Vector2(2320.768, -5359.464)
+position = Vector2(2319.768, -5359.464)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_npc_4_2"]
@@ -11263,6 +11276,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_4_2/RigidBody2D" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "green"
 
 [node name="Area2D" type="Area2D" parent="_npc_4_2"]
@@ -11272,7 +11286,7 @@ scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_q5qis")
 
 [node name="_npc_4_3" type="Node2D" parent="."]
-position = Vector2(2000.7999, -5359.464)
+position = Vector2(1999.7999, -5359.464)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_npc_4_3"]
@@ -11294,6 +11308,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_4_3/RigidBody2D" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "green"
 
 [node name="Area2D" type="Area2D" parent="_npc_4_3"]
@@ -11304,7 +11319,7 @@ shape = SubResource("CircleShape2D_q5qis")
 
 [node name="_npc_3_1" type="Node2D" parent="."]
 y_sort_enabled = true
-position = Vector2(1840.8159, -1359.864)
+position = Vector2(1839.8159, -1359.864)
 script = ExtResource("17_ofync")
 
 [node name="_peekaboo_common_script_talker_3_1" type="Node" parent="_npc_3_1"]
@@ -11330,6 +11345,7 @@ shape = SubResource("RectangleShape2D_cswif")
 [node name="_Peekaboo_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "red_prince"
 
 [node name="Area2D" type="Area2D" parent="_npc_3_1"]
@@ -11339,7 +11355,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_3_stuff" type="Node2D" parent="."]
-position = Vector2(2480.752, -1359.864)
+position = Vector2(2479.752, -1359.864)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_3_stuff"]
@@ -11363,7 +11379,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_4_stuff" type="Node2D" parent="."]
-position = Vector2(2320.768, -1359.864)
+position = Vector2(2319.768, -1359.864)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_npc_3_4_stuff"]
@@ -11387,7 +11403,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_2_talking_tree" type="Node2D" parent="."]
-position = Vector2(2160.784, -879.912)
+position = Vector2(2159.784, -879.912)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_3_2_talking_tree"]
@@ -11416,7 +11432,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_2ylu0")
 
 [node name="_npc_4_1_talking_tree" type="Node2D" parent="."]
-position = Vector2(2160.784, -4879.5117)
+position = Vector2(2159.784, -4879.5117)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_4_1_talking_tree"]
@@ -11445,7 +11461,7 @@ scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_eu0qy")
 
 [node name="_event_1_1" type="Node2D" parent="."]
-position = Vector2(80.992, -79.992)
+position = Vector2(79.992, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_1_1"]
@@ -11457,12 +11473,15 @@ script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Sprite2D" type="Sprite2D" parent="_event_1_1"]
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
+[node name="_Peekaboo_Portrait" parent="_event_1_1" instance=ExtResource("16_66okp")]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(5, 5)
+_frame = 165
+sprite = "system"
 
 [node name="_event_2_1" type="Node2D" parent="."]
-position = Vector2(-2158.784, -79.992)
+position = Vector2(-2159.784, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_2_1"]
@@ -11480,7 +11499,7 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_event_3_1" type="Node2D" parent="."]
-position = Vector2(2640.7358, -1359.864)
+position = Vector2(2639.7358, -1359.864)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Script" type="Node" parent="_event_3_1"]
@@ -11498,12 +11517,12 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="_enemy_2_1" type="Node2D" parent="."]
-position = Vector2(-1998.7999, 239.976)
+position = Vector2(-1839.8159, 239.976)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_1"]
 script = ExtResource("22_lgejk")
-movement = Array[Vector2i]([Vector2i(-4, 0), Vector2i(4, 0)])
+movement = Array[Vector2i]([Vector2i(-4, 0), Vector2i(0, -4), Vector2i(4, 0), Vector2i(0, 4)])
 action_range = 100.0
 
 [node name="_enemy_script_2_1" type="Node" parent="_enemy_2_1"]
@@ -11511,10 +11530,11 @@ script = SubResource("GDScript_ceddd")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_1"]
 script = ExtResource("15_rp1s8")
-map_position = Vector2i(-13, 1)
+map_position = Vector2i(-12, 1)
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "priest"
 
 [node name="Area2D" type="Area2D" parent="_enemy_2_1"]
@@ -11524,7 +11544,7 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_2" type="Node2D" parent="."]
-position = Vector2(-1998.7999, 1039.896)
+position = Vector2(-1999.7999, 1039.896)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_2"]
@@ -11542,6 +11562,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "red_prince"
 
 [node name="Area2D" type="Area2D" parent="_enemy_2_2"]
@@ -11551,7 +11572,7 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_3" type="Node2D" parent="."]
-position = Vector2(-1998.7999, 1519.848)
+position = Vector2(-1999.7999, 1519.848)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_3"]
@@ -11569,6 +11590,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("16_66okp")]
 scale = Vector2(4, 4)
+_frame = 0
 sprite = "white"
 
 [node name="Area2D" type="Area2D" parent="_enemy_2_3"]
@@ -11578,7 +11600,8 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_teleport_1_1" type="Node2D" parent="."]
-position = Vector2(-558.944, -79.992)
+visible = false
+position = Vector2(-559.944, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_1_1" type="Node" parent="_teleport_1_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -11620,7 +11643,8 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_2" type="Node2D" parent="."]
-position = Vector2(720.928, -79.992)
+visible = false
+position = Vector2(719.928, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_1_2" type="Node" parent="_teleport_1_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -11662,7 +11686,8 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_3" type="Node2D" parent="."]
-position = Vector2(-558.944, -79.992)
+visible = false
+position = Vector2(-559.944, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_1_3" type="Node" parent="_teleport_1_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -11704,7 +11729,8 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_2_1" type="Node2D" parent="."]
-position = Vector2(-1518.848, -79.992)
+visible = false
+position = Vector2(-1519.848, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_2_1" type="Node" parent="_teleport_2_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -11746,7 +11772,8 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_3_1" type="Node2D" parent="."]
-position = Vector2(1520.848, -79.992)
+visible = false
+position = Vector2(1519.848, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_3_1" type="Node" parent="_teleport_3_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -11788,7 +11815,8 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_3_2" type="Node2D" parent="."]
-position = Vector2(2160.784, -2159.784)
+visible = false
+position = Vector2(2159.784, -2159.784)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_3_2" type="Node" parent="_teleport_3_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -11830,7 +11858,8 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_4_1" type="Node2D" parent="."]
-position = Vector2(2160.784, -3119.688)
+visible = false
+position = Vector2(2159.784, -3119.688)
 script = ExtResource("17_ofync")
 
 [node name="_common_script_teleport_4_1" type="Node" parent="_teleport_4_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -11873,7 +11902,8 @@ shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_camera_position_1_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(80.992, -79.992)
+visible = false
+position = Vector2(79.992, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_1_1"]
@@ -11912,7 +11942,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_camera_position_3_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(2160.784, -879.912)
+position = Vector2(2159.784, -879.912)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_3_1"]
@@ -11945,7 +11975,8 @@ horizontal_alignment = 1
 
 [node name="_camera_position_4_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2160.784, -4559.544)
+visible = false
+position = Vector2(2159.784, -4559.544)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_4_1"]
@@ -11978,7 +12009,8 @@ horizontal_alignment = 1
 
 [node name="_camera_position_5_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-2158.784, -4559.544)
+visible = false
+position = Vector2(-2159.784, -4559.544)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_5_1"]
@@ -12011,7 +12043,8 @@ horizontal_alignment = 1
 
 [node name="_camera_position_2_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-2158.784, 559.944)
+visible = false
+position = Vector2(-2159.784, 559.944)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_camera_position_2_1"]
@@ -12045,7 +12078,7 @@ horizontal_alignment = 1
 [node name="_player_position_1_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-398.96, -79.992)
+position = Vector2(-399.96, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_1"]
@@ -12079,7 +12112,7 @@ horizontal_alignment = 1
 [node name="_player_position_1_2" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(560.944, -79.992)
+position = Vector2(559.944, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_2"]
@@ -12112,7 +12145,8 @@ horizontal_alignment = 1
 
 [node name="_player_position_2_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-1678.832, -79.992)
+visible = false
+position = Vector2(-1679.832, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_2_1"]
@@ -12145,7 +12179,8 @@ horizontal_alignment = 1
 
 [node name="_player_position_3_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1680.832, -79.992)
+visible = false
+position = Vector2(1679.832, -79.992)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_1"]
@@ -12178,7 +12213,8 @@ horizontal_alignment = 1
 
 [node name="_player_position_3_2" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2160.784, -1999.7999)
+visible = false
+position = Vector2(2159.784, -1999.7999)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_2"]
@@ -12211,7 +12247,8 @@ horizontal_alignment = 1
 
 [node name="_player_position_4_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2160.784, -3279.6719)
+visible = false
+position = Vector2(2159.784, -3279.6719)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_1"]
@@ -12244,7 +12281,8 @@ horizontal_alignment = 1
 
 [node name="_player_position_4_2" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2160.784, -4719.528)
+visible = false
+position = Vector2(2159.784, -4719.528)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_2"]
@@ -12277,7 +12315,8 @@ horizontal_alignment = 1
 
 [node name="_player_position_5_1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-2158.784, -4079.592)
+visible = false
+position = Vector2(-2159.784, -4079.592)
 script = ExtResource("17_ofync")
 
 [node name="_Peekaboo_Mover" type="Node" parent="_player_position_5_1"]
@@ -12309,7 +12348,7 @@ label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
 [node name="_Peekaboo_Camera" type="Node2D" parent="."]
-position = Vector2(80.992, 79.992)
+position = Vector2(79.992, 79.992)
 
 [node name="_Peekaboo_Mover" type="Node" parent="_Peekaboo_Camera"]
 script = ExtResource("15_rp1s8")
