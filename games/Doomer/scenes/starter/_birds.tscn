@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://p0nktsm07ev6"]
+[gd_scene load_steps=4 format=3 uid="uid://p0nktsm07ev6"]
 
 [ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://scenes/starter/_starter.gd" id="1_5rcgb"]
 [ext_resource type="Texture2D" uid="uid://c4ndustk7oa48" path="res://assets/rpgmaker/mv/parallaxes/CloudySky1.png" id="2_asp21"]
+[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="3_dryxk"]
 
 [node name="_Birds" type="SubViewportContainer"]
 script = ExtResource("1_5rcgb")
@@ -18,21 +19,34 @@ offset_right = 1080.0
 offset_bottom = 2400.0
 border_width = 50.0
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
+[node name="MarginContainer Parallax" type="MarginContainer" parent="SubViewport"]
 offset_right = 1080.0
 offset_bottom = 2400.0
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Parallax"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Node2D" type="Node2D" parent="SubViewport/MarginContainer/CenterContainer"]
+[node name="Node2D" type="Node2D" parent="SubViewport/MarginContainer Parallax/CenterContainer"]
 scale = Vector2(3, 3)
 
-[node name="Parallax2D" type="Parallax2D" parent="SubViewport/MarginContainer/CenterContainer/Node2D"]
+[node name="Parallax2D" type="Parallax2D" parent="SubViewport/MarginContainer Parallax/CenterContainer/Node2D"]
 repeat_size = Vector2(816, 0)
 autoscroll = Vector2(50, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/MarginContainer/CenterContainer/Node2D/Parallax2D"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/MarginContainer Parallax/CenterContainer/Node2D/Parallax2D"]
 texture = ExtResource("2_asp21")
+
+[node name="MarginContainer Birds" type="MarginContainer" parent="SubViewport"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer Birds/CenterContainer" instance=ExtResource("3_dryxk")]
+_frame = 0
+sprite = "cream"
