@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://p0nktsm07ev6"]
+
+[ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://scenes/starter/_starter.gd" id="1_5rcgb"]
+[ext_resource type="Texture2D" uid="uid://c4ndustk7oa48" path="res://assets/rpgmaker/mv/parallaxes/CloudySky1.png" id="2_asp21"]
+
+[node name="_Birds" type="SubViewportContainer"]
+script = ExtResource("1_5rcgb")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1080, 2400)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+unique_name_in_owner = true
+anchor_mode = 0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Camera2D"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+border_width = 50.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
+offset_right = 1080.0
+offset_bottom = 2400.0
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Node2D" type="Node2D" parent="SubViewport/MarginContainer/CenterContainer"]
+scale = Vector2(3, 3)
+
+[node name="Parallax2D" type="Parallax2D" parent="SubViewport/MarginContainer/CenterContainer/Node2D"]
+repeat_size = Vector2(816, 0)
+autoscroll = Vector2(50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/MarginContainer/CenterContainer/Node2D/Parallax2D"]
+texture = ExtResource("2_asp21")

@@ -1,6 +1,8 @@
 extends _Core_Scene
 class_name _Starter
 
+
+
 @export var next_scene : _Core_Scene
 
 

@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_talker.gd" id="18_f88mx"]
 [ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="19_bn407"]
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="20_yvjyl"]
-[ext_resource type="Script" uid="uid://da5b4ins7hwmf" path="res://scenes/peekaboo/scripts/level-1-1/script.event.3-1.gd" id="21_77bpt"]
 [ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_ghost.gd" id="22_lgejk"]
 [ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_teleport.gd" id="23_nfk3b"]
 
@@ -11027,6 +11026,16 @@ func _on_action_within_area():
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu0qy"]
 
+[sub_resource type="GDScript" id="GDScript_4lb6x"]
+script/source = "extends _Peekaboo_Script
+
+
+func _on_action_within_area():
+	await get_peekaboo().get_lambdas().show_messages(
+		[\"Add third-event control.\"]
+		)
+"
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
 
 [sub_resource type="GDScript" id="GDScript_ceddd"]
@@ -11582,6 +11591,25 @@ scale = Vector2(5, 5)
 _frame = 165
 sprite = "system"
 
+[node name="_event_6_1" type="Node2D" parent="."]
+position = Vector2(79.992, 2959.7039)
+script = ExtResource("17_ofync")
+
+[node name="_Peekaboo_Script" type="Node" parent="_event_6_1"]
+script = SubResource("GDScript_4lb6x")
+
+[node name="_Peekaboo_Mover" type="Node" parent="_event_6_1"]
+script = ExtResource("15_rp1s8")
+map_position = Vector2i(0, 18)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="_Peekaboo_Portrait" parent="_event_6_1" instance=ExtResource("16_66okp")]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(5, 5)
+_frame = 165
+sprite = "system"
+
 [node name="_event_2_1" type="Node2D" parent="."]
 position = Vector2(-2159.784, -79.992)
 script = ExtResource("17_ofync")
@@ -11596,24 +11624,6 @@ map_position = Vector2i(-14, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="_event_2_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="_event_3_1" type="Node2D" parent="."]
-position = Vector2(2639.7358, -1359.864)
-script = ExtResource("17_ofync")
-
-[node name="_Peekaboo_Script" type="Node" parent="_event_3_1"]
-script = ExtResource("21_77bpt")
-interrupt_player = true
-
-[node name="_Peekaboo_Mover" type="Node" parent="_event_3_1"]
-script = ExtResource("15_rp1s8")
-map_position = Vector2i(16, -9)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_event_3_1"]
 z_index = 100
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
