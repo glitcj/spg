@@ -1,14 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://p0nktsm07ev6"]
+[gd_scene load_steps=6 format=3 uid="uid://p0nktsm07ev6"]
 
-[ext_resource type="Script" uid="uid://bqjex03bnff1y" path="res://scenes/starter/_starter.gd" id="1_5rcgb"]
+[ext_resource type="Script" uid="uid://8itso7r1mes3" path="res://scenes/birds/_birds.gd" id="1_2cdxk"]
 [ext_resource type="Texture2D" uid="uid://c4ndustk7oa48" path="res://assets/rpgmaker/mv/parallaxes/CloudySky1.png" id="2_asp21"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="3_dryxk"]
+[ext_resource type="Shader" uid="uid://n2imqimyncct" path="res://scenes/peekaboo/shaders/_evaporate.gdshader" id="4_jmqeq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lo0k1"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/evaporate_progress = 0.5
+shader_parameter/edge_color = Color(0.6, 0.9, 1, 1)
+shader_parameter/edge_width = 0.08
+shader_parameter/noise_scale = 6.0
+shader_parameter/rise_speed = 1.2
 
 [node name="_Birds" type="SubViewportContainer"]
-script = ExtResource("1_5rcgb")
+script = ExtResource("1_2cdxk")
 
 [node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
 size = Vector2i(1080, 2400)
+render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
 unique_name_in_owner = true
@@ -47,6 +58,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer Birds/CenterContainer" instance=ExtResource("3_dryxk")]
-_frame = 0
-sprite = "cream"
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/CenterContainer" instance=ExtResource("3_dryxk")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_lo0k1")
+sprite = "green"
