@@ -58,7 +58,7 @@ func _update_material():
 		if type == "ghost":
 			_material.shader = load("res://scenes/peekaboo/shaders/_ghost.gdshader")
 		if type == "random":
-			_material.shader = load("_random.gdshader")
+			_material.shader = load("res://scenes/peekaboo/shaders/_random.gdshader")
 		if type == "wiggle":
 			_material.shader = load("res://scenes/peekaboo/shaders/_wiggle.gdshader")
 		if type == "sphere":
