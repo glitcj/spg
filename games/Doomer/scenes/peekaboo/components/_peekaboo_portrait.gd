@@ -21,7 +21,7 @@ var sprite : String:
 		if has_node("AnimatedSprite2D"):
 			%AnimatedSprite2D.animation = sprite
 			_update_atlas()
-			queue_redraw()
+			# queue_redraw()
 
 @export var _frame := 0:
 	set(v):
