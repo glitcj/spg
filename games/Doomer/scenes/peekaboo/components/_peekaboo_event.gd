@@ -9,4 +9,4 @@ func get_lambdas(): return find_parent("_Peekaboo_Map").find_child("_Peekaboo_La
 func get_variables(): return _Peekaboo_Variables
 func get_area(): return find_child("Area2D") as Area2D
 func get_mover(): return find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-func get_portrait(): return find_child("_Peekaboo_Portrait")
+func get_portrait(): return find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait

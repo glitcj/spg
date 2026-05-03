@@ -3502,13 +3502,13 @@ texture_filter = 1
 use_parent_material = true
 texture = SubResource("ImageTexture_6vxvk")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-unique_name_in_owner = true
-enabled = false
-
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
 use_parent_material = true
-position = Vector2(0, -64)
+position = Vector2(-0.099999994, -63.999996)
 mesh = SubResource("PlaneMesh_2dswe")
 texture = ExtResource("10_6vxvk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+enabled = false

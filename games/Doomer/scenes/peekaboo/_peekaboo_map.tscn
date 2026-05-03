@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=91 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_38inc"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_05s22"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dgn8xx17xtp4n" path="res://scenes/peekaboo/peekaboo.player.gd" id="14_apl3n"]
 [ext_resource type="Script" uid="uid://cigfux3bal5ef" path="res://scenes/peekaboo/components/_peekaboo_mover.gd" id="15_rp1s8"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="16_66okp"]
+[ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="16_byr4j"]
 [ext_resource type="Script" uid="uid://dxkbij13lf7tg" path="res://scenes/peekaboo/components/_peekaboo_event.gd" id="17_ofync"]
 [ext_resource type="Script" uid="uid://ipwj2rxnrjv3" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_talker.gd" id="18_f88mx"]
 [ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="19_bn407"]
@@ -10958,19 +10959,124 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lb6x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_38inc"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_byr4j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2jho"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_38inc"]
+[sub_resource type="GDScript" id="GDScript_x2jho"]
+script/source = "extends _Peekaboo_Script
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2jho"]
+func _on_action_within_area():
+	await get_lambdas().show_messages([\"Wait here.\"])
+	await get_tree().create_timer(1).timeout
+	await this_event().get_mover().move(Vector2i(-1, 0))
+	await get_tree().create_timer(1).timeout
+	await this_event().get_mover().move(Vector2i(1, 0))
+	await get_tree().create_timer(1).timeout
+	await get_lambdas().show_messages([\"Okay you can go now.\"])
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byr4j"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_05s22"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3qcn"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nn7yr"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="GDScript" id="GDScript_38inc"]
 script/source = "extends _Peekaboo_Script
@@ -10981,7 +11087,22 @@ func _on_action_within_area():
 	get_tree().quit()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3qcn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oj08u"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
 script/source = "extends _Peekaboo_Script
@@ -11009,7 +11130,22 @@ func _on_action_within_area():
 	await _on_swiper_option_selected_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nn7yr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lp0th"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
 
@@ -11032,9 +11168,39 @@ func _on_action_within_area():
 	await _on_swiper_option_selected_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oj08u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l28tk"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lp0th"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7a2af"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
@@ -11044,7 +11210,22 @@ func _on_action_within_area():
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu0qy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l28tk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqav7"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="GDScript" id="GDScript_4lb6x"]
 script/source = "extends _Peekaboo_Script
@@ -11056,7 +11237,22 @@ func _on_action_within_area():
 		)
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7a2af"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slw2g"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
 
@@ -11069,7 +11265,22 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqav7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uqff"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5max1"]
 
@@ -11081,7 +11292,22 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_slw2g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7w0x"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="GDScript" id="GDScript_bj00i"]
 script/source = "extends _Peekaboo_Script
@@ -11091,7 +11317,22 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uqff"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apl3n"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_x570f"]
 font_size = 75
@@ -11219,7 +11460,7 @@ texture = SubResource("GradientTexture2D_6de6d")
 [node name="_Peekaboo_Portrait" parent="Player" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 texture_filter = 1
-material = SubResource("ShaderMaterial_4lb6x")
+material = SubResource("ShaderMaterial_38inc")
 scale = Vector2(8, 8)
 sprite = "player"
 
@@ -11246,13 +11487,46 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_byr4j")
+material = SubResource("ShaderMaterial_x2jho")
 scale = Vector2(4, 4)
 sprite = "priest"
 
 [node name="Area2D" type="Area2D" parent="_npc_1_1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_1/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_r103f")
+
+[node name="_npc_1_2" type="Node2D" parent="."]
+position = Vector2(-79.992, 879.912)
+script = ExtResource("17_ofync")
+
+[node name="_rpgm_script" type="Node" parent="_npc_1_2"]
+script = SubResource("GDScript_x2jho")
+interrupt_player = true
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_2"]
+script = ExtResource("15_rp1s8")
+facing = Vector2i(1, 0)
+map_position = Vector2i(-1, 5)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_2"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="_Peekaboo_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_66okp")]
+material = SubResource("ShaderMaterial_byr4j")
+scale = Vector2(4, 4)
+sprite = "skeleton"
+
+[node name="Area2D" type="Area2D" parent="_npc_1_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/Area2D"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
@@ -11280,7 +11554,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_6_1/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_38inc")
+material = SubResource("ShaderMaterial_05s22")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11314,7 +11588,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_6_2/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_x2jho")
+material = SubResource("ShaderMaterial_q3qcn")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11348,7 +11622,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_6_3/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_05s22")
+material = SubResource("ShaderMaterial_nn7yr")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11382,7 +11656,7 @@ shape = SubResource("RectangleShape2D_cswif")
 [node name="_Peekaboo_Portrait" parent="_npc_5_1/RigidBody2D" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_q3qcn")
+material = SubResource("ShaderMaterial_oj08u")
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -11414,7 +11688,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_4_2/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_nn7yr")
+material = SubResource("ShaderMaterial_lp0th")
 scale = Vector2(4, 4)
 sprite = "green"
 
@@ -11446,7 +11720,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_4_3/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_oj08u")
+material = SubResource("ShaderMaterial_l28tk")
 scale = Vector2(4, 4)
 sprite = "green"
 
@@ -11483,7 +11757,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_lp0th")
+material = SubResource("ShaderMaterial_7a2af")
 scale = Vector2(4, 4)
 sprite = "red_prince"
 
@@ -11615,7 +11889,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_Peekaboo_Portrait" parent="_event_1_1" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_l28tk")
+material = SubResource("ShaderMaterial_pqav7")
 scale = Vector2(5, 5)
 _frame = 165
 sprite = "system"
@@ -11635,7 +11909,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_Peekaboo_Portrait" parent="_event_6_1" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_7a2af")
+material = SubResource("ShaderMaterial_slw2g")
 scale = Vector2(5, 5)
 _frame = 165
 sprite = "system"
@@ -11675,7 +11949,7 @@ script = ExtResource("15_rp1s8")
 map_position = Vector2i(-12, 1)
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_pqav7")
+material = SubResource("ShaderMaterial_8uqff")
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -11703,7 +11977,7 @@ map_position = Vector2i(-13, 5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_slw2g")
+material = SubResource("ShaderMaterial_p7w0x")
 scale = Vector2(4, 4)
 sprite = "red_prince"
 
@@ -11731,7 +12005,7 @@ map_position = Vector2i(-13, 9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_8uqff")
+material = SubResource("ShaderMaterial_apl3n")
 scale = Vector2(4, 4)
 sprite = "white"
 

@@ -28,13 +28,15 @@ void vertex() {
 	// in vertex(), COLOR is the *modulate* of the "fragment after rasterisation ?", not the absolute colour
 	VERTEX.x += sin(UV.y * 10. + TIME) ;
 	varying_vertex = VERTEX ;
-	COLOR.rg += VERTEX / 100. ; // in vertex(), COLOR is a modulate colour, not pixel colour.
+	// COLOR.rg += VERTEX / 100. ; // in vertex(), COLOR is a modulate colour, not pixel colour.
 }
 
 void fragment() {
-	// in fragment(), VERTEX is in texture dimensions space (e.g. goes from 0 to 32 in a 32x32 texture)
-	// in fragment(), VERTEX is a vector referring to the position of the *fragment* in texture space
+	// in fragment(), VERTEX is the *fragment* position in *screen* texture space (e.g. goes from 0 to 1028 in a 1028x1028 screen texture)
+	// in fragment(), varying_vertex is the *fragment* position in texture dimensions space (e.g. goes from 0 to 32 in a 32x32 texture)
 	// in fragment(), COLOR is the absolute colour of the fragment
 	// COLOR.rg = varying_vertex / (1./TEXTURE_PIXEL_SIZE);
+	// COLOR.rg = VERTEX / (1./TEXTURE_PIXEL_SIZE);
+	
 }
 

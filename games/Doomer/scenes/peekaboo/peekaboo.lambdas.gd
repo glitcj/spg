@@ -20,6 +20,11 @@ func transport_camera(v):
 	if v is Vector2i: mover.map_position = v
 	if v is _Peekaboo_Event: mover.map_position = (v as _Peekaboo_Event).get_mover().map_position
 	
+	
+	
+func move_event(event : _Peekaboo_Event, destination: Vector2i):
+	event.get_mover().move(destination)
+	
 func attach_camera_to_player():
 	get_camera().reparent(get_player())
 	
@@ -40,9 +45,6 @@ func show_messages(messages: Array):
 	await window.finished
 	print("window finished")
 	pass
-
-
-
 
 func set_base_tilemap_to_rmz_standard():
 	# TODO: set tile pixel size to 48 and scale to 3.333 (159.9 pixels)
