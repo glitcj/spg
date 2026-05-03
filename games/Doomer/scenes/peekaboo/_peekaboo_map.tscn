@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=93 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_38inc"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_05s22"]
@@ -10959,7 +10959,7 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_38inc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byr4j"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -10978,7 +10978,7 @@ shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2jho"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_38inc"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11010,7 +11010,7 @@ func _on_action_within_area():
 	await get_lambdas().show_messages([\"Okay you can go now.\"])
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_byr4j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2jho"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11204,13 +11204,47 @@ shader_parameter/angle = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqav7"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66okp"]
+shader = ExtResource("16_byr4j")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4w2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ylu0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu0qy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqav7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slw2g"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11237,7 +11271,7 @@ func _on_action_within_area():
 		)
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_slw2g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uqff"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11265,7 +11299,7 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uqff"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7w0x"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11292,7 +11326,7 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7w0x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apl3n"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11317,7 +11351,7 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_apl3n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rp1s8"]
 shader = ExtResource("16_byr4j")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11460,7 +11494,7 @@ texture = SubResource("GradientTexture2D_6de6d")
 [node name="_Peekaboo_Portrait" parent="Player" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 texture_filter = 1
-material = SubResource("ShaderMaterial_38inc")
+material = SubResource("ShaderMaterial_byr4j")
 scale = Vector2(8, 8)
 sprite = "player"
 
@@ -11487,7 +11521,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_x2jho")
+material = SubResource("ShaderMaterial_38inc")
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -11520,7 +11554,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_Peekaboo_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_byr4j")
+material = SubResource("ShaderMaterial_x2jho")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11767,6 +11801,78 @@ sprite = "red_prince"
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_b0sri")
 
+[node name="_npc_7_1" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(5999.4, -1359.864)
+script = ExtResource("17_ofync")
+
+[node name="_peekaboo_common_script_talker" type="Node" parent="_npc_7_1"]
+script = ExtResource("18_f88mx")
+messages = Array[String](["Have you seen that, we walk among giants.", "Just like the sorrowful ant, finding itself under the feet of an elephant, or the hands of a human.", "So are we, finding ourself under the feet of War, and the hands of Poverty.", "All of these, are phenomena bigger than any one of us.", "To fight it, would be like a drop of water, fighting the Ocean.", "The Ocean, that greatest Giant."])
+interrupt_player = true
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_7_1"]
+script = ExtResource("15_rp1s8")
+map_position = Vector2i(37, -9)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_7_1"]
+y_sort_enabled = true
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_7_1/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="_Peekaboo_Portrait" parent="_npc_7_1/RigidBody2D" instance=ExtResource("16_66okp")]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_pqav7")
+scale = Vector2(4, 4)
+sprite = "cream"
+
+[node name="Area2D" type="Area2D" parent="_npc_7_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_7_1/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_b0sri")
+
+[node name="_npc_7_2" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(6319.3677, -1359.864)
+script = ExtResource("17_ofync")
+
+[node name="_peekaboo_common_script_talker" type="Node" parent="_npc_7_2"]
+script = ExtResource("18_f88mx")
+messages = Array[String](["Have you seen that greatest Fear plaguing man.", "The fear of missing out.", "I dont want to miss out on the next thought you say..", "And so, you are plagued with thoughts.", "I don't want to miss out on Perfect Peace, you say..", "And so, Perfect Peace plagues you.", "You live in Fear, and you will live in Fear.", "Until..", "You Enjoy Missing Out."])
+interrupt_player = true
+
+[node name="_Peekaboo_Mover" type="Node" parent="_npc_7_2"]
+script = ExtResource("15_rp1s8")
+map_position = Vector2i(39, -9)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="_npc_7_2"]
+y_sort_enabled = true
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_7_2/RigidBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_cswif")
+
+[node name="_Peekaboo_Portrait" parent="_npc_7_2/RigidBody2D" instance=ExtResource("16_66okp")]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_66okp")
+scale = Vector2(4, 4)
+sprite = "red_prince"
+
+[node name="Area2D" type="Area2D" parent="_npc_7_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_7_2/Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_b0sri")
+
 [node name="_npc_3_3_stuff" type="Node2D" parent="."]
 position = Vector2(2479.752, -1359.864)
 script = ExtResource("17_ofync")
@@ -11889,7 +11995,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_Peekaboo_Portrait" parent="_event_1_1" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_pqav7")
+material = SubResource("ShaderMaterial_slw2g")
 scale = Vector2(5, 5)
 _frame = 165
 sprite = "system"
@@ -11909,7 +12015,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_Peekaboo_Portrait" parent="_event_6_1" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_slw2g")
+material = SubResource("ShaderMaterial_8uqff")
 scale = Vector2(5, 5)
 _frame = 165
 sprite = "system"
@@ -11949,7 +12055,7 @@ script = ExtResource("15_rp1s8")
 map_position = Vector2i(-12, 1)
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_8uqff")
+material = SubResource("ShaderMaterial_p7w0x")
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -11977,7 +12083,7 @@ map_position = Vector2i(-13, 5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_p7w0x")
+material = SubResource("ShaderMaterial_apl3n")
 scale = Vector2(4, 4)
 sprite = "red_prince"
 
@@ -12005,7 +12111,7 @@ map_position = Vector2i(-13, 9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("16_66okp")]
-material = SubResource("ShaderMaterial_apl3n")
+material = SubResource("ShaderMaterial_rp1s8")
 scale = Vector2(4, 4)
 sprite = "white"
 
