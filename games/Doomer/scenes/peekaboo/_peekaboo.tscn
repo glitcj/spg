@@ -1,12 +1,302 @@
-[gd_scene load_steps=4 format=3 uid="uid://d08p5bfc634r"]
+[gd_scene load_steps=22 format=3 uid="uid://d08p5bfc634r"]
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
 [ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/_peekaboo_map.tscn" id="4_n54ed"]
+[ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="4_xp4yq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp4yq"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ci1q"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlhyk"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stufm"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4skqh"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6layk"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ayd3"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0pla"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsnh5"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mp6d1"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaynf"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lwlw"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c045u"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obbit"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d34f3"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6a0a"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3frjp"]
+shader = ExtResource("4_xp4yq")
+shader_parameter/progress = 0.0
+shader_parameter/tint = Color(1, 0.5, 1, 1)
+shader_parameter/wave_amp = 0.03
+shader_parameter/wave_freq = 8.0
+shader_parameter/wave_phase = 10.0
+shader_parameter/frame_size = 48.0
+shader_parameter/run_vertex = false
+shader_parameter/run_fragment = false
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 0.2
+shader_parameter/noise_strength = 0.4
+shader_parameter/time_as_progress = true
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.0
 
 [node name="_Peekaboo" type="SubViewportContainer"]
-offset_right = 1080.0
-offset_bottom = 2400.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_3t57p")
 
 [node name="_Peekaboo_Lambdas" type="Node" parent="."]
@@ -15,7 +305,7 @@ script = ExtResource("3_5dvgp")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
-size = Vector2i(1080, 2400)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="MarginContainer L0" type="MarginContainer" parent="SubViewport"]
@@ -40,16 +330,68 @@ size_flags_vertical = 4
 
 [node name="_Peekaboo_Map" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer" instance=ExtResource("4_n54ed")]
 unique_name_in_owner = true
+scale = Vector2(0.75, 0.75)
 
 [node name="Player" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map" index="3" node_paths=PackedStringArray("peekaboo")]
 peekaboo = NodePath("../../../../../../..")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/Player" index="4"]
+material = SubResource("ShaderMaterial_xp4yq")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_1_1/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_8ci1q")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_1_2/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_jlhyk")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_6_1/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_stufm")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_6_2/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_4skqh")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_6_3/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_6layk")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_5_1/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_6ayd3")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_4_2/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_u0pla")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_4_3/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_wsnh5")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_3_1/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_mp6d1")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_7_1/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_kaynf")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_npc_7_2/RigidBody2D" index="1"]
+material = SubResource("ShaderMaterial_3lwlw")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_event_1_1" index="2"]
+material = SubResource("ShaderMaterial_c045u")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_event_6_1" index="2"]
+material = SubResource("ShaderMaterial_obbit")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_enemy_2_1" index="3"]
+material = SubResource("ShaderMaterial_d34f3")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_enemy_2_2" index="3"]
+material = SubResource("ShaderMaterial_r6a0a")
+
+[node name="_Peekaboo_Portrait" parent="SubViewport/MarginContainer L1/VBoxContainer/MarginContainer Middle/CenterContainer/_Peekaboo_Map/_enemy_2_3" index="3"]
+material = SubResource("ShaderMaterial_3frjp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 unique_name_in_owner = true
 
 [node name="MarginContainer L2" type="MarginContainer" parent="SubViewport/CanvasLayer"]
-offset_right = 1080.0
-offset_bottom = 2400.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CanvasLayer/MarginContainer L2"]
 layout_mode = 2
