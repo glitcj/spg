@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/_rpgm_v1/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={

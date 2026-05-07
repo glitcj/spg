@@ -42,7 +42,6 @@ func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene,  _position 
 	var wrapper_node = Node2D.new()
 	wrapper_node.name = "_Wrapper_"
 	wrapper_node.add_child(child_scene)
-	# wrapper_node.scale = Vector2(0.5, 0.5)
 	
 	if _position != Vector2.ZERO:
 		wrapper_node.position = _position
@@ -50,7 +49,6 @@ func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene,  _position 
 		wrapper_node.scale = _scale
 		
 	parent_scene.add_child(wrapper_node)
-
 	await child_scene._on_scene_start()
 
 
