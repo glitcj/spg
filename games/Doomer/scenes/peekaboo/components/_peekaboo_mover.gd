@@ -31,8 +31,10 @@ func _quantise_position():
 	var l1 = map.find_child("L1 Base") as TileMapLayer
 	var map_tile_global_center = l1.to_global(l1.map_to_local(map_position))
 	
+	##############
 	if get_parent().has_node("RigidBody2D"):
 		get_parent().find_child("RigidBody2D").freeze = Engine.is_editor_hint()
+		pass
 	get_parent().global_position = map_tile_global_center
 	
 func move_to_tile(tile_position : Vector2i):
@@ -45,17 +47,17 @@ func move_to_tile(tile_position : Vector2i):
 	await displace(displacement)
 
 
-func move(tile_vector : Vector2i):
+func move(tile_vector : Vector2i) -> _Peekaboo_Mover:
 	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	# var layer = map.l1 as TileMapLayer
-	var layer = map.find_child("L1 Base") as TileMapLayer
+	var base_layer = map.find_child("L1 Base") as TileMapLayer
 	
-	var target_global = layer.to_global(layer.map_to_local(map_position + tile_vector))
+	var target_global = base_layer.to_global(base_layer.map_to_local(map_position + tile_vector))
 	var displacement = target_global - get_parent().global_position
 	
 	is_moving = true
 	await displace(displacement)
 	map_position = map_position + tile_vector
+
 	is_moving = false
 	
 	return self
@@ -84,16 +86,10 @@ func displace(displacement : Vector2):
 	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 1/speed).finished
 	
 	finished_movement.emit()
-
+"""
 func wait(time : float = 1.0):
 	await get_tree().create_timer(time).timeout
-
-
-func closest_map_position() -> Vector2i:
-	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.find_child("L1 Base") as TileMapLayer
-	
-	return layer.local_to_map(layer.to_local(get_parent().global_position))
+"""
 
 func get_facing_direction():
 	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait

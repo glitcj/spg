@@ -51,6 +51,8 @@ func _show_current_message(m):
 
 
 func _show_next_message():
+	is_active = false
+	
 	if message_queue == [] and visible:
 		await _Core_Tweener.new().slide_out(self)
 		finished.emit()
@@ -61,15 +63,19 @@ func _show_next_message():
 	print(popped_message)
 	await _show_current_message(popped_message)
 	processed_messages.append(popped_message)
+	is_active = true
+
 
 
 func _process_input():
 	if not is_active:
 		return
+	# if is_busy:
+	# 	return
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		await get_tree().process_frame
-		await _show_next_message() # .call_deferred()
+		await _show_next_message()
 
 func show_log(m : String):
 	message = m

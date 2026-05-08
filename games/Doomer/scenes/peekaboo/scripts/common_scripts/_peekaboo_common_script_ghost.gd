@@ -13,5 +13,5 @@ func _on_scene_start():
 		movement.append(vector)
 		
 		await mover.face(vector).move(vector)
-		await mover.wait(1.0)
+		await get_tree().create_timer(1).timeout
 		

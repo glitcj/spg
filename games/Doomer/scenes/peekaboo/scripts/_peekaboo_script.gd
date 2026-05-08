@@ -21,7 +21,7 @@ func get_lambdas(): return get_map().get_lambdas() as _Peekaboo_Lambdas
 func get_variables(): return _Peekaboo_Variables
 func get_area(): return get_parent().find_child("Area2D") as Area2D
 func get_mover(): return get_parent().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-func get_portrait(): return get_parent().find_child("_Peekaboo_Portrait")
+func get_portrait(): return get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
 
 func this_event(): return get_parent() as _Peekaboo_Event
 
