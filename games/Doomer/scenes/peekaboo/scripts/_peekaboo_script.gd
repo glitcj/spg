@@ -8,8 +8,6 @@ signal area_entered_by_player
 @export var interrupt_player := false
 @export var action_range : float = 10.0
 
-
-
 var this_script_is_running = false
 
 func get_core(): return find_parent("_Core") as _Core
