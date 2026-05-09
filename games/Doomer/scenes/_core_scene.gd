@@ -37,8 +37,7 @@ func _on_scene_end():
 
 	is_active = false
 	scene_ended.emit()
-
-
+	
 func is_current_scene():
 	return doomer.current_scene_node == self
 
