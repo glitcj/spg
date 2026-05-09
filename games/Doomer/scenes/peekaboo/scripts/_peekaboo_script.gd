@@ -53,8 +53,7 @@ func bind_triggers():
 	
 	actioned_within_area.connect(_wrapped_callable.bind(_on_action_within_area))
 	frame_started.connect(_wrapped_callable.bind(_on_frame))
-	get_peekaboo().scene_started.connect(_wrapped_callable.bind(_on_scene_start))
-	
+	get_peekaboo().started.connect(_wrapped_callable.bind(_on_scene_start))
 	
 	if get_area():
 		get_area().body_entered.connect(_check_area_signals)

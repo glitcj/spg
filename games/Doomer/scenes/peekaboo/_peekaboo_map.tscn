@@ -11165,7 +11165,7 @@ func _ready():
 	
 func _on_swiper_option_selected(selection):
 	get_core().remove_scene(get_peekaboo(), _scroller)
-	await get_peekaboo().scene_activated
+	await get_peekaboo().activated
 	
 	await get_lambdas().show_messages([\"You selected %s.\" % selection])
 	_on_swiper_option_selected_finished.emit()
@@ -11189,10 +11189,12 @@ script/source = "extends _Peekaboo_Script
 signal returned_from_viewport_and_finished
 @onready var _viewport = get_core().get_scene(\"_Scroller\") as _Scroller # load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
 
-# func _on_swiper_option_selected(selection):
+
+# adjust _on_viewport_finished such that it takes in 
+# the parameters returned from the connected _Core_Viewport
 func _on_viewport_finished(selection):
 	get_core().change_viewport(get_peekaboo())
-	await get_peekaboo().scene_activated
+	await get_peekaboo().activated
 	
 	await get_lambdas().show_messages([\"You selected %s.\" % selection])
 	returned_from_viewport_and_finished.emit()

@@ -17,8 +17,8 @@ func _on_scene_start():
 func _on_scene_end():
 	super()
 
-func _on_scene_activated():
+func _activate():
 	find_child("Player").is_active = true
 
-func _on_scene_deactivated():
+func _deactivate():
 	find_child("Player").is_active = false
