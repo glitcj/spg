@@ -1,42 +1,78 @@
 shader_type canvas_item;
 render_mode blend_mix;
 
-uniform float progress   : hint_range(0.0, 1.0)   = 0.0;
-uniform vec4  tint       : source_color            = vec4(1.0, 0.5, 1.0, 1.0);
-uniform float wave_amp   : hint_range(0.0, 0.1)   = 0.03;
-uniform float wave_freq  : hint_range(1.0, 20.0)  = 8.0;
-uniform float wave_phase : hint_range(0.0, 100.0) = 10.0;
-uniform float frame_size : hint_range(0.0, 1028.0) = 48.0;
+// Declared with 'varying' so the GPU bilinearly interpolates this value
+// across all fragments between the vertices set in vertex().
+// You set the anchor value at each vertex; the GPU fills in everything between.
+varying vec2 varying_vertex_position;
+varying vec2 varying_world_position;
+varying vec2 varying_canvas_position;  // canvas pixel space, interpolated
+varying vec2 varying_screen_position;  // screen NDC space, interpolated
 
-uniform bool run_vertex;
-uniform bool run_fragment;
+uniform vec2 circle_center = vec2(0.,0.);
 
-// --- Add these ---
-uniform sampler2D noise_tex;                              // assign a NoiseTexture2D here
-uniform float noise_scale  : hint_range(0.1, 5.0) = 1.0; // zoom level of noise
-uniform float noise_speed  : hint_range(0.0, 2.0) = 0.2; // scroll speed
-uniform float noise_strength : hint_range(0.0, 1.0) = 0.4; // how visible the noise is
-
-uniform bool time_as_progress = true ;
-uniform float speed: hint_range(0.0, 1.0, 0.1) = 0.1;
-uniform float angle : hint_range(0.0, 3.14 * 2., 0.0) = 0.0 ;
-
-varying vec2 varying_vertex ;
-
-void vertex() { 
-	// in vertex(), VERTEX is in (0, 1) space, refers to the position of the *vertex* in vertex space
-	// in vertex(), COLOR is the *modulate* of the "fragment after rasterisation ?", not the absolute colour
-	VERTEX.x += sin(UV.y * 10. + TIME) ;
-	varying_vertex = VERTEX ;
-	// COLOR.rg += VERTEX / 100. ; // in vertex(), COLOR is a modulate colour, not pixel colour.
+void vertex() {
+	// set new anchor of varying_vertex_position as this VERTEX
+	varying_vertex_position = VERTEX;
+	
+	// set new anchor of varying_world_position as this (MODEL_MATRIX * vec4(VERTEX, 0., 1.)).xy
+	varying_world_position = (MODEL_MATRIX * vec4(VERTEX, 0., 1.)).xy ;
+	
+	// set more anchors
+	varying_canvas_position = (CANVAS_MATRIX * MODEL_MATRIX * vec4(VERTEX, 0., 1.)).xy;
+	varying_screen_position = (SCREEN_MATRIX * CANVAS_MATRIX * MODEL_MATRIX * vec4(VERTEX, 0., 1.)).xy;
+	
+	// GPU will use anchors to calculate varying values for each fragment
+	// Note that the "=" sign is overriden for variables defined with varying keyword
+	// So = is NOT assignment, it is a function that sets an anchor for the defined varying variable
 }
 
 void fragment() {
-	// in fragment(), VERTEX is the *fragment* position in *screen* texture space (e.g. goes from 0 to 1028 in a 1028x1028 screen texture)
-	// in fragment(), varying_vertex is the *fragment* position in texture dimensions space (e.g. goes from 0 to 32 in a 32x32 texture)
-	// in fragment(), COLOR is the absolute colour of the fragment
-	// COLOR.rg = varying_vertex / (1./TEXTURE_PIXEL_SIZE);
-	// COLOR.rg = VERTEX / (1./TEXTURE_PIXEL_SIZE);
+	// COLOR.rg = varying_world_position ;
+	// COLOR.rg = varying_vertex_position ;
+	// COLOR.a = varying_vertex_position.x ;
+	// COLOR.a = step(0., varying_world_position.x) ;
 	
-}
+	// float interpolator = step(1., distance(varying_world_position, circle_center) / 100.) ;
+	// COLOR.rgb = mix(vec3(1., 0., 0.), texture(TEXTURE, UV).rgb,  interpolator ) ;
+	
+	
+	
+	// UV — normalized texture space (0,0)→(1,1), same as UV in vertex(), interpolated across fragments
+	//   use this for texture sampling
+	// COLOR = texture(TEXTURE, UV);
 
+	// TEXTURE_PIXEL_SIZE — vec2(1/texture_width, 1/texture_height)
+	//   multiply UV by (1./TEXTURE_PIXEL_SIZE) to get pixel position within the texture
+	// COLOR.rg = UV * (1. / TEXTURE_PIXEL_SIZE) / 48.; // visualise, normalised for a 48px texture
+
+	// varying_local_position — local pixel space, interpolated from vertex() anchors
+	//   same space as VERTEX in vertex(): (-24,-24)→(24,24) for a 48x48 centered sprite
+	// COLOR.rg = (varying_local_position + 24.) / 48.; // shift and normalise to 0-1 for visualisation
+
+	// varying_world_position — world pixel space, interpolated from vertex() anchors
+	//   a node at scene position (500,300) has world positions offset by (500,300)
+	// COLOR.rg = varying_world_position / 1028.; // normalise to 0-1 for a 1028px scene
+
+	// varying_canvas_position — canvas pixel space, interpolated from vertex() anchors
+	//   accounts for camera transform; panning the camera shifts these values
+	// COLOR.rg = varying_canvas_position / 1028.;
+
+	// varying_screen_position — screen NDC space, interpolated from vertex() anchors
+	//   ranges roughly (-1,-1)→(1,1); centre of screen = (0,0)
+	// COLOR.rg = varying_screen_position * 0.5 + 0.5; // remap to 0-1 for visualisation
+
+	// VERTEX in fragment() — screen pixel space (COMPLETELY DIFFERENT from VERTEX in vertex()!)
+	//   ranges from (0,0) to (viewport_width, viewport_height), origin top-left
+	// COLOR.rg = VERTEX / vec2(1028., 1028.);
+
+	// FRAGCOORD — also screen pixel space, but vec4(x, y, depth, 1/w)
+	//   xy should match VERTEX in fragment() for canvas_item shaders
+	//   z = depth (0→1), w = 1/clip_w
+	//   caution: FRAGCOORD.y may use bottom-left origin (OpenGL convention) — verify if y appears flipped vs VERTEX
+	// COLOR.rg = FRAGCOORD.xy / vec2(1028., 1028.);
+
+	// SCREEN_UV — normalized screen space (0,0)→(1,1)
+	//   equivalent to VERTEX / viewport_size but pre-computed; useful for sampling SCREEN_TEXTURE
+	// COLOR.rg = SCREEN_UV;
+}
