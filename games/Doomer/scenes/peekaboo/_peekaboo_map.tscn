@@ -11155,26 +11155,26 @@ shader_parameter/circle_center = Vector2(0, 0)
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
 script/source = "extends _Peekaboo_Script
 
-var _scroller : _Scroller
-signal _on_swiper_option_selected_finished
+var _viewport : _Scroller
+signal returned_from_viewport_and_finished
 
 func _ready():
 	super()
-	_scroller = load(\"res://scenes/swiper/_scroller.tscn\").instantiate() as _Scroller
-	_scroller.is_centered = true
+	_viewport = load(\"res://scenes/swiper/_scroller.tscn\").instantiate() as _Scroller
+	_viewport.is_centered = true
 	
-func _on_swiper_option_selected(selection):
-	get_core().remove_scene(get_peekaboo(), _scroller)
+func _on_viewport_finished(selection):
+	get_core().remove_scene(get_peekaboo(), _viewport)
 	await get_peekaboo().activated
 	
 	await get_lambdas().show_messages([\"You selected %s.\" % selection])
-	_on_swiper_option_selected_finished.emit()
+	returned_from_viewport_and_finished.emit()
 
 
 func _on_action_within_area():
-	_scroller.finished.connect(_on_swiper_option_selected, CONNECT_ONE_SHOT)
-	get_core().add_scene(get_peekaboo(), _scroller, (get_peekaboo().find_child(\"_canvas_top\") as CenterContainer).position)
-	await _on_swiper_option_selected_finished
+	_viewport.finished.connect(_on_viewport_finished, CONNECT_ONE_SHOT)
+	get_core().add_scene(get_peekaboo(), _viewport, (get_peekaboo().find_child(\"_canvas_top\") as CenterContainer).position)
+	await returned_from_viewport_and_finished
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l28tk"]

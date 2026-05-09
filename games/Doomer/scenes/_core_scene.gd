@@ -25,7 +25,6 @@ func _on_viewport_start():
 	await get_tree().process_frame
 	is_active = true
 	started.emit()
-
 	
 func _on_viewport_end():
 	await get_tree().process_frame
