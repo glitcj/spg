@@ -11172,7 +11172,7 @@ func _on_swiper_option_selected(selection):
 
 
 func _on_action_within_area():
-	_scroller.option_selected.connect(_on_swiper_option_selected, CONNECT_ONE_SHOT)
+	_scroller.finished.connect(_on_swiper_option_selected, CONNECT_ONE_SHOT)
 	get_core().add_scene(get_peekaboo(), _scroller, (get_peekaboo().find_child(\"_canvas_top\") as CenterContainer).position)
 	await _on_swiper_option_selected_finished
 "
@@ -11201,7 +11201,7 @@ func _on_viewport_finished(selection):
 
 
 func _on_action_within_area():
-	_viewport.option_selected.connect(_on_viewport_finished, CONNECT_ONE_SHOT)
+	_viewport.finished.connect(_on_viewport_finished, CONNECT_ONE_SHOT)
 	get_core().change_viewport(get_core().get_scene(\"_Scroller\"))
 	await returned_from_viewport_and_finished
 "

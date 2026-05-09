@@ -41,7 +41,7 @@ func _ready():
 	
 func bind_triggers():
 	var trigger_callables = [
-		_on_within_range, _on_scene_start, 
+		_on_within_range, _on_viewport_start, 
 		_on_entered_range, _on_exited_range,
 		_on_action_within_area,
 		_on_frame, _on_area_entered
@@ -51,7 +51,7 @@ func bind_triggers():
 	
 	actioned_within_area.connect(_wrapped_callable.bind(_on_action_within_area))
 	frame_started.connect(_wrapped_callable.bind(_on_frame))
-	get_peekaboo().started.connect(_wrapped_callable.bind(_on_scene_start))
+	get_peekaboo().started.connect(_wrapped_callable.bind(_on_viewport_start))
 	
 	if get_area():
 		get_area().body_entered.connect(_check_area_signals)
@@ -106,7 +106,7 @@ func _wrapped_callable(c: Callable):
 	trigger_is_running[c.get_method()] = false
 
 
-func _on_scene_start():
+func _on_viewport_start():
 	pass
 
 func _on_frame():

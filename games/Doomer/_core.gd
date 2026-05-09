@@ -28,15 +28,15 @@ func _boot():
 	
 func change_viewport(scene_: _Core_Viewport):
 	if current_scene:
-		await current_scene._on_scene_end()
+		await current_scene._on_viewport_end()
 	current_scene = scene_
 	camera.reparent(current_scene)
 	camera.position = Vector2.ZERO
-	await scene_._on_scene_start()
+	await scene_._on_viewport_start()
 	
 func add_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport,  _position := Vector2.ZERO, _scale := Vector2.ONE):
 	if parent_scene == current_scene:
-		await current_scene._on_scene_end()
+		await current_scene._on_viewport_end()
 	current_scene = child_scene
 	
 	var wrapper_node = Node2D.new()
@@ -49,12 +49,12 @@ func add_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport,  _pos
 		wrapper_node.scale = _scale
 		
 	parent_scene.add_child(wrapper_node)
-	await child_scene._on_scene_start()
+	await child_scene._on_viewport_start()
 
 
 func remove_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport):
 	if child_scene == current_scene:
-		await child_scene._on_scene_end()
+		await child_scene._on_viewport_end()
 	current_scene = parent_scene
 
 	var wrapper_node = child_scene.get_parent() as Node2D
@@ -62,4 +62,4 @@ func remove_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport):
 	wrapper_node.remove_child(child_scene)
 	wrapper_node.queue_free()
 	
-	await parent_scene._on_scene_start()
+	await parent_scene._on_viewport_start()

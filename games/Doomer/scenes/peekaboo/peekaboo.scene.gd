@@ -11,10 +11,10 @@ func _ready() -> void:
 	pass
 
 
-func _on_scene_start():
+func _on_viewport_start():
 	super()
 
-func _on_scene_end():
+func _on_viewport_end():
 	super()
 
 func _activate():

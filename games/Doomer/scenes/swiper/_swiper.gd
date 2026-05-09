@@ -21,7 +21,7 @@ var current_verse_index
 @onready var verses_initialiser = find_children("_verse_*")
 
 
-func _on_scene_end():
+func _on_viewport_end():
 	super()
 
 # Called when the node enters the scene tree for the first time.
@@ -51,7 +51,7 @@ func _initiate_visible_labels(current_verse_index):
 		
 		await tweener.finished
 		
-func _on_scene_start():
+func _on_viewport_start():
 	super()
 	await get_tree().process_frame
 	

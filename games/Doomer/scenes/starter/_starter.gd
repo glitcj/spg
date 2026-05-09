@@ -16,5 +16,5 @@ func _ready() -> void:
 	await _Starter_Turn.new().start(self)
 
 
-func _on_scene_start():
+func _on_viewport_start():
 	super()

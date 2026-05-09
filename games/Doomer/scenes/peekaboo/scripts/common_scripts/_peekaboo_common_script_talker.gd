@@ -3,7 +3,7 @@ class_name _Peekaboo_Common_Script_Talker
 
 @export var messages : Array[String] = []
 
-func _on_scene_start():
+func _on_viewport_start():
 	pass
 	
 func _on_entered_range():

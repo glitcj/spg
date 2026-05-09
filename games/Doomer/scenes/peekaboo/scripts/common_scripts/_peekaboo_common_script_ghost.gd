@@ -3,7 +3,7 @@ class_name _Peekaboo_Common_Script_Ghost
 
 @export var movement : Array[Vector2i] = []
 
-func _on_scene_start():
+func _on_viewport_start():
 	if movement == []:
 		return
 		

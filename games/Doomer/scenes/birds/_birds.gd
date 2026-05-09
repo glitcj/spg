@@ -7,5 +7,5 @@ func _ready() -> void:
 	%_portrait.animation_player.play("move_down")
 
 
-func _on_scene_start():
+func _on_viewport_start():
 	super()

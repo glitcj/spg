@@ -1,6 +1,7 @@
 extends _Core_Viewport
 class_name _Scroller
 
+signal finished(selection)
 
 @export var is_centered = false:
 	set(v):
@@ -13,7 +14,6 @@ class_name _Scroller
 func get_variables(): return (find_parent("_Core").find_child("_Core_Variables") as _Core_Variables)
 func get_core(): return find_parent("_Core") as _Core
 
-signal option_selected(selection)
 var interrupt_scroll = true
 var total_verses_on_page = 5
 var selection : String
@@ -25,7 +25,7 @@ var verses := []
 @onready var scroll_messages = get_variables().koran as Array
 
 
-func _on_scene_end():	
+func _on_viewport_end():	
 	var tweener : _Core_Tweener
 	for i in range(total_verses_on_page):
 		if i == 2:
@@ -71,7 +71,7 @@ func _initiate_visible_labels():
 	await tweener.tween.finished
 		
 		
-func _on_scene_start():
+func _on_viewport_start():
 	super()
 	await get_tree().process_frame
 	
@@ -163,17 +163,17 @@ func _input(event: InputEvent) -> void:
 				scroll_counter = scroll_counter - 1
 				await _scroll_up()
 			else:
-				option_selected.emit("_word_0")
+				finished.emit("_word_0")
 			
 		KEY_LEFT:
 			if scroll_counter > 0:
 				scroll_counter = scroll_counter - 1
 				await _scroll_down()
 			else:
-				option_selected.emit("_word_1")
+				finished.emit("_word_1")
 				
 		KEY_ESCAPE:
-			option_selected.emit("_word_1")
+			finished.emit("_word_1")
 			
 		_:
 			pass

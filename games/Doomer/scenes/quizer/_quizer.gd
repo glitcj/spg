@@ -18,7 +18,7 @@ var questions_counter
 var koran_loader : _Core_Data
 var current_verse_index
 
-func _on_scene_end():
+func _on_viewport_end():
 	super()
 
 # Called when the node enters the scene tree for the first time.
@@ -51,7 +51,7 @@ func _show_questions_and_answers(current_verse_index):
 	await _Core_Tweener.new().slide_in(find_child("_word_1"), .5, Vector2i(1, 0))
 
 
-func _on_scene_start():
+func _on_viewport_start():
 	super()
 	await get_tree().process_frame
 

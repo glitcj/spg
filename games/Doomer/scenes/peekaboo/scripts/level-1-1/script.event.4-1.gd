@@ -3,7 +3,7 @@ extends _Peekaboo_Script
 
 var slide_duration = 1.0
 
-func _on_scene_start():
+func _on_viewport_start():
 	pass
 
 func _on_frame():
