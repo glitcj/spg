@@ -1,4 +1,4 @@
-extends _Core_Scene
+extends _Core_Viewport
 class_name _Scroller
 
 

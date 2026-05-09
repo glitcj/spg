@@ -4,7 +4,7 @@ class_name _Core_Turn
 signal turn_finished
 
 var doomer : _Core
-var scene : _Core_Scene
+var scene : _Core_Viewport
 
 var turn_name : String
 var turn_colour : Color
@@ -25,7 +25,7 @@ func start(_parent : Node):
 	var parent = _parent
 	parent.add_child(self)
 	
-	if parent is _Core_Scene:
+	if parent is _Core_Viewport:
 		scene = parent
 	doomer = find_parent("_Core")
 	

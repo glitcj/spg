@@ -17,7 +17,7 @@ var wait_amount : float = .2
 func _init() -> void:
 	turn_name = "SCN"
 	turn_colour = Color(0.5,.3,.5)
-	name = "_Doomer_Turn_Change_Scene"
+	name = "_Doomer_Turn_change_viewport"
 	turn_wait_time = .2
 
 	
@@ -40,7 +40,7 @@ func _process_input():
 	_turn = _Doomer_Turn_Field.new()
 	doomer.turner.turn_state_queue.insert(0, _turn)
 
-	doomer.events.change_scene(_Doomer.DoomerScene.PokerBoard)
+	doomer.events.change_viewport(_Doomer.DoomerScene.PokerBoard)
 		
 
 

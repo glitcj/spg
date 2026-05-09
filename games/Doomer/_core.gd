@@ -6,13 +6,13 @@ class_name _Core
 # This include nodes, and things inside nodes.
 # Static here means that the object does not change throughout the game, and a Pointer is not needed (for example containers)
 
-var current_scene : _Core_Scene
+var current_scene : _Core_Viewport
 
 @onready var camera = %Camera2D as Camera2D
 @onready var turner : _Core_Turner = $Turner
 
 
-func get_scene(_name): return find_child(_name) as _Core_Scene
+func get_scene(_name): return find_child(_name) as _Core_Viewport
 func get_lambdas(): return find_child("_Core_Lambdas") as _Core_Lambdas
 func get_variables(): return find_child("_Core_Variables") as _Core_Variables
 
@@ -24,9 +24,9 @@ func _ready() -> void:
 	_boot.call_deferred()
 
 func _boot():
-	change_scene(get_scene("_Starter"))
+	change_viewport(get_scene("_Starter"))
 	
-func change_scene(scene_: _Core_Scene):
+func change_viewport(scene_: _Core_Viewport):
 	if current_scene:
 		await current_scene._on_scene_end()
 	current_scene = scene_
@@ -34,7 +34,7 @@ func change_scene(scene_: _Core_Scene):
 	camera.position = Vector2.ZERO
 	await scene_._on_scene_start()
 	
-func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene,  _position := Vector2.ZERO, _scale := Vector2.ONE):
+func add_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport,  _position := Vector2.ZERO, _scale := Vector2.ONE):
 	if parent_scene == current_scene:
 		await current_scene._on_scene_end()
 	current_scene = child_scene
@@ -52,7 +52,7 @@ func add_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene,  _position 
 	await child_scene._on_scene_start()
 
 
-func remove_scene(parent_scene : _Core_Scene, child_scene: _Core_Scene):
+func remove_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport):
 	if child_scene == current_scene:
 		await child_scene._on_scene_end()
 	current_scene = parent_scene

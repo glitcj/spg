@@ -1,5 +1,5 @@
 @tool
-extends _Core_Scene
+extends _Core_Viewport
 class_name _Peekaboo
 
 func get_map(): return find_child("_Peekaboo_Map") as _Peekaboo_Map

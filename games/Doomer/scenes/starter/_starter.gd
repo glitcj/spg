@@ -1,9 +1,9 @@
-extends _Core_Scene
+extends _Core_Viewport
 class_name _Starter
 
 
 
-@export var next_scene : _Core_Scene
+@export var next_scene : _Core_Viewport
 
 
 @export_category("Scripts")

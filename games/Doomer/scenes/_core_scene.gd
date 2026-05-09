@@ -1,5 +1,5 @@
 extends SubViewportContainer
-class_name _Core_Scene
+class_name _Core_Viewport
 
 signal scene_activated
 signal scene_deactivated

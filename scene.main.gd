@@ -28,4 +28,4 @@ func initialise_global_queue():
 	
 	# TODO: Add class Variables.Pointer or Variables.Retriever as parent class to all retrievers
 	var packed_event_queue: Variables.ArrayRetriever = Variables.ArrayRetriever.new(event_queue_options.values(), "last_selected_selectable_index")
-	Queue.queue.append(Event.unpack().initialise([packed_event_queue], Event.change_scene()))
+	Queue.queue.append(Event.unpack().initialise([packed_event_queue], Event.change_viewport()))

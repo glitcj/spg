@@ -73,7 +73,7 @@ static func reset_variables() -> ResetVariablesEvent:
 static func lambda() -> LambdaEvent:
 	return LambdaEvent.new()
 
-static func change_scene() -> ChangeSceneEvent:
+static func change_viewport() -> ChangeSceneEvent:
 	return ChangeSceneEvent.new()
 
 static func unpack() -> UnpackEvent:

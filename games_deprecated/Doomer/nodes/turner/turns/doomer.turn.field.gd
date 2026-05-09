@@ -70,7 +70,7 @@ class Turns:
 		
 	func show_enemy_hand_and_winner_decision():
 
-		doomer.events.change_scene(_Doomer.DoomerScene.WorldMap)
+		doomer.events.change_viewport(_Doomer.DoomerScene.WorldMap)
 
 		self.flip_all_cards_down_turns()
 

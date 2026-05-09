@@ -27,7 +27,7 @@ func load_and_generate_assets():
 func process_title_selectable_index(index: int):
 	var _messages = ["Selected %s" % TitleSelectableOptions[Variables.CommonVariables.LastSelectableIndex]]
 	Queue.queue = [Event.message_box().initialise(_messages)] + Queue.queue
-	Queue.queue = [Event.change_scene().initialise("res://games/quiz/scenes/scene.quiz.introduction.gd")] + Queue.queue
+	Queue.queue = [Event.change_viewport().initialise("res://games/quiz/scenes/scene.quiz.introduction.gd")] + Queue.queue
 
 func add_title_portraits():
 	Queue.queue.append(Event.make_portrait().initialise(Tags.TitlePortrait, TitlePallet))

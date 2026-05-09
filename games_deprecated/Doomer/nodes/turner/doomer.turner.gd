@@ -19,7 +19,7 @@ var turn_state_queue = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	turn_state_queue = [_Doomer_Turn_Lambda.new(doomer.change_scene, [_Doomer.DoomerScene.StartScreen])]
+	turn_state_queue = [_Doomer_Turn_Lambda.new(doomer.change_viewport, [_Doomer.DoomerScene.StartScreen])]
 	# _Doomer_Turn_Start_Screen_Player_Input.new()
 	$ActionTimer.start()
 	scene.scene_activated.connect(_on_scene_activated)

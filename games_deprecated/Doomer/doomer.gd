@@ -57,7 +57,7 @@ func make_pointer(key : _Doomer_Pointer.Keys):
 	add_child(pointer_)
 	return pointer_
 
-func change_scene(scene_ = _Doomer.DoomerScene):
+func change_viewport(scene_ = _Doomer.DoomerScene):
 	var scene_tscn : _Doomer_Scene
 	if scene_ == _Doomer.DoomerScene.PokerBoard:
 		scene_tscn = find_child("Poker Board Scene")

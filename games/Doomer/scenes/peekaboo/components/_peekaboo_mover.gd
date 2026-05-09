@@ -6,7 +6,6 @@ signal finished_movement
 enum MovementType {Linear, Random, Exponential}
 
 @export var type = MovementType.Linear as MovementType
-
 @export var facing = Vector2i(0, 1) as Vector2i:
 	set(v):
 		facing = v
@@ -17,8 +16,10 @@ enum MovementType {Linear, Random, Exponential}
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
 		map_position = v
-		_quantise_position() # TODO: Move quantise_position to _peekaboo_map ?
-		
+		_quantise_position()
+
+func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
+
 var is_moving = false
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -27,29 +28,20 @@ func _ready() -> void:
 func _quantise_position():
 	if not is_inside_tree():
 		return
-	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var l1 = map.find_child("L1 Base") as TileMapLayer
-	var map_tile_global_center = l1.to_global(l1.map_to_local(map_position))
+	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
+	var map_tile_global_center = base_layer.to_global(base_layer.map_to_local(map_position))
 	
-	##############
-	if get_parent().has_node("RigidBody2D"):
-		get_parent().find_child("RigidBody2D").freeze = Engine.is_editor_hint()
-		pass
 	get_parent().global_position = map_tile_global_center
 	
-func move_to_tile(tile_position : Vector2i):
-	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var layer = map.find_child("L1 Base") as TileMapLayer
-
-	
-	var target_global = layer.to_global(layer.map_to_local(tile_position))
+func move_to_tile_2(tile_position : Vector2i):
+	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
+	var target_global = base_layer.to_global(base_layer.map_to_local(tile_position))
 	var displacement = target_global - get_parent().global_position
 	await displace(displacement)
 
 
 func move(tile_vector : Vector2i) -> _Peekaboo_Mover:
-	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	var base_layer = map.find_child("L1 Base") as TileMapLayer
+	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
 	
 	var target_global = base_layer.to_global(base_layer.map_to_local(map_position + tile_vector))
 	var displacement = target_global - get_parent().global_position
@@ -57,13 +49,11 @@ func move(tile_vector : Vector2i) -> _Peekaboo_Mover:
 	is_moving = true
 	await displace(displacement)
 	map_position = map_position + tile_vector
-
 	is_moving = false
 	
 	return self
 	
 func face(tile_vector : Vector2i):
-	
 	var normalised_vector = Vector2(tile_vector).normalized()
 	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
 	if portrait:
@@ -80,16 +70,11 @@ func face(tile_vector : Vector2i):
 
 func displace(displacement : Vector2):
 	var tween = get_parent().create_tween()
-	
 	if type == MovementType.Exponential:
 		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 1/speed).finished
 	
 	finished_movement.emit()
-"""
-func wait(time : float = 1.0):
-	await get_tree().create_timer(time).timeout
-"""
 
 func get_facing_direction():
 	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
@@ -105,9 +90,7 @@ func get_facing_direction():
 		return Vector2i(-1, 0)
 		
 func tile_has_collision(tile_pos: Vector2i) -> bool:
-	var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
-	
-	for layer : TileMapLayer in map.layers:
+	for layer : TileMapLayer in get_map().layers:
 		var tile_data = layer.get_cell_tile_data(tile_pos)
 		
 		if tile_data == null:

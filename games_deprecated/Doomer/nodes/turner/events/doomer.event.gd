@@ -13,8 +13,8 @@ func buzz_message_box(_message_box : _Doomer_Message_Box):
 	_turn = _Doomer_Turn_Lambda.new(_lambda, [_Doomer_Message_Box.Enumations.Buzz])
 	doomer.turner.insert_turn(_turn)
 
-func change_scene(_scene :_Doomer.DoomerScene):
-	_lambda = doomer.change_scene
+func change_viewport(_scene :_Doomer.DoomerScene):
+	_lambda = doomer.change_viewport
 	_turn = _Doomer_Turn_Lambda.new(_lambda, [_scene])
 	doomer.turner.insert_turn(_turn)
 	
