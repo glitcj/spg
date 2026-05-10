@@ -1,5 +1,5 @@
-extends _Peekaboo_Script
-class_name _Peekaboo_Common_Script_Ghost
+extends _RPGM_Script
+class_name _RPGM_Common_Script_Ghost
 
 @export var movement : Array[Vector2i] = []
 

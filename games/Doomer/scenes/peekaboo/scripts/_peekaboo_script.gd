@@ -1,5 +1,5 @@
 extends Node
-class_name _Peekaboo_Script
+class_name _RPGM_Script
 
 signal actioned_within_area
 signal frame_started
@@ -11,25 +11,25 @@ signal area_entered_by_player
 var this_script_is_running = false
 
 func get_core(): return find_parent("_Core") as _Core
-func get_peekaboo(): return find_parent("_Peekaboo") as _Peekaboo
-func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
-func get_player(): return find_parent("_Peekaboo_Map").find_child("Player") as _Peekaboo_Player
-func get_lambdas(): return get_map().get_lambdas() as _Peekaboo_Lambdas
+func get_rpgm(): return find_parent("_RPGM") as _RPGM
+func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
+func get_player(): return find_parent("_RPGM_Map").find_child("Player") as _RPGM_Player
+func get_lambdas(): return get_map().get_lambdas() as _RPGM_Lambdas
 
-func get_variables(): return _Peekaboo_Variables
+func get_variables(): return _RPGM_Variables
 func get_area(): return get_parent().find_child("Area2D") as Area2D
-func get_mover(): return get_parent().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-func get_portrait(): return get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
+func get_mover(): return get_parent().find_child("_RPGM_Mover") as _RPGM_Mover
+func get_portrait(): return get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
 
-func this_event(): return get_parent() as _Peekaboo_Event
+func this_event(): return get_parent() as _RPGM_Event
 
 var last_distnace_from_player : Vector2 = Vector2.ZERO
 var current_distnace_from_player : Vector2 = Vector2.ZERO
 
 # TODO: replace with getters
 var parent : Object
-var mover : _Peekaboo_Mover
-var portrait : _Peekaboo_Portrait
+var mover : _RPGM_Mover
+var portrait : _RPGM_Portrait
 var scene_just_started := true
 
 var trigger_is_running : Dictionary = {}
@@ -51,7 +51,7 @@ func bind_triggers():
 	
 	actioned_within_area.connect(_wrapped_callable.bind(_on_action_within_area))
 	frame_started.connect(_wrapped_callable.bind(_on_frame))
-	get_peekaboo().started.connect(_wrapped_callable.bind(_on_viewport_start))
+	get_rpgm().started.connect(_wrapped_callable.bind(_on_viewport_start))
 	
 	if get_area():
 		get_area().body_entered.connect(_check_area_signals)
@@ -59,16 +59,16 @@ func bind_triggers():
 
 func _get_components():
 	parent = get_parent()
-	if parent.find_children("*", "_Peekaboo_Mover").size() > 0:
-		mover = parent.find_child("_Peekaboo_Mover")
-	if parent.find_children("*", "_Peekaboo_Portrait").size() > 0:
-		portrait = parent.find_child("_Peekaboo_Portrait")
+	if parent.find_children("*", "_RPGM_Mover").size() > 0:
+		mover = parent.find_child("_RPGM_Mover")
+	if parent.find_children("*", "_RPGM_Portrait").size() > 0:
+		portrait = parent.find_child("_RPGM_Portrait")
 
 func _process(_delta: float):
-	if not get_peekaboo() or not get_player():
+	if not get_rpgm() or not get_player():
 		return
 		
-	if not get_peekaboo().is_active:
+	if not get_rpgm().is_active:
 		return
 		
 	_log()
@@ -76,7 +76,7 @@ func _process(_delta: float):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		if _player_is_within_event_area():
-			var player_mover = get_player().find_child("_Peekaboo_Mover") as _Peekaboo_Mover
+			var player_mover = get_player().find_child("_RPGM_Mover") as _RPGM_Mover
 			var player_is_facing_this_event : bool = mover.map_position == player_mover.get_facing_direction() + player_mover.map_position
 			if player_is_facing_this_event and get_player().is_active:
 				await get_tree().process_frame # wait for input buffer to clear
@@ -134,7 +134,7 @@ func is_running():
 	return trigger_is_running.values().any(func(x): return x)
 
 func _get_direction_to_player():
-	var player_position = get_player().find_child("_Peekaboo_Mover").map_position as Vector2i
+	var player_position = get_player().find_child("_RPGM_Mover").map_position as Vector2i
 	var direction = Vector2(player_position - get_mover().map_position).normalized()
 	assert(direction.abs().x + direction.abs().y == 1) # make sure direction is in udlr
 	return Vector2i(direction)

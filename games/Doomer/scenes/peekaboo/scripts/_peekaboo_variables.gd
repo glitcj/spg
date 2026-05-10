@@ -1,6 +1,6 @@
 @tool # This allows the static logic to run safely in the editor
 extends Node
-class_name _Peekaboo_Variables
+class_name _RPGM_Variables
 
 
 static var l1_enemies_count = 0

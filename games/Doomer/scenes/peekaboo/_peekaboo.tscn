@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
-[ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/_peekaboo_map.tscn" id="4_n54ed"]
+[ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/_rpgm_map.tscn" id="4_n54ed"]
 [ext_resource type="Texture2D" uid="uid://ck7xl51igarox" path="res://assets/rpgmaker/mv/parallaxes/DarkSpace1.png" id="7_4skqh"]
 [ext_resource type="Shader" uid="uid://cenoyxwifpvd0" path="res://scenes/peekaboo/shaders/_scroll.gdshader" id="7_stufm"]
 
@@ -11,12 +11,12 @@ shader = ExtResource("7_stufm")
 shader_parameter/x_speed = 0.10000000475
 shader_parameter/y_speed = 0.10000000475
 
-[node name="_Peekaboo" type="SubViewportContainer"]
+[node name="_RPGM" type="SubViewportContainer"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_3t57p")
 
-[node name="_Peekaboo_Lambdas" type="Node" parent="."]
+[node name="_RPGM_Lambdas" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_5dvgp")
 
@@ -75,7 +75,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="_Peekaboo_Map" parent="SubViewport/MarginContainer _RPGM_Map/CenterContainer" instance=ExtResource("4_n54ed")]
+[node name="_RPGM_Map" parent="SubViewport/MarginContainer _RPGM_Map/CenterContainer" instance=ExtResource("4_n54ed")]
 unique_name_in_owner = true
 scale = Vector2(0.75, 0.75)
 

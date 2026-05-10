@@ -1,19 +1,19 @@
 extends Node2D
-class_name _Peekaboo_Player
+class_name _RPGM_Player
 
 
-@export var peekaboo : _Peekaboo
+@export var peekaboo : _RPGM
 var is_active = false:
 	set(v):
-		if get_peekaboo() and not get_peekaboo().is_active:
+		if get_RPGM() and not get_RPGM().is_active:
 			return
 		is_active = v
 
-@onready var mover = find_child("_Peekaboo_Mover") as _Peekaboo_Mover
-@onready var map = find_parent("_Peekaboo_Map") as _Peekaboo_Map
+@onready var mover = find_child("_RPGM_Mover") as _RPGM_Mover
+@onready var map = find_parent("_RPGM_Map") as _RPGM_Map
 
-func get_portrait(): return find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
-func get_peekaboo(): return find_parent("_Peekaboo") as _Peekaboo
+func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
+func get_RPGM(): return find_parent("_RPGM") as _RPGM
 
 
 
@@ -31,11 +31,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not get_peekaboo().is_active:
+	if not get_RPGM().is_active:
 		return
 		
 	is_active = true	
-	for script : _Peekaboo_Script in get_peekaboo().get_map().scripts_currently_on_map():
+	for script : _RPGM_Script in get_RPGM().get_map().scripts_currently_on_map():
 		if script.is_running() and script.interrupt_player:
 			is_active = false
 			

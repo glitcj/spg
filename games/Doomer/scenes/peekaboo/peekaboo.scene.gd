@@ -1,11 +1,11 @@
 @tool
 extends _Core_Viewport
-class_name _Peekaboo
+class_name _RPGM
 
-func get_map(): return find_child("_Peekaboo_Map") as _Peekaboo_Map
-func get_player(): return find_child("_Peekaboo_Map").find_child("Player") as _Peekaboo_Player
+func get_map(): return find_child("_RPGM_Map") as _RPGM_Map
+func get_player(): return find_child("_RPGM_Map").find_child("Player") as _RPGM_Player
 func get_camera(): return get_map().find_child("Camera2D") as Camera2D
-func get_lambdas(): return find_child("_Peekaboo_Lambdas") as _Peekaboo_Lambdas
+func get_lambdas(): return find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 
 func _ready() -> void:
 	pass

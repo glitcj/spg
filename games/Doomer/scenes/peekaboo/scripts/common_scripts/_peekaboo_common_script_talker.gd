@@ -1,8 +1,12 @@
-extends _Peekaboo_Script
-class_name _Peekaboo_Common_Script_Talker
+extends _RPGM_Script
+class_name _RPGM_Common_Script_Talker
 
 @export var messages : Array[String] = []
 
+func _ready():
+	super()
+	interrupt_player = true
+	
 func _on_viewport_start():
 	pass
 	
@@ -14,4 +18,4 @@ func _on_exited_range():
 
 func _on_action_within_area():
 	await get_mover().face(_get_direction_to_player())
-	await get_peekaboo().get_lambdas().show_messages(messages)
+	await get_rpgm().get_lambdas().show_messages(messages)

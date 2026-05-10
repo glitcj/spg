@@ -1,6 +1,6 @@
 @tool
 extends Node
-class_name _Peekaboo_Mover
+class_name _RPGM_Mover
 
 signal finished_movement
 enum MovementType {Linear, Random, Exponential}
@@ -18,7 +18,7 @@ enum MovementType {Linear, Random, Exponential}
 		map_position = v
 		_quantise_position()
 
-func get_map(): return find_parent("_Peekaboo_Map") as _Peekaboo_Map
+func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 
 var is_moving = false
 func _ready() -> void:
@@ -40,7 +40,7 @@ func move_to_tile_2(tile_position : Vector2i):
 	await displace(displacement)
 
 
-func move(tile_vector : Vector2i) -> _Peekaboo_Mover:
+func move(tile_vector : Vector2i) -> _RPGM_Mover:
 	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
 	
 	var target_global = base_layer.to_global(base_layer.map_to_local(map_position + tile_vector))
@@ -55,7 +55,7 @@ func move(tile_vector : Vector2i) -> _Peekaboo_Mover:
 	
 func face(tile_vector : Vector2i):
 	var normalised_vector = Vector2(tile_vector).normalized()
-	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
+	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
 	if portrait:
 		if normalised_vector == Vector2(1, 0):
 			portrait.face_right()
@@ -77,7 +77,7 @@ func displace(displacement : Vector2):
 	finished_movement.emit()
 
 func get_facing_direction():
-	var portrait = get_parent().find_child("_Peekaboo_Portrait") as _Peekaboo_Portrait
+	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
 	var animation_name = portrait.animation_player.current_animation
 	
 	if animation_name == "move_down":

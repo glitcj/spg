@@ -736,7 +736,7 @@ text = "test"
 label_settings = SubResource("LabelSettings_msdvt")
 autowrap_mode = 2
 
-[node name="_Peekaboo_Tweener" type="Node" parent="."]
+[node name="_RPGM_Tweener" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_4b78m")
 metadata/_custom_type_script = "uid://5fqo6d3fleu4"

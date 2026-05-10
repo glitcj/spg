@@ -1,6 +1,6 @@
 [gd_scene load_steps=488 format=3 uid="uid://ca8vvptjr324n"]
 
-[ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/components/_peekaboo_portrait.gd" id="1_d26c4"]
+[ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/components/_rpgm_portrait.gd" id="1_d26c4"]
 [ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="1_hw4jb"]
 [ext_resource type="Texture2D" uid="uid://bhy8mkqo4vdq" path="res://assets/rpgmaker/mv/characters/Evil.png" id="3_0iwj8"]
 [ext_resource type="Texture2D" uid="uid://ddqq7cd7mui6k" path="res://assets/peekaboo/hood.png" id="3_hqufs"]
@@ -3451,7 +3451,7 @@ subdivide_width = 16
 subdivide_depth = 16
 orientation = 2
 
-[node name="_Peekaboo_Portrait" type="Node2D"]
+[node name="_RPGM_Portrait" type="Node2D"]
 material = SubResource("ShaderMaterial_6vxvk")
 scale = Vector2(10, 10)
 script = ExtResource("1_d26c4")

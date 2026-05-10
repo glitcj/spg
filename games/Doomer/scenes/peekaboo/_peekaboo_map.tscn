@@ -11111,7 +11111,7 @@ shader_parameter/circle_center = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
 
 [sub_resource type="GDScript" id="GDScript_x2jho"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 func _on_action_within_area():
 	await get_lambdas().show_messages([\"Wait here.\"])
@@ -11140,7 +11140,7 @@ shader = ExtResource("16_byr4j")
 shader_parameter/circle_center = Vector2(0, 0)
 
 [sub_resource type="GDScript" id="GDScript_38inc"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 func _on_action_within_area():
 	await get_lambdas().show_messages([\"Congratulation.\", \"You neither won or lost.\", \"You ended.\"])
@@ -11153,7 +11153,7 @@ shader = ExtResource("16_byr4j")
 shader_parameter/circle_center = Vector2(0, 0)
 
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 var _viewport : _Scroller
 signal returned_from_viewport_and_finished
@@ -11164,8 +11164,8 @@ func _ready():
 	_viewport.is_centered = true
 	
 func _on_viewport_finished(selection):
-	get_core().remove_scene(get_peekaboo(), _viewport)
-	await get_peekaboo().activated
+	get_core().remove_scene(get_rpgm(), _viewport)
+	await get_rpgm().activated
 	
 	await get_lambdas().show_messages([\"You selected %s.\" % selection])
 	returned_from_viewport_and_finished.emit()
@@ -11173,7 +11173,7 @@ func _on_viewport_finished(selection):
 
 func _on_action_within_area():
 	_viewport.finished.connect(_on_viewport_finished, CONNECT_ONE_SHOT)
-	get_core().add_scene(get_peekaboo(), _viewport, (get_peekaboo().find_child(\"_canvas_top\") as CenterContainer).position)
+	get_core().add_scene(get_rpgm(), _viewport, (get_rpgm().find_child(\"_canvas_top\") as CenterContainer).position)
 	await returned_from_viewport_and_finished
 "
 
@@ -11184,7 +11184,7 @@ shader_parameter/circle_center = Vector2(0, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
 
 [sub_resource type="GDScript" id="GDScript_byr4j"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 signal returned_from_viewport_and_finished
 @onready var _viewport = get_core().get_scene(\"_Scroller\") as _Scroller # load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
@@ -11193,8 +11193,8 @@ signal returned_from_viewport_and_finished
 # adjust _on_viewport_finished such that it takes in 
 # the parameters returned from the connected _Core_Viewport
 func _on_viewport_finished(selection):
-	get_core().change_viewport(get_peekaboo())
-	await get_peekaboo().activated
+	get_core().change_viewport(get_rpgm())
+	await get_rpgm().activated
 	
 	await get_lambdas().show_messages([\"You selected %s.\" % selection])
 	returned_from_viewport_and_finished.emit()
@@ -11249,11 +11249,11 @@ shader = ExtResource("16_byr4j")
 shader_parameter/circle_center = Vector2(0, 0)
 
 [sub_resource type="GDScript" id="GDScript_4lb6x"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 
 func _on_action_within_area():
-	await get_peekaboo().get_lambdas().show_messages(
+	await get_rpgm().get_lambdas().show_messages(
 		[\"Add third-event control.\"]
 		)
 "
@@ -11265,7 +11265,7 @@ shader_parameter/circle_center = Vector2(0, 0)
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
 
 [sub_resource type="GDScript" id="GDScript_ceddd"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 
 func _on_area_entered():
@@ -11280,7 +11280,7 @@ shader_parameter/circle_center = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5max1"]
 
 [sub_resource type="GDScript" id="GDScript_5max1"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 func _on_area_entered():
 	get_variables().l2_enemies_count += 1
@@ -11292,7 +11292,7 @@ shader = ExtResource("16_byr4j")
 shader_parameter/circle_center = Vector2(0, 0)
 
 [sub_resource type="GDScript" id="GDScript_bj00i"]
-script/source = "extends _Peekaboo_Script
+script/source = "extends _RPGM_Script
 
 func _on_area_entered():
 	get_variables().l2_enemies_count += 2
@@ -11309,15 +11309,15 @@ font_size = 75
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceddd"]
 size = Vector2(100, 100)
 
-[node name="_Peekaboo_Map" type="Node2D"]
+[node name="_RPGM_Map" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_38inc")
 
-[node name="_Peekaboo_Lambdas" type="Node" parent="."]
+[node name="_RPGM_Lambdas" type="Node" parent="."]
 script = ExtResource("3_05s22")
 metadata/_custom_type_script = "uid://c6484wl627c5c"
 
-[node name="_Peekaboo_Variables" type="Node" parent="."]
+[node name="_RPGM_Variables" type="Node" parent="."]
 script = ExtResource("4_q3qcn")
 metadata/_custom_type_script = "uid://da77evou2la0g"
 
@@ -11391,7 +11391,7 @@ y_sort_enabled = true
 position = Vector2(79.992, 559.944)
 script = ExtResource("14_apl3n")
 
-[node name="_Peekaboo_Mover" type="Node" parent="Player"]
+[node name="_RPGM_Mover" type="Node" parent="Player"]
 script = ExtResource("15_rp1s8")
 speed = 5.0
 map_position = Vector2i(0, 3)
@@ -11416,7 +11416,7 @@ shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_6de6d")
 
-[node name="_Peekaboo_Portrait" parent="Player" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="Player" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_38inc")
@@ -11427,12 +11427,11 @@ sprite = "player"
 position = Vector2(79.992, 239.976)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker_1_1" type="Node" parent="_npc_1_1"]
+[node name="_rpgm_common_script_talker_1_1" type="Node" parent="_npc_1_1"]
 script = ExtResource("18_f88mx")
-messages = Array[String](["Hello..", "Good to see you here !", "Add _Peekaboo_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"])
-interrupt_player = true
+messages = Array[String](["Hello..", "Good to see you here !", "Add _RPGM_Event", "fix window message buffer (instiate new windows prob)", "add colour enemies, player gains the colour of eaten enemies", "maps unlock based on colour", "some enemies look like XX, u need to eat the enemy colour blend  mix the unlocks them", "in this way the path you take over a map depends on enemies to eat and what enemies to skip to unlock a blocking pot that expects a colour", "then implement lots of cool shaders"])
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_1"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_1_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11445,7 +11444,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_x2jho")
 scale = Vector2(4, 4)
 sprite = "priest"
@@ -11464,7 +11463,7 @@ script = ExtResource("17_ofync")
 script = SubResource("GDScript_x2jho")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_1_2"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_1_2"]
 script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(-3, 2)
@@ -11478,7 +11477,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_05s22")
 scale = Vector2(4, 4)
 sprite = "skeleton"
@@ -11493,12 +11492,11 @@ shape = SubResource("RectangleShape2D_r103f")
 position = Vector2(399.96, 3119.688)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker_6_1" type="Node" parent="_npc_6_1"]
+[node name="_rpgm_common_script_talker_6_1" type="Node" parent="_npc_6_1"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Hello..", "This will start the Flying Birds Mario Party mini game."])
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_6_1"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_6_1"]
 script = ExtResource("15_rp1s8")
 facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 19)
@@ -11512,7 +11510,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_6_1/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_6_1/RigidBody2D" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_q3qcn")
 scale = Vector2(4, 4)
 sprite = "skeleton"
@@ -11527,12 +11525,11 @@ shape = SubResource("RectangleShape2D_r103f")
 position = Vector2(-239.976, 3279.6719)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker_6_2" type="Node" parent="_npc_6_2"]
+[node name="_rpgm_common_script_talker_6_2" type="Node" parent="_npc_6_2"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Hello..", "This will start the Mole Hole Mario Party mini game."])
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_6_2"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_6_2"]
 script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(-2, 20)
@@ -11546,7 +11543,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_6_2/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_6_2/RigidBody2D" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_nn7yr")
 scale = Vector2(4, 4)
 sprite = "skeleton"
@@ -11561,12 +11558,11 @@ shape = SubResource("RectangleShape2D_r103f")
 position = Vector2(399.96, 3439.656)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker_6_3" type="Node" parent="_npc_6_3"]
+[node name="_rpgm_common_script_talker_6_3" type="Node" parent="_npc_6_3"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Hello..", "This will start the Freddie's Screen Mario Party mini game."])
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_6_3"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_6_3"]
 script = ExtResource("15_rp1s8")
 facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 21)
@@ -11580,7 +11576,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_6_3/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_6_3/RigidBody2D" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_oj08u")
 scale = Vector2(4, 4)
 sprite = "skeleton"
@@ -11595,11 +11591,10 @@ shape = SubResource("RectangleShape2D_r103f")
 position = Vector2(-2159.784, -4879.5117)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Script" type="Node" parent="_npc_5_1"]
+[node name="_RPGM_Script" type="Node" parent="_npc_5_1"]
 script = SubResource("GDScript_38inc")
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_5_1"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_5_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-14, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11612,7 +11607,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_5_1/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_5_1/RigidBody2D" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_lp0th")
@@ -11629,11 +11624,11 @@ shape = SubResource("RectangleShape2D_r103f")
 position = Vector2(2319.768, -4399.56)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Script" type="Node" parent="_npc_4_2"]
+[node name="_RPGM_Script" type="Node" parent="_npc_4_2"]
 script = SubResource("GDScript_eu0qy")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_4_2"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_4_2"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(14, -28)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11646,7 +11641,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_4_2/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_4_2/RigidBody2D" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_l28tk")
 scale = Vector2(4, 4)
 sprite = "green"
@@ -11661,11 +11656,11 @@ shape = SubResource("CircleShape2D_q5qis")
 position = Vector2(1999.7999, -4399.56)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Script" type="Node" parent="_npc_4_3"]
+[node name="_RPGM_Script" type="Node" parent="_npc_4_3"]
 script = SubResource("GDScript_byr4j")
 interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_4_3"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_4_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(12, -28)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11678,7 +11673,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_4_3/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_4_3/RigidBody2D" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_7a2af")
 scale = Vector2(4, 4)
 sprite = "green"
@@ -11694,12 +11689,11 @@ y_sort_enabled = true
 position = Vector2(1839.8159, -879.912)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker_3_1" type="Node" parent="_npc_3_1"]
+[node name="_rpgm_common_script_talker_3_1" type="Node" parent="_npc_3_1"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Some enemies you cannot see.", "Bugs appear off their wake.", "That's all I can say now."])
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_1"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_3_1"]
 script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(11, -6)
@@ -11714,7 +11708,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_pqav7")
 scale = Vector2(4, 4)
@@ -11731,12 +11725,11 @@ y_sort_enabled = true
 position = Vector2(5999.4, -719.928)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker" type="Node" parent="_npc_7_1"]
+[node name="_rpgm_common_script_talker" type="Node" parent="_npc_7_1"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Have you seen that, we walk among giants.", "Just like the sorrowful ant, finding itself under the feet of an elephant, or the hands of a human.", "So are we, finding ourself under the feet of War, and the hands of Poverty.", "All of these, are phenomena bigger than any one of us.", "To fight it, would be like a drop of water, fighting the Ocean.", "The Ocean, that greatest Giant."])
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_7_1"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_7_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(37, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11750,7 +11743,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_7_1/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_7_1/RigidBody2D" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_slw2g")
 scale = Vector2(4, 4)
@@ -11767,12 +11760,11 @@ y_sort_enabled = true
 position = Vector2(6959.3037, -559.944)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker" type="Node" parent="_npc_7_3"]
+[node name="_rpgm_common_script_talker" type="Node" parent="_npc_7_3"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Have you seen that, we walk among giants.", "Just like the sorrowful ant, finding itself under the feet of an elephant, or the hands of a human.", "So are we, finding ourself under the feet of War, and the hands of Poverty.", "All of these, are phenomena bigger than any one of us.", "To fight it, would be like a drop of water, fighting the Ocean.", "The Ocean, that greatest Giant."])
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_7_3"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_7_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(43, -4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11786,7 +11778,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_7_3/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_7_3/RigidBody2D" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_8uqff")
 scale = Vector2(4, 4)
@@ -11804,12 +11796,11 @@ y_sort_enabled = true
 position = Vector2(6319.3677, -719.928)
 script = ExtResource("17_ofync")
 
-[node name="_peekaboo_common_script_talker" type="Node" parent="_npc_7_2"]
+[node name="_rpgm_common_script_talker" type="Node" parent="_npc_7_2"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Have you seen that greatest Fear plaguing man.", "The fear of missing out.", "I dont want to miss out on the next thought you say..", "And so, you are plagued with thoughts.", "I don't want to miss out on Perfect Peace, you say..", "And so, Perfect Peace plagues you.", "You live in Fear, and you will live in Fear.", "Until..", "You Enjoy Missing Out."])
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_7_2"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_7_2"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(39, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11823,7 +11814,7 @@ freeze = true
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
-[node name="_Peekaboo_Portrait" parent="_npc_7_2/RigidBody2D" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_npc_7_2/RigidBody2D" instance=ExtResource("16_66okp")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_p7w0x")
 scale = Vector2(4, 4)
@@ -11839,7 +11830,7 @@ shape = SubResource("RectangleShape2D_b0sri")
 position = Vector2(2479.752, -879.912)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_3_stuff"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_3_3_stuff"]
 script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(15, -6)
@@ -11863,7 +11854,7 @@ shape = SubResource("RectangleShape2D_b0sri")
 position = Vector2(2319.768, -879.912)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_4_stuff"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_3_4_stuff"]
 script = ExtResource("15_rp1s8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(14, -6)
@@ -11887,13 +11878,12 @@ shape = SubResource("RectangleShape2D_b0sri")
 position = Vector2(2159.784, -719.928)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_3_2_talking_tree"]
+[node name="_RPGM_Common_Script_Talker" type="Node" parent="_npc_3_2_talking_tree"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["I am a talking tree.", "And right now..", "I have nothing to say.", "I might as well not be, a, talking, tree.", "Would you not say ?", "I would not."])
-interrupt_player = true
 metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_3_2_talking_tree"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_3_2_talking_tree"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11916,13 +11906,12 @@ shape = SubResource("RectangleShape2D_2ylu0")
 position = Vector2(2159.784, -4079.592)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Common_Script_Talker" type="Node" parent="_npc_4_1_talking_tree"]
+[node name="_RPGM_Common_Script_Talker" type="Node" parent="_npc_4_1_talking_tree"]
 script = ExtResource("18_f88mx")
 messages = Array[String](["Hmmm..", "Mmmm..yes..", ".. Maybe not."])
-interrupt_player = true
 metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
-[node name="_Peekaboo_Mover" type="Node" parent="_npc_4_1_talking_tree"]
+[node name="_RPGM_Mover" type="Node" parent="_npc_4_1_talking_tree"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -26)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11945,16 +11934,15 @@ shape = SubResource("CircleShape2D_eu0qy")
 position = Vector2(79.992, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Script" type="Node" parent="_event_1_1"]
+[node name="_RPGM_Script" type="Node" parent="_event_1_1"]
 script = ExtResource("19_bn407")
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_event_1_1"]
+[node name="_RPGM_Mover" type="Node" parent="_event_1_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="_event_1_1" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_event_1_1" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_apl3n")
@@ -11966,15 +11954,15 @@ sprite = "system"
 position = Vector2(79.992, 2959.7039)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Script" type="Node" parent="_event_6_1"]
+[node name="_RPGM_Script" type="Node" parent="_event_6_1"]
 script = SubResource("GDScript_4lb6x")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_event_6_1"]
+[node name="_RPGM_Mover" type="Node" parent="_event_6_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 18)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="_event_6_1" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_event_6_1" instance=ExtResource("16_66okp")]
 z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_rp1s8")
@@ -11986,11 +11974,10 @@ sprite = "system"
 position = Vector2(-2159.784, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Script" type="Node" parent="_event_2_1"]
+[node name="_RPGM_Script" type="Node" parent="_event_2_1"]
 script = ExtResource("20_yvjyl")
-interrupt_player = true
 
-[node name="_Peekaboo_Mover" type="Node" parent="_event_2_1"]
+[node name="_RPGM_Mover" type="Node" parent="_event_2_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-14, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12007,16 +11994,15 @@ script = ExtResource("17_ofync")
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_1"]
 script = ExtResource("22_lgejk")
 movement = Array[Vector2i]([Vector2i(-4, 0), Vector2i(0, -4), Vector2i(4, 0), Vector2i(0, 4)])
-action_range = 100.0
 
 [node name="_enemy_script_2_1" type="Node" parent="_enemy_2_1"]
 script = SubResource("GDScript_ceddd")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_1"]
+[node name="_RPGM_Mover" type="Node" parent="_enemy_2_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-12, 1)
 
-[node name="_Peekaboo_Portrait" parent="_enemy_2_1" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_enemy_2_1" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_66okp")
 scale = Vector2(4, 4)
 sprite = "priest"
@@ -12034,17 +12020,16 @@ script = ExtResource("17_ofync")
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_2"]
 script = ExtResource("22_lgejk")
 movement = Array[Vector2i]([Vector2i(-3, 0), Vector2i(3, 0)])
-action_range = 100.0
 
 [node name="_enemy_script_2_2" type="Node" parent="_enemy_2_2"]
 script = SubResource("GDScript_5max1")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_2"]
+[node name="_RPGM_Mover" type="Node" parent="_enemy_2_2"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-22, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="_enemy_2_2" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_enemy_2_2" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_ofync")
 scale = Vector2(4, 4)
 sprite = "red_prince"
@@ -12062,17 +12047,16 @@ script = ExtResource("17_ofync")
 [node name="_common_script_ghost" type="Node" parent="_enemy_2_3"]
 script = ExtResource("22_lgejk")
 movement = Array[Vector2i]([Vector2i(-3, 0), Vector2i(3, 0)])
-action_range = 100.0
 
 [node name="_enemy_script_2_3" type="Node" parent="_enemy_2_3"]
 script = SubResource("GDScript_bj00i")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_enemy_2_3"]
+[node name="_RPGM_Mover" type="Node" parent="_enemy_2_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-22, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_Peekaboo_Portrait" parent="_enemy_2_3" instance=ExtResource("16_66okp")]
+[node name="_RPGM_Portrait" parent="_enemy_2_3" instance=ExtResource("16_66okp")]
 material = SubResource("ShaderMaterial_f88mx")
 scale = Vector2(4, 4)
 sprite = "white"
@@ -12093,7 +12077,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_3_1")
 player_position_node = NodePath("../../_player_position_3_1")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_2"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_1_2"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12136,7 +12120,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_2_1")
 player_position_node = NodePath("../../_player_position_2_1")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_3"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_1_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12179,7 +12163,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_6_1")
 player_position_node = NodePath("../../_player_position_6_1")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_1_6"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_1_6"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 8)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12222,7 +12206,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_1_1")
 player_position_node = NodePath("../../_player_position_1_6")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_6_1"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_6_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 14)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12265,7 +12249,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_1_1")
 player_position_node = NodePath("../../_player_position_1_1")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_2_1"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_2_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-10, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12307,7 +12291,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_1_1")
 player_position_node = NodePath("../../_player_position_1_2")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_3_1"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_3_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(9, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12349,7 +12333,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_7_1")
 player_position_node = NodePath("../../_player_position_7_3")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_3_7"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_3_7"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(17, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12391,7 +12375,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_3_1")
 player_position_node = NodePath("../../_player_position_3_7")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_7_3"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_7_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(32, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12433,7 +12417,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_4_1")
 player_position_node = NodePath("../../_player_position_4_3")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_3_2"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_3_2"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12475,7 +12459,7 @@ script = ExtResource("23_nfk3b")
 camera_position_node = NodePath("../../_camera_position_3_1")
 player_position_node = NodePath("../../_player_position_3_2")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_teleport_4_3"]
+[node name="_RPGM_Mover" type="Node" parent="_teleport_4_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -22)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12513,7 +12497,7 @@ unique_name_in_owner = true
 position = Vector2(79.992, 79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_1_1"]
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_1_1"]
 script = ExtResource("15_rp1s8")
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12550,7 +12534,7 @@ unique_name_in_owner = true
 position = Vector2(79.992, 3439.656)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_6_1"]
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_6_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12588,7 +12572,7 @@ unique_name_in_owner = true
 position = Vector2(2159.784, -559.944)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_3_1"]
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_3_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12621,7 +12605,7 @@ unique_name_in_owner = true
 position = Vector2(-2799.72, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_2_1"]
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_2_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-18, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12654,7 +12638,7 @@ unique_name_in_owner = true
 position = Vector2(6159.384, -399.96)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_7_1"]
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_7_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(38, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12687,7 +12671,7 @@ unique_name_in_owner = true
 position = Vector2(2159.784, -4079.592)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_4_1"]
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_4_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -26)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12721,7 +12705,7 @@ visible = false
 position = Vector2(-2159.784, -4559.544)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_camera_position_5_1"]
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_5_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-14, -29)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12755,7 +12739,7 @@ visible = false
 position = Vector2(-399.96, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_1"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_1_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-3, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12789,7 +12773,7 @@ visible = false
 position = Vector2(79.992, 1199.88)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_6"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_1_6"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 7)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12823,7 +12807,7 @@ visible = false
 position = Vector2(79.992, 2479.752)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_6_1"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_6_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(0, 15)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12857,7 +12841,7 @@ visible = false
 position = Vector2(559.944, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_1_2"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_1_2"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(3, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12891,7 +12875,7 @@ visible = false
 position = Vector2(-1679.832, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_2_1"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_2_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-11, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12924,7 +12908,7 @@ unique_name_in_owner = true
 position = Vector2(1679.832, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_1"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_3_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(10, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12957,7 +12941,7 @@ unique_name_in_owner = true
 position = Vector2(2639.7358, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_7"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_3_7"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(16, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12990,7 +12974,7 @@ unique_name_in_owner = true
 position = Vector2(5359.464, -79.992)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_7_3"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_7_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(33, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -13023,7 +13007,7 @@ unique_name_in_owner = true
 position = Vector2(2159.784, -1199.88)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_3_2"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_3_2"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -8)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -13056,7 +13040,7 @@ unique_name_in_owner = true
 position = Vector2(2159.784, -3599.64)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_3"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_4_3"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -23)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -13090,7 +13074,7 @@ visible = false
 position = Vector2(2159.784, -4719.528)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_4_transition"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_4_transition"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(13, -30)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -13124,7 +13108,7 @@ visible = false
 position = Vector2(-2159.784, -4079.592)
 script = ExtResource("17_ofync")
 
-[node name="_Peekaboo_Mover" type="Node" parent="_player_position_5_1"]
+[node name="_RPGM_Mover" type="Node" parent="_player_position_5_1"]
 script = ExtResource("15_rp1s8")
 map_position = Vector2i(-14, -26)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -13152,16 +13136,16 @@ text = "PLR"
 label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
-[node name="_Peekaboo_Camera" type="Node2D" parent="."]
+[node name="_RPGM_Camera" type="Node2D" parent="."]
 position = Vector2(79.992, 79.992)
 
-[node name="_Peekaboo_Mover" type="Node" parent="_Peekaboo_Camera"]
+[node name="_RPGM_Mover" type="Node" parent="_RPGM_Camera"]
 script = ExtResource("15_rp1s8")
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Camera2D" type="Camera2D" parent="_Peekaboo_Camera"]
+[node name="Camera2D" type="Camera2D" parent="_RPGM_Camera"]
 
-[node name="ReferenceRect" type="ReferenceRect" parent="_Peekaboo_Camera/Camera2D"]
+[node name="ReferenceRect" type="ReferenceRect" parent="_RPGM_Camera/Camera2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

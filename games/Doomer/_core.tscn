@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://p0nktsm07ev6" path="res://scenes/birds/_birds.tscn" id="15_wlg60"]
 [ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/starter/_starter.tscn" id="17_8i81m"]
 [ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_sps4g"]
-[ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/_peekaboo.tscn" id="21_pw4lx"]
+[ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/_rpgm.tscn" id="21_pw4lx"]
 [ext_resource type="PackedScene" uid="uid://cxiw0m4n4emut" path="res://scenes/swiper/_swiper.tscn" id="22_t1t3w"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
@@ -98,10 +98,10 @@ columns = 2
 [node name="_Starter" parent="Scenes/Scene Grid" node_paths=PackedStringArray("next_scene") instance=ExtResource("17_8i81m")]
 unique_name_in_owner = true
 layout_mode = 2
-next_scene = NodePath("../_Peekaboo")
+next_scene = NodePath("../_RPGM")
 player_turn = ExtResource("18_sps4g")
 
-[node name="_Peekaboo" parent="Scenes/Scene Grid" instance=ExtResource("21_pw4lx")]
+[node name="_RPGM" parent="Scenes/Scene Grid" instance=ExtResource("21_pw4lx")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

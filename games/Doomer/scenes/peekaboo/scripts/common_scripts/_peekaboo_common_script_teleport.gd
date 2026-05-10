@@ -1,5 +1,5 @@
 ### _common_script_teleport ###
-extends _Peekaboo_Script
+extends _RPGM_Script
 
 @export var camera_position = Vector2i.ZERO as Vector2i
 @export var player_position = Vector2i.ZERO as Vector2i
@@ -17,13 +17,13 @@ func _on_area_entered():
 	
 	if camera_position_node != null:
 		if duration == 0.0:
-			get_lambdas().transport_camera(camera_position_node.find_child("_Peekaboo_Mover").map_position)
+			get_lambdas().transport_camera(camera_position_node.find_child("_RPGM_Mover").map_position)
 	else:
 		get_lambdas().transport_camera(camera_position)
 
 
 	if player_position_node != null:
 		if duration == 0.0:
-			get_lambdas().transport_player(player_position_node.find_child("_Peekaboo_Mover").map_position)
+			get_lambdas().transport_player(player_position_node.find_child("_RPGM_Mover").map_position)
 	else:
 		get_lambdas().transport_player(player_position)

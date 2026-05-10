@@ -1,5 +1,5 @@
 ### Event 3-1 ###
-extends _Peekaboo_Script
+extends _RPGM_Script
 
 var slide_duration = 1.0
 
@@ -9,7 +9,7 @@ func _on_viewport_start():
 func _on_frame():
 	if get_variables().l3_enemies_count == 2:
 
-		await get_peekaboo().get_lambdas().show_messages(
+		await get_RPGM().get_lambdas().show_messages(
 		["NPC: You win !"]
 		)
 		get_tree().quit()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8itso7r1mes3" path="res://scenes/birds/_birds.gd" id="1_2cdxk"]
 [ext_resource type="Texture2D" uid="uid://c4ndustk7oa48" path="res://assets/rpgmaker/mv/parallaxes/CloudySky1.png" id="2_asp21"]
-[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="3_dryxk"]
+[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_rpgm_portrait.tscn" id="3_dryxk"]
 [ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="4_jmqeq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmqeq"]

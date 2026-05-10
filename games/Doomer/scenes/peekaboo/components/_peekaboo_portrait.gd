@@ -1,6 +1,6 @@
 @tool
 extends Node2D
-class_name _Peekaboo_Portrait
+class_name _RPGM_Portrait
 
 
 # note: onready variables are ignored by the editor
