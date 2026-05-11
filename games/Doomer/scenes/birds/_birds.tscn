@@ -1,20 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://p0nktsm07ev6"]
+[gd_scene load_steps=15 format=3 uid="uid://p0nktsm07ev6"]
 
 [ext_resource type="Script" uid="uid://8itso7r1mes3" path="res://scenes/birds/_birds.gd" id="1_2cdxk"]
 [ext_resource type="Texture2D" uid="uid://c4ndustk7oa48" path="res://assets/rpgmaker/mv/parallaxes/CloudySky1.png" id="2_asp21"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="3_dryxk"]
 [ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="4_jmqeq"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2ir8"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmqeq"]
 shader = ExtResource("4_jmqeq")
 shader_parameter/circle_center = Vector2(0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lo0k1"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p80ax"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hifju"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qocse"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_740i0"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_al5rg"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ll41h"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpiky"]
+shader = ExtResource("4_jmqeq")
+shader_parameter/circle_center = Vector2(0, 0)
+
 [node name="_Birds" type="SubViewportContainer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_2cdxk")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
-size = Vector2i(1080, 2400)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
@@ -27,8 +65,8 @@ offset_bottom = 2400.0
 border_width = 50.0
 
 [node name="MarginContainer Parallax" type="MarginContainer" parent="SubViewport"]
-offset_right = 1080.0
-offset_bottom = 2400.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Parallax"]
 layout_mode = 2
@@ -46,15 +84,156 @@ autoscroll = Vector2(50, 0)
 texture = ExtResource("2_asp21")
 
 [node name="MarginContainer Birds" type="MarginContainer" parent="SubViewport"]
-offset_right = 1080.0
-offset_bottom = 2400.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/MarginContainer Birds"]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="_portrait" parent="SubViewport/MarginContainer Birds/CenterContainer" instance=ExtResource("3_dryxk")]
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer1/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_k2ir8")
+sprite = "red_prince"
+
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+columns = 3
+
+[node name="MarginContainer1" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer1/CenterContainer" instance=ExtResource("3_dryxk")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_jmqeq")
+sprite = "green"
+
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer2/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_lo0k1")
+sprite = "green"
+
+[node name="MarginContainer3" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer3/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_p80ax")
+sprite = "green"
+
+[node name="MarginContainer4" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer4/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_hifju")
+sprite = "green"
+
+[node name="MarginContainer5" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer5/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_qocse")
+sprite = "green"
+
+[node name="MarginContainer6" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer6/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_740i0")
+sprite = "green"
+
+[node name="MarginContainer7" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer7/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_al5rg")
+sprite = "green"
+
+[node name="MarginContainer8" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer8"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer8/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_ll41h")
+sprite = "green"
+
+[node name="MarginContainer9" type="MarginContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer9"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="SubViewport/MarginContainer Birds/VBoxContainer/MarginContainer2/GridContainer/MarginContainer9/CenterContainer" instance=ExtResource("3_dryxk")]
+material = SubResource("ShaderMaterial_tpiky")
 sprite = "green"
