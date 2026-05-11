@@ -2,6 +2,7 @@ extends _RPGM_Script
 class_name _RPGM_Common_Script_Talker
 
 @export var messages : Array[String] = []
+@export var enabled := true
 
 func _ready():
 	super()
