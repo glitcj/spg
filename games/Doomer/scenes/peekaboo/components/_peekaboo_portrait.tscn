@@ -1,6 +1,6 @@
 [gd_scene load_steps=488 format=3 uid="uid://ca8vvptjr324n"]
 
-[ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/components/_rpgm_portrait.gd" id="1_d26c4"]
+[ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/components/_peekaboo_portrait.gd" id="1_d26c4"]
 [ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="1_hw4jb"]
 [ext_resource type="Texture2D" uid="uid://bhy8mkqo4vdq" path="res://assets/rpgmaker/mv/characters/Evil.png" id="3_0iwj8"]
 [ext_resource type="Texture2D" uid="uid://ddqq7cd7mui6k" path="res://assets/peekaboo/hood.png" id="3_hqufs"]
@@ -13,7 +13,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vxvk"]
 shader = ExtResource("1_hw4jb")
-shader_parameter/circle_center = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_mh3n7"]
 length = 0.001
@@ -1980,6 +1979,11 @@ region = Rect2(528, 144, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l6o0d"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"bird",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_waupg")
@@ -3466,6 +3470,7 @@ libraries = {
 
 [node name="Sprite2D _debug" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 use_parent_material = true
 position = Vector2(0, -25)
 scale = Vector2(20, 20)
@@ -3479,7 +3484,7 @@ visibility_layer = 2
 texture_filter = 1
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_l6o0d")
-animation = &"blue"
+animation = &"bird"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -3491,6 +3496,7 @@ texture = SubResource("ImageTexture_hf2sj")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
+visible = false
 use_parent_material = true
 position = Vector2(-0.099999994, -63.999996)
 mesh = SubResource("PlaneMesh_2dswe")

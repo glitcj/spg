@@ -8,6 +8,10 @@ func _ready() -> void:
 	camera = %Camera2D as Camera2D
 	%_portrait.animation_player.play("move_down")
 	
+	for portrait : _RPGM_Portrait in find_children("*","_RPGM_Portrait"):
+		portrait.scale = Vector2(5, 5)
+		portrait.face_down()
+	
 func _on_viewport_start():
 	super()
 	

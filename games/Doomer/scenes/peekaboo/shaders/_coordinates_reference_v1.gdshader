@@ -8,14 +8,9 @@ void vertex() {
 }
 
 void fragment() {
-	
-	
 	// all the 4 vectors below are equivalent
 	vec2 screen_uv_via_canvas_matrix = screen_position * SCREEN_PIXEL_SIZE ; 
 	vec2 screen_uv_via_fragment_vertex = VERTEX * SCREEN_PIXEL_SIZE ;
 	vec2 screen_uv_via_fragment_screen_uv = SCREEN_UV ;
 	vec2 screen_uv_via_fragment_fragcord = FRAGCOORD.xy ;
-	
-	
-	
 }
