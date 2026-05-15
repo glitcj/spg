@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=15 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://_core.gd" id="1_110wm"]
 [ext_resource type="Script" uid="uid://djvk5f1dkttil" path="res://core/inspector.gd" id="2_2jvhd"]
@@ -9,14 +9,11 @@
 [ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/_core_lambdas.gd" id="11_yes15"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/notes.gd" id="12_dhys3"]
 [ext_resource type="PackedScene" uid="uid://kdwtnvamx6of" path="res://scenes/swiper/_scroller.tscn" id="13_ltnrw"]
-[ext_resource type="PackedScene" uid="uid://cgpq25ikdeulv" path="res://core/grounds/doomer.core.background.tscn" id="13_v53g8"]
 [ext_resource type="PackedScene" uid="uid://p0nktsm07ev6" path="res://scenes/birds/_birds.tscn" id="15_wlg60"]
 [ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/starter/_starter.tscn" id="17_8i81m"]
 [ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_sps4g"]
 [ext_resource type="PackedScene" uid="uid://d08p5bfc634r" path="res://scenes/peekaboo/_peekaboo.tscn" id="21_pw4lx"]
 [ext_resource type="PackedScene" uid="uid://cxiw0m4n4emut" path="res://scenes/swiper/_swiper.tscn" id="22_t1t3w"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_rj2r0"]
 
 [node name="_Core" type="Node2D"]
 script = ExtResource("1_110wm")
@@ -60,32 +57,17 @@ script = ExtResource("9_swu0y")
 
 [node name="Current Scene" type="Node" parent="."]
 
-[node name="Background Container" type="MarginContainer" parent="Current Scene"]
-offset_right = 1080.0
-offset_bottom = 2400.0
+[node name="MarginContainer" type="MarginContainer" parent="Current Scene"]
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Board BG" parent="Current Scene/Background Container" instance=ExtResource("13_v53g8")]
-z_index = -100
+[node name="CenterContainer" type="CenterContainer" parent="Current Scene/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Foreground Container" type="MarginContainer" parent="Current Scene"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -1200.0
-offset_right = 540.0
-offset_bottom = 1200.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Current Scene/Foreground Container"]
-modulate = Color(0, 0, 0, 1)
+[node name="TextureRect" type="TextureRect" parent="Current Scene/MarginContainer/CenterContainer"]
 layout_mode = 2
-texture = SubResource("CanvasTexture_rj2r0")
 
 [node name="Scenes" type="Node2D" parent="."]
 position = Vector2(0, 5000)
