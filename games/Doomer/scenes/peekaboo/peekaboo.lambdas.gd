@@ -8,6 +8,7 @@ func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 func get_player(): return find_parent("_RPGM_Map").find_child("Player") as _RPGM_Player
 func get_camera(): return get_map().find_child("Camera2D") as Camera2D
 
+
 func transport_player(v):
 	assert(v is Vector2i or v is _RPGM_Event)
 	var mover = get_player().find_child("_RPGM_Mover") as _RPGM_Mover
