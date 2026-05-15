@@ -25,8 +25,21 @@ func _ready() -> void:
 
 func _boot():
 	change_viewport(get_scene("_Starter"))
+
+
+
+func change_viewport(viewport: _Core_Viewport):
+	if current_scene:
+		await current_scene._on_viewport_end()
+	current_scene = viewport
 	
-func change_viewport(scene_: _Core_Viewport):
+	%"Current Viewport".texture = (viewport.find_child("SubViewport") as SubViewport).get_texture()
+	
+	await viewport._on_viewport_start()
+
+
+
+func change_viewport_v1(scene_: _Core_Viewport):
 	if current_scene:
 		await current_scene._on_viewport_end()
 	current_scene = scene_

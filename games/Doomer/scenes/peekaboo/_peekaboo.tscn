@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://d08p5bfc634r"]
+[gd_scene load_steps=8 format=3 uid="uid://d08p5bfc634r"]
 
 [ext_resource type="Script" uid="uid://caovffqs8nkct" path="res://scenes/peekaboo/peekaboo.scene.gd" id="1_3t57p"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="3_5dvgp"]
 [ext_resource type="PackedScene" uid="uid://bc6scuw6gftg0" path="res://scenes/peekaboo/_rpgm_map.tscn" id="4_n54ed"]
 [ext_resource type="Texture2D" uid="uid://ck7xl51igarox" path="res://assets/rpgmaker/mv/parallaxes/DarkSpace1.png" id="7_4skqh"]
 [ext_resource type="Shader" uid="uid://cenoyxwifpvd0" path="res://scenes/peekaboo/shaders/_scroll.gdshader" id="7_stufm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8ci1q"]
+viewport_path = NodePath("SubViewport Map")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5i764"]
 shader = ExtResource("7_stufm")
@@ -20,72 +23,78 @@ script = ExtResource("1_3t57p")
 unique_name_in_owner = true
 script = ExtResource("3_5dvgp")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport Map" type="SubViewport" parent="."]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport Map"]
 unique_name_in_owner = true
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport/CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport Map/CanvasLayer"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CanvasLayer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport Map/CanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer1" type="MarginContainer" parent="SubViewport/CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer1" type="MarginContainer" parent="SubViewport Map/CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="_canvas_top" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer/VBoxContainer/MarginContainer1"]
+[node name="_canvas_top" type="CenterContainer" parent="SubViewport Map/CanvasLayer/MarginContainer/VBoxContainer/MarginContainer1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer2" type="MarginContainer" parent="SubViewport/CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="SubViewport Map/CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="_canvas_middle" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="_canvas_middle" type="CenterContainer" parent="SubViewport Map/CanvasLayer/MarginContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer3" type="MarginContainer" parent="SubViewport/CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="SubViewport Map/CanvasLayer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="_canvas_bottom" type="CenterContainer" parent="SubViewport/CanvasLayer/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="_canvas_bottom" type="CenterContainer" parent="SubViewport Map/CanvasLayer/MarginContainer/VBoxContainer/MarginContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer _RPGM_Map" type="MarginContainer" parent="SubViewport"]
+[node name="MarginContainer _RPGM_Map" type="MarginContainer" parent="SubViewport Map"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/MarginContainer _RPGM_Map"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport Map/MarginContainer _RPGM_Map"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="_RPGM_Map" parent="SubViewport/MarginContainer _RPGM_Map/CenterContainer" instance=ExtResource("4_n54ed")]
+[node name="_RPGM_Map" parent="SubViewport Map/MarginContainer _RPGM_Map/CenterContainer" instance=ExtResource("4_n54ed")]
 unique_name_in_owner = true
 scale = Vector2(0.75, 0.75)
 
-[node name="Node2D" type="Node2D" parent="."]
-z_index = -5
-scale = Vector2(1.35, 1.35)
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
 
-[node name="TextureRect" type="TextureRect" parent="Node2D"]
+[node name="TextureRect Map" type="TextureRect" parent="SubViewport"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("ViewportTexture_8ci1q")
+
+[node name="TextureRect Parallax" type="TextureRect" parent="SubViewport"]
+z_index = -5
 material = SubResource("ShaderMaterial_5i764")
 offset_right = 1920.0
 offset_bottom = 816.0
+scale = Vector2(1.35, 1.35)
 texture = ExtResource("7_4skqh")
 stretch_mode = 1
