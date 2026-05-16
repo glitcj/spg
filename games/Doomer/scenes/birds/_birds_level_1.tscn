@@ -1,0 +1,221 @@
+[gd_scene load_steps=15 format=3 uid="uid://b7x0tsw8mwysl"]
+
+[ext_resource type="Script" uid="uid://devbr7hwfx0tb" path="res://scenes/birds/_birds_level_1.gd" id="1_c7vdk"]
+[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="1_h62v1"]
+[ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="2_c7vdk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h62v1"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7vdk"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra8ji"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8y5a"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l21l3"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpbf7"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mddr5"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uv8v3"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jm6om"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b65q8"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lo0k1"]
+
+[node name="_Birds_Level_1" type="Node2D"]
+script = ExtResource("1_c7vdk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 1274.0
+offset_bottom = 1080.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+columns = 3
+
+[node name="MarginContainer1" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer1/CenterContainer" instance=ExtResource("1_h62v1")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_h62v1")
+sprite = "bird"
+
+[node name="bird_position_0_0" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer1/CenterContainer"]
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer2/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_c7vdk")
+sprite = "bird"
+
+[node name="bird_position_0_1" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer2/CenterContainer"]
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer3/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_ra8ji")
+sprite = "bird"
+
+[node name="bird_position_0_2" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer3/CenterContainer"]
+
+[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer4/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_e8y5a")
+sprite = "bird"
+
+[node name="bird_position_1_0" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer4/CenterContainer"]
+
+[node name="MarginContainer5" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer5/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_l21l3")
+sprite = "bird"
+
+[node name="bird_position_1_1" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer5/CenterContainer"]
+
+[node name="MarginContainer6" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer6/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_kpbf7")
+sprite = "bird"
+
+[node name="bird_position_1_2" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer6/CenterContainer"]
+
+[node name="MarginContainer7" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer7/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_mddr5")
+sprite = "bird"
+
+[node name="bird_position_2_0" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer7/CenterContainer"]
+position = Vector2(458, -181)
+
+[node name="MarginContainer8" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer8"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer8/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_uv8v3")
+sprite = "bird"
+
+[node name="bird_position_2_1" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer8/CenterContainer"]
+position = Vector2(229, -181)
+
+[node name="MarginContainer9" type="MarginContainer" parent="HBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer9"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer9/CenterContainer" instance=ExtResource("1_h62v1")]
+material = SubResource("ShaderMaterial_jm6om")
+sprite = "bird"
+
+[node name="bird_position_2_2" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer9/CenterContainer"]
+
+[node name="MarginContainer1" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="_lead_bird" type="CharacterBody2D" parent="HBoxContainer/MarginContainer1/CenterContainer"]
+unique_name_in_owner = true
+
+[node name="_RPGM_Portrait" parent="HBoxContainer/MarginContainer1/CenterContainer/_lead_bird" instance=ExtResource("1_h62v1")]
+modulate = Color(1.4595516, 1.6773839, 2.3308809, 1)
+material = SubResource("ShaderMaterial_b65q8")
+sprite = "bird"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/MarginContainer1/CenterContainer/_lead_bird"]
+shape = SubResource("CircleShape2D_lo0k1")
