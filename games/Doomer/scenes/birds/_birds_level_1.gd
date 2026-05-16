@@ -9,16 +9,12 @@ func _get_viewport(): return find_parent("_Birds") as _Birds
 var birds_direction = Vector2(0,0)
 var lead_bird_direction = Vector2(0,0)
 
-
-var grid_size = 3
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# camera = %Camera2D as Camera2D
 	%_portrait.animation_player.play("move_down")
 	
 	for portrait : _RPGM_Portrait in find_children("*","_RPGM_Portrait"):
-		portrait.scale = Vector2(5, 5)
 		portrait.face_down()
 		
 	_loop_timer()
@@ -54,7 +50,6 @@ func _input(event: InputEvent) -> void:
 	if _direction:
 		lead_bird_direction = _direction
 	else:
-		# velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 		pass
 		
 	match (event as InputEventKey).keycode:
