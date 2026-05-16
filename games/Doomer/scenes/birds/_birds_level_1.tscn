@@ -1,21 +1,10 @@
-[gd_scene load_steps=18 format=4 uid="uid://b7x0tsw8mwysl"]
+[gd_scene load_steps=19 format=4 uid="uid://b7x0tsw8mwysl"]
 
 [ext_resource type="Script" uid="uid://devbr7hwfx0tb" path="res://scenes/birds/_birds_level_1.gd" id="1_c7vdk"]
 [ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="1_h62v1"]
 [ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="2_c7vdk"]
 [ext_resource type="Texture2D" uid="uid://htimmfc8i3ud" path="res://assets/ninja/Backgrounds/Tilesets/TilesetDungeon.png" id="4_ra8ji"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h62v1"]
-shader = ExtResource("2_c7vdk")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7vdk"]
-shader = ExtResource("2_c7vdk")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra8ji"]
-shader = ExtResource("2_c7vdk")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8y5a"]
-shader = ExtResource("2_c7vdk")
+[ext_resource type="PackedScene" uid="uid://3ngwce08sjbc" path="res://scenes/birds/_birds_bird.tscn" id="5_e8y5a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l21l3"]
 shader = ExtResource("2_c7vdk")
@@ -33,6 +22,18 @@ shader = ExtResource("2_c7vdk")
 shader = ExtResource("2_c7vdk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b65q8"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61s60"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8d8xf"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_arax7"]
+shader = ExtResource("2_c7vdk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gltpr"]
 shader = ExtResource("2_c7vdk")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lo0k1"]
@@ -95,7 +96,7 @@ size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer1/CenterContainer" instance=ExtResource("1_h62v1")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_h62v1")
+material = SubResource("ShaderMaterial_l21l3")
 sprite = "bird"
 
 [node name="bird_position_0_0" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer1/CenterContainer"]
@@ -111,7 +112,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer2/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_c7vdk")
+material = SubResource("ShaderMaterial_kpbf7")
 sprite = "bird"
 
 [node name="bird_position_0_1" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer2/CenterContainer"]
@@ -127,7 +128,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer3/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_ra8ji")
+material = SubResource("ShaderMaterial_mddr5")
 sprite = "bird"
 
 [node name="bird_position_0_2" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer3/CenterContainer"]
@@ -143,7 +144,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer4/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_e8y5a")
+material = SubResource("ShaderMaterial_uv8v3")
 sprite = "bird"
 
 [node name="bird_position_1_0" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer4/CenterContainer"]
@@ -159,7 +160,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer5/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_l21l3")
+material = SubResource("ShaderMaterial_jm6om")
 sprite = "bird"
 
 [node name="bird_position_1_1" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer5/CenterContainer"]
@@ -175,7 +176,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer6/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_kpbf7")
+material = SubResource("ShaderMaterial_b65q8")
 sprite = "bird"
 
 [node name="bird_position_1_2" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer6/CenterContainer"]
@@ -191,7 +192,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer7/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_mddr5")
+material = SubResource("ShaderMaterial_61s60")
 sprite = "bird"
 
 [node name="bird_position_2_0" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer7/CenterContainer"]
@@ -208,7 +209,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer8/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_uv8v3")
+material = SubResource("ShaderMaterial_8d8xf")
 sprite = "bird"
 
 [node name="bird_position_2_1" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer8/CenterContainer"]
@@ -225,7 +226,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="_portrait" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer9/CenterContainer" instance=ExtResource("1_h62v1")]
-material = SubResource("ShaderMaterial_jm6om")
+material = SubResource("ShaderMaterial_arax7")
 sprite = "bird"
 
 [node name="bird_position_2_2" type="Node2D" parent="HBoxContainer/MarginContainer2/GridContainer/MarginContainer9/CenterContainer"]
@@ -245,7 +246,7 @@ unique_name_in_owner = true
 
 [node name="_RPGM_Portrait" parent="HBoxContainer/MarginContainer1/CenterContainer/_lead_bird" instance=ExtResource("1_h62v1")]
 modulate = Color(1.4595516, 1.6773839, 2.3308809, 1)
-material = SubResource("ShaderMaterial_b65q8")
+material = SubResource("ShaderMaterial_gltpr")
 sprite = "bird"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/MarginContainer1/CenterContainer/_lead_bird"]
@@ -256,3 +257,5 @@ texture_filter = 1
 scale = Vector2(10, 10)
 tile_map_data = PackedByteArray("AAAAAP7/AQAIAAMAAAAAAP//AQAIAAMAAAABAP7/AQAIAAMAAAABAP//AQAIAAMAAAACAP7/AQAIAAMAAAACAP//AQAIAAMAAAADAP7/AQAIAAMAAAADAP//AQAIAAMAAAAEAP7/AQAIAAMAAAAEAP//AQAIAAMAAAAFAP7/AQAIAAMAAAAFAP//AQAIAAMAAAAGAP7/AQAIAAMAAAAGAP//AQAIAAMAAAAHAP7/AQAIAAMAAAAHAP//AQAIAAMAAAAIAP7/AQAIAAMAAAAIAP//AQAIAAMAAAAJAP7/AQAIAAMAAAAJAP//AQAIAAMAAAAKAP7/AQAIAAMAAAAKAP//AQAIAAMAAAALAP7/AQAIAAMAAAALAP//AQAIAAMAAAAAAAcAAQAIAAMAAAAAAAgAAQAIAAMAAAABAAcAAQAIAAMAAAABAAgAAQAIAAMAAAACAAcAAQAIAAMAAAACAAgAAQAIAAMAAAADAAcAAQAIAAMAAAADAAgAAQAIAAMAAAAEAAcAAQAIAAMAAAAEAAgAAQAIAAMAAAAFAAcAAQAIAAMAAAAFAAgAAQAIAAMAAAAGAAcAAQAIAAMAAAAGAAgAAQAIAAMAAAAHAAcAAQAIAAMAAAAHAAgAAQAIAAMAAAAIAAcAAQAIAAMAAAAIAAgAAQAIAAMAAAAJAAcAAQAIAAMAAAAJAAgAAQAIAAMAAAAKAAcAAQAIAAMAAAAKAAgAAQAIAAMAAAALAAcAAQAIAAMAAAALAAgAAQAIAAMAAAD8//7/AQAIAAMAAAD8////AQAIAAMAAAD8/wAAAQAIAAMAAAD8/wEAAQAIAAMAAAD8/wIAAQAIAAMAAAD8/wMAAQAIAAMAAAD8/wQAAQAIAAMAAAD8/wUAAQAIAAMAAAD8/wYAAQAIAAMAAAD8/wcAAQAIAAMAAAD8/wgAAQAIAAMAAAD9//7/AQAIAAMAAAD9////AQAIAAMAAAD9/wAAAQAIAAMAAAD9/wEAAQAIAAMAAAD9/wIAAQAIAAMAAAD9/wMAAQAIAAMAAAD9/wQAAQAIAAMAAAD9/wUAAQAIAAMAAAD9/wYAAQAIAAMAAAD9/wcAAQAIAAMAAAD9/wgAAQAIAAMAAAD+//7/AQAIAAMAAAD+////AQAIAAMAAAD///7/AQAIAAMAAAD/////AQAIAAMAAAD+/wgAAQAIAAMAAAD//wgAAQAIAAMAAAD+/wcAAQAIAAMAAAD//wcAAQAIAAMAAAAMAP7/AQAIAAMAAAAMAP//AQAIAAMAAAANAP7/AQAIAAMAAAANAP//AQAIAAMAAAAOAP7/AQAIAAMAAAAOAP//AQAIAAMAAAAPAP7/AQAIAAMAAAAPAP//AQAIAAMAAAAQAP7/AQAIAAMAAAAQAP//AQAIAAMAAAARAP7/AQAIAAMAAAARAP//AQAIAAMAAAASAP7/AQAIAAMAAAASAP//AQAIAAMAAAATAP7/AQAIAAMAAAATAP//AQAIAAMAAAAUAP7/AQAIAAMAAAAUAP//AQAIAAMAAAAVAP7/AQAIAAMAAAAVAP//AQAIAAMAAAAWAP7/AQAIAAMAAAAWAP//AQAIAAMAAAAXAP7/AQAIAAMAAAAXAP//AQAIAAMAAAAYAP7/AQAIAAMAAAAYAP//AQAIAAMAAAAZAP7/AQAIAAMAAAAZAP//AQAIAAMAAAAaAP7/AQAIAAMAAAAaAP//AQAIAAMAAAAbAP7/AQAIAAMAAAAbAP//AQAIAAMAAAAcAP7/AQAIAAMAAAAcAP//AQAIAAMAAAAdAP7/AQAIAAMAAAAdAP//AQAIAAMAAAAeAP7/AQAIAAMAAAAeAP//AQAIAAMAAAAfAP7/AQAIAAMAAAAfAP//AQAIAAMAAAAgAP7/AQAIAAMAAAAgAP//AQAIAAMAAAAhAP7/AQAIAAMAAAAhAP//AQAIAAMAAAAMAAcAAQAIAAMAAAAMAAgAAQAIAAMAAAANAAcAAQAIAAMAAAANAAgAAQAIAAMAAAAOAAcAAQAIAAMAAAAOAAgAAQAIAAMAAAAPAAcAAQAIAAMAAAAPAAgAAQAIAAMAAAAQAAcAAQAIAAMAAAAQAAgAAQAIAAMAAAARAAcAAQAIAAMAAAARAAgAAQAIAAMAAAASAAcAAQAIAAMAAAASAAgAAQAIAAMAAAATAAcAAQAIAAMAAAATAAgAAQAIAAMAAAAUAAcAAQAIAAMAAAAUAAgAAQAIAAMAAAAVAAcAAQAIAAMAAAAVAAgAAQAIAAMAAAAWAAcAAQAIAAMAAAAWAAgAAQAIAAMAAAAXAAcAAQAIAAMAAAAXAAgAAQAIAAMAAAAYAAcAAQAIAAMAAAAYAAgAAQAIAAMAAAAZAAcAAQAIAAMAAAAZAAgAAQAIAAMAAAAaAAcAAQAIAAMAAAAaAAgAAQAIAAMAAAAbAAcAAQAIAAMAAAAbAAgAAQAIAAMAAAAcAAcAAQAIAAMAAAAcAAgAAQAIAAMAAAAdAAcAAQAIAAMAAAAdAAgAAQAIAAMAAAAeAAcAAQAIAAMAAAAeAAgAAQAIAAMAAAAfAAcAAQAIAAMAAAAfAAgAAQAIAAMAAAAgAAcAAQAIAAMAAAAgAAgAAQAIAAMAAAAhAAcAAQAIAAMAAAAhAAgAAQAIAAMAAAAJAAMAAQAIAAMAAAAJAAQAAQAIAAMAAAAJAAUAAQAIAAMAAAAEAAIAAQAIAAMAAAAEAAMAAQAIAAMAAAAEAAQAAQAIAAMAAAD+/wEAAQAIAAMAAAD+/wIAAQAIAAMAAAD+/wMAAQAIAAMAAAD+/wQAAQAIAAMAAAD+/wUAAQAIAAMAAAACAAAAAQAIAAMAAAAGAAAAAQAIAAMAAAAEAAUAAQAIAAMAAAA=")
 tile_set = SubResource("TileSet_l21l3")
+
+[node name="_Birds_Bird" parent="." instance=ExtResource("5_e8y5a")]

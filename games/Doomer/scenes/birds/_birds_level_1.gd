@@ -14,28 +14,7 @@ func _ready() -> void:
 	# camera = %Camera2D as Camera2D
 	%_portrait.animation_player.play("move_down")
 	
-	for portrait : _RPGM_Portrait in find_children("*","_RPGM_Portrait"):
-		portrait.face_down()
-		
-	_loop_timer()
 
-func _loop_timer():
-	await get_tree().create_timer(1.).timeout
-	
-	if _get_viewport().is_active:
-		var possible_directions = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
-		birds_direction = possible_directions[randi() % possible_directions.size()]
-		for bird : _RPGM_Portrait in find_children("_portrait","_RPGM_Portrait"):
-			move_bird(bird, bird.global_position + birds_direction * 50)
-			
-	_loop_timer()
-
-	
-func move_bird(bird : _RPGM_Portrait, _position: Vector2):
-	var tween = get_tree().create_tween()
-	tween.tween_property(bird, "global_position", _position, .1)
-	await tween.finished
-	
 	
 func _input(event: InputEvent) -> void:
 	if not _get_viewport().is_active: return
