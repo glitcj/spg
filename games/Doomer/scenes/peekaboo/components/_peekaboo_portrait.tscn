@@ -3497,12 +3497,13 @@ texture = SubResource("CanvasTexture_rm60n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 light_mask = 0
 visibility_layer = 2
 texture_filter = 1
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_l6o0d")
-animation = &"blue"
+animation = &"bird"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true

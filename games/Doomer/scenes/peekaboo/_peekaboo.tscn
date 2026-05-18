@@ -83,7 +83,9 @@ unique_name_in_owner = true
 scale = Vector2(0.75, 0.75)
 
 [node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
 size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="TextureRect Map" type="TextureRect" parent="SubViewport"]
 offset_right = 1920.0

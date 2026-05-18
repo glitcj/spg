@@ -21,7 +21,6 @@ unique_name_in_owner = true
 [node name="_RPGM_Portrait" parent="_passive_movement_anchor/_tween_movement_anchor" instance=ExtResource("1_oovju")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_vjok7")
-position = Vector2(1654, 290)
 sprite = "bird"
 
 [node name="RigidBody2D" type="RigidBody2D" parent="_passive_movement_anchor/_tween_movement_anchor"]
