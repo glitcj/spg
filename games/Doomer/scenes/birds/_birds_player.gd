@@ -3,11 +3,10 @@ class_name _Birds_Player
 
 func _get_viewport(): return find_parent("_Birds") as _Birds
 
-
 var birds_direction = Vector2(0,0)
 var player_input_direction = Vector2(0,0)
 var player_input_accumulated_direction = Vector2(0,0)
-var player_input_movement
+var player_input_movement = Vector2(0,0)
 var passive_movement = Vector2(300, 0)
 
 func _ready() -> void:

@@ -8,6 +8,7 @@
 shader = ExtResource("3_5krvi")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lo0k1"]
+radius = 50.0
 
 [node name="_Birds_Player" type="CharacterBody2D"]
 script = ExtResource("1_j3mge")
@@ -16,6 +17,7 @@ script = ExtResource("1_j3mge")
 unique_name_in_owner = true
 modulate = Color(1.4595516, 1.6773839, 2.3308809, 1)
 material = SubResource("ShaderMaterial_j3mge")
+position = Vector2(0, -70)
 sprite = "bird"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
