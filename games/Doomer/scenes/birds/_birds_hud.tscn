@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfg24h7bgrdws"]
+
+[ext_resource type="Script" uid="uid://4wp02luohv4u" path="res://scenes/birds/_birds_hud.gd" id="1_hc457"]
+[ext_resource type="Texture2D" uid="uid://brotte1klo8q4" path="res://assets/doomer/parallax/space_background_pack/Assets/Old Version/layers/parallax-space-backgound.png" id="2_rmixl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jmqeq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jmqeq"]
+font_size = 64
+
+[sub_resource type="Curve" id="Curve_rmixl"]
+_data = [Vector2(0.029182881, 0.99550945), 0.0, 0.0, 0, 0, Vector2(0.88163257, 0.18081605), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_rmixl"]
+font_size = 64
+
+[node name="_Birds_HUD" type="PanelContainer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jmqeq")
+script = ExtResource("1_hc457")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_rmixl")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer 1" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer 1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer 1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Speed"
+label_settings = SubResource("LabelSettings_jmqeq")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer 1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer 1/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Line2D Speed" type="Line2D" parent="VBoxContainer/MarginContainer 1/HBoxContainer/MarginContainer/CenterContainer"]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 250, 0)
+width = 50.0
+
+[node name="MarginContainer 3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer 3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer 3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Direction"
+label_settings = SubResource("LabelSettings_jmqeq")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer 3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer 3/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Line2D Direction" type="Line2D" parent="VBoxContainer/MarginContainer 3/HBoxContainer/MarginContainer/CenterContainer"]
+points = PackedVector2Array(0, 0, 250, 100)
+width = 50.0
+width_curve = SubResource("Curve_rmixl")
+
+[node name="MarginContainer 2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label Log" type="Label" parent="VBoxContainer/MarginContainer 2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test
+test
+test"
+label_settings = SubResource("LabelSettings_rmixl")
