@@ -25,6 +25,8 @@ func _ready() -> void:
 	get_hud().to_log.append(get_accumulated_direction)
 	get_hud().to_log.append(get_player_input_direction)
 	
+	get_hud().add_log(_get_velocity)
+	
 func _process(delta : float):
 	pass
 
@@ -63,8 +65,6 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if not _get_viewport().is_active: return
 	player_input_movement = accumulated_direction
-	
-	get_hud().speed = speed
 	
 	if delta - floor(delta)  < 0.1:
 		# _process_physics is quantized every 0.1, which makes direction change detection quirky

@@ -7,7 +7,6 @@ func get_hud(): return %_Birds_HUD as _Birds_HUD
 
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
-	%_Birds_HUD.speed = .2
 
 
 func _on_viewport_start():

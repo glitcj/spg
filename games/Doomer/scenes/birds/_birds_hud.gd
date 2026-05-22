@@ -7,19 +7,11 @@ var max_speed_bar_length = 250
 	set(v):
 		log = to_log_as_text() + v
 		%"Label Log".text = log
-
-@export var speed := .5:
-	set(v):
-		# %"Line2D Speed".set_point_position(1, Vector2(0, v * max_speed_bar_length))
-		
-		var changed_points = %"Line2D Speed".points
-		changed_points[1] = Vector2(0, v * max_speed_bar_length)
-		%"Line2D Speed".points = changed_points
-		
-		speed = v 
 		
 var direction := Vector2(0, 0)
 var to_log := []
+
+var vector_log_scene = preload("res://scenes/birds/_birds_hud_vector_hud.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +21,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func add_log(to_log : Callable):
+	if to_log.call() is Vector2:
+		var _log = vector_log_scene.instantiate()
+		_log.to_log = to_log
+		%VBoxContainer.add_child(_log)
+	
 
 func to_log_as_text():
 	var tmp = ""
