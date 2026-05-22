@@ -21,11 +21,10 @@ func _ready() -> void:
 	# Logged
 	get_hud().to_log.append(get_player_input_movement)
 	get_hud().to_log.append(_get_velocity)
-	get_hud().to_log.append(get_input_plus_passive)
-	get_hud().to_log.append(get_accumulated_direction)
-	get_hud().to_log.append(get_player_input_direction)
 	
-	get_hud().add_log(_get_velocity)
+	get_hud().add_vector_log(_get_velocity, 360.)
+	get_hud().add_log(get_accumulated_direction)
+	get_hud().add_log(get_input_plus_passive)
 	
 func _process(delta : float):
 	pass

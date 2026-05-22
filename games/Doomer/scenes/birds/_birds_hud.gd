@@ -27,6 +27,14 @@ func add_log(to_log : Callable):
 		var _log = vector_log_scene.instantiate()
 		_log.to_log = to_log
 		%VBoxContainer.add_child(_log)
+
+
+func add_vector_log(to_log : Callable, max_vector_length = 1.0):
+	var _log = vector_log_scene.instantiate() as _Core_Log_Vector
+	_log.to_log = to_log
+	_log.max_vector_length = max_vector_length
+	%VBoxContainer.add_child(_log)
+
 	
 
 func to_log_as_text():

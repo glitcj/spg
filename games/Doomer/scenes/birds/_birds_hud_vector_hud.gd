@@ -4,7 +4,10 @@ class_name _Core_Log_Vector
 @export var to_log : Callable = func(): return
 
 var vector
-var hud_vector_length = 10
+
+@export var max_vector_length = 1. # expected maximum length
+var hud_vector_length_multiplier = 300.
+var hud_vector_length
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,17 +18,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update()
 	
-func update():	
-	if to_log == null:
-		return
-	print(to_log, to_log == null)
+func update():
 	if to_log.call() == null:
 		return
-		
+	
 	vector = to_log.call() as Vector2
 	%"Label Name".text = to_log.get_method()
 	%"Label Value".text = "(%.2f, %.2f), length: %.2f" % [vector.x, vector.y, vector.length()]
 	
+	hud_vector_length = (1. / max_vector_length) * hud_vector_length_multiplier
 	var changed_points = %"Line2D Speed".points
-	changed_points[1] = vector * hud_vector_length # Vector2(0, vector * hud_vector_length)
+	changed_points[1] = vector * hud_vector_length
 	%"Line2D Speed".points = changed_points

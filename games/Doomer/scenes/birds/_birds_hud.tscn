@@ -26,6 +26,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="_Core_Log_Vector" parent="VBoxContainer" instance=ExtResource("3_cls3w")]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer 2" type="MarginContainer" parent="VBoxContainer"]
