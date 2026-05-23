@@ -11,7 +11,7 @@ var max_speed_bar_length = 250
 var direction := Vector2(0, 0)
 var to_log := []
 
-var vector_log_scene = preload("res://scenes/birds/_birds_hud_vector_hud.tscn")
+var vector_log_scene = preload("res://scenes/birds/_core_log_item.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,8 +1,9 @@
 extends MarginContainer
 class_name _Core_Log_Vector
 
-@export var to_log : Callable = func(): return
-
+@export var to_log : Callable = func(): return:
+	set(value):
+		to_log = value
 var vector
 
 @export var max_vector_length = 1. # expected maximum length
@@ -27,6 +28,6 @@ func update():
 	%"Label Value".text = "(%.2f, %.2f), length: %.2f" % [vector.x, vector.y, vector.length()]
 	
 	hud_vector_length = (1. / max_vector_length) * hud_vector_length_multiplier
-	var changed_points = %"Line2D Speed".points
+	var changed_points = %"Line2D Vector".points
 	changed_points[1] = vector * hud_vector_length
-	%"Line2D Speed".points = changed_points
+	%"Line2D Vector".points = changed_points
