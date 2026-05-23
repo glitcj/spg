@@ -9,6 +9,8 @@ var speed = 2
 func _ready() -> void:
 	%_RPGM_Portrait.face_down()
 	_loop_timer()
+	
+	%RigidBody2D.body_entered.connect(_on_body_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,6 +24,7 @@ func move(destination: Vector2):
 	await tween.finished
 	
 	
+	
 
 func _loop_timer():
 	await get_tree().create_timer(1.).timeout
@@ -32,3 +35,6 @@ func _loop_timer():
 		move(%_tween_movement_anchor.position + direction * 50)
 			
 	_loop_timer()
+
+func _on_body_entered(_node : Node):
+	queue_free()	

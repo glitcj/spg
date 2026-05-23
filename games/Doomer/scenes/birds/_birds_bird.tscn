@@ -8,6 +8,7 @@
 shader = ExtResource("2_qlbuy")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlbuy"]
+radius = 66.23
 
 [node name="_Birds_Bird" type="Node2D"]
 script = ExtResource("1_qlbuy")
@@ -24,6 +25,8 @@ material = SubResource("ShaderMaterial_qlbuy")
 sprite = "bird"
 
 [node name="RigidBody2D" type="RigidBody2D" parent="_passive_movement_anchor/_tween_movement_anchor"]
+unique_name_in_owner = true
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_passive_movement_anchor/_tween_movement_anchor/RigidBody2D"]
 shape = SubResource("CircleShape2D_qlbuy")
