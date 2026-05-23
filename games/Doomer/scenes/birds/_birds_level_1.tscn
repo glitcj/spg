@@ -48,6 +48,7 @@ tile_set = SubResource("TileSet_l21l3")
 
 [node name="_bird 1" parent="." instance=ExtResource("5_e8y5a")]
 position = Vector2(2127, 198)
+enable_logs = true
 
 [node name="_bird 2" parent="." instance=ExtResource("5_e8y5a")]
 position = Vector2(2127, 758)
