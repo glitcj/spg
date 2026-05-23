@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfg24h7bgrdws"]
+[gd_scene load_steps=4 format=3 uid="uid://dfg24h7bgrdws"]
 
 [ext_resource type="Script" uid="uid://4wp02luohv4u" path="res://scenes/birds/_core_log.gd" id="1_fumey"]
 [ext_resource type="Texture2D" uid="uid://brotte1klo8q4" path="res://assets/doomer/parallax/space_background_pack/Assets/Old Version/layers/parallax-space-backgound.png" id="2_kbjxv"]
-[ext_resource type="PackedScene" uid="uid://1yexpc3rqkur" path="res://scenes/birds/_core_log_item.tscn" id="3_g5ebu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jmqeq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_rmixl"]
-font_size = 32
 
 [node name="_Core_Log" type="PanelContainer"]
 offset_right = 1920.0
@@ -24,19 +20,3 @@ stretch_mode = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="_Core_Log_Vector" parent="VBoxContainer" instance=ExtResource("3_g5ebu")]
-visible = false
-layout_mode = 2
-
-[node name="MarginContainer 2" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label Log" type="Label" parent="VBoxContainer/MarginContainer 2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "test
-test
-test"
-label_settings = SubResource("LabelSettings_rmixl")

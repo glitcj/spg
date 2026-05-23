@@ -5,14 +5,9 @@ func _get_viewport(): return find_parent("_Birds") as _Birds
 func get_hud(): return _get_viewport().get_hud() as _Core_Log
 
 var birds_direction = Vector2(0,0)
-# var lead_bird_direction = Vector2(0,0)
-# var player_input_movement
-# var passive_movement = Vector2(300, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# camera = %Camera2D as Camera2D
-	# %_portrait.animation_player.play("move_down")
 	pass
 	
 func _input(event: InputEvent) -> void:
