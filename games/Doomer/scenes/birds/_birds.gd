@@ -3,7 +3,7 @@ class_name _Birds
 
 signal finished
 
-func get_hud(): return %_Birds_HUD as _Birds_HUD
+func get_hud(): return %_Core_Log as _Core_Log
 
 func _ready() -> void:
 	camera = %Camera2D as Camera2D

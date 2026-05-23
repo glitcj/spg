@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1yexpc3rqkur"]
 
-[ext_resource type="Script" uid="uid://da2v1irrkkln7" path="res://scenes/birds/_birds_hud_vector_hud.gd" id="1_kqkbc"]
+[ext_resource type="Script" uid="uid://da2v1irrkkln7" path="res://scenes/birds/_core_log_item.gd" id="1_vs0wo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jmqeq"]
 font_size = 32
@@ -12,12 +12,14 @@ font_size = 32
 offset_right = 540.0
 offset_bottom = 180.0
 size_flags_vertical = 3
-script = ExtResource("1_kqkbc")
+script = ExtResource("1_vs0wo")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="MarginContainer Vector" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer Vector"]
@@ -52,19 +54,22 @@ layout_mode = 2
 text = "(0, 0), length: 0.00"
 label_settings = SubResource("LabelSettings_4p0wc")
 
-[node name="MarginContainer Text" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer String" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer Text"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer String"]
 layout_mode = 2
 
-[node name="Label Text" type="Label" parent="VBoxContainer/MarginContainer Text/VBoxContainer"]
+[node name="Label String" type="Label" parent="VBoxContainer/MarginContainer String/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Text"
 label_settings = SubResource("LabelSettings_4p0wc")
 
 [node name="MarginContainer Scalar" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 

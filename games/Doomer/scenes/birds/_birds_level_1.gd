@@ -1,10 +1,8 @@
 extends Node2D
 class_name _Birds_Level
 
-
-
 func _get_viewport(): return find_parent("_Birds") as _Birds
-func get_hud(): return _get_viewport().get_hud() as _Birds_HUD
+func get_hud(): return _get_viewport().get_hud() as _Core_Log
 
 var birds_direction = Vector2(0,0)
 # var lead_bird_direction = Vector2(0,0)

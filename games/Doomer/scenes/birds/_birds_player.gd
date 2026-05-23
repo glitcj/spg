@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name _Birds_Player
 
 func _get_viewport(): return find_parent("_Birds") as _Birds
-func get_hud(): return _get_viewport().get_hud() as _Birds_HUD
+func get_hud(): return _get_viewport().get_hud() as _Core_Log
 
 var birds_direction = Vector2(0,0)
 var player_input_direction = Vector2(0,0)
@@ -18,11 +18,8 @@ var speed = 2
 func _ready() -> void:
 	%_RPGM_Portrait.face_down()
 	
-	# Logged
-	get_hud().to_log.append(get_player_input_movement)
-	get_hud().to_log.append(_get_velocity)
-	
-	get_hud().add_vector_log(_get_velocity, 360.)
+	get_hud().add_log(_get_velocity)
+	get_hud().add_log(_get_absolute_velocity)
 	get_hud().add_log(get_accumulated_direction)
 	get_hud().add_log(get_input_plus_passive)
 	
@@ -31,7 +28,8 @@ func _process(delta : float):
 
 
 func get_player_input_movement(): return player_input_movement
-func _get_velocity(): return velocity
+func _get_velocity(): return velocity / max_speed
+func _get_absolute_velocity(): return  "%.2f, %.2f" % [velocity.x, velocity.y] 
 func get_input_plus_passive(): return input_plus_passive
 func get_accumulated_direction(): return accumulated_direction
 func get_player_input_direction(): return player_input_direction
@@ -76,5 +74,4 @@ func _physics_process(delta: float) -> void:
 	input_plus_passive = accumulated_direction + wind_movement
 	velocity = input_plus_passive * max_speed
 	
-	get_hud().log = ""
 	move_and_slide()
