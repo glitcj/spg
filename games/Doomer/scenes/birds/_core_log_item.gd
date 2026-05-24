@@ -23,6 +23,8 @@ func _process(delta: float) -> void:
 	update()
 	
 func update():
+	if not to_log.is_valid():
+		return
 	if to_log.call() == null:
 		return
 	

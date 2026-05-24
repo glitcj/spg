@@ -21,6 +21,8 @@ func _ready() -> void:
 	get_hud().add_log(get_accumulated_direction)
 	get_hud().add_log(get_input_plus_passive)
 	
+	%"Area2D HitBox".area_entered.connect(_on_hitbox_area_entered)
+	
 func _process(delta : float):
 	pass
 
@@ -83,3 +85,7 @@ func _physics_process(delta: float) -> void:
 	velocity = input_plus_passive * max_speed
 	
 	move_and_slide()
+
+func _on_hitbox_area_entered(node : Node):
+	(node.get_parent() as _Birds_Bird).kill()
+	_get_viewport().finish()

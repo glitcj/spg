@@ -65,3 +65,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(_node : Node):
 	queue_free()
+
+func kill():
+	queue_free()

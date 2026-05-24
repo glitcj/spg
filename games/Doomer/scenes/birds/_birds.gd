@@ -15,3 +15,5 @@ func _on_viewport_start():
 func _on_viewport_end():
 	super()
 	
+func finish():
+	finished.emit()
