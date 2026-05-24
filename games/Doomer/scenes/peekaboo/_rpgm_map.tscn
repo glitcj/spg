@@ -12077,1185 +12077,6 @@ sprite = "white"
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
-[node name="_teleport_1_2" type="Node2D" parent="."]
-position = Vector2(719.928, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_1_2" type="Node" parent="_teleport_1_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_3_1")
-player_position_node = NodePath("../../_player_position_3_1")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_1_2"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(4, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_1_2"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_1_2"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_1_2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_1_2/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_1_3" type="Node2D" parent="."]
-position = Vector2(-559.944, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_1_3" type="Node" parent="_teleport_1_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_2_1")
-player_position_node = NodePath("../../_player_position_2_1")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_1_3"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(-4, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_1_3"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_1_3"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_1_3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_1_3/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_1_6" type="Node2D" parent="."]
-position = Vector2(79.992, 1359.864)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_1_6" type="Node" parent="_teleport_1_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_6_1")
-player_position_node = NodePath("../../_player_position_6_1")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_1_6"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 8)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_1_6"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_1_6"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_1_6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_1_6/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_6_1" type="Node2D" parent="."]
-position = Vector2(79.992, 2319.768)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_6_1" type="Node" parent="_teleport_6_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_1_1")
-player_position_node = NodePath("../../_player_position_1_6")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_6_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 14)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_6_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_6_1"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_6_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_6_1/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_6_8" type="Node2D" parent="."]
-position = Vector2(79.992, 3919.608)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport" type="Node" parent="_teleport_6_8" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_8_1")
-player_position_node = NodePath("../../_player_position_8_6")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_6_8"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 24)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_6_8"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_6_8"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_6_8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_6_8/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_8_6" type="Node2D" parent="."]
-position = Vector2(79.992, 6479.352)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport" type="Node" parent="_teleport_8_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_6_1")
-player_position_node = NodePath("../../_player_position_6_8")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_8_6"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 40)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_8_6"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_8_6"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_8_6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_8_6/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_2_1" type="Node2D" parent="."]
-position = Vector2(-1519.848, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_2_1" type="Node" parent="_teleport_2_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_1_1")
-player_position_node = NodePath("../../_player_position_1_1")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_2_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(-10, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_2_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_2_1"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_2_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_2_1/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_3_1" type="Node2D" parent="."]
-position = Vector2(1519.848, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_3_1" type="Node" parent="_teleport_3_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_1_1")
-player_position_node = NodePath("../../_player_position_1_2")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_3_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(9, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_3_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_3_1"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_3_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_3_1/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_3_7" type="Node2D" parent="."]
-position = Vector2(2799.72, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_3_1" type="Node" parent="_teleport_3_7" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_7_1")
-player_position_node = NodePath("../../_player_position_7_3")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_3_7"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(17, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_3_7"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_3_7"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_3_7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_3_7/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_7_3" type="Node2D" parent="."]
-position = Vector2(5199.48, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_3_1" type="Node" parent="_teleport_7_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_3_1")
-player_position_node = NodePath("../../_player_position_3_7")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_7_3"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(32, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_7_3"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_7_3"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_7_3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_7_3/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_3_2" type="Node2D" parent="."]
-position = Vector2(2159.784, -1359.864)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_3_2" type="Node" parent="_teleport_3_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_4_1")
-player_position_node = NodePath("../../_player_position_4_3")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_3_2"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(13, -9)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_3_2"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_3_2"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -51.0
-offset_right = 66.0
-offset_bottom = 52.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_3_2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_3_2/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_teleport_4_3" type="Node2D" parent="."]
-position = Vector2(2159.784, -3439.656)
-script = ExtResource("17_yspku")
-
-[node name="_common_script_teleport_4_1" type="Node" parent="_teleport_4_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
-script = ExtResource("23_tl7rd")
-camera_position_node = NodePath("../../_camera_position_3_1")
-player_position_node = NodePath("../../_player_position_3_2")
-
-[node name="_RPGM_Mover" type="Node" parent="_teleport_4_3"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(13, -22)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_teleport_4_3"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_teleport_4_3"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "TPT"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_teleport_4_3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_4_3/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_camera_position_1_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(79.992, 79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_1_1"]
-script = ExtResource("14_j4uy8")
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_1_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_1_1"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_camera_position_1_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_camera_position_1_1/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_camera_position_6_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(79.992, 3439.656)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_6_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 21)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_6_1"]
-z_index = 100
-scale = Vector2(150, 150)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_6_1"]
-modulate = Color(1, 0.11372549, 0.972549, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -24.5
-offset_right = 38.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="Area2D" type="Area2D" parent="_camera_position_6_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_camera_position_6_1/Area2D"]
-shape = SubResource("RectangleShape2D_ceddd")
-
-[node name="_camera_position_3_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(2159.784, -559.944)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_3_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(13, -4)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_3_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_3_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_camera_position_2_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-2799.72, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_2_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(-18, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_2_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_2_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_camera_position_7_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(6159.384, -399.96)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_7_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(38, -3)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_7_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_7_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_camera_position_8_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(79.992, 7119.288)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_8_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 44)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_8_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_8_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_camera_position_4_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(2159.784, -4079.592)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_4_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(13, -26)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_4_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_4_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_camera_position_5_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-2159.784, -4559.544)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_camera_position_5_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(-14, -29)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_camera_position_5_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_camera_position_5_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "CMR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_1_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-399.96, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_1_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(-3, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_1_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_1_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_1_6" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(79.992, 1199.88)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_1_6"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 7)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_1_6"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_1_6"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_6_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(79.992, 2479.752)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_6_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 15)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_6_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_6_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_6_8" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(79.992, 3759.624)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_6_8"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 23)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_6_8"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_6_8"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_8_6" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(79.992, 6639.336)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_8_6"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(0, 41)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_8_6"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_8_6"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_1_2" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(559.944, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_1_2"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(3, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_1_2"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_1_2"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_2_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-1679.832, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_2_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(-11, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_2_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_2_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_3_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(1679.832, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_3_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(10, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_3_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_3_1"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_3_7" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(2639.7358, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_3_7"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(16, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_3_7"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_3_7"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_7_3" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(5359.464, -79.992)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_7_3"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(33, -1)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_7_3"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_7_3"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_3_2" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(2159.784, -1199.88)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_3_2"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(13, -8)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_3_2"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_3_2"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_4_3" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(2159.784, -3599.64)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_4_3"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(13, -23)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_4_3"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_4_3"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
 [node name="_player_position_4_transition" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -13273,40 +12094,6 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="Label" type="Label" parent="_player_position_4_transition"]
-modulate = Color(1, 0.15686275, 1, 1)
-z_index = 200
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -24.5
-offset_right = 33.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLR"
-label_settings = SubResource("LabelSettings_x570f")
-horizontal_alignment = 1
-
-[node name="_player_position_5_1" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-2159.784, -4079.592)
-script = ExtResource("17_yspku")
-
-[node name="_RPGM_Mover" type="Node" parent="_player_position_5_1"]
-script = ExtResource("14_j4uy8")
-map_position = Vector2i(-14, -26)
-metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="Sprite2D" type="Sprite2D" parent="_player_position_5_1"]
-z_index = 100
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_j52ey")
-
-[node name="Label" type="Label" parent="_player_position_5_1"]
 modulate = Color(1, 0.15686275, 1, 1)
 z_index = 200
 anchors_preset = 8
@@ -13346,3 +12133,1221 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 border_width = 50.0
+
+[node name="_teleports" type="Node" parent="."]
+
+[node name="_teleport_6_1" type="Node2D" parent="_teleports"]
+position = Vector2(79.992, 2319.768)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_6_1" type="Node" parent="_teleports/_teleport_6_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_1_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_1_6")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_6_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 14)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_6_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_6_1"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_6_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_6_1/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_1_6" type="Node2D" parent="_teleports"]
+position = Vector2(79.992, 1359.864)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_1_6" type="Node" parent="_teleports/_teleport_1_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_6_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_6_1")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_1_6"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 8)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_1_6"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_1_6"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_1_6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_1_6/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_1_2" type="Node2D" parent="_teleports"]
+position = Vector2(719.928, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_1_2" type="Node" parent="_teleports/_teleport_1_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_3_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_3_1")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_1_2"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(4, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_1_2"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_1_2"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_1_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_1_2/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_1_3" type="Node2D" parent="_teleports"]
+position = Vector2(-559.944, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_1_3" type="Node" parent="_teleports/_teleport_1_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_2_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_2_1")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_1_3"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(-4, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_1_3"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_1_3"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_1_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_1_3/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_6_8" type="Node2D" parent="_teleports"]
+position = Vector2(79.992, 3919.608)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport" type="Node" parent="_teleports/_teleport_6_8" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_8_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_8_6")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_6_8"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 24)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_6_8"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_6_8"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_6_8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_6_8/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_8_6" type="Node2D" parent="_teleports"]
+position = Vector2(79.992, 6479.352)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport" type="Node" parent="_teleports/_teleport_8_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_6_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_6_8")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_8_6"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 40)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_8_6"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_8_6"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_8_6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_8_6/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_2_1" type="Node2D" parent="_teleports"]
+position = Vector2(-1519.848, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_2_1" type="Node" parent="_teleports/_teleport_2_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_1_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_1_1")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_2_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(-10, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_2_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_2_1"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_2_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_2_1/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_3_7" type="Node2D" parent="_teleports"]
+position = Vector2(2799.72, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_3_1" type="Node" parent="_teleports/_teleport_3_7" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_7_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_7_3")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_3_7"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(17, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_3_7"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_3_7"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_3_7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_3_7/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_3_1" type="Node2D" parent="_teleports"]
+position = Vector2(1519.848, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_3_1" type="Node" parent="_teleports/_teleport_3_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_1_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_1_2")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_3_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(9, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_3_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_3_1"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_3_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_3_1/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_7_3" type="Node2D" parent="_teleports"]
+position = Vector2(5199.48, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_3_1" type="Node" parent="_teleports/_teleport_7_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_3_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_3_7")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_7_3"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(32, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_7_3"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_7_3"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_7_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_7_3/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_3_2" type="Node2D" parent="_teleports"]
+position = Vector2(2159.784, -1359.864)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_3_2" type="Node" parent="_teleports/_teleport_3_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_4_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_4_3")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_3_2"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(13, -9)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_3_2"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_3_2"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -51.0
+offset_right = 66.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_3_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_3_2/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_4_3" type="Node2D" parent="_teleports"]
+position = Vector2(2159.784, -3439.656)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport_4_1" type="Node" parent="_teleports/_teleport_4_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../../_camera_positions/_camera_position_3_1")
+player_position_node = NodePath("../../../_player_positions/_player_position_3_2")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_4_3"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(13, -22)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_4_3"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleports/_teleport_4_3"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleports/_teleport_4_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleports/_teleport_4_3/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_camera_positions" type="Node" parent="."]
+
+[node name="_camera_position_5_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-2159.784, -4559.544)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_5_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(-14, -29)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_5_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_5_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_camera_position_4_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+position = Vector2(2159.784, -4079.592)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_4_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(13, -26)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_4_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_4_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_camera_position_8_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+position = Vector2(79.992, 7119.288)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_8_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 44)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_8_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_8_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_camera_position_2_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+position = Vector2(-2799.72, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_2_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(-18, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_2_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_2_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_camera_position_3_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+position = Vector2(2159.784, -559.944)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_3_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(13, -4)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_3_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_3_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_camera_position_6_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+position = Vector2(79.992, 3439.656)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_6_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 21)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_6_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_6_1"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_camera_positions/_camera_position_6_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_camera_positions/_camera_position_6_1/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_camera_position_1_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+position = Vector2(79.992, 79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_1_1"]
+script = ExtResource("14_j4uy8")
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_1_1"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_1_1"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_camera_positions/_camera_position_1_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_camera_positions/_camera_position_1_1/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_camera_position_7_1" type="Node2D" parent="_camera_positions"]
+unique_name_in_owner = true
+position = Vector2(6159.384, -399.96)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_7_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(38, -3)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_7_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_positions/_camera_position_7_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_positions" type="Node" parent="."]
+
+[node name="_player_position_4_3" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(2159.784, -3599.64)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_4_3"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(13, -23)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_4_3"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_4_3"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_5_1" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-2159.784, -4079.592)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_5_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(-14, -26)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_5_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_5_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_3_2" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(2159.784, -1199.88)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_3_2"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(13, -8)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_3_2"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_3_2"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_7_3" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(5359.464, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_7_3"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(33, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_7_3"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_7_3"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_3_7" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(2639.7358, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_3_7"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(16, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_3_7"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_3_7"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_3_1" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(1679.832, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_3_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(10, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_3_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_3_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_2_1" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-1679.832, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_2_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(-11, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_2_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_2_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_1_2" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(559.944, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_1_2"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(3, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_1_2"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_1_2"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_8_6" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(79.992, 6639.336)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_8_6"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 41)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_8_6"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_8_6"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_6_8" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(79.992, 3759.624)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_6_8"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 23)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_6_8"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_6_8"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_6_1" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+position = Vector2(79.992, 2479.752)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_6_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 15)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_6_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_6_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_1_6" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(79.992, 1199.88)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_1_6"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 7)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_1_6"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_1_6"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_1_1" type="Node2D" parent="_player_positions"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-399.96, -79.992)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_1_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(-3, -1)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_1_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_positions/_player_position_1_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1

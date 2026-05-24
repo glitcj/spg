@@ -22,7 +22,12 @@ func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 
 var is_moving = false
 func _ready() -> void:
-	if Engine.is_editor_hint():
+	if true or Engine.is_editor_hint():
+		
+		# Fixes conflict between _Map and _Mover
+		# Refactor both
+		await get_tree().process_frame
+
 		_quantise_position()
 
 func _quantise_position():
@@ -99,3 +104,14 @@ func tile_has_collision(tile_pos: Vector2i) -> bool:
 		if tile_data.get_collision_polygons_count(0) > 0:
 			return true
 	return false
+
+# Refactor _Mover
+# Refactor _Map
+
+# Refactor common events ? have event root extend script directly ?
+# No have it extend _RPGM_Event and simple var exports and setters as a built in script in the event root
+# Setters set the vars of component children for easy tree access
+# And add common script as a components
+# And saved as e.g. _common_event_teleport.tscn
+
+# Refactor rooms ? npcs as children of rooms ?
