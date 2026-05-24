@@ -11098,12 +11098,12 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_odw5u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txeor"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gm8xu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vd6wf"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
@@ -11121,7 +11121,7 @@ func _on_action_within_area():
 	await get_lambdas().show_messages([\"Okay you can go now.\"])
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kb77u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6le0f"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_05s22"]
@@ -11151,13 +11151,13 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tw3d3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc14m"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0s3m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl3l0"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_atdqw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_loqga"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_38inc"]
@@ -11169,7 +11169,7 @@ func _on_action_within_area():
 	get_tree().quit()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_32wu1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnpst"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
@@ -11197,7 +11197,7 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pth7o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo6ms"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
@@ -11225,18 +11225,18 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxh1f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvo4p"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5b0t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjg66"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1652v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmbn5"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iis0d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqr5"]
 shader = ExtResource("19_cyfpt")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11250,7 +11250,7 @@ shader_parameter/noise_scale = 1.0
 shader_parameter/noise_speed = 0.2
 shader_parameter/noise_strength = 0.4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8ctt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jonhj"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4w2g"]
@@ -11259,7 +11259,7 @@ shader = ExtResource("16_a8qaw")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu0qy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_55oaj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4uy8"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_4lb6x"]
@@ -11272,7 +11272,7 @@ func _on_action_within_area():
 		)
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3gtk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uryw"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
@@ -11286,7 +11286,7 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4e3l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8qaw"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5max1"]
@@ -11299,7 +11299,7 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_10jgp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yspku"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_bj00i"]
@@ -11310,7 +11310,7 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnkh1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp5op"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="LabelSettings" id="LabelSettings_x570f"]
@@ -11429,7 +11429,7 @@ texture = SubResource("GradientTexture2D_6de6d")
 [node name="_RPGM_Portrait" parent="Player" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
 texture_filter = 1
-material = SubResource("ShaderMaterial_odw5u")
+material = SubResource("ShaderMaterial_txeor")
 scale = Vector2(8, 8)
 sprite = "player"
 
@@ -11455,7 +11455,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_1_1/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_gm8xu")
+material = SubResource("ShaderMaterial_vd6wf")
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -11488,7 +11488,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_kb77u")
+material = SubResource("ShaderMaterial_6le0f")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11521,7 +11521,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_6_1/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_tw3d3")
+material = SubResource("ShaderMaterial_uc14m")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11554,7 +11554,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_6_2/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_a0s3m")
+material = SubResource("ShaderMaterial_kl3l0")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11587,7 +11587,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_6_3/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_atdqw")
+material = SubResource("ShaderMaterial_loqga")
 scale = Vector2(4, 4)
 sprite = "skeleton"
 
@@ -11620,7 +11620,7 @@ shape = SubResource("RectangleShape2D_cswif")
 [node name="_RPGM_Portrait" parent="_npc_5_1/RigidBody2D" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_32wu1")
+material = SubResource("ShaderMaterial_lnpst")
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -11652,7 +11652,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_4_2/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_pth7o")
+material = SubResource("ShaderMaterial_jo6ms")
 scale = Vector2(4, 4)
 sprite = "green"
 
@@ -11684,7 +11684,7 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_4_3/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_bxh1f")
+material = SubResource("ShaderMaterial_vvo4p")
 scale = Vector2(4, 4)
 sprite = "green"
 
@@ -11720,7 +11720,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_3_1/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_m5b0t")
+material = SubResource("ShaderMaterial_cjg66")
 scale = Vector2(4, 4)
 sprite = "red_prince"
 
@@ -11755,7 +11755,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_7_1/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_1652v")
+material = SubResource("ShaderMaterial_jmbn5")
 scale = Vector2(4, 4)
 sprite = "cream"
 
@@ -11790,7 +11790,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_7_3/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_iis0d")
+material = SubResource("ShaderMaterial_oaqr5")
 scale = Vector2(4, 4)
 type = "sphere"
 sprite = "red"
@@ -11826,7 +11826,7 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_npc_7_2/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_w8ctt")
+material = SubResource("ShaderMaterial_jonhj")
 scale = Vector2(4, 4)
 sprite = "red_prince"
 
@@ -11955,7 +11955,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_event_1_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_55oaj")
+material = SubResource("ShaderMaterial_j4uy8")
 scale = Vector2(5, 5)
 _frame = 165
 sprite = "system"
@@ -11975,7 +11975,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_event_6_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_h3gtk")
+material = SubResource("ShaderMaterial_2uryw")
 scale = Vector2(5, 5)
 _frame = 165
 sprite = "system"
@@ -12013,7 +12013,7 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(-12, 1)
 
 [node name="_RPGM_Portrait" parent="_enemy_2_1" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_h4e3l")
+material = SubResource("ShaderMaterial_a8qaw")
 scale = Vector2(4, 4)
 sprite = "priest"
 
@@ -12040,7 +12040,7 @@ map_position = Vector2i(-22, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_enemy_2_2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_10jgp")
+material = SubResource("ShaderMaterial_yspku")
 scale = Vector2(4, 4)
 sprite = "red_prince"
 
@@ -12067,7 +12067,7 @@ map_position = Vector2i(-22, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_enemy_2_3" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_hnkh1")
+material = SubResource("ShaderMaterial_xp5op")
 scale = Vector2(4, 4)
 sprite = "white"
 
@@ -12078,7 +12078,6 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_teleport_1_2" type="Node2D" parent="."]
-visible = false
 position = Vector2(719.928, -79.992)
 script = ExtResource("17_yspku")
 
@@ -12121,7 +12120,6 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_3" type="Node2D" parent="."]
-visible = false
 position = Vector2(-559.944, -79.992)
 script = ExtResource("17_yspku")
 
@@ -12164,7 +12162,6 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_6" type="Node2D" parent="."]
-visible = false
 position = Vector2(79.992, 1359.864)
 script = ExtResource("17_yspku")
 
@@ -12207,7 +12204,6 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_6_1" type="Node2D" parent="."]
-visible = false
 position = Vector2(79.992, 2319.768)
 script = ExtResource("17_yspku")
 
@@ -12249,8 +12245,91 @@ horizontal_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_6_1/Area2D"]
 shape = SubResource("RectangleShape2D_ceddd")
 
+[node name="_teleport_6_8" type="Node2D" parent="."]
+position = Vector2(79.992, 3919.608)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport" type="Node" parent="_teleport_6_8" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../_camera_position_8_1")
+player_position_node = NodePath("../../_player_position_8_6")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleport_6_8"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 24)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleport_6_8"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleport_6_8"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleport_6_8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_6_8/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
+[node name="_teleport_8_6" type="Node2D" parent="."]
+position = Vector2(79.992, 6479.352)
+script = ExtResource("17_yspku")
+
+[node name="_common_script_teleport" type="Node" parent="_teleport_8_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
+script = ExtResource("23_tl7rd")
+camera_position_node = NodePath("../../_camera_position_6_1")
+player_position_node = NodePath("../../_player_position_6_8")
+
+[node name="_RPGM_Mover" type="Node" parent="_teleport_8_6"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 40)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_teleport_8_6"]
+z_index = 100
+scale = Vector2(150, 150)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_teleport_8_6"]
+modulate = Color(1, 0.11372549, 0.972549, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -24.5
+offset_right = 38.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TPT"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="_teleport_8_6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_teleport_8_6/Area2D"]
+shape = SubResource("RectangleShape2D_ceddd")
+
 [node name="_teleport_2_1" type="Node2D" parent="."]
-visible = false
 position = Vector2(-1519.848, -79.992)
 script = ExtResource("17_yspku")
 
@@ -12676,6 +12755,39 @@ text = "CMR"
 label_settings = SubResource("LabelSettings_x570f")
 horizontal_alignment = 1
 
+[node name="_camera_position_8_1" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(79.992, 7119.288)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_camera_position_8_1"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 44)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_camera_position_8_1"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_camera_position_8_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CMR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
 [node name="_camera_position_4_1" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(2159.784, -4079.592)
@@ -12828,6 +12940,72 @@ scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_j52ey")
 
 [node name="Label" type="Label" parent="_player_position_6_1"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_6_8" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(79.992, 3759.624)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_position_6_8"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 23)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_position_6_8"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_position_6_8"]
+modulate = Color(1, 0.15686275, 1, 1)
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -24.5
+offset_right = 33.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLR"
+label_settings = SubResource("LabelSettings_x570f")
+horizontal_alignment = 1
+
+[node name="_player_position_8_6" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(79.992, 6639.336)
+script = ExtResource("17_yspku")
+
+[node name="_RPGM_Mover" type="Node" parent="_player_position_8_6"]
+script = ExtResource("14_j4uy8")
+map_position = Vector2i(0, 41)
+metadata/_custom_type_script = "uid://cigfux3bal5ef"
+
+[node name="Sprite2D" type="Sprite2D" parent="_player_position_8_6"]
+z_index = 100
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_j52ey")
+
+[node name="Label" type="Label" parent="_player_position_8_6"]
 modulate = Color(1, 0.15686275, 1, 1)
 z_index = 200
 anchors_preset = 8
