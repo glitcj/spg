@@ -17,8 +17,8 @@ func get_RPGM(): return find_parent("_RPGM") as _RPGM
 
 
 
-var direction = Vector2.ZERO as Vector2
-var next_direction = Vector2.ZERO:
+var direction = Vector2i.ZERO as Vector2i
+var next_direction = Vector2i.ZERO:
 	set(v):
 		next_direction = v
 		%"future position".position = next_direction * 100
@@ -54,7 +54,9 @@ func _physics_process(delta: float) -> void:
 	if mover.is_moving:
 		return
 	
-	var tile_position_delta = direction / direction.abs() as Vector2i
+
+	# var tile_position_delta = direction / direction.abs() as Vector2i
+	var tile_position_delta = direction
 	
 	print(mover.map_position, tile_position_delta, mover.map_position + tile_position_delta)
 	
@@ -65,8 +67,8 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if mover.tile_has_collision(mover.map_position + Vector2i(next_direction)):
-		direction = Vector2.ZERO
-		next_direction = Vector2.ZERO	
+		direction = Vector2i.ZERO
+		next_direction = Vector2i.ZERO	
 		return
 	
 	if tile_position_delta != Vector2i.ZERO:
@@ -84,11 +86,13 @@ func _process_input():# _on_input():
 		
 	if _valid_direction_is_pressed():
 		next_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		mover.face(next_direction/next_direction.abs())
+		next_direction = Vector2i(next_direction/next_direction.abs())
+		mover.face(next_direction)
+		# mover.face(next_direction/next_direction.abs())
 
 	if Input.is_action_just_pressed("ui_accept"):
 		reset_movement()
 
 func reset_movement():
-	direction = Vector2.ZERO
-	next_direction = Vector2.ZERO
+	direction = Vector2i.ZERO
+	next_direction = Vector2i.ZERO
