@@ -21,7 +21,6 @@ var direction = Vector2i.ZERO as Vector2i
 var next_direction = Vector2i.ZERO:
 	set(v):
 		next_direction = v
-		%"future position".position = next_direction * 100
 		
 var input_just_pressed = false
 
@@ -54,16 +53,13 @@ func _physics_process(delta: float) -> void:
 	if mover.is_moving:
 		return
 	
-
-	# var tile_position_delta = direction / direction.abs() as Vector2i
-	var tile_position_delta = direction
+	# var tile_position_delta = direction
+	print(mover.map_position, direction, mover.map_position + direction)
 	
-	print(mover.map_position, tile_position_delta, mover.map_position + tile_position_delta)
-	
-	if tile_position_delta == Vector2i.ZERO:
+	if direction == Vector2i.ZERO:
 		return
 		
-	if mover.tile_has_collision(mover.map_position + tile_position_delta):
+	if mover.tile_has_collision(mover.map_position + direction):
 		return
 		
 	if mover.tile_has_collision(mover.map_position + Vector2i(next_direction)):
@@ -71,8 +67,8 @@ func _physics_process(delta: float) -> void:
 		next_direction = Vector2i.ZERO	
 		return
 	
-	if tile_position_delta != Vector2i.ZERO:
-		await mover.move(tile_position_delta)
+	if direction != Vector2i.ZERO:
+		await mover.move(direction)
 	
 func _valid_direction_is_pressed():
 	for d in ["ui_up", "ui_down", "ui_left", "ui_right"]:
@@ -88,7 +84,6 @@ func _process_input():# _on_input():
 		next_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		next_direction = Vector2i(next_direction/next_direction.abs())
 		mover.face(next_direction)
-		# mover.face(next_direction/next_direction.abs())
 
 	if Input.is_action_just_pressed("ui_accept"):
 		reset_movement()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=100 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -11085,7 +11085,8 @@ sources/0 = SubResource("TileSetAtlasSource_38inc")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wptde"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x570f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txeor"]
+shader = ExtResource("16_a8qaw")
 
 [sub_resource type="Gradient" id="Gradient_2ntr3"]
 offsets = PackedFloat32Array(0.2462203, 0.30237582)
@@ -11097,12 +11098,6 @@ width = 2000
 height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_txeor"]
-shader = ExtResource("16_a8qaw")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_txeor"]
-size = Vector2(100, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
@@ -11426,30 +11421,15 @@ y_sort_enabled = true
 position = Vector2(79.992, 559.944)
 script = ExtResource("13_jonhj")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(7, 7)
+shape = SubResource("CircleShape2D_wptde")
+
 [node name="_RPGM_Mover" type="Node" parent="Player"]
 script = ExtResource("14_j4uy8")
 speed = 5.0
 map_position = Vector2i(0, 3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(7, 7)
-shape = SubResource("CircleShape2D_wptde")
-
-[node name="future position" type="Area2D" parent="Player"]
-unique_name_in_owner = true
-
-[node name="future position collider" type="CollisionShape2D" parent="Player/future position"]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_x570f")
-
-[node name="PointLight2D Enemies" type="PointLight2D" parent="Player"]
-light_mask = 2
-visibility_layer = 2
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_6de6d")
 
 [node name="_RPGM_Portrait" parent="Player" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
@@ -11458,11 +11438,13 @@ material = SubResource("ShaderMaterial_txeor")
 scale = Vector2(8, 8)
 sprite = "player"
 
-[node name="Area2D" type="Area2D" parent="Player"]
-collision_layer = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-shape = SubResource("RectangleShape2D_txeor")
+[node name="PointLight2D Enemies" type="PointLight2D" parent="Player"]
+light_mask = 2
+visibility_layer = 2
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_6de6d")
 
 [node name="_npc_1_1" type="Node2D" parent="."]
 position = Vector2(79.992, 239.976)
