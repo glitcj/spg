@@ -47,8 +47,8 @@ func _physics_process(delta: float) -> void:
 		
 	if next_direction != direction:
 		await get_tree().physics_frame # Allow time for future position collision physics
-		if %"future position".get_overlapping_bodies().size() == 0:
-			print(%"future position".get_overlapping_bodies())
+		
+		if not mover.tile_has_collision(mover.map_position + Vector2i(next_direction)):
 			direction = next_direction
 				
 	if mover.is_moving:
@@ -61,16 +61,13 @@ func _physics_process(delta: float) -> void:
 	if tile_position_delta == Vector2i.ZERO:
 		return
 		
-
 	if mover.tile_has_collision(mover.map_position + tile_position_delta):
 		return
-	
-	for body in %"future position".get_overlapping_bodies():
-		if body is RigidBody2D and body is not CharacterBody2D:
-			body = body as RigidBody2D
-			direction = Vector2.ZERO
-			next_direction = Vector2.ZERO
-			return
+		
+	if mover.tile_has_collision(mover.map_position + Vector2i(next_direction)):
+		direction = Vector2.ZERO
+		next_direction = Vector2.ZERO	
+		return
 	
 	if tile_position_delta != Vector2i.ZERO:
 		await mover.move(tile_position_delta)
