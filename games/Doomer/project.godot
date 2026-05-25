@@ -41,3 +41,4 @@ ui_accept={
 [layer_names]
 
 2d_physics/layer_2="enemy"
+2d_physics/layer_8="rpgm"

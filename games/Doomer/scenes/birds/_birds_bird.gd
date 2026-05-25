@@ -68,3 +68,6 @@ func _on_body_entered(_node : Node):
 
 func kill():
 	queue_free()
+	if false:
+		await get_tree().create_timer(1).timeout
+		get_tree().reload_current_scene()

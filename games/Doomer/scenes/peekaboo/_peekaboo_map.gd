@@ -12,14 +12,12 @@ func get_lambdas(): return find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 @export var quantize_all : bool:
 	set(_v): _quantize_all()
 
-@export_category("Turns")
-@export var player_turn : GDScript
-
+# @export_category("Turns")
+# @export var player_turn : GDScript
 
 func _ready() -> void:
 	print_tree_pretty()
-	pass
-
+	
 func _quantize_all():
 	for mover in find_children("*", "_RPGM_Mover", true, false):
 		(mover as _RPGM_Mover)._quantise_position()

@@ -2,6 +2,10 @@
 extends Node
 class_name _RPGM_Mover
 
+
+@export var is_collision = false
+static var tiles_with_rpgm_collision = []
+
 signal finished_movement
 enum MovementType {Linear, Random, Exponential}
 
@@ -15,6 +19,7 @@ enum MovementType {Linear, Random, Exponential}
 
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
+		_update_tiles_with_rpgm_collision(map_position, v)
 		map_position = v
 		_quantise_position()
 
@@ -29,7 +34,9 @@ func _ready() -> void:
 		await get_tree().process_frame
 
 		_quantise_position()
-
+		
+		_update_tiles_with_rpgm_collision(null, map_position)
+		
 func _quantise_position():
 	if not is_inside_tree():
 		return
@@ -37,19 +44,26 @@ func _quantise_position():
 	var map_tile_global_center = base_layer.to_global(base_layer.map_to_local(map_position))
 	
 	get_parent().global_position = map_tile_global_center
-	
-func move_to_tile_2(tile_position : Vector2i):
-	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
-	var target_global = base_layer.to_global(base_layer.map_to_local(tile_position))
-	var displacement = target_global - get_parent().global_position
-	await displace(displacement)
 
+func _update_tiles_with_rpgm_collision(old_position, new_position):
+	if not is_collision:
+		return
+	if old_position != null:
+		var index = tiles_with_rpgm_collision.find(old_position)
+		if index != -1:
+			tiles_with_rpgm_collision.remove_at(
+				index
+			)
+	tiles_with_rpgm_collision.append(new_position)
+	
 
 func move(tile_vector : Vector2i) -> _RPGM_Mover:
 	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
 	
 	var target_global = base_layer.to_global(base_layer.map_to_local(map_position + tile_vector))
-	var displacement = target_global - get_parent().global_position
+	var displacement = target_global - get_parent().global_position 
+	
+	facing = Vector2i(tile_vector / tile_vector.length())
 	
 	is_moving = true
 	await displace(displacement)
@@ -82,6 +96,9 @@ func displace(displacement : Vector2):
 	finished_movement.emit()
 
 func get_facing_direction():
+	return facing
+	
+	"""
 	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
 	var animation_name = portrait.animation_player.current_animation
 	
@@ -93,6 +110,7 @@ func get_facing_direction():
 		return Vector2i(1, 0)
 	elif animation_name == "move_left":
 		return Vector2i(-1, 0)
+	"""
 		
 func tile_has_collision(tile_pos: Vector2i) -> bool:
 	for layer : TileMapLayer in get_map().layers:
@@ -103,7 +121,16 @@ func tile_has_collision(tile_pos: Vector2i) -> bool:
 	
 		if tile_data.get_collision_polygons_count(0) > 0:
 			return true
+	if tile_has_rpgm_collision(tile_pos):
+
+
+		print(tile_pos)
+		return true
 	return false
+
+func tile_has_rpgm_collision(position):
+	print(position)
+	return tiles_with_rpgm_collision.has(position) # find(position)
 
 # Refactor _Mover
 # Refactor _Map

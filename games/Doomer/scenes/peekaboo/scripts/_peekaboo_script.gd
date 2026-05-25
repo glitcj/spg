@@ -77,6 +77,7 @@ func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_accept"):
 		if _player_is_within_event_area():
 			var player_mover = get_player().find_child("_RPGM_Mover") as _RPGM_Mover
+			print(player_mover.get_facing_direction(), player_mover.map_position)
 			var player_is_facing_this_event : bool = mover.map_position == player_mover.get_facing_direction() + player_mover.map_position
 			if player_is_facing_this_event and get_player().is_active:
 				await get_tree().process_frame # wait for input buffer to clear

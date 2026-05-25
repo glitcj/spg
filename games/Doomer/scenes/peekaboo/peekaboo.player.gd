@@ -56,6 +56,12 @@ func _physics_process(delta: float) -> void:
 	
 	var tile_position_delta = direction / direction.abs() as Vector2i
 	
+	print(mover.map_position, tile_position_delta, mover.map_position + tile_position_delta)
+	
+	if tile_position_delta == Vector2i.ZERO:
+		return
+		
+
 	if mover.tile_has_collision(mover.map_position + tile_position_delta):
 		return
 	
