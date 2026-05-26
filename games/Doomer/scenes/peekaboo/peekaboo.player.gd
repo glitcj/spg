@@ -76,9 +76,7 @@ func _process_movement() -> void:
 	print(mover.map_position, direction, mover.map_position + direction)
 	if mover.tile_has_collision(mover.map_position + direction):
 		direction = Vector2i.ZERO
-		# next_direction = Vector2i.ZERO ##
 		return
-		
 	
 	if direction != Vector2i.ZERO:
 		await mover.move(direction)
