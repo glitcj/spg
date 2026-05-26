@@ -50,10 +50,7 @@ func _update_tiles_with_rpgm_collision(old_position, new_position):
 		return
 	if old_position != null:
 		var index = tiles_with_rpgm_collision.find(old_position)
-		if index != -1:
-			tiles_with_rpgm_collision.remove_at(
-				index
-			)
+		if index != -1: tiles_with_rpgm_collision.remove_at(index)
 	tiles_with_rpgm_collision.append(new_position)
 	
 

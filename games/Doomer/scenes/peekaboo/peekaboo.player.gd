@@ -39,8 +39,10 @@ func _process(delta: float) -> void:
 			is_active = false
 			
 	_process_input()
+	_process_movement()
 
-func _physics_process(delta: float) -> void:
+# func _physics_process(delta: float) -> void:
+func _process_movement() -> void:
 	if not is_active:
 		return
 		
@@ -86,8 +88,10 @@ func _process_input():# _on_input():
 		mover.face(next_direction)
 
 	if Input.is_action_just_pressed("ui_accept"):
-		reset_movement()
+		stop()
 
-func reset_movement():
+func stop():
+	await mover.finished_movement
+	await get_tree().process_frame
 	direction = Vector2i.ZERO
 	next_direction = Vector2i.ZERO
