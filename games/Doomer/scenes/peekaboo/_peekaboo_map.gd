@@ -11,10 +11,7 @@ func get_lambdas(): return find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 
 @export var quantize_all : bool:
 	set(_v): _quantize_all()
-
-# @export_category("Turns")
-# @export var player_turn : GDScript
-
+	
 func _ready() -> void:
 	print_tree_pretty()
 	

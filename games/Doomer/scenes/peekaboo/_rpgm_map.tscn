@@ -11427,6 +11427,7 @@ shape = SubResource("CircleShape2D_wptde")
 
 [node name="_RPGM_Mover" type="Node" parent="Player"]
 script = ExtResource("14_j4uy8")
+is_collision = true
 speed = 5.0
 map_position = Vector2i(0, 3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11489,29 +11490,21 @@ interrupt_player = true
 
 [node name="_RPGM_Mover" type="Node" parent="_npc_1_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
+is_collision = true
 facing = Vector2i(1, 0)
 map_position = Vector2i(-3, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="RigidBody2D" type="RigidBody2D" parent="_npc_1_2"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_npc_1_2/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_6le0f")
-scale = Vector2(4, 4)
-sprite = "skeleton"
 
 [node name="Area2D" type="Area2D" parent="_npc_1_2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_npc_1_2/Area2D"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
+
+[node name="_RPGM_Portrait" parent="_npc_1_2" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_6le0f")
+scale = Vector2(4, 4)
+sprite = "skeleton"
 
 [node name="_npc_6_1" type="Node2D" parent="."]
 position = Vector2(399.96, 3119.688)
@@ -12217,7 +12210,7 @@ horizontal_alignment = 1
 shape = SubResource("RectangleShape2D_ceddd")
 
 [node name="_teleport_1_6" type="Node2D" parent="_teleports"]
-position = Vector2(239.976, 559.944)
+position = Vector2(79.992, 1039.896)
 script = ExtResource("17_yspku")
 
 [node name="_common_script_teleport_1_6" type="Node" parent="_teleports/_teleport_1_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
@@ -12228,7 +12221,7 @@ player_position_node = NodePath("../../../_player_positions/_player_position_6_1
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_1_6"]
 script = ExtResource("14_j4uy8")
 is_collision = null
-map_position = Vector2i(1, 3)
+map_position = Vector2i(0, 6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="_teleports/_teleport_1_6"]

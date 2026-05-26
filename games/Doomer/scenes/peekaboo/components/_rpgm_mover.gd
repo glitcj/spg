@@ -19,9 +19,11 @@ enum MovementType {Linear, Random, Exponential}
 
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
-		_update_tiles_with_rpgm_collision(map_position, v)
 		map_position = v
-		_quantise_position()
+		_update_tiles_with_rpgm_collision(map_position, v)
+		
+		if Engine.is_editor_hint():
+			_quantise_position()
 
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 
@@ -35,7 +37,7 @@ func _ready() -> void:
 
 		_quantise_position()
 		
-		_update_tiles_with_rpgm_collision(null, map_position)
+		_update_tiles_with_rpgm_collision(map_position, map_position)
 		
 func _quantise_position():
 	if not is_inside_tree():
@@ -45,16 +47,62 @@ func _quantise_position():
 	
 	get_parent().global_position = map_tile_global_center
 
+
+
 func _update_tiles_with_rpgm_collision(old_position, new_position):
-	if not is_collision:
-		return
-	if old_position != null:
-		var index = tiles_with_rpgm_collision.find(old_position)
-		if index != -1: tiles_with_rpgm_collision.remove_at(index)
-	tiles_with_rpgm_collision.append(new_position)
+	if get_map() != null:
+		
+		tiles_with_rpgm_collision = []
+		for m : _RPGM_Mover in get_map().find_children("*", "_RPGM_Mover"):
+			if not m.is_collision:
+				continue
+			tiles_with_rpgm_collision.append(m.map_position)
+			
+		_update_tilemap_collision_debugger()
+
+
+static var all_collision_debugging_rects = []
+func _update_tilemap_collision_debugger():
+	for r : ColorRect in all_collision_debugging_rects:
+		r.queue_free()
+	all_collision_debugging_rects = []
 	
+	print(tiles_with_rpgm_collision)
+	if get_map():
+		var base_layer = get_map().find_child("L1 Base") as TileMapLayer
+		for tile_position : Vector2i in tiles_with_rpgm_collision:
+			var map_tile_global_center = base_layer.to_global(base_layer.map_to_local(tile_position))
+			var map_tile_local_center = base_layer.map_to_local(tile_position)
+			
+			var rect = ColorRect.new()
+			rect.color = Color.RED
+			rect.size = Vector2(32, 32)
+			rect.position = map_tile_local_center # map_tile_global_center
+			rect.z_index = 100
+			
+			# find_parent("_RPGM_Map").add_child(rect)
+			base_layer.add_child(rect)
+			all_collision_debugging_rects.append(rect)
+
 
 func move(tile_vector : Vector2i) -> _RPGM_Mover:
+	map_position = map_position + tile_vector
+
+	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
+	var target_global = base_layer.to_global(base_layer.map_to_local(map_position))
+	
+	var displacement = target_global - get_parent().global_position 
+	facing = Vector2i(tile_vector / tile_vector.length())
+	
+	is_moving = true
+	await displace(displacement)
+	is_moving = false
+	
+	return self
+	
+
+
+func move_v1(tile_vector : Vector2i) -> _RPGM_Mover:
 	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
 	
 	var target_global = base_layer.to_global(base_layer.map_to_local(map_position + tile_vector))
@@ -127,6 +175,8 @@ func tile_has_collision(tile_pos: Vector2i) -> bool:
 
 func tile_has_rpgm_collision(position):
 	print(position)
+	if tiles_with_rpgm_collision.has(position):
+		pass
 	return tiles_with_rpgm_collision.has(position) # find(position)
 
 # Refactor _Mover
