@@ -9,17 +9,15 @@ func get_player(): return find_parent("_RPGM_Map").find_child("Player") as _RPGM
 func get_camera(): return get_map().find_child("Camera2D") as Camera2D
 
 
-func transport_player(v):
-	assert(v is Vector2i or v is _RPGM_Event)
-	var mover = get_player().find_child("_RPGM_Mover") as _RPGM_Mover
-	if v is Vector2i: mover.map_position = v
-	if v is _RPGM_Event: mover.map_position = (v as _RPGM_Event).get_mover().map_position
+func transport_player(player_position_node : _RPGM_Event):
+	assert(player_position_node is _RPGM_Event)
+	var player_mover = get_player().find_child("_RPGM_Mover") as _RPGM_Mover
+	player_mover.teleport(player_position_node.get_mover().map_position)
 	
-func transport_camera(v):
-	assert(v is Vector2i or v is _RPGM_Event)
-	var mover = get_map().find_child("_RPGM_Camera").find_child("_RPGM_Mover") as _RPGM_Mover
-	if v is Vector2i: mover.map_position = v
-	if v is _RPGM_Event: mover.map_position = (v as _RPGM_Event).get_mover().map_position
+func transport_camera(camera_position_node):
+	assert(camera_position_node is _RPGM_Event)
+	var camera_mover = get_map().find_child("_RPGM_Camera").find_child("_RPGM_Mover") as _RPGM_Mover
+	camera_mover.teleport(camera_position_node.get_mover().map_position)
 	
 	
 	

@@ -22,10 +22,16 @@ enum MovementType {Linear, Random, Exponential}
 		map_position = v
 		_update_tiles_with_rpgm_collision(map_position, v)
 		
+		
+		
 		if Engine.is_editor_hint():
 			_quantise_position()
 
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
+
+
+
+
 
 var is_moving = false
 func _ready() -> void:
@@ -39,6 +45,22 @@ func _ready() -> void:
 		
 		_update_tiles_with_rpgm_collision(map_position, map_position)
 		
+		
+
+func tilemap_to_global_position(tile_position : Vector2i):
+	var base_layer = get_map().find_child("L1 Base") as TileMapLayer
+	var map_tile_global_center = base_layer.to_global(base_layer.map_to_local(map_position))
+	return map_tile_global_center
+	
+func teleport(tile_position : Vector2i):
+	if not is_inside_tree():
+		return
+	
+	map_position = tile_position
+	get_parent().global_position = tilemap_to_global_position(tile_position)
+	
+
+
 func _quantise_position():
 	if not is_inside_tree():
 		return
@@ -46,7 +68,6 @@ func _quantise_position():
 	var map_tile_global_center = base_layer.to_global(base_layer.map_to_local(map_position))
 	
 	get_parent().global_position = map_tile_global_center
-
 
 
 func _update_tiles_with_rpgm_collision(old_position, new_position):

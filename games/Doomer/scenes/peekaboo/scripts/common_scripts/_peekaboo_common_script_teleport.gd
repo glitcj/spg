@@ -6,13 +6,11 @@ extends _RPGM_Script
 
 @export_enum("2k3", "rmv", "rmz") var standard : String
 
-@export var duration = 0.0
-
 func _on_area_entered():
 	await get_player().stop()
 	
 	assert(camera_position_node != null)
-	get_lambdas().transport_camera(camera_position_node.find_child("_RPGM_Mover").map_position)
+	get_lambdas().transport_camera(camera_position_node)# camera_position_node.find_child("_RPGM_Mover").map_position)
 	
 	assert(player_position_node != null)
-	get_lambdas().transport_player(player_position_node.find_child("_RPGM_Mover").map_position)
+	get_lambdas().transport_player(player_position_node) # player_position_node.find_child("_RPGM_Mover").map_position)
