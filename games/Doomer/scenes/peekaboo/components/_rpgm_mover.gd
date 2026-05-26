@@ -27,6 +27,7 @@ enum MovementType {Linear, Random, Exponential}
 
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 
+
 func get_base_layer(): return get_map().find_child("L1 Base") as TileMapLayer
 @onready var base_layer = get_base_layer()
 
