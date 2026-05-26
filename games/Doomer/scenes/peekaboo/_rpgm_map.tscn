@@ -11457,7 +11457,7 @@ messages = Array[String](["Hello..", "Good to see you here !", "Add _RPGM_Event"
 
 [node name="_RPGM_Mover" type="Node" parent="_npc_1_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
+is_collision = true
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11516,7 +11516,7 @@ interrupt_player = true
 
 [node name="_RPGM_Mover" type="Node" parent="_npc_6_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
+is_collision = true
 facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 19)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11550,7 +11550,7 @@ messages = Array[String](["Hello..", "This will start the Mole Hole Mario Party 
 
 [node name="_RPGM_Mover" type="Node" parent="_npc_6_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
+is_collision = true
 facing = Vector2i(1, 0)
 map_position = Vector2i(-2, 20)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11584,7 +11584,7 @@ messages = Array[String](["Hello..", "This will start the Freddie's Screen Mario
 
 [node name="_RPGM_Mover" type="Node" parent="_npc_6_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
+is_collision = true
 facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12857,13 +12857,13 @@ horizontal_alignment = 1
 
 [node name="_camera_position_6_1" type="Node2D" parent="_camera_positions"]
 unique_name_in_owner = true
-position = Vector2(79.992, 3439.656)
+position = Vector2(79.992, 3279.6719)
 script = ExtResource("17_yspku")
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_6_1"]
 script = ExtResource("14_j4uy8")
 is_collision = null
-map_position = Vector2i(0, 21)
+map_position = Vector2i(0, 20)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_6_1"]
@@ -13175,7 +13175,6 @@ horizontal_alignment = 1
 
 [node name="_player_position_2_1" type="Node2D" parent="_player_positions"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(-1679.832, -79.992)
 script = ExtResource("17_yspku")
 
@@ -13210,7 +13209,6 @@ horizontal_alignment = 1
 
 [node name="_player_position_1_2" type="Node2D" parent="_player_positions"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(559.944, -79.992)
 script = ExtResource("17_yspku")
 
@@ -13313,13 +13311,13 @@ horizontal_alignment = 1
 
 [node name="_player_position_6_1" type="Node2D" parent="_player_positions"]
 unique_name_in_owner = true
-position = Vector2(79.992, 3279.6719)
+position = Vector2(79.992, 2479.752)
 script = ExtResource("17_yspku")
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_6_1"]
 script = ExtResource("14_j4uy8")
 is_collision = null
-map_position = Vector2i(0, 20)
+map_position = Vector2i(0, 15)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_6_1"]
@@ -13347,14 +13345,13 @@ horizontal_alignment = 1
 
 [node name="_player_position_1_6" type="Node2D" parent="_player_positions"]
 unique_name_in_owner = true
-visible = false
-position = Vector2(79.992, 1199.88)
+position = Vector2(79.992, 879.912)
 script = ExtResource("17_yspku")
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_1_6"]
 script = ExtResource("14_j4uy8")
 is_collision = null
-map_position = Vector2i(0, 7)
+map_position = Vector2i(0, 5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="_player_positions/_player_position_1_6"]
