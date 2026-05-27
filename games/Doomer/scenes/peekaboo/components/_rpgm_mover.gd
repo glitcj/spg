@@ -12,7 +12,7 @@ var is_moving = false
 @export var facing = Vector2i(0, 1) as Vector2i:
 	set(v):
 		facing = v
-		face.bind(facing).call_deferred()
+		# face.bind(facing).call_deferred()
 
 
 @export var map_position: Vector2i = Vector2i(0, 0):
@@ -92,6 +92,7 @@ func move(tile_vector : Vector2i) -> _RPGM_Mover:
 
 func face(tile_vector : Vector2i):
 	var normalised_vector = Vector2(tile_vector).normalized()
+	facing = Vector2i(normalised_vector)
 	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
 	if portrait:
 		if normalised_vector == Vector2(1, 0):
@@ -113,8 +114,8 @@ func displace(displacement : Vector2):
 	
 	finished_movement.emit()
 
-func get_facing_direction():
-	return facing
+# func get_facing_direction():
+# 	return facing
 	
 func tile_has_collision(tile_pos: Vector2i) -> bool:
 	for layer : TileMapLayer in get_map().layers:

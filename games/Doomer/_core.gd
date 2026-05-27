@@ -11,7 +11,6 @@ var current_scene : _Core_Viewport
 @onready var camera = %Camera2D as Camera2D
 @onready var turner : _Core_Turner = $Turner
 
-
 func get_scene(_name): return find_child(_name) as _Core_Viewport
 func get_lambdas(): return find_child("_Core_Lambdas") as _Core_Lambdas
 func get_variables(): return find_child("_Core_Variables") as _Core_Variables
@@ -26,8 +25,6 @@ func _ready() -> void:
 func _boot():
 	change_viewport(get_scene("_Starter"))
 
-
-
 func change_viewport(viewport: _Core_Viewport):
 	if current_scene:
 		await current_scene._on_viewport_end()
@@ -36,7 +33,6 @@ func change_viewport(viewport: _Core_Viewport):
 	%"Current Viewport".texture = (viewport.find_child("SubViewport") as SubViewport).get_texture()
 	
 	await viewport._on_viewport_start()
-
 
 
 func change_viewport_v1(scene_: _Core_Viewport):

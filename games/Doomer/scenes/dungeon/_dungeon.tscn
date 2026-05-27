@@ -20,6 +20,15 @@ handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+unique_name_in_owner = true
+anchor_mode = 0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Camera2D"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+border_width = 20.0
+
 [node name="MarginContainer Parallax" type="MarginContainer" parent="SubViewport"]
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -103,12 +112,3 @@ stretch_mode = 1
 
 [node name="_Core_Log" parent="SubViewport/HBoxContainer/MarginContainer HUD" instance=ExtResource("5_h02ch")]
 layout_mode = 2
-
-[node name="Camera2D" type="Camera2D" parent="SubViewport"]
-unique_name_in_owner = true
-anchor_mode = 0
-
-[node name="ReferenceRect" type="ReferenceRect" parent="SubViewport/Camera2D"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-border_width = 20.0

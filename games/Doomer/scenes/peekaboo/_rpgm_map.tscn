@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=101 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -11294,6 +11294,33 @@ func _on_action_within_area():
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uc14m"]
 shader = ExtResource("16_a8qaw")
 
+[sub_resource type="GDScript" id="GDScript_vd6wf"]
+script/source = "extends _RPGM_Script
+
+signal returned_from_viewport_and_finished
+@onready var _viewport = get_core().get_scene(\"_Dungeon\") as _Dungeon # load(\"res://scenes/swiper/_swiper.tscn\").instantiate() as _Swiper
+
+
+# adjust _on_viewport_finished such that it takes in 
+# the parameters returned from the connected _Core_Viewport
+func _on_viewport_finished():
+	get_core().change_viewport(get_rpgm())
+	await get_rpgm().activated
+	
+	await get_lambdas().show_messages([\"You neither won nor lost.\"])
+	returned_from_viewport_and_finished.emit()
+
+
+func _on_action_within_area():
+	await get_mover().face(_get_direction_to_player())
+	await get_lambdas().show_messages([\"This will start the Mole Hole Mario Party mini game.\"])
+	await get_tree().create_timer(1).timeout
+	
+	_viewport.finished.connect(_on_viewport_finished, CONNECT_ONE_SHOT)
+	get_core().change_viewport(get_core().get_scene(\"_Dungeon\"))
+	await returned_from_viewport_and_finished
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kl3l0"]
 shader = ExtResource("16_a8qaw")
 
@@ -11976,9 +12003,8 @@ shape = SubResource("RectangleShape2D_r103f")
 position = Vector2(-239.976, 3279.6719)
 script = ExtResource("17_yspku")
 
-[node name="_rpgm_common_script_talker_6_2" type="Node" parent="_map_6/_npc_6_2"]
-script = ExtResource("18_xp5op")
-messages = Array[String](["Hello..", "This will start the Mole Hole Mario Party mini game."])
+[node name="_script" type="Node" parent="_map_6/_npc_6_2"]
+script = SubResource("GDScript_vd6wf")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_6/_npc_6_2"]
 script = ExtResource("14_j4uy8")

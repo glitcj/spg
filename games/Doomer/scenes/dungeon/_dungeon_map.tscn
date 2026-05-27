@@ -13,6 +13,7 @@ height = 10.0
 script = ExtResource("1_h3sth")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0.104528464, -0.9945219, 0, 0.9945219, 0.104528464, 1, 4.5690842e-09, -4.3471935e-08, -9.553, 6.924, 2.598)
 
 [node name="MeshInstance3D Floor" type="MeshInstance3D" parent="."]
@@ -40,3 +41,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.9993687, 0.035527427, 0, -0.035527427, 0.9993687, 0, 0, 0, 1, 8.973171, 2.7656775, -4.551018)
 mesh = SubResource("CylinderMesh_h3sth")
 skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, 0.25, -0.4330127, 0, 0.8660254, 0.5, 0.5, -0.4330127, 0.75, 0, 8.803447, 0)

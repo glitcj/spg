@@ -6,6 +6,7 @@ class_name _RPGM_Map
 @onready var layers = find_children("L*", "TileMapLayer")
 
 func get_event(_name): return find_child(_name) as _RPGM_Event
+func find_event(_name): return find_child(_name) as _RPGM_Event
 func get_lambdas(): return find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 
 
