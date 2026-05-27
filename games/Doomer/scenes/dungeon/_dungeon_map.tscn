@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bok30kcwdkd5g"]
+[gd_scene load_steps=9 format=3 uid="uid://bok30kcwdkd5g"]
 
 [ext_resource type="Script" uid="uid://x6godmwmy7du" path="res://scenes/dungeon/_dungeon_map.gd" id="1_h3sth"]
 [ext_resource type="PackedScene" uid="uid://xvskev5wt426" path="res://assets/basic_3d_models/Models/Male/Character_03.fbx" id="2_axpxi"]
@@ -11,6 +11,43 @@ size = Vector3(50, 0.5, 50)
 top_radius = 0.2
 height = 10.0
 
+[sub_resource type="Animation" id="Animation_47q4h"]
+resource_name = "fire"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.002, 0.05, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.05, -0.1), Vector3(0, -0.01, -0.02), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lnxfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lnxfs"]
+_data = {
+&"RESET": SubResource("Animation_lnxfs"),
+&"fire": SubResource("Animation_47q4h")
+}
+
 [node name="_Dungeon_Map" type="Node3D"]
 script = ExtResource("1_h3sth")
 
@@ -22,24 +59,24 @@ transform = Transform3D(-4.371139e-08, 0.104528464, -0.9945219, 0, 0.9945219, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62470055, 1.089056, 0.27605677)
 mesh = SubResource("BoxMesh_w8wxp")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D Trees" type="Node3D" parent="."]
 
-[node name="MeshInstance3D Tree 1" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D Tree 1" type="MeshInstance3D" parent="Node3D Trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_h3sth")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D Tree 2" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D Tree 2" type="MeshInstance3D" parent="Node3D Trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88306, 2.7656775, 0)
 mesh = SubResource("CylinderMesh_h3sth")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D Tree 3" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D Tree 3" type="MeshInstance3D" parent="Node3D Trees"]
 transform = Transform3D(0.99836886, -0.057093564, 0, 0.057093564, 0.99836886, 0, 0, 0, 1, 7.88306, 2.7656775, 5.5345345)
 mesh = SubResource("CylinderMesh_h3sth")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D Tree 4" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D Tree 4" type="MeshInstance3D" parent="Node3D Trees"]
 transform = Transform3D(0.9993687, 0.035527427, 0, -0.035527427, 0.9993687, 0, 0, 0, 1, 8.973171, 2.7656775, -4.551018)
 mesh = SubResource("CylinderMesh_h3sth")
 skeleton = NodePath("../..")
@@ -47,9 +84,19 @@ skeleton = NodePath("../..")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8660254, 0.25, -0.4330127, 0, 0.8660254, 0.5, 0.5, -0.4330127, 0.75, 0, 8.803447, 0)
 
-[node name="_model_1" parent="." instance=ExtResource("2_axpxi")]
+[node name="_Desert_Enemy" type="Node3D" parent="."]
+
+[node name="_model_1" parent="_Desert_Enemy" instance=ExtResource("2_axpxi")]
 unique_name_in_owner = true
 transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 0, 2, 7)
 
-[node name="Makarov" parent="." instance=ExtResource("3_47q4h")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.941725, 2.9557343, 1.0255651)
+[node name="_Desert_Gun" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 1)
+
+[node name="Makarov" parent="_Desert_Gun" instance=ExtResource("3_47q4h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_Desert_Gun/Makarov"]
+libraries = {
+&"": SubResource("AnimationLibrary_lnxfs")
+}
