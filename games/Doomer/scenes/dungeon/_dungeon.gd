@@ -1,5 +1,5 @@
 extends _Core_Viewport
-class_name _Birds
+class_name _Dungeon
 
 signal finished
 
