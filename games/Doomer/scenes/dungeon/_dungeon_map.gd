@@ -2,10 +2,8 @@ extends Node3D
 class_name Dungeon_Map
 
 var TIME = 0.
-
 var camera_rotation_sensitivity = 0.02
 var camera_movement_sensitivity = 0.2
-
 var wasd_as_rotation = false
 
 func _get_viewport(): return find_parent("_Desert") as _Desert
