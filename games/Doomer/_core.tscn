@@ -103,6 +103,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="_Dungeon" parent="Scenes/Scene Grid" instance=ExtResource("15_hqny6")]
+[node name="_Desert" parent="Scenes/Scene Grid" instance=ExtResource("15_hqny6")]
 unique_name_in_owner = true
 layout_mode = 2

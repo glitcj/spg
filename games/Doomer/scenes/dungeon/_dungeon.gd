@@ -1,5 +1,13 @@
 extends _Core_Viewport
-class_name _Dungeon
+class_name _Desert
+# Change to _DesertCamp FPS
+# Shoot incoming zombies, and recite poetry after each stage
+
+# Add night sky
+# Add night sky shader
+# Add 3d fire shader 
+# Add stage loop, reward is a poem shining in the sky
+# Poem correlates with score
 
 signal finished
 
