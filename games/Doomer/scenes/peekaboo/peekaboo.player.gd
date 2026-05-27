@@ -12,10 +12,10 @@ var is_active = false:
 @onready var mover = find_child("_RPGM_Mover") as _RPGM_Mover
 @onready var map = find_parent("_RPGM_Map") as _RPGM_Map
 
-func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
 func get_RPGM(): return find_parent("_RPGM") as _RPGM
-
 func get_log(): return get_RPGM().get_log() as _Core_Log
+func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
+func get_mover(): return find_child("_RPGM_Mover") as _RPGM_Mover
 
 
 
