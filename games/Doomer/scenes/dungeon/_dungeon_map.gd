@@ -11,6 +11,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_update_time(delta)
 	%Camera3D.position.x += sin(TIME/10) * .01
+	%_model_1.position.x += cos(TIME/10) * .1
+	%_model_1.position.z += cos(TIME/10) * .1
 
 func _update_time(delta: float):
 	TIME += delta * 10

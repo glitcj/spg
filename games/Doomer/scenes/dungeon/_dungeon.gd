@@ -8,6 +8,7 @@ class_name _Desert
 # Add 3d fire shader 
 # Add stage loop, reward is a poem shining in the sky
 # Poem correlates with score
+# looking up you can shoot boosters in the sky for power ups
 
 signal finished
 
