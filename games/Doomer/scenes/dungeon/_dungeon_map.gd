@@ -34,11 +34,11 @@ func _process_echoed_input():
 	_get_camera_basis()
 	
 	if wasd_as_rotation:
-		%Camera3D.rotation += Vector3(wasd_input.y, -wasd_input.x, 0.) * camera_rotation_sensitivity
-		%Camera3D.position += (vector_pointing_to_camera_right * direction_input.x + vector_pointing_to_camera_forward * direction_input.y) * camera_movement_sensitivity
+		%_Desert_Player.rotation += Vector3(wasd_input.y, -wasd_input.x, 0.) * camera_rotation_sensitivity
+		%_Desert_Player.position += (vector_pointing_to_camera_right * direction_input.x + vector_pointing_to_camera_forward * direction_input.y) * camera_movement_sensitivity
 	else:
-		%Camera3D.rotation += Vector3(direction_input.y, -direction_input.x, 0.) * camera_rotation_sensitivity
-		%Camera3D.position += (vector_pointing_to_camera_right * wasd_input.x + vector_pointing_to_camera_forward * wasd_input.y) * camera_movement_sensitivity
+		%_Desert_Player.rotation += Vector3(direction_input.y, -direction_input.x, 0.) * camera_rotation_sensitivity
+		%_Desert_Player.position += (vector_pointing_to_camera_right * wasd_input.x + vector_pointing_to_camera_forward * wasd_input.y) * camera_movement_sensitivity
 
 func _process_input() -> void:
 	if not _get_viewport().is_active: return
