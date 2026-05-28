@@ -99,17 +99,29 @@ modulate = Color(1, 0.5, 0.5, 1)
 layout_mode = 2
 texture = SubResource("CanvasTexture_p80ax")
 
-[node name="MarginContainer HUD" type="MarginContainer" parent="SubViewport/HBoxContainer"]
+[node name="MarginContainer Log" type="MarginContainer" parent="SubViewport"]
 visible = false
-custom_minimum_size = Vector2(600, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/MarginContainer Log"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="SubViewport/HBoxContainer/MarginContainer HUD"]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/MarginContainer Log/HBoxContainer"]
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer HUD" type="MarginContainer" parent="SubViewport/MarginContainer Log/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/MarginContainer Log/HBoxContainer/MarginContainer HUD"]
 visible = false
 layout_mode = 2
 texture = ExtResource("3_4snns")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="_Core_Log" parent="SubViewport/HBoxContainer/MarginContainer HUD" instance=ExtResource("5_h02ch")]
+[node name="_Core_Log" parent="SubViewport/MarginContainer Log/HBoxContainer/MarginContainer HUD" instance=ExtResource("5_h02ch")]
 layout_mode = 2
