@@ -12,18 +12,14 @@ func _get_viewport(): return find_parent("_Desert") as _Desert
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 func _input(event : InputEvent): if not (event.pressed and not event.echo): pass # stutters and is not synced with physics frames
 func _process_physics_input(): pass 
-
 
 func _process_muted_input(): # used with is_action_just_pressed
 	if Input.is_action_just_pressed("ui_accept"):
 		# await %_Desert_Gun.fire()
 		%_Desert_Gun.fire()
 		
-
-
 var vector_pointing_to_camera_right : Vector3
 var vector_pointing_to_camera_forward : Vector3
 func _get_camera_basis():
