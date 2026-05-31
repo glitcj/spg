@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/_core_lambdas.gd" id="11_yes15"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/notes.gd" id="12_dhys3"]
 [ext_resource type="PackedScene" uid="uid://kdwtnvamx6of" path="res://scenes/swiper/_scroller.tscn" id="13_ltnrw"]
-[ext_resource type="PackedScene" uid="uid://ddux8cxbg3086" path="res://scenes/dungeon/_dungeon.tscn" id="15_hqny6"]
+[ext_resource type="PackedScene" uid="uid://ddux8cxbg3086" path="res://scenes/dungeon/_desert.tscn" id="15_hqny6"]
 [ext_resource type="PackedScene" uid="uid://p0nktsm07ev6" path="res://scenes/birds/_birds.tscn" id="15_wlg60"]
 [ext_resource type="PackedScene" uid="uid://dcswdc80s3eyf" path="res://scenes/starter/_starter.tscn" id="17_8i81m"]
 [ext_resource type="Script" uid="uid://ddlflx7lmomwr" path="res://core/turner/turns/_starter_turn.gd" id="18_sps4g"]
