@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgkdu1c1mlwb"]
+
+[ext_resource type="PackedScene" uid="uid://bweo6fvqtensi" path="res://scenes/dungeon/_inherited_godette.tscn" id="1_4smkt"]
+[ext_resource type="Script" uid="uid://b0eh4j2s6lsfu" path="res://scenes/dungeon/_wrapped_inherited_godette.gd" id="1_msbls"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x8r0k"]
+
+[node name="_Wrapped_Inherited_Godette" type="CharacterBody3D"]
+script = ExtResource("1_msbls")
+
+[node name="_Inherited_Godette" parent="." instance=ExtResource("1_4smkt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="_Inherited_Godette/Rig" index="0"]
+bones/1/position = Vector3(0, 0.37009814, 0)
+bones/4/rotation = Quaternion(-0.55197805, -0.056528963, -0.63750994, 0.53451467)
+bones/5/rotation = Quaternion(3.706123e-08, -6.426415e-08, -0.51619166, 0.8564731)
+bones/7/rotation = Quaternion(-0.32156318, -0.3382709, 0.15023418, 0.8715502)
+bones/8/rotation = Quaternion(0.00091204763, 0.00091204426, -0.7037508, 0.7104458)
+bones/9/rotation = Quaternion(-0.6105215, 0.07703666, 0.6131023, 0.49541342)
+bones/10/rotation = Quaternion(2.131352e-08, 4.6731525e-08, 0.53853226, 0.8426049)
+bones/12/rotation = Quaternion(-0.32061082, 0.31449327, -0.23242253, 0.86271805)
+bones/13/rotation = Quaternion(0.0028780934, 0.0033899695, 0.70411056, 0.7100765)
+bones/15/rotation = Quaternion(0.9897633, 0.08366301, 0.07860826, 0.08479394)
+bones/15/scale = Vector3(0.99999994, 0.9999997, 1.0000008)
+bones/16/rotation = Quaternion(0.38902777, 5.7456504e-08, -2.651748e-07, 0.921226)
+bones/16/scale = Vector3(1.0000004, 0.9999999, 0.99999994)
+bones/17/rotation = Quaternion(-0.61835766, -0.20119572, 0.07564277, 0.7559315)
+bones/17/scale = Vector3(0.99999964, 1.0000006, 0.99999946)
+bones/18/rotation = Quaternion(-2.2432162e-06, 0.920156, -0.39155215, 5.9089143e-07)
+bones/18/scale = Vector3(0.99999994, 0.99999774, 1.0000024)
+bones/19/rotation = Quaternion(0.9916562, -0.0332321, 0.029858785, 0.12092201)
+bones/20/rotation = Quaternion(0.4337635, -5.8912597e-08, 3.017662e-07, 0.90102684)
+bones/21/rotation = Quaternion(-0.64458495, 0.11257467, -0.022846056, 0.7558541)
+bones/24/position = Vector3(0.20218208, 0.025990263, 0.20518117)
+bones/24/rotation = Quaternion(-0.7071068, -7.052851e-08, -7.0528486e-08, 0.7071068)
+bones/26/position = Vector3(-2.6049378e-08, 0.21343614, -5.171498e-09)
+bones/26/rotation = Quaternion(-1.01273386e-07, 0.39108434, 0.92035484, -3.3509142e-08)
+bones/26/scale = Vector3(1, 0.99999994, 0.9999999)
+bones/27/position = Vector3(8.589883e-09, 0.16565004, -2.4096343e-09)
+bones/28/rotation = Quaternion(1, -2.3313602e-09, 1.9977652e-07, -1.3421108e-15)
+bones/28/scale = Vector3(1, 1.0000001, 0.99999994)
+bones/29/rotation = Quaternion(4.1633502e-17, -6.740975e-17, -1.9466928e-08, 1)
+bones/38/position = Vector3(0.52084064, 0.7756071, -0.057637356)
+bones/40/position = Vector3(-0.5108437, 0.775607, 0.059736915)
+
+[node name="AnimationTree" parent="_Inherited_Godette" index="2"]
+advance_expression_base_node = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_x8r0k")
+
+[editable path="_Inherited_Godette"]

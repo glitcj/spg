@@ -12000,7 +12000,7 @@ scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
 
 [node name="_npc_6_2" type="Node2D" parent="_map_6"]
-position = Vector2(-239.976, 3279.6719)
+position = Vector2(79.992, 399.96)
 script = ExtResource("17_yspku")
 
 [node name="_script" type="Node" parent="_map_6/_npc_6_2"]
@@ -12010,7 +12010,7 @@ script = SubResource("GDScript_vd6wf")
 script = ExtResource("14_j4uy8")
 is_collision = true
 facing = Vector2i(1, 0)
-map_position = Vector2i(-2, 20)
+map_position = Vector2i(0, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="RigidBody2D" type="RigidBody2D" parent="_map_6/_npc_6_2"]

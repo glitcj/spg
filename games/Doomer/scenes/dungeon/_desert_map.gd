@@ -12,7 +12,7 @@ func _get_viewport(): return find_parent("_Desert") as _Desert
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _input(event : InputEvent): if not (event.pressed and not event.echo): pass # stutters and is not synced with physics frames
+# func _input(event : InputEvent): if not (event.pressed and not event.echo): pass # stutters and is not synced with physics frames
 func _process_physics_input(): pass 
 
 func _process_muted_input(): # used with is_action_just_pressed

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://xvskev5wt426" path="res://assets/basic_3d_models/Models/Male/Character_03.fbx" id="2_5v4vr"]
 [ext_resource type="Script" uid="uid://cx6ybyl7td8la" path="res://scenes/dungeon/_desert_player.gd" id="3_dsk57"]
 [ext_resource type="PackedScene" uid="uid://twlklfx38pn0" path="res://scenes/dungeon/_desert_gun.tscn" id="4_aufej"]
-[ext_resource type="PackedScene" uid="uid://bweo6fvqtensi" path="res://scenes/dungeon/_inherited_godette.tscn" id="5_kpayp"]
+[ext_resource type="PackedScene" uid="uid://dgkdu1c1mlwb" path="res://scenes/dungeon/_wrapped_inherited_godette.tscn" id="5_x8r0k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w8wxp"]
 size = Vector3(50, 0.5, 50)
@@ -77,5 +77,4 @@ mesh = SubResource("CapsuleMesh_lnxfs")
 unique_name_in_owner = true
 transform = Transform3D(-5.2453668e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.2453668e-08, -0.5, -0.9, -2)
 
-[node name="_Inherited_Godette" parent="." instance=ExtResource("5_kpayp")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.40632606, -2.3841858e-07, -5.2489214)
+[node name="_Wrapped_Inherited_Godette" parent="." instance=ExtResource("5_x8r0k")]
