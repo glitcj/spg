@@ -17,9 +17,12 @@ func _physics_process(delta: float) -> void:
 	if int(TIME) % 10 > 5:
 		velocity = Vector3(0,0,0) + Vector3(sin(TIME), 0, -sin(TIME)) * 2.
 		is_moving = true
+		rotation = velocity.normalized()
 	else:
 		velocity = Vector3(0, 0, 0)
+		is_moving = false
 		
+	
 	move_and_slide()
 	print(velocity, TIME)
 	
