@@ -1,6 +1,9 @@
 extends Node3D
 class_name Dungeon_Map
 
+
+signal finished
+
 var TIME = 0.
 
 func _get_viewport(): return find_parent("_Desert") as _Desert

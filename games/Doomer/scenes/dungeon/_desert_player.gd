@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name _Desert_Player
 
 var TIME = 0.
 var camera_rotation_sensitivity = 0.02

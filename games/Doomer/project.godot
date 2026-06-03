@@ -14,6 +14,10 @@ config/name="Doomer"
 run/main_scene="res://_core.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+_Core_Time="*res://core/_core_time.gd"
+
 [display]
 
 window/size/viewport_width=1920
