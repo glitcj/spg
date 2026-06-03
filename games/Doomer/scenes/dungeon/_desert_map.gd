@@ -50,7 +50,6 @@ func _process_input() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_update_time(delta)
-	# %Camera3D.position.x += sin(TIME/10) * .01
 	%_model_1.position.x += cos(TIME/10) * .1
 	%_model_1.position.z += cos(TIME/10) * .1
 	

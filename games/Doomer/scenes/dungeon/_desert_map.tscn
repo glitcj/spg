@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bok30kcwdkd5g"]
+[gd_scene load_steps=11 format=3 uid="uid://bok30kcwdkd5g"]
 
 [ext_resource type="Script" uid="uid://x6godmwmy7du" path="res://scenes/dungeon/_desert_map.gd" id="1_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://xvskev5wt426" path="res://assets/basic_3d_models/Models/Male/Character_03.fbx" id="2_5v4vr"]
 [ext_resource type="Script" uid="uid://cx6ybyl7td8la" path="res://scenes/dungeon/_desert_player.gd" id="3_dsk57"]
 [ext_resource type="PackedScene" uid="uid://twlklfx38pn0" path="res://scenes/dungeon/_desert_gun.tscn" id="4_aufej"]
 [ext_resource type="PackedScene" uid="uid://dgkdu1c1mlwb" path="res://scenes/dungeon/_wrapped_inherited_godette.tscn" id="5_x8r0k"]
+[ext_resource type="PackedScene" uid="uid://bhl41amnaf1d1" path="res://scenes/dungeon/_wrapped_inherited_dummy.tscn" id="6_5v4vr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w8wxp"]
 size = Vector3(50, 0.5, 50)
@@ -78,3 +79,6 @@ unique_name_in_owner = true
 transform = Transform3D(-5.2453668e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.2453668e-08, -0.5, -0.9, -2)
 
 [node name="_Wrapped_Inherited_Godette" parent="." instance=ExtResource("5_x8r0k")]
+
+[node name="_Wrapped_Inherited_Dummy" parent="." instance=ExtResource("6_5v4vr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.6800632, 0.23674351, 0)
