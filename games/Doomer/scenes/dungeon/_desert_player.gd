@@ -42,7 +42,7 @@ func _process_echoed_input():
 		position += (vector_pointing_to_camera_right * wasd_input.x + vector_pointing_to_camera_forward * wasd_input.y) * camera_movement_sensitivity
 
 func _process_input() -> void:
-	if not _get_viewport().is_active: return
+	# if not _get_viewport().is_active: return
 	_process_echoed_input()
 	_process_muted_input()
 

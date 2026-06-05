@@ -1,10 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://bok30kcwdkd5g"]
+[gd_scene load_steps=19 format=3 uid="uid://bok30kcwdkd5g"]
 
 [ext_resource type="Script" uid="uid://x6godmwmy7du" path="res://scenes/dungeon/_desert_map.gd" id="1_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://xvskev5wt426" path="res://assets/basic_3d_models/Models/Male/Character_03.fbx" id="2_5v4vr"]
+[ext_resource type="Texture2D" uid="uid://4qppoxfwn8d" path="res://assets/skies/rogland_clear_night_4k.exr" id="2_dsk57"]
 [ext_resource type="PackedScene" uid="uid://ulnxacinu8x" path="res://scenes/dungeon/_desert_player.tscn" id="3_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://dgkdu1c1mlwb" path="res://scenes/dungeon/_wrapped_inherited_godette.tscn" id="5_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://bhl41amnaf1d1" path="res://scenes/dungeon/_wrapped_inherited_dummy.tscn" id="6_5v4vr"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aufej"]
+panorama = ExtResource("2_dsk57")
+
+[sub_resource type="Sky" id="Sky_kpayp"]
+sky_material = SubResource("PanoramaSkyMaterial_aufej")
+
+[sub_resource type="Environment" id="Environment_nld87"]
+background_mode = 2
+sky = SubResource("Sky_kpayp")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_w8wxp"]
 size = Vector3(50, 0.5, 50)
@@ -70,6 +83,9 @@ albedo_texture = SubResource("CanvasTexture_x8r0k")
 
 [node name="_Dungeon_Map" type="Node3D"]
 script = ExtResource("1_x8r0k")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nld87")
 
 [node name="MeshInstance3D Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625, 0, 0.276)

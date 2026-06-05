@@ -9,13 +9,19 @@ var TIME = 0.
 func _get_viewport(): return find_parent("_Desert") as _Desert
 
 
+
+func _ready():
+	pass
+	print_tree_pretty()
+	pass
+
 func input(): pass # async
 func _process_echoed_input(): pass # syncs with process frame
 func _process_muted_input(): pass # syncs with process frame
 func _process_physics_input(): pass # syncs with physics frame
 
 func _process_input() -> void:
-	if not _get_viewport().is_active: return
+	#$ if not _get_viewport().is_active: return
 	_process_echoed_input()
 	_process_muted_input()
 
