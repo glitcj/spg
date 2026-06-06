@@ -1,0 +1,1889 @@
+[gd_scene load_steps=6 format=4 uid="uid://caltidappke87"]
+
+[ext_resource type="Script" uid="uid://bv2cvrevi23q4" path="res://scenes/dungeon/_dgm_tilemap.gd" id="1_rn5rw"]
+[ext_resource type="TileSet" uid="uid://dmuy2eaehvonb" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A4.tres" id="2_lyrrd"]
+[ext_resource type="PackedScene" uid="uid://dagb1lk25e5s" path="res://scenes/dungeon/_DGM_Tile.tscn" id="3_lyrrd"]
+[ext_resource type="Script" uid="uid://cdcmr7ld0yoao" path="res://scenes/dungeon/_dgm_tile.gd" id="4_jdlva"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4ae8"]
+
+[node name="_Desert_Grid" type="Area3D" node_paths=PackedStringArray("floor_tilemap", "wall_tilemap")]
+script = ExtResource("1_rn5rw")
+floor_tilemap = NodePath("Floor TileMapLayer")
+wall_tilemap = NodePath("Wall TileMapLayer")
+
+[node name="Floor TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAADAP3/AAAAAAAAAAACAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP//AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAP//AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAPv/AAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAEAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAEAP7/AAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD1//j/AAAAAAAAAAD1//n/AAAAAAAAAAD1//r/AAAAAAAAAAD1//v/AAAAAAAAAAD1//z/AAAAAAAAAAD1//3/AAAAAAAAAAD1//7/AAAAAAAAAAD1////AAAAAAAAAAD1/wAAAAAAAAAAAAD1/wEAAAAAAAAAAAD1/wIAAAAAAAAAAAD1/wMAAAAAAAAAAAD1/wQAAAAAAAAAAAD1/wUAAAAAAAAAAAD1/wYAAAAAAAAAAAD2//j/AAAAAAAAAAD2//n/AAAAAAAAAAD2//r/AAAAAAAAAAD2//v/AAAAAAAAAAD2//z/AAAAAAAAAAD2//3/AAAAAAAAAAD2//7/AAAAAAAAAAD2////AAAAAAAAAAD2/wAAAAAAAAAAAAD2/wEAAAAAAAAAAAD2/wIAAAAAAAAAAAD2/wMAAAAAAAAAAAD2/wQAAAAAAAAAAAD2/wUAAAAAAAAAAAD2/wYAAAAAAAAAAAD3//j/AAAAAAAAAAD3//n/AAAAAAAAAAD3//r/AAAAAAAAAAD3//v/AAAAAAAAAAD3//z/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wUAAAAAAAAAAAD3/wYAAAAAAAAAAAD4//j/AAAAAAAAAAD4//n/AAAAAAAAAAD4//r/AAAAAAAAAAD4//v/AAAAAAAAAAD4//z/AAAAAAAAAAD4//3/AAAAAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAAAAAD4/wUAAAAAAAAAAAD4/wYAAAAAAAAAAAD5//j/AAAAAAAAAAD5//n/AAAAAAAAAAD5//r/AAAAAAAAAAD5//v/AAAAAAAAAAD5//z/AAAAAAAAAAD5//3/AAAAAAAAAAD5//7/AAAAAAAAAAD5////AAAAAAAAAAD5/wAAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wQAAAAAAAAAAAD5/wUAAAAAAAAAAAD5/wYAAAAAAAAAAAD6//j/AAAAAAAAAAD6//n/AAAAAAAAAAD6//r/AAAAAAAAAAD6//v/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD6//7/AAAAAAAAAAD6////AAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wQAAAAAAAAAAAD6/wUAAAAAAAAAAAD6/wYAAAAAAAAAAAD7//j/AAAAAAAAAAD7//n/AAAAAAAAAAD7//r/AAAAAAAAAAD7//v/AAAAAAAAAAD7//z/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD7////AAAAAAAAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD7/wQAAAAAAAAAAAD7/wUAAAAAAAAAAAD7/wYAAAAAAAAAAAD8//j/AAAAAAAAAAD8//n/AAAAAAAAAAD8//r/AAAAAAAAAAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wIAAAAAAAAAAAD8/wMAAAAAAAAAAAD8/wQAAAAAAAAAAAD8/wUAAAAAAAAAAAD8/wYAAAAAAAAAAAD9//j/AAAAAAAAAAD9//n/AAAAAAAAAAD9//r/AAAAAAAAAAD9//v/AAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAAAAAD9/wUAAAAAAAAAAAD9/wYAAAAAAAAAAAD+//j/AAAAAAAAAAD+//n/AAAAAAAAAAD+//r/AAAAAAAAAAD+//v/AAAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD///j/AAAAAAAAAAD///n/AAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAABAPr/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAACAPj/AAAAAAAAAAACAPn/AAAAAAAAAAACAPr/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAADAPj/AAAAAAAAAAADAPn/AAAAAAAAAAADAPr/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAAEAPj/AAAAAAAAAAAEAPn/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAPj/AAAAAAAAAAAFAPn/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAPj/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAPr/AAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAPj/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAPj/AAAAAAAAAAAIAPn/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAPj/AAAAAAAAAAAJAPn/AAAAAAAAAAAJAPr/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAKAPr/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAALAPj/AAAAAAAAAAALAPn/AAAAAAAAAAALAPr/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAMAPj/AAAAAAAAAAAMAPn/AAAAAAAAAAAMAPr/AAAAAAAAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAAAAAAMAP3/AAAAAAAAAAAMAP7/AAAAAAAAAAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAANAPj/AAAAAAAAAAANAPn/AAAAAAAAAAANAPr/AAAAAAAAAAANAPv/AAAAAAAAAAANAPz/AAAAAAAAAAANAP3/AAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAAOAPj/AAAAAAAAAAAOAPn/AAAAAAAAAAAOAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAP7/AAAAAAAAAAAOAP//AAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAPj/AAAAAAAAAAAPAPn/AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAP7/AAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAPj/AAAAAAAAAAAQAPn/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAARAPj/AAAAAAAAAAARAPn/AAAAAAAAAAARAPr/AAAAAAAAAAARAPv/AAAAAAAAAAARAPz/AAAAAAAAAAARAP3/AAAAAAAAAAARAP7/AAAAAAAAAAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAA=")
+tile_set = ExtResource("2_lyrrd")
+
+[node name="Wall TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAA=")
+tile_set = ExtResource("2_lyrrd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_s4ae8")
+
+[node name="_DGM_Tile" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273554" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273555" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273556" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273557" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273558" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273559" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273560" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273561" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273562" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273563" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273564" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273565" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273566" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273567" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273568" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273569" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273570" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273571" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273572" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273573" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273574" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273575" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273576" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273577" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273578" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273579" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273580" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273581" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273582" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273583" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273584" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273585" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273586" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273587" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273588" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273589" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273590" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273591" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273592" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273593" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273594" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273595" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273596" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273597" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273598" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273599" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273600" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273601" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273602" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273603" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273604" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273605" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273606" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273607" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273608" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273609" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273610" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273611" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273612" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273613" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273614" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273615" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273616" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273617" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273618" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273619" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273620" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273621" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273622" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273623" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273624" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273625" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273626" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273627" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273628" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273629" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273630" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273631" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273632" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273633" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273634" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273635" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273636" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273637" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273638" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273639" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273640" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273641" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273642" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273643" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273644" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273645" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273646" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273647" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273648" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273649" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273650" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273651" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273652" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273653" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273654" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273655" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273656" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273657" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273658" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273659" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273660" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273661" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273662" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273663" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273664" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273665" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273666" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273667" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273668" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273669" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273670" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273671" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273672" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273673" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273674" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273675" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273676" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273677" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273678" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273679" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273680" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273681" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273682" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273683" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273684" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273685" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273686" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273687" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273688" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273689" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273690" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273691" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273692" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273693" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273694" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273695" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273696" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273697" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273698" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273699" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273700" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273701" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273702" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273703" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273704" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273705" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273706" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273707" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273708" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273709" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273710" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273711" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273712" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273713" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273714" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273715" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273716" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273717" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273718" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273719" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273720" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273721" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273722" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273723" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273724" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273725" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273726" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273727" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273728" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273729" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273730" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273731" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273732" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273733" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273734" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273735" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273736" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273737" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273738" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273739" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273740" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273741" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273742" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273743" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273744" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273745" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273746" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273747" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273748" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273749" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273750" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273751" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273752" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273753" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273754" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273755" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273756" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273757" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273758" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273759" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273760" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273761" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273762" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273763" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273764" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273765" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273766" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273767" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273768" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273769" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273770" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273771" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273772" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273773" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273774" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273775" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273776" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273777" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273778" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273779" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273780" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273781" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273782" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273783" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273784" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273785" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273786" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273787" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273788" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273789" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273790" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273791" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273792" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273793" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273794" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273795" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273796" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273797" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273798" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273799" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273800" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273801" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273802" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273803" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273804" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273805" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273806" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273807" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273808" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273809" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273810" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273811" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273812" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273813" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273814" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273815" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273816" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273817" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273818" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273819" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273820" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273821" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273822" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273823" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273824" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273825" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273826" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273827" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273828" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273829" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273830" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273831" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273832" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273833" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273834" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273835" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273836" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273837" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273838" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273839" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273840" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273841" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273842" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273843" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273844" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273845" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273846" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273847" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273848" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273849" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273850" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273851" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273852" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273853" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273854" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273855" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273856" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273857" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273858" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273859" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273860" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273861" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273862" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273863" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273864" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273865" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273866" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273867" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273868" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273869" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273870" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273871" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273872" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273873" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273874" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273875" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273876" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273877" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273878" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273879" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273880" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273881" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273882" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273883" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273884" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273885" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273886" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273887" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273888" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273889" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273890" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273891" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273892" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273893" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273894" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273895" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273896" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273897" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273898" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273899" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273900" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273901" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273902" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273903" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273904" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273905" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273906" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273907" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273908" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273909" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273910" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273911" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273912" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273913" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273914" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273915" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273916" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273917" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273918" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273919" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273920" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273921" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273922" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273923" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273924" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273925" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273926" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273927" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273928" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273929" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273930" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273931" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273932" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273933" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273934" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273935" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273936" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273937" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273938" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273939" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273940" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273941" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273942" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273943" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273944" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273945" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273946" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273947" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273948" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273949" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273950" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273951" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273952" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273953" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273954" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273955" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273956" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273957" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273958" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273959" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273960" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273961" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273962" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273963" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273964" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273965" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273966" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273967" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273968" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273969" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273970" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273971" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273972" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273973" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -8)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273974" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -7)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273975" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273976" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273977" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273978" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273979" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273980" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273981" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273982" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 1)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273983" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 2)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273984" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 3)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273985" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 4)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273986" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 5)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273987" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 6)
+script = ExtResource("4_jdlva")
+
+[node name="@Node3D@273988" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273989" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273990" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273991" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273992" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273993" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273994" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273995" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273996" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273997" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273998" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@273999" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274000" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274001" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274002" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274003" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274004" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274005" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274006" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274007" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274008" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274009" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274010" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 7)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274011" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 6)
+script = ExtResource("4_jdlva")
+type = "wall"
+
+[node name="@Node3D@274012" type="Node3D" parent="." instance=ExtResource("3_lyrrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
+script = ExtResource("4_jdlva")
+type = "wall"

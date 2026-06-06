@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dagb1lk25e5s"]
 
-[ext_resource type="Script" uid="uid://cdcmr7ld0yoao" path="res://scenes/dungeon/_desert_grid_cell.gd" id="1_qimjf"]
+[ext_resource type="Script" uid="uid://cdcmr7ld0yoao" path="res://scenes/dungeon/_dgm_tile.gd" id="1_78ajy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qimjf"]
 albedo_color = Color(1, 0.12941177, 0.12941177, 1)
@@ -16,8 +16,8 @@ size = Vector3(1, 0.01, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qimjf"]
 
-[node name="_Desert_Grid_Cell" type="Node3D"]
-script = ExtResource("1_qimjf")
+[node name="_DGM_Tile" type="Node3D"]
+script = ExtResource("1_78ajy")
 
 [node name="Area3D Floor" type="Area3D" parent="."]
 

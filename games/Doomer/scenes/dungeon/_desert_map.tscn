@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ulnxacinu8x" path="res://scenes/dungeon/_desert_player.tscn" id="3_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://dgkdu1c1mlwb" path="res://scenes/dungeon/_wrapped_inherited_godette.tscn" id="5_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://bhl41amnaf1d1" path="res://scenes/dungeon/_wrapped_inherited_dummy.tscn" id="6_5v4vr"]
-[ext_resource type="PackedScene" uid="uid://caltidappke87" path="res://scenes/dungeon/_desert_grid.tscn" id="8_aufej"]
+[ext_resource type="PackedScene" uid="uid://caltidappke87" path="res://scenes/dungeon/_dgm_tilemap.tscn" id="8_aufej"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8r0k"]
 shader = ExtResource("2_aufej")

@@ -1,6 +1,6 @@
 @tool
 extends Node3D
-class_name _Desert_Grid_Cell
+class_name _DGM_Tile
 
 # Assign a Callable (lambda) to run your function when clicked
 @export_tool_button("print tree") var p = func(): _print_tree_pretty()
