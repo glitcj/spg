@@ -6,7 +6,8 @@ extends Area3D
 
 func _on_button(): pass
 
-@export var tilemap : TileMapLayer
+@export var floor_tilemap : TileMapLayer
+@export var wall_tilemap : TileMapLayer
 
 const grid_cell_size = 1.
 
@@ -18,7 +19,7 @@ func _ready() -> void:
 			
 			
 func _update_tilemap():
-	if not tilemap:
+	if not floor_tilemap:
 		push_error("No TileMapLayer assigned!")
 		return
 
@@ -26,12 +27,23 @@ func _update_tilemap():
 		if child is not _Desert_Grid_Cell: continue  # don't delete the tilemap itself
 		child.free()
 
-	for cell in tilemap.get_used_cells():
+	for cell in floor_tilemap.get_used_cells():
 		var node = grid_cell_packed_scene.instantiate() as _Desert_Grid_Cell
 		node.position.x = cell.x * grid_cell_size
 		node.position.z = cell.y * grid_cell_size  # TileMap Y → 3D Z
 		add_child(node)
+		node.type = "floor"
 		node.owner = get_tree().edited_scene_root
+
+
+	for cell in wall_tilemap.get_used_cells():
+		var node = grid_cell_packed_scene.instantiate() as _Desert_Grid_Cell
+		node.position.x = cell.x * grid_cell_size
+		node.position.z = cell.y * grid_cell_size  # TileMap Y → 3D Z
+		add_child(node)
+		node.type = "wall"
+		node.owner = get_tree().edited_scene_root
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

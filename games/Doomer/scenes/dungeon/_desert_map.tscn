@@ -177,4 +177,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.27602, -85.01061)
 mesh = SubResource("SphereMesh_aufej")
 
 [node name="_Desert_Grid" parent="." instance=ExtResource("8_aufej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7182856, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -33.773384, 0, 18.582314)
