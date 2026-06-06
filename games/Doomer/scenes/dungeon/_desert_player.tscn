@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://twlklfx38pn0" path="res://scenes/dungeon/_desert_gun.tscn" id="2_3quw3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47q4h"]
-height = 3.0
+radius = 3.0
+height = 6.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lnxfs"]
 height = 3.0

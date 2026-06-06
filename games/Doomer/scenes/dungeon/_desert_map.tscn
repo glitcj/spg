@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bok30kcwdkd5g"]
+[gd_scene load_steps=26 format=3 uid="uid://bok30kcwdkd5g"]
 
 [ext_resource type="Script" uid="uid://x6godmwmy7du" path="res://scenes/dungeon/_desert_map.gd" id="1_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://xvskev5wt426" path="res://assets/basic_3d_models/Models/Male/Character_03.fbx" id="2_5v4vr"]
@@ -92,6 +92,10 @@ material = SubResource("StandardMaterial3D_dsk57")
 radius = 5.0
 height = 10.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_aufej"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kpayp"]
+
 [node name="_Dungeon_Map" type="Node3D"]
 script = ExtResource("1_x8r0k")
 
@@ -157,10 +161,10 @@ unique_name_in_owner = true
 shape = SubResource("CapsuleShape3D_x8r0k")
 
 [node name="_player_position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, 10)
 script = SubResource("GDScript_5v4vr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="_player_position"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.136589, 2.371872, 11.657471)
 mesh = SubResource("SphereMesh_dsk57")
 surface_material_override/0 = SubResource("StandardMaterial3D_5v4vr")
 
@@ -178,3 +182,12 @@ mesh = SubResource("SphereMesh_aufej")
 
 [node name="_Desert_Grid" parent="." instance=ExtResource("8_aufej")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -33.773384, 0, 18.582314)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(9.475121, 0, -3.1972013, 0, 10, 0, 3.1972013, 0, 9.475121, 25.985138, 0.5415983, -6.1312313)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_aufej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_kpayp")

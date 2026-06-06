@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dagb1lk25e5s"]
+[gd_scene load_steps=7 format=3 uid="uid://dagb1lk25e5s"]
 
 [ext_resource type="Script" uid="uid://cdcmr7ld0yoao" path="res://scenes/dungeon/_desert_grid_cell.gd" id="1_qimjf"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_qimjf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qimjf"]
 albedo_color = Color(1, 0.12941177, 0.12941177, 1)
@@ -18,12 +16,8 @@ size = Vector3(1, 0.01, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qimjf"]
 
-[node name="_Desert_Grid_Cell" type="Area3D"]
+[node name="_Desert_Grid_Cell" type="Node3D"]
 script = ExtResource("1_qimjf")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-visible = false
-shape = SubResource("SphereShape3D_qimjf")
 
 [node name="Area3D Floor" type="Area3D" parent="."]
 
@@ -34,14 +28,15 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D Floor"]
 shape = SubResource("BoxShape3D_byui1")
 
-[node name="RigidBody3D Wall" type="Area3D" parent="."]
+[node name="StaticBody3D Wall" type="StaticBody3D" parent="."]
 unique_name_in_owner = true
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D Wall"]
+[node name="MeshInstance3D Wall" type="MeshInstance3D" parent="StaticBody3D Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_qimjf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D Wall"]
+[node name="CollisionShape3D Wall" type="CollisionShape3D" parent="StaticBody3D Wall"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_qimjf")
