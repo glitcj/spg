@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bok30kcwdkd5g"]
+[gd_scene load_steps=24 format=3 uid="uid://bok30kcwdkd5g"]
 
 [ext_resource type="Script" uid="uid://x6godmwmy7du" path="res://scenes/dungeon/_desert_map.gd" id="1_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://xvskev5wt426" path="res://assets/basic_3d_models/Models/Male/Character_03.fbx" id="2_5v4vr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ulnxacinu8x" path="res://scenes/dungeon/_desert_player.tscn" id="3_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://dgkdu1c1mlwb" path="res://scenes/dungeon/_wrapped_inherited_godette.tscn" id="5_x8r0k"]
 [ext_resource type="PackedScene" uid="uid://bhl41amnaf1d1" path="res://scenes/dungeon/_wrapped_inherited_dummy.tscn" id="6_5v4vr"]
+[ext_resource type="PackedScene" uid="uid://caltidappke87" path="res://scenes/dungeon/_desert_grid.tscn" id="8_aufej"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8r0k"]
 shader = ExtResource("2_aufej")
@@ -174,3 +175,6 @@ script = SubResource("GDScript_dsk57")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="_Desert_Planet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.27602, -85.01061)
 mesh = SubResource("SphereMesh_aufej")
+
+[node name="_Desert_Grid" parent="." instance=ExtResource("8_aufej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7182856, 0)

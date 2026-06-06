@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dagb1lk25e5s"]
+
+[ext_resource type="Script" uid="uid://cdcmr7ld0yoao" path="res://scenes/dungeon/_desert_grid_cell.gd" id="1_qimjf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qimjf"]
+albedo_color = Color(1, 0.12941177, 0.12941177, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8unkd"]
+material = SubResource("StandardMaterial3D_qimjf")
+size = Vector3(1, 0.01, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_byui1"]
+
+[node name="_Desert_Grid_Cell" type="Area3D"]
+script = ExtResource("1_qimjf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8unkd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_byui1")
