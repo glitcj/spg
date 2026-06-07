@@ -46,9 +46,9 @@ func _update_tilemap():
 		tile3D.owner = get_tree().edited_scene_root
 
 
-func get_tile_position():
-	pass
-
+func get_tile_position(position : Vector2i):
+	return Vector3(position.x * grid_cell_size, 0, position.y * grid_cell_size)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

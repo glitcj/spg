@@ -14,6 +14,8 @@ class_name _Desert
 # NOTE: Sky texture appears in the alpha = 0 channel, 
 # so in the nested desert map subviewprt, Transparent BG = false
 
+
+
 signal finished
 
 func get_hud(): return %_Core_Log as _Core_Log

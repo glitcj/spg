@@ -10,6 +10,12 @@ func _get_viewport(): return find_parent("_Desert") as _Desert
 func _ready():
 	pass
 	print_tree_pretty()
+	
+	_get_viewport().started.connect(_on_viewport_started)
+	pass
+
+func _on_viewport_started():
+	%_Desert_Player.global_position = %_player_position.global_position
 	pass
 
 func input(): pass # async
