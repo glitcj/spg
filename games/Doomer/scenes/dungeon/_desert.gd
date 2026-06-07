@@ -24,14 +24,11 @@ func _ready() -> void:
 	camera = %Camera2D as Camera2D
 	print_tree_pretty()
 	
-	pass
-
 func _on_viewport_start():	
 	super()
 	
 func _on_viewport_end():
 	super()
-	(find_child("_Desert_Player") as _Desert_Player).position = Vector3(0., 2., 0.)
 	
 func finish():
 	finished.emit()

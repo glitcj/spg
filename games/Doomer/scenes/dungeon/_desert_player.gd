@@ -24,7 +24,8 @@ var vector_pointing_to_camera_right : Vector3
 var vector_pointing_to_camera_forward : Vector3
 
 func _process_echoed_input():
-	speed = 30. if Input.is_action_pressed("ui_select") else 10.
+	if Input.is_action_just_pressed("ui_select"):
+		speed = 100. if speed == 10. else 10.
 
 func _get_camera_basis():
 	# var cam_basis = %Camera3D.global_transform.basis as Basis

@@ -1,11 +1,13 @@
 extends Node3D
-class_name Dungeon_Map
+class_name _DGM_Map
 
 signal finished
 
 var TIME = 0.
 
 func _get_viewport(): return find_parent("_Desert") as _Desert
+
+@export var start_position : Node3D
 
 func _ready():
 	pass
@@ -15,7 +17,7 @@ func _ready():
 	pass
 
 func _on_viewport_started():
-	%_Desert_Player.global_position = %_player_position.global_position
+	%_Desert_Player.global_position = start_position.global_position
 	await get_tree().process_frame
 	%_Desert_Player.is_active = false
 	pass

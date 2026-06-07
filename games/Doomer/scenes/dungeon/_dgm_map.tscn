@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=4 uid="uid://bok30kcwdkd5g"]
+[gd_scene load_steps=31 format=4 uid="uid://bok30kcwdkd5g"]
 
 [ext_resource type="Script" uid="uid://x6godmwmy7du" path="res://scenes/dungeon/_dgm_map.gd" id="1_atvyf"]
 [ext_resource type="Shader" uid="uid://cf4if7n7ncbli" path="res://_sky_material_v1.gdshader" id="2_ac7aw"]
+[ext_resource type="Script" uid="uid://nchnhdxgc0nb" path="res://scenes/dungeon/_dgm_lambdas.gd" id="2_s2wsf"]
 [ext_resource type="TileSet" uid="uid://dmuy2eaehvonb" path="res://assets/rpgmaker/converted/tilesets/Dungeon_A4.tres" id="3_667se"]
 [ext_resource type="Texture2D" uid="uid://4qppoxfwn8d" path="res://assets/skies/rogland_clear_night_4k.exr" id="3_x1eu2"]
 [ext_resource type="PackedScene" uid="uid://xvskev5wt426" path="res://assets/basic_3d_models/Models/Male/Character_03.fbx" id="4_667se"]
@@ -12,20 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bhl41amnaf1d1" path="res://scenes/dungeon/_wrapped_inherited_dummy.tscn" id="7_vjlhp"]
 [ext_resource type="PackedScene" uid="uid://caltidappke87" path="res://scenes/dungeon/_dgm_tilemap.tscn" id="8_fqjkr"]
 [ext_resource type="Script" uid="uid://bpcbionak10o5" path="res://scenes/dungeon/_dgm_mover.gd" id="9_ac7aw"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qimjf"]
-albedo_color = Color(1, 0.12941177, 0.12941177, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8unkd"]
-material = SubResource("StandardMaterial3D_qimjf")
-size = Vector3(1, 0.01, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_byui1"]
-size = Vector3(1, 0.01, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qimjf"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qimjf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8r0k"]
 shader = ExtResource("2_ac7aw")
@@ -114,8 +101,12 @@ height = 10.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_kpayp"]
 
-[node name="_Dungeon_Map" type="Node3D"]
+[node name="_DGM_Map" type="Node3D" node_paths=PackedStringArray("start_position")]
 script = ExtResource("1_atvyf")
+start_position = NodePath("_player_position")
+
+[node name="_DGM_Lambdas" type="Node" parent="."]
+script = ExtResource("2_s2wsf")
 
 [node name="_Desert_Grid" parent="." node_paths=PackedStringArray("floor_tilemap", "wall_tilemap") instance=ExtResource("8_fqjkr")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -144,30 +135,9 @@ script = ExtResource("5_s2wsf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -7)
 script = ExtResource("5_s2wsf")
 
-[node name="@Node3D@372192" parent="_Desert_Grid" instance=ExtResource("4_ofueu")]
+[node name="@Node3D@372192" type="Node3D" parent="_Desert_Grid" instance=ExtResource("4_ofueu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -6)
 script = ExtResource("5_s2wsf")
-
-[node name="MeshInstance3D" parent="_Desert_Grid/@Node3D@372192/Area3D Floor" index="0"]
-mesh = SubResource("BoxMesh_8unkd")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" parent="_Desert_Grid/@Node3D@372192/Area3D Floor" index="1"]
-shape = SubResource("BoxShape3D_byui1")
-
-[node name="StaticBody3D Wall" parent="_Desert_Grid/@Node3D@372192" index="1"]
-unique_name_in_owner = true
-visible = false
-
-[node name="MeshInstance3D Wall" parent="_Desert_Grid/@Node3D@372192/StaticBody3D Wall" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_qimjf")
-
-[node name="CollisionShape3D Wall" parent="_Desert_Grid/@Node3D@372192/StaticBody3D Wall" index="1"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_qimjf")
-disabled = true
 
 [node name="@Node3D@372193" type="Node3D" parent="_Desert_Grid" instance=ExtResource("4_ofueu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -5)
@@ -13441,7 +13411,7 @@ shape = SubResource("CapsuleShape3D_x8r0k")
 
 [node name="_player_position" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.532, 0, 24.034)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.532, -4, 24.034)
 script = SubResource("GDScript_5v4vr")
 
 [node name="_DGM_Mover" type="Node" parent="_player_position"]
@@ -13471,5 +13441,3 @@ shape = SubResource("BoxShape3D_aufej")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D Building"]
 mesh = SubResource("BoxMesh_kpayp")
-
-[editable path="_Desert_Grid/@Node3D@372192"]
