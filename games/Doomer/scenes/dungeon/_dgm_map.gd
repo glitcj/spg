@@ -22,8 +22,7 @@ func _ready():
 func _on_viewport_started():
 	%_DGM_Player.global_position = start_position.global_position
 	await get_tree().process_frame
-	%_DGM_Player.is_active = false
-	pass
+	%_DGM_Player.is_active = true
 
 func input(): pass # async
 func _process_echoed_input(): pass # syncs with process frame

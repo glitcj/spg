@@ -36,6 +36,7 @@ func _get_camera_basis():
 	vector_pointing_to_camera_forward = vector_pointing_to_camera_forward.normalized()
 	
 func _process_physics_input():
+	if not is_active: return
 	var direction_input = Input.get_vector("ui_left", "ui_right", "ui_down", "ui_up")
 	var wasd_input = Input.get_vector("ui_a", "ui_d", "ui_s", "ui_w")
 	_get_camera_basis()
@@ -50,6 +51,7 @@ func _process_physics_input():
 	velocity = move_direction * speed
 
 func _process_input() -> void:
+	if not is_active: return
 	_process_echoed_input()
 	_process_muted_input()
 

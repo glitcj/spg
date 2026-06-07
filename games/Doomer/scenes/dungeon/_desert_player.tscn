@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ulnxacinu8x"]
 
 [ext_resource type="Script" uid="uid://cx6ybyl7td8la" path="res://scenes/dungeon/_desert_player.gd" id="1_l0bed"]
-[ext_resource type="PackedScene" uid="uid://twlklfx38pn0" path="res://scenes/dungeon/_desert_gun.tscn" id="2_3quw3"]
+[ext_resource type="PackedScene" uid="uid://twlklfx38pn0" path="res://scenes/dungeon/_dgm_gun.tscn" id="2_3quw3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47q4h"]
 radius = 3.0
