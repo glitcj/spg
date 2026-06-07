@@ -33,20 +33,21 @@ func _update_tilemap():
 		var tile3D = grid_cell_packed_scene.instantiate() as _DGM_Tile
 		tile3D.position.x = tile2D.x * grid_cell_size
 		tile3D.position.z = tile2D.y * grid_cell_size  # TileMap Y → 3D Z
-		add_child(tile3D)
 		tile3D.type = "floor"
+		add_child(tile3D)
 		tile3D.owner = get_tree().edited_scene_root
-		tile3D._update_cell()
+		# tile3D._update_cell()
 
 
 	for tile2D in wall_tilemap.get_used_cells():
 		var tile3D = grid_cell_packed_scene.instantiate() as _DGM_Tile
 		tile3D.position.x = tile2D.x * grid_cell_size
 		tile3D.position.z = tile2D.y * grid_cell_size  # TileMap Y → 3D Z
-		add_child(tile3D)
 		tile3D.type = "wall"
+		add_child(tile3D)
+		
 		tile3D.owner = get_tree().edited_scene_root
-		tile3D._update_cell()
+		# tile3D._update_cell()
 
 
 func get_tile_position(position : Vector2i):
