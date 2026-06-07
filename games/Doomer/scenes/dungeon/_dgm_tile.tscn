@@ -27,6 +27,7 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D Floor"]
 shape = SubResource("BoxShape3D_byui1")
+disabled = true
 
 [node name="StaticBody3D Wall" type="StaticBody3D" parent="."]
 unique_name_in_owner = true

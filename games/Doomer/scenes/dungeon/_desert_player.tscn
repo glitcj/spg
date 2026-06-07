@@ -22,7 +22,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.9945219, 0.104528464, 0, -0.104528464, 0.9945219, 0, 1.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CapsuleShape3D_47q4h")
+disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_lnxfs")

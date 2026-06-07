@@ -21,8 +21,9 @@ func _ready() -> void:
 			
 func _update_tilemap():
 	if not floor_tilemap:
-		push_error("No TileMapLayer assigned!")
-		return
+		# push_error("No TileMapLayer assigned!")
+		# return
+		pass
 
 	for child in get_children():
 		if child is not _DGM_Tile: continue  # don't delete the tilemap itself
@@ -35,6 +36,7 @@ func _update_tilemap():
 		add_child(tile3D)
 		tile3D.type = "floor"
 		tile3D.owner = get_tree().edited_scene_root
+		tile3D._update_cell()
 
 
 	for tile2D in wall_tilemap.get_used_cells():
@@ -44,6 +46,7 @@ func _update_tilemap():
 		add_child(tile3D)
 		tile3D.type = "wall"
 		tile3D.owner = get_tree().edited_scene_root
+		tile3D._update_cell()
 
 
 func get_tile_position(position : Vector2i):

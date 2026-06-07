@@ -3,6 +3,13 @@ class_name _Desert_Player
 
 var camera_rotation_sensitivity = 0.02
 var speed = 10.0 
+var is_active = false:
+	set(value):
+		is_active = value
+		_on_is_active_changed()
+
+func _on_is_active_changed():
+	%CollisionShape3D.disabled = true if not is_active else false
 
 func _get_viewport(): return find_parent("_Desert") as _Desert
 

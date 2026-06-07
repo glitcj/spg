@@ -16,6 +16,8 @@ func _ready():
 
 func _on_viewport_started():
 	%_Desert_Player.global_position = %_player_position.global_position
+	await get_tree().process_frame
+	%_Desert_Player.is_active = false
 	pass
 
 func input(): pass # async
