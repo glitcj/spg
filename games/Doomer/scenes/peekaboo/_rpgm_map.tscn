@@ -11298,7 +11298,7 @@ shader = ExtResource("16_a8qaw")
 script/source = "extends _RPGM_Script
 
 signal returned_from_viewport_and_finished
-@onready var _viewport = get_core().get_scene(\"_Desert\") as _Desert
+@onready var _viewport = get_core().get_scene(\"_DGM\") as _DGM
 
 
 # adjust _on_viewport_finished such that it takes in 
@@ -11317,7 +11317,7 @@ func _on_action_within_area():
 	await get_tree().create_timer(1).timeout
 	
 	_viewport.finished.connect(_on_viewport_finished, CONNECT_ONE_SHOT)
-	get_core().change_viewport(get_core().get_scene(\"_Desert\"))
+	get_core().change_viewport(get_core().get_scene(\"_DGM\"))
 	await returned_from_viewport_and_finished
 "
 

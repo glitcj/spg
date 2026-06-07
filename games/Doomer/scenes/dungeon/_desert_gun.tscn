@@ -81,7 +81,7 @@ _data = {
 &"idle": SubResource("Animation_lh8tq")
 }
 
-[node name="_Desert_Gun" type="Node3D"]
+[node name="_DGM_Gun" type="Node3D"]
 transform = Transform3D(-5.2453668e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.2453668e-08, 0, 0, 0)
 script = ExtResource("1_72v3p")
 

@@ -1,6 +1,7 @@
 extends _Core_Viewport
-class_name _Desert
-# Change to _DesertCamp FPS
+class_name _DGM
+
+# Change to _DGMCamp FPS
 # Shoot incoming zombies, and recite poetry after each stage
 
 # Add night sky
@@ -23,6 +24,7 @@ func get_hud(): return %_Core_Log as _Core_Log
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
 	print_tree_pretty()
+	pass
 	
 func _on_viewport_start():	
 	super()

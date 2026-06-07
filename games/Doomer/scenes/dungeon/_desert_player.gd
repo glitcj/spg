@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name _Desert_Player
+class_name _DGM_Player
 
 var camera_rotation_sensitivity = 0.02
 var speed = 10.0 
@@ -11,14 +11,14 @@ var is_active = false:
 func _on_is_active_changed():
 	%CollisionShape3D.disabled = true if not is_active else false
 
-func _get_viewport(): return find_parent("_Desert") as _Desert
+func _get_viewport(): return find_parent("_DGM") as _DGM
 
 func _ready() -> void:
 	pass 
 
 func _process_muted_input(): 
 	if Input.is_action_just_pressed("ui_accept"):
-		%_Desert_Gun.fire()
+		%_DGM_Gun.fire()
 		
 var vector_pointing_to_camera_right : Vector3
 var vector_pointing_to_camera_forward : Vector3

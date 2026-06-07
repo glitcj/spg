@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddux8cxbg3086"]
 
-[ext_resource type="Script" uid="uid://o7m2rpagp3by" path="res://scenes/dungeon/_desert.gd" id="1_0w2k3"]
+[ext_resource type="Script" uid="uid://o7m2rpagp3by" path="res://scenes/dungeon/_dgm.gd" id="1_0w2k3"]
 [ext_resource type="Texture2D" uid="uid://c7u8qm5oee136" path="res://assets/rpgmaker/mv/parallaxes/Mountains1.png" id="2_0w2k3"]
 [ext_resource type="Texture2D" uid="uid://xpowxxhfyjbw" path="res://assets/rpgmaker/mv/parallaxes/StarlitSky.png" id="3_4snns"]
 [ext_resource type="PackedScene" uid="uid://bok30kcwdkd5g" path="res://scenes/dungeon/_dgm_map.tscn" id="4_0mx4y"]
@@ -10,7 +10,7 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_p80ax"]
 
-[node name="_Desert" type="SubViewportContainer"]
+[node name="_DGM" type="SubViewportContainer"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_0w2k3")
@@ -87,8 +87,7 @@ handle_input_locally = false
 size = Vector2i(1878, 1080)
 render_target_update_mode = 4
 
-[node name="_Desert_Map" parent="SubViewport/HBoxContainer/MarginContainer Dungeon/SubViewportContainer/SubViewport" instance=ExtResource("4_0mx4y")]
-unique_name_in_owner = true
+[node name="_DGM_Map" parent="SubViewport/HBoxContainer/MarginContainer Dungeon/SubViewportContainer/SubViewport" instance=ExtResource("4_0mx4y")]
 
 [node name="MarginContainer Border 2" type="MarginContainer" parent="SubViewport/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)

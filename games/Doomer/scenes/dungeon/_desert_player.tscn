@@ -13,7 +13,7 @@ height = 3.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l0bed"]
 height = 3.0
 
-[node name="_Desert_Player" type="CharacterBody3D"]
+[node name="_DGM_Player" type="CharacterBody3D"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_l0bed")
 
@@ -29,7 +29,7 @@ disabled = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_lnxfs")
 
-[node name="_Desert_Gun" parent="." instance=ExtResource("2_3quw3")]
+[node name="_DGM_Gun" parent="." instance=ExtResource("2_3quw3")]
 unique_name_in_owner = true
 transform = Transform3D(-5.2453668e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.2453668e-08, -0.5, -0.9, -2)
 

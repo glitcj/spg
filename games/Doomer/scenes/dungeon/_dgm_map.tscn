@@ -38,7 +38,7 @@ height = 10.0
 [sub_resource type="GDScript" id="GDScript_x8r0k"]
 script/source = "extends Node3D
 
-func _get_viewport(): return find_parent(\"_Desert\") as _Desert
+func _get_viewport(): return find_parent(\"_DGM\") as _DGM
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13359,7 +13359,7 @@ mesh = SubResource("BoxMesh_w8wxp")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8660254, 0.25, -0.4330127, 0, 0.8660254, 0.5, 0.5, -0.4330127, 0.75, 0, 8.803447, 0)
 
-[node name="_Desert_Player" parent="." instance=ExtResource("5_ofueu")]
+[node name="_DGM_Player" parent="." instance=ExtResource("5_ofueu")]
 unique_name_in_owner = true
 
 [node name="_Wrapped_Inherited_Godette" parent="." instance=ExtResource("6_s2wsf")]

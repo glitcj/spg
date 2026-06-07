@@ -5,21 +5,24 @@ signal finished
 
 var TIME = 0.
 
-func _get_viewport(): return find_parent("_Desert") as _Desert
+func _get_viewport(): 
+	print(find_parent("_DGM"))
+	print(get_parent())
+	return find_parent("_DGM") as _DGM
 
 @export var start_position : Node3D
 
 func _ready():
 	pass
-	print_tree_pretty()
+	# print_tree_pretty()
 	
 	_get_viewport().started.connect(_on_viewport_started)
 	pass
 
 func _on_viewport_started():
-	%_Desert_Player.global_position = start_position.global_position
+	%_DGM_Player.global_position = start_position.global_position
 	await get_tree().process_frame
-	%_Desert_Player.is_active = false
+	%_DGM_Player.is_active = false
 	pass
 
 func input(): pass # async
