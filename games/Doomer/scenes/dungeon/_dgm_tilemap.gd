@@ -16,7 +16,9 @@ var grid_cell_packed_scene = preload("res://scenes/dungeon/_DGM_Tile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	if not Engine.is_editor_hint():
+		%"TileMapLayer Wall".visible = false
+		%"TileMapLayer Floor".visible = false
 			
 			
 func _update_tilemap():
