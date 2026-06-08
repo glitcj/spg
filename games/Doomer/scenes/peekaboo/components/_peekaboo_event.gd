@@ -1,6 +1,10 @@
+@tool
 extends Node2D
 class_name _RPGM_Event
 
+
+
+@export var is_collision = true
 
 func get_rpgm(): return find_parent("_RPGM") as _RPGM
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
@@ -10,3 +14,7 @@ func get_variables(): return _RPGM_Variables
 func get_area(): return find_child("Area2D") as Area2D
 func get_mover(): return find_child("_RPGM_Mover") as _RPGM_Mover
 func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
+
+func _ready():
+	if find_child("_RPGM_Mover"):
+		(find_child("_RPGM_Mover") as _RPGM_Mover)._on_parent_is_ready()

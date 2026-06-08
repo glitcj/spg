@@ -6,15 +6,18 @@ signal finished_movement
 enum MovementType {Linear, Random, Exponential}
 var is_moving = false
 
-@export var is_collision = false
+var is_collision = false
 @export var speed = 0.5 as float
 @export var type = MovementType.Linear as MovementType
 @export var facing = Vector2i(0, 1) as Vector2i:
 	set(v):
 		facing = v
 		# face.bind(facing).call_deferred()
-
-
+		
+func _on_parent_is_ready():
+	if "is_collision" in  get_parent():
+		is_collision = get_parent().is_collision
+		
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
 		map_position = v
@@ -31,6 +34,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	_quantise_position()
 	_update_tiles_with_rpgm_collision()
+	get_parent().ready.connect(_on_parent_is_ready)
 
 func tilemap_to_global_position(tile_position : Vector2i):
 	return base_layer.to_global(base_layer.map_to_local(tile_position))

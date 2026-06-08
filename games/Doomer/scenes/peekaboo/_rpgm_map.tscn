@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=102 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -23,6 +23,42 @@
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="21_4gmig"]
 [ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_ghost.gd" id="22_4tmb2"]
 [ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_teleport.gd" id="23_tl7rd"]
+
+[sub_resource type="GDScript" id="GDScript_6le0f"]
+script/source = "@tool
+extends Node
+
+
+@export_tool_button(\"Run\") var callable : Callable = _run
+
+
+func _run():
+	print(\"Just ran..\")
+	for event in  get_parent().find_children(\"*\", \"_RPGM_Mover\"):
+		if event.get_parent() is _RPGM_Event:
+			if \"teleport\" in event.get_parent().name:
+				event.get_parent().is_collision = false
+
+			elif \"player_position\" in event.get_parent().name:
+				event.get_parent().is_collision = false
+				
+			elif \"camera_position\" in event.get_parent().name:
+				event.get_parent().is_collision = false
+								
+			else:
+				(event.get_parent() as _RPGM_Event).is_collision = true
+			print(event)
+	pass
+	
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="TileSet" id="TileSet_b0sri"]
 tile_size = Vector2i(48, 48)
@@ -11378,6 +11414,9 @@ metadata/_custom_type_script = "uid://c6484wl627c5c"
 script = ExtResource("3_6le0f")
 metadata/_custom_type_script = "uid://da77evou2la0g"
 
+[node name="_editor_script" type="Node" parent="."]
+script = SubResource("GDScript_6le0f")
+
 [node name="Tilemap" type="Node2D" parent="."]
 z_index = -1
 y_sort_enabled = true
@@ -11446,7 +11485,6 @@ position = Vector2(79.992, 79.992)
 
 [node name="_RPGM_Mover" type="Node" parent="_RPGM_Camera"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Camera2D" type="Camera2D" parent="_RPGM_Camera"]
@@ -11478,7 +11516,6 @@ shape = SubResource("CircleShape2D_wptde")
 
 [node name="_RPGM_Mover" type="Node" parent="Player"]
 script = ExtResource("14_j4uy8")
-is_collision = true
 speed = 5.0
 map_position = Vector2i(0, 3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11510,7 +11547,6 @@ messages = Array[String](["Hello..", "Good to see you here !", "Add _RPGM_Event"
 
 [node name="_RPGM_Mover" type="Node" parent="_map_1/_npc_1_1"]
 script = ExtResource("14_j4uy8")
-is_collision = true
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11543,7 +11579,6 @@ interrupt_player = true
 
 [node name="_RPGM_Mover" type="Node" parent="_map_1/_npc_1_2"]
 script = ExtResource("14_j4uy8")
-is_collision = true
 facing = Vector2i(1, 0)
 map_position = Vector2i(-3, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11562,13 +11597,13 @@ sprite = "skeleton"
 [node name="_event_1_1" type="Node2D" parent="_map_1"]
 position = Vector2(79.992, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Script" type="Node" parent="_map_1/_event_1_1"]
 script = ExtResource("20_hxdjl")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_1/_event_1_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11624,7 +11659,6 @@ script = SubResource("GDScript_ceddd")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_2/_enemy_2_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-12, 1)
 
 [node name="_RPGM_Portrait" parent="_map_2/_enemy_2_1" instance=ExtResource("15_2uryw")]
@@ -11651,7 +11685,6 @@ script = SubResource("GDScript_5max1")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_2/_enemy_2_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-22, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11679,7 +11712,6 @@ script = SubResource("GDScript_bj00i")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_2/_enemy_2_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-22, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11697,13 +11729,13 @@ shape = SubResource("RectangleShape2D_5max1")
 [node name="_event_2_1" type="Node2D" parent="_map_2"]
 position = Vector2(-2159.784, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Script" type="Node" parent="_map_2/_event_2_1"]
 script = ExtResource("21_4gmig")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_2/_event_2_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-14, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11725,7 +11757,6 @@ metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
 [node name="_RPGM_Mover" type="Node" parent="_map_3/_npc_3_2_talking_tree"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11749,7 +11780,6 @@ script = ExtResource("17_yspku")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_3/_npc_3_3_stuff"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 facing = Vector2i(1, 0)
 map_position = Vector2i(15, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11774,7 +11804,6 @@ script = ExtResource("17_yspku")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_3/_npc_3_4_stuff"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 facing = Vector2i(1, 0)
 map_position = Vector2i(14, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11804,7 +11833,6 @@ messages = Array[String](["Some enemies you cannot see.", "Bugs appear off their
 
 [node name="_RPGM_Mover" type="Node" parent="_map_3/_npc_3_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 facing = Vector2i(1, 0)
 map_position = Vector2i(11, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -11843,7 +11871,6 @@ metadata/_custom_type_script = "uid://ipwj2rxnrjv3"
 
 [node name="_RPGM_Mover" type="Node" parent="_map_4/_npc_4_1_talking_tree"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -26)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11871,7 +11898,6 @@ interrupt_player = true
 
 [node name="_RPGM_Mover" type="Node" parent="_map_4/_npc_4_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(14, -28)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11904,7 +11930,6 @@ interrupt_player = true
 
 [node name="_RPGM_Mover" type="Node" parent="_map_4/_npc_4_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(12, -28)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11938,7 +11963,6 @@ script = SubResource("GDScript_38inc")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_5/_npc_5_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-14, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -11975,7 +11999,6 @@ interrupt_player = true
 
 [node name="_RPGM_Mover" type="Node" parent="_map_6/_npc_6_1"]
 script = ExtResource("14_j4uy8")
-is_collision = true
 facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 19)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12008,7 +12031,6 @@ script = SubResource("GDScript_vd6wf")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_6/_npc_6_2"]
 script = ExtResource("14_j4uy8")
-is_collision = true
 facing = Vector2i(1, 0)
 map_position = Vector2i(0, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12042,7 +12064,6 @@ messages = Array[String](["Hello..", "This will start the Freddie's Screen Mario
 
 [node name="_RPGM_Mover" type="Node" parent="_map_6/_npc_6_3"]
 script = ExtResource("14_j4uy8")
-is_collision = true
 facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
@@ -12069,13 +12090,13 @@ shape = SubResource("RectangleShape2D_r103f")
 [node name="_event_6_1" type="Node2D" parent="_map_6"]
 position = Vector2(79.992, 2959.7039)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Script" type="Node" parent="_map_6/_event_6_1"]
 script = SubResource("GDScript_4lb6x")
 
 [node name="_RPGM_Mover" type="Node" parent="_map_6/_event_6_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 18)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12100,7 +12121,6 @@ messages = Array[String](["Have you seen that, we walk among giants.", "Just lik
 
 [node name="_RPGM_Mover" type="Node" parent="_map_7/_npc_7_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(37, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12136,7 +12156,6 @@ messages = Array[String](["Have you seen that, we walk among giants.", "Just lik
 
 [node name="_RPGM_Mover" type="Node" parent="_map_7/_npc_7_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(43, -4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12173,7 +12192,6 @@ messages = Array[String](["Have you seen that greatest Fear plaguing man.", "The
 
 [node name="_RPGM_Mover" type="Node" parent="_map_7/_npc_7_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(39, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12203,6 +12221,7 @@ shape = SubResource("RectangleShape2D_b0sri")
 [node name="_teleport_6_1" type="Node2D" parent="_teleports"]
 position = Vector2(79.992, 2319.768)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_6_1" type="Node" parent="_teleports/_teleport_6_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12211,7 +12230,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_1_6
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_6_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 14)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12246,6 +12264,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_1_6" type="Node2D" parent="_teleports"]
 position = Vector2(79.992, 1039.896)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_1_6" type="Node" parent="_teleports/_teleport_1_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12254,7 +12273,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_6_1
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_1_6"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12289,6 +12307,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_1_2" type="Node2D" parent="_teleports"]
 position = Vector2(719.928, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_1_2" type="Node" parent="_teleports/_teleport_1_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12297,7 +12316,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_3_1
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_1_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12332,6 +12350,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_1_3" type="Node2D" parent="_teleports"]
 position = Vector2(-559.944, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_1_3" type="Node" parent="_teleports/_teleport_1_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12340,7 +12359,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_2_1
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_1_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-4, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12375,6 +12393,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_6_8" type="Node2D" parent="_teleports"]
 position = Vector2(79.992, 3919.608)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport" type="Node" parent="_teleports/_teleport_6_8" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12383,7 +12402,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_8_6
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_6_8"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 24)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12418,6 +12436,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_8_6" type="Node2D" parent="_teleports"]
 position = Vector2(79.992, 6479.352)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport" type="Node" parent="_teleports/_teleport_8_6" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12426,7 +12445,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_6_8
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_8_6"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 40)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12461,6 +12479,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_2_1" type="Node2D" parent="_teleports"]
 position = Vector2(-1519.848, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_2_1" type="Node" parent="_teleports/_teleport_2_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12469,7 +12488,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_1_1
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_2_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-10, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12504,6 +12522,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_3_7" type="Node2D" parent="_teleports"]
 position = Vector2(2799.72, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_3_1" type="Node" parent="_teleports/_teleport_3_7" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12512,7 +12531,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_7_3
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_3_7"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(17, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12547,6 +12565,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_3_1" type="Node2D" parent="_teleports"]
 position = Vector2(1519.848, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_3_1" type="Node" parent="_teleports/_teleport_3_1" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12555,7 +12574,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_1_2
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_3_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(9, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12590,6 +12608,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_7_3" type="Node2D" parent="_teleports"]
 position = Vector2(5199.48, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_3_1" type="Node" parent="_teleports/_teleport_7_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12598,7 +12617,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_3_7
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_7_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(32, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12633,6 +12651,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_3_2" type="Node2D" parent="_teleports"]
 position = Vector2(2159.784, -1359.864)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_3_2" type="Node" parent="_teleports/_teleport_3_2" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12641,7 +12660,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_4_3
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_3_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -9)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12676,6 +12694,7 @@ shape = SubResource("RectangleShape2D_ceddd")
 [node name="_teleport_4_3" type="Node2D" parent="_teleports"]
 position = Vector2(2159.784, -3439.656)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_common_script_teleport_4_1" type="Node" parent="_teleports/_teleport_4_3" node_paths=PackedStringArray("camera_position_node", "player_position_node")]
 script = ExtResource("23_tl7rd")
@@ -12684,7 +12703,6 @@ player_position_node = NodePath("../../../_player_positions/_player_position_3_2
 
 [node name="_RPGM_Mover" type="Node" parent="_teleports/_teleport_4_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -22)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12723,10 +12741,10 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(-2159.784, -4559.544)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_5_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-14, -29)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12757,10 +12775,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(2159.784, -4079.592)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_4_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -26)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12791,10 +12809,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(79.992, 7119.288)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_8_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 44)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12825,10 +12843,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(-2799.72, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_2_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-18, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12859,10 +12877,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(2159.784, -559.944)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_3_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12893,10 +12911,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(79.992, 3279.6719)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_6_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 20)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -12932,10 +12950,10 @@ shape = SubResource("RectangleShape2D_ceddd")
 unique_name_in_owner = true
 position = Vector2(79.992, 79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_1_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Sprite2D" type="Sprite2D" parent="_camera_positions/_camera_position_1_1"]
@@ -12970,10 +12988,10 @@ shape = SubResource("RectangleShape2D_ceddd")
 unique_name_in_owner = true
 position = Vector2(6159.384, -399.96)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_camera_positions/_camera_position_7_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(38, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13006,10 +13024,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(2159.784, -3599.64)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_4_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -23)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13041,10 +13059,10 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(-2159.784, -4079.592)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_5_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-14, -26)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13075,10 +13093,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(2159.784, -1199.88)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_3_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -8)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13109,10 +13127,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(5359.464, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_7_3"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(33, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13143,10 +13161,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(2639.7358, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_3_7"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(16, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13177,10 +13195,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(1679.832, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_3_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(10, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13211,10 +13229,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(-1679.832, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_2_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-11, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13245,10 +13263,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(559.944, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_1_2"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(3, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13279,10 +13297,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(79.992, 6639.336)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_8_6"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 41)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13313,10 +13331,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(79.992, 3759.624)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_6_8"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 23)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13347,10 +13365,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(79.992, 2479.752)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_6_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 15)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13381,10 +13399,10 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(79.992, 879.912)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_1_6"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(0, 5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13416,10 +13434,10 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(-399.96, -79.992)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_1_1"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(-3, -1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
@@ -13451,10 +13469,10 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(2159.784, -4719.528)
 script = ExtResource("17_yspku")
+is_collision = false
 
 [node name="_RPGM_Mover" type="Node" parent="_player_positions/_player_position_4_transition"]
 script = ExtResource("14_j4uy8")
-is_collision = null
 map_position = Vector2i(13, -30)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
