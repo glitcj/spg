@@ -22,10 +22,7 @@ func _ready() -> void:
 			
 			
 func _update_tilemap():
-	if not floor_tilemap:
-		# push_error("No TileMapLayer assigned!")
-		# return
-		pass
+	if not floor_tilemap: pass
 
 	for child in get_children():
 		if child is not _DGM_Tile: continue  # don't delete the tilemap itself
