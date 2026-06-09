@@ -18,9 +18,11 @@ var _material : ShaderMaterial
 var sprite : String:
 	set(v):
 		sprite = v
-		if has_node("AnimatedSprite2D"):
-			%AnimatedSprite2D.animation = sprite
-			_update_atlas()
+		# if has_node("AnimatedSprite2D"):
+		## if not Engine.is_editor_hint(): return
+		if %AnimatedSprite2D == null: return
+		%AnimatedSprite2D.animation = sprite
+		_update_atlas()
 			# queue_redraw()
 
 @export var _frame := 0:

@@ -36,10 +36,12 @@ extends Node
 
 func _run():
 	print(\"Just ran..\")
-	for event in  get_parent().find_children(\"_teleport*\"):
+	for event : _RPGM_Portrait in  get_parent().find_children(\"_RPGM_Portrait\"):
 		print(event)
-		event.find_child(\"Sprite2D\").scale = Vector2(25,25)
-		event.find_child(\"Area2D\").scale = Vector2(25,25)
+		event._update_atlas()
+		# event._ready()
+		# event.find_child(\"Sprite2D\").scale = Vector2(25,25)
+		# event.find_child(\"Area2D\").scale = Vector2(25,25)
 		continue
 		
 	
@@ -11540,6 +11542,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_txeor")
+scale = Vector2(2, 2)
 sprite = "player"
 
 [node name="PointLight2D Enemies" type="PointLight2D" parent="Player"]
@@ -12139,7 +12142,6 @@ shape = SubResource("RectangleShape2D_cswif")
 [node name="_RPGM_Portrait" parent="_map_7/_npc_7_1/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_yspku")
-sprite = "cream"
 
 [node name="Area2D" type="Area2D" parent="_map_7/_npc_7_1"]
 
