@@ -12,27 +12,28 @@ var is_collision = false
 @export var facing = Vector2i(0, 1) as Vector2i:
 	set(v):
 		facing = v
-		# face.bind(facing).call_deferred()
 		
 func _on_parent_is_ready():
 	if "is_collision" in  get_parent():
 		is_collision = get_parent().is_collision
-		
+	if "facing" in  get_parent():
+		facing = get_parent().facing
+	face(facing)
+	
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
 		map_position = v
 		_update_tiles_with_rpgm_collision()
-		
-		if Engine.is_editor_hint():
-			_quantise_position()
+		if Engine.is_editor_hint(): _quantise_position()
 
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 func get_base_layer(): return get_map().find_child("L1 Base") as TileMapLayer
 @onready var base_layer = get_base_layer()
 
 func _ready() -> void:
+	# _quantise_position()
 	await get_tree().process_frame
-	_quantise_position()
+	# _quantise_position()
 	_update_tiles_with_rpgm_collision()
 	get_parent().ready.connect(_on_parent_is_ready)
 
@@ -40,15 +41,12 @@ func tilemap_to_global_position(tile_position : Vector2i):
 	return base_layer.to_global(base_layer.map_to_local(tile_position))
 	
 func teleport(tile_position : Vector2i):
-	if not is_inside_tree():
-		return
+	if not is_inside_tree(): return
 	
 	map_position = tile_position
 	get_parent().global_position = tilemap_to_global_position(tile_position)
 	
 func _quantise_position():
-	if not is_inside_tree():
-		return
 	get_parent().global_position = tilemap_to_global_position(map_position)
 
 static var tiles_with_rpgm_collision = []
@@ -80,10 +78,17 @@ func _update_tilemap_collision_debugger():
 			
 			base_layer.add_child(rect)
 			all_collision_debugging_rects.append(rect)
+			
+			
+func move_to_map_position(target_map_position):
+	await move(target_map_position - map_position)
 
+func face_map_position(target_map_position):
+	face(target_map_position - map_position)
+	
 
 func move(tile_vector : Vector2i) -> _RPGM_Mover:
-	map_position = map_position + tile_vector
+	map_position = map_position + tile_vector # activates setter
 	var displacement = tilemap_to_global_position(map_position) - get_parent().global_position 
 	
 	is_moving = true
@@ -91,7 +96,13 @@ func move(tile_vector : Vector2i) -> _RPGM_Mover:
 	is_moving = false
 	
 	return self
-	
+
+
+func walk(tile_vector : Vector2i) -> _RPGM_Mover:
+	face(tile_vector)
+	await move(tile_vector)
+	return self
+
 
 
 func face(tile_vector : Vector2i):

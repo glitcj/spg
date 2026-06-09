@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=103 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -35,6 +35,9 @@ extends Node
 func _run():
 	print(\"Just ran..\")
 	for event in  get_parent().find_children(\"*\", \"_RPGM_Mover\"):
+		print(event)
+		event._quantise_position()
+		continue
 		if event.get_parent() is _RPGM_Event:
 			if \"teleport\" in event.get_parent().name:
 				event.get_parent().is_collision = false
@@ -11135,12 +11138,13 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vd6wf"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyfpt"]
+shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_x2jho"]
 script/source = "extends _RPGM_Script
@@ -11148,9 +11152,9 @@ script/source = "extends _RPGM_Script
 func _on_action_within_area():
 	await get_lambdas().show_messages([\"Wait here.\"])
 	await get_tree().create_timer(1).timeout
-	await this_event().get_mover().move(Vector2i(-1, 0))
+	await this_event().get_mover().walk(Vector2i(-1, 0))
 	await get_tree().create_timer(1).timeout
-	await this_event().get_mover().move(Vector2i(1, 0))
+	await this_event().get_mover().walk(Vector2i(1, 0))
 	await get_tree().create_timer(1).timeout
 	await get_lambdas().show_messages([\"Okay you can go now.\"])
 "
@@ -11224,6 +11228,8 @@ shader = ExtResource("16_a8qaw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4w2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ylu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
@@ -11488,6 +11494,7 @@ script = ExtResource("14_j4uy8")
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="Camera2D" type="Camera2D" parent="_RPGM_Camera"]
+position = Vector2(0, 7.6293945e-06)
 
 [node name="ReferenceRect" type="ReferenceRect" parent="_RPGM_Camera/Camera2D"]
 anchors_preset = 8
@@ -11550,24 +11557,25 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_1/_npc_1_1"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_1/_npc_1_1/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_vd6wf")
-scale = Vector2(4, 4)
-sprite = "priest"
-
 [node name="Area2D" type="Area2D" parent="_map_1/_npc_1_1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_map_1/_npc_1_1/Area2D"]
 scale = Vector2(15, 15)
 shape = SubResource("RectangleShape2D_r103f")
+
+[node name="_RPGM_Portrait" parent="_map_1/_npc_1_1" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_vd6wf")
+scale = Vector2(4, 4)
+sprite = "priest"
+
+[node name="_npc_9999" type="Node2D" parent="_map_1"]
+z_index = 100
+position = Vector2(366, 330)
+
+[node name="_RPGM_Portrait" parent="_map_1/_npc_9999" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_cyfpt")
+scale = Vector2(4, 4)
+sprite = "priest"
 
 [node name="_npc_1_2" type="Node2D" parent="_map_1"]
 position = Vector2(-399.96, 399.96)

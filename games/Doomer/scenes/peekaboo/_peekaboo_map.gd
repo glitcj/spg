@@ -10,13 +10,13 @@ func find_event(_name): return find_child(_name) as _RPGM_Event
 func get_lambdas(): return find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 
 
-@export var quantize_all : bool:
-	set(_v): _quantize_all()
+@export_tool_button("Quantise All") var quantise_all_callable : Callable = _quantise_all
 	
 func _ready() -> void:
 	print_tree_pretty()
+	# _quantise_all()
 	
-func _quantize_all():
+func _quantise_all():
 	for mover in find_children("*", "_RPGM_Mover", true, false):
 		(mover as _RPGM_Mover)._quantise_position()
 
