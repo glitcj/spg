@@ -44,7 +44,7 @@ func _get_property_list() -> Array[Dictionary]:
 	return properties
 
 func _get_available_animation_names() -> Array:
-	var sprite_node = get_node_or_null("AnimatedSprite2D")
+	var sprite_node =  %AnimatedSprite2D # get_node_or_null("AnimatedSprite2D")
 	if sprite_node and sprite_node.sprite_frames:
 		return Array(sprite_node.sprite_frames.get_animation_names())
 	return ["None"]
