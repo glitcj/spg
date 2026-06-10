@@ -3416,16 +3416,15 @@ advance_mode = 2
 advance_expression = "actioned"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cpa10"]
-xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2dswe"]
 states/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_riwu1")
-states/BlendSpace2D/position = Vector2(412.42505, 110.145676)
-states/Start/position = Vector2(212.86719, 110.37207)
+states/BlendSpace2D/position = Vector2(412.42505, 110.20227)
+states/Start/position = Vector2(212.51172, 110.25887)
 states/actioned/node = SubResource("AnimationNodeAnimation_lvnky")
-states/actioned/position = Vector2(627.92505, 109.91929)
+states/actioned/position = Vector2(627.92505, 110.060776)
 states/idle/node = SubResource("AnimationNodeAnimation_riwu1")
 states/idle/position = Vector2(212.65625, 286)
 transitions = ["Start", "BlendSpace2D", SubResource("AnimationNodeStateMachineTransition_riwu1"), "BlendSpace2D", "actioned", SubResource("AnimationNodeStateMachineTransition_lvnky"), "actioned", "BlendSpace2D", SubResource("AnimationNodeStateMachineTransition_cpa10")]
@@ -3480,7 +3479,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath(".:_frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3496,7 +3495,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath(".:_frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3512,7 +3511,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath(".:_frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3528,7 +3527,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath(".:_frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3560,7 +3559,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0.01),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3582,7 +3581,6 @@ _data = {
 [node name="_RPGM_Portrait" type="Node2D"]
 material = SubResource("ShaderMaterial_2dswe")
 script = ExtResource("1_d26c4")
-facing = null
 sprite = "cream"
 metadata/_custom_type_script = "uid://7bue6k2pdo5t"
 

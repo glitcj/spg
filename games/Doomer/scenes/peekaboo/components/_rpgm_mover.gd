@@ -7,24 +7,15 @@ enum MovementType {Linear, Random, Exponential}
 var is_moving = false:
 	set(value):
 		is_moving = value
-		
-		if get_parent() is _RPGM_Event:
-			if get_parent().get_portrait() == null: return
-			get_parent().get_portrait().is_moving = is_moving
-			
-		if get_parent() is _RPGM_Player:
-			if get_parent().get_portrait() == null: return
-			get_parent().get_portrait().is_moving = is_moving
 
-var is_collision = false
+@export var is_collision = false
 @export var speed = 0.5 as float
 @export var type = MovementType.Linear as MovementType
-@export var facing = Vector2i(0, 1) as Vector2i:
-	set(v):
-		facing = v
-		
-func _on_parent_is_ready():
-	if "is_collision" in  get_parent():
+@export var facing = Vector2i(0, 1) as Vector2i
+
+
+func _editor_update():
+	if "is_collision" in get_parent():
 		is_collision = get_parent().is_collision
 	if "facing" in  get_parent():
 		facing = get_parent().facing
@@ -43,11 +34,8 @@ func _get_event(): return get_parent() as _RPGM_Event
 @onready var base_layer = get_base_layer()
 
 func _ready() -> void:
-	# _quantise_position()
 	await get_tree().process_frame
-	# _quantise_position()
 	_update_tiles_with_rpgm_collision()
-	get_parent().ready.connect(_on_parent_is_ready)
 
 func tilemap_to_global_position(tile_position : Vector2i):
 	return base_layer.to_global(base_layer.map_to_local(tile_position))
@@ -120,6 +108,12 @@ func walk(tile_vector : Vector2i) -> _RPGM_Mover:
 func face(tile_vector : Vector2i):
 	var normalised_vector = Vector2(tile_vector).normalized()
 	facing = Vector2i(normalised_vector)
+	
+	
+	if not (facing.length() != 1 or facing.length() != 0):
+		print(facing, facing.length())
+		pass
+	
 	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
 	if portrait: portrait.facing = Vector2(facing)
 		

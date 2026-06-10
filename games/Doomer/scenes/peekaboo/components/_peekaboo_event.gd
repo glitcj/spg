@@ -16,5 +16,4 @@ func get_mover(): return find_child("_RPGM_Mover") as _RPGM_Mover
 func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
 
 func _ready():
-	if find_child("_RPGM_Mover"):
-		(find_child("_RPGM_Mover") as _RPGM_Mover)._on_parent_is_ready()
+	pass

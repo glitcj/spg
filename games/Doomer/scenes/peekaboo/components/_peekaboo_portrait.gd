@@ -4,22 +4,19 @@ class_name _RPGM_Portrait
 
 
 
-var actioned = false
+@export var actioned = false
 func _on_actioned_end(): actioned = false
 var is_moving = false
 
 
-
-
-
-@export var facing := Vector2(0, 1):
+var facing := Vector2(0, 1):
 	set(value):
 		facing = value
 		%AnimationTree["parameters/BlendSpace2D/blend_position"] = facing
 		actioned = true
-		
-		
-# var last_facing = Vector2(0, 1)
+
+func _editor_update():
+	pass
 
 
 # note: onready variables are ignored by the editor
@@ -44,11 +41,11 @@ var sprite : String:
 		_update_atlas()
 			# queue_redraw()
 
-@export var _frame := 0:
+var _frame := 0:
 	set(v):
 		_frame = v
-		if has_node("AnimatedSprite2D"):
-			%AnimatedSprite2D.frame = v
+		
+		%AnimatedSprite2D.frame = v
 
 var atlas : AtlasTexture
 

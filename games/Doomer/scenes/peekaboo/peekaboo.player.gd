@@ -29,7 +29,6 @@ var input_just_pressed = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setup_log()
-	get_mover()._on_parent_is_ready()
 
 
 func get_log_header(): return "
