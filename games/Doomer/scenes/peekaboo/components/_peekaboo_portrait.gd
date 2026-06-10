@@ -10,6 +10,8 @@ var is_moving = false
 
 
 
+
+
 @export var facing := Vector2(0, 1):
 	set(value):
 		facing = value
