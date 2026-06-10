@@ -4,7 +4,17 @@ class_name _RPGM_Mover
 
 signal finished_movement
 enum MovementType {Linear, Random, Exponential}
-var is_moving = false
+var is_moving = false:
+	set(value):
+		is_moving = value
+		
+		if get_parent() is _RPGM_Event:
+			if get_parent().get_portrait() == null: return
+			get_parent().get_portrait().is_moving = is_moving
+			
+		if get_parent() is _RPGM_Player:
+			if get_parent().get_portrait() == null: return
+			get_parent().get_portrait().is_moving = is_moving
 
 var is_collision = false
 @export var speed = 0.5 as float
@@ -28,6 +38,8 @@ func _on_parent_is_ready():
 
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 func get_base_layer(): return get_map().find_child("L1 Base") as TileMapLayer
+func _get_event(): return get_parent() as _RPGM_Event 
+
 @onready var base_layer = get_base_layer()
 
 func _ready() -> void:
@@ -109,15 +121,8 @@ func face(tile_vector : Vector2i):
 	var normalised_vector = Vector2(tile_vector).normalized()
 	facing = Vector2i(normalised_vector)
 	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
-	if portrait:
-		if normalised_vector == Vector2(1, 0):
-			portrait.face_right()
-		elif normalised_vector == Vector2(-1, 0):
-			portrait.face_left()
-		elif normalised_vector == Vector2(0, 1):
-			portrait.face_down()
-		elif normalised_vector == Vector2(0, -1):
-			portrait.face_up()
+	if portrait: portrait.facing = Vector2(facing)
+		
 	return self
 
 

@@ -80,6 +80,7 @@ func _process_movement() -> void:
 		return
 	
 	if direction != Vector2i.ZERO:
+		# await mover.move(direction)
 		await mover.move(direction)
 	
 func _valid_direction_is_pressed():

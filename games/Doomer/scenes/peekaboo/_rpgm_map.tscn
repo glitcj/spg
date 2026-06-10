@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=97 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -11152,18 +11152,15 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vd6wf"]
-shader = ExtResource("16_a8qaw")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6le0f"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_x2jho"]
 script/source = "extends _RPGM_Script
 
-func _on_action_within_area():
+
+
+func _on_action():
 	await get_lambdas().show_messages([\"Wait here.\"])
 	await get_tree().create_timer(1).timeout
 	await this_event().get_mover().walk(Vector2i(-1, 0))
@@ -11173,10 +11170,10 @@ func _on_action_within_area():
 	await get_lambdas().show_messages([\"Okay you can go now.\"])
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc14m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6le0f"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl3l0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc14m"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_txeor"]
@@ -11210,10 +11207,8 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_loqga"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl3l0"]
 shader = ExtResource("16_a8qaw")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5max1"]
 
 [sub_resource type="GDScript" id="GDScript_5max1"]
 script/source = "extends _RPGM_Script
@@ -11223,7 +11218,7 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnpst"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_loqga"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_bj00i"]
@@ -11234,23 +11229,13 @@ func _on_area_entered():
 	parent.queue_free()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo6ms"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnpst"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4w2g"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ylu0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvo4p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo6ms"]
 shader = ExtResource("16_a8qaw")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_eu0qy"]
 
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
 script/source = "extends _RPGM_Script
@@ -11277,10 +11262,11 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjg66"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvo4p"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q5qis"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjg66"]
+shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_byr4j"]
 script/source = "extends _RPGM_Script
@@ -11305,9 +11291,6 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmbn5"]
-shader = ExtResource("16_a8qaw")
-
 [sub_resource type="GDScript" id="GDScript_38inc"]
 script/source = "extends _RPGM_Script
 
@@ -11317,7 +11300,7 @@ func _on_action_within_area():
 	get_tree().quit()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqr5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmbn5"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_05s22"]
@@ -11347,8 +11330,12 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jonhj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqr5"]
 shader = ExtResource("16_a8qaw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
 
 [sub_resource type="GDScript" id="GDScript_vd6wf"]
 script/source = "extends _RPGM_Script
@@ -11367,7 +11354,7 @@ func _on_viewport_finished():
 	returned_from_viewport_and_finished.emit()
 
 
-func _on_action_within_area():
+func _on_action():
 	await get_mover().face(_get_direction_to_player())
 	await get_lambdas().show_messages([\"This will start the Mole Hole Mario Party mini game.\"])
 	await get_tree().create_timer(1).timeout
@@ -11377,10 +11364,10 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4uy8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jonhj"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uryw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4uy8"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="GDScript" id="GDScript_4lb6x"]
@@ -11393,13 +11380,15 @@ func _on_action_within_area():
 		)
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uryw"]
+shader = ExtResource("16_a8qaw")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8qaw"]
 shader = ExtResource("16_a8qaw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yspku"]
-shader = ExtResource("16_a8qaw")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp5op"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yspku"]
 shader = ExtResource("19_cyfpt")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11413,7 +11402,7 @@ shader_parameter/noise_scale = 1.0
 shader_parameter/noise_speed = 0.2
 shader_parameter/noise_strength = 0.4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyfpt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp5op"]
 shader = ExtResource("16_a8qaw")
 
 [sub_resource type="LabelSettings" id="LabelSettings_x570f"]
@@ -11542,7 +11531,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_txeor")
-scale = Vector2(2, 2)
+facing = Vector2(0, 1)
 sprite = "player"
 
 [node name="PointLight2D Enemies" type="PointLight2D" parent="Player"]
@@ -11568,22 +11557,9 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Area2D" type="Area2D" parent="_map_1/_npc_1_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_1/_npc_1_1/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_r103f")
-
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_1" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_vd6wf")
-sprite = "priest"
-
-[node name="_npc_9999" type="Node2D" parent="_map_1"]
-z_index = 100
-position = Vector2(366, 330)
-
-[node name="_RPGM_Portrait" parent="_map_1/_npc_9999" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_6le0f")
+facing = Vector2(0, 1)
 sprite = "priest"
 
 [node name="_npc_1_2" type="Node2D" parent="_map_1"]
@@ -11600,14 +11576,9 @@ facing = Vector2i(1, 0)
 map_position = Vector2i(-3, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="Area2D" type="Area2D" parent="_map_1/_npc_1_2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_1/_npc_1_2/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_r103f")
-
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_uc14m")
+material = SubResource("ShaderMaterial_6le0f")
+facing = Vector2(1, 0)
 sprite = "skeleton"
 
 [node name="_event_1_1" type="Node2D" parent="_map_1"]
@@ -11626,7 +11597,8 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_map_1/_event_1_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_kl3l0")
+material = SubResource("ShaderMaterial_uc14m")
+facing = Vector2(0, 1)
 _frame = 165
 sprite = "system"
 
@@ -11679,14 +11651,9 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(-12, 1)
 
 [node name="_RPGM_Portrait" parent="_map_2/_enemy_2_1" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_loqga")
+material = SubResource("ShaderMaterial_kl3l0")
+facing = Vector2(0, 1)
 sprite = "priest"
-
-[node name="Area2D" type="Area2D" parent="_map_2/_enemy_2_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_2/_enemy_2_1/Area2D"]
-scale = Vector2(10, 10)
-shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_2" type="Node2D" parent="_map_2"]
 position = Vector2(-1032, -120)
@@ -11705,14 +11672,9 @@ map_position = Vector2i(-22, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_2/_enemy_2_2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_lnpst")
+material = SubResource("ShaderMaterial_loqga")
+facing = Vector2(0, 1)
 sprite = "red_prince"
-
-[node name="Area2D" type="Area2D" parent="_map_2/_enemy_2_2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_2/_enemy_2_2/Area2D"]
-scale = Vector2(10, 10)
-shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_enemy_2_3" type="Node2D" parent="_map_2"]
 position = Vector2(-1032, 72)
@@ -11731,14 +11693,9 @@ map_position = Vector2i(-22, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_2/_enemy_2_3" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_jo6ms")
+material = SubResource("ShaderMaterial_lnpst")
+facing = Vector2(0, 1)
 sprite = "white"
-
-[node name="Area2D" type="Area2D" parent="_map_2/_enemy_2_3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_2/_enemy_2_3/Area2D"]
-scale = Vector2(10, 10)
-shape = SubResource("RectangleShape2D_5max1")
 
 [node name="_event_2_1" type="Node2D" parent="_map_2"]
 position = Vector2(-648, -24)
@@ -11774,20 +11731,6 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(13, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_3/_npc_3_2_talking_tree"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_2_talking_tree/RigidBody2D"]
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_a4w2g")
-
-[node name="Area2D" type="Area2D" parent="_map_3/_npc_3_2_talking_tree"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_2_talking_tree/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_2ylu0")
-
 [node name="_npc_3_3_stuff" type="Node2D" parent="_map_3"]
 position = Vector2(744, -264)
 script = ExtResource("17_yspku")
@@ -11798,20 +11741,6 @@ facing = Vector2i(1, 0)
 map_position = Vector2i(15, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_3/_npc_3_3_stuff"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_3_stuff/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="Area2D" type="Area2D" parent="_map_3/_npc_3_3_stuff"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_3_stuff/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_b0sri")
-
 [node name="_npc_3_4_stuff" type="Node2D" parent="_map_3"]
 position = Vector2(696, -264)
 script = ExtResource("17_yspku")
@@ -11821,20 +11750,6 @@ script = ExtResource("14_j4uy8")
 facing = Vector2i(1, 0)
 map_position = Vector2i(14, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_3/_npc_3_4_stuff"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_4_stuff/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="Area2D" type="Area2D" parent="_map_3/_npc_3_4_stuff"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_4_stuff/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_3_1" type="Node2D" parent="_map_3"]
 y_sort_enabled = true
@@ -11851,25 +11766,11 @@ facing = Vector2i(1, 0)
 map_position = Vector2i(11, -6)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_3/_npc_3_1"]
+[node name="_RPGM_Portrait" parent="_map_3/_npc_3_1" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_1/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_3/_npc_3_1/RigidBody2D" instance=ExtResource("15_2uryw")]
-y_sort_enabled = true
-material = SubResource("ShaderMaterial_vvo4p")
+material = SubResource("ShaderMaterial_jo6ms")
+facing = Vector2(1, 0)
 sprite = "red_prince"
-
-[node name="Area2D" type="Area2D" parent="_map_3/_npc_3_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_3/_npc_3_1/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_map_4" type="Node" parent="."]
 
@@ -11887,20 +11788,6 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(13, -26)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_4/_npc_4_1_talking_tree"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_4/_npc_4_1_talking_tree/RigidBody2D"]
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_a4w2g")
-
-[node name="Area2D" type="Area2D" parent="_map_4/_npc_4_1_talking_tree"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_4/_npc_4_1_talking_tree/Area2D"]
-scale = Vector2(10, 10)
-shape = SubResource("CircleShape2D_eu0qy")
-
 [node name="_npc_4_2" type="Node2D" parent="_map_4"]
 position = Vector2(696, -1320)
 script = ExtResource("17_yspku")
@@ -11914,27 +11801,19 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(14, -28)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_4/_npc_4_2"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_4/_npc_4_2/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_4/_npc_4_2/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_cjg66")
+[node name="_RPGM_Portrait" parent="_map_4/_npc_4_2" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_vvo4p")
+facing = Vector2(0, 1)
 sprite = "green"
-
-[node name="Area2D" type="Area2D" parent="_map_4/_npc_4_2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_4/_npc_4_2/Area2D"]
-scale = Vector2(10, 10)
-shape = SubResource("CircleShape2D_q5qis")
 
 [node name="_npc_4_3" type="Node2D" parent="_map_4"]
 position = Vector2(600, -1320)
 script = ExtResource("17_yspku")
+
+[node name="_RPGM_Portrait" parent="_map_4/_npc_4_3" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_cjg66")
+facing = Vector2(0, 1)
+sprite = "green"
 
 [node name="_RPGM_Script" type="Node" parent="_map_4/_npc_4_3"]
 script = SubResource("GDScript_byr4j")
@@ -11944,24 +11823,6 @@ interrupt_player = true
 script = ExtResource("14_j4uy8")
 map_position = Vector2i(12, -28)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_4/_npc_4_3"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_4/_npc_4_3/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_4/_npc_4_3/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_jmbn5")
-sprite = "green"
-
-[node name="Area2D" type="Area2D" parent="_map_4/_npc_4_3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_4/_npc_4_3/Area2D"]
-scale = Vector2(10, 10)
-shape = SubResource("CircleShape2D_q5qis")
 
 [node name="_map_5" type="Node" parent="."]
 
@@ -11977,25 +11838,12 @@ script = ExtResource("14_j4uy8")
 map_position = Vector2i(-14, -31)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_5/_npc_5_1"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_5/_npc_5_1/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_5/_npc_5_1/RigidBody2D" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_5/_npc_5_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_oaqr5")
+material = SubResource("ShaderMaterial_jmbn5")
+facing = Vector2(0, 1)
 sprite = "priest"
-
-[node name="Area2D" type="Area2D" parent="_map_5/_npc_5_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_5/_npc_5_1/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_r103f")
 
 [node name="_map_6" type="Node" parent="."]
 
@@ -12022,7 +11870,8 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_map_6/_npc_6_1/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_jonhj")
+material = SubResource("ShaderMaterial_oaqr5")
+facing = Vector2(-1, 0)
 sprite = "skeleton"
 
 [node name="Area2D" type="Area2D" parent="_map_6/_npc_6_1"]
@@ -12044,23 +11893,10 @@ facing = Vector2i(1, 0)
 map_position = Vector2i(0, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_6/_npc_6_2"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_6/_npc_6_2/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_6/_npc_6_2/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_j4uy8")
+[node name="_RPGM_Portrait" parent="_map_6/_npc_6_2" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_jonhj")
+facing = Vector2(1, 0)
 sprite = "skeleton"
-
-[node name="Area2D" type="Area2D" parent="_map_6/_npc_6_2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_6/_npc_6_2/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_r103f")
 
 [node name="_npc_6_3" type="Node2D" parent="_map_6"]
 position = Vector2(120, 1032)
@@ -12085,7 +11921,8 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_map_6/_npc_6_3/RigidBody2D" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_2uryw")
+material = SubResource("ShaderMaterial_j4uy8")
+facing = Vector2(-1, 0)
 sprite = "skeleton"
 
 [node name="Area2D" type="Area2D" parent="_map_6/_npc_6_3"]
@@ -12110,7 +11947,8 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_map_6/_event_6_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_a8qaw")
+material = SubResource("ShaderMaterial_2uryw")
+facing = Vector2(0, 1)
 _frame = 165
 sprite = "system"
 
@@ -12141,7 +11979,8 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_map_7/_npc_7_1/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_yspku")
+material = SubResource("ShaderMaterial_a8qaw")
+facing = Vector2(0, 1)
 
 [node name="Area2D" type="Area2D" parent="_map_7/_npc_7_1"]
 
@@ -12174,7 +12013,8 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_map_7/_npc_7_3/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_xp5op")
+material = SubResource("ShaderMaterial_yspku")
+facing = Vector2(0, 1)
 type = "sphere"
 
 [node name="Area2D" type="Area2D" parent="_map_7/_npc_7_3"]
@@ -12208,7 +12048,8 @@ shape = SubResource("RectangleShape2D_cswif")
 
 [node name="_RPGM_Portrait" parent="_map_7/_npc_7_2/RigidBody2D" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_cyfpt")
+material = SubResource("ShaderMaterial_xp5op")
+facing = Vector2(0, 1)
 sprite = "red_prince"
 
 [node name="Area2D" type="Area2D" parent="_map_7/_npc_7_2"]

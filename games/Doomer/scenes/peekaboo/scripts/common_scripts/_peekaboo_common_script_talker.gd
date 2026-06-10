@@ -17,6 +17,6 @@ func _on_entered_range():
 func _on_exited_range():
 	portrait.animation_player.play("idle")
 
-func _on_action_within_area():
+func _on_action():
 	await get_mover().face(_get_direction_to_player())
 	await get_rpgm().get_lambdas().show_messages(messages)

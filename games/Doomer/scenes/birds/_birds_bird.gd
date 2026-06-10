@@ -14,7 +14,7 @@ var passive_movement_speed = 2.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	%_RPGM_Portrait.face_down()
+	%_RPGM_Portrait.facing = Vector2(0, 1)
 	_loop_timer()
 	if enable_logs: _add_logs()
 	

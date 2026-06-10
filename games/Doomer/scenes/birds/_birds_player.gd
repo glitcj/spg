@@ -14,7 +14,7 @@ var input_plus_passive = Vector2(0,0)
 @export var max_speed = 300
 
 func _ready() -> void:
-	%_RPGM_Portrait.face_down()
+	%_RPGM_Portrait.facing = Vector2(0,1)
 	
 	get_hud().add_log(_get_velocity)
 	get_hud().add_log(_get_absolute_velocity)

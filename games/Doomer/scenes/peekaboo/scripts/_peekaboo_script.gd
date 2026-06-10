@@ -4,6 +4,7 @@ class_name _RPGM_Script
 signal actioned_within_area
 signal frame_started
 signal area_entered_by_player
+signal actioned
 
 @export var interrupt_player := false
 @export var action_range : float = 10.0
@@ -49,12 +50,13 @@ func bind_triggers():
 	for c : Callable in trigger_callables:
 		trigger_is_running[c.get_method()] = false
 	
+	
+	actioned.connect(_wrapped_callable.bind(_on_action))
 	actioned_within_area.connect(_wrapped_callable.bind(_on_action_within_area))
 	frame_started.connect(_wrapped_callable.bind(_on_frame))
 	get_rpgm().started.connect(_wrapped_callable.bind(_on_viewport_start))
 	
-	if get_area():
-		get_area().body_entered.connect(_check_area_signals)
+	if get_area(): get_area().body_entered.connect(_check_area_signals)
 	area_entered_by_player.connect(_wrapped_callable.bind(_on_area_entered))
 
 func _get_components():
@@ -75,13 +77,19 @@ func _process(_delta: float):
 	frame_started.emit()
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		var player_is_facing_this_event : bool = mover.map_position == get_player().get_mover().facing + get_player().get_mover().map_position
+		
+		var player_is_neighbouring_this_event : bool = (get_player().get_mover().map_position - get_mover().map_position).abs().length() <= 1
 		if _player_is_within_event_area():
-			# var player_mover = get_player().find_child("_RPGM_Mover") as _RPGM_Mover
-			
-			var player_is_facing_this_event : bool = mover.map_position == get_player().get_mover().facing + get_player().get_mover().map_position
+						
 			if player_is_facing_this_event and get_player().is_active:
 				await get_tree().process_frame # wait for input buffer to clear
 				actioned_within_area.emit()
+
+		if player_is_neighbouring_this_event and  player_is_facing_this_event and get_player().is_active:
+			await get_tree().process_frame # wait for input buffer to clear
+			actioned.emit()
+
 
 func _check_area_signals(body: Node2D): # Add the 'body' parameter
 	if body == get_player(): 
@@ -127,6 +135,10 @@ func _on_exited_range():
 
 func _on_area_entered():
 	pass
+
+func _on_action():
+	pass
+
 
 func _log():
 	pass

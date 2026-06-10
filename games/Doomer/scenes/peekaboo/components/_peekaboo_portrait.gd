@@ -3,6 +3,23 @@ extends Node2D
 class_name _RPGM_Portrait
 
 
+
+var actioned = false
+func _on_actioned_end(): actioned = false
+var is_moving = false
+
+
+
+@export var facing := Vector2(0, 1):
+	set(value):
+		facing = value
+		%AnimationTree["parameters/BlendSpace2D/blend_position"] = facing
+		actioned = true
+		
+		
+# var last_facing = Vector2(0, 1)
+
+
 # note: onready variables are ignored by the editor
 @onready var animation_player = %AnimationPlayer as AnimationPlayer
 
@@ -117,8 +134,3 @@ func _tween_material_progress(duration := 10.0):
 		func(v): $AnimatedSprite2D.material.set_shader_parameter("progress", v),
 		0.0, 1.0, duration
 	)
-	
-func face_down(): %AnimationPlayer.play("move_down")
-func face_up(): %AnimationPlayer.play("move_up")
-func face_left(): %AnimationPlayer.play("move_left")
-func face_right(): %AnimationPlayer.play("move_right")
