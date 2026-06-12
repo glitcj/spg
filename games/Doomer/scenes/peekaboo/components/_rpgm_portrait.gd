@@ -4,15 +4,16 @@ class_name _RPGM_Portrait
 
 
 
-@export var actioned = false
+var actioned = false
 func _on_actioned_end(): actioned = false
 var is_moving = false
 
 
-var facing := Vector2(0, 1):
+var facing := Vector2(-1, 0):
 	set(value):
 		facing = value
-		%AnimationTree["parameters/BlendSpace2D/blend_position"] = facing
+		if %AnimationTree:
+			%AnimationTree.set("parameters/BlendSpace2D/blend_position",  facing)
 		actioned = true
 
 func _editor_update():
@@ -34,18 +35,19 @@ var _material : ShaderMaterial
 var sprite : String:
 	set(v):
 		sprite = v
-		# if has_node("AnimatedSprite2D"):
-		## if not Engine.is_editor_hint(): return
 		if %AnimatedSprite2D == null: return
 		%AnimatedSprite2D.animation = sprite
 		_update_atlas()
-			# queue_redraw()
 
-var _frame := 0:
+
+
+"""
+@export var _frame : int = 0:
 	set(v):
 		_frame = v
-		
-		%AnimatedSprite2D.frame = v
+		if %AnimatedSprite2D: %AnimatedSprite2D.frame = v
+"""
+
 
 var atlas : AtlasTexture
 
@@ -102,7 +104,7 @@ func _ready() -> void:
 	%Sprite2D.texture = atlas
 
 	# connect signal — fires automatically whenever animated.frame changes
-	%AnimatedSprite2D.frame_changed.connect(_update_atlas)
+	# %AnimatedSprite2D.frame_changed.connect(_update_atlas)
 
 	# sync atlas to whatever frame is current on load
 	_update_atlas()
@@ -111,6 +113,8 @@ func _ready() -> void:
 func _update_atlas():
 	var frame = %AnimatedSprite2D.frame
 	var tex = %AnimatedSprite2D.sprite_frames.get_frame_texture(%AnimatedSprite2D.animation, frame)
+	
+	# var tex = %AnimatedSprite2D.sprite_frames.get_frame_texture(%AnimatedSprite2D.animation, %AnimatedSprite2D.frame)
 	
 	var source_image : Image
 	var region : Rect2

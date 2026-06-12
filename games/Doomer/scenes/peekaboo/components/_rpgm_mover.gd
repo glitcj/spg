@@ -4,6 +4,7 @@ class_name _RPGM_Mover
 
 signal finished_movement
 enum MovementType {Linear, Random, Exponential}
+
 var is_moving = false:
 	set(value):
 		is_moving = value
@@ -11,7 +12,8 @@ var is_moving = false:
 @export var is_collision = false
 @export var speed = 0.5 as float
 @export var type = MovementType.Linear as MovementType
-@export var facing = Vector2i(0, 1) as Vector2i
+
+@export var facing = Vector2i(1, 0) as Vector2i
 
 
 func _editor_update():
@@ -36,6 +38,9 @@ func _get_event(): return get_parent() as _RPGM_Event
 func _ready() -> void:
 	await get_tree().process_frame
 	_update_tiles_with_rpgm_collision()
+	await get_tree().process_frame
+	face(facing)
+	
 
 func tilemap_to_global_position(tile_position : Vector2i):
 	return base_layer.to_global(base_layer.map_to_local(tile_position))
@@ -127,9 +132,6 @@ func displace(displacement : Vector2):
 	await tween.tween_property(get_parent(), "global_position", get_parent().global_position + displacement, 1/speed).finished
 	
 	finished_movement.emit()
-
-# func get_facing_direction():
-# 	return facing
 	
 func tile_has_collision(tile_pos: Vector2i) -> bool:
 	for layer : TileMapLayer in get_map().layers:

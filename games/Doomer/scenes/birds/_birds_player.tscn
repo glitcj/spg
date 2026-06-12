@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://fk76d8xanqjy"]
 
 [ext_resource type="Script" uid="uid://di6te028flucu" path="res://scenes/birds/_birds_player.gd" id="1_j3mge"]
-[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_peekaboo_portrait.tscn" id="2_nqen2"]
+[ext_resource type="PackedScene" uid="uid://ca8vvptjr324n" path="res://scenes/peekaboo/components/_rpgm_portrait.tscn" id="2_nqen2"]
 [ext_resource type="Shader" uid="uid://5dmscal31dgu" path="res://scenes/peekaboo/shaders/_random.gdshader" id="3_5krvi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lo0k1"]
