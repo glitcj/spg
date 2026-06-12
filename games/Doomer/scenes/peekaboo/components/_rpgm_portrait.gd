@@ -40,15 +40,6 @@ var sprite : String:
 		_update_atlas()
 
 
-
-"""
-@export var _frame : int = 0:
-	set(v):
-		_frame = v
-		if %AnimatedSprite2D: %AnimatedSprite2D.frame = v
-"""
-
-
 var atlas : AtlasTexture
 
 func _get_property_list() -> Array[Dictionary]:
