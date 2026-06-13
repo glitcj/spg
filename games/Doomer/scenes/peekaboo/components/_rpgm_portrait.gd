@@ -1,9 +1,6 @@
 @tool
 extends Node2D
 class_name _RPGM_Portrait
-
-
-
 var actioned = false
 func _on_actioned_end(): actioned = false
 var is_moving = false
@@ -18,7 +15,6 @@ var facing := Vector2(-1, 0):
 
 func _editor_update():
 	pass
-
 
 # note: onready variables are ignored by the editor
 @onready var animation_player = %AnimationPlayer as AnimationPlayer
