@@ -1,17 +1,18 @@
 @tool
 extends Node2D
 class_name _RPGM_Portrait
-var actioned = false
-func _on_actioned_end(): actioned = false
 var is_moving = false
 
 
 var facing := Vector2(-1, 0):
 	set(value):
 		facing = value
-		if %AnimationTree:
+		if %AnimationTree: 
 			%AnimationTree.set("parameters/BlendSpace2D/blend_position",  facing)
-		actioned = true
+			%AnimationPlayer.stop()
+			%AnimationPlayer.play("actioned")
+			
+			
 
 func _editor_update():
 	pass
@@ -100,8 +101,6 @@ func _ready() -> void:
 func _update_atlas():
 	var frame = %AnimatedSprite2D.frame
 	var tex = %AnimatedSprite2D.sprite_frames.get_frame_texture(%AnimatedSprite2D.animation, frame)
-	
-	# var tex = %AnimatedSprite2D.sprite_frames.get_frame_texture(%AnimatedSprite2D.animation, %AnimatedSprite2D.frame)
 	
 	var source_image : Image
 	var region : Rect2
