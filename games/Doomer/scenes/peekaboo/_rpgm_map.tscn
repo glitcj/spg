@@ -11546,6 +11546,7 @@ texture = SubResource("GradientTexture2D_6de6d")
 [node name="_npc_1_1" type="Node2D" parent="_map_1"]
 position = Vector2(24, 72)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_rpgm_common_script_talker_1_1" type="Node" parent="_map_1/_npc_1_1"]
 script = ExtResource("18_xp5op")
@@ -11565,6 +11566,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_npc_1_2" type="Node2D" parent="_map_1"]
 position = Vector2(-120, 120)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_rpgm_script" type="Node" parent="_map_1/_npc_1_2"]
 script = SubResource("GDScript_x2jho")
@@ -11637,6 +11639,7 @@ label_settings = SubResource("LabelSettings_6le0f")
 [node name="_enemy_2_1" type="Node2D" parent="_map_2"]
 position = Vector2(-552, 72)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_common_script_ghost" type="Node" parent="_map_2/_enemy_2_1"]
 script = ExtResource("22_4tmb2")
@@ -11658,6 +11661,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_enemy_2_2" type="Node2D" parent="_map_2"]
 position = Vector2(-1032, -120)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_common_script_ghost" type="Node" parent="_map_2/_enemy_2_2"]
 script = ExtResource("22_4tmb2")
@@ -11680,6 +11684,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_enemy_2_3" type="Node2D" parent="_map_2"]
 position = Vector2(-1032, 72)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_common_script_ghost" type="Node" parent="_map_2/_enemy_2_3"]
 script = ExtResource("22_4tmb2")
@@ -11723,6 +11728,7 @@ texture = SubResource("CanvasTexture_j52ey")
 [node name="_npc_3_2_talking_tree" type="Node2D" parent="_map_3"]
 position = Vector2(648, -216)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_RPGM_Common_Script_Talker" type="Node" parent="_map_3/_npc_3_2_talking_tree"]
 script = ExtResource("18_xp5op")
@@ -11739,6 +11745,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_npc_3_3_stuff" type="Node2D" parent="_map_3"]
 position = Vector2(744, -264)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_RPGM_Mover" type="Node" parent="_map_3/_npc_3_3_stuff"]
 script = ExtResource("14_j4uy8")
@@ -11749,6 +11756,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_npc_3_4_stuff" type="Node2D" parent="_map_3"]
 position = Vector2(696, -264)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_RPGM_Mover" type="Node" parent="_map_3/_npc_3_4_stuff"]
 script = ExtResource("14_j4uy8")
@@ -11760,6 +11768,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 y_sort_enabled = true
 position = Vector2(552, -264)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_rpgm_common_script_talker_3_1" type="Node" parent="_map_3/_npc_3_1"]
 script = ExtResource("18_xp5op")
@@ -11781,6 +11790,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_npc_4_1_talking_tree" type="Node2D" parent="_map_4"]
 position = Vector2(648, -1224)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_RPGM_Common_Script_Talker" type="Node" parent="_map_4/_npc_4_1_talking_tree"]
 script = ExtResource("18_xp5op")
@@ -11797,6 +11807,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_npc_4_2" type="Node2D" parent="_map_4"]
 position = Vector2(696, -1320)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_RPGM_Script" type="Node" parent="_map_4/_npc_4_2"]
 script = SubResource("GDScript_eu0qy")
@@ -11816,6 +11827,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_npc_4_3" type="Node2D" parent="_map_4"]
 position = Vector2(600, -1320)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_RPGM_Portrait" parent="_map_4/_npc_4_3" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_cjg66")
@@ -11837,6 +11849,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_npc_5_1" type="Node2D" parent="_map_5"]
 position = Vector2(-648, -1464)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_RPGM_Script" type="Node" parent="_map_5/_npc_5_1"]
 script = SubResource("GDScript_38inc")
@@ -11859,6 +11872,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_npc_6_1" type="Node2D" parent="_map_6"]
 position = Vector2(120, 936)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_script" type="Node" parent="_map_6/_npc_6_1"]
 script = SubResource("GDScript_05s22")
@@ -11878,6 +11892,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_npc_6_2" type="Node2D" parent="_map_6"]
 position = Vector2(24, 120)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_script" type="Node" parent="_map_6/_npc_6_2"]
 script = SubResource("GDScript_vd6wf")
@@ -11895,6 +11910,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_npc_6_3" type="Node2D" parent="_map_6"]
 position = Vector2(120, 1032)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_rpgm_common_script_talker_6_3" type="Node" parent="_map_6/_npc_6_3"]
 script = ExtResource("18_xp5op")
@@ -11937,6 +11953,7 @@ scale = Vector2(1.0166667, 1.0833334)
 y_sort_enabled = true
 position = Vector2(1800, -216)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_rpgm_common_script_talker" type="Node" parent="_map_7/_npc_7_1"]
 script = ExtResource("18_xp5op")
@@ -11958,6 +11975,7 @@ scale = Vector2(1.0166667, 1.0833334)
 y_sort_enabled = true
 position = Vector2(2088, -168)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_rpgm_common_script_talker" type="Node" parent="_map_7/_npc_7_3"]
 script = ExtResource("18_xp5op")
@@ -11980,6 +11998,7 @@ type = "sphere"
 y_sort_enabled = true
 position = Vector2(1896, -216)
 script = ExtResource("17_yspku")
+is_collision = true
 
 [node name="_rpgm_common_script_talker" type="Node" parent="_map_7/_npc_7_2"]
 script = ExtResource("18_xp5op")
