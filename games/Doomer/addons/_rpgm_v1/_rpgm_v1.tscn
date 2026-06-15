@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxl6u7pp3lhq8"]
 
-[ext_resource type="Script" uid="uid://dermk4r5gc7ve" path="res://addons/_rpgm_v1/_rpgm_v_1.gd" id="1_nj6x7"]
+[ext_resource type="Script" uid="uid://dermk4r5gc7ve" path="res://addons/_rpgm_v1/_rpgm_v1.gd" id="1_nj6x7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nj6x7"]
 font_size = 64

@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=94 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -11334,12 +11334,8 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cswif"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqr5"]
 shader = ExtResource("16_a8qaw")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r103f"]
 
 [sub_resource type="GDScript" id="GDScript_vd6wf"]
 script/source = "extends _RPGM_Script
@@ -11389,8 +11385,6 @@ shader = ExtResource("16_a8qaw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8qaw"]
 shader = ExtResource("16_a8qaw")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0sri"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yspku"]
 shader = ExtResource("19_cyfpt")
@@ -11537,6 +11531,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_txeor")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="PointLight2D Enemies" type="PointLight2D" parent="Player"]
 light_mask = 2
@@ -11565,6 +11560,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_1" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_vd6wf")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_1_2" type="Node2D" parent="_map_1"]
 position = Vector2(-120, 120)
@@ -11582,6 +11578,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_2" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_6le0f")
+scale = Vector2(1.0166667, 1.0833334)
 sprite = "priest"
 
 [node name="_event_1_1" type="Node2D" parent="_map_1"]
@@ -11602,6 +11599,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_uc14m")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_level_1_notes" type="Control" parent="_map_1"]
 z_index = 100
@@ -11655,6 +11653,7 @@ map_position = Vector2i(-12, 1)
 
 [node name="_RPGM_Portrait" parent="_map_2/_enemy_2_1" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_kl3l0")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_enemy_2_2" type="Node2D" parent="_map_2"]
 position = Vector2(-1032, -120)
@@ -11676,6 +11675,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_2/_enemy_2_2" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_loqga")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_enemy_2_3" type="Node2D" parent="_map_2"]
 position = Vector2(-1032, 72)
@@ -11697,6 +11697,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_2/_enemy_2_3" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_lnpst")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_event_2_1" type="Node2D" parent="_map_2"]
 position = Vector2(-648, -24)
@@ -11773,6 +11774,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_map_3/_npc_3_1" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_jo6ms")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_map_4" type="Node" parent="."]
 
@@ -11809,6 +11811,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_4/_npc_4_2" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_vvo4p")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_4_3" type="Node2D" parent="_map_4"]
 position = Vector2(600, -1320)
@@ -11816,6 +11819,7 @@ script = ExtResource("17_yspku")
 
 [node name="_RPGM_Portrait" parent="_map_4/_npc_4_3" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_cjg66")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_RPGM_Script" type="Node" parent="_map_4/_npc_4_3"]
 script = SubResource("GDScript_byr4j")
@@ -11848,6 +11852,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_jmbn5")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_map_6" type="Node" parent="."]
 
@@ -11866,22 +11871,9 @@ facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 19)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_6/_npc_6_1"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_6/_npc_6_1/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_6/_npc_6_1/RigidBody2D" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_6/_npc_6_1" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_oaqr5")
-
-[node name="Area2D" type="Area2D" parent="_map_6/_npc_6_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_6/_npc_6_1/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_r103f")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_6_2" type="Node2D" parent="_map_6"]
 position = Vector2(24, 120)
@@ -11898,6 +11890,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_6/_npc_6_2" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_jonhj")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_6_3" type="Node2D" parent="_map_6"]
 position = Vector2(120, 1032)
@@ -11914,22 +11907,9 @@ facing = Vector2i(-1, 0)
 map_position = Vector2i(2, 21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_6/_npc_6_3"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_6/_npc_6_3/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_6/_npc_6_3/RigidBody2D" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_6/_npc_6_3" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_j4uy8")
-
-[node name="Area2D" type="Area2D" parent="_map_6/_npc_6_3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_6/_npc_6_3/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_r103f")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_event_6_1" type="Node2D" parent="_map_6"]
 position = Vector2(24, 888)
@@ -11949,6 +11929,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_2uryw")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_map_7" type="Node" parent="."]
 
@@ -11968,24 +11949,10 @@ facing = Vector2i(0, 1)
 map_position = Vector2i(37, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_7/_npc_7_1"]
-y_sort_enabled = true
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_7/_npc_7_1/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_7/_npc_7_1/RigidBody2D" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_7/_npc_7_1" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_a8qaw")
-
-[node name="Area2D" type="Area2D" parent="_map_7/_npc_7_1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_7/_npc_7_1/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_b0sri")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_7_3" type="Node2D" parent="_map_7"]
 y_sort_enabled = true
@@ -12003,25 +11970,11 @@ facing = Vector2i(0, 1)
 map_position = Vector2i(43, -4)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_7/_npc_7_3"]
-y_sort_enabled = true
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_7/_npc_7_3/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_7/_npc_7_3/RigidBody2D" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_7/_npc_7_3" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_yspku")
+scale = Vector2(1.0166667, 1.0833334)
 type = "sphere"
-
-[node name="Area2D" type="Area2D" parent="_map_7/_npc_7_3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_7/_npc_7_3/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_b0sri")
 
 [node name="_npc_7_2" type="Node2D" parent="_map_7"]
 y_sort_enabled = true
@@ -12039,24 +11992,10 @@ facing = Vector2i(0, 1)
 map_position = Vector2i(39, -5)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="_map_7/_npc_7_2"]
-y_sort_enabled = true
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_7/_npc_7_2/RigidBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_cswif")
-
-[node name="_RPGM_Portrait" parent="_map_7/_npc_7_2/RigidBody2D" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_7/_npc_7_2" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_xp5op")
-
-[node name="Area2D" type="Area2D" parent="_map_7/_npc_7_2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_map_7/_npc_7_2/Area2D"]
-scale = Vector2(15, 15)
-shape = SubResource("RectangleShape2D_b0sri")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_teleports" type="Node" parent="."]
 
