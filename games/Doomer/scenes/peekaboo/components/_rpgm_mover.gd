@@ -94,6 +94,8 @@ func face_map_position(target_map_position):
 	
 
 func move(tile_vector : Vector2i) -> _RPGM_Mover:
+	
+	
 	while tile_has_collision(map_position + tile_vector):
 		await get_tree().process_frame
 	map_position = map_position + tile_vector # activates setter
@@ -106,7 +108,7 @@ func move(tile_vector : Vector2i) -> _RPGM_Mover:
 	return self
 
 
-func walk_v1(tile_vector : Vector2i) -> _RPGM_Mover:
+func walk_v1(tile_vector : Vector2i, face_direction = true) -> _RPGM_Mover:
 	face(tile_vector)
 	await move(tile_vector)
 	return self
@@ -118,19 +120,17 @@ func _process(delta: float) -> void:
 
 
 enum State {Moving, Idle}
-func walk(_destination_diff : Vector2i):
+func walk(_destination_diff : Vector2i, face_direction = true):
 	assert(_destination_diff.x == 0 or _destination_diff.y == 0)
 	destination = _destination_diff + map_position
-	# if tile_has_collision(destination): return self
 	
-
+	if face_direction: face(_destination_diff)
+	
 	var next_movement_vector : Vector2i
 	while destination != map_position:
 		next_movement_vector = Vector2i(_destination_diff/_destination_diff.length())
-		await move(next_movement_vector)
 		
-			
-	pass
+		await move(next_movement_vector)
 
 func face(tile_vector : Vector2i):
 	var normalised_vector = Vector2(tile_vector).normalized()
@@ -138,15 +138,11 @@ func face(tile_vector : Vector2i):
 	
 	
 	if not (facing.length() != 1 or facing.length() != 0):
-		print(facing, facing.length())
-		pass
-	
+		print(facing, facing.length())	
 	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
-	
 	
 	if portrait: portrait.facing = Vector2(facing)
 	
-		
 	return self
 
 
