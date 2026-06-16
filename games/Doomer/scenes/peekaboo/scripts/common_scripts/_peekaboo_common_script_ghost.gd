@@ -10,8 +10,8 @@ func _on_viewport_start():
 	var vector : Vector2i
 	while true:
 		vector = movement.pop_front()
-		movement.append(vector)
+		movement.append(vector)	
+		await mover.walk(vector)
 		
-		await mover.face(vector).move(vector)
 		await get_tree().create_timer(1).timeout
-		
+		pass

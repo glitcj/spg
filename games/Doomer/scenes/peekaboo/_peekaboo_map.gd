@@ -13,8 +13,7 @@ func get_lambdas(): return find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 @export_tool_button("Quantise All") var quantise_all_callable : Callable = _quantise_all
 	
 func _ready() -> void:
-	print_tree_pretty()
-	# _quantise_all()
+	if false: print_tree_pretty()
 	
 func _quantise_all():
 	for mover in find_children("*", "_RPGM_Mover", true, false):

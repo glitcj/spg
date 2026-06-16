@@ -1,27 +1,9 @@
 @tool
 extends Node2D
 class_name _RPGM_Portrait
-var is_moving = false
 
-
-var facing := Vector2(-1, 0):
-	set(value):
-		facing = value
-		if %AnimationTree: 
-			%AnimationTree.set("parameters/BlendSpace2D/blend_position",  facing)
-			%AnimationPlayer.stop()
-			%AnimationPlayer.play("actioned")
-			
-			
-
-func _editor_update():
-	pass
-
-# note: onready variables are ignored by the editor
-@onready var animation_player = %AnimationPlayer as AnimationPlayer
-
+@export var mark : String = "MRK"
 @export_category("Portrait")
-var _material : ShaderMaterial
 @export_enum("ghost", "evaporate", "highlight", "fog", "shine", "function",
 			 "random", "wiggle", "sphere", "outline", "chessboard"
 			) var type: String = "random":
@@ -29,6 +11,21 @@ var _material : ShaderMaterial
 		type = v
 		_update_material()
 		
+# note: onready variables are ignored by the editor
+@onready var animation_player = %AnimationPlayer as AnimationPlayer
+
+
+var atlas : AtlasTexture
+var _material : ShaderMaterial
+var is_moving = false
+var facing := Vector2(-1, 0):
+	set(value):
+		facing = value
+		if %AnimationTree: 
+			%AnimationTree.set("parameters/BlendSpace2D/blend_position",  facing)
+			%AnimationPlayer.stop()
+			%AnimationPlayer.play("actioned")
+
 var sprite : String:
 	set(v):
 		sprite = v
@@ -36,9 +33,9 @@ var sprite : String:
 		%AnimatedSprite2D.animation = sprite
 		_update_atlas()
 
-
-var atlas : AtlasTexture
-
+func _editor_update():
+	pass
+	
 func _get_property_list() -> Array[Dictionary]:
 	var properties: Array[Dictionary] = []
 	var anim_names = _get_available_animation_names()
@@ -84,16 +81,21 @@ func _update_material():
 			
 		if not is_node_ready(): return
 		material = _material
+		# %Sprite2D.material = _material  # ← assign to the sprite, not self
+		# %AnimatedSprite2D.material = _material  # ← assign to the sprite, not self
+
 		
 func _ready() -> void:
-	if get_tree().current_scene != self: %Camera2D.enabled = false
+	# if get_tree().current_scene != self: %Camera2D.enabled = false
 	
 	atlas = AtlasTexture.new()
 	%Sprite2D.texture = atlas
-
-	# connect signal — fires automatically whenever animated.frame changes
-	# %AnimatedSprite2D.frame_changed.connect(_update_atlas)
-
+	
+	%"Label Mark".text = mark
+	
+	# this step might be heavy and can be GPU optimised later on
+	%AnimatedSprite2D.frame_changed.connect(_update_atlas)
+	
 	# sync atlas to whatever frame is current on load
 	_update_atlas()
 	_update_material()

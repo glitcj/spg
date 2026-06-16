@@ -25,6 +25,9 @@ func _editor_update():
 		map_position = v
 		_update_tiles_with_rpgm_collision()
 		if Engine.is_editor_hint(): _quantise_position()
+		
+
+var destination : Vector2i = Vector2i(0, 0)
 
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
 func get_base_layer(): return get_map().find_child("L1 Base") as TileMapLayer
@@ -37,6 +40,7 @@ func _ready() -> void:
 	_update_tiles_with_rpgm_collision()
 	await get_tree().process_frame
 	face(facing)
+	
 	
 
 func tilemap_to_global_position(tile_position : Vector2i):
@@ -90,6 +94,8 @@ func face_map_position(target_map_position):
 	
 
 func move(tile_vector : Vector2i) -> _RPGM_Mover:
+	while tile_has_collision(map_position + tile_vector):
+		await get_tree().process_frame
 	map_position = map_position + tile_vector # activates setter
 	var displacement = tilemap_to_global_position(map_position) - get_parent().global_position 
 	
@@ -100,12 +106,31 @@ func move(tile_vector : Vector2i) -> _RPGM_Mover:
 	return self
 
 
-func walk(tile_vector : Vector2i) -> _RPGM_Mover:
+func walk_v1(tile_vector : Vector2i) -> _RPGM_Mover:
 	face(tile_vector)
 	await move(tile_vector)
 	return self
 
+var state = State.Idle
+func _process(delta: float) -> void:
+	if destination != map_position: state = State.Moving
+	else: state = State.Idle
 
+
+enum State {Moving, Idle}
+func walk(_destination_diff : Vector2i):
+	assert(_destination_diff.x == 0 or _destination_diff.y == 0)
+	destination = _destination_diff + map_position
+	# if tile_has_collision(destination): return self
+	
+
+	var next_movement_vector : Vector2i
+	while destination != map_position:
+		next_movement_vector = Vector2i(_destination_diff/_destination_diff.length())
+		await move(next_movement_vector)
+		
+			
+	pass
 
 func face(tile_vector : Vector2i):
 	var normalised_vector = Vector2(tile_vector).normalized()
@@ -117,7 +142,10 @@ func face(tile_vector : Vector2i):
 		pass
 	
 	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
+	
+	
 	if portrait: portrait.facing = Vector2(facing)
+	
 		
 	return self
 

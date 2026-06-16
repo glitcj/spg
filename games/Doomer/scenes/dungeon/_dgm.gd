@@ -23,7 +23,7 @@ func get_hud(): return %_Core_Log as _Core_Log
 
 func _ready() -> void:
 	camera = %Camera2D as Camera2D
-	print_tree_pretty()
+	if false: print_tree_pretty()
 	pass
 	
 func _on_viewport_start():	
