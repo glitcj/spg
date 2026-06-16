@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://bucnugonqghkg"
-path="res://.godot/imported/Menu10.wav-0df3e93fc36a4b6e9296829d434b491c.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Menu/Menu10.wav"
-dest_files=["res://.godot/imported/Menu10.wav-0df3e93fc36a4b6e9296829d434b491c.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:7d1dd1e522a1d0512154542c701730bd2c74e745cf8537017a2fb8623e59b98e
+size 532

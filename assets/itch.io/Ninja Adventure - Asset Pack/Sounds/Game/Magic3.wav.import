@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://d4k2e40k11oaf"
-path="res://.godot/imported/Magic3.wav-f635da45eb7753031988bb9691219251.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/Magic3.wav"
-dest_files=["res://.godot/imported/Magic3.wav-f635da45eb7753031988bb9691219251.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:0126f8726c5fdc29dedee30cabde734c630019e1932892930e02809ac3064e98
+size 532

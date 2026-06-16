@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://tweq3g2sceu"
-path="res://.godot/imported/Ludum Dare 30 - Track 4.wav-a336777cf40eb618e32d5a267de4c2af.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Abstraction - Ludum Dare 30 Loops/Ludum Dare 30 - Track 4.wav"
-dest_files=["res://.godot/imported/Ludum Dare 30 - Track 4.wav-a336777cf40eb618e32d5a267de4c2af.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:00d657108c409293083f2e3b4e3d703f28b2d1be0a01caf2cc083cbe0d2e8786
+size 574

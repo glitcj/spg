@@ -1,19 +1,3 @@
-[remap]
-
-importer="oggvorbisstr"
-type="AudioStreamOggVorbis"
-uid="uid://bmpujcjf3ivhb"
-path="res://.godot/imported/32 - Manor.ogg-1040bdb23c782c4bfe611194b7600566.oggvorbisstr"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Musics/32 - Manor.ogg"
-dest_files=["res://.godot/imported/32 - Manor.ogg-1040bdb23c782c4bfe611194b7600566.oggvorbisstr"]
-
-[params]
-
-loop=false
-loop_offset=0
-bpm=0
-beat_count=0
-bar_beats=4
+version https://git-lfs.github.com/spec/v1
+oid sha256:270cb2f1821d6e0f9027b6b204fa95bffede3f7e2d8272a21d1daef727089357
+size 437

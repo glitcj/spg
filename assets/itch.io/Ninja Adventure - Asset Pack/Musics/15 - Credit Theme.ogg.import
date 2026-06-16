@@ -1,19 +1,3 @@
-[remap]
-
-importer="oggvorbisstr"
-type="AudioStreamOggVorbis"
-uid="uid://bbvdywghaq131"
-path="res://.godot/imported/15 - Credit Theme.ogg-df0850c5d9501dd6068fc2a72dc0d8ed.oggvorbisstr"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Musics/15 - Credit Theme.ogg"
-dest_files=["res://.godot/imported/15 - Credit Theme.ogg-df0850c5d9501dd6068fc2a72dc0d8ed.oggvorbisstr"]
-
-[params]
-
-loop=false
-loop_offset=0
-bpm=0
-beat_count=0
-bar_beats=4
+version https://git-lfs.github.com/spec/v1
+oid sha256:991303c90e312c6405b9e446a58e02f6158fbc6758aed9c97d995b0ef66666d8
+size 458

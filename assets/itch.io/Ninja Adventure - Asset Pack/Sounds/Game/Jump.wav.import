@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://njhvh1wyj6ju"
-path="res://.godot/imported/Jump.wav-59c49bc6869398ddcd767cc8840306e6.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/Jump.wav"
-dest_files=["res://.godot/imported/Jump.wav-59c49bc6869398ddcd767cc8840306e6.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:3b4a9d53d104aa6a964b75fcb99b5393367795ad9589a8df924cb565a65c7ddc
+size 525

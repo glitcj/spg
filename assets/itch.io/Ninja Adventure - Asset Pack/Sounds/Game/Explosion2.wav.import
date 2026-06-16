@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://djjn7tqm6t3b5"
-path="res://.godot/imported/Explosion2.wav-228cd31fefe398b890c66fe545912675.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/Explosion2.wav"
-dest_files=["res://.godot/imported/Explosion2.wav-228cd31fefe398b890c66fe545912675.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:ef3a05137db3ce5b38d34100b33b51f3851a3d85de24ab40a828b5cebf54a477
+size 544

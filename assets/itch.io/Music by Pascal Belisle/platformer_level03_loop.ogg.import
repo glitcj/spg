@@ -1,19 +1,3 @@
-[remap]
-
-importer="oggvorbisstr"
-type="AudioStreamOggVorbis"
-uid="uid://bnu6ttt2twjjf"
-path="res://.godot/imported/platformer_level03_loop.ogg-3b93f77c961c98cf72f274b0ea1ce0b1.oggvorbisstr"
-
-[deps]
-
-source_file="res://assets/itch.io/Music by Pascal Belisle/platformer_level03_loop.ogg"
-dest_files=["res://.godot/imported/platformer_level03_loop.ogg-3b93f77c961c98cf72f274b0ea1ce0b1.oggvorbisstr"]
-
-[params]
-
-loop=false
-loop_offset=0
-bpm=0
-beat_count=0
-bar_beats=4
+version https://git-lfs.github.com/spec/v1
+oid sha256:36dbb96c584f6789570e7475a9b9d784a3e86b967c7dbd79a22c2f10567c57cf
+size 464

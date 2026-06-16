@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://sfu6y0qwkj2i"
-path="res://.godot/imported/GameOver.wav-45896cbaec2a7aa963034b7323186bac.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/GameOver.wav"
-dest_files=["res://.godot/imported/GameOver.wav-45896cbaec2a7aa963034b7323186bac.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:5f2cb6fc59e341b46156a84600223e2868240f832b4f1ab82ba283c8dc7eb020
+size 537

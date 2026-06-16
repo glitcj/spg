@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfj80jwg2ypuv"
-path="res://.godot/imported/glider.png-c8c9d91b4a198339981e529f37e57742.ctex"
+path="res://.godot/imported/glider.png-c1c70ec0caea540869d3118d8c1edf85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://games/gol/glider.png"
-dest_files=["res://.godot/imported/glider.png-c8c9d91b4a198339981e529f37e57742.ctex"]
+source_file="res://games_deprecated/gol/glider.png"
+dest_files=["res://.godot/imported/glider.png-c1c70ec0caea540869d3118d8c1edf85.ctex"]
 
 [params]
 

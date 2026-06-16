@@ -1,19 +1,3 @@
-[remap]
-
-importer="oggvorbisstr"
-type="AudioStreamOggVorbis"
-uid="uid://dg3p41v3mbidp"
-path="res://.godot/imported/platformer_level03_loop.ogg-f6015e436eb183ff118663476b832b6d.oggvorbisstr"
-
-[deps]
-
-source_file="res://assets/itch.io/sunny-land/assets/sound/platformer_level03_loop.ogg"
-dest_files=["res://.godot/imported/platformer_level03_loop.ogg-f6015e436eb183ff118663476b832b6d.oggvorbisstr"]
-
-[params]
-
-loop=false
-loop_offset=0
-bpm=0
-beat_count=0
-bar_beats=4
+version https://git-lfs.github.com/spec/v1
+oid sha256:de79be0df51a889e4cd56e9a73a06aa9e5f69f549feff35ec08ba6945142a555
+size 464

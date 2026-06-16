@@ -9,7 +9,6 @@ var is_moving = false:
 	set(value):
 		is_moving = value
 
-@export var is_collision = false
 @export var speed = 0.5 as float
 @export var type = MovementType.Linear as MovementType
 
@@ -17,8 +16,6 @@ var is_moving = false:
 
 
 func _editor_update():
-	if "is_collision" in get_parent():
-		is_collision = get_parent().is_collision
 	if "facing" in  get_parent():
 		facing = get_parent().facing
 	face(facing)
@@ -59,7 +56,7 @@ func _update_tiles_with_rpgm_collision():
 	if get_map() != null:
 		tiles_with_rpgm_collision = []
 		for m : _RPGM_Mover in get_map().find_children("*", "_RPGM_Mover"):
-			if not m.is_collision:
+			if not m.get_parent().is_collision:
 				continue
 			tiles_with_rpgm_collision.append(m.map_position)
 			

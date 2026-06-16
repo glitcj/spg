@@ -1,36 +1,3 @@
-[remap]
-
-importer="font_data_dynamic"
-type="FontFile"
-uid="uid://diwwc4usjoim7"
-path="res://.godot/imported/NormalFont.ttf-fba8b92515e700c736b0f79b24bf08cf.fontdata"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Ui/Font/NormalFont.ttf"
-dest_files=["res://.godot/imported/NormalFont.ttf-fba8b92515e700c736b0f79b24bf08cf.fontdata"]
-
-[params]
-
-Rendering=null
-antialiasing=1
-generate_mipmaps=false
-disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
-msdf_pixel_range=8
-msdf_size=48
-allow_system_fallback=true
-force_autohinter=false
-modulate_color_glyphs=false
-hinting=1
-subpixel_positioning=1
-keep_rounding_remainders=true
-oversampling=0.0
-Fallbacks=null
-fallbacks=[]
-Compress=null
-compress=true
-preload=[]
-language_support={}
-script_support={}
-opentype_features={}
+version https://git-lfs.github.com/spec/v1
+oid sha256:869e101c312448db52a0fb88643fa51a801b401298c911ed83ea6074609f65c0
+size 807

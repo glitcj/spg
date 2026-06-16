@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://co34acu8wfhs5"
-path="res://.godot/imported/laugh.wav-809293e81ed2dcf1b593fe60c37a97a4.sample"
-
-[deps]
-
-source_file="res://assets/se/laugh.wav"
-dest_files=["res://.godot/imported/laugh.wav-809293e81ed2dcf1b593fe60c37a97a4.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:50e5ebf5062d62f6a7ed28d0449aca93b8ab6ea370cd995bb9c3c1faadfb2060
+size 483

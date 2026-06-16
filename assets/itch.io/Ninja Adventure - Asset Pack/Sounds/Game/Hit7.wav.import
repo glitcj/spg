@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://dfbfc5hvwcuwa"
-path="res://.godot/imported/Hit7.wav-78b4594ce8b7a03e8d46c3eecbf6bf38.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/Hit7.wav"
-dest_files=["res://.godot/imported/Hit7.wav-78b4594ce8b7a03e8d46c3eecbf6bf38.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:321cdddc3c86c86e9baf5dd53e9b6978ec5a706a23ea763f12a69cb47f456572
+size 526

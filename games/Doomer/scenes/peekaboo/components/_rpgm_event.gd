@@ -27,7 +27,7 @@ func _get_property_list() -> Array[Dictionary]:
 	var props: Array[Dictionary] = []
 	if get_mover():
 		props.append({
-			"name": "Mover",
+			"name": "_RPGM_Mover",
 			"type": TYPE_NIL,
 			"usage": PROPERTY_USAGE_CATEGORY
 		})

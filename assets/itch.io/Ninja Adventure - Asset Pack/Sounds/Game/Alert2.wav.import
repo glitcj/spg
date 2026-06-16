@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://d114ci6gbg7wu"
-path="res://.godot/imported/Alert2.wav-a5b3ce602bfc9d77c0780f1f118407bd.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/Alert2.wav"
-dest_files=["res://.godot/imported/Alert2.wav-a5b3ce602bfc9d77c0780f1f118407bd.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:bdde369b8f0050fffac92b0187c7e8283371053061708dc2013d812bdb564436
+size 532

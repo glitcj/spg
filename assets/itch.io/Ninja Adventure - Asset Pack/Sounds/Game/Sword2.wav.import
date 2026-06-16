@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://s2q1sinyur2d"
-path="res://.godot/imported/Sword2.wav-6e273726e51a9f7d75bf4b536267e9b7.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/Sword2.wav"
-dest_files=["res://.godot/imported/Sword2.wav-6e273726e51a9f7d75bf4b536267e9b7.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:bfe394d5fb29388cc2ae39221972743bf0f1563167e752ce5e145499fb645957
+size 531

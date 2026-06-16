@@ -1,19 +1,3 @@
-[remap]
-
-importer="oggvorbisstr"
-type="AudioStreamOggVorbis"
-uid="uid://be8o2oh52ckoi"
-path="res://.godot/imported/walkyandtalky.ogg-eaeec6268e8250140ba32d0a737a96bd.oggvorbisstr"
-
-[deps]
-
-source_file="res://assets/itch.io/Music by Ansimuz/walkyandtalky.ogg"
-dest_files=["res://.godot/imported/walkyandtalky.ogg-eaeec6268e8250140ba32d0a737a96bd.oggvorbisstr"]
-
-[params]
-
-loop=false
-loop_offset=0
-bpm=0
-beat_count=0
-bar_beats=4
+version https://git-lfs.github.com/spec/v1
+oid sha256:4492fc04e36a800d42308c7d16ccd41bb769c634dfc994a35ecc6202ee51e5bc
+size 427

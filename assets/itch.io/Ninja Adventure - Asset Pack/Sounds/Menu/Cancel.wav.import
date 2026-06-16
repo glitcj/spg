@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://cdaqv3kmvhini"
-path="res://.godot/imported/Cancel.wav-85bd93b2836e8e572569b705566c07bf.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Menu/Cancel.wav"
-dest_files=["res://.godot/imported/Cancel.wav-85bd93b2836e8e572569b705566c07bf.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:b5da762066ba78ef541943fc4743a2cb38a1ca17b42734e8cb550d4f450ee5b7
+size 532

@@ -3,12 +3,12 @@
 importer="glsl"
 type="RDShaderFile"
 uid="uid://dfn8larrnn4qc"
-path="res://.godot/imported/gol.glsl-699218d2d815cf97c28f949014956807.res"
+path="res://.godot/imported/gol.glsl-d8b78dad202653d05c229ac54a56f684.res"
 
 [deps]
 
-source_file="res://games/gol/gol.glsl"
-dest_files=["res://.godot/imported/gol.glsl-699218d2d815cf97c28f949014956807.res"]
+source_file="res://games_deprecated/gol/gol.glsl"
+dest_files=["res://.godot/imported/gol.glsl-d8b78dad202653d05c229ac54a56f684.res"]
 
 [params]
 

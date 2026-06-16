@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://velrusb2qnij"
-path="res://.godot/imported/Gold2.wav-271ea690fc2ec2c1580cdc700af78075.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/Gold2.wav"
-dest_files=["res://.godot/imported/Gold2.wav-271ea690fc2ec2c1580cdc700af78075.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:f83ce71389ba194b3fc4667d581ec0fd1aa4d22d471dc159629a3522a65ca2b9
+size 528

@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://d1r8ri13gkoka"
-path="res://.godot/imported/PowerUp1.wav-9e2770be513d784b19fdea4ffb28c986.sample"
-
-[deps]
-
-source_file="res://assets/itch.io/Ninja Adventure - Asset Pack/Sounds/Game/PowerUp1.wav"
-dest_files=["res://.godot/imported/PowerUp1.wav-9e2770be513d784b19fdea4ffb28c986.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=0
+version https://git-lfs.github.com/spec/v1
+oid sha256:b72b29dc8e31c0fc9c7295dddee2b53d92a57c7742eb4b6bfb3403833f9ad130
+size 538
