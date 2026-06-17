@@ -60,7 +60,7 @@ func _update_tiles_with_rpgm_collision():
 	if get_map() != null:
 		tiles_with_rpgm_collision = []
 		for m : _RPGM_Mover in get_map().find_children("*", "_RPGM_Mover"):
-			if not m.get_parent().is_collision:
+			if not m.get_parent().is_collision():
 				continue
 			tiles_with_rpgm_collision.append(m.map_position)
 			

@@ -7,9 +7,10 @@ signal area_entered_by_player
 signal actioned
 
 @export var interrupt_player := false
-@export var action_range : float = 10.0
+@export var is_collision := false
 
-var this_script_is_running = false
+
+func _is_active() -> bool: return true
 
 func get_core(): return find_parent("_Core") as _Core
 func get_rpgm(): return find_parent("_RPGM") as _RPGM
@@ -43,7 +44,6 @@ func _ready():
 func bind_triggers():
 	var trigger_callables = [
 		_on_within_range, _on_viewport_start, 
-		_on_entered_range, _on_exited_range,
 		_on_action_within_area,
 		_on_frame, _on_area_entered
 		]
@@ -58,6 +58,17 @@ func bind_triggers():
 	
 	if get_area(): get_area().body_entered.connect(_check_area_signals)
 	area_entered_by_player.connect(_wrapped_callable.bind(_on_area_entered))
+	
+
+
+
+# can be refactored to emits, but can interrupt _on_frame trigger ?
+var last_active_state = false
+func _check_activation():
+	if _is_active() and not last_active_state:
+		_on_activated()
+	elif not _is_active() and last_active_state:
+		_on_deactivated()
 
 func _get_components():
 	parent = get_parent()
@@ -72,7 +83,12 @@ func _process(_delta: float):
 		
 	if not get_rpgm().is_active:
 		return
-		
+	
+	if not _is_active():
+		return
+	
+	_check_activation()
+	
 	_log()
 	frame_started.emit()
 	
@@ -90,7 +106,6 @@ func _process(_delta: float):
 			await get_tree().process_frame # wait for input buffer to clear
 			actioned.emit()
 
-
 func _check_area_signals(body: Node2D): # Add the 'body' parameter
 	if body == get_player(): 
 		area_entered_by_player.emit()
@@ -103,9 +118,11 @@ func _distance_to_player() -> float:
 	return (get_player().position - parent.position).length()
 	
 func _wrapped_callable(c: Callable):
-	# if callable not defined in dict yet
 	if c.get_method() not in trigger_is_running.keys():
 		trigger_is_running[c.get_method()] = false
+		
+	if not _is_active():
+		return
 		
 	if trigger_is_running[c.get_method()]:
 		return
@@ -127,11 +144,12 @@ func _on_within_range():
 func _on_action_within_area():
 	pass
 
-func _on_entered_range():
+func _on_activated():
 	pass
 
-func _on_exited_range():
+func _on_deactivated():
 	pass
+
 
 func _on_area_entered():
 	pass

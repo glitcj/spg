@@ -2,7 +2,20 @@
 extends Node2D
 class_name _RPGM_Event
 
-var is_collision = true
+
+var current_script : _RPGM_Script
+
+var deprecated = false
+
+func is_collision():
+	if current_script and current_script.is_collision:
+		return true
+	return false
+
+func fis_collision():
+	for child : _RPGM_Script in find_children("*", "_RPGM_Script"):
+		if child.is_collision: return true
+	return false
 
 func get_rpgm(): return find_parent("_RPGM") as _RPGM
 func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
@@ -13,8 +26,20 @@ func get_area(): return find_child("Area2D") as Area2D
 func get_mover(): return find_child("_RPGM_Mover") as _RPGM_Mover
 func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
 
-func _ready():
-	pass
+func _ready(): pass
+
+
+func _process(delta: float):
+	_check_current_script()
+	
+func _check_current_script():
+	if current_script and current_script._is_active():
+		return
+		
+	for script : _RPGM_Script in find_children("*", "_RPGM_Script"):
+		if script._is_active():
+			current_script = script
+
 
 func _child_entered_tree(_node: Node) -> void:
 	notify_property_list_changed()
@@ -32,18 +57,18 @@ func _get_property_list() -> Array[Dictionary]:
 			"usage": PROPERTY_USAGE_CATEGORY
 		})
 		props.append({
-			"name": "is_collision",
+			"name": "deprecated",
 			"type": TYPE_BOOL,
 			"usage": PROPERTY_USAGE_DEFAULT
 		})
 	return props
 
 func _get(property: StringName) -> Variant:
-	if property == "is_collision": return is_collision
+	if property == "deprecated": return deprecated
 	return null
 
 func _set(property: StringName, value: Variant) -> bool:
-	if property == "is_collision":
-		is_collision = value
+	if property == "deprecated":
+		deprecated = value
 		return true
 	return false
