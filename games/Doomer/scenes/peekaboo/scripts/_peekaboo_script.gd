@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name _RPGM_Script
 
 signal actioned_within_area
@@ -23,7 +23,7 @@ func get_area(): return get_parent().find_child("Area2D") as Area2D
 func get_mover(): return get_parent().find_child("_RPGM_Mover") as _RPGM_Mover
 func get_portrait(): return get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
 
-func this_event(): return get_parent() as _RPGM_Event
+func get_event(): return get_parent() as _RPGM_Event
 
 var last_distnace_from_player : Vector2 = Vector2.ZERO
 var current_distnace_from_player : Vector2 = Vector2.ZERO
@@ -63,18 +63,6 @@ func bind_triggers():
 
 
 
-
-"""
-# can be refactored to emits, but can interrupt _on_frame trigger ?
-var last_active_state = false
-func _check_activation():
-	if _is_active() and not last_active_state:
-		_on_activated()
-	elif not _is_active() and last_active_state:
-		_on_deactivated()
-"""
-
-
 func _get_components():
 	parent = get_parent()
 	if parent.find_children("*", "_RPGM_Mover").size() > 0:
@@ -82,12 +70,26 @@ func _get_components():
 	if parent.find_children("*", "_RPGM_Portrait").size() > 0:
 		portrait = parent.find_child("_RPGM_Portrait")
 
+
+var last_is_active = false
+signal activated
+signal deactivated
+
 func _process(_delta: float):
 	if not get_rpgm() or not get_player():
 		return
 		
 	if not get_rpgm().is_active:
 		return
+	
+	
+	if last_is_active and not _is_active(): deactivated.emit()
+	if not last_is_active and _is_active(): activated.emit()
+	
+	if (last_is_active and not _is_active()) or (not last_is_active and _is_active()):
+		get_event()._update_active_script()
+		
+	last_is_active = _is_active()
 	
 	if not _is_active():
 		return
@@ -150,13 +152,10 @@ func _on_action_within_area():
 	pass
 
 func _on_activated():
-	if find_child("_RPGM_Portrait"):
-		find_child("_RPGM_Portrait").visible = true
+	visible = true
 
 func _on_deactivated():
-	if find_child("_RPGM_Portrait"):
-		find_child("_RPGM_Portrait").visible = false
-
+	visible = false
 
 func _on_area_entered():
 	pass

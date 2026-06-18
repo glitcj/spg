@@ -1,17 +1,14 @@
+@tool
 extends Node2D
 class_name _RPGM_Event
 
 
-var current_script : _RPGM_Script
+enum EventState {A, B, C, D}
+@export var state : EventState = EventState.A
+
 
 var deprecated = false
 
-func is_collision():
-	if get_active_script():
-		return get_active_script().is
-	if current_script and current_script.is_collision:
-		return true
-	return false
 
 func fis_collision():
 	for child : _RPGM_Script in find_children("*", "_RPGM_Script"):
@@ -31,7 +28,8 @@ func _ready(): pass
 
 
 func _process(delta: float):
-	_update_active_script()
+	if Engine.is_editor_hint(): return
+	# _update_active_script()
 
 var active_script : _RPGM_Script
 func _update_active_script():
@@ -41,9 +39,9 @@ func _update_active_script():
 		active_script._on_deactivated()
 		
 	active_script = get_active_script()
-	
 	if active_script:
 		active_script._on_activated()
+	get_mover()._update_tiles_with_rpgm_collision()
 
 
 func get_active_script():
@@ -52,8 +50,6 @@ func get_active_script():
 			return script
 	return null
 	
-
-
 
 func _child_entered_tree(_node: Node) -> void:
 	notify_property_list_changed()
