@@ -62,6 +62,9 @@ func bind_triggers():
 
 
 
+
+
+"""
 # can be refactored to emits, but can interrupt _on_frame trigger ?
 var last_active_state = false
 func _check_activation():
@@ -69,6 +72,8 @@ func _check_activation():
 		_on_activated()
 	elif not _is_active() and last_active_state:
 		_on_deactivated()
+"""
+
 
 func _get_components():
 	parent = get_parent()
@@ -87,7 +92,7 @@ func _process(_delta: float):
 	if not _is_active():
 		return
 	
-	_check_activation()
+	# _check_activation()
 	
 	_log()
 	frame_started.emit()
@@ -145,10 +150,12 @@ func _on_action_within_area():
 	pass
 
 func _on_activated():
-	pass
+	if find_child("_RPGM_Portrait"):
+		find_child("_RPGM_Portrait").visible = true
 
 func _on_deactivated():
-	pass
+	if find_child("_RPGM_Portrait"):
+		find_child("_RPGM_Portrait").visible = false
 
 
 func _on_area_entered():

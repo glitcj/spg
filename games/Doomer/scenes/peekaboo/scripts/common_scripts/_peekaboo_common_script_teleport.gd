@@ -1,5 +1,6 @@
 ### _common_script_teleport ###
 extends _RPGM_Script
+class_name _RPGM_Common_Script_Teleport
 
 @export var camera_position_node : Node2D
 @export var player_position_node : Node2D

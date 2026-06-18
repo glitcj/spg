@@ -57,10 +57,18 @@ func _quantise_position():
 
 static var tiles_with_rpgm_collision = []
 func _update_tiles_with_rpgm_collision():
+	var active_script : _RPGM_Script
 	if get_map() != null:
 		tiles_with_rpgm_collision = []
 		for m : _RPGM_Mover in get_map().find_children("*", "_RPGM_Mover"):
-			if not m.get_parent().is_collision():
+			
+			if m.get_parent() is _RPGM_Player:
+				continue
+			active_script = (m.get_parent() as _RPGM_Event).get_active_script()
+			if active_script == null:
+				continue
+			print(active_script)
+			if not active_script.is_collision:
 				continue
 			tiles_with_rpgm_collision.append(m.map_position)
 			
