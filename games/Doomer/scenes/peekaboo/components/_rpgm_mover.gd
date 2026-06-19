@@ -84,13 +84,14 @@ func walk_v1(tile_vector : Vector2i, face_direction = true) -> _RPGM_Mover:
 	await move(tile_vector)
 	return self
 
-var state = State.Idle
+# var state = State.Idle
 func _process(delta: float) -> void:
-	if destination != map_position: state = State.Moving
-	else: state = State.Idle
+	pass
+	# if destination != map_position: state = State.Moving
+	# else: state = State.Idle
 
 
-enum State {Moving, Idle}
+# enum State {Moving, Idle, Walking}
 func walk(_destination_diff : Vector2i, face_direction = true):
 	assert(_destination_diff.x == 0 or _destination_diff.y == 0)
 	destination = _destination_diff + map_position

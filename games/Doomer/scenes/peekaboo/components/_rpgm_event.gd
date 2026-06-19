@@ -10,41 +10,41 @@ enum EventState {A, B, C, D}
 var deprecated = false
 
 # CLAUDE: cached references to avoid repeated find_parent/find_child in per-frame calls
-var _rpgm_cache: _RPGM
-var _map_cache: _RPGM_Map
-var _player_cache: _RPGM_Player
-var _area_cache: Area2D
-var _mover_cache: _RPGM_Mover
+var _rpgm: _RPGM
+var _map: _RPGM_Map
+var _player: _RPGM_Player
+var _area: Area2D
+var _mover: _RPGM_Mover
 
 func fis_collision():
 	for child : _RPGM_Script in find_children("*", "_RPGM_Script"):
 		if child.is_collision: return true
 	return false
 
-func get_rpgm(): return _rpgm_cache
-func get_map(): return _map_cache
-func get_player(): return _player_cache
-func get_lambdas(): return _map_cache.find_child("_RPGM_Lambdas") as _RPGM_Lambdas
+func get_rpgm(): return _rpgm
+func get_map(): return _map
+func get_player(): return _player
+func get_lambdas(): return _map.find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 func get_variables(): return _RPGM_Variables
-func get_area(): return _area_cache
-func get_mover(): return _mover_cache
+func get_area(): return _area
+func get_mover(): return _mover
 
 func get_portrait():
 	if not active_script: return null
 	return active_script.find_child("_RPGM_Portrait") as _RPGM_Portrait
 
 func _ready():
-	_cache_components.call_deferred()
+	_get_components.call_deferred()
 
-func _cache_components():
+func _get_components():
 	# CLAUDE: cache all node refs at ready to avoid repeated tree walks in per-frame calls
 	# deferred so sibling nodes (e.g. Player) are in the tree before we search for them
-	_rpgm_cache = find_parent("_RPGM")
-	_map_cache = find_parent("_RPGM_Map")
-	if _map_cache:
-		_player_cache = _map_cache.find_child("Player")
-	_area_cache = find_child("Area2D")
-	_mover_cache = find_child("_RPGM_Mover")
+	_rpgm = find_parent("_RPGM")
+	_map = find_parent("_RPGM_Map")
+	if _map:
+		_player = _map.find_child("Player")
+	_area = find_child("Area2D")
+	_mover = find_child("_RPGM_Mover")
 
 func _process(delta: float):
 	if Engine.is_editor_hint(): return

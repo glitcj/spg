@@ -16,22 +16,22 @@ func _is_activatable() -> bool: return true
 
 # CLAUDE: cached node references — populated once at ready via _get_components
 # replaces repeated find_parent/find_child calls in hot paths
-var _rpgm_cache: _RPGM
-var _map_cache: _RPGM_Map
-var _player_cache: _RPGM_Player
-var _area_cache: Area2D
+var _rpgm: _RPGM
+var _map: _RPGM_Map
+var _player: _RPGM_Player
+var _area: Area2D
 
 # CLAUDE: avoids emitting frame_started every frame for scripts that don't override _on_frame
 var _has_on_frame_override: bool = false
 
 func get_core(): return find_parent("_Core") as _Core  # infrequent, leave as-is
-func get_rpgm(): return _rpgm_cache
-func get_map(): return _map_cache
-func get_player(): return _player_cache
+func get_rpgm(): return _rpgm
+func get_map(): return _map
+func get_player(): return _player
 func get_lambdas(): return get_map().get_lambdas() as _RPGM_Lambdas
 
 func get_variables(): return _RPGM_Variables
-func get_area(): return _area_cache
+func get_area(): return _area
 func get_mover(): return mover  # CLAUDE: already cached in _get_components
 func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
 
@@ -78,15 +78,15 @@ func bind_triggers():
 func _get_components():
 	parent = get_parent()
 	# CLAUDE: cache all node refs here to avoid repeated find_parent/find_child in per-frame calls
-	_rpgm_cache = find_parent("_RPGM")
-	_map_cache = find_parent("_RPGM_Map")
-	if _map_cache:
-		_player_cache = _map_cache.find_child("Player")
+	_rpgm = find_parent("_RPGM")
+	_map = find_parent("_RPGM_Map")
+	if _map:
+		_player = _map.find_child("Player")
 	if parent.find_children("*", "_RPGM_Mover").size() > 0:
 		mover = parent.find_child("_RPGM_Mover")
 	if parent.find_children("*", "_RPGM_Portrait").size() > 0:
 		portrait = parent.find_child("_RPGM_Portrait")
-	_area_cache = parent.find_child("Area2D")
+	_area = parent.find_child("Area2D")
 	# CLAUDE: walk the script chain (excluding the base) to detect if any derived class overrides
 	# _on_frame — uses get_script_method_list() which returns only methods defined in that specific
 	# script file, so the base class's no-op definition does not produce a false positive

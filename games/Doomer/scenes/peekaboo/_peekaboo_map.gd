@@ -9,11 +9,12 @@ func get_event(_name): return find_child(_name) as _RPGM_Event
 func find_event(_name): return find_child(_name) as _RPGM_Event
 func get_lambdas(): return find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 
-
 @export_tool_button("Quantise All") var quantise_all_callable : Callable = _quantise_all
 	
 func _ready() -> void:
 	if false: print_tree_pretty()
+	Performance.add_custom_monitor("_rpgm_map/_rpgm_map_process", func(): return last_process_ms)
+
 	
 func _quantise_all():
 	for mover in find_children("*", "_RPGM_Mover", true, false):
@@ -31,11 +32,15 @@ var _all_collision_debugging_rects: Array[ColorRect] = []
 func mark_collision_dirty() -> void:
 	collision_dirty = true
 
+var last_process_ms := 0.0
 func _process(_delta: float) -> void:
+	var start = Time.get_ticks_usec()
 	# CLAUDE: deferred collision rebuild — at most once per frame, driven by the dirty flag
 	if collision_dirty:
 		_rebuild_collision_tiles()
 		collision_dirty = false
+	last_process_ms = (Time.get_ticks_usec() - start) / 1000.0
+
 
 func _rebuild_collision_tiles() -> void:
 	tiles_with_rpgm_collision = []
