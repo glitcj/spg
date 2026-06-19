@@ -7,6 +7,8 @@ enum EventState {A, B, C, D}
 @export var state : EventState = EventState.A
 
 
+
+var is_collision = false
 var deprecated = false
 
 # CLAUDE: cached references to avoid repeated find_parent/find_child in per-frame calls
@@ -29,12 +31,23 @@ func get_variables(): return _RPGM_Variables
 func get_area(): return _area
 func get_mover(): return _mover
 
-func get_portrait():
-	if not active_script: return null
-	return active_script.find_child("_RPGM_Portrait") as _RPGM_Portrait
+func get_portraits():
+	# if not active_script: return null
+	# return active_script.find_child("_RPGM_Portrait") as _RPGM_Portrait
+	return null
+
+var active_scripts := []
+func update_active_scripts():
+	active_scripts = []
+	is_collision = false
+	for s : _RPGM_Script in find_children("*", "_RPGM_Script"):
+		if s._is_active(): 
+			active_scripts.append(s)
+			is_collision = is_collision or s.is_collision
 
 func _ready():
 	_get_components.call_deferred()
+	update_active_scripts.call_deferred()
 
 func _get_components():
 	# CLAUDE: cache all node refs at ready to avoid repeated tree walks in per-frame calls
@@ -49,6 +62,10 @@ func _get_components():
 func _process(delta: float):
 	if Engine.is_editor_hint(): return
 
+
+
+
+"""
 var active_script : _RPGM_Script
 func _update_active_script():
 	if active_script and active_script._is_activatable():
@@ -68,7 +85,7 @@ func get_active_script():
 		if script._is_activatable():
 			return script
 	return null
-	
+"""
 
 func _child_entered_tree(_node: Node) -> void:
 	notify_property_list_changed()

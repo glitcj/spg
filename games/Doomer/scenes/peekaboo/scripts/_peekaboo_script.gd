@@ -12,7 +12,7 @@ signal actioned
 
 
 var is_active = false
-func _is_activatable() -> bool: return true
+func _is_active() -> bool: return true
 
 # CLAUDE: cached node references — populated once at ready via _get_components
 # replaces repeated find_parent/find_child calls in hot paths
@@ -100,7 +100,9 @@ func _get_components():
 		s = s.get_base_script()
 
 
-var last_is_activatable = false
+# var last_is_activatable = false
+
+var last_is_active = false
 
 func _process(_delta: float):
 	if not get_rpgm() or not get_player():
@@ -109,13 +111,15 @@ func _process(_delta: float):
 	if not get_rpgm().is_active:
 		return
 	
-	if (last_is_activatable and not _is_activatable()) or (not last_is_activatable and _is_activatable()):
-		get_event()._update_active_script()
+	if (last_is_active and not _is_active()):
+		_on_deactivated()
+	if (not last_is_active and _is_active()):
+		_on_activated()
 		
 		
-	last_is_activatable = _is_activatable()
+	last_is_active = _is_active()
 	
-	if not is_active: return
+	if not _is_active(): return
 		
 	_log()
 	# CLAUDE: only emit frame_started if the subclass actually overrides _on_frame
@@ -151,7 +155,7 @@ func _wrapped_callable(c: Callable):
 	if c.get_method() not in trigger_is_running.keys():
 		trigger_is_running[c.get_method()] = false
 		
-	if not _is_activatable():
+	if not _is_active():
 		return
 		
 	if trigger_is_running[c.get_method()]:
@@ -177,10 +181,12 @@ func _on_action_within_area():
 func _on_activated():
 	visible = true
 	is_active = true
+	get_map().mark_collision_dirty()
 
 func _on_deactivated():
 	visible = false
 	is_active = false
+	get_map().mark_collision_dirty()
 
 func _on_area_entered():
 	pass

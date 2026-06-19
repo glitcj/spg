@@ -49,8 +49,11 @@ func _rebuild_collision_tiles() -> void:
 		# CLAUDE: read cached active_script directly — avoids nested find_children inside the loop
 		var event := m.get_parent() as _RPGM_Event
 		if event == null: continue
-		var active := event.active_script
-		if active == null or not active.is_collision: continue
+		# var active := event.active_script
+		# if active == null or not active.is_collision: 
+		# continue
+		if not event.is_collision:
+			continue
 		tiles_with_rpgm_collision.append(m.map_position)
 	_update_tilemap_collision_debugger()
 

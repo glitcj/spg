@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=98 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -21,7 +21,6 @@
 [ext_resource type="Shader" uid="uid://cc5d7uonuhvo" path="res://scenes/peekaboo/shaders/_sphere_and_correct_rgb_belnding.gdshader" id="19_cyfpt"]
 [ext_resource type="Script" uid="uid://li8gf7m6uhl3" path="res://scenes/peekaboo/scripts/level-1-1/script.event.1-1.gd" id="20_hxdjl"]
 [ext_resource type="Script" uid="uid://bit0g8h83tbxs" path="res://scenes/peekaboo/scripts/level-1-1/script.event.2-1.gd" id="21_4gmig"]
-[ext_resource type="Script" uid="uid://dnik4al7uxlir" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_ghost.gd" id="22_4tmb2"]
 [ext_resource type="Script" uid="uid://brl88l8fl1w5u" path="res://scenes/peekaboo/scripts/common_scripts/_peekaboo_common_script_teleport.gd" id="23_tl7rd"]
 
 [sub_resource type="GDScript" id="GDScript_6le0f"]
@@ -11110,7 +11109,7 @@ sources/0 = SubResource("TileSetAtlasSource_38inc")
 [sub_resource type="CircleShape2D" id="CircleShape2D_wptde"]
 radius = 2.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vd6wf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txeor"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="Gradient" id="Gradient_2ntr3"]
@@ -11127,7 +11126,8 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="GDScript" id="GDScript_uc14m"]
 script/source = "extends _RPGM_Common_Script_Talker
 
-func _is_activatable(): return get_event().state == _RPGM_Event.EventState.A
+func _is_active(): 
+	return get_event().state == _RPGM_Event.EventState.A
 
 func _on_action():
 	await super()
@@ -11135,13 +11135,14 @@ func _on_action():
 	await get_tree().process_frame
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6le0f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vd6wf"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_kl3l0"]
 script/source = "extends _RPGM_Common_Script_Talker
 
-func _is_activatable(): return get_event().state == _RPGM_Event.EventState.B
+func _is_active(): 
+	return get_event().state == _RPGM_Event.EventState.B
 
 func _on_action():
 	await super()
@@ -11149,7 +11150,7 @@ func _on_action():
 	await get_tree().process_frame
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc14m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6le0f"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_x2jho"]
@@ -11167,10 +11168,10 @@ func _on_action():
 	await get_lambdas().show_messages([\"Okay you can go now.\"])
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl3l0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc14m"]
 shader = ExtResource("17_txeor")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_loqga"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl3l0"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_txeor"]
@@ -11198,7 +11199,37 @@ font_color = Color(0.32941177, 0.14509805, 1, 1)
 [sub_resource type="GDScript" id="GDScript_ceddd"]
 script/source = "extends _RPGM_Script
 
+func _is_active() -> bool:
+	return true
 
+func _on_area_entered():
+	get_variables().l2_enemies_count += 1
+	parent.queue_free()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxdjl"]
+shader = ExtResource("17_txeor")
+
+[sub_resource type="GDScript" id="GDScript_loqga"]
+script/source = "extends  _RPGM_Common_Script_Ghost
+
+func _is_active() -> bool:
+	return true
+
+func _on_area_entered():
+	get_variables().l2_enemies_count += 1
+	parent.queue_free()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_loqga"]
+shader = ExtResource("17_txeor")
+
+[sub_resource type="GDScript" id="GDScript_lnpst"]
+script/source = "extends  _RPGM_Common_Script_Ghost
+
+func _is_active() -> bool:
+	return true
+	
 func _on_area_entered():
 	get_variables().l2_enemies_count += 1
 	parent.queue_free()
@@ -11207,9 +11238,12 @@ func _on_area_entered():
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lnpst"]
 shader = ExtResource("17_txeor")
 
-[sub_resource type="GDScript" id="GDScript_5max1"]
-script/source = "extends _RPGM_Script
+[sub_resource type="GDScript" id="GDScript_fchqt"]
+script/source = "extends  _RPGM_Common_Script_Ghost
 
+func _is_active() -> bool:
+	return true
+	
 func _on_area_entered():
 	get_variables().l2_enemies_count += 1
 	parent.queue_free()
@@ -11218,20 +11252,9 @@ func _on_area_entered():
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jo6ms"]
 shader = ExtResource("17_txeor")
 
-[sub_resource type="GDScript" id="GDScript_bj00i"]
-script/source = "extends _RPGM_Script
-
-func _on_area_entered():
-	get_variables().l2_enemies_count += 2
-	parent.queue_free()
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvo4p"]
-shader = ExtResource("17_txeor")
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_j52ey"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjg66"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvo4p"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_eu0qy"]
@@ -11259,10 +11282,10 @@ func _on_action_within_area():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmbn5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjg66"]
 shader = ExtResource("17_txeor")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqr5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmbn5"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_byr4j"]
@@ -11297,7 +11320,7 @@ func _on_action_within_area():
 	get_tree().quit()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jonhj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqr5"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_05s22"]
@@ -11327,7 +11350,7 @@ func _on_action():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4uy8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jonhj"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_vd6wf"]
@@ -11357,10 +11380,10 @@ func _on_action():
 	await returned_from_viewport_and_finished
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uryw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4uy8"]
 shader = ExtResource("17_txeor")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8qaw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uryw"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="GDScript" id="GDScript_4lb6x"]
@@ -11373,13 +11396,13 @@ func _on_action_within_area():
 		)
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8qaw"]
+shader = ExtResource("17_txeor")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yspku"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xp5op"]
-shader = ExtResource("17_txeor")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyfpt"]
 shader = ExtResource("19_cyfpt")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
@@ -11393,7 +11416,7 @@ shader_parameter/noise_scale = 1.0
 shader_parameter/noise_speed = 0.2
 shader_parameter/noise_strength = 0.4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxdjl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyfpt"]
 shader = ExtResource("17_txeor")
 
 [sub_resource type="LabelSettings" id="LabelSettings_x570f"]
@@ -11525,7 +11548,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="Player" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
 texture_filter = 1
-material = SubResource("ShaderMaterial_vd6wf")
+material = SubResource("ShaderMaterial_txeor")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="PointLight2D Enemies" type="PointLight2D" parent="Player"]
@@ -11550,7 +11573,7 @@ interrupt_player = true
 is_collision = true
 
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_6le0f")
+material = SubResource("ShaderMaterial_vd6wf")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_common_script_talker2" type="Node2D" parent="_map_1/_npc_1_1"]
@@ -11561,7 +11584,7 @@ interrupt_player = true
 is_collision = true
 
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_uc14m")
+material = SubResource("ShaderMaterial_6le0f")
 scale = Vector2(1.0166667, 1.0833334)
 sprite = "red_prince"
 
@@ -11586,7 +11609,7 @@ map_position = Vector2i(-3, 2)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_kl3l0")
+material = SubResource("ShaderMaterial_uc14m")
 scale = Vector2(1.0166667, 1.0833334)
 sprite = "priest"
 
@@ -11607,7 +11630,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_map_1/_event_1_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_loqga")
+material = SubResource("ShaderMaterial_kl3l0")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_level_1_notes" type="Control" parent="_map_1"]
@@ -11648,65 +11671,68 @@ position = Vector2(-552, 72)
 script = ExtResource("17_yspku")
 deprecated = false
 
-[node name="_common_script_ghost" type="Node2D" parent="_map_2/_enemy_2_1"]
-script = ExtResource("22_4tmb2")
-movement = Array[Vector2i]([Vector2i(-4, 0), Vector2i(0, -4), Vector2i(4, 0), Vector2i(0, 4)])
-
 [node name="_enemy_script_2_1" type="Node2D" parent="_map_2/_enemy_2_1"]
 script = SubResource("GDScript_ceddd")
+is_collision = true
+
+[node name="_RPGM_Portrait" parent="_map_2/_enemy_2_1/_enemy_script_2_1" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_hxdjl")
+position = Vector2(20, -20)
+scale = Vector2(1.0166667, 1.0833334)
+sprite = "green"
+
+[node name="_common_script_ghost" type="Node2D" parent="_map_2/_enemy_2_1"]
+script = SubResource("GDScript_loqga")
+movement = Array[Vector2i]([Vector2i(-4, 0), Vector2i(0, -4), Vector2i(4, 0), Vector2i(0, 4)])
+
+[node name="_RPGM_Portrait" parent="_map_2/_enemy_2_1/_common_script_ghost" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_loqga")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_RPGM_Mover" type="Node" parent="_map_2/_enemy_2_1"]
 script = ExtResource("14_j4uy8")
 facing = Vector2i(0, 1)
 map_position = Vector2i(-12, 1)
 
-[node name="_RPGM_Portrait" parent="_map_2/_enemy_2_1" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_lnpst")
-scale = Vector2(1.0166667, 1.0833334)
-
 [node name="_enemy_2_2" type="Node2D" parent="_map_2"]
-position = Vector2(-1032, -120)
+position = Vector2(-984, -120)
 script = ExtResource("17_yspku")
 deprecated = false
 
 [node name="_common_script_ghost" type="Node2D" parent="_map_2/_enemy_2_2"]
-script = ExtResource("22_4tmb2")
+script = SubResource("GDScript_lnpst")
 movement = Array[Vector2i]([Vector2i(-2, 0), Vector2i(2, 0)])
+is_collision = true
 
-[node name="_enemy_script_2_2" type="Node2D" parent="_map_2/_enemy_2_2"]
-script = SubResource("GDScript_5max1")
+[node name="_RPGM_Portrait" parent="_map_2/_enemy_2_2/_common_script_ghost" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_lnpst")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_RPGM_Mover" type="Node" parent="_map_2/_enemy_2_2"]
 script = ExtResource("14_j4uy8")
 facing = Vector2i(0, 1)
-map_position = Vector2i(-22, -3)
+map_position = Vector2i(-21, -3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
-[node name="_RPGM_Portrait" parent="_map_2/_enemy_2_2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_jo6ms")
-scale = Vector2(1.0166667, 1.0833334)
-
 [node name="_enemy_2_3" type="Node2D" parent="_map_2"]
-position = Vector2(-1032, 72)
+position = Vector2(-1080, 72)
 script = ExtResource("17_yspku")
 deprecated = false
 
 [node name="_common_script_ghost" type="Node2D" parent="_map_2/_enemy_2_3"]
-script = ExtResource("22_4tmb2")
-movement = Array[Vector2i]([Vector2i(-2, 0), Vector2i(2, 0)])
+script = SubResource("GDScript_fchqt")
+movement = Array[Vector2i]([Vector2i(2, 0), Vector2i(-2, 0)])
+is_collision = true
 
-[node name="_enemy_script_2_3" type="Node2D" parent="_map_2/_enemy_2_3"]
-script = SubResource("GDScript_bj00i")
+[node name="_RPGM_Portrait" parent="_map_2/_enemy_2_3/_common_script_ghost" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_jo6ms")
+scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_RPGM_Mover" type="Node" parent="_map_2/_enemy_2_3"]
 script = ExtResource("14_j4uy8")
 facing = Vector2i(0, 1)
-map_position = Vector2i(-22, 1)
+map_position = Vector2i(-23, 1)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
-
-[node name="_RPGM_Portrait" parent="_map_2/_enemy_2_3" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_vvo4p")
-scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_event_2_1" type="Node2D" parent="_map_2"]
 position = Vector2(-648, -24)
@@ -11779,7 +11805,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_3/_npc_3_1" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_cjg66")
+material = SubResource("ShaderMaterial_vvo4p")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_map_4" type="Node" parent="."]
@@ -11813,7 +11839,7 @@ map_position = Vector2i(14, -28)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_4/_npc_4_2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_jmbn5")
+material = SubResource("ShaderMaterial_cjg66")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_4_3" type="Node2D" parent="_map_4"]
@@ -11822,7 +11848,7 @@ script = ExtResource("17_yspku")
 deprecated = false
 
 [node name="_RPGM_Portrait" parent="_map_4/_npc_4_3" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_oaqr5")
+material = SubResource("ShaderMaterial_jmbn5")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_RPGM_Script" type="Node2D" parent="_map_4/_npc_4_3"]
@@ -11854,7 +11880,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_map_5/_npc_5_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_jonhj")
+material = SubResource("ShaderMaterial_oaqr5")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_map_6" type="Node" parent="."]
@@ -11875,7 +11901,7 @@ map_position = Vector2i(2, 19)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_6/_npc_6_1" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_j4uy8")
+material = SubResource("ShaderMaterial_jonhj")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_6_2" type="Node2D" parent="_map_6"]
@@ -11892,7 +11918,7 @@ map_position = Vector2i(-2, 3)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_6/_npc_6_2" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_2uryw")
+material = SubResource("ShaderMaterial_j4uy8")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_6_3" type="Node2D" parent="_map_6"]
@@ -11911,7 +11937,7 @@ map_position = Vector2i(2, 21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_6/_npc_6_3" instance=ExtResource("15_2uryw")]
-material = SubResource("ShaderMaterial_a8qaw")
+material = SubResource("ShaderMaterial_2uryw")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_event_6_1" type="Node2D" parent="_map_6"]
@@ -11931,7 +11957,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 [node name="_RPGM_Portrait" parent="_map_6/_event_6_1" instance=ExtResource("15_2uryw")]
 z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_yspku")
+material = SubResource("ShaderMaterial_a8qaw")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_map_7" type="Node" parent="."]
@@ -11954,7 +11980,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_7/_npc_7_1" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_xp5op")
+material = SubResource("ShaderMaterial_yspku")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_npc_7_3" type="Node2D" parent="_map_7"]
@@ -11975,7 +12001,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_7/_npc_7_3" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_cyfpt")
+material = SubResource("ShaderMaterial_xp5op")
 scale = Vector2(1.0166667, 1.0833334)
 type = "sphere"
 
@@ -11997,7 +12023,7 @@ metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_RPGM_Portrait" parent="_map_7/_npc_7_2" instance=ExtResource("15_2uryw")]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_hxdjl")
+material = SubResource("ShaderMaterial_cyfpt")
 scale = Vector2(1.0166667, 1.0833334)
 
 [node name="_teleports" type="Node" parent="."]

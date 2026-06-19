@@ -6,7 +6,8 @@ class_name _RPGM_Common_Script_Ghost
 func _on_viewport_start():
 	if movement == []:
 		return
-		
+	
+	await get_tree().process_frame
 	var vector : Vector2i
 	while true:
 		vector = movement.pop_front()
