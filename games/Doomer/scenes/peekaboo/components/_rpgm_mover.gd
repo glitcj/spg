@@ -23,7 +23,8 @@ func _editor_update():
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
 		map_position = v
-		_update_tiles_with_rpgm_collision()
+		# CLAUDE: removed direct rebuild call — dirty flag defers rebuild to _process, preventing per-move O(n) tree walks
+		collision_dirty = true
 		if Engine.is_editor_hint(): _quantise_position()
 		
 
@@ -37,7 +38,8 @@ func _get_event(): return get_parent() as _RPGM_Event
 
 func _ready() -> void:
 	await get_tree().process_frame
-	_update_tiles_with_rpgm_collision()
+	# CLAUDE: mark dirty instead of rebuilding immediately; _process will pick it up this frame
+	collision_dirty = true
 	await get_tree().process_frame
 	face(facing)
 	
@@ -56,40 +58,42 @@ func _quantise_position():
 	get_parent().global_position = tilemap_to_global_position(map_position)
 
 static var tiles_with_rpgm_collision = []
+static var collision_dirty: bool = false
+
 func _update_tiles_with_rpgm_collision():
-	var active_script : _RPGM_Script
-	if get_map() != null:
-		tiles_with_rpgm_collision = []
-		for m : _RPGM_Mover in get_map().find_children("*", "_RPGM_Mover"):
-			
-			if m.get_parent() is _RPGM_Player:
-				continue
-			active_script = (m.get_parent() as _RPGM_Event).get_active_script()
-			if active_script == null:
-				continue
-			print(active_script)
-			if not active_script.is_collision:
-				continue
-			tiles_with_rpgm_collision.append(m.map_position)
-			
-		_update_tilemap_collision_debugger()
+	if get_map() == null: return
+	tiles_with_rpgm_collision = []
+	for m: _RPGM_Mover in get_map().find_children("*", "_RPGM_Mover"):
+		if m.get_parent() is _RPGM_Player: continue
+		# CLAUDE: use cached active_script from the event instead of calling get_active_script()
+		# which internally does another find_children walk — avoids O(n*m) tree searches
+		var event := m.get_parent() as _RPGM_Event
+		if event == null: continue
+		var active := event.active_script
+		if active == null or not active.is_collision: continue
+		tiles_with_rpgm_collision.append(m.map_position)
+	_update_tilemap_collision_debugger()
 		
 static var all_collision_debugging_rects = []
 func _update_tilemap_collision_debugger():
-	for r : ColorRect in all_collision_debugging_rects:
+	# CLAUDE: debug visualisation is expensive (queue_free + add_child per tile per rebuild)
+	# skip entirely in non-debug runtime builds
+	if not OS.is_debug_build() and not Engine.is_editor_hint():
+		return
+	for r: ColorRect in all_collision_debugging_rects:
 		r.queue_free()
 	all_collision_debugging_rects = []
-	
+
 	if get_map():
-		for tile_position : Vector2i in tiles_with_rpgm_collision:
+		for tile_position: Vector2i in tiles_with_rpgm_collision:
 			var map_tile_local_center = base_layer.map_to_local(tile_position)
-			
+
 			var rect = ColorRect.new()
 			rect.color = Color.RED
 			rect.size = Vector2(32, 32)
-			rect.position = map_tile_local_center # map_tile_global_center
+			rect.position = map_tile_local_center
 			rect.z_index = 100
-			
+
 			base_layer.add_child(rect)
 			all_collision_debugging_rects.append(rect)
 			
@@ -125,6 +129,10 @@ var state = State.Idle
 func _process(delta: float) -> void:
 	if destination != map_position: state = State.Moving
 	else: state = State.Idle
+	# CLAUDE: deferred collision rebuild — runs at most once per frame regardless of how many movers moved
+	if collision_dirty:
+		_update_tiles_with_rpgm_collision()
+		collision_dirty = false
 
 
 enum State {Moving, Idle}
@@ -147,9 +155,12 @@ func face(tile_vector : Vector2i):
 	
 	if not (facing.length() != 1 or facing.length() != 0):
 		print(facing, facing.length())	
-	var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
+	# var portrait = get_parent().find_child("_RPGM_Portrait") as _RPGM_Portrait
+	var portrait = get_parent().get_portrait()
 	
-	if portrait: portrait.facing = Vector2(facing)
+	if portrait: 
+		pass
+		portrait.facing = Vector2(facing)
 	
 	return self
 

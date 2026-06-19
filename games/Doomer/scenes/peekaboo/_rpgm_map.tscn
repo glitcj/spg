@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=97 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -11132,14 +11132,34 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="GDScript" id="GDScript_uc14m"]
 script/source = "extends _RPGM_Common_Script_Talker
 
-func _is_active(): return get_event().state == _RPGM_Event.EventState.A
+func _is_activatable(): return get_event().state == _RPGM_Event.EventState.A
 
 func _on_action():
 	await super()
 	get_event().state = _RPGM_Event.EventState.B
+	await get_tree().process_frame
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vd6wf"]
+shader = ExtResource("17_txeor")
+shader_parameter/evaporate_progress = 0.5
+shader_parameter/edge_color = Color(0.6, 0.9, 1, 1)
+shader_parameter/edge_width = 0.08
+shader_parameter/noise_scale = 6.0
+shader_parameter/rise_speed = 1.2
+
+[sub_resource type="GDScript" id="GDScript_kl3l0"]
+script/source = "extends _RPGM_Common_Script_Talker
+
+func _is_activatable(): return get_event().state == _RPGM_Event.EventState.B
+
+func _on_action():
+	await super()
+	get_event().state = _RPGM_Event.EventState.A
+	await get_tree().process_frame
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyfpt"]
 shader = ExtResource("17_txeor")
 shader_parameter/evaporate_progress = 0.5
 shader_parameter/edge_color = Color(0.6, 0.9, 1, 1)
@@ -11618,11 +11638,24 @@ deprecated = false
 visible = false
 script = SubResource("GDScript_uc14m")
 messages = Array[String](["This is an active test.."])
+interrupt_player = true
 is_collision = true
 
 [node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_vd6wf")
 scale = Vector2(1.0166667, 1.0833334)
+
+[node name="_common_script_talker2" type="Node2D" parent="_map_1/_npc_1_1"]
+visible = false
+script = SubResource("GDScript_kl3l0")
+messages = Array[String](["This is state B !"])
+interrupt_player = true
+is_collision = true
+
+[node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker2" instance=ExtResource("15_2uryw")]
+material = SubResource("ShaderMaterial_cyfpt")
+scale = Vector2(1.0166667, 1.0833334)
+sprite = "red_prince"
 
 [node name="_RPGM_Mover" type="Node" parent="_map_1/_npc_1_1"]
 script = ExtResource("14_j4uy8")

@@ -9,44 +9,64 @@ enum EventState {A, B, C, D}
 
 var deprecated = false
 
+# CLAUDE: cached references to avoid repeated find_parent/find_child in per-frame calls
+var _rpgm_cache: _RPGM
+var _map_cache: _RPGM_Map
+var _player_cache: _RPGM_Player
+var _area_cache: Area2D
+var _mover_cache: _RPGM_Mover
 
 func fis_collision():
 	for child : _RPGM_Script in find_children("*", "_RPGM_Script"):
 		if child.is_collision: return true
 	return false
 
-func get_rpgm(): return find_parent("_RPGM") as _RPGM
-func get_map(): return find_parent("_RPGM_Map") as _RPGM_Map
-func get_player(): return find_parent("_RPGM_Map").find_child("Player") as _RPGM_Player
-func get_lambdas(): return find_parent("_RPGM_Map").find_child("_RPGM_Lambdas") as _RPGM_Lambdas
+func get_rpgm(): return _rpgm_cache
+func get_map(): return _map_cache
+func get_player(): return _player_cache
+func get_lambdas(): return _map_cache.find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 func get_variables(): return _RPGM_Variables
-func get_area(): return find_child("Area2D") as Area2D
-func get_mover(): return find_child("_RPGM_Mover") as _RPGM_Mover
-func get_portrait(): return find_child("_RPGM_Portrait") as _RPGM_Portrait
+func get_area(): return _area_cache
+func get_mover(): return _mover_cache
 
-func _ready(): pass
+func get_portrait():
+	if not active_script: return null
+	return active_script.find_child("_RPGM_Portrait") as _RPGM_Portrait
 
+func _ready():
+	_cache_components.call_deferred()
+
+func _cache_components():
+	# CLAUDE: cache all node refs at ready to avoid repeated tree walks in per-frame calls
+	# deferred so sibling nodes (e.g. Player) are in the tree before we search for them
+	_rpgm_cache = find_parent("_RPGM")
+	_map_cache = find_parent("_RPGM_Map")
+	if _map_cache:
+		_player_cache = _map_cache.find_child("Player")
+	_area_cache = find_child("Area2D")
+	_mover_cache = find_child("_RPGM_Mover")
 
 func _process(delta: float):
 	if Engine.is_editor_hint(): return
-	# _update_active_script()
 
 var active_script : _RPGM_Script
 func _update_active_script():
-	if active_script and active_script._is_active():
+	if active_script and active_script._is_activatable():
 		return
-	if active_script and not active_script._is_active():
+	if active_script and not active_script._is_activatable():
 		active_script._on_deactivated()
 		
 	active_script = get_active_script()
 	if active_script:
 		active_script._on_activated()
-	get_mover()._update_tiles_with_rpgm_collision()
+	# CLAUDE: replaced direct _update_tiles_with_rpgm_collision() call with dirty flag
+	# the rebuild now happens at most once per frame in _RPGM_Mover._process
+	_RPGM_Mover.collision_dirty = true
 
 
 func get_active_script():
 	for script : _RPGM_Script in find_children("*", "_RPGM_Script"):
-		if script._is_active():
+		if script._is_activatable():
 			return script
 	return null
 	
