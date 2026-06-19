@@ -26,7 +26,9 @@ var facing := Vector2(-1, 0):
 			%AnimationPlayer.stop()
 			%AnimationPlayer.play("actioned")
 
-var sprite : String:
+
+
+var sprite : String = "cream":
 	set(v):
 		sprite = v
 		if %AnimatedSprite2D == null: return
