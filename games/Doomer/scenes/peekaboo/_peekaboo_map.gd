@@ -21,3 +21,48 @@ func _quantise_all():
 
 func scripts_currently_on_map():
 	return find_children("*", "_RPGM_Script")
+
+# CLAUDE: collision tile list and rebuild logic moved here from _RPGM_Mover static vars
+# _RPGM_Map is the correct owner — it owns the tile layers and can see all movers
+var tiles_with_rpgm_collision: Array[Vector2i] = []
+var collision_dirty: bool = false
+var _all_collision_debugging_rects: Array[ColorRect] = []
+
+func mark_collision_dirty() -> void:
+	collision_dirty = true
+
+func _process(_delta: float) -> void:
+	# CLAUDE: deferred collision rebuild — at most once per frame, driven by the dirty flag
+	if collision_dirty:
+		_rebuild_collision_tiles()
+		collision_dirty = false
+
+func _rebuild_collision_tiles() -> void:
+	tiles_with_rpgm_collision = []
+	for m: _RPGM_Mover in find_children("*", "_RPGM_Mover"):
+		if m.get_parent() is _RPGM_Player: continue
+		# CLAUDE: read cached active_script directly — avoids nested find_children inside the loop
+		var event := m.get_parent() as _RPGM_Event
+		if event == null: continue
+		var active := event.active_script
+		if active == null or not active.is_collision: continue
+		tiles_with_rpgm_collision.append(m.map_position)
+	_update_tilemap_collision_debugger()
+
+func _update_tilemap_collision_debugger() -> void:
+	# CLAUDE: debug visualisation only — skip in non-debug runtime builds
+	if not OS.is_debug_build() and not Engine.is_editor_hint():
+		return
+	var base_layer := find_child("L1 Base") as TileMapLayer
+	if base_layer == null: return
+	for r: ColorRect in _all_collision_debugging_rects:
+		r.queue_free()
+	_all_collision_debugging_rects = []
+	for tile_position: Vector2i in tiles_with_rpgm_collision:
+		var rect := ColorRect.new()
+		rect.color = Color.RED
+		rect.size = Vector2(32, 32)
+		rect.position = base_layer.map_to_local(tile_position)
+		rect.z_index = 100
+		base_layer.add_child(rect)
+		_all_collision_debugging_rects.append(rect)

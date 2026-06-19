@@ -23,8 +23,8 @@ func _editor_update():
 @export var map_position: Vector2i = Vector2i(0, 0):
 	set(v):
 		map_position = v
-		# CLAUDE: removed direct rebuild call — dirty flag defers rebuild to _process, preventing per-move O(n) tree walks
-		collision_dirty = true
+		# CLAUDE: dirty flag now lives on _RPGM_Map — it owns collision state and drives rebuild in its _process
+		if get_map(): get_map().mark_collision_dirty()
 		if Engine.is_editor_hint(): _quantise_position()
 		
 
@@ -38,8 +38,8 @@ func _get_event(): return get_parent() as _RPGM_Event
 
 func _ready() -> void:
 	await get_tree().process_frame
-	# CLAUDE: mark dirty instead of rebuilding immediately; _process will pick it up this frame
-	collision_dirty = true
+	# CLAUDE: mark map dirty instead of rebuilding immediately; map's _process will pick it up
+	if get_map(): get_map().mark_collision_dirty()
 	await get_tree().process_frame
 	face(facing)
 	
@@ -57,47 +57,6 @@ func teleport(tile_position : Vector2i):
 func _quantise_position():
 	get_parent().global_position = tilemap_to_global_position(map_position)
 
-static var tiles_with_rpgm_collision = []
-static var collision_dirty: bool = false
-
-func _update_tiles_with_rpgm_collision():
-	if get_map() == null: return
-	tiles_with_rpgm_collision = []
-	for m: _RPGM_Mover in get_map().find_children("*", "_RPGM_Mover"):
-		if m.get_parent() is _RPGM_Player: continue
-		# CLAUDE: use cached active_script from the event instead of calling get_active_script()
-		# which internally does another find_children walk — avoids O(n*m) tree searches
-		var event := m.get_parent() as _RPGM_Event
-		if event == null: continue
-		var active := event.active_script
-		if active == null or not active.is_collision: continue
-		tiles_with_rpgm_collision.append(m.map_position)
-	_update_tilemap_collision_debugger()
-		
-static var all_collision_debugging_rects = []
-func _update_tilemap_collision_debugger():
-	# CLAUDE: debug visualisation is expensive (queue_free + add_child per tile per rebuild)
-	# skip entirely in non-debug runtime builds
-	if not OS.is_debug_build() and not Engine.is_editor_hint():
-		return
-	for r: ColorRect in all_collision_debugging_rects:
-		r.queue_free()
-	all_collision_debugging_rects = []
-
-	if get_map():
-		for tile_position: Vector2i in tiles_with_rpgm_collision:
-			var map_tile_local_center = base_layer.map_to_local(tile_position)
-
-			var rect = ColorRect.new()
-			rect.color = Color.RED
-			rect.size = Vector2(32, 32)
-			rect.position = map_tile_local_center
-			rect.z_index = 100
-
-			base_layer.add_child(rect)
-			all_collision_debugging_rects.append(rect)
-			
-			
 func move_to_map_position(target_map_position):
 	await move(target_map_position - map_position)
 
@@ -129,10 +88,6 @@ var state = State.Idle
 func _process(delta: float) -> void:
 	if destination != map_position: state = State.Moving
 	else: state = State.Idle
-	# CLAUDE: deferred collision rebuild — runs at most once per frame regardless of how many movers moved
-	if collision_dirty:
-		_update_tiles_with_rpgm_collision()
-		collision_dirty = false
 
 
 enum State {Moving, Idle}
@@ -186,10 +141,11 @@ func tile_has_collision(tile_pos: Vector2i) -> bool:
 		return true
 	return false
 
-func tile_has_rpgm_collision(position):
-	if tiles_with_rpgm_collision.has(position):
-		pass
-	return tiles_with_rpgm_collision.has(position) # find(position)
+func tile_has_rpgm_collision(position: Vector2i) -> bool:
+	# CLAUDE: reads from map-owned collision list — static var removed when ownership moved to _RPGM_Map
+	var map : _RPGM_Map = get_map()
+	if map == null: return false
+	return map.tiles_with_rpgm_collision.has(position)
 
 # Refactor _Mover
 # Refactor _Map

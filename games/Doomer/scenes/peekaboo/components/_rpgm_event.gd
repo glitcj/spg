@@ -59,9 +59,8 @@ func _update_active_script():
 	active_script = get_active_script()
 	if active_script:
 		active_script._on_activated()
-	# CLAUDE: replaced direct _update_tiles_with_rpgm_collision() call with dirty flag
-	# the rebuild now happens at most once per frame in _RPGM_Mover._process
-	_RPGM_Mover.collision_dirty = true
+	# CLAUDE: set dirty flag on the map — _RPGM_Map now owns collision state and drives rebuild in its _process
+	if get_map(): get_map().mark_collision_dirty()
 
 
 func get_active_script():

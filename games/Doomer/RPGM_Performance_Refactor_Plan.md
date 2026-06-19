@@ -343,9 +343,9 @@ func tile_has_rpgm_collision(position: Vector2i) -> bool:
 | 3 | `_RPGM_Script.gd` | `_get_components` + all `get_*` helpers | Cache all node refs at ready | Low | **DONE** |
 | 3 | `_RPGM_Event.gd` | `_ready` + all `get_*` helpers | Cache all node refs at ready | Low | **DONE** |
 | 4 | `_RPGM_Mover.gd` | `_update_tilemap_collision_debugger` | Gate behind `OS.is_debug_build()` | Low | **DONE** |
-| 5 | `_RPGM_Script.gd` | `_process` | Only emit `frame_started` if `_on_frame` overridden | Medium | pending |
+| 5 | `_RPGM_Script.gd` | `_process` | Only emit `frame_started` if `_on_frame` overridden | Medium | **DONE** |
 | 6 | `_RPGM_Event.gd` | `_update_active_script` | Replace direct rebuild call with dirty flag | Low | **DONE** |
-| 7 | `_RPGM_Mover.gd` + `_RPGM_Map.gd` | Collision list ownership | Move static collision state to `_RPGM_Map` | Medium | pending |
+| 7 | `_RPGM_Mover.gd` + `_RPGM_Map.gd` | Collision list ownership | Move static collision state to `_RPGM_Map` | Medium | **DONE** |
 
 ---
 
@@ -355,8 +355,8 @@ func tile_has_rpgm_collision(position: Vector2i) -> bool:
 2. ~~**Problem 4** — one-line guard, zero risk.~~ **DONE**
 3. ~~**Problem 3** — cache node refs in both files; verify `_get_components` deferred call timing is correct (it already uses `call_deferred` in `_RPGM_Script`, match this in `_RPGM_Event`).~~ **DONE** — `_RPGM_Event` uses `_cache_components.call_deferred()` to mirror the `_RPGM_Script` pattern; sibling-node lookup (Player) is safe because the deferred call runs after all `_ready()` calls complete.
 4. ~~**Problem 1 + 6 together** — introduce `collision_dirty` flag on `_RPGM_Mover`, update both the setter and `_update_active_script` to use it.~~ **DONE**
-5. **Problem 5** — test carefully; make sure override detection works for all existing script subclasses before shipping.
-6. **Problem 7 last** — most structural, requires `_RPGM_Map.gd` changes and touching the most files. Do in a separate commit/branch.
+5. ~~**Problem 5** — test carefully; make sure override detection works for all existing script subclasses before shipping.~~ **DONE** — uses `get_script_method_list()` (direct-definition only, not inherited) and walks the script chain so multi-level subclasses are detected correctly.
+6. ~~**Problem 7 last** — most structural, requires `_RPGM_Map.gd` changes and touching the most files. Do in a separate commit/branch.~~ **DONE** — `tiles_with_rpgm_collision`, `collision_dirty`, `_all_collision_debugging_rects`, `_rebuild_collision_tiles`, and `_update_tilemap_collision_debugger` all live on `_RPGM_Map` now. `_RPGM_Mover` static vars removed.
 
 ---
 

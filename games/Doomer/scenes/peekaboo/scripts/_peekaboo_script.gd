@@ -21,6 +21,9 @@ var _map_cache: _RPGM_Map
 var _player_cache: _RPGM_Player
 var _area_cache: Area2D
 
+# CLAUDE: avoids emitting frame_started every frame for scripts that don't override _on_frame
+var _has_on_frame_override: bool = false
+
 func get_core(): return find_parent("_Core") as _Core  # infrequent, leave as-is
 func get_rpgm(): return _rpgm_cache
 func get_map(): return _map_cache
@@ -84,6 +87,17 @@ func _get_components():
 	if parent.find_children("*", "_RPGM_Portrait").size() > 0:
 		portrait = parent.find_child("_RPGM_Portrait")
 	_area_cache = parent.find_child("Area2D")
+	# CLAUDE: walk the script chain (excluding the base) to detect if any derived class overrides
+	# _on_frame — uses get_script_method_list() which returns only methods defined in that specific
+	# script file, so the base class's no-op definition does not produce a false positive
+	var s := get_script() as Script
+	while s and s != _RPGM_Script:
+		for m: Dictionary in s.get_script_method_list():
+			if m["name"] == "_on_frame":
+				_has_on_frame_override = true
+				break
+		if _has_on_frame_override: break
+		s = s.get_base_script()
 
 
 var last_is_activatable = false
@@ -104,7 +118,9 @@ func _process(_delta: float):
 	if not is_active: return
 		
 	_log()
-	frame_started.emit()
+	# CLAUDE: only emit frame_started if the subclass actually overrides _on_frame
+	if _has_on_frame_override:
+		frame_started.emit()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		var player_is_facing_this_event : bool = mover.map_position == get_player().get_mover().facing + get_player().get_mover().map_position
