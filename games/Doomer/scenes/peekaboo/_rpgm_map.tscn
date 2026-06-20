@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://bc6scuw6gftg0"]
+[gd_scene load_steps=99 format=4 uid="uid://bc6scuw6gftg0"]
 
 [ext_resource type="Script" uid="uid://3b6nx2ubod3b" path="res://scenes/peekaboo/_peekaboo_map.gd" id="1_txeor"]
 [ext_resource type="Script" uid="uid://c6484wl627c5c" path="res://scenes/peekaboo/peekaboo.lambdas.gd" id="2_vd6wf"]
@@ -11123,6 +11123,16 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="GDScript" id="GDScript_jo6ms"]
+script/source = "extends _RPGM_Event
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	super()
+	get_core().get_log().add_log(func(): return str(active_scripts))
+	get_core().get_log().add_log(func(): return \"state: %s\" % state)
+"
+
 [sub_resource type="GDScript" id="GDScript_uc14m"]
 script/source = "extends _RPGM_Common_Script_Talker
 
@@ -11132,7 +11142,9 @@ func _is_active():
 func _on_action():
 	await super()
 	get_event().state = _RPGM_Event.EventState.B
-	await get_tree().process_frame
+	# get_event().update_active_scripts()
+	# await get_tree().process_frame
+	# get_event().update_active_scripts()
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vd6wf"]
@@ -11147,7 +11159,7 @@ func _is_active():
 func _on_action():
 	await super()
 	get_event().state = _RPGM_Event.EventState.A
-	await get_tree().process_frame
+	# await get_tree().process_frame
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6le0f"]
@@ -11563,27 +11575,26 @@ texture = SubResource("GradientTexture2D_6de6d")
 
 [node name="_npc_1_1" type="Node2D" parent="_map_1"]
 position = Vector2(72, 120)
-script = ExtResource("17_yspku")
-deprecated = false
+script = SubResource("GDScript_jo6ms")
 
-[node name="_common_script_talker" type="Node2D" parent="_map_1/_npc_1_1"]
+[node name="_common_script_talker_1" type="Node2D" parent="_map_1/_npc_1_1"]
 script = SubResource("GDScript_uc14m")
 messages = Array[String](["This is an active test.."])
 interrupt_player = true
 is_collision = true
 
-[node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker_1" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_vd6wf")
 scale = Vector2(1.0166667, 1.0833334)
 
-[node name="_common_script_talker2" type="Node2D" parent="_map_1/_npc_1_1"]
+[node name="_common_script_talker_2" type="Node2D" parent="_map_1/_npc_1_1"]
 visible = false
 script = SubResource("GDScript_kl3l0")
 messages = Array[String](["This is state B !"])
 interrupt_player = true
 is_collision = true
 
-[node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker2" instance=ExtResource("15_2uryw")]
+[node name="_RPGM_Portrait" parent="_map_1/_npc_1_1/_common_script_talker_2" instance=ExtResource("15_2uryw")]
 material = SubResource("ShaderMaterial_6le0f")
 scale = Vector2(1.0166667, 1.0833334)
 sprite = "red_prince"

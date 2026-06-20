@@ -11,16 +11,26 @@ var current_scene : _Core_Viewport
 @onready var camera = %Camera2D as Camera2D
 @onready var turner : _Core_Turner = $Turner
 
+
 func get_scene(_name): return find_child(_name) as _Core_Viewport
 func get_lambdas(): return find_child("_Core_Lambdas") as _Core_Lambdas
 func get_variables(): return find_child("_Core_Variables") as _Core_Variables
+func get_log(): return %_Core_Log as _Core_Log
 
 func _input(event):
 	pass
+	
+func _process_input():
+	if Input.is_action_just_pressed("ui_show_log"):
+		%_Core_Log.visible = !%_Core_Log.visible
+
+func _process(delta: float) -> void:
+	_process_input()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_boot.call_deferred()
+	_setup_log.call_deferred()
 
 func _boot():
 	change_viewport(get_scene("_Starter"))
@@ -72,3 +82,10 @@ func remove_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport):
 	wrapper_node.queue_free()
 	
 	await parent_scene._on_viewport_start()
+
+
+
+func test_log(): return "Test"
+func _setup_log():
+	%_Core_Log.add_log(test_log)
+	%_Core_Log.add_log(func fps(): return "FPS %s" % str(Engine.get_frames_per_second()))

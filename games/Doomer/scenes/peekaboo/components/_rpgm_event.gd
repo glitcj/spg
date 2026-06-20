@@ -3,9 +3,18 @@ extends Node2D
 class_name _RPGM_Event
 
 
-enum EventState {A, B, C, D}
+enum EventState {A, B, C, D, E, F, G}
 @export var state : EventState = EventState.A
 
+
+@onready var portraits = find_children("*", "_RPGM_Portrait")
+
+var facing := Vector2(-1, 0):
+	set(value):
+		facing = value
+		for p in portraits:
+			if p: p.facing = facing
+		
 
 
 var is_collision = false
@@ -30,6 +39,7 @@ func get_lambdas(): return _map.find_child("_RPGM_Lambdas") as _RPGM_Lambdas
 func get_variables(): return _RPGM_Variables
 func get_area(): return _area
 func get_mover(): return _mover
+func get_core(): return find_parent("_Core") as _Core
 
 func get_portraits():
 	# if not active_script: return null
@@ -37,10 +47,13 @@ func get_portraits():
 	return null
 
 var active_scripts := []
+@onready var all_scripts = find_children("*", "_RPGM_Script")
+var active_scripts_is_dirty = false
 func update_active_scripts():
 	active_scripts = []
 	is_collision = false
-	for s : _RPGM_Script in find_children("*", "_RPGM_Script"):
+	for s : _RPGM_Script in all_scripts:
+		if not s: continue
 		if s._is_active(): 
 			active_scripts.append(s)
 			is_collision = is_collision or s.is_collision
@@ -48,14 +61,14 @@ func update_active_scripts():
 func _ready():
 	_get_components.call_deferred()
 	update_active_scripts.call_deferred()
+	# get_core().get_log().add_log(func(): return name + str(portraits))
 
 func _get_components():
 	# CLAUDE: cache all node refs at ready to avoid repeated tree walks in per-frame calls
 	# deferred so sibling nodes (e.g. Player) are in the tree before we search for them
 	_rpgm = find_parent("_RPGM")
 	_map = find_parent("_RPGM_Map")
-	if _map:
-		_player = _map.find_child("Player")
+	if _map: _player = _map.find_child("Player")
 	_area = find_child("Area2D")
 	_mover = find_child("_RPGM_Mover")
 
@@ -63,29 +76,6 @@ func _process(delta: float):
 	if Engine.is_editor_hint(): return
 
 
-
-
-"""
-var active_script : _RPGM_Script
-func _update_active_script():
-	if active_script and active_script._is_activatable():
-		return
-	if active_script and not active_script._is_activatable():
-		active_script._on_deactivated()
-		
-	active_script = get_active_script()
-	if active_script:
-		active_script._on_activated()
-	# CLAUDE: set dirty flag on the map — _RPGM_Map now owns collision state and drives rebuild in its _process
-	if get_map(): get_map().mark_collision_dirty()
-
-
-func get_active_script():
-	for script : _RPGM_Script in find_children("*", "_RPGM_Script"):
-		if script._is_activatable():
-			return script
-	return null
-"""
 
 func _child_entered_tree(_node: Node) -> void:
 	notify_property_list_changed()

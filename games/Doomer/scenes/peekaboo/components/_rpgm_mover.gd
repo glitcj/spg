@@ -114,18 +114,21 @@ func face(tile_vector : Vector2i):
 	
 	
 	if get_parent() is _RPGM_Event:
+		get_parent().facing = Vector2(facing)
+	elif get_parent() is _RPGM_Player:
+		get_parent().get_portrait().facing = facing
+		
+	
+	
+	"""
+	if get_parent() is _RPGM_Event:
 		for script : _RPGM_Script in get_parent().active_scripts:
 			if script.get_portrait():
 				script.get_portrait().facing = Vector2(facing)
 	elif get_parent() is _RPGM_Player:
 		(get_parent() as _RPGM_Player).get_portrait().facing = Vector2(facing)
+	"""
 		
-	"""
-	var portrait = get_parent().get_portrait()
-	if portrait: 
-		pass
-		portrait.facing = Vector2(facing)
-	"""
 	
 	return self
 

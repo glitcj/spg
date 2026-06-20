@@ -87,6 +87,7 @@ func _get_components():
 	if parent.find_children("*", "_RPGM_Portrait").size() > 0:
 		portrait = parent.find_child("_RPGM_Portrait")
 	_area = parent.find_child("Area2D")
+	
 	# CLAUDE: walk the script chain (excluding the base) to detect if any derived class overrides
 	# _on_frame — uses get_script_method_list() which returns only methods defined in that specific
 	# script file, so the base class's no-op definition does not produce a false positive
@@ -99,9 +100,6 @@ func _get_components():
 		if _has_on_frame_override: break
 		s = s.get_base_script()
 
-
-# var last_is_activatable = false
-
 var last_is_active = false
 
 func _process(_delta: float):
@@ -111,6 +109,9 @@ func _process(_delta: float):
 	if not get_rpgm().is_active:
 		return
 	
+	
+	# this pattern is fragile ? to process_frame awaits and skips
+	# probably no
 	if (last_is_active and not _is_active()):
 		_on_deactivated()
 	if (not last_is_active and _is_active()):
@@ -123,8 +124,7 @@ func _process(_delta: float):
 		
 	_log()
 	# CLAUDE: only emit frame_started if the subclass actually overrides _on_frame
-	if _has_on_frame_override:
-		frame_started.emit()
+	if _has_on_frame_override: frame_started.emit()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		var player_is_facing_this_event : bool = mover.map_position == get_player().get_mover().facing + get_player().get_mover().map_position
@@ -182,11 +182,13 @@ func _on_activated():
 	visible = true
 	is_active = true
 	get_map().mark_collision_dirty()
+	get_event().update_active_scripts()
 
 func _on_deactivated():
 	visible = false
 	is_active = false
 	get_map().mark_collision_dirty()
+	get_event().update_active_scripts()
 
 func _on_area_entered():
 	pass

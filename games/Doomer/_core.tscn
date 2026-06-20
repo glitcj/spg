@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv3klgr035oac"]
+[gd_scene load_steps=17 format=3 uid="uid://bv3klgr035oac"]
 
 [ext_resource type="Script" uid="uid://bf52dr70k2ej5" path="res://_core.gd" id="1_110wm"]
 [ext_resource type="Script" uid="uid://djvk5f1dkttil" path="res://core/inspector.gd" id="2_2jvhd"]
 [ext_resource type="Script" uid="uid://chrqwcvjxpk7x" path="res://scenes/peekaboo/scripts/_core_variables.gd" id="2_swu0y"]
 [ext_resource type="Script" uid="uid://bx1omwn0qjk24" path="res://core/debug/doomer.debug.log.gd" id="3_day3e"]
 [ext_resource type="PackedScene" uid="uid://cpdqupnudty53" path="res://core/turner/_core_turner.tscn" id="5_okhcm"]
+[ext_resource type="PackedScene" uid="uid://dfg24h7bgrdws" path="res://scenes/birds/_core_log.tscn" id="9_hqny6"]
 [ext_resource type="Script" uid="uid://byxa8sksknfmi" path="res://_core_data_lambdas.gd" id="9_swu0y"]
 [ext_resource type="Script" uid="uid://yc144vx4kdbk" path="res://scenes/_core_lambdas.gd" id="11_yes15"]
 [ext_resource type="Script" uid="uid://csfet7gupg7d0" path="res://docs/notes.gd" id="12_dhys3"]
@@ -58,17 +59,30 @@ script = ExtResource("9_swu0y")
 
 [node name="Current Scene" type="Node" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="Current Scene"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Current Scene"]
+
+[node name="MarginContainer" type="MarginContainer" parent="Current Scene/CanvasLayer"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Current Scene/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Current Scene/CanvasLayer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Current Viewport" type="TextureRect" parent="Current Scene/MarginContainer/CenterContainer"]
+[node name="Current Viewport" type="TextureRect" parent="Current Scene/CanvasLayer/MarginContainer/CenterContainer"]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CanvasLayer Log" type="CanvasLayer" parent="Current Scene"]
+
+[node name="MarginContainer" type="MarginContainer" parent="Current Scene/CanvasLayer Log"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="_Core_Log" parent="Current Scene/CanvasLayer Log/MarginContainer" instance=ExtResource("9_hqny6")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 2
 
 [node name="Scenes" type="Node2D" parent="."]
