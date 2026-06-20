@@ -1,9 +1,8 @@
 extends Node2D
 class_name _RPGM_Player
 
-# var is_collision = true
-
-func is_collision(): return true
+# func is_collision(): return true
+var is_collision = true
 
 var is_active = false:
 	set(v):

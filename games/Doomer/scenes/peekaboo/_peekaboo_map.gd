@@ -44,15 +44,18 @@ func _process(_delta: float) -> void:
 
 func _rebuild_collision_tiles() -> void:
 	tiles_with_rpgm_collision = []
+	var p
 	for m: _RPGM_Mover in find_children("*", "_RPGM_Mover"):
-		if m.get_parent() is _RPGM_Player: continue
-		# CLAUDE: read cached active_script directly — avoids nested find_children inside the loop
-		var event := m.get_parent() as _RPGM_Event
-		if event == null: continue
-		# var active := event.active_script
-		# if active == null or not active.is_collision: 
-		# continue
-		if not event.is_collision:
+		# if not (m.get_parent() is _RPGM_Player or m.get_parent() is _RPGM_Event): continue
+		
+		p = m.get_parent()
+		
+		if p is _RPGM_Player:
+			pass
+		elif p is _RPGM_Event:
+			if not p.is_collision:
+				continue
+		else:
 			continue
 		tiles_with_rpgm_collision.append(m.map_position)
 	_update_tilemap_collision_debugger()

@@ -45,14 +45,54 @@ func change_viewport(viewport: _Core_Viewport):
 	await viewport._on_viewport_start()
 
 
-func change_viewport_v1(scene_: _Core_Viewport):
-	if current_scene:
+
+
+
+
+func add_viewport(parent_viewport : _Core_Viewport, child_viewport: _Core_Viewport,  _container : Container, _scale := Vector2.ONE):
+	if parent_viewport == current_scene:
 		await current_scene._on_viewport_end()
-	current_scene = scene_
-	camera.reparent(current_scene)
-	camera.position = Vector2.ZERO
-	await scene_._on_viewport_start()
+	current_scene = child_viewport
 	
+	var wrapper_node = Node2D.new()
+	wrapper_node.name = "_Wrapper_"
+	wrapper_node.add_child(child_viewport)
+	
+	
+	
+	print(_container)
+	pass
+	# if _position != Vector2.ZERO:
+	# 	wrapper_node.position = _position
+	if _scale != Vector2.ZERO:
+		wrapper_node.scale = _scale
+		
+	# parent_viewport.add_child(wrapper_node)
+	_container.add_child(wrapper_node)
+	await child_viewport._on_viewport_start()
+
+
+
+func remove_viewport(parent_viewport : _Core_Viewport, child_viewport: _Core_Viewport, _container : Container):
+	if child_viewport == current_scene:
+		await child_viewport._on_viewport_end()
+	current_scene = parent_viewport
+
+	var wrapper_node = child_viewport.get_parent() as Node2D
+	
+	
+	# parent_scene.remove_child(wrapper_node)
+	# wrapper_node.remove_child(child_scene)
+	
+	_container.remove_child(wrapper_node)
+	wrapper_node.remove_child(child_viewport)
+	wrapper_node.queue_free()
+	
+	# await parent_scene._on_viewport_start()
+	await parent_viewport._on_viewport_start()
+
+
+
 func add_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport,  _position := Vector2.ZERO, _scale := Vector2.ONE):
 	if parent_scene == current_scene:
 		await current_scene._on_viewport_end()
@@ -62,6 +102,10 @@ func add_scene(parent_scene : _Core_Viewport, child_scene: _Core_Viewport,  _pos
 	wrapper_node.name = "_Wrapper_"
 	wrapper_node.add_child(child_scene)
 	
+	
+	
+	print(_position)
+	pass
 	if _position != Vector2.ZERO:
 		wrapper_node.position = _position
 	if _scale != Vector2.ZERO:

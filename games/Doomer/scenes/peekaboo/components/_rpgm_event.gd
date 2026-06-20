@@ -27,11 +27,6 @@ var _player: _RPGM_Player
 var _area: Area2D
 var _mover: _RPGM_Mover
 
-func fis_collision():
-	for child : _RPGM_Script in find_children("*", "_RPGM_Script"):
-		if child.is_collision: return true
-	return false
-
 func get_rpgm(): return _rpgm
 func get_map(): return _map
 func get_player(): return _player
