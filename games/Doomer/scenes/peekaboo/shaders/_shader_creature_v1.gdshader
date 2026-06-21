@@ -27,20 +27,30 @@ vec4 black_as_transparent(vec4 _pixel) {
 	
 }
 
-vec4 filled_circle(vec2 _centered_uv, float radius) {
+vec4 _circle(vec2 _centered_uv) {
 	vec4 filled_circle = vec4(1.) ;
 	
 	filled_circle.rgb = vec3(distance(_centered_uv, vec2(0., 0.))) ;
-	filled_circle.rgb = step(radius, filled_circle.rgb) ;
-	
 	
 	filled_circle.rgb = vec3(1.) - filled_circle.rgb ;
+	filled_circle = max(vec4(0.), filled_circle) ; // clamp negative values
+	
 	filled_circle = black_as_transparent(filled_circle) ;
 	return filled_circle ;
 	
 } 
 
 
+vec4 _harden(vec4 _pixel) { // }, float edge) {
+	// apply hard edge
+	vec4 _hardened_pixel = step(0.000001, _pixel) ;
+	// return  mix(vec4(0.), _pixel, _hardened_pixel) ;
+	return  mix(vec4(0.), vec4(1.), _hardened_pixel) ;
+	}
+
+vec4 _soften(vec4 _pixel) {
+	return vec4(1.) ;
+}
 
 vec2 _center(vec2 _uv) {
 	return _uv ;
@@ -60,15 +70,20 @@ vec2 _translate(vec2 _uv, vec2 offset) {
 	return (translation * vec3(_uv, 1.)).xy ;
 }
 
-vec2 _scale(vec2 _uv) {
-	return _uv ;
+vec2 _scale(vec2 _uv, float scale) {
+	mat3 scaler = mat3( 
+		vec3(1./scale, 0., 0.), 
+		vec3(0., 1./scale, 0.), 
+		vec3(0., 0., 1./scale)
+		) ;
+	return (scaler * vec3(_uv, 1.)).xy ;
 }
 
 vec2 _scroll(vec2 _uv) {
 	return vec2(1.) ;
 }
 
-vec4 filled_ellipse(vec2 _centered_uv, vec2 radius, bool hard) {	
+vec4 _ellipse(vec2 _centered_uv, vec2 radius) {	
 	
 	
 	// draw ellipse
@@ -77,10 +92,7 @@ vec4 filled_ellipse(vec2 _centered_uv, vec2 radius, bool hard) {
 	filled_ellipse.rgb = vec3(1.) - filled_ellipse.rgb ;
 	filled_ellipse.rgb = max(vec3(0.), filled_ellipse.rgb) ; // clamp negative values from ellipse equation
 	
-	// apply hard edge
-	vec4 hard_filled_ellipse = step(0.5, filled_ellipse) ;
-	filled_ellipse = mix(filled_ellipse, hard_filled_ellipse,  float(hard)) ;
-	
+
 	// remove background
 	filled_ellipse = black_as_transparent(filled_ellipse) ;	
 	
@@ -132,27 +144,20 @@ void fragment() {
 		// pixel.rgb = vec3(1.0 - step(0.05,  abs(cartesian_uv.y - function_at_x)));
 		// pixel.rgb = vec3(1.0 - abs(cartesian_uv.y - function_at_x));
 		
-		vec2 _circle_uv = _translate(_rotate(centered_uv, angle), vec2(0.1, 0.1)) ;
-		vec2 _ellipse_uv =  _translate(_rotate(centered_uv, angle), vec2(0.1, 0.1)) ;
+		vec2 _circle_1_uv = _scale(_translate(_rotate(centered_uv, angle), vec2(0., 0.)), .2) ;
+		vec2 _circle_2_uv = _scale(_translate(_rotate(centered_uv, angle), vec2(0.1, 0.0)), .4) ;
+		vec2 _ellipse_uv =  _scale(_translate(_rotate(centered_uv, angle), vec2(0., 0.)), .5 + sin(TIME/1.5)/13.) ;
 		
 		
 		
-		vec4 circle_1 = filled_circle(_circle_uv, .2) ;
-		vec4 ellipse_1 = filled_ellipse(_ellipse_uv, vec2(1., 2.), false) ;
-		pixel = circle_1 ;
-		// pixel = ellipse_1 ;
-		
-		pixel = mix(ellipse_1, circle_1, circle_1.a) ;
-		// pixel = mix(pixel, ellipse_1, ellipse_1.a) ;
-		// pixel = ellipse_1 + circle_1 ;
-		
-		// pixel = filled_circle(_circle_uv, vec2(0.1, 0.1), .2) ;
-		// pixel += filled_ellipse(_ellipse_uv, vec2(0., 0.), vec2(1., 2.)) ;
+		vec4 circle_1 = _harden(_circle(_circle_1_uv)) ;
+		vec4 circle_2 = _circle(_circle_2_uv) ;
+		vec4 circle_3 = mix(circle_2, circle_1, 1. - circle_1) ;
 		
 		
+		vec4 ellipse_1 = _ellipse(_ellipse_uv, vec2(1., 2.)) ;
 		
-		// pixel = mix(circle_1, ellipse_1, circle_1.a) ;
-		
+		pixel = mix(ellipse_1, circle_3, circle_1.a) ;
 		
 		
 	}
