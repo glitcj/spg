@@ -1,7 +1,7 @@
-[gd_scene load_steps=512 format=3 uid="uid://ca8vvptjr324n"]
+[gd_scene load_steps=514 format=3 uid="uid://ca8vvptjr324n"]
 
-[ext_resource type="Shader" uid="uid://m0s7g5jc5j61" path="res://scenes/peekaboo/shaders/_shader_creature_v1.gdshader" id="1_3jca7"]
 [ext_resource type="Script" uid="uid://b7wxor5k74kyl" path="res://scenes/peekaboo/components/_rpgm_portrait.gd" id="2_jsjr8"]
+[ext_resource type="Shader" uid="uid://m0s7g5jc5j61" path="res://scenes/peekaboo/shaders/_shader_creature_v1.gdshader" id="3_jsjr8"]
 [ext_resource type="Texture2D" uid="uid://l8gpuh81647c" path="res://assets/birds/YellowBird/YellowBird-Fly.png" id="3_ql15j"]
 [ext_resource type="Texture2D" uid="uid://ddqq7cd7mui6k" path="res://assets/peekaboo/hood.png" id="4_tk76r"]
 [ext_resource type="Texture2D" uid="uid://dw6d5x5mqvgno" path="res://assets/rpgmaker/mv/characters/!Door2.png" id="5_0ltjw"]
@@ -12,8 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://cvx2x7prd1dui" path="res://assets/rpgmaker/mv/system/IconSet.png" id="10_c7sps"]
 [ext_resource type="Texture2D" uid="uid://dm2d2tvu2h0h1" path="res://assets/rpgmaker/mv/battlebacks1/Grassland.png" id="11_wam60"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jca7"]
-shader = ExtResource("1_3jca7")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3jca7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3jca7"]
+noise = SubResource("FastNoiseLite_3jca7")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ql15j"]
+shader = ExtResource("3_jsjr8")
 shader_parameter/progress = 0.0
 shader_parameter/tint = Color(1, 0.5, 1, 1)
 shader_parameter/wave_amp = 0.03
@@ -22,11 +28,11 @@ shader_parameter/wave_phase = 10.0
 shader_parameter/frame_size = 48.0
 shader_parameter/run_vertex = false
 shader_parameter/run_fragment = false
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_3jca7")
 shader_parameter/noise_scale = 1.0
-shader_parameter/noise_speed = 0.2
+shader_parameter/noise_speed = 0.025
 shader_parameter/noise_strength = 0.4
 shader_parameter/time_as_progress = true
-shader_parameter/speed = 0.1
 shader_parameter/angle = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rm60n"]
@@ -3468,7 +3474,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor:scale")
+tracks/0/path = NodePath("_material_anchor/_scale_anchor:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3484,7 +3490,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor:scale")
+tracks/0/path = NodePath("_material_anchor/_scale_anchor:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3500,7 +3506,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("_material_anchor/_scale_anchor/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3516,7 +3522,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("_material_anchor/_scale_anchor/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3532,7 +3538,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("_material_anchor/_scale_anchor/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3548,7 +3554,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("_material_anchor/_scale_anchor/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3564,7 +3570,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("_scale_anchor/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("_material_anchor/_scale_anchor/AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3590,17 +3596,20 @@ _data = {
 }
 
 [node name="_RPGM_Portrait" type="Node2D"]
-material = SubResource("ShaderMaterial_3jca7")
 script = ExtResource("2_jsjr8")
 type = "creature_v1"
 sprite = "cream"
 metadata/_custom_type_script = "uid://7bue6k2pdo5t"
 
-[node name="_scale_anchor" type="Node2D" parent="."]
+[node name="_material_anchor" type="Node2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ql15j")
+
+[node name="_scale_anchor" type="Node2D" parent="_material_anchor"]
 use_parent_material = true
 scale = Vector2(1.25, 1.25)
 
-[node name="Sprite2D _debug" type="Sprite2D" parent="_scale_anchor"]
+[node name="Sprite2D _debug" type="Sprite2D" parent="_material_anchor/_scale_anchor"]
 unique_name_in_owner = true
 visible = false
 use_parent_material = true
@@ -3608,7 +3617,7 @@ position = Vector2(0, -25)
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_rm60n")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="_scale_anchor"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="_material_anchor/_scale_anchor"]
 unique_name_in_owner = true
 visible = false
 light_mask = 0
@@ -3617,7 +3626,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_l6o0d")
 animation = &"cream"
 
-[node name="Sprite2D" type="Sprite2D" parent="_scale_anchor"]
+[node name="Sprite2D" type="Sprite2D" parent="_material_anchor/_scale_anchor"]
 unique_name_in_owner = true
 visible = false
 light_mask = 0
@@ -3626,7 +3635,7 @@ texture_filter = 1
 use_parent_material = true
 texture = SubResource("ImageTexture_jsjr8")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="_scale_anchor"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="_material_anchor/_scale_anchor"]
 unique_name_in_owner = true
 visible = false
 use_parent_material = true
@@ -3634,7 +3643,7 @@ position = Vector2(-0.099999994, -63.999996)
 mesh = SubResource("PlaneMesh_2dswe")
 texture = ExtResource("11_wam60")
 
-[node name="MarginContainer" type="MarginContainer" parent="_scale_anchor"]
+[node name="MarginContainer" type="MarginContainer" parent="_material_anchor/_scale_anchor"]
 visible = false
 use_parent_material = true
 anchors_preset = 8
@@ -3649,36 +3658,36 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="_scale_anchor/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="_material_anchor/_scale_anchor/MarginContainer"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Sprite2D Mark" type="Sprite2D" parent="_scale_anchor/MarginContainer/CenterContainer"]
+[node name="Sprite2D Mark" type="Sprite2D" parent="_material_anchor/_scale_anchor/MarginContainer/CenterContainer"]
 use_parent_material = true
 scale = Vector2(49.999992, 49.999992)
 texture = SubResource("CanvasTexture_3jca7")
 
-[node name="Label Mark" type="Label" parent="_scale_anchor/MarginContainer"]
+[node name="Label Mark" type="Label" parent="_material_anchor/_scale_anchor/MarginContainer"]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 text = "MRK"
 label_settings = SubResource("LabelSettings_3jca7")
 
-[node name="_RPGM_Shader_Creature" type="MeshInstance2D" parent="_scale_anchor"]
+[node name="_RPGM_Shader_Creature" type="MeshInstance2D" parent="_material_anchor/_scale_anchor"]
 visible = false
 mesh = SubResource("SphereMesh_ql15j")
 texture = SubResource("CanvasTexture_tk76r")
 
-[node name="Polygon2D" type="Polygon2D" parent="_scale_anchor"]
+[node name="Polygon2D" type="Polygon2D" parent="_material_anchor/_scale_anchor"]
 visible = false
 polygon = PackedVector2Array(33.6, 15.999999, 29.599998, -8.799999, 7.9999995, -10.4, 26.399998, 14.4)
 
-[node name="Sprite2D Shader Creature" type="Sprite2D" parent="_scale_anchor"]
+[node name="Sprite2D Shader Creature" type="Sprite2D" parent="_material_anchor/_scale_anchor"]
 use_parent_material = true
-scale = Vector2(20, 20)
+scale = Vector2(150, 150)
 texture = SubResource("CanvasTexture_ql15j")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

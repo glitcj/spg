@@ -84,7 +84,29 @@ func _update_material():
 			_material.shader = load("res://scenes/peekaboo/shaders/_shader_creature_v1.gdshader")
 			
 		if not is_node_ready(): return
-		material = _material
+		# material = _material
+		
+		
+		var shader = _material.shader
+		if shader:
+			var params = shader.get_shader_uniform_list()
+			var has_noise = params.any(func(p): return p["name"] == "noise_tex")
+			if has_noise:
+				var noise = FastNoiseLite.new()
+				noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
+				noise.frequency = 0.001
+				var noise_tex = NoiseTexture2D.new()
+				noise_tex.noise = noise
+				noise_tex.seamless = true
+				noise_tex.width = 256
+				noise_tex.height = 256
+				_material.set_shader_parameter("noise_tex", noise_tex)
+		
+		
+		
+		%_material_anchor.material = _material
+		
+		
 		# %Sprite2D.material = _material  # ← assign to the sprite, not self
 		# %AnimatedSprite2D.material = _material  # ← assign to the sprite, not self
 

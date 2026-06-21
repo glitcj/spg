@@ -128,8 +128,7 @@ void fragment() {
 		
 		vec2 _body_1_uv = _scale(_translate(_rotate(centered_uv, angle), vec2(0., 0.) + _body_1_swing), .2) ;
 		vec2 _light_1_uv = _translate(_scale(_rotate(centered_uv, angle) , .4), vec2(0.5, 0.0) + _light_1_swing) ;
-		
-		vec2 _ellipse_uv =  _scale(_translate(_rotate(centered_uv, angle + PI/8. + mod(TIME/8., PI) ), vec2(0., 0.)), .3 + sin(TIME/1.5)/13.) ;
+		vec2 _ellipse_uv =  _scale(_translate(_rotate(centered_uv, angle + PI/8.), vec2(0., 0.)), .5 + sin(TIME/1.5)/13.) ;
 		
 		
 		vec2 _eye_1_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(4., 0.0) + _eye_1_swing) ;
