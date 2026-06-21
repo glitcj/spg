@@ -119,26 +119,28 @@ void fragment() {
 		noxel = noxel_octave_1 ;
 		
 		
-		vec2 _circle_1_uv = _scale(_translate(_rotate(centered_uv, angle), vec2(0., 0.)), .2) ;
-		vec2 _circle_2_uv = _translate(_scale(_rotate(centered_uv, angle) , .4), vec2(0.5, 0.0)) ;
+		vec2 _circle_1_swing = vec2(0.0, 0.015) * sin(TIME) ; 
+		vec2 _circle_2_swing = vec2(0.0, 0.0)  * sin(TIME) ;
+		vec2 _eye_1_swing = vec2(0.0, 0.2)  * sin(TIME * 1.02) ;
+		
+		vec2 _circle_1_uv = _scale(_translate(_rotate(centered_uv, angle), vec2(0., 0.) + _circle_1_swing), .2) ;
+		vec2 _circle_2_uv = _translate(_scale(_rotate(centered_uv, angle) , .4), vec2(0.5, 0.0) + _circle_2_swing) ;
 		vec2 _ellipse_uv =  _scale(_translate(_rotate(centered_uv, angle + PI/8.), vec2(0., 0.)), .5 + sin(TIME/1.5)/13.) ;
 		
 		
-		vec2 _eye_1_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(4., 0.0)) ;
+		vec2 _eye_1_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(4., 0.0) + _eye_1_swing) ;
 		vec4 eye_1 = _harden(_circle(_eye_1_uv)) ;
 		
-		vec2 _eye_2_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(-1.5, 0.0)) ;
+		vec2 _eye_2_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(-1.5, 0.0) + _eye_1_swing) ;
 		vec4 eye_2 = _harden(_circle(_eye_2_uv)) ;
 
-		vec2 _eye_3_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(1.4, 3.0)) ;
+		vec2 _eye_3_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(1.4, 3.0) + _eye_1_swing) ;
 		vec4 eye_3 = _harden(_circle(_eye_3_uv)) ;
-
 		
 		
 		vec4 circle_1 = _harden(_circle(_circle_1_uv)) ;
 		vec4 circle_2 = _circle(_circle_2_uv) ;
 		vec4 circle_3 = mix(circle_2, circle_1, 1. - circle_1) ;
-		
 		
 		vec4 ellipse_1 = _ellipse(_ellipse_uv, vec2(1., 2.)) ;
 		
@@ -147,9 +149,6 @@ void fragment() {
 		pixel = mix(pixel, eye_1, eye_1.a) ;
 		pixel = mix(pixel, eye_2, eye_2.a) ;
 		pixel = mix(pixel, eye_3, eye_3.a) ;
-		
-		// pixel = noxel ;
-		
 		
 	}
 	COLOR = pixel ;
