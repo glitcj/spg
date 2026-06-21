@@ -11409,10 +11409,8 @@ shader = ExtResource("17_txeor")
 script/source = "extends _RPGM_Script
 
 
-func _on_action_within_area():
-	await get_rpgm().get_lambdas().show_messages(
-		[\"Add third-event control.\"]
-		)
+func _on_action():
+	await get_rpgm().get_lambdas().show_messages([\"Add third-event control.\"])
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8qaw"]
@@ -11986,7 +11984,7 @@ map_position = Vector2i(2, 21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_event_6_1" type="Node2D" parent="_map_6"]
-position = Vector2(24, 888)
+position = Vector2(-72, 1032)
 script = ExtResource("17_yspku")
 deprecated = false
 
@@ -12004,7 +12002,7 @@ scale = Vector2(1.0166667, 1.0833334)
 [node name="_RPGM_Mover" type="Node" parent="_map_6/_event_6_1"]
 script = ExtResource("14_j4uy8")
 facing = Vector2i(0, 1)
-map_position = Vector2i(0, 18)
+map_position = Vector2i(-2, 21)
 metadata/_custom_type_script = "uid://cigfux3bal5ef"
 
 [node name="_map_7" type="Node" parent="."]

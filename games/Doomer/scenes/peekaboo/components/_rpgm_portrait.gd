@@ -4,7 +4,7 @@ class_name _RPGM_Portrait
 
 @export var mark : String = "MRK"
 @export_category("Portrait")
-@export_enum("ghost", "evaporate", "highlight", "fog", "shine", "function",
+@export_enum("ghost", "evaporate", "creature_v1", "highlight", "fog", "shine", "function",
 			 "random", "wiggle", "sphere", "outline", "chessboard"
 			) var type: String = "random":
 	set(v):
@@ -80,6 +80,8 @@ func _update_material():
 			_material.shader = load("res://scenes/peekaboo/shaders/_shine.gdshader")
 		if type == "function":
 			_material.shader = load("res://scenes/peekaboo/shaders/_function.gdshader")
+		if type == "creature_v1":
+			_material.shader = load("res://scenes/peekaboo/shaders/_shader_creature_v1.gdshader")
 			
 		if not is_node_ready(): return
 		material = _material
