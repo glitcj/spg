@@ -57,7 +57,7 @@ vec2 _center(vec2 _uv) {
 	}
 
 vec2 _rotate(vec2 _uv, float _angle) {
-	mat3 rotation = mat3(vec3(cos(angle), -sin(angle), 0.), vec3(sin(angle), cos(angle), 0.), vec3(0., 0., 1.));
+	mat3 rotation = mat3(vec3(cos(_angle), -sin(_angle), 0.), vec3(sin(_angle), cos(_angle), 0.), vec3(0., 0., 1.));
 	return (rotation * vec3(_uv, 1.)).xy   ;
 
 }
@@ -74,7 +74,7 @@ vec2 _scale(vec2 _uv, float scale) {
 	mat3 scaler = mat3( 
 		vec3(1./scale, 0., 0.), 
 		vec3(0., 1./scale, 0.), 
-		vec3(0., 0., 1./scale)
+		vec3(0., 0., 1.)
 		) ;
 	return (scaler * vec3(_uv, 1.)).xy ;
 }
@@ -118,36 +118,21 @@ void fragment() {
 		vec4 noxel_octave_2 = texture(noise_tex, vec2( fract(UV.x + TIME / (1./speed)) , fract(UV.y + .5) ));
 		noxel = noxel_octave_1 ;
 		
-		float slope = 1. ;
-		// no divergence here — every fragment runs the same multiply, just with a different value of centered_uv.x
-		// divergence is about which instructions run, not what values they produce
-		// float function_at_x = slope * cartesian_uv.x ;
-		// float function_at_x = sin(5. * cartesian_uv.x) ;
-		float function_at_x = tan(cartesian_uv.x) ;
-		
-		// float function_at_x = -1. - tan(cartesian_uv.x) * 1. ;
-		// float function_at_x = cartesian_uv.x ;
-		
-		pixel.a = 1. ;
-		// ⚠ this if causes warp divergence — fragments near the line take a different code path than fragments far from it
-		// the GPU runs both sides of the branch for the whole warp and masks out the irrelevant results, wasting work
-		// branchless equivalent: pixel.rgb = vec3(1.0 - step(0.02, abs(centered_uv.y - function_at_x)));
-		// or with smooth anti-aliased edge: pixel.rgb = vec3(1.0 - smoothstep(0.01, 0.02, abs(centered_uv.y - function_at_x)));
-		// step/smoothstep convert the distance into a value — same instruction for every fragment, no split code paths
-		// if (abs(centered_uv.y - function_at_x) < 0.02) pixel.rgb = vec3(1.) ;
-
-
-		// ⚠ divergent — fragments split into two code paths, GPU runs both and masks results
-		// if (abs(centered_uv.y - function_at_x) < 0.02) pixel.rgb = vec3(1.) ;
-		// branchless — distance becomes a value, one instruction stream for all fragments
-		// pixel.rgb = vec3(1.0 - smoothstep(0.01, 0.02, abs(cartesian_uv.y - function_at_x)));
-		// pixel.rgb = vec3(1.0 - step(0.05,  abs(cartesian_uv.y - function_at_x)));
-		// pixel.rgb = vec3(1.0 - abs(cartesian_uv.y - function_at_x));
 		
 		vec2 _circle_1_uv = _scale(_translate(_rotate(centered_uv, angle), vec2(0., 0.)), .2) ;
-		vec2 _circle_2_uv = _scale(_translate(_rotate(centered_uv, angle), vec2(0.1, 0.0)), .4) ;
-		vec2 _ellipse_uv =  _scale(_translate(_rotate(centered_uv, angle), vec2(0., 0.)), .5 + sin(TIME/1.5)/13.) ;
+		vec2 _circle_2_uv = _translate(_scale(_rotate(centered_uv, angle) , .4), vec2(0.5, 0.0)) ;
+		vec2 _ellipse_uv =  _scale(_translate(_rotate(centered_uv, angle + PI/8.), vec2(0., 0.)), .5 + sin(TIME/1.5)/13.) ;
 		
+		
+		vec2 _eye_1_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(4., 0.0)) ;
+		vec4 eye_1 = _harden(_circle(_eye_1_uv)) ;
+		
+		vec2 _eye_2_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(-1.5, 0.0)) ;
+		vec4 eye_2 = _harden(_circle(_eye_2_uv)) ;
+
+		vec2 _eye_3_uv = _translate(_scale(_rotate(centered_uv, angle) , .03), vec2(1.4, 3.0)) ;
+		vec4 eye_3 = _harden(_circle(_eye_3_uv)) ;
+
 		
 		
 		vec4 circle_1 = _harden(_circle(_circle_1_uv)) ;
@@ -158,6 +143,12 @@ void fragment() {
 		vec4 ellipse_1 = _ellipse(_ellipse_uv, vec2(1., 2.)) ;
 		
 		pixel = mix(ellipse_1, circle_3, circle_1.a) ;
+		
+		pixel = mix(pixel, eye_1, eye_1.a) ;
+		pixel = mix(pixel, eye_2, eye_2.a) ;
+		pixel = mix(pixel, eye_3, eye_3.a) ;
+		
+		// pixel = noxel ;
 		
 		
 	}

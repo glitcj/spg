@@ -27,7 +27,7 @@ shader_parameter/noise_speed = 0.2
 shader_parameter/noise_strength = 0.4
 shader_parameter/time_as_progress = true
 shader_parameter/speed = 0.1
-shader_parameter/angle = 0.6002941487115976
+shader_parameter/angle = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rm60n"]
 
